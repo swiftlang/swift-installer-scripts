@@ -1,0 +1,55 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+         DefaultTargets="Build"
+         InitialTargets="DisplayBuildConfiguration">
+  <PropertyGroup>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputName>toolchain</OutputName>
+    <OutputType>Package</OutputType>
+    <ProjectGuid>6ebfb883-fc92-4b73-81ae-ddeb2cec4df9</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
+    <ProductVersion>$(ProductVersion)</ProductVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>build\</OutputPath>
+    <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+  </PropertyGroup>
+
+  <Import Project="$(WixTargetsPath)" />
+
+  <PropertyGroup>
+    <DefineConstants>ProductVersion=$(ProductVersion);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;$(INCLUDE_DEBUG_INFO)</DefineConstants>
+    <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
+    <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
+    <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
+    <HarvestDirectorySuppressCom>true</HarvestDirectorySuppressCom>
+    <HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
+    <HarvestDirectorySuppressRegistry>true</HarvestDirectorySuppressRegistry>
+    <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
+  </PropertyGroup>
+
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <!-- FIXME(compnerd): include the shims in the toolchain instead of the SDK?
+      <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\swift\shims">
+        <ComponentGroupName>SWIFT_SHIMS</ComponentGroupName>
+        <DirectoryRefId>USR_LIB_SWIFT_SHIMS</DirectoryRefId>
+      </HarvestDirectory>
+      -->
+      <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\clang">
+        <ComponentGroupName>CLANG_RESOURCES</ComponentGroupName>
+        <DirectoryRefId>USR_LIB_CLANG</DirectoryRefId>
+        <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
+      </HarvestDirectory>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <Compile Include="windows-toolchain.wxs" />
+  </ItemGroup>
+</Project>
