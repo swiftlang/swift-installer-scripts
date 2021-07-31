@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Toolchain" UpgradeCode="9871289b-f9cb-4b39-8122-2c7ec1ab24d5" Version="$(ProductVersion)">
+  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Toolchain" UpgradeCode="9871289b-f9cb-4b39-8122-2c7ec1ab24d5" Version="$(var.ProductVersion)">
     <Package Comments="Copyright (c) 2021 Swift Open Source Project" Compressed="yes" Description="Toolchain" InstallScope="perMachine" Manufacturer="swift.org" />
 
     <MediaTemplate CompressionLevel="high" EmbedCab="yes" />
@@ -23,7 +23,7 @@
             <Directory Id="TOOLCHAINS" Name="Toolchains">
               <!-- TODO(compnerd):
                 This really should be
-                unknown-Asserts-$(ProductVersion).xctoolchain,
+                unknown-Asserts-$(var.ProductVersion).xctoolchain,
                 though before changing, we should setup a
                 `unknown-Asserts-current.xctoolchain`
                 symlink. Additionally, beware that the environment chagnes
