@@ -3,8 +3,15 @@
   <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Toolchain" UpgradeCode="9871289b-f9cb-4b39-8122-2c7ec1ab24d5" Version="$(var.ProductVersion)">
     <Package Comments="Copyright (c) 2021 Swift Open Source Project" Compressed="yes" Description="Toolchain" InstallScope="perMachine" Manufacturer="swift.org" />
 
-    <MediaTemplate CompressionLevel="high" EmbedCab="yes" />
-    <Media Id="1" Cabinet="toolchain.cab" />
+    <!--
+      NOTE(compnerd) Use high compression as this is an extrodinarily large
+      cabinet.  With upstream being amenable to considering decorations for
+      DLL builds, this might be possible to reduce in the future hopefully.
+      In the mean time, burn the CPU cycles to try to claw back the minimal
+      bit of savings to hedge against the constant complaints that the MSIs
+      are too large.
+    -->
+    <Media Id="1" Cabinet="toolchain.cab" EmbedCab="yes" CompressionLevel="high" />
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
     <Media Id="2" Cabinet="clang_PDBs.cab" />
