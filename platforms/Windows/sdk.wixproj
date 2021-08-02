@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputName>sdk</OutputName>
+    <OutputType>Package</OutputType>
+    <ProjectGuid>39170311-3634-4a14-9546-7e4825e7dcd8</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
+    <ProductVersion>$(ProductVersion)</ProductVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>build\</OutputPath>
+    <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+  </PropertyGroup>
+
+  <Import Project="$(WixTargetsPath)" />
+
+  <PropertyGroup>
+    <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SWIFT_SOURCE_DIR=$(SWIFT_SOURCE_DIR);SDK_ROOT_USR_LIB_SWIFT_SHIMS=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
+    <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
+    <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
+    <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
+    <HarvestDirectorySuppressCom>true</HarvestDirectorySuppressCom>
+    <HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
+    <HarvestDirectorySuppressRegistry>true</HarvestDirectorySuppressRegistry>
+    <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="CustomActions\SwiftInstaller\SwiftInstaller.vcxproj">
+      <Name>SwiftInstaller</Name>
+      <SetConfiguration>Configuration=Release</SetConfiguration>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <HarvestDirectory Include="$(SDK_ROOT)\usr\lib\swift\shims">
+        <ComponentGroupName>SWIFT_SHIMS</ComponentGroupName>
+        <DirectoryRefId>WINDOWS_SDK_USR_LIB_SWIFT_SHIMS</DirectoryRefId>
+        <PreprocessorVariable>var.SDK_ROOT_USR_LIB_SWIFT_SHIMS</PreprocessorVariable>
+      </HarvestDirectory>
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <Compile Include="sdk.wxs" />
+  </ItemGroup>
+</Project>
