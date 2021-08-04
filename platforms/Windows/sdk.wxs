@@ -360,7 +360,7 @@
 
       <ComponentRef Id="_CONCURRENCY_IMPORT_LIBS" />
       <ComponentRef Id="_DIFFERENTIATION_IMPORT_LIBS" />
-      <ComponentRef Id="_DISTRIBTUED_IMPORT_LIBS" />
+      <ComponentRef Id="_DISTRIBUTED_IMPORT_LIBS" />
       <!-- <ComponentRef Id="CRT_IMPORT_LIBS" /> -->
       <!-- <ComponentRef Id="DISPATCH_IMPORT_LIBS" /> -->
       <ComponentRef Id="FOUNDATION_IMPORT_LIBS" />
