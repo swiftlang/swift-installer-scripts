@@ -205,7 +205,7 @@
 
     <DirectoryRef Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64_FOUNDATION_SWIFTMODULE">
       <Component Id="FOUNDATION_SWIFTMODULE" Guid="08d334bb-9dd3-478a-907e-c515e0d87c0d">
-        <WINDOWS_MODULE_MAPS_AND_APINOTESFile Id="FOUNDATION_SWIFTMODULE_SWIFTDOC" Name="x86_64-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\Foundation.swiftdoc" Checksum="yes" />
+        <File Id="FOUNDATION_SWIFTMODULE_SWIFTDOC" Name="x86_64-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\Foundation.swiftdoc" Checksum="yes" />
         <File Id="FOUNDATION_SWIFTMODULE_SWIFTMODULE" Name="x86_64-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\Foundation.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
@@ -353,7 +353,7 @@
       <ComponentRef Id="DISPATCH_SWIFTMODULE" />
       <ComponentRef Id="FOUNDATION_SWIFTMODULE" />
       <ComponentRef Id="FOUNDATION_NETWORKING_SWIFTMODULE" />
-      <ComponentRef Id="FOUNDATION_XML_SWIFTMODULE "/>
+      <ComponentRef Id="FOUNDATION_XML_SWIFTMODULE"/>
       <ComponentRef Id="SWIFT_SWIFTMODULE" />
       <ComponentRef Id="SWIFT_ONONE_SUPPORT_SWIFTMODULE" />
       <ComponentRef Id="WINSDK_SWIFTMODULE" />
