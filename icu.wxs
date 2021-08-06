@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="ICU" UpgradeCode="4b3bfcaf-46b1-4940-b3e3-692ea4e78a09" Version="$(var.ProductVersion)">
+    <Package Comments="Copyright (c) 2021 Swift Open Source Project" Compressed="yes" Description="ICU" InstallScope="perMachine" Manufacturer="swift.org" />
+    <Media Id="1" Cabinet="icu.cab" EmbedCab="yes" />
+
+    <!-- Directory Structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="WINDOWSVOLUME">
+        <Directory Id="LIBRARY" Name="Library">
+          <Directory Id="ICU" Name="icu-$(var.ProductVersion)">
+            <Directory Id="ICU_USR" Name="usr">
+              <Directory Id="ICU_USR_BIN" Name="bin">
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
+
+    <!-- Components -->
+    <DirectoryRef Id="ICU_USR_BIN">
+      <Component Id="ICU_RUNTIME" Guid="77a97eb2-4a5c-4d85-9fb7-692fd37d9b68">
+        <File Id="ICUDT" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersionMajor)\usr\bin\icudt$(var.ProductVersionMajor).dll" Checksum="yes" />
+        <File Id="ICUIN" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersionMajor)\usr\bin\icuin$(var.ProductVersionMajor).dll" Checksum="yes" />
+        <File Id="ICUUC" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersionMajor)\usr\bin\icuuc$(var.ProductVersionMajor).dll" Checksum="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="ENV_VARS" Guid="97fe0a23-32e0-481d-8827-215f4c74f03c">
+        <Environment Id="PATH" Action="set" Name="PATH" Part="last" Permanent="no" System="yes" Value="[WindowsVolume]Library\icu-$(var.ProductVersion)\usr\bin" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Features -->
+    <Feature Id="RUNTIME" Level="1">
+      <ComponentRef Id="ICU_RUNTIME" />
+      <ComponentRef Id="ENV_VARS" />
+    </Feature>
+
+    <!-- UI -->
+    <UI />
+  </Product>
+</Wix>
