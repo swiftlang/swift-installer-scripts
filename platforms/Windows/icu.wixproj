@@ -5,12 +5,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <OutputName>icu</OutputName>
     <OutputType>Package</OutputType>
-    <ProjectGuid></ProjectGuid>
+    <ProjectGuid>07dd2e66-b7f5-40a7-bed1-b3dd2a187c00</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>0.0.0</ProductVersion>
