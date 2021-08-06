@@ -23,9 +23,9 @@
     <!-- Components -->
     <DirectoryRef Id="ICU_USR_BIN">
       <Component Id="ICU_RUNTIME" Guid="77a97eb2-4a5c-4d85-9fb7-692fd37d9b68">
-        <File Id="ICUDT" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersionMajor)\usr\bin\icudt$(var.ProductVersionMajor).dll" Checksum="yes" />
-        <File Id="ICUIN" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersionMajor)\usr\bin\icuin$(var.ProductVersionMajor).dll" Checksum="yes" />
-        <File Id="ICUUC" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersionMajor)\usr\bin\icuuc$(var.ProductVersionMajor).dll" Checksum="yes" />
+        <File Id="ICUDT" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icudt$(var.ProductVersionMajor).dll" Checksum="yes" />
+        <File Id="ICUIN" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuin$(var.ProductVersionMajor).dll" Checksum="yes" />
+        <File Id="ICUUC" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuuc$(var.ProductVersionMajor).dll" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
