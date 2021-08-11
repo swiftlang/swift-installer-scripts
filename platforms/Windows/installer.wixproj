@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputName>installer</OutputName>
+    <OutputType>Bundle</OutputType>
+    <ProjectGuid>8ae3ad4d-2df4-42b7-890e-decdd5cead0b</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
+    <ProductVersion>$(ProductVersion)</ProductVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>build\</OutputPath>
+    <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
+    <DefineSolutionProperties>false</DefineSolutionProperties>
+  </PropertyGroup>
+
+  <Import Project="$(WixTargetsPath)" />
+
+  <PropertyGroup>
+    <DefineConstants>ProductVersion=$(ProductVersion);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <WixExtension Include="WixBalExtension">
+      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
+      <Name>WixBalExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="installer.wxs" />
+  </ItemGroup>
+</Project>
