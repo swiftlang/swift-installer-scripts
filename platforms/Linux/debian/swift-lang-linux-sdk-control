@@ -1,0 +1,5 @@
+Package: swift-lang-linux-dev
+Version: @VERSION@
+Architecture: @ARCH@
+Maintainer: Saleem Abdulrasool <compnerd@compnerd.org>
+Description: Swift Development Content for Linux

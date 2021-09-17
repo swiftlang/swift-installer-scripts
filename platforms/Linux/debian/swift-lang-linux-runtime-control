@@ -1,0 +1,5 @@
+Package: swift-lang-linux-runtime
+Version: @VERSION@
+Architecture: @ARCH@
+Maintainer: Saleem Abdulrasool <compnerd@compnerd.org>
+Description: Swift Runtime for Linux
