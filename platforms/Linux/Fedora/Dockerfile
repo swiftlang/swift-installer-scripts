@@ -5,7 +5,7 @@ WORKDIR /root
 
 RUN mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 ADD swift-lang.spec /root/rpmbuild/SPECS/swift-lang.spec
-ADD *.patch /root/rpmbuild/SOURCES
+ADD *.patch /root/rpmbuild/SOURCES/
 
 ADD build_swift_rpm.sh /root/build_swift_rpm.sh
 RUN chmod +x /root/build_swift_rpm.sh
