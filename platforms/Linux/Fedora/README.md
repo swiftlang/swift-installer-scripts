@@ -23,7 +23,7 @@ and running the container.
 ### Preparing the Container Image
 **Note**: These instructions assume you have either Docker or `podman` with
 `podman-docker` and `podman-compose` installed. 
-1. Run `docker build -f ./Dockerfile -t swift-builder:5.5` This will create
+1. Run `docker build -t swift-builder:5.5 .` This will create
 a new image with the name `swift-builder` and the tag `5.5`. Note that if 
 using Docker, it may be necessary to prepend the command with `sudo`. 
 2. Run `docker run -d -v$PWD:/out:Z swift-builder:5.5` The container will be 
