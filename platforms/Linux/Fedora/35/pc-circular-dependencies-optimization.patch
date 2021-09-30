@@ -1,0 +1,59 @@
+From 14983644da3b8bbb32aa2823602e4161bf3e2ec9 Mon Sep 17 00:00:00 2001
+From: Dadoum <compte.adam.c@gmail.com>
+Date: Tue, 4 May 2021 01:06:34 +0200
+Subject: [PATCH] [PkgConfig] Cache PkgConfig and avoid reparsing multiple time
+ the same file.
+
+---
+ swift-tools-support-core/Sources/TSCUtility/PkgConfig.swift | 31 ++++++++++++++++++------------
+ 1 file changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/swift-tools-support-core/Sources/TSCUtility/PkgConfig.swift b/swift-tools-support-core/Sources/TSCUtility/PkgConfig.swift
+index 45d80995..558c81e7 100644
+--- a/swift-tools-support-core/Sources/TSCUtility/PkgConfig.swift
++++ b/swift-tools-support-core/Sources/TSCUtility/PkgConfig.swift
+@@ -115,6 +115,8 @@ public class LoadingContext {
+ 
+ /// Information on an individual `pkg-config` supported package.
+ public struct PkgConfig {
++    public static var pkgConfigCache: [String: PkgConfig] = [String: PkgConfig]()
++
+     /// The name of the package.
+     public let name: String
+ 
+@@ -179,18 +181,23 @@ public struct PkgConfig {
+                     continue
+                 }
+ 
+-                // FIXME: This is wasteful, we should be caching the PkgConfig result.
+-                let pkg = try PkgConfig(
+-                    name: dep,
+-                    additionalSearchPaths: additionalSearchPaths,
+-                    diagnostics: diagnostics,
+-                    fileSystem: fileSystem,
+-                    brewPrefix: brewPrefix,
+-                    loadingContext: loadingContext
+-                )
+-
+-                cFlags += pkg.cFlags
+-                libs += pkg.libs
++                if !PkgConfig.pkgConfigCache.keys.contains(dep) {
++                    PkgConfig.pkgConfigCache[dep] = try PkgConfig(
++                        name: dep,
++                        additionalSearchPaths: additionalSearchPaths,
++                        diagnostics: diagnostics,
++                        fileSystem: fileSystem,
++                        brewPrefix: brewPrefix,
++                        loadingContext: loadingContext
++                    )
++                }
++
++                guard let cachedPkg = PkgConfig.pkgConfigCache[dep] else {
++                    fatalError("Cannot retrieve cached pkgConfig result")
++                }
++
++                cFlags += cachedPkg.cFlags
++                libs += cachedPkg.libs
+             }
+ 
+             return (cFlags: cFlags, libs: libs)

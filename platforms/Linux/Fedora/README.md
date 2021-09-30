@@ -4,7 +4,16 @@
 ## Introduction
 Fedora uses the [RPM package format](https://en.wikipedia.org/wiki/RPM_Package_Manager)
 to install software packages. The Swift RPM package can be built either by creating
-a Linux container image or manually.
+a Linux container image or manually on a computer running Fedora.
+
+## Directories
+There are separate directories for each version of Fedora. The
+instructions below are applicable to all versions.
+### Rawhide
+Rawhide is always the very latest version of Fedora 
+and is considered to be permanently in a beta, or even alpha, state.
+Rawhide will typically have beta versions of other software (e.g., Clang),
+so it is not unusual for there to be issues building Swift. 
 
 ## Files
 ### `build_swift_rpm.sh`
@@ -15,18 +24,18 @@ Builds the container image
 Any post-release patches that have not yet been merged upstream that are 
 temporarily necessary to build Swift. 
 ### `swift-lang.spec`
-The "recipe" the Fedora tools use to build Swift. 
+The "recipe" the RPM packaging tools use to build Swift. 
 
 ## Building Swift Via Linux Containers
-To build swift using containers, there are two steps, preparing the container image,
+To build swift using containers, there are two steps: preparing the container image,
 and running the container.
 ### Preparing the Container Image
 **Note**: These instructions assume you have either Docker or `podman` with
 `podman-docker` and `podman-compose` installed. 
-1. Run `docker build -t swift-builder:5.5 .` This will create
+1. Run "`docker build -t swift-builder:5.5 .`" This will create
 a new image with the name `swift-builder` and the tag `5.5`. Note that if 
 using Docker, it may be necessary to prepend the command with `sudo`. 
-2. Run `docker run -d -v$PWD:/out:Z swift-builder:5.5` The container will be 
+2. Run "`docker run -d -v$PWD:/out:Z swift-builder:5.5`". The container will be 
 created and automatically run `build_swift_rpm.sh`. After the container finishes
 building Swift, the artifacts will be placed in the current directory, along 
 with `build-output.txt` which can be used for troubleshooting any build issues.
