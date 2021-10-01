@@ -96,7 +96,6 @@ importantly, Swift is designed to make writing and maintaining
 correct programs easier for the developer.
 
 %prep
-# FIXME: what does -a 0 -a 1 etc do?
 %setup -q -c -n %{swiftbuild} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
@@ -125,15 +124,13 @@ mv icu-release-%{icu_version} icu
 # Yams
 mv Yams-%{yams_version} yams
 
-# Narrow down presets
+# Adjust presets
 %patch0 -p0
 
-# FIXME: fix upstream instead of patch
-# Python path hard coded in swift-api-checker
+# Adjust python version swift-api-checker
 %patch1 -p1
 
-# FIXME: fix upstream instead of patch
-# Python path hard coded in hwasan_symbolize
+# Adjust python version hwasan_symbolize
 %patch2 -p1
 
 # Fix python to python3
