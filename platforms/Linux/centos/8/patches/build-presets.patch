@@ -1,0 +1,23 @@
+
+diff -Naur swift-orig/utils/build-presets.ini swift/utils/build-presets.ini
+--- swift-orig/utils/build-presets.ini	2021-01-11 09:24:03.000000000 -0600
++++ swift/utils/build-presets.ini	2021-01-14 15:42:31.063141040 -0600
+@@ -771,7 +771,6 @@
+ libicu
+ libcxx
+
+-build-ninja
+ install-llvm
+ install-swift
+ install-lldb
+@@ -787,10 +786,6 @@
+ build-swift-static-sdk-overlay
+ build-swift-stdlib-unittest-extra
+
+-# Executes the lit tests for the installable package that is created
+-# Assumes the swift-integration-tests repo is checked out
+-
+-test-installable-package
+
+ # Build the benchmarks against the toolchain.
+ toolchain-benchmarks

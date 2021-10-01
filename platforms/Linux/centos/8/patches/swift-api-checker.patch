@@ -1,0 +1,9 @@
+diff --git a/swift/utils/api_checker/swift-api-checker.py b/swift/utils/api_checker/swift-api-checker.py
+index 8ed16b4abf7..0b11a4bb83a 100755
+--- a/swift/utils/api_checker/swift-api-checker.py
++++ b/swift/utils/api_checker/swift-api-checker.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+
+ from __future__ import print_function
