@@ -3,8 +3,9 @@
 %global swiftbuild swift-source
 %global icu_version 65-1
 %global yams_version 4.0.2
-%global sap_version 0.4.3
+%global swift_argument_parser_version 0.4.3
 %global swift_crypto_version 1.1.5
+%global ninja_version 1.10.2
 
 Name:           swift-lang
 Version:        5.5
@@ -26,16 +27,16 @@ Source9:        https://github.com/apple/sourcekit-lsp/archive/swift-%{swifttag}
 Source10:       https://github.com/apple/indexstore-db/archive/swift-%{swifttag}.tar.gz#/indexstore-db.tar.gz
 Source11:       https://github.com/apple/llvm-project/archive/swift-%{swifttag}.tar.gz#/llvm-project.tar.gz
 Source12:       https://github.com/apple/swift-tools-support-core/archive/swift-%{swifttag}.tar.gz#/swift-tools-support-core.tar.gz
-Source13:       https://github.com/apple/swift-argument-parser/archive/%{sap_version}.tar.gz
+Source13:       https://github.com/apple/swift-argument-parser/archive/%{swift_argument_parser_version}.tar.gz#/swift-argument-parser.tar.gz
 Source14:       https://github.com/apple/swift-driver/archive/swift-%{swifttag}.tar.gz#/swift-driver.tar.gz
-Source15:       https://github.com/unicode-org/icu/archive/release-%{icu_version}.tar.gz
+Source15:       https://github.com/unicode-org/icu/archive/release-%{icu_version}.tar.gz#/icu.tar.gz
 Source16:       https://github.com/apple/swift-syntax/archive/swift-%{swifttag}.zip#/swift-syntax.tar.gz
-Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.zip
-Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_crypto_version}.tar.gz
+Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.zip#/yams.tar.gz
+Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_crypto_version}.tar.gz#/swift-crypto.tar.gz
+Source19:       https://github.com/ninja-build/ninja/archive/refs/tags/v%{ninja_version}.tar.gz#/ninja.tar.gz
 
-Patch0:         patches/build-presets.patch
-Patch1:         patches/swift-api-checker.patch
-Patch2:         patches/hwasan_symbolize.patch
+Patch0:         patches/swift-api-checker.patch
+Patch1:         patches/hwasan_symbolize.patch
 
 BuildRequires:  autoconf
 BuildRequires:  clang
@@ -53,7 +54,6 @@ BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
-BuildRequires:  ninja-build
 BuildRequires:  pcre-devel
 BuildRequires:  python2
 BuildRequires:  python2-devel
@@ -96,7 +96,7 @@ importantly, Swift is designed to make writing and maintaining
 correct programs easier for the developer.
 
 %prep
-%setup -q -c -n %{swiftbuild} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18
+%setup -q -c -n %{swiftbuild} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
@@ -114,9 +114,10 @@ mv indexstore-db-swift-%{swifttag} indexstore-db
 mv llvm-project-swift-%{swifttag} llvm-project
 mv swift-syntax-swift-%{swifttag} swift-syntax
 mv swift-tools-support-core-swift-%{swifttag} swift-tools-support-core
-mv swift-argument-parser-%{sap_version} swift-argument-parser
+mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
 mv swift-driver-swift-%{swifttag} swift-driver
 mv swift-crypto-%{swift_crypto_version} swift-crypto
+mv ninja-%{ninja_version} ninja
 
 # ICU
 mv icu-release-%{icu_version} icu
@@ -124,14 +125,11 @@ mv icu-release-%{icu_version} icu
 # Yams
 mv Yams-%{yams_version} yams
 
-# Adjust presets
-%patch0 -p0
-
 # Adjust python version swift-api-checker
-%patch1 -p1
+%patch0 -p1
 
 # Adjust python version hwasan_symbolize
-%patch2 -p1
+%patch1 -p1
 
 # Fix python to python3
 ln -s /usr/bin/python3 /usr/bin/python
@@ -162,6 +160,5 @@ cp %{_builddir}/usr/share/man/man1/swift.1 %{buildroot}%{_mandir}/man1/swift.1
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 
 %changelog
