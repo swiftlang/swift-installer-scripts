@@ -10,7 +10,7 @@ Name:           swift-lang
 Version:        5.5
 Release:        1%{?dist}
 Summary:        Apple's Swift programming language
-License:        ASL 2.0 and Unicode
+License:        Apache 2.0
 URL:            https://swift.org
 
 Source0:        https://github.com/apple/swift/archive/swift-%{swifttag}.tar.gz#/swift.tar.gz
