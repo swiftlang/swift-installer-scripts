@@ -22,9 +22,6 @@ RUN yum-builddep -y /root/rpmbuild/SPECS/swift-lang.spec
 # Get the sources for Swift as defined in the spec file
 RUN spectool -g -R /root/rpmbuild/SPECS/swift-lang.spec
 
-# Add the patches
-ADD patches/*.patch /root/rpmbuild/SOURCES/
-
 # Add the driver script
 ADD build_rpm.sh /root/build_rpm.sh
 RUN chmod +x /root/build_rpm.sh

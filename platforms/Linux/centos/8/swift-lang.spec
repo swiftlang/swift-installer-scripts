@@ -5,6 +5,7 @@
 %global yams_version 4.0.2
 %global sap_version 0.4.3
 %global swift_crypto_version 1.1.5
+%global ninja_version 1.10.2
 
 Name:           swift-lang
 Version:        5.5
@@ -32,10 +33,7 @@ Source15:       https://github.com/unicode-org/icu/archive/release-%{icu_version
 Source16:       https://github.com/apple/swift-syntax/archive/swift-%{swifttag}.zip#/swift-syntax.tar.gz
 Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.zip
 Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_crypto_version}.tar.gz
-
-Patch0:         patches/build-presets.patch
-Patch1:         patches/swift-api-checker.patch
-Patch2:         patches/hwasan_symbolize.patch
+Source19:       https://github.com/ninja-build/ninja/archive/refs/tags/v%{ninja_version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  clang
@@ -53,7 +51,6 @@ BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
-BuildRequires:  ninja-build
 BuildRequires:  pcre-devel
 BuildRequires:  python2
 BuildRequires:  python2-devel
@@ -96,7 +93,7 @@ importantly, Swift is designed to make writing and maintaining
 correct programs easier for the developer.
 
 %prep
-%setup -q -c -n %{swiftbuild} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18
+%setup -q -c -n %{swiftbuild} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
@@ -124,14 +121,8 @@ mv icu-release-%{icu_version} icu
 # Yams
 mv Yams-%{yams_version} yams
 
-# Adjust presets
-%patch0 -p0
-
-# Adjust python version swift-api-checker
-%patch1 -p1
-
-# Adjust python version hwasan_symbolize
-%patch2 -p1
+# Ninja
+mv ninja-%{ninja_version} ninja
 
 # Fix python to python3
 ln -s /usr/bin/python3 /usr/bin/python
