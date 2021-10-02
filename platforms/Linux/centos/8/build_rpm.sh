@@ -1,25 +1,41 @@
+# This source file is part of the Swift.org open source project
+#
+# Copyright (c) 2021 Apple Inc. and the Swift project authors
+# Licensed under Apache License v2.0 with Runtime Library Exception
+#
+# See http://swift.org/LICENSE.txt for license information
+# See http://swift.org/CONTRIBUTORS.txt for Swift project authors
+
 #!/usr/bin/env bash
 
-# This script assumes it's running in a container as root
-# and that /out is mounted to a directory on the local
-# filesystem so the build output and artifacts can be
-# copied out and used
+set +ex
 
-OUTDIR=/out
-if [[ ! -d "$OUTDIR" ]]
-then
+OUTDIR=/output
+if [[ ! -d "$OUTDIR" ]]; then
     echo "$OUTDIR does not exist, so no place to copy the artifacts!"
     exit 1
 fi
 
-# Always make sure we're up to date
+# always make sure we're up to date
 yum update -y
 
+# prepare direcoties
+mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+
+# Add the spec
+cp swift-lang.spec $HOME/rpmbuild/SPECS/swift-lang.spec
+# Add the patches
+cp patches/*.patch $HOME/rpmbuild/SOURCES/
+
+pushd $HOME/rpmbuild/SPECS
+# install all the dependencies needed to build Swift from the spec file itself
+yum-builddep -y ./swift-lang.spec
+# get the sources for Swift as defined in the spec file
+spectool -g -R ./swift-lang.spec
 # Now we proceed to build Swift. If this is successful, we
 # will have two files: a SRPM file which contains the source files
 # as well as a regular RPM file that can be installed via `dnf' or `yum'
-pushd $HOME/rpmbuild/SPECS
-rpmbuild -ba ./swift-lang.spec 2>&1 | tee $HOME/build-output.txt
+rpmbuild -ba ./swift-lang.spec 2>&1 | tee /root/build-output.txt
 popd
 
 # Include the build log which can be used to determine what went
