@@ -16,11 +16,11 @@ Rawhide will typically have beta versions of other software (e.g., Clang),
 so it is not unusual for there to be issues building Swift. 
 
 ## Files
-### `build_swift_rpm.sh`
+### `build_rpm.sh`
 Builds the Swift RPM within a running container.
 ### `Dockerfile`
 Builds the container image
-### `*.patch`
+### `patches/*.patch`
 Any post-release patches that have not yet been merged upstream that are 
 temporarily necessary to build Swift. 
 ### `swift-lang.spec`
@@ -32,13 +32,15 @@ and running the container.
 ### Preparing the Container Image
 **Note**: These instructions assume you have either Docker or `podman` with
 `podman-docker` and `podman-compose` installed. 
-1. Run "`docker build -t swift-builder:5.5 .`" This will create
-a new image with the name `swift-builder` and the tag `5.5`. Note that if 
-using Docker, it may be necessary to prepend the command with `sudo`. 
-2. Run "`docker run -d -v$PWD:/out:Z swift-builder:5.5`". The container will be 
-created and automatically run `build_swift_rpm.sh`. After the container finishes
-building Swift, the artifacts will be placed in the current directory, along 
-with `build-output.txt` which can be used for troubleshooting any build issues.
+1. Run "`docker build -t swift-builder-fedora-`**version**`:5.5 .`", replacing 
+**version** with the version of Fedora in the `Dockerfile`. This will create
+a new image with the name `swift-builder-fedora-`**version** and the tag `5.5`. 
+Note that if using Docker, it may be necessary to prepend the command with `sudo`. 
+2. Run "`docker run -d -v$PWD:/out:Z swift-builder-fedora-`**version**`:5.5`". 
+The container will be created and automatically run `build_rpm.sh`. After the 
+container finishes building Swift, the artifacts will be placed in the current 
+directory, along  with `build-output.txt` which can be used for troubleshooting 
+any build issues.
 
 ## Building Swift Locally
 Building Swift locally requires additional software to be installed in the local

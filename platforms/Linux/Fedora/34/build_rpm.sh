@@ -13,7 +13,7 @@ then
 fi
 
 # Always make sure we're up to date
-dnf -y update
+yum -y update
 
 # Now we proceed to build Swift. If this is successful, we
 # will have two files: a SRPM file which contains the source files
