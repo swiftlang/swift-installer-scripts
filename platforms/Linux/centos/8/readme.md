@@ -1,23 +1,33 @@
 # Building Swift on CentOS Linux
 
 
-### building with docker
+### building with docker-compose
 
-
-Build the builder docker image, this will download the sources
-
-```
-docker build . -t rpm-builder
-```
-
-Run the builder, this will run the build
+* to run the build end-to-end
 
 ```
-docker run -v `pwd`/.out:/out rpm-builder
+docker-compose run build
 ```
 
+* to enter the docker env in shell mode
 
-Open Issues / Introduction
-* the swift release version should be an argument
-* the versions of source packages are no pinned to the swift release version (eg yams) should come from an external file, likely one per swift release version
+```
+docker-compose run shell
+```
+
+then you can run `./build_rpm.sh` to run the build manually inside the docker
+
+
+* to rebuild the base image
+
+```
+docker-compose build --pull
+```
+
+note this still uses the docker cache, so will rebuild only if the version of the underlying base image changed upstream
+
+
+### Open Issues / TODO
+* the swift release version should be an argument?
+* the versions of source packages (eg yams) should come from an external file, likely one per swift release version
 * the list of build requirements (BuildRequires) and especially requirements (Requires) should come from an external file, likely one per swift release version (which we can use it to also drive documentation)
