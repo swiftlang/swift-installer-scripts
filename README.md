@@ -66,26 +66,26 @@ correct programs easier for the developer.
 
 ### RPM Package Manager (RPM)*
 
-- [ ] SR-### Create spec file
+- [ ] SR-### Create RPM spec file
 - [ ] SR-### Setup CI job to build the rpm package
 - [ ] SR-### Code sign rpm package with swift.org certificate
 - [ ] SR-### Host the rpm package on swift.org
 - [ ] SR-### Host the rpm repository on swift.org
 - [ ] SR-### Verify the rpm package and repository
-- [ ] SR-### Update swift.org download page
+- [ ] SR-### Update swift.org download / install page
 - [ ] SR-### Work with official repositories to accept package specs
 
 *For each platform, we will start with CentOS 8.
 
 ### Debian Package (Deb)*
 
-- [ ] SR-### Create Debs spec file
+- [ ] SR-### Create Debs control file
 - [ ] SR-### Setup CI to build the deb package
 - [ ] SR-### Code sign package with swift.org certificate
 - [ ] SR-### Host the deb package on swift.org
 - [ ] SR-### Host the deb repository on swift.org
 - [ ] SR-### Verify the deb package and repository
-- [ ] SR-### Update swift.org download page
+- [ ] SR-### Update swift.org download / install page
 - [ ] SR-### Work with official repositories to accept package specs
 
 *For each platform, we will start with Ubuntu 20.04
