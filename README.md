@@ -66,27 +66,27 @@ correct programs easier for the developer.
 
 ### RPM Package Manager (RPM)*
 
-- [ ] SR-### Create RPM spec file
-- [ ] SR-### Setup CI job to build the rpm package
-- [ ] SR-### Code sign rpm package with swift.org certificate
-- [ ] SR-### Host the rpm package on swift.org
-- [ ] SR-### Host the rpm repository on swift.org
-- [ ] SR-### Verify the rpm package and repository
-- [ ] SR-### Update swift.org download / install page
-- [ ] SR-### Work with official repositories to accept package specs
+- [ ] [SR-15325](https://bugs.swift.org/browse/SR-15325) Create RPM spec file
+- [ ] [SR-15326](https://bugs.swift.org/browse/SR-15326) Setup CI job to build the rpm package
+- [ ] [SR-15327](https://bugs.swift.org/browse/SR-15327) Code sign rpm package with swift.org certificate
+- [ ] [SR-15328](https://bugs.swift.org/browse/SR-15328) Host the rpm package on swift.org
+- [ ] [SR-15329](https://bugs.swift.org/browse/SR-15329) Host the rpm repository on swift.org
+- [ ] [SR-15330](https://bugs.swift.org/browse/SR-15330) Verify the rpm package and repository
+- [ ] [SR-15331](https://bugs.swift.org/browse/SR-15331) Update swift.org download / install page
+- [ ] [SR-15332](https://bugs.swift.org/browse/SR-15332) Work with official repositories to accept package specs
 
 *For each platform, we will start with CentOS 8.
 
 ### Debian Package (Deb)*
 
-- [ ] SR-### Create Debs control file
-- [ ] SR-### Setup CI to build the deb package
-- [ ] SR-### Code sign package with swift.org certificate
-- [ ] SR-### Host the deb package on swift.org
-- [ ] SR-### Host the deb repository on swift.org
-- [ ] SR-### Verify the deb package and repository
-- [ ] SR-### Update swift.org download / install page
-- [ ] SR-### Work with official repositories to accept package specs
+- [ ] [SR-15334](https://bugs.swift.org/browse/SR-15334) Create Debs control file
+- [ ] [SR-15335](https://bugs.swift.org/browse/SR-15335) Setup CI to build the deb package
+- [ ] [SR-15336](https://bugs.swift.org/browse/SR-15336) Code sign package with swift.org certificate
+- [ ] [SR-15337](https://bugs.swift.org/browse/SR-15337) Host the deb package on swift.org
+- [ ] [SR-15338](https://bugs.swift.org/browse/SR-15338) Host the deb repository on swift.org
+- [ ] [SR-15339](https://bugs.swift.org/browse/SR-15339) Verify the deb package and repository
+- [ ] [SR-15340](https://bugs.swift.org/browse/SR-15340) Update swift.org download / install page
+- [ ] [SR-15341](https://bugs.swift.org/browse/SR-15341) Work with official repositories to accept package control files
 
 *For each platform, we will start with Ubuntu 20.04
 
