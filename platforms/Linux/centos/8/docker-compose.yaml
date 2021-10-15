@@ -19,6 +19,9 @@ services:
   common: &common
     image: centos8-rpm-builder
     depends_on: [docker-setup]
+    # https://bugs.swift.org/browse/SR-15343
+    security_opt:
+      - seccomp:unconfined
     volumes:
       - .:/code:z
       - ./.output:/output:z
