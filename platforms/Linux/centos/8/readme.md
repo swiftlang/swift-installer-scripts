@@ -28,6 +28,4 @@ note this still uses the docker cache, so will rebuild only if the version of th
 
 
 ### Open Issues / TODO
-* the swift release version should be an argument?
-* the versions of source packages (eg yams) should come from an external file, likely one per swift release version
 * the list of build requirements (BuildRequires) and especially requirements (Requires) should come from an external file, likely one per swift release version (which we can use it to also drive documentation)

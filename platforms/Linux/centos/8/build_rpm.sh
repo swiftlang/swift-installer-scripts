@@ -8,7 +8,7 @@
 
 #!/usr/bin/env bash
 
-set +ex
+set -ex
 
 OUTDIR=/output
 if [[ ! -d "$OUTDIR" ]]; then
@@ -23,8 +23,10 @@ yum update -y
 mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
 # Add the spec
-cp swift-lang.spec $HOME/rpmbuild/SPECS/swift-lang.spec
-# Add the patches
+cp swift-lang.spec $HOME/rpmbuild/SPECS/
+# Add the metadata for this swift version
+cp /shared/metadata.inc $HOME/rpmbuild/SPECS/
+# Add any patches
 cp patches/*.patch $HOME/rpmbuild/SOURCES/
 
 pushd $HOME/rpmbuild/SPECS
