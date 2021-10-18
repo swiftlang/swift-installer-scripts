@@ -90,6 +90,20 @@ correct programs easier for the developer.
 
 *For each platform, we will start with Ubuntu 20.04
 
+## Open Questions
+
+* Where should swiftlang be installed on the system?
+	* Option 1: Diverge the install location between platform to best fit the platform requirements.
+		* symlink the toolchain into /usr/ to avoid conflicting with llvm.org binaries.
+	* Option 2: Install in /usr and rename llvm-project binaries (example: swift-lldb/lldb-swift ...)
+        * [GitHub discussion](https://github.com/apple/swift-installer-scripts/pull/37#discussion_r726707320)
+* Should we support multiple swiftlang versions on the system?
+* Multiple packages:
+	* swiftlang
+        * swiftlang-runtime
+
+
+
 ## Contributing
 
 Before contributing, please read [CONTRIBUTING.md](CONTRIBUTING.md).
