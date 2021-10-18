@@ -6,6 +6,12 @@
 # See http://swift.org/LICENSE.txt for license information
 # See http://swift.org/CONTRIBUTORS.txt for Swift project authors
 
+# this setup is designed to build the RPM with docker
+# usage:
+# docker-compose -f platforms/Linux/centos/8/docker-compose.yaml build
+# to shell into the container for debugging purposes:
+# docker-compose -f platforms/Linux/centos/8/docker-compose.yaml run build
+
 version: "2"
 
 services:
@@ -24,6 +30,7 @@ services:
       - seccomp:unconfined
     volumes:
       - .:/code:z
+      - ../../shared/RPM:/shared:ro
       - ./.output:/output:z
     working_dir: /code
     cap_drop:
