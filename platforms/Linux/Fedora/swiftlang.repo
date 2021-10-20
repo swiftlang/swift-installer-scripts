@@ -1,0 +1,5 @@
+[swiftlang]
+name=swiftlang
+baseurl=https://download.swift.org/repo/fedora/releases/$releasever/$basearch
+enabled=1
+gpgcheck=0
