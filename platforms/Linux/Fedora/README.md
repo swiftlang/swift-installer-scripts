@@ -23,7 +23,7 @@ Builds the container image
 ### `patches/*.patch`
 Any post-release patches that have not yet been merged upstream that are 
 temporarily necessary to build Swift. 
-### `swift-lang.spec`
+### `swiftlang.spec`
 The "recipe" the RPM packaging tools use to build Swift. 
 
 ## Building Swift Via Linux Containers
@@ -54,17 +54,17 @@ locally
 RPMs are built in the `$HOME/rpmbuild` directory, which has several subdirectories
 for specific purposes.
 1. `mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}`
-2. `cp swift-lang.spec $HOME/rpmbuild/SPECS`
+2. `cp swiftlang.spec $HOME/rpmbuild/SPECS`
 3. `cp *.patch $HOME/rpmbuild/SOURCES`
 #### Install all the dependencies necessary to build Swift:
-4. `sudo dnf builddep -y $HOME/rpmbuild/SPECS/swift-lang.spec`
+4. `sudo dnf builddep -y $HOME/rpmbuild/SPECS/swiftlang.spec`
 #### Download the Swift source tarballs:
-5. `spectool -g -R $HOME/rpmbuild/SPECS/swift-lang.spec`
+5. `spectool -g -R $HOME/rpmbuild/SPECS/swiftlang.spec`
 ### Building Swift
 The RPM tools perform both building and packaging. _This process may take several
 hours depending on the hardware Fedora is running on._
 
-`rpmbuild -ba $HOME/rpmbuild/SPECS/swift-lang.spec 2>&1 | tee $HOME/build-output.txt`
+`rpmbuild -ba $HOME/rpmbuild/SPECS/swiftlang.spec 2>&1 | tee $HOME/build-output.txt`
 
 If there were no errors, the resulting Swift RPM file will be located in 
 `$HOME/rpmbuild/RPMS/` in a subdirectory for the current processor architecture 
@@ -73,8 +73,8 @@ If there were no errors, the resulting Swift RPM file will be located in
 ## Installing Swift
 ### Name format
 If Swift was built successfully there should
-be a file with the name format similar to `swift-lang-5.5-1.fc34.x86_64.rpm` where
-`5.5` is the version of Swift specified in `swift-lang.spec`, `fc34` is the version
+be a file with the name format similar to `swiftlang-5.5-1.fc34.x86_64.rpm` where
+`5.5` is the version of Swift specified in `swiftlang.spec`, `fc34` is the version
 of Fedora that was used to build Swift, and `x86_64` is the processor architecture.
 
 ### Note about Fedora versions
@@ -85,6 +85,6 @@ a Swift RPM built for Fedora 34 can only be installed on Fedora 34.
 To install the Swift RPM, change to the directory that contains the RPM file and
 run `sudo dnf install` _the Swift RPM file_ e.g.
 
-`sudo dnf install ./swift-lang-5.5-1.fc34.x86_64.rpm`
+`sudo dnf install ./swiftlang-5.5-1.fc34.x86_64.rpm`
 
 

@@ -10,14 +10,14 @@ RUN yum install -y rpmdevtools yum-utils
 
 # Add the spec
 RUN mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-ADD swift-lang.spec /root/rpmbuild/SPECS/swift-lang.spec
+ADD swiftlang.spec /root/rpmbuild/SPECS/swiftlang.spec
 
 
 # Install all the dependencies needed to build Swift from the spec file itself
-RUN yum-builddep -y /root/rpmbuild/SPECS/swift-lang.spec
+RUN yum-builddep -y /root/rpmbuild/SPECS/swiftlang.spec
 
 # Get the sources for Swift as defined in the spec file
-RUN spectool -g -R /root/rpmbuild/SPECS/swift-lang.spec
+RUN spectool -g -R /root/rpmbuild/SPECS/swiftlang.spec
 
 # Add the patches
 ADD patches/*.patch /root/rpmbuild/SOURCES/
