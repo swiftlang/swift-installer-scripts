@@ -8,16 +8,16 @@
 
 #!/usr/bin/env bash
 
-set -ex
+set -eux
 
-INDIR=/input
-OUTDIR=/output
-if [[ ! -d "$INDIR" ]]; then
-    echo "$INDIR does not exist, unable to copy rpm file!"
+input_dir=/input
+output_dir=/output
+if [[ ! -d "$input_dir" ]]; then
+    echo "$input_dir does not exist, unable to copy rpm file!"
     exit 1
 fi
-if [[ ! -d "$OUTDIR" ]]; then
-    echo "$OUTDIR does not exist, so no place to copy the artifacts!"
+if [[ ! -d "$output_dir" ]]; then
+    echo "$output_dir does not exist, so no place to copy the artifacts!"
     exit 1
 fi
 
@@ -25,16 +25,16 @@ fi
 yum update -y
 
 # prepare direcoties
-mkdir -p $HOME/createrepo/
+mkdir -p "$HOME/createrepo/"
 
 # Copy rpm file
-cp $INDIR/*.rpm $HOME/createrepo/
+cp "$input_dir/*.rpm" "$HOME/createrepo/"
 
 # Create the repodata
-createrepo $HOME/createrepo/ 2>&1 | tee /root/createrepo-output.txt
+createrepo "$HOME/createrepo/" 2>&1 | tee "$HOME/createrepo-output.txt"
 
 
 # Include the createrepo log which can be used to determine what went
 # wrong if there are no artifacts
-cp $HOME/createrepo-output.txt $OUTDIR
-cp -r $HOME/createrepo/repodata $OUTDIR/repodata
+cp "$HOME/createrepo-output.txt" "$output_dir"
+cp -r "$HOME/createrepo/repodata" "$output_dir/repodata"
