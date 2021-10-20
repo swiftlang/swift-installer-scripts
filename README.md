@@ -62,6 +62,27 @@ importantly, Swift is designed to make writing and maintaining
 correct programs easier for the developer.
 ```
 
+### RPM Naming Convention:
+
+Package naming convention: `swiftlang-<VERSION>-<RELEASE>.<DIST>.<ARCH>.rpm`
+Pakcage structure: `/repo/<OS>/releases/<OS_VERSION>/<ARCH>/`
+Repository configuration: `/repo/<OS>/releases/<OS_VERSION>/swiftlang.repo`
+
+
+#### Example
+
+**Package structure:**
+```
+/repo/centos/releases/8/x86_64/swiftlang-5.5.0-1.el8.x86_64.rpm
+/repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
+```
+
+**Package URL:**
+https://download.swift.org/repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
+
+**Repository configuration file URL:**
+https://download.swift.org/repo/centos/releases/8/swiftlang.repo
+
 ## Tasks
 
 ### RPM Package Manager (RPM)*
@@ -96,13 +117,11 @@ correct programs easier for the developer.
 	* Option 1: Diverge the install location between platform to best fit the platform requirements.
 		* symlink the toolchain into /usr/ to avoid conflicting with llvm.org binaries.
 	* Option 2: Install in /usr and rename llvm-project binaries (example: swift-lldb/lldb-swift ...)
-        * [GitHub discussion](https://github.com/apple/swift-installer-scripts/pull/37#discussion_r726707320)
+	* [GitHub discussion](https://github.com/apple/swift-installer-scripts/pull/37#discussion_r726707320)
 * Should we support multiple swiftlang versions on the system?
 * Multiple packages:
 	* swiftlang
-        * swiftlang-runtime
-
-
+	* swiftlang-runtime
 
 ## Contributing
 
