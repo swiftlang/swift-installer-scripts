@@ -126,9 +126,6 @@ mv Yams-%{yams_version} yams
 # Adjust python version hwasan_symbolize
 %patch1 -p1
 
-# Fix python to python3
-ln -s /usr/bin/python3 /usr/bin/python
-
 %build
 export VERBOSE=1
 
