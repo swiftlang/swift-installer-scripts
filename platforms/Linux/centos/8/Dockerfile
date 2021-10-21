@@ -19,6 +19,6 @@ RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.n
 RUN yum config-manager --set-enabled powertools
 
 # Optimization: Install all the dependencies needed to build Swift from the spec file itself
-ADD swift-lang.spec /tmp/swift-lang.spec
+ADD swiftlang.spec /tmp/swiftlang.spec
 RUN touch /tmp/metadata.inc # fake metadata is okay for this optimization
-RUN cd /tmp && yum-builddep -y swift-lang.spec
+RUN cd /tmp && yum-builddep -y swiftlang.spec

@@ -18,6 +18,6 @@ RUN yum install -y rpmdevtools yum-utils createrepo
 RUN yum install -y epel-release centos-release-scl
 
 # Optimization: Install all the dependencies needed to build Swift from the spec file itself
-ADD swift-lang.spec /tmp/swift-lang.spec
+ADD swiftlang.spec /tmp/swiftlang.spec
 RUN touch /tmp/metadata.inc # fake metadata is okay for this optimization
-RUN cd /tmp && yum-builddep -y swift-lang.spec
+RUN cd /tmp && yum-builddep -y swiftlang.spec

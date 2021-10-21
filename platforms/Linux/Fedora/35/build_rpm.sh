@@ -19,7 +19,7 @@ yum -y update
 # will have two files: a SRPM file which contains the source files
 # as well as a regular RPM file that can be installed via `dnf' or `yum'
 pushd $HOME/rpmbuild/SPECS
-rpmbuild -ba ./swift-lang.spec 2>&1 | tee $HOME/build-output.txt
+rpmbuild -ba ./swiftlang.spec 2>&1 | tee $HOME/build-output.txt
 popd
 
 # Include the build log which can be used to determine what went

@@ -8,7 +8,7 @@
 %global swift_crypto_version 1.1.5
 %global ninja_version 1.10.2
 
-Name:           swift-lang
+Name:           swiftlang
 Version:        5.5
 Release:        1%{?dist}
 Summary:        Apple's Swift programming language

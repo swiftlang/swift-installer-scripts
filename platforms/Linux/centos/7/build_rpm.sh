@@ -23,7 +23,7 @@ yum update -y
 mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 
 # Add the spec
-cp swift-lang.spec $HOME/rpmbuild/SPECS/
+cp swiftlang.spec $HOME/rpmbuild/SPECS/
 # Add the metadata for this swift version
 cp /shared/metadata.inc $HOME/rpmbuild/SPECS/
 # Add any patches
@@ -31,17 +31,17 @@ cp patches/*.patch $HOME/rpmbuild/SOURCES/
 
 pushd $HOME/rpmbuild/SPECS
 # install all the dependencies needed to build Swift from the spec file itself
-yum-builddep -y ./swift-lang.spec
+yum-builddep -y ./swiftlang.spec
 # Workaround to support clang-3.5 or a later version
 echo -e ". /opt/rh/sclo-git25/enable\n. /opt/rh/llvm-toolset-7/enable\n. /opt/rh/devtoolset-8/enable\n" >> $HOME/.bashrc
 source $HOME/.bashrc
 sed -i -e 's/\*__block/\*__libc_block/g' /usr/include/unistd.h
 # get the sources for Swift as defined in the spec file
-spectool -g -R ./swift-lang.spec
+spectool -g -R ./swiftlang.spec
 # Now we proceed to build Swift. If this is successful, we
 # will have two files: a SRPM file which contains the source files
 # as well as a regular RPM file that can be installed via `dnf' or `yum'
-rpmbuild -ba ./swift-lang.spec 2>&1 | tee /root/build-output.txt
+rpmbuild -ba ./swiftlang.spec 2>&1 | tee /root/build-output.txt
 popd
 
 # Include the build log which can be used to determine what went
