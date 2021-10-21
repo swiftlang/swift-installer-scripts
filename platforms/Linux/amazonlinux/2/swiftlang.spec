@@ -45,6 +45,7 @@ BuildRequires:  libedit-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  pexpect
 BuildRequires:  pkgconfig
