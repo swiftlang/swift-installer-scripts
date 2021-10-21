@@ -64,23 +64,23 @@ correct programs easier for the developer.
 
 ### RPM Naming Convention:
 
-Package naming convention: `swiftlang-<VERSION>-<RELEASE>.<DIST>.<ARCH>.rpm`
-Pakcage structure: `/repo/<OS>/releases/<OS_VERSION>/<ARCH>/`
-Repository configuration: `/repo/<OS>/releases/<OS_VERSION>/swiftlang.repo`
+Package naming convention: `swiftlang-<VERSION>-<RELEASE>.<DIST>.<ARCH>.rpm`  
+Pakcage structure: `/repo/<OS>/releases/<OS_VERSION>/<ARCH>/`  
+Repository configuration: `/repo/<OS>/releases/<OS_VERSION>/swiftlang.repo`  
 
 
 #### Example
 
-**Package structure:**
+* **Package structure:**  
 ```
 /repo/centos/releases/8/x86_64/swiftlang-5.5.0-1.el8.x86_64.rpm
 /repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
 ```
 
-**Package URL:**
+* **Package URL:**  
 https://download.swift.org/repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
 
-**Repository configuration file URL:**
+* **Repository configuration file URL:**  
 https://download.swift.org/repo/centos/releases/8/swiftlang.repo
 
 ## Tasks
