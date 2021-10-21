@@ -29,6 +29,7 @@ Source16:       https://github.com/apple/swift-syntax/archive/swift-%{swift_vers
 Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.zip#/yams.tar.gz
 Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_crypto_version}.tar.gz#/swift-crypto.tar.gz
 Source19:       https://github.com/ninja-build/ninja/archive/refs/tags/v%{ninja_version}.tar.gz#/ninja.tar.gz
+Source20:       https://github.com/KitWare/CMake/archive/refs/tags/v%{cmake_version}.tar.gz#/cmake.tar.gz
 
 Patch0:         patches/swift-api-checker.patch
 Patch1:         patches/hwasan_symbolize.patch
@@ -92,7 +93,7 @@ importantly, Swift is designed to make writing and maintaining
 correct programs easier for the developer.
 
 %prep
-%setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19
+%setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
@@ -114,6 +115,7 @@ mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
 mv swift-driver-swift-%{swift_version} swift-driver
 mv swift-crypto-%{swift_crypto_version} swift-crypto
 mv ninja-%{ninja_version} ninja
+mv CMake-%{cmake_version} cmake
 
 # ICU
 mv icu-release-%{icu_version} icu

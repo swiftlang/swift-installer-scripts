@@ -12,7 +12,7 @@ LABEL PURPOSE="This image is configured to build Swift for the version of CentOS
 RUN yum -y update
 
 # RPM and yum development tools
-RUN yum install -y rpmdevtools yum-utils
+RUN yum install -y rpmdevtools yum-utils createrepo
 
 # Configure epel
 RUN yum install -y epel-release centos-release-scl
