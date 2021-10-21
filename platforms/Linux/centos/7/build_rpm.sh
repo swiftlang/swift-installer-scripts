@@ -34,6 +34,7 @@ pushd $HOME/rpmbuild/SPECS
 yum-builddep -y ./swift-lang.spec
 # Workaround to support clang-3.5 or a later version
 echo -e ". /opt/rh/sclo-git25/enable\n. /opt/rh/llvm-toolset-7/enable\n. /opt/rh/devtoolset-8/enable\n" >> $HOME/.bashrc
+source $HOME/.bashrc
 sed -i -e 's/\*__block/\*__libc_block/g' /usr/include/unistd.h
 # get the sources for Swift as defined in the spec file
 spectool -g -R ./swift-lang.spec

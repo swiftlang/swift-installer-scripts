@@ -14,6 +14,7 @@
 %global swift_argument_parser_version 0.4.3
 %global swift_crypto_version 1.1.5
 %global ninja_version 1.10.2
+%global cmake_version 3.19.6
 
 # locations
 
