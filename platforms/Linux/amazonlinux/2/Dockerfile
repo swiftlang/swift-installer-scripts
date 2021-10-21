@@ -12,7 +12,7 @@ LABEL PURPOSE="This image is configured to build Swift for the version of Amazon
 RUN yum -y update
 
 # RPM and yum development tools
-RUN yum install -y rpmdevtools yum-utils
+RUN yum install -y rpmdevtools yum-utils createrepo
 
 # Configure epel
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm

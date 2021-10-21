@@ -41,6 +41,10 @@ services:
     <<: *common
     command: /bin/bash -cl "./build_rpm.sh"
 
+  createrepo:
+    <<: *common
+    command: /bin/bash -cl "../shared/createrepo_rpm.sh"
+
   shell:
     <<: *common
     entrypoint: /bin/bash -l
