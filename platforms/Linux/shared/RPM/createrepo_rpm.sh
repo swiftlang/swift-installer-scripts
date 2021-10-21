@@ -10,12 +10,7 @@
 
 set -eux
 
-input_dir=/input
 output_dir=/output
-if [[ ! -d "$input_dir" ]]; then
-    echo "$input_dir does not exist, unable to copy rpm file!"
-    exit 1
-fi
 if [[ ! -d "$output_dir" ]]; then
     echo "$output_dir does not exist, so no place to copy the artifacts!"
     exit 1
@@ -25,10 +20,10 @@ fi
 yum update -y
 
 # prepare direcoties
-mkdir -p "$HOME/createrepo/"
+mkdir -p "$HOME/createrepo"
 
 # Copy rpm file
-cp "$input_dir/*.rpm" "$HOME/createrepo/"
+cp "$output_dir"/*.rpm "$HOME/createrepo/"
 
 # Create the repodata
 createrepo "$HOME/createrepo/" 2>&1 | tee "$HOME/createrepo-output.txt"
