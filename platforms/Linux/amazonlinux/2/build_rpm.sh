@@ -32,6 +32,9 @@ cp patches/*.patch $HOME/rpmbuild/SOURCES/
 pushd $HOME/rpmbuild/SPECS
 # install all the dependencies needed to build Swift from the spec file itself
 yum-builddep -y ./swiftlang.spec
+# fix python six
+mkdir -p /usr/local/lib/python3.7/site-packages/
+easy_install-3.7 six
 # get the sources for Swift as defined in the spec file
 spectool -g -R ./swiftlang.spec
 # Now we proceed to build Swift. If this is successful, we
