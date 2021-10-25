@@ -21,3 +21,8 @@ RUN yum install -y epel-release centos-release-scl
 ADD swiftlang.spec /tmp/swiftlang.spec
 RUN touch /tmp/metadata.inc # fake metadata is okay for this optimization
 RUN cd /tmp && yum-builddep -y swiftlang.spec
+
+# Workaround to support clang-3.5 or a later version
+RUN echo -e ". /opt/rh/sclo-git25/enable\n. /opt/rh/llvm-toolset-7/enable\n. /opt/rh/devtoolset-8/enable\n" >> $HOME/.bashrc
+RUN source $HOME/.bashrc
+RUN sed -i -e 's/\*__block/\*__libc_block/g' /usr/include/unistd.h
