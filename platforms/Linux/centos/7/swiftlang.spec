@@ -35,7 +35,6 @@ Patch0:         patches/swift-api-checker.patch
 Patch1:         patches/hwasan_symbolize.patch
 
 BuildRequires:  autoconf
-BuildRequires:  cmake
 BuildRequires:  devtoolset-8
 BuildRequires:  glibc-static
 BuildRequires:  libatomic

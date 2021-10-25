@@ -36,7 +36,6 @@ Patch1:         patches/hwasan_symbolize.patch
 
 BuildRequires:  autoconf
 BuildRequires:  clang
-BuildRequires:  cmake
 BuildRequires:  diffutils
 BuildRequires:  git
 BuildRequires:  glibc-static

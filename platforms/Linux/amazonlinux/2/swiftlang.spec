@@ -35,7 +35,6 @@ Patch0:         patches/swift-api-checker.patch
 Patch1:         patches/hwasan_symbolize.patch
 
 BuildRequires:  clang
-BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  gcc-c++
 BuildRequires:  git
