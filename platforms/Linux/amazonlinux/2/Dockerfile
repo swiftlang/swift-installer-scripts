@@ -21,3 +21,7 @@ RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
 ADD swiftlang.spec /tmp/swiftlang.spec
 RUN touch /tmp/metadata.inc # fake metadata is okay for this optimization
 RUN cd /tmp && yum-builddep -y swiftlang.spec
+
+# fix python six
+RUN mkdir -p /usr/local/lib/python3.7/site-packages/
+RUN easy_install-3.7 six
