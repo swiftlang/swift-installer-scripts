@@ -68,6 +68,13 @@ Package naming convention: `swiftlang-<VERSION>-<RELEASE>.<DIST>.<ARCH>.rpm`
 Pakcage structure: `/repo/<OS>/releases/<OS_VERSION>/<ARCH>/`  
 Repository configuration: `/repo/<OS>/releases/<OS_VERSION>/swiftlang.repo`  
 
+### Deb Naming Convention:
+
+Package naming convention: `swiftlang-<VERSION>-<RELEASE>-<OS_VERSION>_<ARCH>.deb`  
+Package destination: `/repo/<OS>/pool/main/s/swiftlang/`  
+Index destination: `/repo/<OS>/dists/<OS_VERSION>/`  
+Repository configuration: `/repo/<OS>/dists/<OS_VERSION>/swiftlang.list`  
+
 
 #### Example
 
