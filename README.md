@@ -82,13 +82,17 @@ Repository configuration: `/repo/<OS>/dists/<OS_VERSION>/swiftlang.list`
 ```
 /repo/centos/releases/8/x86_64/swiftlang-5.5.0-1.el8.x86_64.rpm
 /repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
+/repo/ubuntu/pool/main/s/swiftlang/swiftlang-5.5.0-1-focal_amd64.deb
+/repo/ubuntu/pool/main/s/swiftlang/swiftlang-5.5.0-1-focal_arm64.deb
 ```
 
 * **Package URL:**  
 https://download.swift.org/repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
+https://download.swift.org/repo/ubuntu/pool/main/s/swiftlang/swiftlang-5.5.0-1-focal_arm64.deb
 
 * **Repository configuration file URL:**  
 https://download.swift.org/repo/centos/releases/8/swiftlang.repo
+https://download.swift.org/repo/ubuntu/dists/focal/swiftlang.list
 
 ## Tasks
 
