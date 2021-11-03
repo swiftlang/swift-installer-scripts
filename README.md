@@ -4,7 +4,7 @@ This repository contains all the supporting files required for building
 toolchain packages for the Swift toolchain for distribution.
 
 This repository does not contain the actual contents of the toolchain. These
-files are used to contruct the packaged forms of the toolchain to layout the
+files are used to construct the packaged forms of the toolchain to layout the
 toolchain properly on the destination system.
 
 ## Organization
@@ -45,6 +45,7 @@ for the various platforms
 * Step 4. Deprecate swift.org Linux tarballs
 
 ### Package Info
+
 * Package name: swiftlang
 * License: Apache 2.0
 * Maintainer: swift-infrastructure@forums.swift.org
@@ -65,7 +66,7 @@ correct programs easier for the developer.
 ### RPM Naming Convention:
 
 Package naming convention: `swiftlang-<VERSION>-<RELEASE>.<DIST>.<ARCH>.rpm`  
-Pakcage structure: `/repo/<OS>/releases/<OS_VERSION>/<ARCH>/`  
+Package structure: `/repo/<OS>/releases/<OS_VERSION>/<ARCH>/`  
 Repository configuration: `/repo/<OS>/releases/<OS_VERSION>/swiftlang.repo`  
 
 
