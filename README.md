@@ -16,13 +16,41 @@ in the same repository without colliding with each other:
 ~~~
 swift-installer-scripts
   └ platforms
-      ├ Linux
-      │   ├ Ubuntu
-      │   │  └ ...
-      │   └ CentOS
-      │      └ ...
-      └ Windows
-           └ ...
+        ├ Linux
+        │   ├ README
+        │   ├ DEB
+        │   │   ├ README
+        │   │   ├ Docs - contains information specific to .deb packages
+        │   │   ├ Debian - contains information specific to the distribution
+        │   │   │   ├ buster - contains information specific to the version
+        │   │   │   ├ bullseye
+        │   │   │   └ ...
+        │   │   ├ Ubuntu
+        │   │   │   ├ bionic
+        │   │   │   ├ focal
+        │   │   │   ├ hirsute
+        │   │   │   └ ...
+        │   │   └ ...
+        │   │
+        │   ├ RPM
+        │   │   ├ README
+        │   │   ├ Docs - contains information specific to .rpm packages
+        │   │   ├ Amazonlinux
+        │   │   │   ├ 2
+        │   │   │   └ ...
+        │   │   ├ Centos
+        │   │   │   ├ 7
+        │   │   │   ├ 8
+        │   │   │   └ ...
+        │   │   ├ Fedora
+        │   │   │   ├ 33
+        │   │   │   ├ 34
+        │   │   │   ├ rawhide
+        │   │   │   └ ...
+        │   │   └ ...
+        │   └ ...
+        └ Windows
+            └ ...
 ~~~
 
 ## Linux Packages (RPM/Deb)
