@@ -30,7 +30,7 @@ services:
       - seccomp:unconfined
     volumes:
       - .:/code:z
-      - ../../shared/RPM:/shared:ro
+      - ../../../RPM:/shared:ro
       - ./.output:/output:z
     working_dir: /code
     cap_drop:
