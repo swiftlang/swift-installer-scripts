@@ -71,7 +71,6 @@ Requires:       libbsd
 Requires:       libcurl
 Requires:       libedit
 Requires:       libicu
-Requires:       libsqlite
 Requires:       libstdc++-static
 Requires:       libuuid
 Requires:       libxml2
