@@ -73,7 +73,7 @@ Requires:       libedit
 Requires:       libedit-devel
 Requires:       libicu-devel
 Requires:       libstdc++-static
-Requires:       pkg-config
+Requires:       pkgconfig
 Requires:       python3
 Requires:       sqlite
 Requires:       zlib-devel
