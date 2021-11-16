@@ -132,7 +132,7 @@ mv Yams-%{yams_version} yams
 export VERBOSE=1
 
 # Run the build
-swift/utils/build-script --preset=buildbot_linux,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-centos8.tar.gz
+swift/utils/build-script --preset=buildbot_linux,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-amazonlinux2.tar.gz
 
 %install
 mkdir -p %{buildroot}%{_libexecdir}/swift/
