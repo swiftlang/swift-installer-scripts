@@ -74,6 +74,7 @@ Requires:       libicu
 Requires:       libstdc++-static
 Requires:       libuuid
 Requires:       libxml2
+Requires:       sqlite
 Requires:       tar
 Requires:       tzdata
 
