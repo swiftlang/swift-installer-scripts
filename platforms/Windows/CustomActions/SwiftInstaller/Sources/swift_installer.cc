@@ -127,17 +127,31 @@ std::vector<std::wstring> available_versions() noexcept {
 }
 
 namespace msvc {
-// TODO(compnerd) add support for VS2022
+// Current Build Tools
+static const wchar_t toolset_current_x86_x64[] =
+    L"Microsoft.VisualStudio.Component.VC.Tools.x86.x64";
+static const wchar_t toolset_current_arm[] =
+    L"Microsoft.VisualStudio.Component.VC.Tools.ARM";
+static const wchar_t toolset_current_arm64[] =
+    L"Microsoft.VisualStudio.Component.VC.Tools.ARM64";
+static const wchar_t toolset_current_arm64ec[] =
+    L"Microsoft.VisualStudio.Component.VC.Tools.ARM64EC";
+
+// VS2022 v143 Build Tools
+static const wchar_t toolset_v143_x86_x64[] =
+    L"Microsoft.VisualStudio.Component.VC.14.30.17.0.x86.x64";
+static const wchar_t toolset_v143_arm[] =
+    L"Microsoft.VisualStudio.Component.VC.14.30.17.0.ARM";
+static const wchar_t toolset_v143_arm64[] =
+    L"Microsoft.VisualStudio.Component.VC.14.30.17.0.ARM64";
 
 // VS2019 v142 Build Tools
 static const wchar_t toolset_v142_x86_x64[] =
-    L"Microsoft.VisualStudio.Component.VC.Tools.x86.x64";
+    L"Microsoft.VisualStudio.Component.VC.14.29.16.11.x86.x64";
 static const wchar_t toolset_v142_arm[] =
-    L"Microsoft.VisualStudio.Component.VC.Tools.ARM";
+    L"Microsoft.VisualStudio.Component.VC.14.29.16.11.ARM";
 static const wchar_t toolset_v142_arm64[] =
-    L"Microsoft.VisualStudio.Component.VC.Tools.ARM64";
-static const wchar_t toolset_v142_arm64ec[] =
-    L"Microsoft.VisualStudio.Component.VC.Tools.ARM64EC";
+    L"Microsoft.VisualStudio.Component.VC.14.29.16.11.ARM64";
 
 // VS2017 v141 Build Tools
 static const wchar_t toolset_v141_x86_x64[] =
@@ -148,8 +162,16 @@ static const wchar_t toolset_v141_arm64[] =
     L"Microsoft.VisualStudio.Component.VC.v141.ARM64";
 
 static const wchar_t *known_toolsets[] = {
+  toolset_current_x86_x64,
+  toolset_current_arm64ec,
+  toolset_current_arm64,
+  toolset_current_arm,
+
+  toolset_v143_x86_x64,
+  toolset_v143_arm64,
+  toolset_v143_arm,
+
   toolset_v142_x86_x64,
-  toolset_v142_arm64ec,
   toolset_v142_arm64,
   toolset_v142_arm,
 
