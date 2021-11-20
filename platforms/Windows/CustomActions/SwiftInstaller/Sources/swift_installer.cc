@@ -253,11 +253,15 @@ std::vector<std::filesystem::path> available_toolsets() noexcept {
       VCInstallDir.append("VC");
 
       std::string VCToolsVersion;
+
       // VSInstallDir\VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt
-      // contains the default version of the v141 MSVC toolset.  Prefer to use
+      // contains the default version of the v141 MSVC toolset on VS2019. Prefer
+      // to use
       // VSInstallDir\VC\Auxiliary\Build\Microsoft.VCToolsVersion.v142.default.txt
-      // which contains the default v142 version of the toolset.
-      for (const auto &file : {"Microsoft.VCToolsVersion.v142.default.txt",
+      // which contains the default v142 version of the toolset on VS2019.
+      for (const auto &file : {"Microsoft.VCToolsVersion.v143.default.txt",
+                               "Microsoft.VCToolsVersion.v142.default.txt",
+                               "Microsoft.VCToolsVersion.v141.default.txt",
                                "Microsoft.VCToolsVersion.default.txt"}) {
         std::filesystem::path path{VCInstallDir};
         path.append("Auxiliary");
