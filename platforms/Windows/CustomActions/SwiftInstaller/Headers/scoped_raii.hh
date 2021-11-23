@@ -22,6 +22,16 @@ class hkey {
   ~hkey() noexcept { (void)RegCloseKey(hKey_); }
 };
 
+class handle {
+  HANDLE hHandle_;
+
+ public:
+  explicit handle(HANDLE hHandle) noexcept : hHandle_(hHandle) {}
+
+  // TODO(compnerd) log failure
+  ~handle() noexcept { (void)CloseHandle(hHandle_); }
+};
+
 class com_initializer {
   HRESULT hr_;
 

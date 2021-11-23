@@ -65,7 +65,7 @@
       <PreprocessorDefinitions>SwiftInstaller_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>msi.lib</AdditionalDependencies>
+      <AdditionalDependencies>msi.lib;RpcRT4.Lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
 
