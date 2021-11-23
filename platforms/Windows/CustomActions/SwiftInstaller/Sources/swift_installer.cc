@@ -314,6 +314,73 @@ std::wstring get_property(MSIHANDLE hInstall, std::wstring_view key) noexcept {
 }
 }
 
+namespace {
+bool replace_file(const std::filesystem::path &source,
+                  const std::filesystem::path &destination,
+                  std::error_code &error_code) {
+  static const constexpr std::filesystem::copy_options options =
+      std::filesystem::copy_options::overwrite_existing;
+
+  // Copy file to ensure that we are on the same volume.
+  UUID uuid;
+  RPC_WSTR id;
+  RPC_STATUS status;
+  if (RPC_STATUS status = UuidCreate(&uuid); status == RPC_S_OK) {
+  } else {
+    error_code = std::error_code(status, std::system_category());
+    return false;
+  }
+
+  if (RPC_STATUS status = UuidToStringW(&uuid, &id); status == RPC_S_OK) {
+  } else {
+    error_code = std::error_code(status, std::system_category());
+    return false;
+  }
+
+  std::filesystem::path temp =
+      std::filesystem::path(source)
+          .replace_filename(std::wstring(reinterpret_cast<LPCWSTR>(id)));
+
+  RpcStringFreeW(&id);
+
+  if (!std::filesystem::copy_file(source, temp, options, error_code))
+    return false;
+
+  // Rename file.
+  HANDLE hFile = CreateFileW(temp.wstring().c_str(),
+                             GENERIC_READ | GENERIC_WRITE | DELETE, 0, nullptr,
+                             OPEN_EXISTING,
+                             FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT | FILE_FLAG_POSIX_SEMANTICS,
+                             nullptr);
+  if (hFile == INVALID_HANDLE_VALUE) {
+    error_code = std::error_code(GetLastError(), std::system_category());
+    return false;
+  }
+
+  windows::raii::handle handle(hFile);
+
+  std::wstring path = temp.wstring();
+  std::vector<char> buffer(sizeof(FILE_RENAME_INFO) - sizeof(wchar_t) +
+                           (path.size() * sizeof(std::wstring::value_type)));
+  FILE_RENAME_INFO &rename_info =
+      *reinterpret_cast<FILE_RENAME_INFO *>(buffer.data());
+  rename_info.Flags = FILE_RENAME_FLAG_POSIX_SEMANTICS
+                    | FILE_RENAME_FLAG_REPLACE_IF_EXISTS;
+  rename_info.RootDirectory = 0;
+  rename_info.FileNameLength = path.size() * sizeof(std::wstring::value_type);
+  std::copy(path.begin(), path.end(), &rename_info.FileName[0]);
+
+  SetLastError(ERROR_SUCCESS);
+  if (!SetFileInformationByHandle(hFile, FileRenameInfoEx, &rename_info,
+                                  buffer.size())) {
+    error_code = std::error_code(GetLastError(), std::system_category());
+    return false;
+  }
+
+  return true;
+}
+}
+
 UINT SwiftInstaller_InstallAuxiliaryFiles(MSIHANDLE hInstall) {
   std::wstring data = msi::get_property(hInstall, L"CustomActionData");
   trim(data);
@@ -344,11 +411,8 @@ UINT SwiftInstaller_InstallAuxiliaryFiles(MSIHANDLE hInstall) {
       };
 
       for (const auto &item : items) {
-        static const constexpr std::filesystem::copy_options options =
-            std::filesystem::copy_options::overwrite_existing;
-
         std::error_code ec;
-        if (!std::filesystem::copy_file(item.src, item.dst, options, ec)) {
+        if (!replace_file(item.src, item.dst, ec)) {
           LOG(hInstall, error)
               << "unable to copy " << item.src << " to " << item.dst << ": "
               << ec.message();
@@ -372,11 +436,8 @@ UINT SwiftInstaller_InstallAuxiliaryFiles(MSIHANDLE hInstall) {
     };
 
     for (const auto &item : items) {
-      static const constexpr std::filesystem::copy_options options =
-          std::filesystem::copy_options::overwrite_existing;
-
       std::error_code ec;
-      if (!std::filesystem::copy_file(item.src, item.dst, options, ec)) {
+      if (!replace_file(item.src, item.dst, ec)) {
         LOG(hInstall, error)
             << "unable to copy " << item.src << " to " << item.dst << ": "
             << ec.message();
