@@ -116,11 +116,13 @@
       <!-- swift-argument-parser -->
       <Component Id="SWIFT_ARGUMENT_PARSER_BINS" Guid="ead7f2bd-f3ce-4f50-a04e-a2b9af25ae03">
         <File Id="ARGUMENT_PARSER_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" Checksum="yes" />
+        <File Id="ARGUMENT_PARSER_TOOL_INFO_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.dll" Checksum="yes" />
       </Component>
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Component Id="SWIFT_ARGUMENT_PARSER_DEBUGINFO" Guid="93c2ef9c-ba1f-462c-8701-2d77125ec9c8">
         <File Id="ARGUMENT_PARSER_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.pdb" Checksum="yes" />
+        <File Id="ARGUMENT_PARSER_TOOL_INFO_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.pdb" Checksum="yes" />
       </Component>
       <?endif?>
 
