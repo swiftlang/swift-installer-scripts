@@ -1,6 +1,6 @@
 %global debug_package %{nil}
 %global linux_version fedora
-%global swifttag 5.5-RELEASE
+%global swifttag 5.5.1-RELEASE
 %global swiftbuild swift-source
 %global icu_version 65-1
 %global yams_version 4.0.2
@@ -9,7 +9,7 @@
 %global ninja_version 1.10.2
 
 Name:           swiftlang
-Version:        5.5
+Version:        5.5.1
 Release:        1%{?dist}
 Summary:        Apple's Swift programming language
 License:        ASL 2.0 and Unicode
