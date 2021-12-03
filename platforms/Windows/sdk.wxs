@@ -194,7 +194,7 @@
       <Component Id="_STRING_PROCESSING_SWIFTMODULE" Guid="6baa3833-10a9-4df3-a568-241791d13449">
         <File Id="_STRING_PROCESSING_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
         <File Id="_STRING_PROCESSING_SWIFTINTERFACE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_STRING_PROCESSING_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknwon-windows-msvc.swiftmodule" Checksum="yes" />
+        <File Id="_STRING_PROCESSING_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
