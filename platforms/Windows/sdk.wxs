@@ -64,6 +64,8 @@
                                 </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DISTRIBUTED_SWIFTMODULE" Name="_Distributed.swiftmodule">
                                 </Directory>
+                                <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__STRING_PROCESSING_SWIFTMODULE" Name="_StringProcessing.swiftmodule">
+                                </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64_CRT_SWIFTMODULE" Name="CRT.swiftmodule">
                                 </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64_DISPATCH_SWIFTMODULE" Name="dispatch.swiftmodule">
@@ -185,6 +187,14 @@
         <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
         <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTINTERFACE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
         <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__STRING_PROCESSING_SWIFTMODULE">
+      <Component Id="_STRING_PROCESSING_SWIFTMODULE" Guid="6baa3833-10a9-4df3-a568-241791d13449">
+        <File Id="_STRING_PROCESSING_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+        <File Id="_STRING_PROCESSING_SWIFTINTERFACE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+        <File Id="_STRING_PROCESSING_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknwon-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
@@ -349,6 +359,7 @@
       <ComponentRef Id="_CONCURRENCY_SWIFTMODULE" />
       <ComponentRef Id="_DIFFERENTIATION_SWIFTMODULE" />
       <ComponentRef Id="_DISTRIBUTED_SWIFTMODULE" />
+      <ComponentRef Id="_STRING_PROCESSING_SWIFTMODULE" />
       <ComponentRef Id="CRT_SWIFTMODULE" />
       <ComponentRef Id="DISPATCH_SWIFTMODULE" />
       <ComponentRef Id="FOUNDATION_SWIFTMODULE" />
