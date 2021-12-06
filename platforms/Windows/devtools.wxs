@@ -217,6 +217,17 @@
         <File Id="SWIFT_TEST_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-test.pdb" Checksum="yes" />
       </Component>
       <?endif?>
+      
+      <!-- swift-system -->
+      <Component Id="SWIFT_SYSTEM_BINS" Guid="12bc7c44-ee92-4d7f-ad73-d33465707195">
+        <File Id="SWIFT_PACKAGE_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SystemPackage.dll" Checksum="yes" />
+      </Component>
+      
+      <?ifdef INCLUDE_DEBUG_INFO ?>
+      <Component Id="SWIFT_SYSTEM_DEBUGINFO" Guid="91a89290-7436-4b6e-925a-3e1d43304f20">
+        <File Id="SWIFT_PACKAGE_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SystemPackage.pdb" Checksum="yes" />
+      </Component>
+      <?endif?>
 
       <!-- swift-tools-support-core -->
       <Component Id="SWIFT_TOOLS_SUPPORT_CORE_BINS" Guid="24999b97-7709-4a57-a987-4f8b7e16bb53">
@@ -271,6 +282,7 @@
       <ComponentRef Id="SWIFT_COLLECTIONS_BINS" />
       <ComponentRef Id="SWIFT_DRIVER_BINS" />
       <ComponentRef Id="SWIFT_PACKAGE_MANAGER_BINS" />
+      <ComponentRef Id="SWIFT_SYSTEM_BINS" />
       <ComponentRef Id="SWIFT_TOOLS_SUPPORT_CORE_BINS" />
       <ComponentRef Id="MANIFEST_API" />
       <ComponentRef Id="YAMS_BINS" />
@@ -287,6 +299,7 @@
       <ComponentRef Id="SWIFT_COLLECTIONS_DEBUGINFO" />
       <ComponentRef Id="SWIFT_DRIVER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_PACKAGE_MANAGER_DEBUGINFO" />
+      <ComponentRef Id="SWIFT_SYSTEM_DEBUGINFO" />
       <ComponentRef Id="SWIFT_TOOLS_SUPPORT_CORE_DEBUGINFO" />
       <ComponentRef Id="MANIFEST_API_DEBUGINFO" />
       <ComponentRef Id="YAMS_DEBUGINFO" />
