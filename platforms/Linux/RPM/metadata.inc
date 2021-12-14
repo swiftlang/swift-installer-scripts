@@ -1,14 +1,14 @@
 # package metadata
 
 %global package_name      swiftlang
-%global package_version   5.5.1
+%global package_version   5.5.2
 %global package_summary   The Swift programming language
 %global package_license   Apache 2.0
 %global package_url       https://swift.org
 
 # versions
 
-%global swift_version 5.5.1-RELEASE
+%global swift_version 5.5.2-RELEASE
 %global icu_version 65-1
 %global yams_version 4.0.2
 %global swift_argument_parser_version 0.4.3
