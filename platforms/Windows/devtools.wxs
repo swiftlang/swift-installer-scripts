@@ -183,6 +183,7 @@
         <File Id="PACKAGE_COLLECTIONS_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollections.dll" Checksum="yes" />
         <File Id="PACKAGE_COLLECTIONS_MODEL_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollectionsModel.dll" Checksum="yes" />
         <File Id="PACKAGE_COLLECTIONS_SIGNING_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollectionsSigning.dll" Checksum="yes" />
+        <File Id="PACKAGE_FINGERPRINT_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageFingerprint.dll" Checksum="yes" />
         <File Id="PACKAGE_REGISTRY_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageRegistry.dll" Checksum="yes" />
 
         <File Id="SWIFT_BUILD_EXE" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.exe" Checksum="yes" />
@@ -209,6 +210,7 @@
         <File Id="PACKAGE_COLLECTIONS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollections.pdb" Checksum="yes" />
         <File Id="PACKAGE_COLLECTIONS_MODEL_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollectionsModel.pdb" Checksum="yes" />
         <File Id="PACKAGE_COLLECTIONS_SIGNING_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollectionsSigning.pdb" Checksum="yes" />
+        <File Id="PACKAGE_FINGERPRINT_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageFingerprint.pdb" Checksum="yes" />
         <File Id="PACKAGE_REGISTRY_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageRegistry.pdb" Checksum="yes" />
 
         <File Id="SWIFT_BUILD_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.pdb" Checksum="yes" />
