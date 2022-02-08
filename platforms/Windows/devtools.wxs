@@ -67,23 +67,6 @@
       </Component>
       <?endif?>
 
-      <!-- llbuild -->
-      <Component Id="LLBUILD_BINS" Guid="ff7fc643-d14b-465b-ba9e-79191c27d403">
-        <File Id="LLBUILD_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuild.dll" Checksum="yes" />
-        <File Id="LLBUILDSWIFT_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.dll" Checksum="yes" />
-
-        <File Id="SWIFT_BUILD_TOOL_EXE" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build-tool.exe" Checksum="yes" />
-      </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="LLBUILD_DEBUGINFO" Guid="a74f4415-d0a8-42c2-adaf-abd98d2865b5">
-        <File Id="LLBUILD_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuild.pdb" Checksum="yes" />
-        <File Id="LLBUILDSWIFT_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.pdb" Checksum="yes" />
-
-        <File Id="SWIFT_BUILD_TOOL_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build-tool.pdb" Checksum="yes" />
-      </Component>
-      <?endif?>
-
       <!-- SourceKit-LSP -->
       <Component Id="SOURCEKIT_LSP_BINS" Guid="5ca5d02f-76f3-4537-9dfb-a3fdb6381ac4">
         <File Id="BUILD_SERVER_PROTOCOL_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\BuildServerProtocol.dll" Checksum="yes" />
@@ -113,19 +96,6 @@
       </Component>
       <?endif?>
 
-      <!-- swift-argument-parser -->
-      <Component Id="SWIFT_ARGUMENT_PARSER_BINS" Guid="ead7f2bd-f3ce-4f50-a04e-a2b9af25ae03">
-        <File Id="ARGUMENT_PARSER_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" Checksum="yes" />
-        <File Id="ARGUMENT_PARSER_TOOL_INFO_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.dll" Checksum="yes" />
-      </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="SWIFT_ARGUMENT_PARSER_DEBUGINFO" Guid="93c2ef9c-ba1f-462c-8701-2d77125ec9c8">
-        <File Id="ARGUMENT_PARSER_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.pdb" Checksum="yes" />
-        <File Id="ARGUMENT_PARSER_TOOL_INFO_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.pdb" Checksum="yes" />
-      </Component>
-      <?endif?>
-
       <!-- swift-crypto -->
       <Component Id="SWIFT_CRYPTO_BINS" Guid="8f4fb997-7a41-4d37-a3d4-f5e006f5e3c4">
         <File Id="CRYPTO_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Crypto.dll" Checksum="yes" />
@@ -149,19 +119,6 @@
         <File Id="COLLECTIONS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Collections.pdb" Checksum="yes" />
         <File Id="DEQUE_MODULE_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DequeModule.pdb" Checksum="yes" />
         <File Id="ORDERED_COLLECTIONS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\OrderedCollections.pdb" Checksum="yes" />
-      </Component>
-      <?endif?>
-
-      <!-- swift-driver -->
-      <Component Id="SWIFT_DRIVER_BINS" Guid="6108d465-9eb5-441f-8cde-5437457fb539">
-        <File Id="SWIFT_DRIVER_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftDriver.dll" Checksum="yes" />
-        <File Id="SWIFT_OPTIONS_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftOptions.dll" Checksum="yes" />
-      </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="SWIFT_DRIVER_DEBUGINFO" Guid="2e5f4e86-628c-4184-99eb-9385efdebe83">
-        <File Id="SWIFT_DRIVER_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftDriver.pdb" Checksum="yes" />
-        <File Id="SWIFT_OPTIONS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftOptions.pdb" Checksum="yes" />
       </Component>
       <?endif?>
 
@@ -230,34 +187,6 @@
         <File Id="SWIFT_PACKAGE_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SystemPackage.pdb" Checksum="yes" />
       </Component>
       <?endif?>
-
-      <!-- swift-tools-support-core -->
-      <Component Id="SWIFT_TOOLS_SUPPORT_CORE_BINS" Guid="24999b97-7709-4a57-a987-4f8b7e16bb53">
-        <File Id="TSC_BASIC_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCBasic.dll" Checksum="yes" />
-        <File Id="TSC_LIBC_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCLibc.dll" Checksum="yes" />
-        <File Id="TSC_UTILITY_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.dll" Checksum="yes" />
-      </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="SWIFT_TOOLS_SUPPORT_CORE_DEBUGINFO" Guid="9487dcfc-ceb1-4763-9db5-af7b52687197">
-        <File Id="TSC_BASIC_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCBasic.pdb" Checksum="yes" />
-        <File Id="TSC_LIBC_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCLibc.pdb" Checksum="yes" />
-        <File Id="TSC_UTILITY_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.pdb" Checksum="yes" />
-      </Component>
-      <?endif?>
-
-      <!--- Yams -->
-      <Component Id="YAMS_BINS" Guid="d60b565d-9efe-42db-b821-fa1d6ad4d2e2">
-        <File Id="CYAML_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CYaml.dll" Checksum="yes" />
-        <File Id="YAMS_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Yams.dll" Checksum="yes" />
-      </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="YAMS_DEBUGINFO" Guid="b09420e8-6c4f-4a9e-8882-4d399ed02ed5">
-        <File Id="CYAML_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CYaml.pdb" Checksum="yes" />
-        <File Id="YAMS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Yams.pdb" Checksum="yes" />
-      </Component>
-      <?endif?>
     </DirectoryRef>
 
     <DirectoryRef Id="USR_LIB_SWIFT_PM_MANIFEST_API">
@@ -277,34 +206,24 @@
 
     <Feature Id="DEVTOOLS" Level="1">
       <ComponentRef Id="INDEXSTOREDB_BINS" />
-      <ComponentRef Id="LLBUILD_BINS" />
       <ComponentRef Id="SOURCEKIT_LSP_BINS" />
-      <ComponentRef Id="SWIFT_ARGUMENT_PARSER_BINS" />
       <ComponentRef Id="SWIFT_CRYPTO_BINS" />
       <ComponentRef Id="SWIFT_COLLECTIONS_BINS" />
-      <ComponentRef Id="SWIFT_DRIVER_BINS" />
       <ComponentRef Id="SWIFT_PACKAGE_MANAGER_BINS" />
       <ComponentRef Id="SWIFT_SYSTEM_BINS" />
-      <ComponentRef Id="SWIFT_TOOLS_SUPPORT_CORE_BINS" />
       <ComponentRef Id="MANIFEST_API" />
-      <ComponentRef Id="YAMS_BINS" />
     </Feature>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
     <Feature Id="DEBUGINFO" Level="0">
       <Condition Level="1">INSTALL_DEBUGINFO</Condition>
       <ComponentRef Id="INDEXSTOREDB_DEBUGINFO" />
-      <ComponentRef Id="LLBUILD_DEBUGINFO" />
       <ComponentRef Id="SOURCEKIT_LSP_DEBUGINFO" />
-      <ComponentRef Id="SWIFT_ARGUMENT_PARSER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_CRYPTO_DEBUGINFO" />
       <ComponentRef Id="SWIFT_COLLECTIONS_DEBUGINFO" />
-      <ComponentRef Id="SWIFT_DRIVER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_PACKAGE_MANAGER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_SYSTEM_DEBUGINFO" />
-      <ComponentRef Id="SWIFT_TOOLS_SUPPORT_CORE_DEBUGINFO" />
       <ComponentRef Id="MANIFEST_API_DEBUGINFO" />
-      <ComponentRef Id="YAMS_DEBUGINFO" />
     </Feature>
     <?endif?>
 
