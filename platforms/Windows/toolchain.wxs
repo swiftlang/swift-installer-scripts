@@ -314,6 +314,7 @@
     <DirectoryRef Id="USR_INCLUDE__INTERNALSWIFTSYNTAXPARSER">
       <Component Id="_INTERNALSWIFTSYNTAXPARSER_HEADERS" Guid="81ae1aef-7471-4637-b0a2-86b6f9def568">
         <File Id="SWIFTSYNTAXPARSER_H" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftSyntaxParser\SwiftSyntaxParser.h" Checksum="yes" />
+        <File Id="SWIFTSYNTAXCDATATYPES_H" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftSyntaxParser\SwiftSyntaxCDataTypes.h" Checksum="yes" />
         <File Id="_INTERNALSWIFTSYNTAXPARSER_MODULE_MODULEMAP" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftSyntaxParser\module.modulemap" Checksum="yes" />
       </Component>
     </DirectoryRef>
