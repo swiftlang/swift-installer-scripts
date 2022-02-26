@@ -18,30 +18,13 @@
                 <Directory Id="USR" Name="usr">
                   <Directory Id="USR_BIN" Name="bin">
                   </Directory>
-                  <!--
-                  FIXME(compnerd) should we include the cyaml and llbuild headers?
-                  <Directory Id="USR_INCLUDE" Name="include">
-                    <Directory Id="USR_INCLUDE_CYAML" Name="cyaml">
-                    </Directory>
-                    <Directory Id="USR_INCLUDE_LLBUILD" Name="llbuild">
-                    </Directory>
-                  </Directory>
-                  -->
                   <Directory Id="USR_LIB" Name="lib">
-                    <!-- FIXME(compnerd) should we include the TSC, SPM import libraries? -->
+                    <!-- FIXME(compnerd) should we include the SPM import libraries? -->
                     <Directory Id="USR_LIB_SWIFT" Name="swift">
                       <Directory Id="USR_LIB_SWIFT_PM" Name="pm">
                         <Directory Id="USR_LIB_SWIFT_PM_MANIFEST_API" Name="ManifestAPI">
                         </Directory>
                       </Directory>
-                      <!--
-                      FIXME(compnerd) should we include the import libraries and swiftmodules for Yams, ArgumentParser?
-                      <Directory Id="USR_LIB_SWIFT_WINDOWS" Name="windows">
-                        <Directory Id="USR_LIB_SWIFT_WINDOWS_X86_64" Name="x86_64">
-                        </Directory>
-                      </Directory>
-                      -->
-                    <!-- FIXME(compnerd) should we include the llbuild import libraries? -->
                     </Directory>
                   </Directory>
                 </Directory>
