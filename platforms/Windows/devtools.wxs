@@ -69,29 +69,11 @@
 
       <!-- SourceKit-LSP -->
       <Component Id="SOURCEKIT_LSP_BINS" Guid="5ca5d02f-76f3-4537-9dfb-a3fdb6381ac4">
-        <File Id="BUILD_SERVER_PROTOCOL_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\BuildServerProtocol.dll" Checksum="yes" />
-        <File Id="LANGUAGE_SERVER_PROTOCOL_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\LanguageServerProtocol.dll" Checksum="yes" />
-        <File Id="LANGUAGE_SERVER_PROTOCOL_JSONRPC_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\LanguageServerProtocolJSONRPC.dll" Checksum="yes" />
-        <File Id="LSP_LOGGING_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\LSPLogging.dll" Checksum="yes" />
-        <File Id="SKCORE_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SKCore.dll" Checksum="yes" />
-        <File Id="SKSUPPORT_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SKSupport.dll" Checksum="yes" />
-        <File Id="SKSWIFTPM_WORKSPACE_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SKSwiftPMWorkspace.dll" Checksum="yes" />
-        <File Id="SOURCEKIT_LSP_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SourceKitLSP.dll" Checksum="yes" />
-        <File Id="SOURCEKIT_D_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SourceKitD.dll" Checksum="yes" />
         <File Id="SOURCEKIT_LSP_EXE" Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" Checksum="yes" />
       </Component>
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Component Id="SOURCEKIT_LSP_DEBUGINFO" Guid="b4967969-ce4b-4d63-b2fd-0d8fc896cb28">
-        <File Id="BUILD_SERVER_PROTOCOL_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\BuildServerProtocol.pdb" Checksum="yes" />
-        <File Id="LANGUAGE_SERVER_PROTOCOL_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\LanguageServerProtocol.pdb" Checksum="yes" />
-        <File Id="LANGUAGE_SERVER_PROTOCOL_JSONRPC_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\LanguageServerProtocolJSONRPC.pdb" Checksum="yes" />
-        <File Id="LSP_LOGGING_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\LSPLogging.pdb" Checksum="yes" />
-        <File Id="SKCORE_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SKCore.pdb" Checksum="yes" />
-        <File Id="SKSUPPORT_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SKSupport.pdb" Checksum="yes" />
-        <File Id="SKSWIFTPM_WORKSPACE_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SKSwiftPMWorkspace.pdb" Checksum="yes" />
-        <File Id="SOURCEKIT_LSP_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SourceKitLSP.pdb" Checksum="yes" />
-        <File Id="SOURCEKIT_D_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SourceKitD.pdb" Checksum="yes" />
         <File Id="SOURCEKIT_LSP_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.pdb" Checksum="yes" />
       </Component>
       <?endif?>
