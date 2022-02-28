@@ -12,9 +12,9 @@
 Name:           swiftlang
 Version:        5.5.3
 Release:        1%{?dist}
-Summary:        Apple's Swift programming language
+Summary:        The Swift programming language
 License:        Apache 2.0
-URL:            https://swift.org
+URL:            https://www.swift.org
 
 Source0:        https://github.com/apple/swift/archive/swift-%{swifttag}.tar.gz#/swift.tar.gz
 Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{swifttag}.tar.gz#/corelibs-libdispatch.tar.gz

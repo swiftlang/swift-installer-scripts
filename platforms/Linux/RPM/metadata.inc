@@ -4,7 +4,7 @@
 %global package_version   5.5.3
 %global package_summary   The Swift programming language
 %global package_license   Apache 2.0
-%global package_url       https://swift.org
+%global package_url       https://www.swift.org
 
 # versions
 
