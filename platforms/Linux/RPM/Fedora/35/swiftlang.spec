@@ -1,19 +1,20 @@
 %global debug_package %{nil}
 %global linux_version fedora
-%global swifttag 5.5.2-RELEASE
+%global swifttag 5.5.3-RELEASE
 %global swiftbuild swift-source
 %global icu_version 65-1
 %global yams_version 4.0.2
 %global sap_version 0.4.3
 %global swift_crypto_version 1.1.5
 %global ninja_version 1.10.2
+%global package_version 5.5.3
 
 Name:           swiftlang
-Version:        5.5.2
+Version:        5.5.3
 Release:        1%{?dist}
-Summary:        Apple's Swift programming language
-License:        ASL 2.0 and Unicode
-URL:            https://swift.org
+Summary:        The Swift programming language
+License:        Apache 2.0
+URL:            https://www.swift.org
 
 Source0:        https://github.com/apple/swift/archive/swift-%{swifttag}.tar.gz#/swift.tar.gz
 Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{swifttag}.tar.gz#/corelibs-libdispatch.tar.gz
@@ -142,12 +143,12 @@ swift/utils/build-script --preset=buildbot_linux,no_test install_destdir=%{_buil
 
 
 %install
-mkdir -p %{buildroot}%{_libexecdir}/swift/
-cp -r %{_builddir}/usr/* %{buildroot}%{_libexecdir}/swift
+mkdir -p %{buildroot}%{_libexecdir}/swift/%{package_version}
+cp -r %{_builddir}/usr/* %{buildroot}%{_libexecdir}/swift/%{package_version}
 mkdir -p %{buildroot}%{_bindir}
-ln -fs %{_libexecdir}/swift/bin/swift %{buildroot}%{_bindir}/swift 
-ln -fs %{_libexecdir}/swift/bin/swiftc %{buildroot}%{_bindir}/swiftc
-ln -fs %{_libexecdir}/swift/bin/sourcekit-lsp %{buildroot}%{_bindir}/sourcekit-lsp
+ln -fs %{_libexecdir}/swift/%{package_version}/bin/swift %{buildroot}%{_bindir}/swift
+ln -fs %{_libexecdir}/swift/%{package_version}/bin/swiftc %{buildroot}%{_bindir}/swiftc
+ln -fs %{_libexecdir}/swift/%{package_version}/bin/sourcekit-lsp %{buildroot}%{_bindir}/sourcekit-lsp
 mkdir -p %{buildroot}%{_mandir}/man1
 cp %{_builddir}/usr/share/man/man1/swift.1 %{buildroot}%{_mandir}/man1/swift.1
 

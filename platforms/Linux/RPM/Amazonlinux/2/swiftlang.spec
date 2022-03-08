@@ -135,12 +135,12 @@ export VERBOSE=1
 swift/utils/build-script --preset=buildbot_linux,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-amazonlinux2.tar.gz
 
 %install
-mkdir -p %{buildroot}%{_libexecdir}/swift/
-cp -r %{_builddir}/usr/* %{buildroot}%{_libexecdir}/swift
+mkdir -p %{buildroot}%{_libexecdir}/swift/%{package_version}
+cp -r %{_builddir}/usr/* %{buildroot}%{_libexecdir}/swift/%{package_version}
 mkdir -p %{buildroot}%{_bindir}
-ln -fs %{_libexecdir}/swift/bin/swift %{buildroot}%{_bindir}/swift
-ln -fs %{_libexecdir}/swift/bin/swiftc %{buildroot}%{_bindir}/swiftc
-ln -fs %{_libexecdir}/swift/bin/sourcekit-lsp %{buildroot}%{_bindir}/sourcekit-lsp
+ln -fs %{_libexecdir}/swift/%{package_version}/bin/swift %{buildroot}%{_bindir}/swift
+ln -fs %{_libexecdir}/swift/%{package_version}/bin/swiftc %{buildroot}%{_bindir}/swiftc
+ln -fs %{_libexecdir}/swift/%{package_version}/bin/sourcekit-lsp %{buildroot}%{_bindir}/sourcekit-lsp
 mkdir -p %{buildroot}%{_mandir}/man1
 cp %{_builddir}/usr/share/man/man1/swift.1 %{buildroot}%{_mandir}/man1/swift.1
 
