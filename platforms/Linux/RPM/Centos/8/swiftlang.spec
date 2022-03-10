@@ -30,9 +30,21 @@ Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.zip#/yams.
 Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_crypto_version}.tar.gz#/swift-crypto.tar.gz
 Source19:       https://github.com/ninja-build/ninja/archive/refs/tags/v%{ninja_version}.tar.gz#/ninja.tar.gz
 Source20:       https://github.com/KitWare/CMake/archive/refs/tags/v%{cmake_version}.tar.gz#/cmake.tar.gz
+Source21:       https://github.com/apple/swift-atomics/archive/%{swift_atomics_version}.tar.gz#/swift-atomics.tar.gz
+Source22:       https://github.com/apple/swift-cmark/archive/swift-%{swift_version}-gfm.tar.gz#/swift-cmark-gfm.tar.gz
+Source23:       https://github.com/apple/swift-docc/archive/swift-%{swift_version}.tar.gz#/swift-docc.tar.gz
+Source24:       https://github.com/apple/swift-docc-render-artifact/archive/swift-%{swift_version}.tar.gz#/swift-docc-render-artifact.tar.gz
+Source25:       https://github.com/apple/swift-docc-symbolkit/archive/swift-%{swift_version}.tar.gz#/swift-docc-symbolkit.tar.gz
+Source26:       https://github.com/apple/swift-collections/archive/%{swift_collections_version}.tar.gz#/swift-collections.tar.gz
+Source27:       https://github.com/apple/swift-numerics/archive/%{swift_numerics_version}.tar.gz#/swift-numerics.tar.gz
+Source28:       https://github.com/apple/swift-system/archive/%{swift_system_version}.tar.gz#/swift-system.tar.gz
+Source29:       https://github.com/apple/swift-nio/archive/%{swift_nio_version}.tar.gz#/swift-nio.tar.gz
+Source30:       https://github.com/apple/swift-nio-ssl/archive/%{swift_nio_ssl_version}.tar.gz#/swift-nio-ssl.tar.gz
+Source31:       https://github.com/apple/swift-format/archive/swift-%{swift_version}.tar.gz#/swift-format.tar.gz
+Source32:       https://github.com/apple/swift-lmdb/archive/swift-%{swift_version}.tar.gz#/swift-lmdb.tar.gz
+Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_version}tar.gz#/swift-markdown.tar.gz
 
-Patch0:         patches/swift-api-checker.patch
-Patch1:         patches/hwasan_symbolize.patch
+Patch0:         patches/hwasan_symbolize.patch
 
 BuildRequires:  autoconf
 BuildRequires:  clang
@@ -91,7 +103,8 @@ importantly, Swift is designed to make writing and maintaining
 correct programs easier for the developer.
 
 %prep
-%setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20
+%setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20 -a 21 -a 22 -a 23 -a 24 -a 25 -a 26 -a 27 -a 28 -a 29 -a 30 -a 31 -a 32 -a 33
+
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
@@ -114,6 +127,19 @@ mv swift-driver-swift-%{swift_version} swift-driver
 mv swift-crypto-%{swift_crypto_version} swift-crypto
 mv ninja-%{ninja_version} ninja
 mv CMake-%{cmake_version} cmake
+mv swift-atomics-%{swift_atomics_version} swift-atomics
+mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
+mv swift-docc-swift-%{swift_version} swift-docc
+mv swift-docc-render-artifact-swift-%{swift_version} swift-docc-render-artifact
+mv swift-docc-symbolkit-swift-%{swift_version} swift-docc-symbolkit
+mv swift-collections-%{swift_collections_version} swift-collections
+mv swift-numerics-%{swift_numerics_version} swift-numerics
+mv swift-system-%{swift_system_version} swift-system
+mv swift-nio-%{swift_nio_version} swift-nio
+mv swift-nio-ssl-%{swift_nio_ssl_version} swift-nio-ssl
+mv swift-format-swift-%{swift_version} swift-format
+mv swift-lmdb-swift-%{swift_version} swift-lmdb
+mv swift-markdown-swift-%{swift_version} swift-markdown
 
 # ICU
 mv icu-release-%{icu_version} icu
@@ -121,11 +147,8 @@ mv icu-release-%{icu_version} icu
 # Yams
 mv Yams-%{yams_version} yams
 
-# Adjust python version swift-api-checker
-%patch0 -p1
-
 # Adjust python version hwasan_symbolize
-%patch1 -p1
+%patch0 -p1
 
 # Fix python to python3
 ln -s /usr/bin/python3 /usr/bin/python
@@ -134,7 +157,7 @@ ln -s /usr/bin/python3 /usr/bin/python
 export VERBOSE=1
 
 # Run the build
-swift/utils/build-script --preset=buildbot_linux,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-centos8.tar.gz
+swift/utils/build-script --preset=buildbot_linux,no_assertions,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-centos8.tar.gz
 
 %install
 mkdir -p %{buildroot}%{_libexecdir}/swift/%{package_version}
