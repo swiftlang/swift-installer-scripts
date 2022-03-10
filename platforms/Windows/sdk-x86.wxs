@@ -59,6 +59,8 @@
                       </Directory>
                       <Directory Id="WindowsSDK_usr_lib" Name="lib">
                         <Directory Id="WindowsSDK_usr_lib_swift" Name="swift">
+                          <Directory Id="WindowsSDK_usr_lib_swift_apinotes" Name="apinotes">
+                          </Directory>
                           <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
                           </Directory>
                           <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
@@ -132,6 +134,12 @@
       </Component>
     </ComponentGroup>
     <?endif?>
+
+    <ComponentGroup Id="apinotes">
+      <Component Id="visualc.apinotes" Directory="WindowsSDK_usr_lib_swift_apinotes" Guid="ba826893-9d87-43a3-a54e-9a336214e956">
+        <File Id="visualc.apinotes" Source="$(var.SDK_ROOT)\usr\lib\swift\apinotes\visualc.apinotes" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
 
     <ComponentGroup Id="SwiftRemoteMirror">
       <Component Id="MemoryReaderInterface.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="4493ba7f-b3b3-4cb3-b645-6457e81ad752">
@@ -394,7 +402,7 @@
         <File Id="SwiftOnoneSupport.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
 
-      <Component Id="swiftSwiftOnoneSupport.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686 Guid="5394f49f-99b4-4049-81c4-c601d17700d4">
+      <Component Id="swiftSwiftOnoneSupport.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="5394f49f-99b4-4049-81c4-c601d17700d4">
         <File Id="swiftSwiftOnoneSupport.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftSwiftOnoneSupport.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
@@ -435,9 +443,6 @@
       </Component>
       <Component Id="visualc.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
         <File Id="visualc.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\visualc.modulemap" Checksum="yes" />
-      </Component>
-      <Component Id="visualc.apinotes" Guid="11318e14-7d68-490e-8c64-f1332f1d63f7">
-        <File Id="visualc.apinotes" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\visualc.apinotes" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
