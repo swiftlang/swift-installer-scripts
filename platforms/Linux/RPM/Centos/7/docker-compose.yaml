@@ -17,13 +17,13 @@ version: "2"
 services:
 
   docker-setup:
-    image: centos7-rpm-builder
+    image: centos-7-rpm-builder
     build:
       context: .
       dockerfile: Dockerfile
 
   common: &common
-    image: centos7-rpm-builder
+    image: centos-7-rpm-builder
     depends_on: [docker-setup]
     # https://bugs.swift.org/browse/SR-15343
     security_opt:
