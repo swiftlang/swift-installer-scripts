@@ -17,13 +17,13 @@ version: "2"
 services:
 
   docker-setup:
-    image: amazonlinux2-rpm-builder
+    image: amazonlinux-2-rpm-builder
     build:
       context: .
       dockerfile: Dockerfile
 
   common: &common
-    image: amazonlinux2-rpm-builder
+    image: amazonlinux-2-rpm-builder
     depends_on: [docker-setup]
     volumes:
       - .:/code:z

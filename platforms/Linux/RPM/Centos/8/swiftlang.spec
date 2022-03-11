@@ -110,43 +110,39 @@ correct programs easier for the developer.
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
+mv CMake-%{cmake_version} cmake
+mv icu-release-%{icu_version} icu
+mv indexstore-db-swift-%{swift_version} indexstore-db
+mv llvm-project-swift-%{swift_version} llvm-project
+mv ninja-%{ninja_version} ninja
+mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
+mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
+mv swift-atomics-%{swift_atomics_version} swift-atomics
 mv swift-cmark-swift-%{swift_version} cmark
+mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
+mv swift-collections-%{swift_collections_version} swift-collections
 mv swift-corelibs-foundation-swift-%{swift_version} swift-corelibs-foundation
 mv swift-corelibs-libdispatch-swift-%{swift_version} swift-corelibs-libdispatch
 mv swift-corelibs-xctest-swift-%{swift_version} swift-corelibs-xctest
+mv swift-crypto-%{swift_crypto_version} swift-crypto
+mv swift-docc-render-artifact-swift-%{swift_version} swift-docc-render-artifact
+mv swift-docc-swift-%{swift_version} swift-docc
+mv swift-docc-symbolkit-swift-%{swift_version} swift-docc-symbolkit
+mv swift-driver-swift-%{swift_version} swift-driver
+mv swift-format-swift-%{swift_version} swift-format
 mv swift-integration-tests-swift-%{swift_version} swift-integration-tests
 mv swift-llbuild-swift-%{swift_version} llbuild
-mv swift-package-manager-swift-%{swift_version} swiftpm
-mv swift-swift-%{swift_version} swift
-mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
-mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
-mv indexstore-db-swift-%{swift_version} indexstore-db
-mv llvm-project-swift-%{swift_version} llvm-project
-mv swift-syntax-swift-%{swift_version} swift-syntax
-mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
-mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
-mv swift-driver-swift-%{swift_version} swift-driver
-mv swift-crypto-%{swift_crypto_version} swift-crypto
-mv ninja-%{ninja_version} ninja
-mv CMake-%{cmake_version} cmake
-mv swift-atomics-%{swift_atomics_version} swift-atomics
-mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
-mv swift-docc-swift-%{swift_version} swift-docc
-mv swift-docc-render-artifact-swift-%{swift_version} swift-docc-render-artifact
-mv swift-docc-symbolkit-swift-%{swift_version} swift-docc-symbolkit
-mv swift-collections-%{swift_collections_version} swift-collections
-mv swift-numerics-%{swift_numerics_version} swift-numerics
-mv swift-system-%{swift_system_version} swift-system
-mv swift-nio-%{swift_nio_version} swift-nio
-mv swift-nio-ssl-%{swift_nio_ssl_version} swift-nio-ssl
-mv swift-format-swift-%{swift_version} swift-format
 mv swift-lmdb-swift-%{swift_version} swift-lmdb
 mv swift-markdown-swift-%{swift_version} swift-markdown
-
-# ICU
-mv icu-release-%{icu_version} icu
-
-# Yams
+mv swift-nio-%{swift_nio_version} swift-nio
+mv swift-nio-ssl-%{swift_nio_ssl_version} swift-nio-ssl
+mv swift-numerics-%{swift_numerics_version} swift-numerics
+mv swift-package-manager-swift-%{swift_version} swiftpm
+mv swift-swift-%{swift_version} swift
+mv swift-syntax-swift-%{swift_version} swift-syntax
+mv swift-system-%{swift_system_version} swift-system
+mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
+mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
 mv Yams-%{yams_version} yams
 
 # Adjust python version hwasan_symbolize
