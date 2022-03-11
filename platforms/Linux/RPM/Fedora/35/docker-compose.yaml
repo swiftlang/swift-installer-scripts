@@ -1,0 +1,47 @@
+# This source file is part of the Swift.org open source project
+#
+# Copyright (c) 2022 Apple Inc. and the Swift project authors
+# Licensed under Apache License v2.0 with Runtime Library Exception
+#
+# See http://swift.org/LICENSE.txt for license information
+# See http://swift.org/CONTRIBUTORS.txt for Swift project authors
+
+# this setup is designed to build the RPM with docker
+# usage:
+# docker-compose -f platforms/Linux/fedora/35/docker-compose.yaml build
+# to shell into the container for debugging purposes:
+# docker-compose -f platforms/Linux/fedora/35/docker-compose.yaml run build
+
+version: "2"
+
+services:
+
+  docker-setup:
+    image: fedora-35-rpm-builder
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  common: &common
+    image: fedora-35-rpm-builder
+    depends_on: [docker-setup]
+    volumes:
+      - ../../Fedora/35:/code/Fedora/35:z
+      - ../../Shared:/code/Shared:z
+      - ./.output:/output:z
+    working_dir: /code/Fedora/35
+    cap_drop:
+      - CAP_NET_RAW
+      - CAP_NET_BIND_SERVICE
+
+  build:
+    <<: *common
+    command: /bin/bash -cl "./build_rpm.sh"
+
+  createrepo:
+    <<: *common
+    command: /bin/bash -cl "./createrepo_rpm.sh"
+
+  shell:
+    <<: *common
+    entrypoint: /bin/bash -l
