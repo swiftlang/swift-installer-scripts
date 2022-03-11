@@ -18,7 +18,7 @@
 %global swift_nio_ssl_version 2.15.0
 
 Name:           swiftlang
-Version:        ${package_version}
+Version:        %{package_version}
 Release:        1%{?dist}
 Summary:        The Swift programming language
 License:        Apache 2.0
