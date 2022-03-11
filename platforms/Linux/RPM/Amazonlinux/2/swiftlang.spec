@@ -81,12 +81,12 @@ Requires:       git
 Requires:       glibc-static
 Requires:       gzip
 Requires:       libbsd
-Requires:       libcurl
+Requires:       libcurl-devel
 Requires:       libedit
 Requires:       libicu
 Requires:       libstdc++-static
 Requires:       libuuid
-Requires:       libxml2
+Requires:       libxml2-devel
 Requires:       sqlite
 Requires:       tar
 Requires:       tzdata

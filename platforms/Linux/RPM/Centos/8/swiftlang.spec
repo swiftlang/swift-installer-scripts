@@ -80,10 +80,12 @@ Requires:       gcc
 Requires:       git
 Requires:       glibc-static
 Requires:       libbsd-devel
+Requires:       libcurl-devel
 Requires:       libedit
 Requires:       libedit-devel
 Requires:       libicu-devel
 Requires:       libstdc++-static
+Requires:       libxml2-devel
 Requires:       pkg-config
 Requires:       python3
 Requires:       sqlite
