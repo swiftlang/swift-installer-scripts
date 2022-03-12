@@ -9,40 +9,40 @@ Summary:        %{package_summary}
 License:        %{package_license}
 URL:            %{package_url}
 
-Source0:        https://github.com/apple/swift/archive/swift-%{swift_version}.tar.gz#/swift.tar.gz
-Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{swift_version}.tar.gz#/corelibs-libdispatch.tar.gz
-Source2:        https://github.com/apple/swift-corelibs-foundation/archive/swift-%{swift_version}.tar.gz#/corelibs-foundation.tar.gz
-Source3:        https://github.com/apple/swift-integration-tests/archive/swift-%{swift_version}.tar.gz#/swift-integration-tests.tar.gz
-Source4:        https://github.com/apple/swift-corelibs-xctest/archive/swift-%{swift_version}.tar.gz#/corelibs-xctest.tar.gz
-Source5:        https://github.com/apple/swift-package-manager/archive/swift-%{swift_version}.tar.gz#/package-manager.tar.gz
-Source6:        https://github.com/apple/swift-llbuild/archive/swift-%{swift_version}.tar.gz#/llbuild.tar.gz
-Source7:        https://github.com/apple/swift-cmark/archive/swift-%{swift_version}.tar.gz#/cmark.tar.gz
-Source8:        https://github.com/apple/swift-xcode-playground-support/archive/swift-%{swift_version}.tar.gz#/swift-xcode-playground-support.tar.gz
-Source9:        https://github.com/apple/sourcekit-lsp/archive/swift-%{swift_version}.tar.gz#/sourcekit-lsp.tar.gz
-Source10:       https://github.com/apple/indexstore-db/archive/swift-%{swift_version}.tar.gz#/indexstore-db.tar.gz
-Source11:       https://github.com/apple/llvm-project/archive/swift-%{swift_version}.tar.gz#/llvm-project.tar.gz
-Source12:       https://github.com/apple/swift-tools-support-core/archive/swift-%{swift_version}.tar.gz#/swift-tools-support-core.tar.gz
+Source0:        https://github.com/apple/swift/archive/8c610f7f19b9c4e0651f95fa7c4852e5d3b7a03e.tar.gz#/swift.tar.gz
+Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/880bf655b65595862bed8fc5cbd922f60765e8b0.tar.gz#/corelibs-libdispatch.tar.gz
+Source2:        https://github.com/apple/swift-corelibs-foundation/archive/061007026b6a12039bede2c6419753c8630741d4.tar.gz#/corelibs-foundation.tar.gz
+Source3:        https://github.com/apple/swift-integration-tests/archive/3670ed08b57bd1c1b6dffc677cd93ffcfd1ddd48.tar.gz#/swift-integration-tests.tar.gz
+Source4:        https://github.com/apple/swift-corelibs-xctest/archive/2f64db1fdcc600d26566fe67ffceca7d76226b8b.tar.gz#/corelibs-xctest.tar.gz
+Source5:        https://github.com/apple/swift-package-manager/archive/6647fa09d6042b29cbb115eecf6f292beb7f6837.tar.gz#/package-manager.tar.gz
+Source6:        https://github.com/apple/swift-llbuild/archive/acd686530e56122d916acd49a166beb9198e9b87.tar.gz#/llbuild.tar.gz
+Source7:        https://github.com/apple/swift-cmark/archive/9c8096a23f44794bde297452d87c455fc4f76d42.tar.gz#/cmark.tar.gz
+Source8:        https://github.com/apple/swift-xcode-playground-support/archive/dd0d8c8d121d2f20664e4779a3d29482a55908bb.tar.gz#/swift-xcode-playground-support.tar.gz
+Source9:        https://github.com/apple/sourcekit-lsp/archive/489da496c46e01746ea5158ea0b8ec6e4a8a1f97.tar.gz#/sourcekit-lsp.tar.gz
+Source10:       https://github.com/apple/indexstore-db/archive/47aa228fa4d47ab90e8a3b8d9468d2ca99434463.tar.gz#/indexstore-db.tar.gz
+Source11:       https://github.com/apple/llvm-project/archive/900c3b6b832d1d0e7d6e1220f6ba001802cbe0cc.tar.gz#/llvm-project.tar.gz
+Source12:       https://github.com/apple/swift-tools-support-core/archive/107e570e3565920174d5a25bc3a0340b32d16042.tar.gz#/swift-tools-support-core.tar.gz
 Source13:       https://github.com/apple/swift-argument-parser/archive/%{swift_argument_parser_version}.tar.gz#/swift-argument-parser.tar.gz
-Source14:       https://github.com/apple/swift-driver/archive/swift-%{swift_version}.tar.gz#/swift-driver.tar.gz
+Source14:       https://github.com/apple/swift-driver/archive/9982f32f96a2e0e597d1b4a0af4a7e997dc471be.tar.gz#/swift-driver.tar.gz
 Source15:       https://github.com/unicode-org/icu/archive/release-%{icu_version}.tar.gz#/icu.tar.gz
-Source16:       https://github.com/apple/swift-syntax/archive/swift-%{swift_version}.zip#/swift-syntax.tar.gz
-Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.tar.gz#/yams.tar.gz
+Source16:       https://github.com/apple/swift-syntax/archive/87d6d0af3d2db26ce0d6014cd953e546d45f63c6.tar.gz#/swift-syntax.tar.gz
+Source17:       https://github.com/jpsim/Yams/archive/%{yams_version}.zip#/yams.tar.gz
 Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_crypto_version}.tar.gz#/swift-crypto.tar.gz
 Source19:       https://github.com/ninja-build/ninja/archive/refs/tags/v%{ninja_version}.tar.gz#/ninja.tar.gz
 Source20:       https://github.com/KitWare/CMake/archive/refs/tags/v%{cmake_version}.tar.gz#/cmake.tar.gz
 Source21:       https://github.com/apple/swift-atomics/archive/%{swift_atomics_version}.tar.gz#/swift-atomics.tar.gz
-Source22:       https://github.com/apple/swift-cmark/archive/swift-%{swift_version}-gfm.tar.gz#/swift-cmark-gfm.tar.gz
-Source23:       https://github.com/apple/swift-docc/archive/swift-%{swift_version}.tar.gz#/swift-docc.tar.gz
-Source24:       https://github.com/apple/swift-docc-render-artifact/archive/swift-%{swift_version}.tar.gz#/swift-docc-render-artifact.tar.gz
-Source25:       https://github.com/apple/swift-docc-symbolkit/archive/swift-%{swift_version}.tar.gz#/swift-docc-symbolkit.tar.gz
+Source22:       https://github.com/apple/swift-cmark/archive/7fc530e5f12432db9768326ff74dc46de72a24e2.tar.gz#/swift-cmark-gfm.tar.gz
+Source23:       https://github.com/apple/swift-docc/archive/ed41ca7bdd3adb59702285e7ca94b60d6ba6f3c4.tar.gz#/swift-docc.tar.gz
+Source24:       https://github.com/apple/swift-docc-render-artifact/archive/a6507a5a9b35c4f29178807dec35ba9437449089.tar.gz#/swift-docc-render-artifact.tar.gz
+Source25:       https://github.com/apple/swift-docc-symbolkit/archive/aab31e5bfe39775e1b8555fe6d91255559bf5a5f.tar.gz#/swift-docc-symbolkit.tar.gz
 Source26:       https://github.com/apple/swift-collections/archive/%{swift_collections_version}.tar.gz#/swift-collections.tar.gz
 Source27:       https://github.com/apple/swift-numerics/archive/%{swift_numerics_version}.tar.gz#/swift-numerics.tar.gz
 Source28:       https://github.com/apple/swift-system/archive/%{swift_system_version}.tar.gz#/swift-system.tar.gz
 Source29:       https://github.com/apple/swift-nio/archive/%{swift_nio_version}.tar.gz#/swift-nio.tar.gz
 Source30:       https://github.com/apple/swift-nio-ssl/archive/%{swift_nio_ssl_version}.tar.gz#/swift-nio-ssl.tar.gz
-Source31:       https://github.com/apple/swift-format/archive/swift-%{swift_version}.tar.gz#/swift-format.tar.gz
-Source32:       https://github.com/apple/swift-lmdb/archive/swift-%{swift_version}.tar.gz#/swift-lmdb.tar.gz
-Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_version}.tar.gz#/swift-markdown.tar.gz
+Source31:       https://github.com/apple/swift-format/archive/3e924a83fc24e81c5d7fdd5f93da3fedb49872b0.tar.gz#/swift-format.tar.gz
+Source32:       https://github.com/apple/swift-lmdb/archive/6ea45a7ebf6d8f72bd299dfcc3299e284bbb92ee.tar.gz#/swift-lmdb.tar.gz
+Source33:       https://github.com/apple/swift-markdown/archive/16ebb0ccea68c0009f550bd48cca1df8675685dc.tar.gz#/swift-markdown.tar.gz
 
 Patch0:         patches/hwasan_symbolize.patch
 
@@ -113,37 +113,37 @@ correct programs easier for the developer.
 # necessary
 mv CMake-%{cmake_version} cmake
 mv icu-release-%{icu_version} icu
-mv indexstore-db-swift-%{swift_version} indexstore-db
-mv llvm-project-swift-%{swift_version} llvm-project
+mv indexstore-db-47aa228fa4d47ab90e8a3b8d9468d2ca99434463 indexstore-db
+mv llvm-project-900c3b6b832d1d0e7d6e1220f6ba001802cbe0cc llvm-project
 mv ninja-%{ninja_version} ninja
-mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
+mv sourcekit-lsp-489da496c46e01746ea5158ea0b8ec6e4a8a1f97 sourcekit-lsp
+mv swift-8c610f7f19b9c4e0651f95fa7c4852e5d3b7a03e swift
 mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
 mv swift-atomics-%{swift_atomics_version} swift-atomics
-mv swift-cmark-swift-%{swift_version} cmark
-mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
+mv swift-cmark-7fc530e5f12432db9768326ff74dc46de72a24e2 swift-cmark-gfm
+mv swift-cmark-9c8096a23f44794bde297452d87c455fc4f76d42 cmark
 mv swift-collections-%{swift_collections_version} swift-collections
-mv swift-corelibs-foundation-swift-%{swift_version} swift-corelibs-foundation
-mv swift-corelibs-libdispatch-swift-%{swift_version} swift-corelibs-libdispatch
-mv swift-corelibs-xctest-swift-%{swift_version} swift-corelibs-xctest
+mv swift-corelibs-foundation-061007026b6a12039bede2c6419753c8630741d4 swift-corelibs-foundation
+mv swift-corelibs-libdispatch-880bf655b65595862bed8fc5cbd922f60765e8b0 swift-corelibs-libdispatch
+mv swift-corelibs-xctest-2f64db1fdcc600d26566fe67ffceca7d76226b8b swift-corelibs-xctest
 mv swift-crypto-%{swift_crypto_version} swift-crypto
-mv swift-docc-render-artifact-swift-%{swift_version} swift-docc-render-artifact
-mv swift-docc-swift-%{swift_version} swift-docc
-mv swift-docc-symbolkit-swift-%{swift_version} swift-docc-symbolkit
-mv swift-driver-swift-%{swift_version} swift-driver
-mv swift-format-swift-%{swift_version} swift-format
-mv swift-integration-tests-swift-%{swift_version} swift-integration-tests
-mv swift-llbuild-swift-%{swift_version} llbuild
-mv swift-lmdb-swift-%{swift_version} swift-lmdb
-mv swift-markdown-swift-%{swift_version} swift-markdown
+mv swift-docc-ed41ca7bdd3adb59702285e7ca94b60d6ba6f3c4 swift-docc
+mv swift-docc-render-artifact-a6507a5a9b35c4f29178807dec35ba9437449089 swift-docc-render-artifact
+mv swift-docc-symbolkit-aab31e5bfe39775e1b8555fe6d91255559bf5a5f swift-docc-symbolkit
+mv swift-driver-9982f32f96a2e0e597d1b4a0af4a7e997dc471be swift-driver
+mv swift-format-3e924a83fc24e81c5d7fdd5f93da3fedb49872b0 swift-format
+mv swift-integration-tests-3670ed08b57bd1c1b6dffc677cd93ffcfd1ddd48 swift-integration-tests
+mv swift-llbuild-acd686530e56122d916acd49a166beb9198e9b87 llbuild
+mv swift-lmdb-6ea45a7ebf6d8f72bd299dfcc3299e284bbb92ee swift-lmdb
+mv swift-markdown-16ebb0ccea68c0009f550bd48cca1df8675685dc swift-markdown
 mv swift-nio-%{swift_nio_version} swift-nio
 mv swift-nio-ssl-%{swift_nio_ssl_version} swift-nio-ssl
 mv swift-numerics-%{swift_numerics_version} swift-numerics
-mv swift-package-manager-swift-%{swift_version} swiftpm
-mv swift-swift-%{swift_version} swift
-mv swift-syntax-swift-%{swift_version} swift-syntax
+mv swift-package-manager-6647fa09d6042b29cbb115eecf6f292beb7f6837 swiftpm
+mv swift-syntax-87d6d0af3d2db26ce0d6014cd953e546d45f63c6 swift-syntax
 mv swift-system-%{swift_system_version} swift-system
-mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
-mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
+mv swift-tools-support-core-107e570e3565920174d5a25bc3a0340b32d16042 swift-tools-support-core
+mv swift-xcode-playground-support-dd0d8c8d121d2f20664e4779a3d29482a55908bb swift-xcode-playground-support
 mv Yams-%{yams_version} yams
 
 # Adjust python version hwasan_symbolize
