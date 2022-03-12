@@ -44,7 +44,6 @@ Source31:       https://github.com/apple/swift-format/archive/swift-%{swift_vers
 Source32:       https://github.com/apple/swift-lmdb/archive/swift-%{swift_version}.tar.gz#/swift-lmdb.tar.gz
 Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_version}.tar.gz#/swift-markdown.tar.gz
 
-
 Patch0:         patches/hwasan_symbolize.patch
 
 BuildRequires:  autoconf
@@ -64,9 +63,9 @@ BuildRequires:  ninja-build
 BuildRequires:  openssl-devel
 BuildRequires:  pexpect
 BuildRequires:  python-devel
-BuildRequires:  python3-devel
 BuildRequires:  python-pygments
 BuildRequires:  python-six
+BuildRequires:  python3-devel
 BuildRequires:  python36-pexpect
 BuildRequires:  python36-six
 BuildRequires:  PyYAML

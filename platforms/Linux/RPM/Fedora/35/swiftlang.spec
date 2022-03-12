@@ -60,51 +60,50 @@ Source32:       https://github.com/apple/swift-lmdb/archive/swift-%{swift_versio
 Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_version}.tar.gz#/swift-markdown.tar.gz
 
 Patch0:         nocyclades.patch
-Patch1:			unusedvariable.patch
- 
+Patch1:         unusedvariable.patch
+
 BuildRequires:  clang
-BuildRequires:  swig
-BuildRequires:  rsync
-BuildRequires:  python3
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-distro
 BuildRequires:  libbsd-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  libsqlite3x-devel
-BuildRequires:  libdispatch-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libuuid-devel
+BuildRequires:  libdispatch-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libicu-devel
+BuildRequires:  libsqlite3x-devel
+BuildRequires:  libuuid-devel
+BuildRequires:  libxml2-devel
 BuildRequires:  perl-podlators
+BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  python3-distro
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
-BuildRequires:  /usr/bin/pathfix.py
-BuildRequires:  cmake
+BuildRequires:  rsync
+BuildRequires:  swig
 %if ! 0%{?el8}
 BuildRequires:	python-unversioned-command
 %endif
+BuildRequires:  /usr/bin/pathfix.py
 
-Requires:       glibc-devel
 Requires:       binutils-gold
 Requires:       gcc
-Requires:       ncurses-devel
+Requires:       glibc-devel
 Requires:       ncurses-compat-libs
+Requires:       ncurses-devel
 
-ExclusiveArch:  x86_64 aarch64 
+ExclusiveArch:  x86_64 aarch64
 
 Provides: 	swiftlang = %{version}-%{release}
 
 %description
-Swift is a general-purpose programming language built using 
-a modern approach to safety, performance, and software design 
+Swift is a general-purpose programming language built using
+a modern approach to safety, performance, and software design
 patterns.
 
-The goal of the Swift project is to create the best available 
-language for uses ranging from systems programming, to mobile 
-and desktop apps, scaling up to cloud services. Most 
-importantly, Swift is designed to make writing and maintaining 
-correct programs easier for the developer. 
+The goal of the Swift project is to create the best available
+language for uses ranging from systems programming, to mobile
+and desktop apps, scaling up to cloud services. Most
+importantly, Swift is designed to make writing and maintaining
+correct programs easier for the developer.
 
 
 %prep
@@ -112,47 +111,41 @@ correct programs easier for the developer.
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
+mv CMake-%{cmake_version} cmake
+mv icu-release-%{icu_version} icu
+mv indexstore-db-swift-%{swift_version} indexstore-db
+mv llvm-project-swift-%{swift_version} llvm-project
+mv ninja-%{ninja_version} ninja
+mv ninja-%{ninja_version} ninja
+mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
+mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
+mv swift-atomics-%{swift_atomics_version} swift-atomics
 mv swift-cmark-swift-%{swift_version} cmark
+mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
+mv swift-collections-%{swift_collections_version} swift-collections
 mv swift-corelibs-foundation-swift-%{swift_version} swift-corelibs-foundation
 mv swift-corelibs-libdispatch-swift-%{swift_version} swift-corelibs-libdispatch
 mv swift-corelibs-xctest-swift-%{swift_version} swift-corelibs-xctest
+mv swift-crypto-%{swift_crypto_version} swift-crypto
+mv swift-docc-render-artifact-swift-%{swift_version} swift-docc-render-artifact
+mv swift-docc-swift-%{swift_version} swift-docc
+mv swift-docc-symbolkit-swift-%{swift_version} swift-docc-symbolkit
+mv swift-driver-swift-%{swift_version} swift-driver
+mv swift-format-swift-%{swift_version} swift-format
 mv swift-integration-tests-swift-%{swift_version} swift-integration-tests
 mv swift-llbuild-swift-%{swift_version} llbuild
-mv swift-package-manager-swift-%{swift_version} swiftpm
-mv swift-swift-%{swift_version} swift
-mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
-mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
-mv indexstore-db-swift-%{swift_version} indexstore-db
-mv llvm-project-swift-%{swift_version} llvm-project
-mv swift-syntax-swift-%{swift_version} swift-syntax
-mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
-mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
-mv swift-driver-swift-%{swift_version} swift-driver
-mv swift-crypto-%{swift_crypto_version} swift-crypto
-mv ninja-%{ninja_version} ninja
-mv CMake-%{cmake_version} cmake
-mv swift-atomics-%{swift_atomics_version} swift-atomics
-mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
-mv swift-docc-swift-%{swift_version} swift-docc
-mv swift-docc-render-artifact-swift-%{swift_version} swift-docc-render-artifact
-mv swift-docc-symbolkit-swift-%{swift_version} swift-docc-symbolkit
-mv swift-collections-%{swift_collections_version} swift-collections
-mv swift-numerics-%{swift_numerics_version} swift-numerics
-mv swift-system-%{swift_system_version} swift-system
-mv swift-nio-%{swift_nio_version} swift-nio
-mv swift-nio-ssl-%{swift_nio_ssl_version} swift-nio-ssl
-mv swift-format-swift-%{swift_version} swift-format
 mv swift-lmdb-swift-%{swift_version} swift-lmdb
 mv swift-markdown-swift-%{swift_version} swift-markdown
-
-# ICU 
-mv icu-release-%{icu_version} icu
-
-# Yams
+mv swift-nio-%{swift_nio_version} swift-nio
+mv swift-nio-ssl-%{swift_nio_ssl_version} swift-nio-ssl
+mv swift-numerics-%{swift_numerics_version} swift-numerics
+mv swift-package-manager-swift-%{swift_version} swiftpm
+mv swift-swift-%{swift_version} swift
+mv swift-syntax-swift-%{swift_version} swift-syntax
+mv swift-system-%{swift_system_version} swift-system
+mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
+mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
 mv Yams-%{yams_version} yams
-
-# Ninja
-mv ninja-%{ninja_version} ninja
 
 # Remove Cyclades as it has been removed from the Linux kernel
 %patch0 -p0
@@ -160,14 +153,13 @@ mv ninja-%{ninja_version} ninja
 # Temp patch to test libdispatch issue with clang 13
 %patch1 -p0
 
-# Fix python to python3 
+# Fix python to python3
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" swift/utils/api_checker/swift-api-checker.py
 pathfix.py -pni "%{__python3} %{py3_shbang_opts}" llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
 
-
 %build
 export VERBOSE=1
-# Before Fedora 34, we may not have /usr/bin/python, so we 
+# Before Fedora 34, we may not have /usr/bin/python, so we
 # roll our own because the build script expects there to be one.
 %if 0%{?fedora} < 34 || 0%{?el8}
 mkdir $PWD/binforpython
@@ -177,7 +169,6 @@ export PATH=$PWD/binforpython:$PATH
 
 # Here we go!
 swift/utils/build-script --preset=buildbot_linux,no_assertions,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-%{linux_version}.tar.gz
-
 
 %install
 mkdir -p %{buildroot}%{_libexecdir}/swift/%{package_version}
@@ -193,7 +184,6 @@ cp %{_builddir}/usr/share/man/man1/swift.1 %{buildroot}%{_mandir}/man1/swift.1
 # how the Swift binaries use RPATH
 export QA_SKIP_RPATHS=1
 
-
 %files
 %license swift/LICENSE.txt
 %{_bindir}/swift
@@ -202,9 +192,7 @@ export QA_SKIP_RPATHS=1
 %{_mandir}/man1/swift.1.gz
 %{_libexecdir}/swift/
 
-
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 
 %changelog

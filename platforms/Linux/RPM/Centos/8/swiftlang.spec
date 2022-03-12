@@ -62,16 +62,16 @@ BuildRequires:  libxml2-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre-devel
+BuildRequires:  platform-python-devel
 BuildRequires:  python2
 BuildRequires:  python2-devel
 BuildRequires:  python2-six
 BuildRequires:  python3
-BuildRequires:  python3-six
 BuildRequires:  python3-pexpect
-BuildRequires:  platform-python-devel
+BuildRequires:  python3-six
+BuildRequires:  rsync
 BuildRequires:  sqlite-devel
 BuildRequires:  swig
-BuildRequires:  rsync
 BuildRequires:  tar
 BuildRequires:  which
 
