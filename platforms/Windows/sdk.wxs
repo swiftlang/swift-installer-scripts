@@ -62,7 +62,7 @@
                                 </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DIFFERENTIATION_SWIFTMODULE" Name="_Differentiation.swiftmodule">
                                 </Directory>
-                                <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DISTRIBUTED_SWIFTMODULE" Name="_Distributed.swiftmodule">
+                                <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DISTRIBUTED_SWIFTMODULE" Name="Distributed.swiftmodule">
                                 </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__STRING_PROCESSING_SWIFTMODULE" Name="_StringProcessing.swiftmodule">
                                 </Directory>
@@ -183,10 +183,10 @@
     </DirectoryRef>
 
     <DirectoryRef Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DISTRIBUTED_SWIFTMODULE">
-      <Component Id="_DISTRIBUTED_SWIFTMODULE" Guid="63ea424f-ae9f-4e47-b5d4-cdd04ebc5fdd">
-        <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTINTERFACE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      <Component Id="DISTRIBUTED_SWIFTMODULE" Guid="63ea424f-ae9f-4e47-b5d4-cdd04ebc5fdd">
+        <File Id="DISTRIBUTED_SWIFTMODULE_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+        <File Id="DISTRIBUTED_SWIFTMODULE_SWIFTINTERFACE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+        <File Id="DISTRIBUTED_SWIFTMODULE_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
@@ -272,7 +272,7 @@
       </Component>
 
       <Component Id="_DISTRIBUTED_IMPORT_LIBS" Guid="c3d65ddc-89e9-4ff9-bf1f-ef91bc0b1009">
-        <File Id="SWIFT_DISTRIBUTED_LIB" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\swift_Distributed.lib" Checksum="yes" />
+        <File Id="SWIFT_DISTRIBUTED_LIB" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\swiftDistributed.lib" Checksum="yes" />
       </Component>
 
       <Component Id="BLOCKS_RUNTIME_IMPORT_LIBS" Guid="c521f7e9-179a-49ed-a643-035d8a96be56">
