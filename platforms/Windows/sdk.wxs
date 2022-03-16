@@ -358,7 +358,7 @@
 
       <ComponentRef Id="_CONCURRENCY_SWIFTMODULE" />
       <ComponentRef Id="_DIFFERENTIATION_SWIFTMODULE" />
-      <ComponentRef Id="_DISTRIBUTED_SWIFTMODULE" />
+      <ComponentRef Id="DISTRIBUTED_SWIFTMODULE" />
       <ComponentRef Id="_STRING_PROCESSING_SWIFTMODULE" />
       <ComponentRef Id="CRT_SWIFTMODULE" />
       <ComponentRef Id="DISPATCH_SWIFTMODULE" />
