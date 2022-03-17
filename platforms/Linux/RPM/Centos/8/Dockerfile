@@ -18,7 +18,11 @@ RUN yum install -y rpmdevtools yum-utils createrepo
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 RUN yum config-manager --set-enabled powertools
 
-# Optimization: Install all the dependencies needed to build Swift from the spec file itself
+# Optimization: Install Swift build requirements listed in the spec file
 ADD swiftlang.spec /tmp/swiftlang.spec
-RUN touch /tmp/metadata.inc # fake metadata is okay for this optimization
-RUN cd /tmp && yum-builddep -y swiftlang.spec
+# rewrite a minimal spec with the build requirements
+RUN echo -e "Name: optimization\nVersion: optimization\nRelease: optimization\nSummary: optimization\nLicense: optimization\n" > /tmp/optimization.spec
+RUN cat /tmp/swiftlang.spec | grep BuildRequires >> /tmp/optimization.spec
+RUN echo -e "\n%description" >> /tmp/optimization.spec
+# install the build requirements
+RUN cd /tmp && yum-builddep -y optimization.spec

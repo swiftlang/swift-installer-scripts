@@ -1,13 +1,5 @@
+%include global.inc
 %include metadata.inc
-
-%global debug_package %{nil}
-
-Name:           %{package_name}
-Version:        %{package_version}
-Release:        1%{?dist}
-Summary:        %{package_summary}
-License:        %{package_license}
-URL:            %{package_url}
 
 Source0:        https://github.com/apple/swift/archive/swift-%{swift_version}.tar.gz#/swift.tar.gz
 Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{swift_version}.tar.gz#/corelibs-libdispatch.tar.gz
@@ -95,15 +87,7 @@ Requires:       zlib-devel
 ExclusiveArch:  x86_64 aarch64
 
 %description
-Swift is a general-purpose programming language built using
-a modern approach to safety, performance, and software design
-patterns.
-
-The goal of the Swift project is to create the best available
-language for uses ranging from systems programming, to mobile
-and desktop apps, scaling up to cloud services. Most
-importantly, Swift is designed to make writing and maintaining
-correct programs easier for the developer.
+%include description.inc
 
 %prep
 %setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20 -a 21 -a 22 -a 23 -a 24 -a 25 -a 26 -a 27 -a 28 -a 29 -a 30 -a 31 -a 32 -a 33

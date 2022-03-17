@@ -26,10 +26,10 @@ services:
     image: amazonlinux-2-rpm-builder
     depends_on: [docker-setup]
     volumes:
-      - .:/code:z
-      - ../../../RPM:/shared:ro
+      - ../../Amazonlinux/2:/code/Amazonlinux/2:z
+      - ../../Shared:/code/Shared:z
       - ./.output:/output:z
-    working_dir: /code
+    working_dir: /code/Amazonlinux/2
     cap_drop:
       - CAP_NET_RAW
       - CAP_NET_BIND_SERVICE
@@ -40,7 +40,7 @@ services:
 
   createrepo:
     <<: *common
-    command: /bin/bash -cl "../shared/createrepo_rpm.sh"
+    command: /bin/bash -cl "./createrepo_rpm.sh"
 
   shell:
     <<: *common
