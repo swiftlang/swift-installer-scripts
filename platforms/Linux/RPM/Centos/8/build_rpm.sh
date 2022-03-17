@@ -1,1 +1,0 @@
-../../Shared/scripts/build_rpm.sh
