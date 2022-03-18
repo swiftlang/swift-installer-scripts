@@ -1,0 +1,5 @@
+swiftlang (5.6.0-1) focal; urgency=medium
+
+  * Debian packaging introduction for Swift 5.6.
+
+ -- Julien Blache <jblache@apple.com>  Tue, 15 Mar 2022 16:36:34 -0700

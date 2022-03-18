@@ -1,0 +1,85 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+BUILD_SCRIPT_ARGS =
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+    NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+    BUILD_SCRIPT_ARGS += -j $(NUMJOBS)
+endif
+
+# Verbose Swift build
+export VERBOSE=1
+
+SWIFTLANG_PKG_VER=$(shell dpkg-parsechangelog -S Version | sed -e 's/-[^-]*$$//')
+SWIFT_BUILDDIR=$(CURDIR)/build
+
+%:
+	dh $@
+
+clean::
+	dh_testdir
+
+	# Generate debian/control and others
+	sed -e 's/x.y.z/$(SWIFTLANG_PKG_VER)/g' < debian/control.in > debian/control
+
+	rm -f debian/swiftlang-*.install debian/swiftlang.links
+	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang-X.Y.Z.install.in > debian/swiftlang-$(SWIFTLANG_PKG_VER).install
+	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.links.in > debian/swiftlang.links
+
+	rm -rf $(SWIFT_BUILDDIR)
+
+	# Modified during the build
+	 rm -f swift-corelibs-libdispatch/dispatch/module.modulemap
+	 rm -f swift-corelibs-libdispatch/private/module.modulemap
+
+	# Python byte-compiled files
+	find swift/utils -name '*.pyc' -delete
+	find llvm-project -name '*.pyc' -delete
+	find cmark/test -name '*.pyc' -delete
+	find swiftpm -name '*.pyc' -delete
+
+	dh_clean
+
+override_dh_auto_clean:
+	# Disabled; we have a non-standard build system that the tool
+	# doesn't support, so be on the safe side and avoid any potential
+	# false-triggering.
+
+override_dh_update_autotools_config:
+	# Don't go and update config.guess/config.sub, it causes LLVM to
+	# pick up the x86_64-pc-linux-gnu triplet instead of the expected
+	# x86_64-unknown-linux-gnu. This causes Swift modules to break.
+
+override_dh_autoreconf:
+	# We'd rather not do that either, see above.
+
+override_dh_makeshlibs:
+	# Do not provide shlibs for the all-in-one package; shlibs will be
+	# provided where pertinent as we move toward the end state of the
+	# packaging, or a different dependency mechanism will be instituted.
+
+override_dh_shlibdeps:
+	dh_shlibdeps -l/opt/swift/$(SWIFTLANG_PKG_VER)/lib/swift/linux/
+
+override_dh_dwz:
+	# Disable DWARF debug info compression; it is failing, so we'll
+	# need to investigate whether or not it is suitable for us.
+
+override_dh_auto_build:
+	swift/utils/build-script $(BUILD_SCRIPT_ARGS) --preset=buildbot_linux,no_assertions,no_test \
+		install_prefix=/opt/swift/$(SWIFTLANG_PKG_VER) \
+		install_destdir=$(SWIFT_BUILDDIR)/discard \
+		installable_package=$(SWIFT_BUILDDIR)/swiftdeb-$(SWIFTLANG_PKG_VER).tar.gz
+
+override_dh_auto_install:
+	# The build script preset used above will build, install, package,
+	# and test the resulting tarball. We could split all this into 2
+	# or more presets and run them in sequence as expected here, but
+	# for now we'll just unpack the (tested) tarball and go from there.
+	mkdir -p $(CURDIR)/debian/tmp
+	tar -C $(CURDIR)/debian/tmp -xzf $(SWIFT_BUILDDIR)/swiftdeb-$(SWIFTLANG_PKG_VER).tar.gz
+
+	# Manually compress manpages, since they are in a non-standard location
+	find $(CURDIR)/debian/tmp/opt/swift/$(SWIFTLANG_PKG_VER)/share/man -type f -exec gzip \{\} \;
