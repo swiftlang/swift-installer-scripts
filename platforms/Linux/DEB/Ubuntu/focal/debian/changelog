@@ -1,0 +1,17 @@
+swiftlang (5.6.0-1) focal; urgency=medium
+
+  * New upstream release.
+
+ -- Julien Blache <jblache@apple.com>  Tue, 15 Mar 2022 16:36:34 -0700
+
+swiftlang (5.5.3-2) focal; urgency=medium
+
+  * Add a default swiftlang package with symlinks in the PATH.
+
+ -- Julien Blache <jblache@apple.com>  Fri, 11 Mar 2022 15:04:24 -0800
+
+swiftlang (5.5.3-1) focal; urgency=medium
+
+  * Initial release.
+
+ -- Julien Blache <jblache@apple.com>  Tue, 01 Mar 2022 15:04:23 -0800
