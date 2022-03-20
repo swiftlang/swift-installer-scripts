@@ -695,18 +695,12 @@
       <Component Id="ArgumentParser.dll" Directory="_usr_bin" Guid="1c179884-b2b1-46c8-b359-ef4271001f44">
         <File Id="ArgumentParser.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" Checksum="yes" />
       </Component>
-      <Component Id="ArgumentParserToolInfo.dll" Directory="_usr_bin" Guid="90fdb69c-5dc3-4f91-8162-17b4967c5c79">
-        <File Id="ArgumentParserToolInfo.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.dll" Checksum="yes" />
-      </Component>
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
     <ComponentGroup Id="SwiftArgumentParserDebugInfo">
       <Component Id="ArgumentParser.pdb" Directory="_usr_bin" Guid="4bd6bcaf-85be-4d3e-b952-4efee6a95f27">
         <File Id="ArgumentParser.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.pdb" Checksum="yes" DiskId="11" />
-      </Component>
-      <Component Id="ArgumentParserToolInfo.pdb" Directory="_usr_bin" Guid="e253ba97-6252-4fba-a8e9-0d443bf3304d">
-        <File Id="ArgumentParserToolInfo.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.pdb" Checksum="yes" DiskId="11" />
       </Component>
     </ComponentGroup>
     <?endif?>
