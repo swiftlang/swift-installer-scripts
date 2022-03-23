@@ -1,28 +1,5 @@
-%global debug_package %{nil}
-%global linux_version fedora
-%global swift_version 5.6-RELEASE
-%global package_version 5.6.0
-%global swift_source_location swift-source
-%global sap_version 0.4.3
-%global icu_version 65-1
-%global yams_version 4.0.2
-%global swift_argument_parser_version 1.0.3
-%global swift_crypto_version 1.1.5
-%global ninja_version 1.10.2
-%global cmake_version 3.19.6
-%global swift_atomics_version 1.0.2
-%global swift_collections_version 1.0.1
-%global swift_numerics_version 1.0.1
-%global swift_system_version 1.1.1
-%global swift_nio_version 2.31.2
-%global swift_nio_ssl_version 2.15.0
-
-Name:           swiftlang
-Version:        %{package_version}
-Release:        1%{?dist}
-Summary:        The Swift programming language
-License:        Apache 2.0
-URL:            https://www.swift.org
+%include global.inc
+%include metadata.inc
 
 Source0:        https://github.com/apple/swift/archive/swift-%{swift_version}.tar.gz#/swift.tar.gz
 Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{swift_version}.tar.gz#/corelibs-libdispatch.tar.gz
@@ -60,7 +37,7 @@ Source32:       https://github.com/apple/swift-lmdb/archive/swift-%{swift_versio
 Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_version}.tar.gz#/swift-markdown.tar.gz
 
 Patch0:         nocyclades.patch
-Patch1:			unusedvariable.patch
+Patch1:         unusedvariable.patch
 
 BuildRequires:  clang
 BuildRequires:  libbsd-devel
@@ -92,21 +69,12 @@ Requires:       ncurses-devel
 
 ExclusiveArch:  x86_64 aarch64
 
-Provides: 	swiftlang = %{version}-%{release}
-
 %description
-Swift is a general-purpose programming language built using
-a modern approach to safety, performance, and software design
-patterns.
-
-The goal of the Swift project is to create the best available
-language for uses ranging from systems programming, to mobile
-and desktop apps, scaling up to cloud services. Most
-importantly, Swift is designed to make writing and maintaining
-correct programs easier for the developer.
+%include description.inc
 
 %prep
 %setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20 -a 21 -a 22 -a 23 -a 24 -a 25 -a 26 -a 27 -a 28 -a 29 -a 30 -a 31 -a 32 -a 33
+
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
@@ -114,7 +82,6 @@ mv CMake-%{cmake_version} cmake
 mv icu-release-%{icu_version} icu
 mv indexstore-db-swift-%{swift_version} indexstore-db
 mv llvm-project-swift-%{swift_version} llvm-project
-mv ninja-%{ninja_version} ninja
 mv ninja-%{ninja_version} ninja
 mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
 mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
@@ -166,8 +133,8 @@ ln -s /usr/bin/python3 $PWD/binforpython/python
 export PATH=$PWD/binforpython:$PATH
 %endif
 
-# Here we go!
-swift/utils/build-script --preset=buildbot_linux,no_assertions,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-%{linux_version}.tar.gz
+# Run the build
+swift/utils/build-script --preset=buildbot_linux,no_assertions,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-fedora-rawhide.tar.gz
 
 %install
 mkdir -p %{buildroot}%{_libexecdir}/swift/%{package_version}
