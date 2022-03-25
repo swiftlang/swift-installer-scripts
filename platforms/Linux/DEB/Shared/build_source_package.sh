@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This helper script will fetch the Swift sources, save the
 # tarballs following the appropriate naming convention, and
@@ -10,7 +10,7 @@
 
 # Create swiftlang-X.Y.Z, unpack the debian tarball within,
 # proceed to adding the appropriate entry to the Debian
-# changelog, edit debian/source-version.sh, then run this
+# changelog, edit /source-version.sh, then run this
 # script from the directory containing swiftlang-X.Y.Z.
 #   $ mkdir swiftlang-X.Y.Z
 #   $ cd swiftlang-X.Y.Z
@@ -27,17 +27,22 @@
 #   $ cd swiftlang-X.Y.Z
 #   $ DEB_BUILD_OPTIONS=parallel=64 debuild
 
-set -eu
+set -eux
 
-. $(dirname $0)/source-versions.sh
+here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# load version definitions
+. ${here}/versions.sh
+
+staging_dir=$1
+package_dir=$staging_dir/swiftlang-${debversion}
 
 get_component ()
 {
     component=$1
     url="$2"
 
-    dest=swiftlang_${debversion}.orig-${component}
-
+    dest=${staging_dir}/swiftlang_${debversion}.orig-${component}
     echo "Downloading ${component} from ${url}"
 
     case "${url}" in
@@ -51,7 +56,10 @@ get_component ()
 
 	*.tar.gz)
 	    dest=${dest}.tar.gz
-	    curl -L -o ${dest} "${url}"
+      # temp
+      if [ ! -f ${dest} ]; then
+	      curl -L -o ${dest} "${url}"
+      fi
 	    ;;
 
 	*.tar.xz)
@@ -69,10 +77,12 @@ get_component ()
 	    exit 1
     esac
 
-    mkdir swiftlang-${debversion}/${component}
-    tar -C swiftlang-${debversion}/${component} --strip-components=1 -axf ${dest}
+    echo "Extracting ${component}"
+    mkdir ${package_dir}/${component}
+    tar -C ${package_dir}/${component} --strip-components=1 -axf ${dest}
 }
 
+# download
 get_component swift https://github.com/apple/swift/archive/swift-${swift_version}.tar.gz
 get_component swift-corelibs-libdispatch https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${swift_version}.tar.gz
 get_component swift-corelibs-foundation https://github.com/apple/swift-corelibs-foundation/archive/swift-${swift_version}.tar.gz
@@ -109,10 +119,10 @@ get_component swift-lmdb https://github.com/apple/swift-lmdb/archive/swift-${swi
 get_component swift-markdown https://github.com/apple/swift-markdown/archive/swift-${swift_version}.tar.gz
 
 # Refresh patches, if any
-if [ -s swiftlang-${debversion}/debian/patches/series ]; then
-    cd swiftlang-${debversion}
+if [ -s ${package_dir}/debian/patches/series ]; then
+    cd ${package_dir}
 
-    export QUILT_PATCHES=debian/patches 
+    export QUILT_PATCHES=debian/patches
     export QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
 
     while quilt push; do quilt refresh; done
@@ -121,4 +131,6 @@ if [ -s swiftlang-${debversion}/debian/patches/series ]; then
     cd -
 fi
 
-dpkg-source --create-empty-orig -b swiftlang-${debversion}
+# create a source package
+cd $staging_dir
+dpkg-source --create-empty-orig -b ${package_dir}

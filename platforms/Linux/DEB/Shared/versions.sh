@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 debversion=5.6.0
 
