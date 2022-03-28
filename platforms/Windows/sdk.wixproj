@@ -56,6 +56,10 @@
   </Target>
 
   <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
     <Compile Include="sdk-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>

@@ -337,9 +337,16 @@
       <ComponentRef Id="SDK_SDKSETTINGS_PLIST" />
     </ComponentGroup>
 
+    <!-- https://docs.microsoft.com/en-us/windows/win32/sysinfo/image-file-machine-constants -->
+    <?define IMAGE_FILE_MACHINE_AMD64=34404?>
+    <PropertyRef Id="WIX_NATIVE_MACHINE" />
+    <SetProperty Action="SetNATIVE_MACHINE" Id="NATIVE_MACHINE" Value="true" Before="CostFinalize">
+      WIX_NATIVE_MACHINE AND WIX_NATIVE_MACHINE = $(var.IMAGE_FILE_MACHINE_AMD64)
+    </SetProperty>
+
     <DirectoryRef Id="TARGETDIR">
       <Component Id="ENV_VARS" Guid="bd3ddc62-4c5c-4f6b-806e-02d2c6a65b65">
-        <!-- <Condition> %PROCESSOR_ARCHITECTURE~="amd64" </Condition> -->
+        <Condition>NATIVE_MACHINE</Condition>
         <Environment Id="SDKROOT" Action="set" Name="SDKROOT" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Platforms\Windows.platform\Developer\SDKs\Windows.sdk" />
       </Component>
     </DirectoryRef>
