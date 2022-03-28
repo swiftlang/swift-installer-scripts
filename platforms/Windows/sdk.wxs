@@ -27,6 +27,8 @@
                           <Directory Id="XCTEST_USR_LIB_SWIFT" Name="swift">
                             <Directory Id="XCTEST_USR_LIB_SWIFT_WINDOWS" Name="windows">
                               <Directory Id="XCTEST_USR_LIB_SWIFT_WINDOWS_X86_64" Name="x86_64">
+                                <Directory Id="XCTEST_USR_LIB_SWIFT_WINDOWS_XCTEST_SWIFTMODULE" Name="XCTest.swiftmodule">
+                                </Directory>
                               </Directory>
                             </Directory>
                           </Directory>
@@ -116,11 +118,10 @@
       </Component>
     </DirectoryRef>
 
-    <DirectoryRef Id="XCTEST_USR_LIB_SWIFT_WINDOWS_X86_64">
+    <DirectoryRef Id="XCTEST_USR_LIB_SWIFT_WINDOWS_XCTEST_SWIFTMODULE">
       <Component Id="XCTEST_SWIFT_MODULES" Guid="a52d9a17-c0e2-47f1-be01-4d47692423e3">
-        <!-- FIXME(compnerd) this should be moved into XCTest.swiftmodule/ -->
-        <File Id="XCTEST_SWIFTDOC" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\x86_64\XCTest.swiftdoc" Checksum="yes" />
-        <File Id="XCTEST_SWIFTMODULE" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\x86_64\XCTest.swiftmodule" Checksum="yes" />
+        <File Id="X86_64_UNKNOWN_WINDOWS_SWIFTDOC" Name="x86_64-unknown-windows-msvc.swiftdoc" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\x86_64\XCTest.swiftdoc" Checksum="yes" />
+        <File Id="X86_64_UNKNOWN_WINDOWS_SWIFTMODULE" Name="x86_64-unknown-windows-msvc.swiftmodule" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\x86_64\XCTest.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
