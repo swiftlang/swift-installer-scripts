@@ -10,21 +10,19 @@
 
     <!-- Directory Structure -->
     <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="WINDOWSVOLUME">
-        <Directory Id="LIBRARY" Name="Library">
-          <!-- TODO(compnerd) use $(var.ProductVersion) -->
-          <Directory Id="SWIFT" Name="Swift-development">
-            <Directory Id="BIN" Name="bin">
-            </Directory>
+      <!-- TODO(compnerd) use $(var.ProductVersion) -->
+      <Directory Id="SWIFT" Name="runtime-development">
+        <Directory Id="SWIFT_USR" Name="usr">
+          <Directory Id="SWIFT_USR_BIN" Name="bin">
           </Directory>
         </Directory>
       </Directory>
     </Directory>
 
-    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
+    <SetDirectory Id="TARGETDIR" Value="[ProgramFiles64Folder]swift" />
 
     <!-- Components -->
-    <DirectoryRef Id="BIN">
+    <DirectoryRef Id="SWIFT_USR_BIN">
       <Component Id="WINDOWS_SWIFT_RUNTIME" Guid="cd825076-16da-4530-84c8-810f3ae472a8">
         <File Id="BLOCKSRUNTIME_DLL" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" />
         <File Id="DISPATCH_DLL" Source="$(var.SDK_ROOT)\usr\bin\dispatch.dll" Checksum="yes" />
@@ -72,7 +70,7 @@
 
     <DirectoryRef Id="TARGETDIR">
       <Component Id="ENV_VARS" Guid="f249625e-aacd-4b17-a464-8f8df05ba5f3">
-        <Environment Id="PATH" Action="set" Name="PATH" Part="last" Permanent="no" System="yes" Value="[WindowsVolume]Library\Swift-development\bin" />
+        <Environment Id="PATH" Action="set" Name="PATH" Part="last" Permanent="no" System="yes" Value="[TARGETDIR]runtime-development\usr\bin" />
       </Component>
     </DirectoryRef>
 
