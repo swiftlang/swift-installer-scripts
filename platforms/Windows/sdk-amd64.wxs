@@ -21,7 +21,7 @@
                     -->
                     <Directory Id="LIBRARY_DEVELOPER_PLATFORMS_WINDOWS_PLATFORM_DEVELOPER_LIBRARY_XCTEST" Name="XCTest-development">
                       <Directory Id="XCTEST_USR" Name="usr">
-                        <Directory Id="XCTEST_USR_BIN" Name="bin">
+                        <Directory Id="XCTEST_USR_BIN64" Name="bin64">
                         </Directory>
                         <Directory Id="XCTEST_USR_LIB" Name="lib">
                           <Directory Id="XCTEST_USR_LIB_SWIFT" Name="swift">
@@ -106,13 +106,13 @@
     </SetDirectory>
 
     <!-- Components -->
-    <DirectoryRef Id="XCTEST_USR_BIN">
+    <DirectoryRef Id="XCTEST_USR_BIN64">
       <Component Id="XCTEST_RUNTIME" Guid="3d49884d-1ff2-4f2f-bdb1-5dacba74e256">
         <File Id="XCTEST_DLL" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
-    <DirectoryRef Id="XCTEST_USR_LIB_SWIFT_WINDOWS">
+    <DirectoryRef Id="XCTEST_USR_LIB_SWIFT_WINDOWS_X86_64">
       <Component Id="XCTEST_IMPORT_LIBS" Guid="3602ef83-8da8-47d3-b3ec-942e916c420b">
         <File Id="XCTEST_LIB" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" Checksum="yes" />
       </Component>
