@@ -28,7 +28,7 @@
   <Import Project="$(WixTargetsPath)" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SWIFT_SOURCE_DIR=$(SWIFT_SOURCE_DIR);SDK_ROOT_USR_LIB_SWIFT_SHIMS=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
+    <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SWIFT_SOURCE_DIR=$(SWIFT_SOURCE_DIR);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
     <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
     <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
     <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
@@ -48,9 +48,9 @@
   <Target Name="BeforeBuild">
     <ItemGroup>
       <HarvestDirectory Include="$(SDK_ROOT)\usr\lib\swift\shims">
-        <ComponentGroupName>SWIFT_SHIMS</ComponentGroupName>
-        <DirectoryRefId>WINDOWS_SDK_USR_LIB_SWIFT_SHIMS</DirectoryRefId>
-        <PreprocessorVariable>var.SDK_ROOT_USR_LIB_SWIFT_SHIMS</PreprocessorVariable>
+        <ComponentGroupName>SwiftShims</ComponentGroupName>
+        <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
+        <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
       </HarvestDirectory>
     </ItemGroup>
   </Target>
