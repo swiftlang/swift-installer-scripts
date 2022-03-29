@@ -9,6 +9,12 @@
     <OutputType>Package</OutputType>
     <ProjectGuid>39170311-3634-4a14-9546-7e4825e7dcd8</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
@@ -50,6 +56,6 @@
   </Target>
 
   <ItemGroup>
-    <Compile Include="sdk.wxs" />
+    <Compile Include="sdk-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>

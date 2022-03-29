@@ -9,6 +9,12 @@
     <OutputType>Package</OutputType>
     <ProjectGuid>07dd2e66-b7f5-40a7-bed1-b3dd2a187c00</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
@@ -25,7 +31,22 @@
     <DefineConstants>ProductVersion=$(ProductVersion);ProductVersionMajor=$(ProductVersionMajor);ICU_ROOT=$(ICU_ROOT)</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <InstallerPlatform>x64</InstallerPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <InstallerPlatform>arm64</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <InstallerPlatform>arm</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <InstallerPlatform>x86</InstallerPlatform>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="icu.wxs" />
+    <Compile Include="icu-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>

@@ -9,6 +9,9 @@
     <OutputType>Package</OutputType>
     <ProjectGuid>0a266072-af7c-43f2-b192-dd86995c2e82</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>0.0.0</ProductVersion>
   </PropertyGroup>

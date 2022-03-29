@@ -9,6 +9,9 @@
     <OutputType>Bundle</OutputType>
     <ProjectGuid>8ae3ad4d-2df4-42b7-890e-decdd5cead0b</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
