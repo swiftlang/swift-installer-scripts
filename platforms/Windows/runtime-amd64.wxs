@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Runtime for Windows x86_64" UpgradeCode="850349e4-5a24-44eb-bded-f49a2709d26f" Version="$(var.ProductVersion)">
-    <Package Comments="Copyright (c) 2021 Swift Open Source Project" Compressed="yes" Description="Swift Runtime for Windows x86_64" InstallScope="perMachine" Manufacturer="swift.org" />
+    <Package Comments="Copyright (c) 2021-2022 Swift Open Source Project" Compressed="yes" Description="Swift Runtime for Windows x86_64" InstallScope="perMachine" Manufacturer="swift.org" />
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
