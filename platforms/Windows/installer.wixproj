@@ -14,6 +14,11 @@
   <PropertyGroup>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
+
+    <RequiredChain Condition=" '$(RequiredChain)' == '' ">icu.msi;runtime.msi;toolchain.msi;devtools.msi;sdk.msi</RequiredChain>
+    <RequiredChain>$(RequiredChain)</RequiredChain>
+
+    <OptionalChain>$(OptionalChain)</OptionalChain>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -25,7 +30,7 @@
   <Import Project="$(WixTargetsPath)" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
+    <DefineConstants>ProductVersion=$(ProductVersion);RequiredChain=$(RequiredChain);OptionalChain=$(OptionalChain);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
