@@ -56,7 +56,7 @@ swift-installer-scripts
 ## Linux Packages (RPM/Deb)
 
 Currently Swift on Linux is distributed via tarball and Docker, and
-we would like to start supporting RPM and Debs officially on swift.org.
+we would like to start supporting RPM and Debs officially on [swift.org](https://www.swift.org).
 The goal is to provide a seamless install process for Swift on Linux by
 utilizing the platform’s native package manager (RPM/Deb).
 
@@ -106,12 +106,6 @@ Repository configuration: `/repo/<OS>/releases/<OS_VERSION>/swiftlang.repo`
 /repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
 ```
 
-* **Package URL:**  
-https://download.swift.org/repo/centos/releases/8/aarch64/swiftlang-5.5.0-1.el8.aarch64.rpm
-
-* **Repository configuration file URL:**  
-https://download.swift.org/repo/centos/releases/8/swiftlang.repo
-
 ## Tasks
 
 ### RPM Package Manager (RPM)*
@@ -149,7 +143,7 @@ https://download.swift.org/repo/centos/releases/8/swiftlang.repo
 	* [GitHub discussion](https://github.com/apple/swift-installer-scripts/pull/37#discussion_r726707320)
 * Should we support multiple swiftlang versions on the system?
 * Multiple packages:
-	* swiftlang
+	* [swiftlang](https://www.swiftlang.xyz)
 	* swiftlang-runtime
 
 ## Contributing
