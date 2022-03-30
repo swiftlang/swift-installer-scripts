@@ -69,6 +69,8 @@
                               </Directory>
                               <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
                               </Directory>
+                              <Directory Id="_MatchingEngine.swiftmodule" Name="_MatchingEngine.swiftmodule">
+                              </Directory>
                               <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
                               </Directory>
                               <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
@@ -196,6 +198,14 @@
         <File Id="Distributed.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
         <File Id="Distributed.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
         <File Id="Distributed.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="_MatchingEngine.swiftmodule">
+      <Component Id="_MatchingEngine.swiftmodule" Guid="db814242-ca96-481d-9b5f-f2590e8a0c5b">
+        <File Id="_MatchingEngine.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_MatchingEngine.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+        <File Id="_MatchingEngine.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_MatchingEngine.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+        <File Id="_MatchingEngine.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_MatchingEngine.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
@@ -352,6 +362,7 @@
       <ComponentRef Id="_Concurrency.swiftmodule" />
       <ComponentRef Id="_Differentiation.swiftmodule" />
       <ComponentRef Id="Distributed.swiftmodule" />
+      <ComponentRef Id="_MatchingEngine.swiftmodule" />
       <ComponentRef Id="_StringProcessing.swiftmodule" />
       <ComponentRef Id="CRT.swiftmodule" />
       <ComponentRef Id="Dispatch.swiftmodule" />
