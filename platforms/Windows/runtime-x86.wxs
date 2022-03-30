@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Runtime for Windows i686" UpgradeCode="01a3fe60-8c3e-4249-8477-deba39b99dd9" Version="$(var.ProductVersion)">
+    <Package Comments="Copyright (c) 2022 Swift Open Source Project" Compressed="yes" Description="Swift Runtime for Windows i686" InstallScope="perMachine" Manufacturer="swift.org" />
+    <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
+    <?ifdef INCLUDE_DEBUG_INFO ?>
+    <Media Id="2" Cabinet="PDBs.cab" EmbedCab="yes" />
+    <?endif?>
+
+    <!-- Directory Structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="INSTALLDIR">
+        <!-- TODO(compnerd) use $(var.ProductVersion) -->
+        <Directory Id="_" Name="runtime-development">
+          <Directory Id="_usr" Name="usr">
+            <Directory Id="_usr_bin" Name="bin">
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <SetDirectory Id="INSTALLDIR" Value="[ProgramFilesFolder]swift">
+      NOT INSTALLDIR
+    </SetDirectory>
+
+    <!-- Components -->
+    <DirectoryRef Id="_usr_bin">
+      <Component Id="SwiftRuntime" Guid="3907413c-a51b-4972-9275-5dfca3eb9e1d">
+        <File Id="BlocksRuntime.dll" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" />
+        <File Id="dispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\dispatch.dll" Checksum="yes" />
+        <File Id="Foundation.dll" Source="$(var.SDK_ROOT)\usr\bin\Foundation.dll" Checksum="yes" />
+        <File Id="FoundationNetworking.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.dll" Checksum="yes" />
+        <File Id="FoundationXML.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" Checksum="yes" />
+        <File Id="swift_Concurrency.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" />
+        <File Id="swift_Differentiation.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.dll" Checksum="yes" />
+        <File Id="swiftDistributed.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.dll" Checksum="yes" />
+        <File Id="swift_StringProcessing.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" Checksum="yes" />
+        <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
+        <File Id="swiftDispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" />
+        <!-- <File Id="swiftDemangle.dll" Source="$(var.SDK_ROOT)\bin\swiftDemangle.dll" Checksum="yes" /> -->
+        <File Id="swiftCRT.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.dll" Checksum="yes" />
+        <File Id="swiftRemoteMirror.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" Checksum="yes" />
+        <File Id="swiftSwiftOnoneSupport.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.dll" Checksum="yes" />
+        <File Id="swiftWinSDK.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.dll" Checksum="yes" />
+      </Component>
+
+      <Component Id="SwiftUtilities" Guid="a704701d-95e2-458b-aab1-f4678eaf34ba">
+        <File Id="plutil.exe" Source="$(var.SDK_ROOT)\usr\bin\plutil.exe" Checksum="yes" />
+      </Component>
+
+      <?ifdef INCLUDE_DEBUG_INFO ?>
+      <Component Id="SwiftRuntimeDebugInfo" Guid="e70e5fea-c76a-4d0c-8a1c-5beb350a37eb">
+        <File Id="BlocksRuntime.pdb" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.pdb" Checksum="yes" DiskId="2" />
+        <File Id="dispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\dispatch.pdb" Checksum="yes" DiskId="2" />
+        <File Id="Foundation.pdb" Source="$(var.SDK_ROOT)\usr\bin\Foundation.pdb" Checksum="yes" DiskId="2" />
+        <File Id="FoundationNetworking.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.pdb" Checksum="yes" DiskId="2" />
+        <File Id="FoundationXML.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swift_Concurrency.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swift_Differentiation.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swiftDistributed.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swift_StringProcessing.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swiftDispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.pdb" Checksum="yes" DiskId="2" />
+        <!-- <File Id="swiftDemangle.pdb" Source="$(var.SDK_ROOT)\bin\swiftDemangle.pdb" Checksum="yes" DiskId="2" /> -->
+        <File Id="swiftCRT.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swiftRemoteMirror.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swiftSwiftOnoneSupport.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swiftWinSDK.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+
+      <Component Id="SwiftUtilitiesDebugInfo" Guid="f7c6aeb8-5345-498d-8f4a-509536ec8e6c">
+        <File Id="plutil.pdb" Source="$(var.SDK_ROOT)\usr\bin\plutil.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <?endif ?>
+    </DirectoryRef>
+
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="EnvironmentVariables" Guid="3b4386ac-3341-407d-b946-6e670f4a83f6">
+        <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]runtime-development\usr\bin" />
+      </Component>
+    </DirectoryRef>
+
+    <!-- Feature -->
+    <Feature Id="Win32SwiftRuntime" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows i686" Level="1" Title="Swift Runtime for Windows i686">
+      <ComponentRef Id="SwiftRuntime" />
+      <ComponentRef Id="EnvironmentVariables" />
+
+      <?ifdef INCLUDE_DEBUG_INFO ?>
+      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Runtime for Windows i686" Level="0" Title="Debug Information">
+        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+        <ComponentRef Id="SwiftRuntimeDebugInfo" />
+      </Feature>
+      <?endif?>
+    </Feature>
+
+    <Feature Id="Win32SwiftUtilities" Absent="allow" AllowAdvertise="yes" Description="Extra Swift Utilities for Windows i686" Level="1" Title="Swift Utilities for Windows i686">
+      <ComponentRef Id="SwiftUtilities" />
+
+      <?ifdef INCLUDE_DEBUG_INFO ?>
+      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Utilties for Windows x86_64" Level="0" Title="Debug Information">
+        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+        <ComponentRef Id="SwiftUtilitiesDebugInfo" />
+      </Feature>
+      <?endif?>
+    </Feature>
+
+    <!-- UI -->
+    <UI />
+  </Product>
+</Wix>
