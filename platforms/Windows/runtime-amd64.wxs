@@ -36,7 +36,7 @@
         <File Id="swift_Concurrency.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" />
         <File Id="swift_Differentiation.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.dll" Checksum="yes" />
         <File Id="swiftDistributed.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.dll" Checksum="yes" />
-        <File Id="swift_MatchingEngine.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_MatchingEngine.dll" Checksum="yes" />
+        <File Id="swift_RegexParser.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.dll" Checksum="yes" />
         <File Id="swift_StringProcessing.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" Checksum="yes" />
         <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
         <File Id="swiftDispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" />
@@ -61,7 +61,7 @@
         <File Id="swift_Concurrency.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.pdb" Checksum="yes" DiskId="2" />
         <File Id="swift_Differentiation.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.pdb" Checksum="yes" DiskId="2" />
         <File Id="swiftDistributed.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.pdb" Checksum="yes" DiskId="2" />
-        <File Id="swift_MatchingEngine.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_MatchingEngine.pdb" Checksum="yes" DiskId="2" />
+        <File Id="swift_RegexParser.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.pdb" Checksum="yes" DiskId="2" />
         <File Id="swift_StringProcessing.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.pdb" Checksum="yes" DiskId="2" />
         <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
         <File Id="swiftDispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.pdb" Checksum="yes" DiskId="2" />
