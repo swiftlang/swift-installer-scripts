@@ -69,7 +69,7 @@
                               </Directory>
                               <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
                               </Directory>
-                              <Directory Id="_MatchingEngine.swiftmodule" Name="_MatchingEngine.swiftmodule">
+                              <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule">
                               </Directory>
                               <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
                               </Directory>
@@ -201,11 +201,11 @@
       </Component>
     </DirectoryRef>
 
-    <DirectoryRef Id="_MatchingEngine.swiftmodule">
-      <Component Id="_MatchingEngine.swiftmodule" Guid="44e30ebc-57c0-4531-9756-7d30583f5c11">
-        <File Id="_MatchingEngine.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_MatchingEngine.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_MatchingEngine.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_MatchingEngine.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_MatchingEngine.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_MatchingEngine.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+    <DirectoryRef Id="_RegexParser.swiftmodule">
+      <Component Id="_RegexParser.swiftmodule" Guid="44e30ebc-57c0-4531-9756-7d30583f5c11">
+        <File Id="_RegexParser.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+        <File Id="_RegexParser.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+        <File Id="_RegexParser.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
     </DirectoryRef>
 
@@ -368,7 +368,7 @@
       <ComponentRef Id="_Concurrency.swiftmodule" />
       <ComponentRef Id="_Differentiation.swiftmodule" />
       <ComponentRef Id="Distributed.swiftmodule" />
-      <ComponentRef Id="_MatchingEngine.swiftmodule" />
+      <ComponentRef Id="_RegexParser.swiftmodule" />
       <ComponentRef Id="_StringProcessing.swiftmodule" />
       <ComponentRef Id="CRT.swiftmodule" />
       <ComponentRef Id="Dispatch.swiftmodule" />
