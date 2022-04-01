@@ -210,7 +210,7 @@
     </DirectoryRef>
 
     <DirectoryRef Id="_StringProcessing.swiftmodule">
-      <Component Id="_StringProcessing.swiftmodule" Guid="db814242-ca96-481d-9b5f-f2590e8a0c5b">
+      <Component Id="_StringProcessing.swiftmodule" Guid="decf71d3-ced0-40d1-9587-1bde19af92a3">
         <File Id="_StringProcessing.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
         <File Id="_StringProcessing.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
         <File Id="_StringProcessing.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
