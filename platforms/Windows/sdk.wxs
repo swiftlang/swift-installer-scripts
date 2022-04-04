@@ -62,8 +62,6 @@
                                 </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DIFFERENTIATION_SWIFTMODULE" Name="_Differentiation.swiftmodule">
                                 </Directory>
-                                <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DISTRIBUTED_SWIFTMODULE" Name="_Distributed.swiftmodule">
-                                </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__STRING_PROCESSING_SWIFTMODULE" Name="_StringProcessing.swiftmodule">
                                 </Directory>
                                 <Directory Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64_CRT_SWIFTMODULE" Name="CRT.swiftmodule">
@@ -182,14 +180,6 @@
       </Component>
     </DirectoryRef>
 
-    <DirectoryRef Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__DISTRIBUTED_SWIFTMODULE">
-      <Component Id="_DISTRIBUTED_SWIFTMODULE" Guid="63ea424f-ae9f-4e47-b5d4-cdd04ebc5fdd">
-        <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTINTERFACE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_DISTRIBUTED_SWIFTMODULE_SWIFTMODULE" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
     <DirectoryRef Id="WINDOWS_SDK_USR_LIB_SWIFT_WINDOWS_X86_64__STRING_PROCESSING_SWIFTMODULE">
       <Component Id="_STRING_PROCESSING_SWIFTMODULE" Guid="6baa3833-10a9-4df3-a568-241791d13449">
         <File Id="_STRING_PROCESSING_SWIFTDOC" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
@@ -269,10 +259,6 @@
 
       <Component Id="_DIFFERENTIATION_IMPORT_LIBS" Guid="a240db64-c797-4e43-9c52-ec5e16a36bf9">
         <File Id="SWIFT_DIFFERENTIATION_LIB" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\swift_Differentiation.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="_DISTRIBUTED_IMPORT_LIBS" Guid="c3d65ddc-89e9-4ff9-bf1f-ef91bc0b1009">
-        <File Id="SWIFT_DISTRIBUTED_LIB" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\swift_Distributed.lib" Checksum="yes" />
       </Component>
 
       <Component Id="BLOCKS_RUNTIME_IMPORT_LIBS" Guid="c521f7e9-179a-49ed-a643-035d8a96be56">
@@ -358,7 +344,6 @@
 
       <ComponentRef Id="_CONCURRENCY_SWIFTMODULE" />
       <ComponentRef Id="_DIFFERENTIATION_SWIFTMODULE" />
-      <ComponentRef Id="_DISTRIBUTED_SWIFTMODULE" />
       <ComponentRef Id="_STRING_PROCESSING_SWIFTMODULE" />
       <ComponentRef Id="CRT_SWIFTMODULE" />
       <ComponentRef Id="DISPATCH_SWIFTMODULE" />
@@ -371,7 +356,6 @@
 
       <ComponentRef Id="_CONCURRENCY_IMPORT_LIBS" />
       <ComponentRef Id="_DIFFERENTIATION_IMPORT_LIBS" />
-      <ComponentRef Id="_DISTRIBUTED_IMPORT_LIBS" />
       <!-- <ComponentRef Id="CRT_IMPORT_LIBS" /> -->
       <!-- <ComponentRef Id="DISPATCH_IMPORT_LIBS" /> -->
       <ComponentRef Id="FOUNDATION_IMPORT_LIBS" />
