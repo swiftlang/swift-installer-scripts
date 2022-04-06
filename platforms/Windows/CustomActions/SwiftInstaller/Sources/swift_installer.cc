@@ -338,7 +338,7 @@ bool replace_file(const std::filesystem::path &source,
   }
 
   std::filesystem::path temp =
-      std::filesystem::path(source)
+      std::filesystem::path(destination)
           .replace_filename(std::wstring(reinterpret_cast<LPCWSTR>(id)));
 
   RpcStringFreeW(&id);
