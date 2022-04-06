@@ -25,20 +25,28 @@
     </SetDirectory>
 
     <!-- Components -->
-    <DirectoryRef Id="_usr_bin">
-      <Component Id="ICURuntime" Guid="7256ab43-a1b5-4af2-8549-2d5f8edcac8b">
+    <ComponentGroup Id="ICU" Directory="_usr_bin">
+      <Component Id="icudt.dll" Guid="791a58ad-1317-4cfb-965b-03cd81fafd31">
         <File Id="icudt.dll" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icudt$(var.ProductVersionMajor).dll" Checksum="yes" />
+      </Component>
+      <Component Id="icuin.dll" Guid="3f29a80a-4fe5-468a-b1c8-6a6e9196491f">
         <File Id="icuin.dll" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuin$(var.ProductVersionMajor).dll" Checksum="yes" />
+      </Component>
+      <Component Id="icuuc.dll" Guid="d433b3e3-63e2-4066-b66a-670eab04b38f">
         <File Id="icuuc.dll" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuuc$(var.ProductVersionMajor).dll" Checksum="yes" />
       </Component>
+    </ComponentGroup>
 
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="ICUDebugInfo" Guid="56091ee6-dfbd-4b53-a579-eaea5f36767a">
+    <?ifdef INCLUDE_DEBUG_INFO ?>
+    <ComponentGroup Id="ICUDebugInfo" Directory="_usr_bin">
+      <Component Id="icuin.pdb" Guid="8f2872f3-ce5c-4e1d-880a-e516c8e4dc03">
         <File Id="icuin.pdb" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuin$(var.ProductVersionMajor).pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="icuuc.pdb" Guid="c4f7c8bd-8fda-4f3e-a8ee-52a9ff8d493d">
         <File Id="icuuc.pdb" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuuc$(var.ProductVersionMajor).pdb" Checksum="yes" DiskId="2" />
       </Component>
-      <?endif ?>
-    </DirectoryRef>
+    </ComponentGroup>
+    <?endif ?>
 
     <DirectoryRef Id="TARGETDIR">
       <Component Id="EnvironmentVariables" Guid="ef4b454a-efa5-44d2-a7ad-3e965539ec48">

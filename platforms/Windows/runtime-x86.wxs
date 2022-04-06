@@ -25,57 +25,131 @@
     </SetDirectory>
 
     <!-- Components -->
-    <DirectoryRef Id="_usr_bin">
-      <Component Id="SwiftRuntime" Guid="3907413c-a51b-4972-9275-5dfca3eb9e1d">
+    <ComponentGroup Id="SwiftRuntime" Directory="_usr_bin">
+      <Component Id="BlocksRuntime.dll" Guid="06162783-5e61-42ec-af15-3f8b09e8562a">
         <File Id="BlocksRuntime.dll" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" />
+      </Component>
+      <Component Id="dispatch.dll" Guid="204e99a2-1404-4523-b13a-d471650f3d10">
         <File Id="dispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\dispatch.dll" Checksum="yes" />
+      </Component>
+      <Component Id="Foundation.dll" Guid="aef0c5c5-c381-4c5a-8ac9-ccd2fba70265">
         <File Id="Foundation.dll" Source="$(var.SDK_ROOT)\usr\bin\Foundation.dll" Checksum="yes" />
+      </Component>
+      <Component Id="FoundationNetworking.dll" Guid="4d31dc16-130d-499c-b861-c9147e20069c">
         <File Id="FoundationNetworking.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.dll" Checksum="yes" />
+      </Component>
+      <Component Id="FoundationXML.dll" Guid="154951da-1a4a-4034-b318-51aa3069a512">
         <File Id="FoundationXML.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swift_Concurrency.dll" Guid="08d4e353-00af-4db0-9c55-2ea50eeddeb7">
         <File Id="swift_Concurrency.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swift_Differentiation.dll" Guid="cf6be869-0b63-4b81-9bc6-5b7cad7ee629">
         <File Id="swift_Differentiation.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftDistributed.dll" Guid="4c730ba2-47fc-4d96-ad87-e16646a3f310">
         <File Id="swiftDistributed.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swift_RegexParser.dll" Guid="cfb0432b-01c4-4ef4-9e8a-b90236f20606">
         <File Id="swift_RegexParser.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swift_StringProcessing.dll" Guid="e6070d4e-9e60-46cb-94a4-ec499c354099">
         <File Id="swift_StringProcessing.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftCore.dll" Guid="d816134d-2de1-4e50-90dd-a36675c09c3e">
         <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftDispatch.dll" Guid="fd38df32-2bcd-4da4-98b3-f26abd1ac6de">
         <File Id="swiftDispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" />
-        <!-- <File Id="swiftDemangle.dll" Source="$(var.SDK_ROOT)\bin\swiftDemangle.dll" Checksum="yes" /> -->
+      </Component>
+      <!--
+      <Component Id="swiftDemangle.dll" Guid="3a9cc33f-df6f-4700-8e82-d908e4e1093d">
+        <File Id="swiftDemangle.dll" Source="$(var.SDK_ROOT)\bin\swiftDemangle.dll" Checksum="yes" />
+      </Component>
+      -->
+      <Component Id="swiftCRT.dll" Guid="c457345e-7d64-4fdb-9c84-0dc5586aa1c5">
         <File Id="swiftCRT.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftRemoteMirror.dll" Guid="a7b35013-cff3-4199-a26a-4d222f6dcc49">
         <File Id="swiftRemoteMirror.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftSwiftOnoneSupport.dll" Guid="3d438ca5-a22f-4870-9db9-7ac783550029">
         <File Id="swiftSwiftOnoneSupport.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftWinSDK.dll" Guid="a1f69b1c-a649-46dd-849b-03373a0911c7">
         <File Id="swiftWinSDK.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.dll" Checksum="yes" />
       </Component>
+    </ComponentGroup>
 
-      <Component Id="SwiftUtilities" Guid="a704701d-95e2-458b-aab1-f4678eaf34ba">
+    <ComponentGroup Id="SwiftUtilities" Directory="_usr_bin">
+      <Component Id="plutil.exe" Guid="0f4a9a59-b623-4cd3-a1f5-e7f05a81744f">
         <File Id="plutil.exe" Source="$(var.SDK_ROOT)\usr\bin\plutil.exe" Checksum="yes" />
       </Component>
+    </ComponentGroup>
 
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="SwiftRuntimeDebugInfo" Guid="e70e5fea-c76a-4d0c-8a1c-5beb350a37eb">
+    <?ifdef INCLUDE_DEBUG_INFO ?>
+    <ComponentGroup Id="SwiftRuntimeDebugInfo">
+      <Component Id="BlocksRuntime.pdb" Guid="ae1e5c85-3672-4114-9e82-f8152ed8e919">
         <File Id="BlocksRuntime.pdb" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="dispatch.pdb" Guid="1f2385b7-e4d4-464c-b987-5139949499c2">
         <File Id="dispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\dispatch.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="Foundation.pdb" Guid="2fa5fdb1-e875-46e3-aa18-5aac03ee6f63">
         <File Id="Foundation.pdb" Source="$(var.SDK_ROOT)\usr\bin\Foundation.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="FoundationNetworking.pdb" Guid="0636b89e-a623-4ef5-adf7-56ab5250987b">
         <File Id="FoundationNetworking.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="FoundationXML.pdb" Guid="e9e6eb2e-9423-4e6d-8b91-751e174624a4">
         <File Id="FoundationXML.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swift_Concurrency.pdb" Guid="4c11a732-031a-4c07-81ba-49407a0870f5">
         <File Id="swift_Concurrency.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swift_Differentiation.pdb" Guid="e4eb5456-7142-4be4-a1ca-1328f76ed875">
         <File Id="swift_Differentiation.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftDistributed.pdb" Guid="e6f9a9a6-1ba2-4807-b35a-7726ac30b91e">
         <File Id="swiftDistributed.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swift_RegexParser.pdb" Guid="c69fd450-0fbf-4b30-baf0-f5107c65cf28">
         <File Id="swift_RegexParser.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swift_StringProcessing.pdb" Guid="e1d856db-107e-452b-95ba-d8b0c4bc4cbf">
         <File Id="swift_StringProcessing.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftCore.pdb" Guid="abd0c880-8dcc-4c23-88d4-afb224d3433b">
         <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftDispatch.pdb" Guid="cff0a63a-a76a-4785-92b0-4894ffa19a7d">
         <File Id="swiftDispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.pdb" Checksum="yes" DiskId="2" />
-        <!-- <File Id="swiftDemangle.pdb" Source="$(var.SDK_ROOT)\bin\swiftDemangle.pdb" Checksum="yes" DiskId="2" /> -->
+      </Component>
+      <!--
+      <Component Id="swiftDemangle.pdb" Guid="0dd0b3b5-3d85-48aa-a7c7-ca804c685a99">
+        <File Id="swiftDemangle.pdb" Source="$(var.SDK_ROOT)\bin\swiftDemangle.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      -->
+      <Component Id="swiftCRT.pdb" Guid="0f4fbbfa-e85e-4c18-93a0-37ab09b80bf7">
         <File Id="swiftCRT.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftRemoteMirror.pdb" Guid="2bcc963d-e2d7-44f1-a7aa-0524bec668c6">
         <File Id="swiftRemoteMirror.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftSwiftOnoneSupport.pdb" Guid="a013f1d6-3e2a-4e0a-b315-e40b87967d1b">
         <File Id="swiftSwiftOnoneSupport.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftWinSDK.pdb" Guid="c8924901-6ed0-4629-a940-0eeaeeb5039e">
         <File Id="swiftWinSDK.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.pdb" Checksum="yes" DiskId="2" />
       </Component>
+    </ComponentGroup>
 
-      <Component Id="SwiftUtilitiesDebugInfo" Guid="f7c6aeb8-5345-498d-8f4a-509536ec8e6c">
+    <ComponentGroup Id="SwiftUtilitiesDebugInfo">
+      <Component Id="plutil.pdb" Guid="76275d27-3e4f-40f5-9810-a4fbe1d16e5e">
         <File Id="plutil.pdb" Source="$(var.SDK_ROOT)\usr\bin\plutil.pdb" Checksum="yes" DiskId="2" />
       </Component>
-      <?endif ?>
-    </DirectoryRef>
+    </ComponentGroup>
+    <?endif?>
 
     <DirectoryRef Id="TARGETDIR">
       <Component Id="EnvironmentVariables" Guid="3b4386ac-3341-407d-b946-6e670f4a83f6">

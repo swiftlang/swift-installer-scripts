@@ -25,20 +25,28 @@
     </SetDirectory>
 
     <!-- Components -->
-    <DirectoryRef Id="_usr_bin">
-      <Component Id="ICURuntime" Guid="77a97eb2-4a5c-4d85-9fb7-692fd37d9b68">
+    <ComponentGroup Id="ICU" Directory="_usr_bin">
+      <Component Id="icudt.dll" Guid="0fcd685e-e7be-4f00-874e-160b1b0bc45b">
         <File Id="icudt.dll" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icudt$(var.ProductVersionMajor).dll" Checksum="yes" />
+      </Component>
+      <Component Id="icuin.dll" Guid="d7c9b71a-df54-4c6d-9f8f-18273322f0dc">
         <File Id="icuin.dll" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuin$(var.ProductVersionMajor).dll" Checksum="yes" />
+      </Component>
+      <Component Id="icuuc.dll" Guid="d9abc6db-1cd1-4ab8-b762-1fde12b3a741">
         <File Id="icuuc.dll" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuuc$(var.ProductVersionMajor).dll" Checksum="yes" />
       </Component>
+    </ComponentGroup>
 
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="ICUDebugInfo" Guid="c4643ea4-e585-466d-a5ad-078ee75cee8c">
+    <?ifdef INCLUDE_DEBUG_INFO ?>
+    <ComponentGroup Id="ICUDebugInfo" Directory="_usr_bin">
+      <Component Id="icuin.pdb" Guid="ba918d12-3c1a-49fc-b67a-e63577a772bb">
         <File Id="icuin.pdb" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuin$(var.ProductVersionMajor).pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="icuuc.pdb" Guid="c0a0d274-0dd2-4e2d-931e-bbedbbd57bf0">
         <File Id="icuuc.pdb" Source="$(var.ICU_ROOT)\Library\icu-$(var.ProductVersion)\usr\bin\icuuc$(var.ProductVersionMajor).pdb" Checksum="yes" DiskId="2" />
       </Component>
-      <?endif ?>
-    </DirectoryRef>
+    </ComponentGroup>
+    <?endif ?>
 
     <DirectoryRef Id="TARGETDIR">
       <Component Id="EnvironmentVariables" Guid="97fe0a23-32e0-481d-8827-215f4c74f03c">
@@ -48,13 +56,13 @@
 
     <!-- Features -->
     <Feature Id="WinX64ICU" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift ICU for Windows x86_64" Level="1" Title="Swift ICU for Windows x86_64">
-      <ComponentRef Id="ICURuntime" />
+      <ComponentGroupRef Id="ICU" />
       <ComponentRef Id="EnvironmentVariables" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift ICU for Windows x86_64" Level="0" Title="Debug Information">
         <Condition Level="1">INSTALL_DEBUGINFO</Condition>
-        <ComponentRef Id="ICUDebugInfo" />
+        <ComponentGroupRef Id="ICUDebugInfo" />
       </Feature>
       <?endif ?>
     </Feature>
