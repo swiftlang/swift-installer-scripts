@@ -110,287 +110,371 @@
     </SetDirectory>
 
     <!-- Components -->
-    <DirectoryRef Id="XCTest_usr_bin32">
-      <Component Id="XCTestRuntime" Guid="bdc2cb3a-fd3e-4568-94a8-a7a12be19e93">
+    <ComponentGroup Id="XCTest">
+      <Component Id="XCTest.dll" Directory="XCTest_usr_bin32" Guid="bbd2f8c3-52a1-49e4-898e-2bfafb9d5985">
         <File Id="XCTest.dll" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" Checksum="yes" />
       </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="XCTestRuntimeDebugInfo" Guid="fcdaadcf-adf2-4441-897b-207d5987a4dc">
-        <File Id="XCTest.pdb" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <?endif?>
-    </DirectoryRef>
-
-    <DirectoryRef Id="XCTest_usr_lib_swift_windows_i686">
-      <Component Id="XCTestLibraries" Guid="74484c8d-e076-40a8-a1ab-0b6a2ea3e0a6">
+      <Component Id="XCTest.lib" Directory="XCTest_usr_lib_swift_windows_i686" Guid="76f535ad-b9c7-48d9-baf7-033a5c023a23">
         <File Id="XCTest.lib" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" Checksum="yes" />
       </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="XCTest.swiftmodule">
-      <Component Id="XCTestSwiftModule" Guid="819be784-87c1-4891-8a44-1a19894709bc">
+      <Component Id="XCTest.swiftdoc" Directory="XCTest.swiftmodule" Guid="e07c62a7-8463-4dd7-b198-73ffd52d00fa">
         <File Id="XCTest.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\i686\XCTest.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="XCTest.swiftmodule" Directory="XCTest.swiftmodule" Guid="39ac696e-f50c-4261-bbb0-7f171ccd969d">
         <File Id="XCTest.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\i686\XCTest.swiftmodule" Checksum="yes" />
       </Component>
-    </DirectoryRef>
+    </ComponentGroup>
 
-    <DirectoryRef Id="WindowsSDK_usr_include_swift_SwiftRemoteMirror">
-      <Component Id="SwiftRemoteMirrorHeaders" Guid="1653308a-60bc-4771-9635-8b3e67ba46c5">
+    <?ifdef INCLUDE_DEBUG_INFO ?>
+    <ComponentGroup Id="XCTestDebugInfo">
+      <Component Id="XCTest.pdb" Directory="XCTest_usr_bin32" Guid="f9f54891-8fe4-444b-b7a1-dc4787e069ee">
+        <File Id="XCTest.pdb" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+    </ComponentGroup>
+    <?endif?>
+
+    <ComponentGroup Id="SwiftRemoteMirror">
+      <Component Id="MemoryReaderInterface.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="4493ba7f-b3b3-4cb3-b645-6457e81ad752">
         <File Id="MemoryReaderInterface.h" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" Checksum="yes" />
+      </Component>
+      <Component Id="Platform.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="61384dc6-be9c-42cd-847b-fb94617fcab1">
         <File Id="Platform.h" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\Platform.h" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftRemoteMirror.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="bcc781b4-94ea-4ae6-aa1e-e26e62f04e10">
         <File Id="SwiftRemoteMirror.h" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftRemoteMirrorTypes.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="c15a0af1-e521-4ffc-845b-4f7176db4e2c">
         <File Id="SwiftRemoteMirrorTypes.h" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" Checksum="yes" />
       </Component>
-    </DirectoryRef>
 
-    <DirectoryRef Id="WindowsSDK_usr_include_Block">
-      <Component Id="BlocksRuntimeHeaders" Guid="56ef7e66-3a7b-41a3-967c-1c9247183bb6">
-        <File Id="BlocksRuntime_Block.h" Source="$(var.SDK_ROOT)\usr\lib\swift\Block\Block.h" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="WindowsSDK_usr_include_dispatch">
-      <Component Id="DispatchHeaders" Guid="7d683f4f-7a40-4ef9-821f-12ca867edb7b">
-        <File Id="base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\base.h" Checksum="yes" />
-        <File Id="dispatch_block.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\block.h" Checksum="yes" />
-        <File Id="data.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\data.h" Checksum="yes" />
-        <File Id="dispatch.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" Checksum="yes" />
-        <File Id="group.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\group.h" Checksum="yes" />
-        <File Id="introspection.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" Checksum="yes" />
-        <File Id="io.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\io.h" Checksum="yes" />
-        <File Id="dispatch.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" Checksum="yes" />
-        <File Id="dispatch_object.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\object.h" Checksum="yes" />
-        <File Id="once.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\once.h" Checksum="yes" />
-        <File Id="queue.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\queue.h" Checksum="yes" />
-        <File Id="semaphore.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" Checksum="yes" />
-        <File Id="source.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\source.h" Checksum="yes" />
-        <File Id="time.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\time.h" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="WindowsSDK_usr_include_os">
-      <Component Id="DispatchOSHeaders" Guid="0caaa892-0d73-44eb-af99-e42ba5a0f928">
-        <File Id="generic_unix_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" Checksum="yes" />
-        <File Id="generic_win_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_win_base.h" Checksum="yes" />
-        <File Id="os_object.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\object.h" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="_Concurrency.swiftmodule">
-      <Component Id="_Concurrency.swiftmodule" Guid="b7ab49b2-61dd-4fba-82a1-b4933d67f32a">
-        <File Id="_Concurrency.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_Concurrency.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_Concurrency.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="_Differentiation.swiftmodule">
-      <Component Id="_Differentiation.swiftmodule" Guid="7634ee8c-d6ef-47a2-b802-3bd0e66430cb">
-        <File Id="_Differentiation.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_Differentiation.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_Differentiation.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="Distributed.swiftmodule">
-      <Component Id="Distributed.swiftmodule" Guid="472906e4-301b-4709-adf8-6f96c8df2b22">
-        <File Id="Distributed.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="Distributed.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="Distributed.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="_RegexParser.swiftmodule">
-      <Component Id="_RegexParser.swiftmodule" Guid="db814242-ca96-481d-9b5f-f2590e8a0c5b">
-        <File Id="_RegexParser.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_RegexParser.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_RegexParser.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="_StringProcessing.swiftmodule">
-      <Component Id="_StringProcessing.swiftmodule" Guid="decf71d3-ced0-40d1-9587-1bde19af92a3">
-        <File Id="_StringProcessing.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="_StringProcessing.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="_StringProcessing.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="CRT.swiftmodule">
-      <Component Id="CRT.swiftmodule" Guid="6b5b1b68-104a-4625-9249-86631d6b01e6">
-        <File Id="CRT.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="CRT.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="CRT.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="dispatch.swiftmodule">
-      <Component Id="Dispatch.swiftmodule" Guid="3ecb847f-95ab-4320-9c82-8ce0159af700">
-        <File Id="Dispatch.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Dispatch.swiftdoc" Checksum="yes" />
-        <File Id="Dispatch.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Dispatch.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="Foundation.swiftmodule">
-      <Component Id="Foundation.swiftmodule" Guid="0339989d-8440-4178-b9a3-aeec0fd2d800">
-        <File Id="Foundation.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Foundation.swiftdoc" Checksum="yes" />
-        <File Id="Foundation.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Foundation.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="FoundationNetworking.swiftmodule">
-      <Component Id="FoundationNetworking.swiftmodule" Guid="38e3a849-3d1c-4326-90ae-5b550e53c4d3">
-        <File Id="FoundationNetworking.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationNetworking.swiftdoc" Checksum="yes" />
-        <File Id="FoundationNetworking.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationNetworking.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="FoundationXML.swiftmodule">
-      <Component Id="FoundationXML.swiftmodule" Guid="6fae0f96-085c-4dd4-b731-ff940e1e3a21">
-        <File Id="FoundationXML.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationXML.swiftdoc" Checksum="yes" />
-        <File Id="FoundationXML.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationXML.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="Swift.swiftmodule">
-      <Component Id="Swift.swiftmodule" Guid="56bbb98b-45b7-4446-b3a9-b2ef045fa1be">
-        <File Id="Swift.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="Swift.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="Swift.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="SwiftOnoneSupport.swiftmodule">
-      <Component Id="SwiftOnoneSupport.swiftmodule" Guid="ac9348b7-55a2-4b5c-8900-a5f270d687a1">
-        <File Id="SwiftOnoneSupport.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="SwiftOnoneSupport.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="SwiftOnoneSupport.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="WinSDK.swiftmodule">
-      <Component Id="WinSDK.swiftmodule" Guid="330434cb-1f63-467a-b66b-6660f217e3c0">
-        <File Id="WinSDK.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-        <File Id="WinSDK.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-        <File Id="WinSDK.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="WindowsSDK_usr_lib_swift_windows_i686">
-      <Component Id="Registrar" Guid="41a46fb5-4144-4c25-94a8-5f65cc90b128">
-        <File Id="swiftrt.obj" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftrt.obj" Checksum="yes" />
-      </Component>
-
-      <Component Id="_ConcurrencyLibraries" Guid="628aa2ca-fe0f-460c-ab1c-28a5cae0cb89">
-        <File Id="swift_Concurrency.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_Concurrency.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="_DifferentiationLibraries" Guid="9290b204-6e40-40fc-96ef-2ff380a8e584">
-        <File Id="swift_Differentiation.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_Differentiation.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="_DistributedLibraries" Guid="224fa581-6165-475e-b55b-57a9b0505cc8">
-        <File Id="swiftDistributed.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftDistributed.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="BlocksRuntimeLibraries" Guid="99269181-9e69-41df-8bda-a2c1ad1b8404">
-        <File Id="BlocksRuntime.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\BlocksRuntime.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="DispatchLibraries" Guid="0fef7923-c403-46c8-a813-18e64fb8456b">
-        <File Id="dispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" Checksum="yes" />
-        <File Id="swiftDispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="FoundationLibraries" Guid="59f23dff-898c-4c22-ba58-c3f827847127">
-        <File Id="Foundation.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Foundation.lib" Checksum="yes" />
-        <File Id="FoundationNetworking.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.lib" Checksum="yes" />
-        <File Id="FoundationXML.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\FoundationXML.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="SwiftLibraries" Guid="c7e45a34-f18b-4633-9897-2c594bd945e7">
-        <File Id="swiftCore.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftCore.lib" Checksum="yes" />
-        <File Id="swiftSwiftOnoneSupport.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftSwiftOnoneSupport.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="SwiftSDKOverlayLibraries" Guid="c1ff5f7b-ec47-4fe3-82a7-e4d5a0f9a9b3">
-        <File Id="swiftCRT.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftCRT.lib" Checksum="yes" />
-        <File Id="swiftWinSDK.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftWinSDK.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="SwiftRemoteMirrorLibraries" Guid="69746a8a-e2f7-4e04-97d0-4e5dab18e366">
+      <Component Id="wwiftRemoteMirror.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="3d429d95-1f9d-4b59-85f2-2676ae95539b">
         <File Id="swiftRemoteMirror.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftRemoteMirror.lib" Checksum="yes" />
       </Component>
-    </DirectoryRef>
+    </ComponentGroup>
 
-    <DirectoryRef Id="WindowsSDK_usr_share">
-      <Component Id="SupportFiles" Guid="2be1e214-512b-4895-9aef-93c8e263a698">
+    <ComponentGroup Id="BlocksRuntime">
+      <Component Id="Block.h" Directory="WindowsSDK_usr_include_Block" Guid="46ea8477-b407-41ac-a3ea-d6db791524d9">
+        <File Id="Block.h_46ea8477b40741aca3ead6db791524d9" Source="$(var.SDK_ROOT)\usr\lib\swift\Block\Block.h" Checksum="yes" />
+      </Component>
+
+      <Component Id="BlocksRuntime.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="0cd38131-8998-4fd7-805d-ca36fb798dbc">
+        <File Id="BlocksRuntime.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\BlocksRuntime.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="dispatch">
+      <Component Id="base.h" Directory="WindowsSDK_usr_include_dispatch" Guid="a263a074-5bc5-4823-95a9-f91a314b6cf0">
+        <File Id="base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\base.h" Checksum="yes" />
+      </Component>
+      <Component Id="block.h" Directory="WindowsSDK_usr_include_dispatch" Guid="3629b098-826c-4d98-89a7-b486160dddfa">
+        <File Id="block.h_3629b098826c4d9889a7b486160dddfa" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\block.h" Checksum="yes" />
+      </Component>
+      <Component Id="data.h" Directory="WindowsSDK_usr_include_dispatch" Guid="1d9bb083-bb0e-46de-b82b-b582c55df716">
+        <File Id="data.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\data.h" Checksum="yes" />
+      </Component>
+      <Component Id="dispatch.h" Directory="WindowsSDK_usr_include_dispatch" Guid="a4e8a91e-b54b-485e-8f47-83e23bb435b3">
+        <File Id="dispatch.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" Checksum="yes" />
+      </Component>
+      <Component Id="group.h" Directory="WindowsSDK_usr_include_dispatch" Guid="6a992ce8-127a-4826-87fc-009e3666c980">
+        <File Id="group.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\group.h" Checksum="yes" />
+      </Component>
+      <Component Id="introspection.h" Directory="WindowsSDK_usr_include_dispatch" Guid="1177a222-a855-495e-bb4c-40b58bf2a72f">
+        <File Id="introspection.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" Checksum="yes" />
+      </Component>
+      <Component Id="io.h" Directory="WindowsSDK_usr_include_dispatch" Guid="4cbd900b-ea17-42d0-ad01-555e64203e34">
+        <File Id="io.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\io.h" Checksum="yes" />
+      </Component>
+      <Component Id="dispatch.modulemap" Directory="WindowsSDK_usr_include_dispatch" Guid="29d12456-9a40-47a8-9f0c-328e27ea9921">
+        <File Id="dispatch.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" Checksum="yes" />
+      </Component>
+      <Component Id="object.h_f87c5a369294493489839a2cabdb7ae7" Directory="WindowsSDK_usr_include_dispatch" Guid="f87c5a36-9294-4934-8983-9a2cabdb7ae7">
+        <File Id="object.h_f87c5a369294493489839a2cabdb7ae7" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\object.h" Checksum="yes" />
+      </Component>
+      <Component Id="once.h" Directory="WindowsSDK_usr_include_dispatch" Guid="24c2b93d-8912-4cc7-a23d-11df4afa6c10">
+        <File Id="once.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\once.h" Checksum="yes" />
+      </Component>
+      <Component Id="queue.h" Directory="WindowsSDK_usr_include_dispatch" Guid="db4bb4ee-6a95-4692-9793-af888ac633e2">
+        <File Id="queue.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\queue.h" Checksum="yes" />
+      </Component>
+      <Component Id="semaphore.h" Directory="WindowsSDK_usr_include_dispatch" Guid="99b07079-67e8-418c-a4a1-647b28e2bfd0">
+        <File Id="semaphore.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" Checksum="yes" />
+      </Component>
+      <Component Id="source.h" Directory="WindowsSDK_usr_include_dispatch" Guid="740ec071-b663-461f-8408-83f65a804d7e">
+        <File Id="source.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\source.h" Checksum="yes" />
+      </Component>
+      <Component Id="time.h" Directory="WindowsSDK_usr_include_dispatch" Guid="4f234266-768c-4e42-80fd-829cd6d62c91">
+        <File Id="time.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\time.h" Checksum="yes" />
+      </Component>
+
+      <Component Id="generic_unix_base.h" Directory="WindowsSDK_usr_include_os" Guid="66347322-84a9-4246-9d69-17b2e03dea63">
+        <File Id="generic_unix_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" Checksum="yes" />
+      </Component>
+      <Component Id="generic_win_base.h" Directory="WindowsSDK_usr_include_os" Guid="1b418910-d049-4040-a1a0-47844b90cc10">
+        <File Id="generic_win_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_win_base.h" Checksum="yes" />
+      </Component>
+      <Component Id="object.h_3af0f0745780408e9fb16b614066623f" Directory="WindowsSDK_usr_include_os" Guid="3af0f074-5780-408e-9fb1-6b614066623f">
+        <File Id="object.h_3af0f0745780408e9fb16b614066623f" Source="$(var.SDK_ROOT)\usr\lib\swift\os\object.h" Checksum="yes" />
+      </Component>
+
+      <Component Id="dispatch.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="28cbf6a7-c6fc-40bc-adf3-2fc03aa47251">
+        <File Id="dispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" Checksum="yes" />
+      </Component>
+
+      <Component Id="Dispatch.swiftdoc" Directory="dispatch.swiftmodule" Guid="58f7770e-2cef-4277-8d7f-d0470164442d">
+        <File Id="Dispatch.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Dispatch.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="Dispatch.swiftmodule" Guid="e37a27e0-9462-4eec-8e3d-d028f34a6ff6">
+        <File Id="Dispatch.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Dispatch.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftDispatch.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="97e1a280-673c-4eb3-8c79-e0d82c6bc9c9">
+        <File Id="swiftDispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_Concurrency">
+      <Component Id="_Concurrency.swiftdoc" Directory="_Concurrency.swiftmodule" Guid="6e17d82a-42d9-4894-8778-dcc8eca37a3b">
+        <File Id="_Concurrency.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="_Concurrency.swiftinterface" Directory="_Concurrency.swiftmodule" Guid="30779706-bee0-4f4c-9af6-b595c4536ec6">
+        <File Id="_Concurrency.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="_Concurrency.swiftmodule" Directory="_Concurrency.swiftmodule" Guid="83e40d4d-0dfc-4feb-8005-352a5f42dd7b">
+        <File Id="_Concurrency.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swift_Concurrency.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="98293a0c-368f-469e-a412-876d5235cf1b">
+        <File Id="swift_Concurrency.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_Concurrency.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_Differentiation">
+      <Component Id="_Differentiation.swiftdoc" Directory="_Differentiation.swiftmodule" Guid="e07ea533-15d2-4f49-aecd-1de6a3068ed7">
+        <File Id="_Differentiation.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="_Differentiation.swiftinterface" Directory="_Differentiation.swiftmodule" Guid="f7e74941-7c91-4c58-86d8-7e8441b8a385">
+        <File Id="_Differentiation.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="_Differentiation.swiftmodule" Directory="_Differentiation.swiftmodule" Guid="61923e0f-b2f4-4cac-8f11-8ae4c8f32a2a">
+        <File Id="_Differentiation.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swift_Differentiation.lib" Directory="WIndowsSDK_usr_lib_swift_windows_i686" Guid="7bb128ab-fbd7-4f1f-9a95-4dced2262672">
+        <File Id="swift_Differentiation.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_Differentiation.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Distributed">
+      <Component Id="Distributed.swiftdoc" Directory="Distributed.swiftmodule" Guid="b0888823-92f6-4bc9-afad-c59a5996c816">
+        <File Id="Distributed.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="Distributed.swiftinterface" Directory="Distributed.swiftmodule" Guid="cb1616a5-cab5-4263-bec8-3fcb3c02e113">
+        <File Id="Distributed.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="Distributed.swiftmodule" Directory="Distributed.swiftmodule" Guid="f9f43910-32ad-4c5f-b66f-3f59944223f3">
+        <File Id="Distributed.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftDistributed.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="ab4afcd2-4bd0-4373-a1ba-9936a4c7d405">
+        <File Id="swiftDistributed.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftDistributed.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_RegexParser">
+      <Component Id="_RegexParser.swiftdoc" Directory="_RegexParser.swiftmodule" Guid="ac7461ff-45ae-41ca-90b7-0b0bc5e3f314">
+        <File Id="_RegexParser.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="_RegexParser.swiftinterface" Directory="_RegexParser.swiftmodule" Guid="2ac3904d-a2d7-49e2-8423-a2275a0e7bca">
+        <File Id="_RegexParser.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="_RegexParser.swiftmodule" Directory="_RegexParser.swiftmodule" Guid="da0d0a3a-f041-4f93-90c1-3d43b480ee1a">
+        <File Id="_RegexParser.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swift_RegexParser.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="7e3f40f3-44ad-4e68-ab41-827cdb6ed3c2">
+        <File Id="swift_RegexParser.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_RegexParser.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_StringProcessing">
+      <Component Id="_StringProcessing.swiftdoc" Directory="_StringProcessing.swiftmodule" Guid="ab423792-6865-439f-bb5d-234a69d4b041">
+        <File Id="_StringProcessing.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="_StringProcessing.swiftinterface" Directory="_StringProcessing.swiftmodule" Guid="9c68230f-6c66-4bf7-9e6b-576a567acf9e">
+        <File Id="_StringProcessing.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="_StringProcessing.swiftmodule" Directory="_StringProcessing.swiftmodule" Guid="2c25d0e8-a8b0-4fb6-938b-f3349aadbd23">
+        <File Id="_StringProcessing.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swift_StringProcessing.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="3bc3e09f-5462-4e71-96e2-b46066286444">
+        <File Id="swift_StringProcessing.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_StringProcessing.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="CRT">
+      <Component Id="CRT.swiftdoc" Directory="CRT.swiftmodule" Guid="925b5dec-5efc-4362-8760-12f1971ed90c">
+        <File Id="CRT.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="CRT.swiftinterface" Directory="CRT.swiftmodule" Guid="9098c012-c049-438b-a1c6-c8c7f59468d6">
+        <File Id="CRT.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="CRT.swiftmodule" Directory="CRT.swiftmodule" Guid="67057ea8-c6d6-490a-acd3-86ef3a109f6d">
+        <File Id="CRT.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftCRT.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="6f0a9b0d-a564-45a1-b01b-081c26fb6d4e">
+        <File Id="swiftCRT.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftCRT.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Foundation">
+      <Component Id="Foundation.swiftdoc" Directory="Foundation.swiftmodule" Guid="345d3a2b-7b55-4413-82b7-7e7b7ce17798">
+        <File Id="Foundation.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Foundation.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="Foundation.swiftmodule" Directory="Foundation.swiftmodule" Guid="4e0ac4ae-5937-43fb-963a-901459e4f8ef">
+        <File Id="Foundation.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Foundation.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="Foundation.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="742b8a52-5809-4852-a4a4-c8437fd7f6ac">
+        <File Id="Foundation.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Foundation.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="FoundationNetworking">
+      <Component Id="FoundationNetworking.swiftdoc" Directory="FoundationNetworking.swiftmodule" Guid="dd44bae6-fa96-4b79-9276-9ffcea0b78b4">
+        <File Id="FoundationNetworking.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationNetworking.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="FoundationNetworking.swiftmodule" Directory="FoundationNetworking.swiftmodule" Guid="04d1e62a-439c-4693-afee-c672d083ce79">
+        <File Id="FoundationNetworking.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationNetworking.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="FoundationNetworking.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="15dc0abc-ce8d-4535-b1a0-b1a1f8b554e0">
+        <File Id="FoundationNetworking.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="FoundationXML">
+      <Component Id="FoundationXML.swiftdoc" Directory="FoundationXML.swiftmodule" Guid="4bb9b03a-5e96-4a7f-b4ec-0ad82d51a52c">
+        <File Id="FoundationXML.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationXML.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="FoundationXML.swiftmodule" Directory="FoundationXML.swiftmodule" Guid="37a874a6-228b-4d8e-bfe6-67c5ef42ff30">
+        <File Id="FoundationXML.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\FoundationXML.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="FoundationXML.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="528492ce-aa8f-4628-895e-1941603495a5">
+        <File Id="FoundationXML.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\FoundationXML.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Swift">
+      <Component Id="Swift.swiftdoc" Directory="Swift.swiftmodule" Guid="10d79d0f-1013-42a3-a950-35e9f0037d01">
+        <File Id="Swift.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="Swift.swiftinterface" Directory="Swift.swiftmodule" Guid="d34ccebd-7374-43e2-bbb2-6b5312aa9f7a">
+        <File Id="Swift.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="Swift.swiftmodule" Directory="Swift.swiftmodule" Guid="14db8439-bb0b-4735-8403-1a48998aefe0">
+        <File Id="Swift.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftCore.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="39d9de50-66d5-4b4e-99af-30ccbf84507a">
+        <File Id="swiftCore.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftCore.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftOnoneSupport">
+      <Component Id="SwiftOnoneSupport.swiftdoc" Directory="SwiftOnoneSupport.swiftmodule" Guid="56054ec3-b957-4924-9bb2-83de1aa5cafe">
+        <File Id="SwiftOnoneSupport.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftOnoneSupport.swiftinterface" Directory="SwiftOnoneSupport.swiftmodule" Guid="6026a5a8-f096-416c-bd06-ceadd8e75519">
+        <File Id="SwiftOnoneSupport.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftOnoneSupport.swiftmodule" Directory="SwiftOnoneSupport.swiftmodule" Guid="d7802f37-7a5d-4c20-9dcf-1687e0ff4146">
+        <File Id="SwiftOnoneSupport.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftSwiftOnoneSupport.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686 Guid="5394f49f-99b4-4049-81c4-c601d17700d4">
+        <File Id="swiftSwiftOnoneSupport.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftSwiftOnoneSupport.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="WinSDK">
+      <Component Id="WinSDK.swiftdoc" Directory="WinSDK.swiftmodule" Guid="fb9ca366-fbf6-4da1-b9ee-5fc924a4e62c">
+        <File Id="WinSDK.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="WinSDK.swiftinterface" Directory="WinSDK.swiftmodule" Guid="6613b7c0-91f8-4c9e-a699-a3db00bd2ae4">
+        <File Id="WinSDK.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="WinSDK.swiftmodule" Directory="WinSDK.swiftmodule" Guid="daae10d4-8450-41e3-a8fc-9bdffa398d78">
+        <File Id="WinSDK.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftWinSDK.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="1f9e4d1b-4a7e-4849-b319-d55510114903">
+        <File Id="swiftWinSDK.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftWinSDK.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Registrar" Directory="WindowsSDK_usr_lib_swift_windows_i686">
+      <Component Id="swiftrt.obj" Guid="a3da165c-3b42-4ad2-a412-a0bb4e31cba5">
+        <File Id="swiftrt.obj" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftrt.obj" Checksum="yes" />
+      </Component>
+      <!--
+      <Component Id="swiftrtd.obj" Guid="457b9d66-ebc9-40be-9e3d-6d3fd75c01f6">
+        <File Id="swiftrtd.obj" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftrtd.obj" Checksum="yes" />
+      </Component>
+      -->
+    </ComponentGroup>
+
+    <ComponentGroup Id="SupportFiles" Directory="WindowsSDK_usr_share">
+      <Component Id="ucrt.modulemap" Guid="4b5c1a1d-a6cf-4d06-81f7-e752f0a3f4db">
         <File Id="ucrt.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\ucrt.modulemap" Checksum="yes" />
+      </Component>
+      <Component Id="winsdk.modulemap" Guid="a3b7cb7c-730e-4c6b-ada8-d39f4c72f41e">
         <File Id="winsdk.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\winsdk.modulemap" Checksum="yes" />
+      </Component>
+      <Component Id="visualc.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
         <File Id="visualc.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\visualc.modulemap" Checksum="yes" />
+      </Component>
+      <Component Id="visualc.apinotes" Guid="11318e14-7d68-490e-8c64-f1332f1d63f7">
         <File Id="visualc.apinotes" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\visualc.apinotes" Checksum="yes" />
       </Component>
-    </DirectoryRef>
+    </ComponentGroup>
 
-    <DirectoryRef Id="WindowsPlatform">
-      <Component Id="Info.plist" Guid="03130625-9732-4c44-ae81-eddfd97cbe6c">
+    <ComponentGroup Id="Configuration">
+      <Component Id="Info.plist" Directory="WindowsPlatform" Guid="6cc713d1-2f44-4a47-8e1e-7f71e1dce68b">
         <File Id="Info.plist" Source="$(var.PLATFORM_ROOT)\Info.plist" Checksum="yes" />
       </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="WindowsSDK">
-      <Component Id="SDKSettings.plist" Guid="1562926d-6c1d-4cc1-9ab2-42effae919d2">
+      <Component Id="SDKSettings.plist" Directory="WindowsSDK" Guid="5e7d06bc-cad8-4c8b-803b-686adfbcb220">
         <File Id="SDKSettings.plist" Source="$(var.SDK_ROOT)\SDKSettings.plist" Checksum="yes" />
       </Component>
-    </DirectoryRef>
+    </ComponentGroup>
 
 
     <!-- Features -->
     <Feature Id="Win32SDK" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift SDK for Windows i686" Level="1" Title="Swift SDK for Windows i686">
-      <ComponentRef Id="XCTestRuntime" />
-      <ComponentRef Id="XCTestLibraries" />
-      <ComponentRef Id="XCTestSwiftModule" />
-
-      <ComponentRef Id="BlocksRuntimeHeaders" />
-      <ComponentRef Id="BlocksRuntimeLibraries" />
-
-      <ComponentRef Id="DispatchHeaders" />
-      <ComponentRef Id="DispatchOSHeaders" />
-      <ComponentRef Id="DispatchLibraries" />
-
-      <ComponentRef Id="_Concurrency.swiftmodule" />
-      <ComponentRef Id="_Differentiation.swiftmodule" />
-      <ComponentRef Id="Distributed.swiftmodule" />
-      <ComponentRef Id="_RegexParser.swiftmodule" />
-      <ComponentRef Id="_StringProcessing.swiftmodule" />
-      <ComponentRef Id="CRT.swiftmodule" />
-      <ComponentRef Id="Dispatch.swiftmodule" />
-      <ComponentRef Id="Foundation.swiftmodule" />
-      <ComponentRef Id="FoundationNetworking.swiftmodule" />
-      <ComponentRef Id="FoundationXML.swiftmodule"/>
-      <ComponentRef Id="Swift.swiftmodule" />
-      <ComponentRef Id="SwiftOnoneSupport.swiftmodule" />
-      <ComponentRef Id="WinSDK.swiftmodule" />
-
-      <ComponentRef Id="_ConcurrencyLibraries" />
-      <ComponentRef Id="_DifferentiationLibraries" />
-      <ComponentRef Id="_DistributedLibraries" />
-      <ComponentRef Id="FoundationLibraries" />
-      <ComponentRef Id="SwiftLibraries" />
-      <ComponentRef Id="SwiftSDKOverlayLibraries" />
-
-      <ComponentRef Id="SwiftRemoteMirrorHeaders" />
-      <ComponentRef Id="SwiftRemoteMirrorLibraries" />
+      <ComponentGroupRef Id="XCTest" />
+      <ComponentGroupRef Id="dispatch" />
+      <ComponentGroupRef Id="BlocksRuntime" />
+      <ComponentGroupRef Id="SwiftRemoteMirror" />
+      <ComponentGroupRef Id="_Concurrency" />
+      <ComponentGroupRef Id="_Differentiation" />
+      <ComponentGroupRef Id="Distributed" />
+      <ComponentGroupRef Id="_RegexParser" />
+      <ComponentGroupRef Id="_StringProcessing" />
+      <ComponentGroupRef Id="CRT" />
+      <ComponentGroupRef Id="Foundation" />
+      <ComponentGroupRef Id="FoundationNetworking" />
+      <ComponentGroupRef Id="FoundationXML" />
+      <ComponentGroupRef Id="Swift" />
+      <ComponentGroupRef Id="SwiftOnoneSupport" />
+      <ComponentGroupRef Id="WinSDK" />
 
       <ComponentGroupRef Id="SwiftShims" />
 
-      <ComponentRef Id="Registrar" />
-
-      <ComponentRef Id="SupportFiles" />
-
-      <ComponentRef Id="Info.plist" />
-      <ComponentRef Id="SDKSettings.plist" />
+      <ComponentGroupRef Id="Registrar" />
+      <ComponentGroupRef Id="SupportFiles" />
+      <ComponentGroupRef Id="Configuration" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift SDK for Windows i686" Level="0" Title="Debug Information">
