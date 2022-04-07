@@ -348,7 +348,9 @@ bool replace_file(const std::filesystem::path &source,
 
   // Rename file.
   HANDLE hFile = CreateFileW(temp.wstring().c_str(),
-                             GENERIC_READ | GENERIC_WRITE | DELETE, 0, nullptr,
+                             GENERIC_READ | DELETE,
+                             FILE_SHARE_READ | FILE_SHARE_WRITE | FILE_SHARE_DELETE,
+                             nullptr,
                              OPEN_EXISTING,
                              FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT | FILE_FLAG_POSIX_SEMANTICS,
                              nullptr);
@@ -359,7 +361,7 @@ bool replace_file(const std::filesystem::path &source,
 
   windows::raii::handle handle(hFile);
 
-  std::wstring path = temp.wstring();
+  std::wstring path = destination.wstring();
   std::vector<char> buffer(sizeof(FILE_RENAME_INFO) - sizeof(wchar_t) +
                            (path.size() * sizeof(std::wstring::value_type)));
   FILE_RENAME_INFO &rename_info =
