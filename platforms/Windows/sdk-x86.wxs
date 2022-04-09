@@ -75,7 +75,7 @@
                               </Directory>
                               <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
                               </Directory>
-                              <Directory Id="dispatch.swiftmodule" Name="dispatch.swiftmodule">
+                              <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
                               </Directory>
                               <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
                               </Directory>
@@ -220,10 +220,10 @@
         <File Id="dispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" Checksum="yes" />
       </Component>
 
-      <Component Id="Dispatch.swiftdoc" Directory="dispatch.swiftmodule" Guid="58f7770e-2cef-4277-8d7f-d0470164442d">
+      <Component Id="Dispatch.swiftdoc" Directory="Dispatch.swiftmodule" Guid="58f7770e-2cef-4277-8d7f-d0470164442d">
         <File Id="Dispatch.swiftdoc" Name="i686-unknown-windows-msvc.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Dispatch.swiftdoc" Checksum="yes" />
       </Component>
-      <Component Id="Dispatch.swiftmodule" Guid="e37a27e0-9462-4eec-8e3d-d028f34a6ff6">
+      <Component Id="Dispatch.swiftmodule" Directory="Dispatch.swiftmodule" Guid="e37a27e0-9462-4eec-8e3d-d028f34a6ff6">
         <File Id="Dispatch.swiftmodule" Name="i686-unknown-windows-msvc.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\Dispatch.swiftmodule" Checksum="yes" />
       </Component>
 
