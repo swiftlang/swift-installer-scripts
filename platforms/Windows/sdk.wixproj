@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <OutputName>sdk</OutputName>
     <OutputType>Package</OutputType>
     <ProjectGuid>39170311-3634-4a14-9546-7e4825e7dcd8</ProjectGuid>
@@ -25,7 +21,11 @@
     <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
 
-  <Import Project="$(WixTargetsPath)" />
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWiXToolsetInstalled" Condition="">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
+  </Target>
 
   <PropertyGroup>
     <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SWIFT_SOURCE_DIR=$(SWIFT_SOURCE_DIR);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
