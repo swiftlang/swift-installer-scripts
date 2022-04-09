@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <OutputName>installer</OutputName>
     <OutputType>Bundle</OutputType>
     <ProjectGuid>8ae3ad4d-2df4-42b7-890e-decdd5cead0b</ProjectGuid>
@@ -28,7 +24,11 @@
     <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
 
-  <Import Project="$(WixTargetsPath)" />
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWiXToolsetInstalled" Condition="">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
+  </Target>
 
   <PropertyGroup>
     <DefineConstants>ProductVersion=$(ProductVersion);RequiredChain=$(RequiredChain);OptionalChain=$(OptionalChain);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>

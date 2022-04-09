@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <OutputName>toolchain</OutputName>
     <OutputType>Package</OutputType>
     <ProjectGuid>6ebfb883-fc92-4b73-81ae-ddeb2cec4df9</ProjectGuid>
@@ -19,7 +15,11 @@
     <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
 
-  <Import Project="$(WixTargetsPath)" />
+  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
+  <Target Name="EnsureWiXToolsetInstalled" Condition="">
+    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
+  </Target>
 
   <PropertyGroup>
     <DefineConstants>ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;$(INCLUDE_DEBUG_INFO)</DefineConstants>
