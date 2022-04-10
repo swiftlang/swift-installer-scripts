@@ -91,6 +91,8 @@
                 <Directory Id="_usr_libexec" Name="libexec">
                 </Directory>
                 <Directory Id="_usr_share" Name="share">
+                  <Directory Id="_usr_share_swift" Name="swift">
+                  </Directory>
                 </Directory>
               </Directory>
             </Directory>
@@ -623,6 +625,10 @@
       </Component>
       <Component Id="watchos42.json" Directory="_usr_lib_swift_migrator" Guid="0b221d02-2fed-416e-89d2-b18b9c10d662">
         <File Id="watchos42.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\watchos42.json" Checksum="yes" />
+      </Component>
+
+      <Component Id="features.json" Directory="_usr_share_swift" Guid="bee4269c-afab-431d-b32e-39cdfec6c5be">
+        <File Id="features.json" Source="$(var.TOOLCHAIN_ROOT)\usr\share\swift\features.json" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
