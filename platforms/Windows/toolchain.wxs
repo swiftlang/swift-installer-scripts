@@ -537,8 +537,14 @@
 
     <ComponentGroup Id="swift">
       <!-- TODO(compnerd) can we use symbolic links instead? -->
+      <Component Id="swift_api_digester.exe" Directory="_usr_bin" Guid="ed1dbe33-7003-44bc-8aa8-c5735d09c8fd">
+        <File Id="swift_api_digester.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-api-digester.exe" Checksum="yes" />
+      </Component>
       <Component Id="swift_autolink_extract.exe" Directory="_usr_bin" Guid="26c29024-5fb1-4aed-8150-c1bfa271f469">
         <File Id="swift_autolink_extract.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-autolink-extract.exe" Checksum="yes" />
+      </Component>
+      <Component Id="swift_symbolgraph_extract.exe" Directory="_usr_bin" Guid="f51c6f69-68f7-4af7-b3c8-6de9cc93262f">
+        <File Id="swift_symbolgraph_extract.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-symbolgraph-extract.exe" Checksum="yes" />
       </Component>
 
       <Component Id="swift_demangle.exe" Directory="_usr_bin" Guid="8c42f286-7ddf-4637-ad4b-18e6904bc006">
