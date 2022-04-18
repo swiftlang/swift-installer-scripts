@@ -62,33 +62,33 @@
                           <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
                           </Directory>
                           <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
+                            <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
+                            </Directory>
+                            <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
+                            </Directory>
+                            <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
+                            </Directory>
+                            <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule">
+                            </Directory>
+                            <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
+                            </Directory>
+                            <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
+                            </Directory>
+                            <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
+                            </Directory>
+                            <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
+                            </Directory>
+                            <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule">
+                            </Directory>
+                            <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule">
+                            </Directory>
+                            <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule">
+                            </Directory>
+                            <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule">
+                            </Directory>
+                            <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule">
+                            </Directory>
                             <Directory Id="WindowsSDK_usr_lib_swift_windows_i686" Name="i686">
-                              <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
-                              </Directory>
-                              <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
-                              </Directory>
-                              <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
-                              </Directory>
-                              <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule">
-                              </Directory>
-                              <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
-                              </Directory>
-                              <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
-                              </Directory>
-                              <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
-                              </Directory>
-                              <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
-                              </Directory>
-                              <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule">
-                              </Directory>
-                              <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule">
-                              </Directory>
-                              <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule">
-                              </Directory>
-                              <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule">
-                              </Directory>
-                              <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule">
-                              </Directory>
                             </Directory>
                           </Directory>
                         </Directory>
