@@ -394,7 +394,7 @@
         <File Id="SwiftOnoneSupport.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
 
-      <Component Id="swiftSwiftOnoneSupport.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686 Guid="5394f49f-99b4-4049-81c4-c601d17700d4">
+      <Component Id="swiftSwiftOnoneSupport.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="5394f49f-99b4-4049-81c4-c601d17700d4">
         <File Id="swiftSwiftOnoneSupport.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftSwiftOnoneSupport.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
