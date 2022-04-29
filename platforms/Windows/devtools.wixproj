@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>0.0.0</ProductVersion>
   </PropertyGroup>
@@ -36,6 +39,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="devtools.wxs" />
+    <Compile Include="devtools-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>
