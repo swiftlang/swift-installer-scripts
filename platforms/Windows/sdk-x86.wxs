@@ -259,7 +259,7 @@
         <File Id="_Differentiation.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
 
-      <Component Id="swift_Differentiation.lib" Directory="WIndowsSDK_usr_lib_swift_windows_i686" Guid="7bb128ab-fbd7-4f1f-9a95-4dced2262672">
+      <Component Id="swift_Differentiation.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="7bb128ab-fbd7-4f1f-9a95-4dced2262672">
         <File Id="swift_Differentiation.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_Differentiation.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
