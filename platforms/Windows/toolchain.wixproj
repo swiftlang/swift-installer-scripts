@@ -9,6 +9,12 @@
     <OutputType>Package</OutputType>
     <ProjectGuid>6ebfb883-fc92-4b73-81ae-ddeb2cec4df9</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
@@ -49,6 +55,6 @@
   </Target>
 
   <ItemGroup>
-    <Compile Include="toolchain.wxs" />
+    <Compile Include="toolchain-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>
