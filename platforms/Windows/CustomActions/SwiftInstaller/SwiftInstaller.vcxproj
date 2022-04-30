@@ -50,8 +50,7 @@
 
     <NuGetTargetMoniker>native,Version=v0.0</NuGetTargetMoniker>
 
-    <!-- NOTE(compnerd) default to v142 (VS2019) toolset; VS2022 is v143 -->
-    <PlatformToolset Condition="'$(PlatformToolset)' == ''">v142</PlatformToolset>
+    <PlatformToolset Condition="'$(PlatformToolset)' == ''">$(DefaultPlatformToolset)</PlatformToolset>
     <PlatformToolset>$(PlatformToolset)</PlatformToolset>
 
     <IntDir>$(ProjectDir)build\$(Configuration)\$(PlatformShortName)\$(PlatformToolset)\obj\</IntDir>
