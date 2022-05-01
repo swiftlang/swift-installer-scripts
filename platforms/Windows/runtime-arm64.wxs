@@ -177,7 +177,7 @@
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Utilties for Windows aarch64" Level="0" Title="Debug Information">
         <Condition Level="1">INSTALL_DEBUGINFO</Condition>
-        <ComponentRef Id="SwiftUtilitiesDebugInfo" />
+        <ComponentGroupRef Id="SwiftUtilitiesDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
