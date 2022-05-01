@@ -159,24 +159,24 @@
 
     <!-- Feature -->
     <Feature Id="Win32SwiftRuntime" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows i686" Level="1" Title="Swift Runtime for Windows i686">
-      <ComponentRef Id="SwiftRuntime" />
+      <ComponentGroupRef Id="SwiftRuntime" />
       <ComponentRef Id="EnvironmentVariables" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Runtime for Windows i686" Level="0" Title="Debug Information">
         <Condition Level="1">INSTALL_DEBUGINFO</Condition>
-        <ComponentRef Id="SwiftRuntimeDebugInfo" />
+        <ComponentGroupRef Id="SwiftRuntimeDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
 
     <Feature Id="Win32SwiftUtilities" Absent="allow" AllowAdvertise="yes" Description="Extra Swift Utilities for Windows i686" Level="1" Title="Swift Utilities for Windows i686">
-      <ComponentRef Id="SwiftUtilities" />
+      <ComponentGroupRef Id="SwiftUtilities" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Utilties for Windows x86_64" Level="0" Title="Debug Information">
         <Condition Level="1">INSTALL_DEBUGINFO</Condition>
-        <ComponentRef Id="SwiftUtilitiesDebugInfo" />
+        <ComponentGroupRef Id="SwiftUtilitiesDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
