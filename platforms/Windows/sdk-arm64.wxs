@@ -146,6 +146,9 @@
       <Component Id="SwiftRemoteMirrorTypes.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="c15a0af1-e521-4ffc-845b-4f7176db4e2c">
         <File Id="SwiftRemoteMirrorTypes.h" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" Checksum="yes" />
       </Component>
+      <Component Id="SwiftRemoteMirror.modulemap" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="6fbee223-32cd-4406-83d0-6e4df07ea8be">
+        <File Id="SwiftRemoteMirror.modulemap" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\module.modulemap" Checksum="yes" />
+      </Component>
 
       <Component Id="swiftRemoteMirror.lib" Directory="WindowsSDK_usr_lib_swift_windows_aarch64" Guid="10f6539b-f57e-46ca-9d51-9f44b6a71b24">
         <File Id="swiftRemoteMirror.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\aarch64\swiftRemoteMirror.lib" Checksum="yes" />
