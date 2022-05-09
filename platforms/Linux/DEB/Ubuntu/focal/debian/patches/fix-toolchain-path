@@ -1,0 +1,44 @@
+Description: Fix toolchain path for build-script-helper.py
+ Make sure the correct path is passed to the script, and remove
+ assumption that /usr is used.
+Author: Julien Blache <jblache@apple.com>
+
+Index: swiftlang-5.6.0/swift/benchmark/scripts/build_script_helper.py
+===================================================================
+--- swiftlang-5.6.0.orig/swift/benchmark/scripts/build_script_helper.py
++++ swiftlang-5.6.0/swift/benchmark/scripts/build_script_helper.py
+@@ -53,7 +53,7 @@ def main():
+     if not os.path.isdir(bin_dir):
+         os.makedirs(bin_dir)
+ 
+-    swiftbuild_path = os.path.join(args.toolchain, "usr", "bin", "swift-build")
++    swiftbuild_path = os.path.join(args.toolchain, "bin", "swift-build")
+     perform_build(args, swiftbuild_path, "debug", "Benchmark_Onone", "-Onone")
+     perform_build(args, swiftbuild_path, "release", "Benchmark_Osize", "-Osize")
+     perform_build(args, swiftbuild_path, "release", "Benchmark_O", "-O")
+Index: swiftlang-5.6.0/swift/utils/swift_build_support/swift_build_support/products/benchmarks.py
+===================================================================
+--- swiftlang-5.6.0.orig/swift/utils/swift_build_support/swift_build_support/products/benchmarks.py
++++ swiftlang-5.6.0/swift/utils/swift_build_support/swift_build_support/products/benchmarks.py
+@@ -100,13 +100,17 @@ class Benchmarks(product.Product):
+ 
+ 
+ def _get_toolchain_path(host_target, product, args):
+-    # TODO check if we should prefer using product.install_toolchain_path
+     # this logic initially was inside run_build_script_helper
+     # and was factored out so it can be used in testing as well
+ 
+-    toolchain_path = swiftpm.SwiftPM.get_install_destdir(args,
+-                                                         host_target,
+-                                                         product.build_dir)
++    install_destdir = args.install_destdir
++    if swiftpm.SwiftPM.has_cross_compile_hosts(args):
++        install_destdir = swiftpm.SwiftPM.get_install_destdir(args,
++                                                              host_target,
++                                                              product.build_dir)
++    toolchain_path = targets.toolchain_path(install_destdir,
++                                            args.install_prefix)
++
+     if platform.system() == 'Darwin':
+         # The prefix is an absolute path, so concatenate without os.path.
+         toolchain_path += \
