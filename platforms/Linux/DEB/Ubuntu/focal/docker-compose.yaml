@@ -1,0 +1,47 @@
+# This source file is part of the Swift.org open source project
+#
+# Copyright (c) 2022 Apple Inc. and the Swift project authors
+# Licensed under Apache License v2.0 with Runtime Library Exception
+#
+# See http://swift.org/LICENSE.txt for license information
+# See http://swift.org/CONTRIBUTORS.txt for Swift project authors
+
+# this setup is designed to build the Deb with docker
+# usage:
+# docker-compose -f platforms/Linux/DEB/ubuntu/focal/docker-compose.yaml run build
+
+# to rebuild the base image
+# docker-compose -f platforms/Linux/DEB/ubuntu/focal/docker-compose.yaml build
+
+# to shell into the container for debugging purposes:
+# docker-compose -f platforms/Linux/DEB/ubuntu/focal/docker-compose.yaml run shell
+
+version: "2"
+
+services:
+
+  docker-setup:
+    image: ubuntu-focal-deb-builder
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  common: &common
+    image: ubuntu-focal-deb-builder
+    depends_on: [docker-setup]
+    volumes:
+      - ../../Ubuntu/focal:/code/Ubuntu/focal:z
+      - ../../Shared:/code/Shared:z
+      - ./.output:/output:z
+    working_dir: /code/Ubuntu/focal
+    cap_drop:
+      - CAP_NET_RAW
+      - CAP_NET_BIND_SERVICE
+
+  build:
+    <<: *common
+    command: /bin/bash -cl "./build_deb.sh"
+
+  shell:
+    <<: *common
+    entrypoint: /bin/bash -l

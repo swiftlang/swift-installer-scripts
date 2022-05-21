@@ -1,3 +1,11 @@
+# This source file is part of the Swift.org open source project
+#
+# Copyright (c) 2022 Apple Inc. and the Swift project authors
+# Licensed under Apache License v2.0 with Runtime Library Exception
+#
+# See http://swift.org/LICENSE.txt for license information
+# See http://swift.org/CONTRIBUTORS.txt for Swift project authors
+
 #!/bin/sh
 
 # This helper script will fetch the Swift sources, save the
@@ -27,16 +35,22 @@
 #   $ cd swiftlang-X.Y.Z
 #   $ DEB_BUILD_OPTIONS=parallel=64 debuild
 
-set -eu
+set -eux
 
-. $(dirname $0)/source-versions.sh
+here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# load version definitions
+. ${here}/versions.sh
+
+staging_dir=$1
+package_dir=$staging_dir/swiftlang-${debversion}
 
 get_component ()
 {
     component=$1
     url="$2"
 
-    dest=swiftlang_${debversion}.orig-${component}
+    dest=${staging_dir}/swiftlang_${debversion}.orig-${component}
 
     echo "Downloading ${component} from ${url}"
 
@@ -69,8 +83,9 @@ get_component ()
 	    exit 1
     esac
 
-    mkdir swiftlang-${debversion}/${component}
-    tar -C swiftlang-${debversion}/${component} --strip-components=1 -axf ${dest}
+    echo "Extracting ${component}"
+    mkdir ${package_dir}/${component}
+    tar -C ${package_dir}/${component} --strip-components=1 -axf ${dest}
 }
 
 get_component swift https://github.com/apple/swift/archive/swift-${swift_version}.tar.gz
@@ -112,7 +127,7 @@ get_component swift-markdown https://github.com/apple/swift-markdown/archive/swi
 if [ -s swiftlang-${debversion}/debian/patches/series ]; then
     cd swiftlang-${debversion}
 
-    export QUILT_PATCHES=debian/patches 
+    export QUILT_PATCHES=debian/patches
     export QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
 
     while quilt push; do quilt refresh; done
@@ -121,6 +136,6 @@ if [ -s swiftlang-${debversion}/debian/patches/series ]; then
     cd -
 fi
 
-cp -f swiftlang-${debversion}/debian/control.in swiftlang-${debversion}/debian/control
-
-dpkg-source --create-empty-orig -b swiftlang-${debversion}
+# create a source package
+cd $staging_dir
+dpkg-source --create-empty-orig -b ${package_dir}
