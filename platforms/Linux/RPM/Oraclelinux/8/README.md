@@ -1,4 +1,4 @@
-# Building Swift on CentOS Linux
+# Building Swift on Oracle Enterprise Linux
 
 
 ### building with docker-compose

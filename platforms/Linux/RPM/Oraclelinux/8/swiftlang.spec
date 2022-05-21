@@ -139,7 +139,7 @@ ln -s /usr/bin/python3 /usr/bin/python
 export VERBOSE=1
 
 # Run the build
-swift/utils/build-script --preset=buildbot_linux,no_assertions,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-centos8.tar.gz
+swift/utils/build-script --preset=buildbot_linux,no_assertions,no_test install_destdir=%{_builddir} installable_package=%{_builddir}/swift-%{version}-oel8.tar.gz
 
 %install
 mkdir -p %{buildroot}%{_libexecdir}/swift/%{package_version}
