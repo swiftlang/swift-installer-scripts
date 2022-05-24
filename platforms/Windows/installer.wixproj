@@ -12,7 +12,7 @@
     <ProductVersion>$(ProductVersion)</ProductVersion>
 
     <!-- The list must be %3B (;) separated so that it is passed along properly as `;` normally delimit options -->
-    <RequiredChain Condition=" '$(RequiredChain)' == '' ">icu.msi%3Bruntime.msi%3Btoolchain.msi%3Bdevtools.msi%3Bsdk.msi</RequiredChain>
+    <RequiredChain Condition=" '$(RequiredChain)' == '' ">runtime.msi%3Btoolchain.msi%3Bdevtools.msi%3Bsdk.msi</RequiredChain>
     <RequiredChain>$(RequiredChain)</RequiredChain>
 
     <OptionalChain>$(OptionalChain)</OptionalChain>
