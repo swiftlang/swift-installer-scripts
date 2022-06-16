@@ -3,10 +3,10 @@ Description: Fix integration tests to use correct package path
  the tests.
 Author: Julien Blache <jblache@apple.com>
 
-Index: swiftlang-5.6.0/swift-integration-tests/lit.cfg
+Index: swiftlang-5.6.2/swift-integration-tests/lit.cfg
 ===================================================================
---- swiftlang-5.6.0.orig/swift-integration-tests/lit.cfg
-+++ swiftlang-5.6.0/swift-integration-tests/lit.cfg
+--- swiftlang-5.6.2.orig/swift-integration-tests/lit.cfg
++++ swiftlang-5.6.2/swift-integration-tests/lit.cfg
 @@ -175,31 +175,31 @@ else:
  
  swift_path = lit_config.params.get(
@@ -45,10 +45,10 @@ Index: swiftlang-5.6.0/swift-integration-tests/lit.cfg
  lit_config.note("testing using 'docc': {}".format(docc_path))
  
  # Verify they exist.
-Index: swiftlang-5.6.0/swift-integration-tests/test-snapshot-binaries/test-rpath-linux.py
+Index: swiftlang-5.6.2/swift-integration-tests/test-snapshot-binaries/test-rpath-linux.py
 ===================================================================
---- swiftlang-5.6.0.orig/swift-integration-tests/test-snapshot-binaries/test-rpath-linux.py
-+++ swiftlang-5.6.0/swift-integration-tests/test-snapshot-binaries/test-rpath-linux.py
+--- swiftlang-5.6.2.orig/swift-integration-tests/test-snapshot-binaries/test-rpath-linux.py
++++ swiftlang-5.6.2/swift-integration-tests/test-snapshot-binaries/test-rpath-linux.py
 @@ -4,26 +4,26 @@
  # CHECK: {{.*}} {{\(RPATH\)|\(RUNPATH\)}} {{.*}}$ORIGIN/../lib/swift/linux
  #
@@ -84,10 +84,10 @@ Index: swiftlang-5.6.0/swift-integration-tests/test-snapshot-binaries/test-rpath
 -# RUN: %{readelf} -d %{package_path}/usr/lib/libswiftDemangle.so | %{FileCheck} --check-prefix CHECK-SDE %s
 +# RUN: %{readelf} -d %{package_path}/lib/libswiftDemangle.so | %{FileCheck} --check-prefix CHECK-SDE %s
  # CHECK-SDE-NOT: {{.*}} {{\(RPATH\)|\(RUNPATH\)}} {{.*}}:/usr/lib/swift/linux
-Index: swiftlang-5.6.0/swift/utils/build-script-impl
+Index: swiftlang-5.6.2/swift/utils/build-script-impl
 ===================================================================
---- swiftlang-5.6.0.orig/swift/utils/build-script-impl
-+++ swiftlang-5.6.0/swift/utils/build-script-impl
+--- swiftlang-5.6.2.orig/swift/utils/build-script-impl
++++ swiftlang-5.6.2/swift/utils/build-script-impl
 @@ -3463,8 +3463,10 @@ function build_and_test_installable_pack
  
              if [[ "${host}" == "macosx-"* ]] || [[ "${host}" == "merged-hosts" ]]; then
