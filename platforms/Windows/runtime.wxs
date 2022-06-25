@@ -33,7 +33,6 @@
         <File Id="FOUNDATION_XML_DLL" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" Checksum="yes" />
         <File Id="SWIFT_CONCURRENCY_DLL" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" />
         <File Id="SWIFT_DIFFERENTIATION_DLL" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.dll" Checksum="yes" />
-        <File Id="SWIFT_DISTRIBUTED_DLL" Source="$(var.SDK_ROOT)\usr\bin\swift_Distributed.dll" Checksum="yes" />
         <File Id="SWIFTCORE_DLL" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
         <File Id="SWIFTDISPATCH_DLL" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" />
         <!-- <File Id="SWIFTDEMANGLE_DLL" Source="$(var.SDK_ROOT)\bin\swiftDemangle.dll" Checksum="yes" /> -->
@@ -54,7 +53,6 @@
         <File Id="FOUNDATION_XML_PDB" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.pdb" Checksum="yes" DiskId="2" />
         <File Id="SWIFT_CONCURRENCY_PDB" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.pdb" Checksum="yes" DiskId="2" />
         <File Id="SWIFT_DIFFERENTIATION_PDB" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.pdb" Checksum="yes" DiskId="2" />
-        <File Id="SWIFT_DISTRIBUTED_PDB" Source="$(var.SDK_ROOT)\usr\bin\swift_Distributed.pdb" Checksum="yes" DiskId="2" />
         <File Id="SWIFTCORE_PDB" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
         <File Id="SWIFTDISPATCH_PDB" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.pdb" Checksum="yes" DiskId="2" />
         <!-- <File Id="SWIFTDEMANGLE_PDB" Source="$(var.SDK_ROOT)\bin\swiftDemangle.pdb" Checksum="yes" DiskId="2" /> -->
