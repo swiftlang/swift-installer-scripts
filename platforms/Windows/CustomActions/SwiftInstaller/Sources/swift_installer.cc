@@ -431,10 +431,10 @@ UINT SwiftInstaller_InstallAuxiliaryFiles(MSIHANDLE hInstall) {
       std::filesystem::path src;
       std::filesystem::path dst;
     } items[] = {
-      { SDKROOT / "usr" / "share" / "visualc.modulemap",
+      { SDKROOT / "usr" / "share" / "vcruntime.modulemap",
         VCToolsInstallDir / "include" / "module.modulemap" },
-      { SDKROOT / "usr" / "share" / "visualc.apinotes",
-        VCToolsInstallDir / "include" / "visualc.apinotes" },
+      { SDKROOT / "usr" / "share" / "vcruntime.apinotes",
+        VCToolsInstallDir / "include" / "vcruntime.apinotes" },
     };
 
     for (const auto &item : items) {

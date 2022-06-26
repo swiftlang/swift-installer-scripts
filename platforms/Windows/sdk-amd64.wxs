@@ -436,11 +436,11 @@
       <Component Id="winsdk.modulemap" Guid="a3b7cb7c-730e-4c6b-ada8-d39f4c72f41e">
         <File Id="winsdk.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\winsdk.modulemap" Checksum="yes" />
       </Component>
-      <Component Id="visualc.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
-        <File Id="visualc.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\visualc.modulemap" Checksum="yes" />
+      <Component Id="vcruntime.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
+        <File Id="vcruntime.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\vcruntime.modulemap" Checksum="yes" />
       </Component>
-      <Component Id="visualc.apinotes" Guid="11318e14-7d68-490e-8c64-f1332f1d63f7">
-        <File Id="visualc.apinotes" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\visualc.apinotes" Checksum="yes" />
+      <Component Id="vcruntime.apinotes" Guid="11318e14-7d68-490e-8c64-f1332f1d63f7">
+        <File Id="vcruntime.apinotes" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\vcruntime.apinotes" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
