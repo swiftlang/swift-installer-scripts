@@ -135,21 +135,6 @@
       </Component>
       <?endif?>
 
-      <!-- swift-collections -->
-      <Component Id="SWIFT_COLLECTIONS_BINS" Guid="f4634058-6477-4f8f-aa99-76a074056c2f">
-        <File Id="COLLECTIONS_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Collections.dll" Checksum="yes" />
-        <File Id="DEQUE_MODULE_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DequeModule.dll" Checksum="yes" />
-        <File Id="ORDERED_COLLECTIONS_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\OrderedCollections.dll" Checksum="yes" />
-      </Component>
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Component Id="SWIFT_COLLECTIONS_DEBUGINFO" Guid="3c709129-5383-47c8-a86a-38d44a575095">
-        <File Id="COLLECTIONS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Collections.pdb" Checksum="yes" />
-        <File Id="DEQUE_MODULE_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DequeModule.pdb" Checksum="yes" />
-        <File Id="ORDERED_COLLECTIONS_PDB" Source="$(var.DEVTOOLS_ROOT)\usr\bin\OrderedCollections.pdb" Checksum="yes" />
-      </Component>
-      <?endif?>
-
       <!-- swift-driver -->
       <Component Id="SWIFT_DRIVER_BINS" Guid="6108d465-9eb5-441f-8cde-5437457fb539">
         <File Id="SWIFT_DRIVER_DLL" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftDriver.dll" Checksum="yes" />
@@ -264,7 +249,6 @@
       <ComponentRef Id="SOURCEKIT_LSP_BINS" />
       <ComponentRef Id="SWIFT_ARGUMENT_PARSER_BINS" />
       <ComponentRef Id="SWIFT_CRYPTO_BINS" />
-      <ComponentRef Id="SWIFT_COLLECTIONS_BINS" />
       <ComponentRef Id="SWIFT_DRIVER_BINS" />
       <ComponentRef Id="SWIFT_PACKAGE_MANAGER_BINS" />
       <ComponentRef Id="SWIFT_TOOLS_SUPPORT_CORE_BINS" />
@@ -280,7 +264,6 @@
       <ComponentRef Id="SOURCEKIT_LSP_DEBUGINFO" />
       <ComponentRef Id="SWIFT_ARGUMENT_PARSER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_CRYPTO_DEBUGINFO" />
-      <ComponentRef Id="SWIFT_COLLECTIONS_DEBUGINFO" />
       <ComponentRef Id="SWIFT_DRIVER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_PACKAGE_MANAGER_DEBUGINFO" />
       <ComponentRef Id="SWIFT_TOOLS_SUPPORT_CORE_DEBUGINFO" />
