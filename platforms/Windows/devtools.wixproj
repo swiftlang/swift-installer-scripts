@@ -39,6 +39,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="devtools-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>
