@@ -181,7 +181,14 @@
       <?endif?>
     </Feature>
 
-    <!-- UI -->
-    <UI />
+    <UI>
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+    </UI>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
+
   </Product>
 </Wix>
