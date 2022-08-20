@@ -57,6 +57,9 @@
       <Component Id="swift_StringProcessing.dll" Guid="198f58ad-8797-40ee-b109-dec6f9b57b27">
         <File Id="swift_StringProcessing.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" Checksum="yes" />
       </Component>
+      <Component Id="swiftCxx.dll" Guid="f5af3d1d-bb5f-4fae-b61c-ade58a581aec">
+        <File Id="swiftCxx.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.dll" Checksum="yes" />
+      </Component>
       <Component Id="swiftCore.dll" Guid="4098dff8-8b8d-48ee-a234-d29104d4c809">
         <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
       </Component>
@@ -119,6 +122,9 @@
       </Component>
       <Component Id="swift_StringProcessing.pdb" Guid="d123c083-9dca-4814-875e-27458ae378d9">
         <File Id="swift_StringProcessing.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftCxx.pdb" Guid="92375416-d9ac-46fc-810d-df566a9b925d">
+        <File Id="swiftCxx.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.pdb" Checksum="yes" />
       </Component>
       <Component Id="swiftCore.pdb" Guid="57d56adc-dc40-4d6f-b0d7-11d472f11dbe">
         <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
