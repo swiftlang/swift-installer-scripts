@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+    "name": "swift-foundation",
+    "version-string": "main",
+    "builtin-baseline": "44d94c2edbd44f0c01d66c2ad95eb6982a9a61bc",
+    "dependencies": [
+        { "name": "curl", "default-features": false },
+        "libxml2"
+    ],
+    "overrides": [
+        { "name": "curl", "version": "7.78.0" },
+        { "name": "libxml2", "version": "2.9.12" }
+    ]
+}
