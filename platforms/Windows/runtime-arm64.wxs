@@ -21,7 +21,7 @@
       </Directory>
     </Directory>
 
-    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]swift">
+    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]Swift">
       NOT INSTALLDIR
     </SetDirectory>
 

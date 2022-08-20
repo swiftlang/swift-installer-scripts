@@ -20,7 +20,7 @@
       </Directory>
     </Directory>
 
-    <SetDirectory Id="INSTALLDIR" Value="[ProgramFilesFolder]swift">
+    <SetDirectory Id="INSTALLDIR" Value="[ProgramFilesFolder]Swift">
       NOT INSTALLDIR
     </SetDirectory>
 
