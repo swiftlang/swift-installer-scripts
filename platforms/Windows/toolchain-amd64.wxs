@@ -291,6 +291,9 @@
       <Component Id="clang.exe" Directory="_usr_bin" Guid="030da6e7-c5f4-4cdc-9273-5969ad514c35">
         <File Id="clang.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang.exe" Checksum="yes" />
       </Component>
+      <Component Id="clangd.exe" Directory="_usr_bin" Guid="58086480-e113-4a75-9816-4070d6a1d1e6">
+        <File Id="clangd.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.exe" Checksum="yes" />
+      </Component>
       <!--
       TODO(compnerd) we should include clang-offload-bundler, clang-refactor, clang-rename, optremarks.dll, scan-build, scan-view
       -->
@@ -355,6 +358,9 @@
       </Component>
       <Component Id="clang.pdb" Directory="_usr_bin" Guid="1259c5a6-7418-4cd7-aab1-e6912c37b1e3">
         <File Id="clang.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang.pdb" Checksum="yes" DiskId="3" />
+      </Component>
+      <Component Id="clangd.pdb" Source="_usr_bin" Guid="9afe1bc9-a814-45e2-ba6a-505f4f18592a">
+        <File Id="clangd.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.pdb" Checksum="yes" DiskId="3" />
       </Component>
 
       <Component Id="libclang.pdb" Directory="_usr_bin" Guid="d2d21dac-e7cb-494f-96be-c271af6cd02b">
