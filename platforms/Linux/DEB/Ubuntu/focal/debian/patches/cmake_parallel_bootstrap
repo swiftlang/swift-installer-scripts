@@ -2,10 +2,10 @@ Description: Enable parallel boostrap for CMake
  CMake's bootstrap can be parallelized, but wasn't.
 Author: Julien Blache <jblache@apple.com>
 
-Index: swiftlang-5.6.2/swift/utils/swift_build_support/swift_build_support/cmake.py
+Index: swiftlang-5.6.3/swift/utils/swift_build_support/swift_build_support/cmake.py
 ===================================================================
---- swiftlang-5.6.2.orig/swift/utils/swift_build_support/swift_build_support/cmake.py
-+++ swiftlang-5.6.2/swift/utils/swift_build_support/swift_build_support/cmake.py
+--- swiftlang-5.6.3.orig/swift/utils/swift_build_support/swift_build_support/cmake.py
++++ swiftlang-5.6.3/swift/utils/swift_build_support/swift_build_support/cmake.py
 @@ -267,8 +267,10 @@ class CMake(object):
  
          cwd = os.getcwd()
