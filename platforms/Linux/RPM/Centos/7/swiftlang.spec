@@ -84,6 +84,7 @@ Requires:       pkgconfig
 Requires:       python3
 Requires:       sqlite
 Requires:       zlib-devel
+Requires:       unzip
 
 ExclusiveArch:  x86_64 aarch64
 
@@ -130,7 +131,7 @@ mv swift-system-%{swift_system_version} swift-system
 mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
 mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
 mv Yams-%{yams_version} yams
-mv swift-experimental-string-processing-%{swift_version} swift-experimental-string-processing
+mv swift-experimental-string-processing-swift-%{swift_version} swift-experimental-string-processing
 
 # Adjust python version hwasan_symbolize
 %patch0 -p1
