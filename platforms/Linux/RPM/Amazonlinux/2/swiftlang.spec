@@ -82,6 +82,7 @@ Requires:       libxml2-devel
 Requires:       sqlite
 Requires:       tar
 Requires:       tzdata
+Requires:       unzip
 
 ExclusiveArch:  x86_64 aarch64
 
