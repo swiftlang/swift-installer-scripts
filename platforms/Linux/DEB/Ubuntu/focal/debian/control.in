@@ -33,7 +33,7 @@ Architecture: amd64 arm64
 Depends: ${shlibs:Depends}, ${misc:Depends},
  libc6-dev, libcurl4-openssl-dev, libgcc-9-dev, libstdc++-9-dev, libxml2-dev,
  libz3-dev, uuid-dev, zlib1g-dev,
- binutils, git, pkg-config, tzdata,
+ binutils, git, pkg-config, tzdata, unzip
  python3
 Description: Swift programming language, release x.y.z
  Swift is a general-purpose programming language built using

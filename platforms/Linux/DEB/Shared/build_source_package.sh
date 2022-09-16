@@ -122,6 +122,7 @@ get_component swift-nio-ssl https://github.com/apple/swift-nio-ssl/archive/${swi
 get_component swift-format https://github.com/apple/swift-format/archive/swift-${swift_version}.tar.gz
 get_component swift-lmdb https://github.com/apple/swift-lmdb/archive/swift-${swift_version}.tar.gz
 get_component swift-markdown https://github.com/apple/swift-markdown/archive/swift-${swift_version}.tar.gz
+get_component swift-experimental-string-processing https://github.com/apple/swift-experimental-string-processing/archive/swift-${swift_version}.tar.gz
 
 # Refresh patches, if any
 if [ -s swiftlang-${debversion}/debian/patches/series ]; then
