@@ -82,6 +82,8 @@
                     </Directory>
                   </Directory>
                   <Directory Id="_usr_lib_swift" Name="swift">
+                    <Directory Id="_usr_lib_swift_clang" Name="clang">
+                    </Directory>
                     <Directory Id="_usr_lib_swift_migrator" Name="migrator">
                     </Directory>
                     <Directory Id="_usr_lib_swift_shims" Name="shims">

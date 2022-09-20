@@ -28,7 +28,7 @@
   </Target>
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;$(INCLUDE_DEBUG_INFO)</DefineConstants>
+    <DefineConstants>ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;TOOLCHAIN_ROOT_USR_LIB_SWIFT_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\swift\clang;$(INCLUDE_DEBUG_INFO)</DefineConstants>
     <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
     <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
     <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
@@ -50,6 +50,11 @@
         <ComponentGroupName>ClangResources</ComponentGroupName>
         <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
         <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
+      </HarvestDirectory>
+      <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\swift\clang">
+        <ComponentGroupName>ClangResourcesForSwift</ComponentGroupName>
+        <DirectoryRefId>_usr_lib_swift_clang</DirectoryRefId>
+        <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_SWIFT_CLANG</PreprocessorVariable>
       </HarvestDirectory>
     </ItemGroup>
   </Target>
