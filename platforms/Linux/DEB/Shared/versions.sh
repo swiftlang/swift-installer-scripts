@@ -1,8 +1,8 @@
 #!/bin/sh
 
-debversion=5.7.0
+debversion=5.7.1
 
-swift_version=5.7-RELEASE
+swift_version=5.7.1-RELEASE
 icu_version=65-1
 yams_version=4.0.2
 swift_argument_parser_version=1.0.3
