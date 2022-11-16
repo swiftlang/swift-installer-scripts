@@ -51,8 +51,6 @@
                 <Directory Id="_usr_include" Name="include">
                   <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan">
                   </Directory>
-                  <Directory Id="_usr_include__InternalSwiftSyntaxParser" Name="_InternalSwiftSyntaxParser">
-                  </Directory>
                   <Directory Id="_usr_include_clang_c" Name="clang-c">
                   </Directory>
                   <Directory Id="_usr_include_dispatch" Name="dispatch">
@@ -568,28 +566,12 @@
       <Component Id="_InternalSwiftScan.dll" Directory="_usr_bin" Guid="61c41a5a-5cfe-4624-a437-4cc63526554b">
         <File Id="_InternalSwiftScan.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftScan.dll" Checksum="yes" />
       </Component>
-      <Component Id="_InternalSwiftSyntaxParser.dll" Directory="_usr_bin" Guid="07ea18c7-dcb1-442d-9079-ca1704e50f36">
-        <File Id="_InternalSwiftSyntaxParser.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftSyntaxParser.dll" Checksum="yes" />
-      </Component>
 
       <Component Id="swiftDemangle.lib" Directory="_usr_lib" Guid="074961b5-43c4-4d47-a71d-d5feeed174ed">
         <File Id="swiftDemangle.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swiftDemangle.lib" Checksum="yes" />
       </Component>
       <Component Id="_InternalSwiftScan.lib" Directory="_usr_lib" Guid="7b5611ec-98f0-4043-b69b-94274e68141c">
         <File Id="_InternalSwiftScan.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftScan.lib" Checksum="yes" />
-      </Component>
-      <Component Id="_InternalSwiftSyntaxParser.lib" Directory="_usr_lib" Guid="c1d75e75-026e-408b-b142-3344d4dc659c">
-        <File Id="_InternalSwiftSyntaxParser.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftSyntaxParser.lib" Checksum="yes" />
-      </Component>
-
-      <Component Id="SwiftSyntaxParser.h" Directory="_usr_include__InternalSwiftSyntaxParser" Guid="a5ce3a92-310b-437f-9167-967fbcc83f93">
-        <File Id="SwiftSyntaxParser.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftSyntaxParser\SwiftSyntaxParser.h" Checksum="yes" />
-      </Component>
-      <Component Id="SwiftSyntaxCDataTypes.h" Directory="_usr_include__InternalSwiftSyntaxParser" Guid="66f3b179-8fa2-4388-9d42-dfb97c7d434e">
-        <File Id="SwiftSyntaxCDataTypes.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftSyntaxParser\SwiftSyntaxCDataTypes.h" Checksum="yes" />
-      </Component>
-      <Component Id="_InternalSwiftSyntaxParser.modulemap" Directory="_usr_include__InternalSwiftSyntaxParser" Guid="05effc98-9cba-4513-bab8-84a40a806684">
-        <File Id="_InternalSwiftSyntaxParser.modulemap" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftSyntaxParser\module.modulemap" Checksum="yes" />
       </Component>
 
       <Component Id="DependencyScan.h" Directory="_usr_include__InternalSwiftScan" Guid="44c94a09-383d-4493-9918-347db8cccdc0">
@@ -652,9 +634,6 @@
       </Component>
       <Component Id="_InternalSwiftScan.pdb" Directory="_usr_bin" Guid="79269c96-4952-4028-b764-8cfbac6c2062">
         <File Id="_InternalSwiftScan.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftScan.pdb" Checksum="yes" DiskId="9" />
-      </Component>
-      <Component Id="_InternalSwiftSyntaxParser.pdb" Directory="_usr_bin" Guid="989843e9-e396-4ab3-bf48-36cd6be9c3fc">
-        <File Id="_InternalSwiftSyntaxParser.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftSyntaxParser.pdb" Checksum="yes" DiskId="9" />
       </Component>
     </ComponentGroup>
     <?endif?>
