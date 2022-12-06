@@ -13,6 +13,7 @@ Index: swiftlang-5.7.1/swift/utils/build-presets.ini
  install-libicu
 -install-prefix=/usr
 +install-prefix=%(install_prefix)s
++skip-early-swift-driver
  install-sourcekit-lsp
  install-swiftdocc
  build-swift-static-stdlib
