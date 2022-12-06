@@ -7,13 +7,14 @@ Index: swiftlang-5.7.1/swift/utils/build-presets.ini
 ===================================================================
 --- swiftlang-5.7.1.orig/swift/utils/build-presets.ini
 +++ swiftlang-5.7.1/swift/utils/build-presets.ini
-@@ -824,7 +824,8 @@ install-swiftpm
+@@ -824,7 +824,9 @@ install-swiftpm
  install-swift-driver
  install-xctest
  install-libicu
 -install-prefix=/usr
 +install-prefix=%(install_prefix)s
 +skip-early-swift-driver
++skip-build-benchmarks
  install-sourcekit-lsp
  install-swiftdocc
  build-swift-static-stdlib
