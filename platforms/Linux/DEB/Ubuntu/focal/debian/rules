@@ -68,7 +68,7 @@ override_dh_dwz:
 	# need to investigate whether or not it is suitable for us.
 
 override_dh_auto_build:
-	swift/utils/build-script $(BUILD_SCRIPT_ARGS) --skip-early-swift-driver --preset=buildbot_linux,no_assertions,no_test \
+	swift/utils/build-script $(BUILD_SCRIPT_ARGS) --preset=buildbot_linux,no_assertions,no_test \
 		install_prefix=/opt/swift/$(SWIFTLANG_PKG_VER) \
 		install_destdir=$(SWIFT_BUILDDIR)/discard \
 		installable_package=$(SWIFT_BUILDDIR)/swiftdeb-$(SWIFTLANG_PKG_VER).tar.gz
