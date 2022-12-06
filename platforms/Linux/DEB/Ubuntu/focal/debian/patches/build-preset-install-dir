@@ -3,16 +3,16 @@ Description: Make target installation directory a command line option
  time on the command line.
 Author: Julien Blache <jblache@apple.com>
 
-Index: swiftlang-5.6.3/swift/utils/build-presets.ini
+Index: swiftlang-5.7.1/swift/utils/build-presets.ini
 ===================================================================
---- swiftlang-5.6.3.orig/swift/utils/build-presets.ini
-+++ swiftlang-5.6.3/swift/utils/build-presets.ini
-@@ -831,7 +831,7 @@ install-swiftpm
+--- swiftlang-5.7.1.orig/swift/utils/build-presets.ini
++++ swiftlang-5.7.1/swift/utils/build-presets.ini
+@@ -824,7 +824,7 @@ install-swiftpm
  install-swift-driver
  install-xctest
  install-libicu
 -install-prefix=/usr
 +install-prefix=%(install_prefix)s
- install-libcxx
  install-sourcekit-lsp
  install-swiftdocc
+ build-swift-static-stdlib

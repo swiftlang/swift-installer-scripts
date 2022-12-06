@@ -36,7 +36,7 @@ mk-build-deps --install ${package_dir}/debian/control.in --tool 'apt-get -y -o D
 # build the installable package
 # TODO: add signing key information
 cd ${package_dir}
-DEB_BUILD_OPTIONS=parallel=64 debuild
+DEB_BUILD_OPTIONS=parallel=64 debuild -sa
 
 # copy the final packages to /output
 cd ${staging_dir}
