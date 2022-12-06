@@ -1,5 +1,5 @@
 swiftlang (5.7.1-1) focal; urgency=medium
 
-  * Debian packaging introduction for Swift 5.7.1.
+  * Debian packaging updated for Swift 5.7.1.
 
- -- Julien Blache <matias.piipari@gmail.com>  Tue, 15 Mar 2022 16:36:34 -0700
+ -- Matias Piipari <matias.piipari@gmail.com>  Tue, 15 Mar 2022 16:36:34 -0700
