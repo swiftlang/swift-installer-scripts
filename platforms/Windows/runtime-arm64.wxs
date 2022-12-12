@@ -60,6 +60,9 @@
       <Component Id="swiftCore.dll" Guid="b11c37b0-b6ad-4e55-b4e7-0517ff7a161f">
         <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
       </Component>
+      <Component Id="swiftCxx.dll" Guid="7bbf8fd4-769d-4e4f-8d62-f1d07d568ccf">
+        <File Id="swiftCxx.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.dll" Checksum="yes" />
+      </Component>
       <Component Id="swiftDispatch.dll" Guid="ce50982a-4bb3-43fc-a5ce-9fc709143b47">
         <File Id="swiftDispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" />
       </Component>
@@ -122,6 +125,9 @@
       </Component>
       <Component Id="swiftCore.pdb" Guid="ba858ada-58f6-499d-a9f3-fdad7e858e15">
         <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftCxx.pdb" Guid="3e1ebd5a-e9e0-4a8d-bd02-519d93b3e9c8">
+        <File Id="swiftCxx.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.pdb" Checksum="yes" DiskId="2" />
       </Component>
       <Component Id="swiftDispatch.pdb" Guid="3a9c9745-99bb-42c8-9a6d-1da25c0365e0">
         <File Id="swiftDispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.pdb" Checksum="yes" DiskId="2" />
