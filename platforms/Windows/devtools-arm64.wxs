@@ -177,6 +177,12 @@
       <Component Id="Commands.pdb" Directory="_usr_bin" Guid="345f96d2-f9ac-4c83-8722-855686401a9d">
         <File Id="Commands.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Commands.pdb" Checksum="yes" />
       </Component>
+      <Component Id="CoreCommands.pdb" Directory="_usr_bin" Guid="8925173e-f45d-44ea-bc8f-a936b1a883ad">
+        <File Id="CoreCommands.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CoreCommands.pdb" Checksum="yes" />
+      </Component>
+      <Component Id="DriverSupport.pdb" Directory="_usr_bin" Guid="f8f8cb75-8f42-4522-bdd7-89499943ef32">
+        <File Id="DriverSupport.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.pdb" Checksum="yes" />
+      </Component>
       <Component Id="PackageGraph.pdb" Directory="_usr_bin" Guid="71a32056-bb8d-4d9b-ab76-e25ee6fd04bc">
         <File Id="PackageGraph.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.pdb" Checksum="yes" />
       </Component>
