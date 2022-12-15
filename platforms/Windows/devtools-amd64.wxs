@@ -104,6 +104,12 @@
       <Component Id="Commands.dll" Directory="_usr_bin" Guid="5648becc-7676-4f6e-a60e-6967f9b0ba4f">
         <File Id="Commands.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Commands.dll" Checksum="yes" />
       </Component>
+      <Component Id="CoreCommands.dll" Director="_usr_bin" Guid="03cf68fb-da2b-47b8-8417-a44e4ece5438">
+        <File Id="CoreCommands.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CoreCommands.dll" Checksum="yes" />
+      </Component>
+      <Component Id="DriverSupport.dll" Directory="_usr_bin" Guid="43b50a02-5180-49c9-b0a4-86273c822f87">
+        <File Id="DriverSUpport.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.dll" Checksum="yes" />
+      </COmponent>
       <Component Id="PackageGraph.dll" Directory="_usr_bin" Guid="254500b8-b2ac-4c9f-add3-6511b0e5bfa7">
         <File Id="PackageGraph.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.dll" Checksum="yes" />
       </Component>
