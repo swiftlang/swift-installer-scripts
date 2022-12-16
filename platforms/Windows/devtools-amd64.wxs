@@ -104,6 +104,12 @@
       <Component Id="Commands.dll" Directory="_usr_bin" Guid="5648becc-7676-4f6e-a60e-6967f9b0ba4f">
         <File Id="Commands.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Commands.dll" Checksum="yes" />
       </Component>
+      <Component Id="CoreCommands.dll" Directory="_usr_bin" Guid="03cf68fb-da2b-47b8-8417-a44e4ece5438">
+        <File Id="CoreCommands.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CoreCommands.dll" Checksum="yes" />
+      </Component>
+      <Component Id="DriverSupport.dll" Directory="_usr_bin" Guid="43b50a02-5180-49c9-b0a4-86273c822f87">
+        <File Id="DriverSUpport.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.dll" Checksum="yes" />
+      </Component>
       <Component Id="PackageGraph.dll" Directory="_usr_bin" Guid="254500b8-b2ac-4c9f-add3-6511b0e5bfa7">
         <File Id="PackageGraph.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.dll" Checksum="yes" />
       </Component>
@@ -170,6 +176,12 @@
       </Component>
       <Component Id="Commands.pdb" Directory="_usr_bin" Guid="949a08c5-ec4e-4d69-a18a-d8547a66c50a">
         <File Id="Commands.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Commands.pdb" Checksum="yes" />
+      </Component>
+      <Component Id="CoreCommands.pdb" Directory="_usr_bin" Guid="39e660e2-e428-4828-848a-c11bccb727e2">
+        <File Id="CoreCommands.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CoreCommands.pdb" Checksum="yes" />
+      </Component>
+      <Component Id="DriverSupport.pdb" Directory="_usr_bin" Guid="e228fd9f-13df-4ec5-b989-cca47925f272">
+        <File Id="DriverSupport.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.pdb" Checksum="yes" />
       </Component>
       <Component Id="PackageGraph.pdb" Directory="_usr_bin" Guid="07b49917-5bdd-4491-a151-cb180a04aa90">
         <File Id="PackageGraph.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.pdb" Checksum="yes" />
