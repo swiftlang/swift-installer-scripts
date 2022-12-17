@@ -15,6 +15,16 @@ Index: swiftlang-5.7.1/swift/utils/build-presets.ini
 +install-prefix=%(install_prefix)s
 +skip-early-swift-driver
 +skip-build-benchmarks
++skip-test-toolchain-benchmarks
  install-sourcekit-lsp
  install-swiftdocc
  build-swift-static-stdlib
+@@ -837,7 +840,6 @@ build-swift-stdlib-unittest-extra
+ test-installable-package
+
+ # Build the benchmarks against the toolchain.
+-toolchain-benchmarks
+
+ # Path to the root of the installation filesystem.
+ install-destdir=%(install_destdir)s
+
