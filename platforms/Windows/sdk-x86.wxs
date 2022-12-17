@@ -74,7 +74,7 @@
                             </Directory>
                             <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
                             </Directory>
-                            <Directory Id="Cxx.swiftmdoule" Name="Cxx.swiftmodule">
+                            <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
                             </Directory>
                             <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
                             </Directory>
