@@ -1,4 +1,5 @@
-opt/swift/X.Y.Z/bin/swift usr/bin/swift
-opt/swift/X.Y.Z/bin/swiftc usr/bin/swiftc
-opt/swift/X.Y.Z/bin/sourcekit-lsp usr/bin/sourcekit-lsp
-opt/swift/X.Y.Z/share/man/man1/swift.1.gz usr/share/man/man1/swift.1.gz
+usr/lib/swiftlang/X.Y.Z/bin/swift usr/bin/swift
+usr/lib/swiftlang/X.Y.Z/bin/swiftc usr/bin/swiftc
+usr/lib/swiftlang/X.Y.Z/bin/lldb usr/bin/swift-lldb
+usr/lib/swiftlang/X.Y.Z/bin/sourcekit-lsp usr/bin/sourcekit-lsp
+usr/lib/swiftlang/X.Y.Z/share/man/man1/swift.1.gz usr/share/man/man1/swift.1.gz

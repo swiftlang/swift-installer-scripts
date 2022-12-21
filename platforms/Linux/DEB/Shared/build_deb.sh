@@ -22,7 +22,7 @@ package_dir=${staging_dir}/swiftlang-${debversion}
 # clean
 rm -rf ${package_dir} && mkdir -p ${package_dir}
 
-# copy control files to pakcage build directory
+# copy control files to package build directory
 cp -r ${here}/debian ${package_dir}/
 cp -r ${package_dir}/debian/control.in ${package_dir}/debian/control
 
@@ -36,7 +36,7 @@ mk-build-deps --install ${package_dir}/debian/control.in --tool 'apt-get -y -o D
 # build the installable package
 # TODO: add signing key information
 cd ${package_dir}
-DEB_BUILD_OPTIONS=parallel=64 debuild
+DEB_BUILD_OPTIONS=parallel=64 DEB_LINTIAN=false debuild -sa -S
 
 # copy the final packages to /output
 cd ${staging_dir}

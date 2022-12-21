@@ -61,7 +61,7 @@ override_dh_makeshlibs:
 	# packaging, or a different dependency mechanism will be instituted.
 
 override_dh_shlibdeps:
-	dh_shlibdeps -l/opt/swift/$(SWIFTLANG_PKG_VER)/lib/swift/linux/
+	dh_shlibdeps -l/usr/lib/swiftlang/$(SWIFTLANG_PKG_VER)/lib/swift/linux/
 
 override_dh_dwz:
 	# Disable DWARF debug info compression; it is failing, so we'll
@@ -69,7 +69,7 @@ override_dh_dwz:
 
 override_dh_auto_build:
 	swift/utils/build-script $(BUILD_SCRIPT_ARGS) --preset=buildbot_linux,no_assertions,no_test \
-		install_prefix=/opt/swift/$(SWIFTLANG_PKG_VER) \
+		install_prefix=/usr/lib/swiftlang/$(SWIFTLANG_PKG_VER) \
 		install_destdir=$(SWIFT_BUILDDIR)/discard \
 		installable_package=$(SWIFT_BUILDDIR)/swiftdeb-$(SWIFTLANG_PKG_VER).tar.gz
 
@@ -82,4 +82,4 @@ override_dh_auto_install:
 	tar -C $(CURDIR)/debian/tmp -xzf $(SWIFT_BUILDDIR)/swiftdeb-$(SWIFTLANG_PKG_VER).tar.gz
 
 	# Manually compress manpages, since they are in a non-standard location
-	find $(CURDIR)/debian/tmp/opt/swift/$(SWIFTLANG_PKG_VER)/share/man -type f -exec gzip \{\} \;
+	find $(CURDIR)/debian/tmp/usr/lib/swiftlang/$(SWIFTLANG_PKG_VER)/share/man -type f -exec gzip \{\} \;
