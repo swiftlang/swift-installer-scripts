@@ -10,6 +10,15 @@
 
 set -eux
 
+source_only_pkg=FALSE # build binary deb by default
+while getopts ":s" option; do
+  case $option in
+    s)
+      source_only_pkg=TRUE
+      ;;
+   esac
+done
+
 here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # load version definitions
@@ -31,16 +40,27 @@ ${here}/build_source_package.sh ${staging_dir}
 
 # install the build dependencies
 cd ${staging_dir}
-mk-build-deps --install ${package_dir}/debian/control.in --tool 'apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends'
+mk-build-deps --install ${package_dir}/debian/control.in --root-cmd sudo --remove --tool 'apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends'
 
 # build the installable package
 # TODO: add signing key information
 cd ${package_dir}
-DEB_BUILD_OPTIONS=parallel=64 DEB_LINTIAN=false debuild -sa -S
+
+if [ "$source_only_pkg" == "TRUE" ]; then
+    DEB_BUILD_OPTIONS=parallel=64 debuild --no-lintian -uc -us -sa -S
+else
+    DEB_BUILD_OPTIONS=parallel=64 debuild
+fi
 
 # copy the final packages to /output
 cd ${staging_dir}
-cp *.deb /output/
-cp *.ddeb /output/
+
+if [ "$source_only_pkg" == "FALSE" ]; then
+  cp *.deb /output/
+  cp *.ddeb /output/
+fi
+
 cp *.dsc /output/
 cp *.tar.* /output/
+cp *.changes /output/
+cp *.buildinfo /output/

@@ -1,0 +1,54 @@
+name: Build signed src package for Launchpad binary build & PPA distrib
+
+on:
+  push:
+    branches: [main, ubuntu-for-5.7.2]
+
+jobs:
+  build-focal:
+    runs-on: ubuntu-20.04
+    environment: swiftlang-ppa
+    steps:
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+      
+      - name: List keys
+        run: gpg -K
+      
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Install build dependencies
+        run: |
+          sudo apt install -y --no-install-recommends devscripts dpkg-dev dput equivs
+      
+      - name: Build source package
+        working-directory: platforms/Linux/DEB/Ubuntu/focal
+        run: |
+          sudo mkdir -p /output
+          sudo chown $USER /output
+          bash ./build_deb.sh -s
+
+      - name: Sign source package
+        working-directory: /output
+        run: |
+          echo $(ls)
+          debsign -k $DEBSIGN_KEYID swiftlang_*_source.changes
+        env:
+          DEBEMAIL: ${{ secrets.DEBEMAIL }}
+          DEBFULLNAME: ${{ secrets.DEBFULLNAME }}
+          DEBSIGN_KEYID: ${{secrets.DEBSIGN_KEYID }}
+      
+      - name: Copy .dput.cf in place
+        working-directory: platforms/Linux/DEB/Ubuntu
+        run: cp .dput.cf ~/.dput.cf
+
+      - name: Upload to Launchpad for binary build
+        working-directory: /output
+        run: dput ppa:swiftlang/swiftlang swiftlang_*_source.changes
+        env:
+          DEBEMAIL: ${{ secrets.DEBEMAIL }}
+          DEBFULLNAME: ${{ secrets.DEBFULLNAME }}
+          DEBSIGN_KEYID: ${{secrets.DEBSIGN_KEYID }}
