@@ -25,7 +25,7 @@ clean::
 	sed -e 's/x.y.z/$(SWIFTLANG_PKG_VER)/g' < debian/control.in > debian/control
 
 	rm -f debian/swiftlang-*.install debian/swiftlang.links
-	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang-X.Y.Z.install.in > debian/swiftlang-$(SWIFTLANG_PKG_VER).install
+	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.install.in > debian/swiftlang.install
 	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.links.in > debian/swiftlang.links
 
 	rm -rf $(SWIFT_BUILDDIR)

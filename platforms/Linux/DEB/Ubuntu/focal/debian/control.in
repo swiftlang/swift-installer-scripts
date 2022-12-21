@@ -12,8 +12,12 @@ Standards-Version: 4.6.1
 Homepage: https://www.swift.org
 
 Package: swiftlang
-Architecture: all
-Depends: swiftlang-x.y.z, ${misc:Depends}
+Architecture: amd64 arm64
+Depends: ${shlibs:Depends}, ${misc:Depends},
+  libc6-dev, libcurl4-openssl-dev, libgcc-9-dev, libstdc++-9-dev, libxml2-dev,
+  libz3-dev, uuid-dev, zlib1g-dev,
+  binutils, git, pkg-config, tzdata, unzip,
+  python3
 Description: Swift programming language
   Swift is a general-purpose programming language built using
   a modern approach to safety, performance, and software design
@@ -25,21 +29,4 @@ Description: Swift programming language
   correct programs easier for the developer.
   This package contains the convenience symlinks for the latest
   version of Swift.
-
-Package: swiftlang-x.y.z
-Architecture: amd64 arm64
-Depends: ${shlibs:Depends}, ${misc:Depends},
-  libc6-dev, libcurl4-openssl-dev, libgcc-9-dev, libstdc++-9-dev, libxml2-dev,
-  libz3-dev, uuid-dev, zlib1g-dev,
-  binutils, git, pkg-config, tzdata, unzip,
-  python3
-Description: Swift programming language, release x.y.z
-  Swift is a general-purpose programming language built using
-  a modern approach to safety, performance, and software design
-  patterns.
-  The goal of the Swift project is to create the best available
-  language for uses ranging from systems programming, to mobile
-  and desktop apps, scaling up to cloud services. Most
-  importantly, Swift is designed to make writing and maintaining
-  correct programs easier for the developer.
 
