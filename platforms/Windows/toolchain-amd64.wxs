@@ -495,7 +495,11 @@
         <File Id="BlocksRuntime.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" />
       </Component>
 
-      <!-- TODO(compnerd) should we install the block headers and import libraries? -->
+      <Component Id="BlocksRuntime.lib" Directory="_usr_lib" Guid="b758a96a-644b-421d-a668-2ba2b55601aa">
+        <File Id="BlocksRuntime.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\BlocksRuntime.lib" Checksum="yes" />
+      </Component>
+
+      <!-- TODO(compnerd) should we install the block headers? -->
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -511,7 +515,11 @@
         <File Id="dispatch.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dispatch.dll" Checksum="yes" />
       </Component>
 
-      <!-- TODO(compnerd) should we install the dispatch headers and import libraries? -->
+      <Component Id="dispatch.lib" Directory="_usr_lib" Guid="b5d342d2-fc9a-46e5-93ac-1781e2055ac4">
+        <File Id="dispatch.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\dispatch.lib" Checksum="yes" />
+      </Component>
+
+      <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -525,6 +533,10 @@
     <ComponentGroup Id="SourceKit">
       <Component Id="sourcekitdInProc.dll" Directory="_usr_bin" Guid="6d8cfa8d-a4eb-40b3-af29-afb80997494a">
         <File Id="sourcekitdInProc.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" Checksum="yes" />
+      </Component>
+
+      <Component Id="sourcekitdInProc.lib" Directory="_usr_lib" Guid="cd564210-c471-478e-b1c4-d6a35fc6572f">
+        <File Id="sourcekitdInProc.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" Checksum="yes" />
       </Component>
 
       <Component Id="sourcekitd.h" Directory="_usr_include_SourceKit" Guid="bdb02d6c-b3f7-4109-bd41-fc04734484a4">
@@ -647,16 +659,6 @@
       </Component>
       <Component Id="llbuildSwift.dll" Directory="_usr_bin" Guid="4386ca67-150b-424f-a699-7029f41746d5">
         <File Id="llbuildSwift.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.dll" Checksum="yes" />
-      </Component>
-
-      <Component Id="BlocksRuntime.lib" Directory="_usr_lib" Guid="b758a96a-644b-421d-a668-2ba2b55601aa">
-        <File Id="BlocksRuntime.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\BlocksRuntime.lib" Checksum="yes" />
-      </Component>
-      <Component Id="dispatch.lib" Directory="_usr_lib" Guid="b5d342d2-fc9a-46e5-93ac-1781e2055ac4">
-        <File Id="dispatch.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\dispatch.lib" Checksum="yes" />
-      </Component>
-      <Component Id="sourcekitdInProc.lib" Directory="_usr_lib" Guid="cd564210-c471-478e-b1c4-d6a35fc6572f">
-        <File Id="sourcekitdInProc.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
