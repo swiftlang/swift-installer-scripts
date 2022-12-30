@@ -12,7 +12,7 @@
     <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
 
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
-    <ProductVersion>0.0.0</ProductVersion>
+    <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
 
   <PropertyGroup>
