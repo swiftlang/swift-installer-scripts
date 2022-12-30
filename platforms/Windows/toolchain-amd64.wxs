@@ -654,9 +654,6 @@
         <File Id="swift_build_tool.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build-tool.exe" Checksum="yes" />
       </Component>
 
-      <Component Id="llbuild.dll" Directory="_usr_bin" Guid="f140cd98-63b5-4b62-8990-36e2b66569d4">
-        <File Id="llbuild.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuild.dll" Checksum="yes" />
-      </Component>
       <Component Id="llbuildSwift.dll" Directory="_usr_bin" Guid="4386ca67-150b-424f-a699-7029f41746d5">
         <File Id="llbuildSwift.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.dll" Checksum="yes" />
       </Component>
@@ -668,9 +665,6 @@
         <File Id="swift_build_tool.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build-tool.pdb" Checksum="yes" DiskId="10" />
       </Component>
 
-      <Component Id="llbuild.pdb" Directory="_usr_bin" Guid="a94f8dc8-8148-4cf1-9d3d-6d55e1d332bb">
-        <File Id="llbuild.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuild.pdb" Checksum="yes" DiskId="10" />
-      </Component>
       <Component Id="llbuildSwift.pdb" Directory="_usr_bin" Guid="7a0a4f52-344f-41cc-bd9a-266af3afbc84">
         <File Id="llbuildSwift.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.pdb" Checksum="yes" DiskId="10" />
       </Component>
