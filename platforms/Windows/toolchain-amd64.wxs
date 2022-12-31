@@ -700,9 +700,6 @@
       <Component Id="TSCBasic.dll" Directory="_usr_bin" Guid="62c1421e-781b-4ffb-b11d-9d4f2a5bafa5">
         <File Id="TSCBasic.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCBasic.dll" Checksum="yes" />
       </Component>
-      <Component Id="TSCLibc.dll" Directory="_usr_bin" Guid="a144d9e1-d665-48f8-a79a-cededb67b323">
-        <File Id="TSCLibc.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCLibc.dll" Checksum="yes" />
-      </Component>
       <Component Id="TSCUtility.dll" Directory="_usr_bin" Guid="beebdc9b-09e6-4608-808b-a6d8b211d102">
         <File Id="TSCUtility.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.dll" Checksum="yes" />
       </Component>
@@ -712,9 +709,6 @@
     <ComponentGroup Id="SwiftToolsSupportCoreDebugInfo">
       <Component Id="TSCBasic.pdb" Directory="_usr_bin" Guid="002d49f9-4322-4513-9a2f-36842423b676">
         <File Id="TSCBasic.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCBasic.pdb" Checksum="yes" DiskId="12" />
-      </Component>
-      <Component Id="TSCLibc.pdb" Directory="_usr_bin" Guid="32773528-e1ba-451b-af9f-ecb7f3647e22">
-        <File Id="TSCLibc.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCLibc.pdb" Checksum="yes" DiskId="12" />
       </Component>
       <Component Id="TSCUtility.pdb" Directory="_usr_bin" Guid="62e56d7b-d2fa-4950-a876-2f7f23a6726a">
         <File Id="TSCUtility.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.pdb" Checksum="yes" DiskId="12" />
