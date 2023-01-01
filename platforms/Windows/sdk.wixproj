@@ -27,6 +27,8 @@
     <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
   </Target>
 
+  <Import Project="WiXCodeSigning.targets" />
+
   <PropertyGroup>
     <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SWIFT_SOURCE_DIR=$(SWIFT_SOURCE_DIR);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
     <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
