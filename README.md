@@ -129,7 +129,7 @@ https://download.swift.org/repo/centos/releases/8/swiftlang.repo
 
 ### Debian Package (Deb)*
 
-- [ ] [SR-15334](https://bugs.swift.org/browse/SR-15334) Create Debs control file
+- [x] [SR-15334](https://bugs.swift.org/browse/SR-15334) Create Debs control file
 - [ ] [SR-15335](https://bugs.swift.org/browse/SR-15335) Setup CI to build the deb package
 - [ ] [SR-15336](https://bugs.swift.org/browse/SR-15336) Code sign package with swift.org certificate
 - [ ] [SR-15337](https://bugs.swift.org/browse/SR-15337) Host the deb package on swift.org
