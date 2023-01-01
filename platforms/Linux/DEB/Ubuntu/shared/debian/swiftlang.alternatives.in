@@ -1,0 +1,9 @@
+Name: swiftlang
+Link: /usr/bin/swift
+Alternative: /usr/lib/swiftlang/X.Y.Z/bin/swift-frontend
+Dependents:
+    /usr/bin/swiftc swiftc /usr/lib/swiftlang/X.Y.Z/bin/swift-frontend
+    /usr/bin/swift-lldb swift-lldb /usr/lib/swiftlang/X.Y.Z/bin/lldb
+    /usr/bin/sourcekit-lsp swift-sourcekit-lsp /usr/lib/swiftlang/X.Y.Z/bin/sourcekit-lsp
+    /usr/share/man/man1/swift.1.gz swift-man.1.gz /usr/lib/swiftlang/X.Y.Z/share/man/man1/swift.1.gz
+Priority: 50

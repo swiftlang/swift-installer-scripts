@@ -1,0 +1,18 @@
+Description: Make target installation directory a command line option
+Use a variable for the install prefix, so we can specify it at build
+time on the command line.
+Author: Julien Blache <jblache@apple.com>
+
+# Index: swiftlang-5.7.2/swift/utils/build-presets.ini
+
+--- swiftlang-5.7.2.orig/swift/utils/build-presets.ini
++++ swiftlang-5.7.2/swift/utils/build-presets.ini
+@@ -827 +827,5 @@ install-libicu
+-install-prefix=/usr
++install-prefix=%(install_prefix)s
++skip-early-swift-driver
++skip-build-benchmarks
++skip-test-toolchain-benchmarks
++skip-test-cmark
+@@ -840 +842,0 @@ test-installable-package
+-toolchain-benchmarks

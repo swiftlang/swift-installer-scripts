@@ -1,0 +1,14 @@
+Description: Fix hwasan_symbolize to call python3
+ On Ubuntu, /usr/bin/python is still python 2.x.
+Author: Julien Blache <jblache@apple.com>
+
+Index: swiftlang-5.7.2/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
+===================================================================
+--- swiftlang-5.7.2.orig/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
++++ swiftlang-5.7.2/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #===- lib/hwasan/scripts/hwasan_symbolize ----------------------------------===#
+ #
+ # Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
