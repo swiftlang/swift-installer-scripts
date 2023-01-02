@@ -48,7 +48,7 @@ else
   root_cmd="--root-cmd=sudo"
 fi
 
-mk-build-deps --install ${package_dir}/debian/control ${root_cmd} --remove --tool 'apt-get -y -o Debug::pkgProblemResolver=yes'
+mk-build-deps --install ${package_dir}/debian/control ${root_cmd} --remove --tool 'apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends'
 
 
 # build the installable package
