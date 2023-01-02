@@ -1,8 +1,8 @@
 name: Build signed src package for Launchpad binary build & PPA distrib
-
 on:
   push:
-    branches: [main, ubuntu-for-5.7.2]
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build-ubuntu-packages:
