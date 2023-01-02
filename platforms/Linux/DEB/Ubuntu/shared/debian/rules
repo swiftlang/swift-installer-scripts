@@ -16,7 +16,7 @@ SWIFTLANG_PKG_VER=$(shell dpkg-parsechangelog -S Version | sed -e 's/-[^-]*$$//'
 SWIFT_BUILDDIR=$(CURDIR)/build
 
 
-export DEB_BUILD_MAINT_OPTIONS=hardening=+format,+fortify,+stackprotectorstrong,+relro,optimize=-lto
+export DEB_BUILD_MAINT_OPTIONS=hardening=+format,+fortify,+stackprotectorstrong,+relro
 export MOD_CXXFLAGS=$(DEB_CXXFLAGS_STRIP="-ffat-lto-objects -flto=auto -flto=auto" dpkg-buildflags --get CXXFLAGS)
 export MOD_CFLAGS=$(DEB_CFLAGS_STRIP="-ffat-lto-objects -flto=auto -flto=auto" dpkg-buildflags --get CFLAGS)
 export MOD_LDFLAGS=$(DEB_LDFLAGS_STRIP="-ffat-lto-objects -flto=auto -flto=auto" dpkg-buildflags --get LDFLAGS)
