@@ -56,7 +56,7 @@ mk-build-deps --install ${package_dir}/debian/control ${root_cmd} --remove --too
 cd ${package_dir}
 
 if [ "$source_only_pkg" == "TRUE" ]; then
-    DEB_BUILD_OPTIONS=parallel=64 debuild --no-lintian -uc -us -sa -S
+    DEB_BUILD_OPTIONS=parallel=64 debuild -uc -us -sa -S
 else
     DEB_BUILD_OPTIONS=parallel=64 debuild
 fi
