@@ -29,10 +29,15 @@ clean::
 	
 	# Generate debian/control and others
 	sed -e 's/x.y.z/$(SWIFTLANG_PKG_VER)/g' < debian/control.in > debian/control
-	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.install.in > debian/swiftlang-$(SWIFTLANG_PKG_VER).install
+	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.install.in > debian/swiftlang-$(SWIFTLANG_PKG_VER)-bin.install
 	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/libswiftlang.install.in > debian/libswiftlang-$(SWIFTLANG_PKG_VER).install
 	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/libswiftlang-dev.install.in > debian/libswiftlang-$(SWIFTLANG_PKG_VER)-dev.install
-	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.alternatives.in > debian/swiftlang-$(SWIFTLANG_PKG_VER)-bin.alternatives
+	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.postinst.in > debian/swiftlang-$(SWIFTLANG_PKG_VER)-bin.postinst
+	sed -e 's/X.Y.Z/$(SWIFTLANG_PKG_VER)/g' < debian/swiftlang.prerm.in > debian/swiftlang-$(SWIFTLANG_PKG_VER)-bin.prerm
+
+	chmod ugo+x debian/swiftlang-$(SWIFTLANG_PKG_VER)-bin.postinst
+	chmod ugo+x debian/swiftlang-$(SWIFTLANG_PKG_VER)-bin.prerm
+
 	rm -rf $(SWIFT_BUILDDIR)
 	
 	# Modified during the build

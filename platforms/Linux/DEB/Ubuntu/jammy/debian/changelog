@@ -1,4 +1,4 @@
-swiftlang (5.7.2-0~jammy3) jammy; urgency=medium
+swiftlang (5.7.2-0~jammy4) jammy; urgency=medium
 
   * Replaces `swiftlang` + `swiftlang-X.Y.Z` packages with `libswiftlang-X.Y.Z`, `libswiftlang-X.Y.Z-dev`, `swiftlang-X.Y.Z-bin` and meta-package `swiftlang`.
 
