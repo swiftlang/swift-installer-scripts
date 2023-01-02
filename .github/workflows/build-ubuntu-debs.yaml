@@ -47,7 +47,4 @@ jobs:
       - name: Upload to Launchpad for binary build
         working-directory: /output
         run: dput ppa:swiftlang/swiftlang swiftlang_*_source.changes
-        env:
-          DEBEMAIL: ${{ secrets.DEBEMAIL }}
-          DEBFULLNAME: ${{ secrets.DEBFULLNAME }}
-          DEBSIGN_KEYID: ${{secrets.DEBSIGN_KEYID }}
+
