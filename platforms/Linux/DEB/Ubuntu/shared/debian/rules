@@ -74,9 +74,9 @@ override_dh_dwz:
 
 override_dh_auto_build:
 	echo "Build flags:"
-	echo $MOD_CXXFLAGS: {MOD_CXXFLAGS}
-	echo $MOD_CFLAGS: {MOD_CFLAGS}
-	echo $MOD_LDFLAGS: {MOD_LDFLAGS}	
+	echo "MOD_CXXFLAGS: ${MOD_CXXFLAGS}"
+	echo "MOD_CFLAGS: ${MOD_CFLAGS}"
+	echo "MOD_LDFLAGS: ${MOD_LDFLAGS}"
 	# on Jammy, default compiler & linker flags include -ffat-lto-objects and -flto=auto, which clang 13 does not appreciate.
 	# TODO: Replace the below fixed flags with ${MOD_CXXFLAGS}, ${MOD_CFLAGS}, ${MOD_LDFLAGS} ... above
 	# (the fixed flags are used because dpkg-buildflags mysteriously outputs empty strings specifically when called from debuild)
