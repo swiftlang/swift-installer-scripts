@@ -25,8 +25,7 @@
     <Media Id="10" Cabinet="PDBs.llbuild.cab" />
     <Media Id="11" Cabinet="PDBs.ArgumentParser.cab" />
     <Media Id="12" Cabinet="PDBs.ToolsSupportCore.cab" />
-    <Media Id="13" Cabinet="PDBs.Yams.cab" />
-    <Media Id="14" Cabinet="PDBs.swift-driver.cab" />
+    <Media Id="13" Cabinet="PDBs.swift-driver.cab" />
     <?endif?>
 
     <!-- Directory Structure -->
@@ -722,20 +721,6 @@
     </ComponentGroup>
     <?endif?>
 
-    <ComponentGroup Id="Yams">
-      <Component Id="Yams.dll" Directory="_usr_bin" Guid="d777b16f-f1e7-4ff7-a9d7-d723e5e6f3c5">
-        <File Id="Yams.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Yams.dll" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="YamsDebugInfo">
-      <Component Id="Yams.pdb" Directory="_usr_bin" Guid="3cc239b3-7f89-4802-9d88-4a48b5710c55">
-        <File Id="Yams.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Yams.pdb" Checksum="yes" DiskId="13" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="SwiftDriver">
       <!-- TODO(compnerd) can we use symbolic links instead? -->
       <Component Id="swiftc.exe" Directory="_usr_bin" Guid="844e82b0-d6e9-45a2-a79f-dd117b1d6cd9">
@@ -806,7 +791,6 @@
       <ComponentGroupRef Id="llbuild" />
       <ComponentGroupRef Id="SwiftArgumentParser" />
       <ComponentGroupRef Id="SwiftToolsSupportCore" />
-      <ComponentGroupRef Id="Yams" />
       <ComponentGroupRef Id="SwiftDriver" />
 
       <ComponentGroupRef Id="ClangResources" />
@@ -830,7 +814,6 @@
         <ComponentGroupRef Id="llbuildDebugInfo" />
         <ComponentGroupRef Id="SwiftArgumentParserDebugInfo" />
         <ComponentGroupRef Id="SwiftToolsSupportCoreDebugInfo" />
-        <ComponentGroupRef Id="YamsDebugInfo" />
         <ComponentGroupRef Id="SwiftDriverDebugInfo" />
       </Feature>
       <?endif?>
