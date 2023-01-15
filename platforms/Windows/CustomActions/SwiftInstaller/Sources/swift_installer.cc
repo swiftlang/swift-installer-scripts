@@ -408,8 +408,6 @@ UINT SwiftInstaller_InstallAuxiliaryFiles(MSIHANDLE hInstall) {
       } items[] = {
         { SDKROOT / "usr" / "share" / "ucrt.modulemap",
           UniversalCRTSdkDir / "Include" / version / "ucrt" / "module.modulemap" },
-        { SDKROOT / "usr" / "share" / "winsdk.modulemap",
-          UniversalCRTSdkDir / "Include" / version / "um" / "module.modulemap" },
       };
 
       for (const auto &item : items) {

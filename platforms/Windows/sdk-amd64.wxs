@@ -434,6 +434,10 @@
       <Component Id="swiftWinSDK.lib" Directory="WindowsSDK_usr_lib_swift_windows_x86_64" Guid="a117b49f-b373-4ae4-a43e-ea71f7a6be3d">
         <File Id="swiftWinSDK.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\swiftWinSDK.lib" Checksum="yes" />
       </Component>
+
+      <Component Id="WinSDK.modulemap" Directory="WindowsSDK_usr_lib_swift_windows_x86_64" Guid="a3b7cb7c-730e-4c6b-ada8-d39f4c72f41e">
+        <File Id="WinSDK.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\WinSDK.modulemap" Checksum="yes" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="CXXShims">
@@ -460,9 +464,6 @@
     <ComponentGroup Id="SupportFiles" Directory="WindowsSDK_usr_share">
       <Component Id="ucrt.modulemap" Guid="4b5c1a1d-a6cf-4d06-81f7-e752f0a3f4db">
         <File Id="ucrt.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\ucrt.modulemap" Checksum="yes" />
-      </Component>
-      <Component Id="winsdk.modulemap" Guid="a3b7cb7c-730e-4c6b-ada8-d39f4c72f41e">
-        <File Id="winsdk.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\winsdk.modulemap" Checksum="yes" />
       </Component>
       <Component Id="vcruntime.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
         <File Id="vcruntime.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\vcruntime.modulemap" Checksum="yes" />
