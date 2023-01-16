@@ -222,20 +222,6 @@
     </ComponentGroup>
     <?endif?>
 
-    <ComponentGroup Id="IndexStoreDB">
-      <Component Id="IndexStoreDB.dll" Directory="_usr_bin" Guid="cc64657d-581f-4295-9834-5471d6cd8aaa">
-        <File Id="IndexStoreDB.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\IndexStoreDB.dll" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="IndexStoreDBDebugInfo">
-      <Component Id="IndexStoreDB.pdb" Directory="_usr_bin" Guid="5d0e18ba-c959-4c07-862d-e0bde9f7f79b">
-        <File Id="IndexStoreDB.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\IndexStoreDB.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="SourceKitLSP">
       <Component Id="sourcekit_lsp.exe" Directory="_usr_bin" Guid="61d82a9e-2f72-415c-b6bb-9f43ec3f6bcd">
         <File Id="sourcekit_lsp.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" Checksum="yes" />
@@ -256,7 +242,6 @@
       <ComponentGroupRef Id="SwiftSystem" />
       <ComponentGroupRef Id="SwiftPackageManager" />
       <ComponentGroupRef Id="SourceKitLSP" />
-      <ComponentGroupRef Id="IndexStoreDB" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Developer Tools for Windows x86_64" Level="0" Title="Debug Info">
@@ -266,7 +251,6 @@
         <ComponentGroupRef Id="SwiftSystemDebugInfo" />
         <ComponentGroupRef Id="SwiftPackageManagerDebugInfo" />
         <ComponentGroupRef Id="SourceKitLSPDebugInfo" />
-        <ComponentGroupRef Id="IndexStoreDBDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
