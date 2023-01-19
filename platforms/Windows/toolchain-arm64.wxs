@@ -495,7 +495,11 @@
         <File Id="BlocksRuntime.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" />
       </Component>
 
-      <!-- TODO(compnerd) should we install the block headers and import libraries? -->
+      <Component Id="BlocksRuntime.lib" Directory="_usr_lib" Guid="33221a05-d071-432c-b9a1-196b14d2ea19">
+        <File Id="BlocksRuntime.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\BlocksRuntime.lib" Checksum="yes" />
+      </Component>
+
+      <!-- TODO(compnerd) should we install the block headers? -->
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -511,7 +515,11 @@
         <File Id="dispatch.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dispatch.dll" Checksum="yes" />
       </Component>
 
-      <!-- TODO(compnerd) should we install the dispatch headers and import libraries? -->
+      <Component Id="dispatch.lib" Directory="_usr_lib" Guid="5a001bb8-4557-41eb-8d2d-38870cd2e9dc">
+        <File Id="dispatch.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\dispatch.lib" Checksum="yes" />
+      </Component>
+
+      <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -525,6 +533,10 @@
     <ComponentGroup Id="SourceKit">
       <Component Id="sourcekitdInProc.dll" Directory="_usr_bin" Guid="56274f9b-be12-4140-a20b-2e2ae2ce0109">
         <File Id="sourcekitdInProc.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" Checksum="yes" />
+      </Component>
+
+      <Component Id="sourcekitdInProc.lib" Directory="_usr_lib" Guid="f95bebbf-15ec-4cd5-9d1f-dd831ce34a9d">
+        <File Id="sourcekitdInProc.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" Checksum="yes" />
       </Component>
 
       <Component Id="sourcekitd.h" Directory="_usr_include_SourceKit" Guid="bdb02d6c-b3f7-4109-bd41-fc04734484a4">
@@ -648,16 +660,6 @@
       <Component Id="llbuildSwift.dll" Directory="_usr_bin" Guid="93fd1e4e-7b70-4440-93fb-0889e50840f3">
         <File Id="llbuildSwift.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.dll" Checksum="yes" />
       </Component>
-
-      <Component Id="BlocksRuntime.lib" Directory="_usr_lib" Guid="33221a05-d071-432c-b9a1-196b14d2ea19">
-        <File Id="BlocksRuntime.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\BlocksRuntime.lib" Checksum="yes" />
-      </Component>
-      <Component Id="dispatch.lib" Directory="_usr_lib" Guid="5a001bb8-4557-41eb-8d2d-38870cd2e9dc">
-        <File Id="dispatch.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\dispatch.lib" Checksum="yes" />
-      </Component>
-      <Component Id="sourcekitdInProc.lib" Directory="_usr_lib" Guid="f95bebbf-15ec-4cd5-9d1f-dd831ce34a9d">
-        <File Id="sourcekitdInProc.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" Checksum="yes" />
-      </Component>
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -679,18 +681,12 @@
       <Component Id="ArgumentParser.dll" Directory="_usr_bin" Guid="1c179884-b2b1-46c8-b359-ef4271001f44">
         <File Id="ArgumentParser.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" Checksum="yes" />
       </Component>
-      <Component Id="ArgumentParserToolInfo.dll" Directory="_usr_bin" Guid="90fdb69c-5dc3-4f91-8162-17b4967c5c79">
-        <File Id="ArgumentParserToolInfo.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.dll" Checksum="yes" />
-      </Component>
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
     <ComponentGroup Id="SwiftArgumentParserDebugInfo">
       <Component Id="ArgumentParser.pdb" Directory="_usr_bin" Guid="4bd6bcaf-85be-4d3e-b952-4efee6a95f27">
         <File Id="ArgumentParser.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.pdb" Checksum="yes" DiskId="11" />
-      </Component>
-      <Component Id="ArgumentParserToolInfo.pdb" Directory="_usr_bin" Guid="e253ba97-6252-4fba-a8e9-0d443bf3304d">
-        <File Id="ArgumentParserToolInfo.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParserToolInfo.pdb" Checksum="yes" DiskId="11" />
       </Component>
     </ComponentGroup>
     <?endif?>
