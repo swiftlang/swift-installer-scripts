@@ -63,7 +63,7 @@
     <Exec Command="$(SignTool) &quot;@(SignBundleEngine)&quot;" />
   </Target>
 
-  <Target Name="SignBundle">
+  <Target Name="SignBundle" DependsOnTargets="FindSignTool">
     <Exec Command="$(SignTool) &quot;@(SignBundle)&quot;" />
   </Target>
 </Project>
