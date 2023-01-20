@@ -1,0 +1,7 @@
+[swiftlang]
+fqdn = ppa.launchpad.net
+method = sftp
+incoming = ~swiftlang/ubuntu/swiftlang/
+login = swiftlang-uploader
+allow_unsigned_uploads = 0
+

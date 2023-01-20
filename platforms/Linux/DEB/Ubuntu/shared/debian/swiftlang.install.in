@@ -1,0 +1,9 @@
+usr/lib/swiftlang/X.Y.Z/bin/*
+usr/lib/swiftlang/X.Y.Z/lib/*.so*
+usr/lib/swiftlang/X.Y.Z/lib/swift/pm/ManifestAPI/*.so*
+usr/lib/swiftlang/X.Y.Z/lib/swift/pm/PluginAPI/*.so*
+usr/lib/swiftlang/X.Y.Z/lib/swift/pm/llbuild/*.so*
+usr/lib/swiftlang/X.Y.Z/lib/clang/*/bin/*
+usr/lib/swiftlang/X.Y.Z/lib/clang/*/share/*
+usr/lib/swiftlang/X.Y.Z/lib/clang/*/lib/linux/*.so*
+usr/lib/swiftlang/X.Y.Z/share/*

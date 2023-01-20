@@ -1,0 +1,50 @@
+name: Build signed src package for Launchpad binary build & PPA distrib
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build-ubuntu-packages:
+    strategy:
+      matrix:
+        os: [{version: ubuntu-20.04, codename: focal}, {version: ubuntu-22.04, codename: jammy}]
+    runs-on: ${{ matrix.os.version }}
+    environment: swiftlang-ppa
+    steps:
+      - name: Import GPG Key
+        uses: crazy-max/ghaction-import-gpg@v5
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+            
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Install build dependencies
+        run: |
+          sudo apt install -y --no-install-recommends devscripts dpkg-dev dput equivs rsync
+      
+      - name: Build source package
+        working-directory: platforms/Linux/DEB/Ubuntu/${{ matrix.os.codename }}
+        run: |
+          sudo mkdir -p /output
+          sudo chown $USER /output
+          bash ./build_deb.sh -s
+
+      - name: Sign source package
+        working-directory: /output
+        run: |
+          debsign -k $DEBSIGN_KEYID swiftlang_*_source.changes
+        env:
+          DEBEMAIL: ${{ secrets.DEBEMAIL }}
+          DEBFULLNAME: ${{ secrets.DEBFULLNAME }}
+          DEBSIGN_KEYID: ${{secrets.DEBSIGN_KEYID }}
+      
+      - name: Copy dput configuration in place
+        working-directory: platforms/Linux/DEB/Ubuntu
+        run: cp .dput.cf ~/.dput.cf
+
+      - name: Upload to Launchpad for binary build
+        working-directory: /output
+        run: dput ppa:swiftlang/swiftlang swiftlang_*_source.changes
+

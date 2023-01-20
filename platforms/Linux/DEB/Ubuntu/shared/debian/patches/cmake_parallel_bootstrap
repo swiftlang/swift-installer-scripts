@@ -1,0 +1,21 @@
+Description: Enable parallel boostrap for CMake
+ CMake's bootstrap can be parallelized, but wasn't.
+Author: Julien Blache <jblache@apple.com>
+
+Index: swiftlang-5.7.2/swift/utils/swift_build_support/swift_build_support/cmake.py
+===================================================================
+--- swiftlang-5.7.2.orig/swift/utils/swift_build_support/swift_build_support/cmake.py
++++ swiftlang-5.7.2/swift/utils/swift_build_support/swift_build_support/cmake.py
+@@ -263,8 +263,10 @@ class CMake(object):
+ 
+         cwd = os.getcwd()
+         os.chdir(cmake_build_dir)
+-        shell.call_without_sleeping([cmake_bootstrap, '--no-qt-gui', '--',
+-                                    '-DCMAKE_USE_OPENSSL=OFF'], echo=True)
++        shell.call_without_sleeping([cmake_bootstrap, '--no-qt-gui',
++                                    '--parallel=%s' % self.args.build_jobs,
++                                    '--', '-DCMAKE_USE_OPENSSL=OFF'],
++                                    echo=True)
+         shell.call_without_sleeping(['make', '-j%s' % self.args.build_jobs],
+                                     echo=True)
+         os.chdir(cwd)

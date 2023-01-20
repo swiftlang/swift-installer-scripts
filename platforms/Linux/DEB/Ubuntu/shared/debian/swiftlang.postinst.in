@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+update-alternatives --install /usr/bin/swift swiftlang /usr/lib/swiftlang/X.Y.Z/bin/swift-frontend 50 \
+    --slave /usr/bin/swiftc swiftc /usr/lib/swiftlang/X.Y.Z/bin/swift-frontend \
+    --slave /usr/bin/swift-lldb swift-lldb /usr/lib/swiftlang/X.Y.Z/bin/lldb \
+    --slave /usr/bin/sourcekit-lsp swift-sourcekit-lsp /usr/lib/swiftlang/X.Y.Z/bin/sourcekit-lsp \
+    --slave /usr/share/man/man1/swift.1.gz swift-man.1.gz /usr/lib/swiftlang/X.Y.Z/share/man/man1/swift.1.gz

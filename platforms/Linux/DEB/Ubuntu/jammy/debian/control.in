@@ -2,14 +2,16 @@ Source: swiftlang
 Section: devel
 Priority: optional
 Maintainer: Swift Maintainers <swift-infrastructure@forums.swift.org>
-Build-Depends: debhelper-compat (= 12), devscripts, 
-  clang, cmake, git, icu-devtools, ninja-build, pkg-config,
-  libcurl4-openssl-dev, libedit-dev, libicu-dev, libncurses5-dev,
-  libpython3-dev, libsqlite3-dev, libxml2-dev,
-  python, python-six, python2-dev, python3-six, python3-distutils, python3-psutil,
-  rsync, swig, systemtap-sdt-dev, tzdata, unzip, uuid-dev
-Standards-Version: 4.6.1
 Homepage: https://www.swift.org
+Build-Depends: debhelper-compat (= 12), devscripts,
+  build-essential, clang, cmake, git, icu-devtools, libcurl4-openssl-dev,
+  libedit-dev, libicu-dev, libncurses5-dev, libpython3-dev, libsqlite3-dev, libxml2-dev,
+  ninja-build, pkg-config,
+  python2, python-six, python2-dev,
+  python3-six, python3-distutils,
+  rsync, swig, systemtap-sdt-dev,  tzdata,
+  unzip, uuid-dev
+Standards-Version: 4.6.1
 
 Package: libswiftlang-x.y.z
 Architecture: any
@@ -18,18 +20,19 @@ Description: Runtime libraries for the Swift programming language
 
 Package: libswiftlang-x.y.z-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends},
+Depends:
   libc6-dev, libcurl4-openssl-dev, libgcc-9-dev, libstdc++-9-dev, libxml2-dev,
-  libz3-dev, uuid-dev, zlib1g-dev
+  libz3-dev, uuid-dev, zlib1g-dev, ${shlibs:Depends}, ${misc:Depends}
 Description: Headers, static libraries for the Swift programming language
 
 Package: swiftlang-x.y.z-bin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends},
+Depends:
   libswiftlang-x.y.z, libswiftlang-x.y.z-dev,
   binutils, git, pkg-config, tzdata, unzip,
-  python3
-Description: Swift programming language
+  python3, ${shlibs:Depends}, ${misc:Depends}
+Recommends: python3-lldb-13
+Description: Compiler toolchain for the Swift programming language
   Swift is a general-purpose programming language built using
   a modern approach to safety, performance, and software design
   patterns.
@@ -45,4 +48,4 @@ Package: swiftlang
 Architecture: any
 Depends:
   libswiftlang-x.y.z, libswiftlang-x.y.z-dev, swiftlang-x.y.z-bin
-Description: Virtual package that provides the most recent version of the Swift programming language
+Description: Meta-package that provides the most recent version of the Swift programming language

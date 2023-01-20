@@ -1,0 +1,16 @@
+swift for Debian
+---------------
+
+The source package for Swift is composed of several different source components
+from different projects.
+
+The shell fragment debian/source-versions.sh contains the version information
+for all source components, and the Debian package upstream version (debversion).
+
+Fill in debian/source-versions.sh with the correct versions for all components,
+then run debian/getsource.sh to fetch the archives to the current directory.
+Source archives will be downloaded, renamed, and repacked if needed using
+mk-origtargz from devscripts, and any Debian patches will be refreshed; ensure
+devscripts and quilt are installed beforehand.
+
+ -- Swift Maintainers <swift-infrastructure@forums.swift.org> Tue, 01 Mar 2022 15:04:23 -0800

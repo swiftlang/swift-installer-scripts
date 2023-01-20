@@ -8,32 +8,32 @@
 
 # this setup is designed to build the Deb with docker
 # usage:
-# docker-compose -f platforms/Linux/DEB/ubuntu/focal/docker-compose.yaml run build
+# docker-compose -f platforms/Linux/DEB/ubuntu/jammy/docker-compose.yaml run build
 
 # to rebuild the base image
-# docker-compose -f platforms/Linux/DEB/ubuntu/focal/docker-compose.yaml build
+# docker-compose -f platforms/Linux/DEB/ubuntu/jammy/docker-compose.yaml build
 
 # to shell into the container for debugging purposes:
-# docker-compose -f platforms/Linux/DEB/ubuntu/focal/docker-compose.yaml run shell
+# docker-compose -f platforms/Linux/DEB/ubuntu/jammy/docker-compose.yaml run shell
 
 version: "2"
 
 services:
 
   docker-setup:
-    image: ubuntu-focal-deb-builder
+    image: ubuntu-jammy-deb-builder
     build:
       context: .
       dockerfile: Dockerfile
 
   common: &common
-    image: ubuntu-focal-deb-builder
+    image: ubuntu-jammy-deb-builder
     depends_on: [docker-setup]
     volumes:
       - ../../Ubuntu:/code/Ubuntu:z
       - ../../Shared:/code/Shared:z
       - ./.output:/output:z
-    working_dir: /code/Ubuntu/focal
+    working_dir: /code/Ubuntu/jammy
     cap_drop:
       - CAP_NET_RAW
       - CAP_NET_BIND_SERVICE
