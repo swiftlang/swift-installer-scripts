@@ -49,7 +49,6 @@ BuildRequires:  libstdc++-static
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  llvm-toolset-7
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja-build

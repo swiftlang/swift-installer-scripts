@@ -6,7 +6,7 @@
 # See http://swift.org/LICENSE.txt for license information
 # See http://swift.org/CONTRIBUTORS.txt for Swift project authors
 
-FROM centos:7
+FROM swift:centos7
 LABEL PURPOSE="This image is configured to build Swift for the version of CentOS listed above"
 
 RUN yum -y update
@@ -27,6 +27,8 @@ RUN echo -e "\n%description" >> /tmp/optimization.spec
 RUN cd /tmp && yum-builddep -y optimization.spec
 
 # Workaround to support clang-3.5 or a later version
-RUN echo -e ". /opt/rh/sclo-git25/enable\n. /opt/rh/llvm-toolset-7/enable\n. /opt/rh/devtoolset-8/enable\n" >> $HOME/.bashrc
+RUN echo -e ". /opt/rh/sclo-git25/enable\n. /opt/rh/devtoolset-8/enable\n" >> $HOME/.bashrc
 RUN source $HOME/.bashrc
-RUN sed -i -e 's/\*__block/\*__libc_block/g' /usr/include/unistd.h
+RUN sed -i -e 's/\*__block/\*__libc_block/g' /usr/include/unistd.h && \
+    ln -s /opt/rh/devtoolset-8/root/usr/lib/gcc/x86_64-redhat-linux/8 /usr/lib/gcc/x86_64-redhat-linux/8 && \
+    ln -s /opt/rh/devtoolset-8/root/usr/include/c++/8 /usr/include/c++/8
