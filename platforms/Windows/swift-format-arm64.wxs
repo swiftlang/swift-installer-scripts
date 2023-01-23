@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Code Formatter for Windows aarch64" UpgradeCode="45f1ae7a-4d90-414d-80b3-a5a45898b212" Version="$(var.ProductVersion)">
+    <Package Comments="Copyright (c) 2021-2022 Swift Open Source Project" Compressed="yes" Description="Swift Code Formatter for Windows aarch64" InstallScope="perMachine" Manufacturer="swift.org" />
+
+    <!-- NOTE(compnerd) use pre-3.0 schema for better compatibility. -->
+    <Media Id="1" Cabinet="SwiftFormat.cab" EmbedCab="yes" />
+    <?ifdef INCLUDE_DEBUG_INFO?>
+    <Media Id="2" Cabinet="PDBs.cab" EmbedCab="yes" />
+    <?endif?>
+
+    <!-- Directory Structure -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="INSTALLDIR">
+        <Directory Id="Developer" Name="Developer">
+          <Directory Id="Tools" Name="Tools">
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library">
+      NOT INSTALLDIR
+    </SetDirectory>
+
+    <!-- Components -->
+    <ComponentGroup Id="SwiftFormat">
+      <Component Id="swift_format.exe" Directory="Tools" Guid="1e6c84e1-6cf4-4e34-90f6-eb76c278f7e2">
+        <File Id="swift_format.exe" Source="$(var.SWIFT_FORMAT_BUILD)\swift-format.exe" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <?ifdef INCLUDE_DEBUG_INFO ?>
+    <ComponentGroup Id="SwiftFormatDebugInfo">
+      <Component Id="swift_format.pdb" Directory="Tools" Guid="24079895-af2f-4a67-95f3-a262d4e88390">
+        <File Id="swift_format.pdb" Source="$(var.SWIFT_FORMAT_BUILD)\swift-format.pdb" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+    <?endif?>
+
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="EnvironmentVariables" Guid="c1a01e55-3353-4eca-8b58-9960e57a3758">
+        <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Developer\Tools" />
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="SwiftFormat" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Code Formatter for Windows aarch64" Level="1" Title="Swift Code Formatter (Windows aarch64)">
+      <ComponentGroupRef Id="SwiftFormat" />
+      <ComponentRef Id="EnvironmentVariables" />
+
+      <?ifdef INCLUDE_DEBUG_INFO?>
+      <Feature Id="DebugInfo" Absent="allow" Description="Debug Information for Swift Code Formatter for Windows aarch64" Level="0" Title="Debug Information">
+        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+        <ComponentGroupRef Id="SwiftFormatDebugInfo" />
+      </Feature>
+      <?endif?>
+    </Feature>
+
+    <UI>
+      <UIRef Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+    </UI>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
+
+  </Product>
+</Wix>
