@@ -1,7 +1,7 @@
 # versions
 
-%global package_version 5.6.0
-%global swift_version 5.6-RELEASE
+%global package_version 5.7.3
+%global swift_version 5.7.3-RELEASE
 
 %global cmake_version 3.19.6
 %global icu_version 65-1
