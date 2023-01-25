@@ -212,7 +212,7 @@
       </Component>
 
       <Component Id="generic_base.h" Directory="WindowsSDK_usr_include_os" Guid="a136a05a-acc4-489b-96fc-1413f8421715">
-        <File Id="generic_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\os\generic_base.h" Checksum="yes" />
+        <File Id="generic_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_base.h" Checksum="yes" />
       </Component>
       <Component Id="generic_unix_base.h" Directory="WindowsSDK_usr_include_os" Guid="66347322-84a9-4246-9d69-17b2e03dea63">
         <File Id="generic_unix_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" Checksum="yes" />
