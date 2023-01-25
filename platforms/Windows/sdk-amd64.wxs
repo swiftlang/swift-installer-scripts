@@ -180,9 +180,6 @@
       <Component Id="dispatch.h" Directory="WindowsSDK_usr_include_dispatch" Guid="a4e8a91e-b54b-485e-8f47-83e23bb435b3">
         <File Id="dispatch.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" Checksum="yes" />
       </Component>
-      <Component Id="generic_base.h" Directory="WindowsSDK_usr_include_dispatch" Guid="348df76b-0642-4178-a06e-c79ceab474be">
-        <File Id="generic_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\generic_base.h" Checksum="yes" />
-      </Component>
       <Component Id="group.h" Directory="WindowsSDK_usr_include_dispatch" Guid="6a992ce8-127a-4826-87fc-009e3666c980">
         <File Id="group.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\group.h" Checksum="yes" />
       </Component>
@@ -214,6 +211,9 @@
         <File Id="time.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\time.h" Checksum="yes" />
       </Component>
 
+      <Component Id="generic_base.h" Directory="WindowsSDK_usr_include_dispatch" Guid="348df76b-0642-4178-a06e-c79ceab474be">
+        <File Id="generic_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\generic_base.h" Checksum="yes" />
+      </Component>
       <Component Id="generic_unix_base.h" Directory="WindowsSDK_usr_include_os" Guid="66347322-84a9-4246-9d69-17b2e03dea63">
         <File Id="generic_unix_base.h" Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" Checksum="yes" />
       </Component>
