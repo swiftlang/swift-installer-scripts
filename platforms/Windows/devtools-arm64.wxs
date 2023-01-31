@@ -110,14 +110,23 @@
       <Component Id="DriverSupport.dll" Directory="_usr_bin" Guid="2c8f8a23-e0f3-4535-9c25-0e1300c24c32">
         <File Id="DriverSupport.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.dll" Checksum="yes" />
       </Component>
+      <Component Id="PackageCollections.dll" Directory="_usr_bin" Guid="b01dffe0-f0c6-47f4-8fb9-766d62e8137d">
+        <File Id="PackageCollections.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollections.dll" Checksum="yes" />
+      </Component>
       <Component Id="PackageGraph.dll" Directory="_usr_bin" Guid="0f4cd16f-a931-401c-9b49-9fc988e8d87e">
         <File Id="PackageGraph.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.dll" Checksum="yes" />
       </Component>
       <Component Id="PackageLoading.dll" Directory="_usr_bin" Guid="9f086102-597f-448f-ac82-127138fba0ba">
         <File Id="PackageLoading.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageLoading.dll" Checksum="yes" />
       </Component>
+      <Component Id="PackageMetadata.dll" Directory="_usr_bin" Guid="a4cf92fd-d212-46d4-abf8-da7ec9cd9d5f">
+        <File Id="PackageMetadata.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageMetadata.dll" Checksum="yes" />
+      </Component>
       <Component Id="PackageModel.dll" Directory="_usr_bin" Guid="faa15fdd-9ef2-46d8-af96-7a26a6c756f2">
         <File Id="PackageModel.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageModel.dll" Checksum="yes" />
+      </Component>
+      <Component Id="PackageRegistryTool.dll" Directory="_usr_bin" Guid="0434db1c-4dc8-410a-be8b-989fe490e142">
+        <File Id="PackageRegistryTool.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageRegistryTool.dll" Checksum="yes" />
       </Component>
       <Component Id="SPMBuildCore.dll" Directory="_usr_bin" Guid="221b7bd2-9f99-4ef0-9a7e-b261e9370a77">
         <File Id="SPMBuildCore.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.dll" Checksum="yes" />
@@ -129,8 +138,17 @@
       <Component Id="swift_build.exe" Directory="_usr_bin" Guid="a1feb617-1b46-446c-8002-08729f3fa267">
         <File Id="swift_build.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.exe" Checksum="yes" />
       </Component>
+      <Component Id="swift_experimental_destination.exe" Directory="_usr_bin" Guid="7b3aaaa5-1f60-4658-a267-5f8347f168ed">
+        <File Id="swift_experimental_destination.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-experimental-destination.exe" Checksum="" />
+      </Component>
       <Component Id="swift_package.exe" Directory="_usr_bin" Guid="2d46cc7c-1831-4caf-a225-9d2f283b4c10">
         <File Id="swift_package.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package.exe" Checksum="yes" />
+      </Component>
+      <Component Id="swift_package_collection.exe" Directory="_usr_bin" Guid="31e80734-a847-4784-8940-9d53f426e892">
+        <File Id="swift_package_collection.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package-collection.exe" Checksum="yes" />
+      </Component>
+      <Component Id="swift_package_registry.exe" Directory="_usr_bin" Guid="506511cc-2a75-4de9-9475-bd74bfa76fc8">
+        <File Id="swift_package_registry.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package-registry.exe" Checksum="yes" />
       </Component>
       <Component Id="swift_run.exe" Directory="_usr_bin" Guid="247b8727-71d3-4e80-bcaf-917a478598db">
         <File Id="swift_run.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-run.exe" Checksum="yes" />
@@ -183,14 +201,23 @@
       <Component Id="DriverSupport.pdb" Directory="_usr_bin" Guid="f8f8cb75-8f42-4522-bdd7-89499943ef32">
         <File Id="DriverSupport.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.pdb" Checksum="yes" />
       </Component>
+      <Component Id="PackageCollections.pdb" Directory="_usr_bin" Guid="529f3308-391d-4972-a51b-6fe3aa467acd">
+        <File Id="PackageCollections.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageCollections.pdb" Checksum="yes" />
+      </Component>
       <Component Id="PackageGraph.pdb" Directory="_usr_bin" Guid="71a32056-bb8d-4d9b-ab76-e25ee6fd04bc">
         <File Id="PackageGraph.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.pdb" Checksum="yes" />
       </Component>
       <Component Id="PackageLoading.pdb" Directory="_usr_bin" Guid="991958ab-0f7b-4547-8286-732671282ec1">
         <File Id="PackageLoading.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageLoading.pdb" Checksum="yes" />
       </Component>
+      <Component Id="PackageMetadata.pdb" Directory="_usr_bin" Guid="a368f867-3934-4576-8ea5-c29f334c8b9f">
+        <File Id="PackageMetadata.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageMetadata.pdb" Checksum="yes" />
+      </Component>
       <Component Id="PackageModel.pdb" Directory="_usr_bin" Guid="511fd24a-f9b9-4c7b-97c1-5845dfc308d0">
         <File Id="PackageModel.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageModel.pdb" Checksum="yes" />
+      </Component>
+      <Component Id="PackageRegistryTool.pdb" Directory="_usr_bin" Guid="8c79a93d-54b0-4d07-8dfe-cad70b5ed411">
+        <File Id="PackageRegistryTool.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageRegistryTool.pdb" Checksum="yes" />
       </Component>
       <Component Id="SPMBuildCore.pdb" Directory="_usr_bin" Guid="3f66ca4f-d560-496f-9f8f-bc350a559ce5">
         <File Id="SPMBuildCore.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.pdb" Checksum="yes" />
@@ -202,8 +229,17 @@
       <Component Id="swift_build.pdb" Directory="_usr_bin" Guid="84d4c04b-158f-446b-aa5e-9ffe3318dd02">
         <File Id="swift_build.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.pdb" Checksum="yes" />
       </Component>
+      <Component Id="swift_experimental_destination.pdb" Directory="_usr_bin" Guid="a36828cf-b528-4d17-ba5c-8dbaf3786208">
+        <File Id="swift_experimental_destination.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-experimental-description.pdb" Checksum="yes" />
+      </Coomponent>
       <Component Id="swift_package.pdb" Directory="_usr_bin" Guid="7038d860-c614-4c74-b2ce-d6dc84f8f638">
         <File Id="swift_package.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package.pdb" Checksum="yes" />
+      </Component>
+      <Component Id="swift_package_collection.pdb" Directory="_usr_bin" Guid="cf78534b-7821-45bf-94a9-8aa5748f42ae">
+        <File Id="swift_package_collection.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package-collection.pdb" Checksum="yes" />
+      </Component>
+      <Component Id="swift_package_registry.pdb" Directory="_usr_bin" Guid="2f2d6c94-45b6-4449-b476-c79a84e0c36c">
+        <File Id="swift_package_registry.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package-registry.pdb" Checksum="yes" />
       </Component>
       <Component Id="swift_run.pdb" Directory="_usr_bin" Guid="d5eb453e-1e43-4492-b9d6-e3c08b8f7b80">
         <File Id="swift_run.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-run.pdb" Checksum="yes" />
