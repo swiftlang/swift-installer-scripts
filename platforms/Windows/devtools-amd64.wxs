@@ -139,7 +139,7 @@
         <File Id="swift_build.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.exe" Checksum="yes" />
       </Component>
       <Component Id="swift_experimental_destination.exe" Directory="_usr_bin" Guid="c8201334-2fb5-475a-909b-64fe73cbb5ca">
-        <Fild Id="swift_experimental_destination.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-experimental-destination.exe" Checksum="yes" />
+        <File Id="swift_experimental_destination.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-experimental-destination.exe" Checksum="yes" />
       </Component>
       <Component Id="swift_package.exe" Directory="_usr_bin" Guid="40cee004-aa80-4948-ae39-f6ad32da56eb">
         <File Id="swift_package.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package.exe" Checksum="yes" />
