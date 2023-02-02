@@ -125,9 +125,6 @@
       <Component Id="PackageModel.dll" Directory="_usr_bin" Guid="1e8f566e-83f0-4657-9eed-598a96a957d9">
         <File Id="PackageModel.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageModel.dll" Checksum="yes" />
       </Component>
-      <Component Id="PackageRegistryTool.dll" Directory="_usr_bin" Guid="d685c52a-98d8-44bd-915e-5ce0fb02b505">
-        <File Id="PackageRegistryTool.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageRegistryTool.dll" Checksum="yes" />
-      </Component>
       <Component Id="SPMBuildCore.dll" Directory="_usr_bin" Guid="a4f1dc7d-8f1e-4d0d-8f71-974ddcb9e09a">
         <File Id="SPMBuildCore.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.dll" Checksum="yes" />
       </Component>
@@ -215,9 +212,6 @@
       </Component>
       <Component Id="PackageModel.pdb" Directory="_usr_bin" Guid="3f849e3c-649f-426d-b088-d840600dbca2">
         <File Id="PackageModel.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageModel.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="PackageRegistryTool.pdb" Directory="_usr_bin" Guid="ed04965c-b0e5-4c56-b54a-f04ba2db64b4">
-        <File Id="PackageRegistryTool.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageRegistryTool.pdb" Checksum="yes" />
       </Component>
       <Component Id="SPMBuildCore.pdb" Directory="_usr_bin" Guid="aff3a3f5-2bc4-4fa1-b07d-f4e85bb54734">
         <File Id="SPMBuildCore.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.pdb" Checksum="yes" />
