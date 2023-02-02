@@ -40,20 +40,6 @@
     </SetDirectory>
 
     <!-- Components -->
-    <ComponentGroup Id="SwiftCrypto">
-      <Component Id="Crypto.dll" Directory="_usr_bin" Guid="b70fbf9e-006b-4b05-9450-8b139fa90da1">
-        <File Id="Crypto.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Crypto.dll" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftCryptoDebugInfo">
-      <Component Id="Crypto.pdb" Directory="_usr_bin" Guid="13765cd7-5212-4ce8-a3f0-83168b4e8afc">
-        <File Id="Crypto.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Crypto.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="SwiftCollections">
       <Component Id="Collections.dll" Directory="_usr_bin" Guid="b705e7a1-698a-4608-b53f-48578380696c">
         <File Id="Collections.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Collections.dll" Checksum="yes" />
@@ -281,7 +267,6 @@
     <?endif?>
 
     <Feature Id="DeveloperTools" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Developer Tools for Windows aarch64" Level="1" Title="Swift Developer Tools (Windows aarch64)">
-      <ComponentGroupRef Id="SwiftCrypto" />
       <ComponentGroupRef Id="SwiftCollections" />
       <ComponentGroupRef Id="SwiftSystem" />
       <ComponentGroupRef Id="SwiftPackageManager" />
@@ -291,7 +276,6 @@
       <?ifdef INCLUDE_DEBUG_INFO ?>
       <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Developer Tools for Windows aarch64" Level="0" Title="Debug Info">
         <Condition Level="1">INSTALL_DEBUGINFO</Condition>
-        <ComponentGroupRef Id="SwiftCryptoDebugInfo" />
         <ComponentGroupRef Id="SwiftCollectionsDebugInfo" />
         <ComponentGroupRef Id="SwiftSystemDebugInfo" />
         <ComponentGroupRef Id="SwiftPackageManagerDebugInfo" />
