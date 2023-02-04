@@ -21,7 +21,7 @@
       </Directory>
     </Directory>
 
-    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]swift">
+    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]Swift">
       NOT INSTALLDIR
     </SetDirectory>
 
@@ -56,6 +56,9 @@
       </Component>
       <Component Id="swift_StringProcessing.dll" Guid="0e0dc47f-1e80-4ed1-8ee9-7de8139086ed">
         <File Id="swift_StringProcessing.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" Checksum="yes" />
+      </Component>
+      <Component Id="swiftCxx.dll" Guid="d21a84bc-0dc3-4cf0-ad73-c5adb869e426">
+        <File Id="swiftCxx.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.dll" Checksum="yes" />
       </Component>
       <Component Id="swiftCore.dll" Guid="b11c37b0-b6ad-4e55-b4e7-0517ff7a161f">
         <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
@@ -122,6 +125,9 @@
       </Component>
       <Component Id="swift_StringProcessing.pdb" Guid="6fd2d711-4452-4aca-91c0-34e240bcc2d0">
         <File Id="swift_StringProcessing.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swiftCxx.pdb" Guid="36a3f6f8-c21c-4e4c-96f8-c71c122f19f5">
+        <File Id="swiftCxx.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.pdb" Checksum="yes" />
       </Component>
       <Component Id="swiftCore.pdb" Guid="ba858ada-58f6-499d-a9f3-fdad7e858e15">
         <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />

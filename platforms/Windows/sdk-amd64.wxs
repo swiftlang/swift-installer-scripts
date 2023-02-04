@@ -72,6 +72,8 @@
                             </Directory>
                             <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
                             </Directory>
+                            <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
+                            </Directory>
                             <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
                             </Directory>
                             <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
@@ -320,6 +322,22 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="Cxx">
+      <Component Id="Cxx.swiftdoc" Directory="Cxx.swiftmodule" Guid="570b8867-4493-4de2-bba4-b0b68e34a764">
+        <File Id="Cxx.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="Cxx.swiftinterface" Directory="Cxx.swiftmodule" Guid="8ce04a24-5a7e-406d-aae3-ba082df6b6e5">
+        <File Id="Cxx.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="Cxx.swiftmodule" Directory="Cxx.swiftmodule" Guid="5b8f533c-5c54-4b71-8ccd-4b4c3a51b04a">
+        <File Id="Cxx.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftCxx.lib" Directory="WindowsSDK_usr_lib_swift_windows_x86_64" Guid="d138824b-c3d7-402d-a420-a5a09c5a2dcf">
+        <File Id="swiftCxx.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\swiftCxx.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="CRT">
       <Component Id="CRT.swiftdoc" Directory="CRT.swiftmodule" Guid="c38cbe87-7578-45e5-a3c7-3f235bd9c1a5">
         <File Id="CRT.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
@@ -502,6 +520,7 @@
       <ComponentGroupRef Id="Distributed" />
       <ComponentGroupRef Id="_RegexParser" />
       <ComponentGroupRef Id="_StringProcessing" />
+      <ComponentGroupRef Id="Cxx" />
       <ComponentGroupRef Id="CRT" />
       <ComponentGroupRef Id="CXX" />
       <ComponentGroupRef Id="Foundation" />
