@@ -82,6 +82,8 @@ Requires:       pkg-config
 Requires:       python3
 Requires:       sqlite
 Requires:       zlib-devel
+Requires:       unzip
+Requires:       zip
 
 ExclusiveArch:  x86_64 aarch64
 
