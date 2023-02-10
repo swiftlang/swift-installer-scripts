@@ -62,6 +62,10 @@
                           <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
                           </Directory>
                           <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
+                            <Directory Id="Reflection.swiftmodule" Name="Reflection.swiftmodule">
+                            </Directory>
+                            <Directory Id="_Runtime.swiftmodule" Name="_Runtime.swiftmodule">
+                            </Directory>
                             <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
                             </Directory>
                             <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
@@ -237,6 +241,38 @@
 
       <Component Id="swiftDispatch.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="97e1a280-673c-4eb3-8c79-e0d82c6bc9c9">
         <File Id="swiftDispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Reflection">
+      <Component Id="Reflection.swiftdoc" Directory="Reflection.swiftmodule" Guid="7d20d217-c642-44cd-8774-5d13d5d1d440">
+        <File Id="Reflection.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Reflection.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="Reflection.swiftinterface" Directory="Reflection.swiftmodule" Guid="2050a6e5-42fe-401d-bec9-cbb3dbf44e89">
+        <File Id="Reflection.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Reflection.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="Reflection.swiftmodule" Directory="Reflection.swiftmodule" Guid="0ca35b3e-1b9b-42b5-ba7a-59c95a92fa55">
+        <File Id="Reflection.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Reflection.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swiftReflection.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="304f413d-6640-4a06-aa64-8a9c33c7dd73">
+        <File Id="swiftReflection.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftReflection.lib" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_Runtime">
+      <Component Id="_Runtime.swiftdoc" Directory="_Runtime.swiftmodule" Guid="e4001f72-392e-4205-ba92-ed4b5a477cc1">
+        <File Id="_Runtime.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Runtime.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="_Runtime.swiftinterface" Directory="_Runtime.swiftmodule" Guid="6aa0d039-bf3e-4cc9-8364-4b8a2e88c84e">
+        <File Id="_Runtime.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Runtime.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+      </Component>
+      <Component Id="_Runtime.swiftmodule" Directory="_Runtime.swiftmodule" Guid="f9f10cf0-d59b-4f60-9efc-a17226f5f590">
+        <File Id="_Runtime.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Runtime.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+      </Component>
+
+      <Component Id="swift_Runtime.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="f4462968-709d-44bc-8657-16e654946e3e">
+        <File Id="swift_Runtime.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swift_Runtime.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
