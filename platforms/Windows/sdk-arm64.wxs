@@ -529,25 +529,25 @@
 
     <!-- Features -->
     <Feature Id="WinARM64SDK" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift SDK for Windows aarch64" Level="1" Title="Swift SDK for Windows aarch64">
-      <ComponentGroupRef Id="XCTest" />
-      <ComponentGroupRef Id="dispatch" />
       <ComponentGroupRef Id="BlocksRuntime" />
-      <ComponentGroupRef Id="SwiftRemoteMirror" />
-      <ComponentGroupRef Id="Reflection" />
-      <ComponentGroupRef Id="_Runtime" />
-      <ComponentGroupRef Id="_Concurrency" />
-      <ComponentGroupRef Id="_Differentiation" />
-      <ComponentGroupRef Id="Distributed" />
-      <ComponentGroupRef Id="_RegexParser" />
-      <ComponentGroupRef Id="_StringProcessing" />
       <ComponentGroupRef Id="CRT" />
       <ComponentGroupRef Id="CXX" />
+      <ComponentGroupRef Id="Distributed" />
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationNetworking" />
       <ComponentGroupRef Id="FoundationXML" />
+      <ComponentGroupRef Id="Reflection" />
       <ComponentGroupRef Id="Swift" />
       <ComponentGroupRef Id="SwiftOnoneSupport" />
+      <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="WinSDK" />
+      <ComponentGroupRef Id="XCTest" />
+      <ComponentGroupRef Id="_Concurrency" />
+      <ComponentGroupRef Id="_Differentiation" />
+      <ComponentGroupRef Id="_RegexParser" />
+      <ComponentGroupRef Id="_Runtime" />
+      <ComponentGroupRef Id="_StringProcessing" />
+      <ComponentGroupRef Id="dispatch" />
 
       <ComponentGroupRef Id="SwiftShims" />
       <ComponentGroupRef Id="CXXShims" />
