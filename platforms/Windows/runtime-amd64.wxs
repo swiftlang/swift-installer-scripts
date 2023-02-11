@@ -108,6 +108,12 @@
       <Component Id="FoundationXML.pdb" Guid="97bc6b02-8ac0-4a28-a032-7ebe1dd0d496">
         <File Id="FoundationXML.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.pdb" Checksum="yes" DiskId="2" />
       </Component>
+      <Component Id="swiftReflection.pdb" Guid="2151438b-4ae9-4ca1-823a-c18e3229f2e1">
+        <File Id="swiftReflection.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftReflection.pdb" Checksum="yes" DiskId="2" />
+      </Component>
+      <Component Id="swift_Runtime.pdb" Guid="21e51dd8-234d-4a98-b920-436086758074">
+        <File Id="swift_Runtime.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Runtime.pdb" Checksum="yes" DiskId="2" />
+      </Component>
       <Component Id="swift_Concurrency.pdb" Guid="433dd15e-f72c-4294-9bf5-0be4771d1c10">
         <File Id="swift_Concurrency.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.pdb" Checksum="yes" DiskId="2" />
       </Component>
