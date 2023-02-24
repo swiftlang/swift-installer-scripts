@@ -566,30 +566,5 @@
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
     <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
-
-    <!-- Custom Actions -->
-    <Binary Id="SwiftInstaller.dll"
-            SourceFile="$(var.SwiftInstaller.TargetDir)\SwiftInstaller.dll" />
-
-    <CustomAction Id="SwiftInstaller_InstallAuxiliaryFiles"
-                  BinaryKey="SwiftInstaller.dll"
-                  DllEntry="SwiftInstaller_InstallAuxiliaryFiles"
-                  Execute="deferred"
-                  Impersonate="no"
-                  Return="check" />
-    <CustomAction Id="SwiftInstaller_InstallAuxiliaryFiles.SetProperty"
-                  Property="SwiftInstaller_InstallAuxiliaryFiles"
-                  Value="[INSTALLDIR]Developer\Platforms\Windows.platform\Developer\SDKs\Windows.sdk"
-                  Return="check" />
-
-    <!-- Hooks -->
-    <InstallExecuteSequence>
-      <Custom Action="SwiftInstaller_InstallAuxiliaryFiles.SetProperty"
-              Before="SwiftInstaller_InstallAuxiliaryFiles" />
-
-      <Custom Action="SwiftInstaller_InstallAuxiliaryFiles" After="InstallExecute">
-        NOT REMOVE
-      </Custom>
-    </InstallExecuteSequence>
   </Product>
 </Wix>
