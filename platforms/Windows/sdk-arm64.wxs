@@ -30,8 +30,8 @@
                         <Directory Id="XCTest_usr_lib_swift" Name="swift">
                           <Directory Id="XCTest_usr_lib_swift_windows" Name="windows">
                             <Directory Id="XCTest_usr_lib_swift_windows_aarch64" Name="aarch64">
-                              <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule">
-                              </Directory>
+                            </Directory>
+                            <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule">
                             </Directory>
                           </Directory>
                         </Directory>
