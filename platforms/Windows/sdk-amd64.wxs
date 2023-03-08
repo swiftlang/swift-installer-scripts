@@ -496,18 +496,18 @@
       -->
     </ComponentGroup>
 
-    <ComponentGroup Id="SupportFiles" Directory="WindowsSDK_usr_share">
+    <ComponentGroup Id="AuxiliaryFiles" Directory="WindowsSDK_usr_share">
       <Component Id="ucrt.modulemap" Guid="4b5c1a1d-a6cf-4d06-81f7-e752f0a3f4db">
-        <File Id="ucrt.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\ucrt.modulemap" Checksum="yes" />
+        <File Id="ucrt.modulemap" Source="$(var.SDK_ROOT)\usr\share\ucrt.modulemap" Checksum="yes" />
       </Component>
       <Component Id="winsdk.modulemap" Guid="a3b7cb7c-730e-4c6b-ada8-d39f4c72f41e">
-        <File Id="winsdk.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\winsdk.modulemap" Checksum="yes" />
-      </Component>
-      <Component Id="vcruntime.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
-        <File Id="vcruntime.modulemap" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\vcruntime.modulemap" Checksum="yes" />
+        <File Id="winsdk.modulemap" Source="$(var.SDK_ROOT)\usr\share\winsdk.modulemap" Checksum="yes" />
       </Component>
       <Component Id="vcruntime.apinotes" Guid="11318e14-7d68-490e-8c64-f1332f1d63f7">
-        <File Id="vcruntime.apinotes" Source="$(var.SWIFT_SOURCE_DIR)\stdlib\public\Platform\vcruntime.apinotes" Checksum="yes" />
+        <File Id="vcruntime.apinotes" Source="$(var.SDK_ROOT)\usr\share\vcruntime.apinotes" Checksum="yes" />
+      </Component>
+      <Component Id="vcruntime.modulemap" Guid="cd59b968-d431-44a0-870b-16c9fbfde01d">
+        <File Id="vcruntime.modulemap" Source="$(var.SDK_ROOT)\usr\share\vcruntime.modulemap" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
@@ -553,7 +553,7 @@
       <ComponentGroupRef Id="CXXShims" />
 
       <ComponentGroupRef Id="Registrar" />
-      <ComponentGroupRef Id="SupportFiles" />
+      <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
 
       <ComponentRef Id="EnvironmentVariables" />
