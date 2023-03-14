@@ -582,17 +582,17 @@
         <File Id="swiftDemangle.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swiftDemangle.lib" Checksum="yes" />
       </Component>
       <Component Id="_InternalSwiftScan.lib" Directory="_usr_lib" Guid="4ea85284-8be7-4841-b808-8f4b210f9152">
-        <File Id="_InternalSwiftScan.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftScan.lib" Checksum="yes" />
+        <File Id="_InternalSwiftScan.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\_InternalSwiftScan.lib" Checksum="yes" />
       </Component>
 
       <Component Id="DependencyScan.h" Directory="_usr_include__InternalSwiftScan" Guid="44c94a09-383d-4493-9918-347db8cccdc0">
-        <File Id="DependencyScan.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" Checksum="yes" />
+        <File Id="DependencyScan.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\_InternalSwiftScan\DependencyScan.h" Checksum="yes" />
       </Component>
       <Component Id="DependencyScanMacros.h" Directory="_usr_include__InternalSwiftScan" Guid="340f436f-bdf9-4240-8051-5fd335603abf">
-        <File Id="DependencyScanMacros.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" Checksum="yes" />
+        <File Id="DependencyScanMacros.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\_InternalSwiftScan\DependencyScanMacros.h" Checksum="yes" />
       </Component>
       <Component Id="_InternalSwiftScan.modulemap" Directory="_usr_include__InternalSwiftScan" Guid="1aed210d-a34a-492e-b570-3e0cf95b653c">
-        <File Id="_InternalSwiftScan.modulemap" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\module.modulemap" Checksum="yes" />
+        <File Id="_InternalSwiftScan.modulemap" Source="$(var.TOOLCHAIN_ROOT)\usr\include\_InternalSwiftScan\module.modulemap" Checksum="yes" />
       </Component>
 
       <Component Id="ios4.json" Directory="_usr_lib_swift_migrator" Guid="86db2678-9f8b-446e-bfbc-eb45e725420e">
