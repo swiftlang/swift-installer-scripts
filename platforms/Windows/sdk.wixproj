@@ -13,6 +13,8 @@
 
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
+
+    <XCTEST_ROOT Condition=" '$(XCTEST_ROOT)' == '' ">$(PLATFORM_ROOT)\Developer\Library\XCTest-development</XCTEST_ROOT>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -30,7 +32,7 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
+    <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);XCTEST_ROOT=$(XCTEST_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
     <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
     <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
     <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>

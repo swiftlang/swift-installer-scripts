@@ -118,23 +118,23 @@
     <!-- Components -->
     <ComponentGroup Id="XCTest">
       <Component Id="XCTest.dll" Directory="XCTest_usr_bin64a" Guid="1a0dd34e-71eb-4441-af98-fed53631e34d">
-        <File Id="XCTest.dll" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" Checksum="yes" />
+        <File Id="XCTest.dll" Source="$(var.XCTEST_ROOT)\usr\bin\XCTest.dll" Checksum="yes" />
       </Component>
       <Component Id="XCTest.lib" Directory="XCTest_usr_lib_swift_windows_aarch64" Guid="bce787dd-393e-4285-aa81-448557385d40">
-        <File Id="XCTest.lib" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" Checksum="yes" />
+        <File Id="XCTest.lib" Source="$(var.XCTEST_ROOT)\usr\lib\swift\windows\XCTest.lib" Checksum="yes" />
       </Component>
       <Component Id="XCTest.swiftdoc" Directory="XCTest.swiftmodule" Guid="b2b83f97-6639-4b7b-8d32-2396463dfe71">
-        <File Id="XCTest.swiftdoc" Name="aarch64-unknown-windows-msvc.swiftdoc" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\aarch64\XCTest.swiftdoc" Checksum="yes" />
+        <File Id="XCTest.swiftdoc" Name="aarch64-unknown-windows-msvc.swiftdoc" Source="$(var.XCTEST_ROOT)\usr\lib\swift\windows\aarch64\XCTest.swiftdoc" Checksum="yes" />
       </Component>
       <Component Id="XCTest.swiftmodule" Directory="XCTest.swiftmodule" Guid="51ce13c0-ca04-4ee4-bb72-c0804cbbe405">
-        <File Id="XCTest.swiftmodule" Name="aarch64-unknown-windows-msvc.swiftmodule" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\aarch64\XCTest.swiftmodule" Checksum="yes" />
+        <File Id="XCTest.swiftmodule" Name="aarch64-unknown-windows-msvc.swiftmodule" Source="$(var.XCTEST_ROOT)\usr\lib\swift\windows\aarch64\XCTest.swiftmodule" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
     <?ifdef INCLUDE_DEBUG_INFO ?>
     <ComponentGroup Id="XCTestDebugInfo">
       <Component Id="XCTest.pdb" Directory="XCTest_usr_bin64a" Guid="92e52a04-6193-4a0f-bd4d-8ae3c30a2901">
-        <File Id="XCTest.pdb" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.pdb" Checksum="yes" DiskId="2" />
+        <File Id="XCTest.pdb" Source="$(var.XCTEST_ROOT)\usr\bin\XCTest.pdb" Checksum="yes" DiskId="2" />
       </Component>
     </ComponentGroup>
     <?endif?>
