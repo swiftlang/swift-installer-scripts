@@ -121,7 +121,7 @@
         <File Id="XCTest.dll" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" Checksum="yes" />
       </Component>
       <Component Id="XCTest.lib" Directory="XCTest_usr_lib_swift_windows_aarch64" Guid="bce787dd-393e-4285-aa81-448557385d40">
-        <File Id="XCTest.lib" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" Checksum="yes" />
+        <File Id="XCTest.lib" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\aarch64\XCTest.lib" Checksum="yes" />
       </Component>
       <Component Id="XCTest.swiftdoc" Directory="XCTest.swiftmodule" Guid="b2b83f97-6639-4b7b-8d32-2396463dfe71">
         <File Id="XCTest.swiftdoc" Name="aarch64-unknown-windows-msvc.swiftdoc" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\aarch64\XCTest.swiftdoc" Checksum="yes" />
