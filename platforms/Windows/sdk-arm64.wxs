@@ -62,10 +62,6 @@
                           <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
                           </Directory>
                           <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
-                            <Directory Id="Reflection.swiftmodule" Name="Reflection.swiftmodule">
-                            </Directory>
-                            <Directory Id="_Runtime.swiftmodule" Name="_Runtime.swiftmodule">
-                            </Directory>
                             <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
                             </Directory>
                             <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
@@ -241,38 +237,6 @@
 
       <Component Id="swiftDispatch.lib" Directory="WindowsSDK_usr_lib_swift_windows_aarch64" Guid="9800dd9e-9f94-4350-8e41-f18f19ac610d">
         <File Id="swiftDispatch.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="Reflection">
-      <Component Id="Reflection.swiftdoc" Directory="Reflection.swiftmodule" Guid="dbfe23ed-3137-42c3-805c-5395a96a3f27">
-        <File Id="Reflection.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Reflection.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-      </Component>
-      <Component Id="Reflection.swiftinterface" Directory="Reflection.swiftmodule" Guid="48e0bfb3-73e6-4f54-8cf7-13611f576f84">
-        <File Id="Reflection.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Reflection.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-      </Component>
-      <Component Id="Reflection.swiftmodule" Directory="Reflection.swiftmodule" Guid="a3d092dd-4d8f-4b85-b1e6-778099be6880">
-        <File Id="Reflection.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Reflection.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-
-      <Component Id="swiftReflection.lib" Directory="WindowsSDK_usr_lib_swift_windows_aarch64" Guid="0e494f73-0b59-4ddf-afe2-3084b6c8a1b7">
-        <File Id="swiftReflection.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\aarch64\swiftReflection.lib" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="_Runtime">
-      <Component Id="_Runtime.swiftdoc" Directory="_Runtime.swiftmodule" Guid="395104b1-03c0-4a31-9d67-0fb4a2ebbd77">
-        <File Id="_Runtime.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Runtime.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" Checksum="yes" />
-      </Component>
-      <Component Id="_Runtime.swiftinterface" Directory="_Runtime.swiftmodule" Guid="2125240d-1be9-46c3-b99a-c4e84f888b82">
-        <File Id="_Runtime.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Runtime.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" Checksum="yes" />
-      </Component>
-      <Component Id="_Runtime.swiftmodule" Directory="_Runtime.swiftmodule" Guid="5e8a00f0-eb62-4473-b61c-82e8185140a3">
-        <File Id="_Runtime.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Runtime.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" Checksum="yes" />
-      </Component>
-
-      <Component Id="swift_Runtime.lib" Directory="WindowsSDK_usr_lib_swift_windows_aarch64" Guid="7be7efd9-0f81-4fe0-b765-b4e6c6c918dc">
-        <File Id="swift_Runtime.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\aarch64\swift_Runtime.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
@@ -536,7 +500,6 @@
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationNetworking" />
       <ComponentGroupRef Id="FoundationXML" />
-      <ComponentGroupRef Id="Reflection" />
       <ComponentGroupRef Id="Swift" />
       <ComponentGroupRef Id="SwiftOnoneSupport" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
@@ -545,7 +508,6 @@
       <ComponentGroupRef Id="_Concurrency" />
       <ComponentGroupRef Id="_Differentiation" />
       <ComponentGroupRef Id="_RegexParser" />
-      <ComponentGroupRef Id="_Runtime" />
       <ComponentGroupRef Id="_StringProcessing" />
       <ComponentGroupRef Id="dispatch" />
 
