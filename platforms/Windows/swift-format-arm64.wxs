@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Code Formatter for Windows aarch64" UpgradeCode="45f1ae7a-4d90-414d-80b3-a5a45898b212" Version="$(var.ProductVersion)">
-    <Package Comments="Copyright (c) 2021-2022 Swift Open Source Project" Compressed="yes" Description="Swift Code Formatter for Windows aarch64" InstallScope="perMachine" Manufacturer="swift.org" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift Code Formatter for Windows aarch64"
+      UpgradeCode="45f1ae7a-4d90-414d-80b3-a5a45898b212"
+      Version="$(var.ProductVersion)"
+      Scope="perMachine">
+    <SummaryInformation Description="Swift Code Formatter for Windows aarch64" />
 
     <!-- NOTE(compnerd) use pre-3.0 schema for better compatibility. -->
     <Media Id="1" Cabinet="SwiftFormat.cab" EmbedCab="yes" />
@@ -10,18 +15,14 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="INSTALLDIR">
-        <Directory Id="Developer" Name="Developer">
-          <Directory Id="Tools" Name="Tools">
-          </Directory>
+    <Directory Id="INSTALLDIR">
+      <Directory Id="Developer" Name="Developer">
+        <Directory Id="Tools" Name="Tools">
         </Directory>
       </Directory>
     </Directory>
 
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library">
-      NOT INSTALLDIR
-    </SetDirectory>
+    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="SwiftFormat">
@@ -38,32 +39,30 @@
     </ComponentGroup>
     <?endif?>
 
-    <DirectoryRef Id="TARGETDIR">
-      <Component Id="EnvironmentVariables" Guid="c1a01e55-3353-4eca-8b58-9960e57a3758">
-        <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Developer\Tools" />
-      </Component>
-    </DirectoryRef>
+    <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="c1a01e55-3353-4eca-8b58-9960e57a3758">
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Developer\Tools" />
+    </Component>
 
-    <Feature Id="SwiftFormat" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Code Formatter for Windows aarch64" Level="1" Title="Swift Code Formatter (Windows aarch64)">
+    <Feature Id="SwiftFormat" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Code Formatter for Windows aarch64" Level="1" Title="Swift Code Formatter (Windows aarch64)">
       <ComponentGroupRef Id="SwiftFormat" />
       <ComponentRef Id="EnvironmentVariables" />
 
       <?ifdef INCLUDE_DEBUG_INFO?>
-      <Feature Id="DebugInfo" Absent="allow" Description="Debug Information for Swift Code Formatter for Windows aarch64" Level="0" Title="Debug Information">
-        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+      <Feature Id="DebugInfo" AllowAbsent="yes" Description="Debug Information for Swift Code Formatter for Windows aarch64" Level="0" Title="Debug Information">
+        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
         <ComponentGroupRef Id="SwiftFormatDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
 
     <UI>
-      <UIRef Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
     </UI>
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
     <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
 
-  </Product>
+  </Package>
 </Wix>

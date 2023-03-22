@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
   <Bundle Name="Swift Developer Package for Windows x86_64" Version="$(var.ProductVersion)" Manufacturer="swift.org" UpgradeCode="8c75f32a-7bdf-4c61-abf6-c7e1c4b8fbf6">
-    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLicense">
-      <bal:WixStandardBootstrapperApplication LicenseUrl="" LogoFile="Resources/swift.png" SuppressOptionsUI="yes" SuppressRepair="no" />
-    </BootstrapperApplicationRef>
+    <BootstrapperApplication>
+      <bal:WixStandardBootstrapperApplication LicenseUrl="" LogoFile="Resources/swift.png" SuppressOptionsUI="yes" SuppressRepair="no" Theme="hyperlinkLicense" />
+    </BootstrapperApplication>
 
     <Chain>
       <?if $(var.RequiredChain) != "" ?>

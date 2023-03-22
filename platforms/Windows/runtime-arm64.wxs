@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Runtime for Windows aarch64" UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886" Version="$(var.ProductVersion)">
-    <Package Comments="Copyright (c) 2021-2022 Swift Open Source Project" Compressed="yes" Description="Swift Runtime for Windows aarch64" InstallScope="perMachine" Manufacturer="swift.org" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift Runtime for Windows aarch64"
+      UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886"
+      Version="$(var.ProductVersion)"
+      Scope="perMachine">
+    <SummaryInformation Description="Swift Runtime for Windows aarch64" />
 
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -9,21 +14,18 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="INSTALLDIR">
-        <!-- TODO(compnerd) use $(var.ProductVersion) -->
-        <Directory Id="_" Name="runtime-development">
-          <Directory Id="_usr" Name="usr">
-            <Directory Id="_usr_bin" Name="bin">
-            </Directory>
+    <Directory Id="INSTALLDIR">
+      <!-- TODO(compnerd) use $(var.ProductVersion) -->
+      <Directory Id="_" Name="runtime-development">
+        <Directory Id="_usr" Name="usr">
+          <Directory Id="_usr_bin" Name="bin">
           </Directory>
         </Directory>
       </Directory>
     </Directory>
+    
 
-    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]swift">
-      NOT INSTALLDIR
-    </SetDirectory>
+    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]swift" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="SwiftRuntime" Directory="_usr_bin">
@@ -41,12 +43,6 @@
       </Component>
       <Component Id="FoundationXML.dll" Guid="959fd680-b5b7-4c1d-bdd2-6c019a611874">
         <File Id="FoundationXML.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" Checksum="yes" />
-      </Component>
-      <Component Id="swiftReflection.dll" Guid="a02ca3fb-0f04-416a-8702-982c3cce58b2">
-        <File Id="swiftReflection.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftReflection.dll" Checksum="yes" />
-      </Component>
-      <Component Id="swift_Runtime.dll" Guid="07de8108-867a-4992-8ca7-91e9a98c6b73">
-        <File Id="swift_Runtime.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Runtime.dll" Checksum="yes" />
       </Component>
       <Component Id="swift_Concurrency.dll" Guid="67373728-5a66-401f-b62d-dc7ced8b87e8">
         <File Id="swift_Concurrency.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" />
@@ -164,44 +160,42 @@
     </ComponentGroup>
     <?endif?>
 
-    <DirectoryRef Id="TARGETDIR">
-      <Component Id="EnvironmentVariables" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
-        <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]runtime-development\usr\bin" />
-      </Component>
-    </DirectoryRef>
+    <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]runtime-development\usr\bin" />
+    </Component>
 
     <!-- Feature -->
-    <Feature Id="WinARM64SwiftRuntime" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows aarch64" Level="1" Title="Swift Runtime for Windows aarch64">
+    <Feature Id="WinARM64SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows aarch64" Level="1" Title="Swift Runtime for Windows aarch64">
       <ComponentGroupRef Id="SwiftRuntime" />
       <ComponentRef Id="EnvironmentVariables" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Runtime for Windows aarch64" Level="0" Title="Debug Information">
-        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift Runtime for Windows aarch64" Level="0" Title="Debug Information">
+        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
         <ComponentGroupRef Id="SwiftRuntimeDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
 
-    <Feature Id="WinARM64SwiftUtilities" Absent="allow" AllowAdvertise="yes" Description="Extra Swift Utilities for Windows aarch64" Level="1" Title="Swift Utilities for Windows aarch64">
+    <Feature Id="WinARM64SwiftUtilities" AllowAbsent="yes" AllowAdvertise="yes" Description="Extra Swift Utilities for Windows aarch64" Level="1" Title="Swift Utilities for Windows aarch64">
       <ComponentGroupRef Id="SwiftUtilities" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Utilties for Windows aarch64" Level="0" Title="Debug Information">
-        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift Utilties for Windows aarch64" Level="0" Title="Debug Information">
+        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
         <ComponentGroupRef Id="SwiftUtilitiesDebugInfo" />
       </Feature>
       <?endif?>
     </Feature>
 
     <UI>
-      <UIRef Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
     </UI>
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
     <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
 
-  </Product>
+  </Package>
 </Wix>

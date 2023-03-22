@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Toolchain for Windows aarch64" UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb" Version="$(var.ProductVersion)">
-    <Package Comments="Copyright (c) 2021-2022 Swift Open Source Project" Compressed="yes" Description="Swift Toolchain for Windows aarch64" InstallScope="perMachine" Manufacturer="swift.org" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift Toolchain for Windows aarch64"
+      UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
+      Version="$(var.ProductVersion)"
+      Scope="perMachine">
+    <SummaryInformation Description="Swift Toolchain for Windows aarch64" />
 
     <!--
       NOTE(compnerd) Use high compression as this is an extrodinarily large
@@ -29,67 +34,65 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="INSTALLDIR">
-        <Directory Id="Developer" Name="Developer">
-          <Directory Id="Toolchains" Name="Toolchains">
-            <!-- TODO(compnerd):
-              This really should be
-              unknown-Asserts-$(var.ProductVersion).xctoolchain,
-              though before changing, we should setup a
-              `unknown-Asserts-current.xctoolchain`
-              symlink. Additionally, beware that the environment chagnes
-              below will need to be updated to reflect this change. Ideally,
-              we would have as part of this a tool to select the different
-              toolchain versions.
-            -->
-            <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
-              <Directory Id="_usr" Name="usr">
-                <Directory Id="_usr_bin" Name="bin">
+    <Directory Id="INSTALLDIR">
+      <Directory Id="Developer" Name="Developer">
+        <Directory Id="Toolchains" Name="Toolchains">
+          <!-- TODO(compnerd):
+            This really should be
+            unknown-Asserts-$(var.ProductVersion).xctoolchain,
+            though before changing, we should setup a
+            `unknown-Asserts-current.xctoolchain`
+            symlink. Additionally, beware that the environment chagnes
+            below will need to be updated to reflect this change. Ideally,
+            we would have as part of this a tool to select the different
+            toolchain versions.
+          -->
+          <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin">
+              </Directory>
+              <Directory Id="_usr_include" Name="include">
+                <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan">
                 </Directory>
-                <Directory Id="_usr_include" Name="include">
-                  <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan">
-                  </Directory>
-                  <Directory Id="_usr_include_clang_c" Name="clang-c">
-                  </Directory>
-                  <Directory Id="_usr_include_dispatch" Name="dispatch">
-                  </Directory>
-                  <Directory Id="_usr_include_indexstore" Name="indexstore">
-                  </Directory>
-                  <Directory Id="_usr_include_lldb" Name="lldb">
-                  </Directory>
-                  <Directory Id="_usr_include_llvm_c" Name="llvm-c">
-                  </Directory>
-                  <Directory Id="_usr_include_os" Name="os">
-                  </Directory>
-                  <Directory Id="_usr_include_SourceKit" Name="SourceKit">
-                  </Directory>
+                <Directory Id="_usr_include_clang_c" Name="clang-c">
                 </Directory>
-                <Directory Id="_usr_lib" Name="lib">
-                  <Directory Id="_usr_lib_clang" Name="clang">
-                  </Directory>
-                  <Directory Id="_usr_lib_site_packages" Name="site-packages">
-                    <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
-                      <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
-                        <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp">
-                        </Directory>
-                      </Directory>
-                      <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils">
+                <Directory Id="_usr_include_dispatch" Name="dispatch">
+                </Directory>
+                <Directory Id="_usr_include_indexstore" Name="indexstore">
+                </Directory>
+                <Directory Id="_usr_include_lldb" Name="lldb">
+                </Directory>
+                <Directory Id="_usr_include_llvm_c" Name="llvm-c">
+                </Directory>
+                <Directory Id="_usr_include_os" Name="os">
+                </Directory>
+                <Directory Id="_usr_include_SourceKit" Name="SourceKit">
+                </Directory>
+              </Directory>
+              <Directory Id="_usr_lib" Name="lib">
+                <Directory Id="_usr_lib_clang" Name="clang">
+                </Directory>
+                <Directory Id="_usr_lib_site_packages" Name="site-packages">
+                  <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
+                    <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
+                      <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp">
                       </Directory>
                     </Directory>
-                  </Directory>
-                  <Directory Id="_usr_lib_swift" Name="swift">
-                    <Directory Id="_usr_lib_swift_migrator" Name="migrator">
-                    </Directory>
-                    <Directory Id="_usr_lib_swift_shims" Name="shims">
+                    <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils">
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="_usr_libexec" Name="libexec">
-                </Directory>
-                <Directory Id="_usr_share" Name="share">
-                  <Directory Id="_usr_share_swift" Name="swift">
+                <Directory Id="_usr_lib_swift" Name="swift">
+                  <Directory Id="_usr_lib_swift_migrator" Name="migrator">
                   </Directory>
+                  <Directory Id="_usr_lib_swift_shims" Name="shims">
+                  </Directory>
+                </Directory>
+              </Directory>
+              <Directory Id="_usr_libexec" Name="libexec">
+              </Directory>
+              <Directory Id="_usr_share" Name="share">
+                <Directory Id="_usr_share_swift" Name="swift">
                 </Directory>
               </Directory>
             </Directory>
@@ -98,9 +101,7 @@
       </Directory>
     </Directory>
 
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library">
-      NOT INSTALLDIR
-    </SetDirectory>
+    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="binutils">
@@ -756,14 +757,12 @@
     </ComponentGroup>
     <?endif?>
 
-    <DirectoryRef Id="TARGETDIR">
-      <Component Id="EnvironmentVariables" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
-        <Environment Id="DeveloperDir" Action="set" Name="DEVELOPER_DIR" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Developer" />
-        <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" />
-      </Component>
-    </DirectoryRef>
+    <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
+      <Environment Id="DeveloperDir" Action="set" Name="DEVELOPER_DIR" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Developer" />
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" />
+    </Component>
 
-    <Feature Id="Toolchain" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Toolchain for Windows aarch64" Level="1" Title="Swift Toolchain for Windows aarch64">
+    <Feature Id="Toolchain" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Toolchain for Windows aarch64" Level="1" Title="Swift Toolchain for Windows aarch64">
       <ComponentGroupRef Id="binutils" />
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="lld" />
@@ -785,8 +784,8 @@
       <ComponentRef Id="EnvironmentVariables" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Infomation for Swift Toolchain for Windows aarch64" Level="0" Title="Debug Information">
-        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Infomation for Swift Toolchain for Windows aarch64" Level="0" Title="Debug Information">
+        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
         <ComponentGroupRef Id="binutilsDebugInfo" />
         <ComponentGroupRef Id="clangDebugInfo" />
         <ComponentGroupRef Id="lldDebugInfo" />
@@ -804,13 +803,13 @@
     </Feature>
 
     <UI>
-      <UIRef Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
     </UI>
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
     <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
 
-  </Product>
+  </Package>
 </Wix>
