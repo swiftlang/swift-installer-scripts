@@ -42,12 +42,6 @@
       <Component Id="FoundationXML.dll" Guid="959fd680-b5b7-4c1d-bdd2-6c019a611874">
         <File Id="FoundationXML.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" Checksum="yes" />
       </Component>
-      <Component Id="swiftReflection.dll" Guid="a02ca3fb-0f04-416a-8702-982c3cce58b2">
-        <File Id="swiftReflection.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftReflection.dll" Checksum="yes" />
-      </Component>
-      <Component Id="swift_Runtime.dll" Guid="07de8108-867a-4992-8ca7-91e9a98c6b73">
-        <File Id="swift_Runtime.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Runtime.dll" Checksum="yes" />
-      </Component>
       <Component Id="swift_Concurrency.dll" Guid="67373728-5a66-401f-b62d-dc7ced8b87e8">
         <File Id="swift_Concurrency.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" />
       </Component>
