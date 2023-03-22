@@ -152,7 +152,7 @@
         <File Id="SwiftRemoteMirror.modulemap" Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\module.modulemap" Checksum="yes" />
       </Component>
 
-      <Component Id="wwiftRemoteMirror.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="3d429d95-1f9d-4b59-85f2-2676ae95539b">
+      <Component Id="swiftRemoteMirror.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="3d429d95-1f9d-4b59-85f2-2676ae95539b">
         <File Id="swiftRemoteMirror.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftRemoteMirror.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
