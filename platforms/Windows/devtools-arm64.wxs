@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift Developer Tools for Windows aarch64" UpgradeCode="" Version="$(var.ProductVersion)">
-    <Package Comments="Copyright (c) 2021-2022 Swift Open Source Project" Compressed="yes" Description="Swift Developer Tools for Windows aarch64" InstallScope="perMachine" Manufacturer="swift.org" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift Developer Tools for Windows aarch64"
+      UpgradeCode=""
+      Version="$(var.ProductVersion)"
+      Scope="perMachine">
+    <SummaryInformation Description="Swift Developer Tools for Windows aarch64" />
 
     <Media Id="1" Cabinet="devtools.cab" EmbedCab="yes" />
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -9,22 +14,20 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="INSTALLDIR">
-        <Directory Id="Developer" Name="Developer">
-          <Directory Id="Toolchains" Name="Toolchains">
-            <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
-              <Directory Id="_usr" Name="usr">
-                <Directory Id="_usr_bin" Name="bin">
-                </Directory>
-                <Directory Id="_usr_lib" Name="lib">
-                  <!-- FIXME(compnerd) should we include the SPM import libraries? -->
-                  <Directory Id="_usr_lib_swift" Name="swift">
-                    <Directory Id="_usr_lib_swift_pm" Name="pm">
-                      <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
-                      </Directory>
-                      <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
-                      </Directory>
+    <Directory Id="INSTALLDIR">
+      <Directory Id="Developer" Name="Developer">
+        <Directory Id="Toolchains" Name="Toolchains">
+          <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin">
+              </Directory>
+              <Directory Id="_usr_lib" Name="lib">
+                <!-- FIXME(compnerd) should we include the SPM import libraries? -->
+                <Directory Id="_usr_lib_swift" Name="swift">
+                  <Directory Id="_usr_lib_swift_pm" Name="pm">
+                    <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
+                    </Directory>
+                    <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
                     </Directory>
                   </Directory>
                 </Directory>
@@ -35,9 +38,7 @@
       </Directory>
     </Directory>
 
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library">
-      NOT INSTALLDIR
-    </SetDirectory>
+    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="SwiftCollections">
@@ -222,15 +223,15 @@
     </ComponentGroup>
     <?endif?>
 
-    <Feature Id="DeveloperTools" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Developer Tools for Windows aarch64" Level="1" Title="Swift Developer Tools (Windows aarch64)">
+    <Feature Id="DeveloperTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Developer Tools for Windows aarch64" Level="1" Title="Swift Developer Tools (Windows aarch64)">
       <ComponentGroupRef Id="SwiftCollections" />
       <ComponentGroupRef Id="SwiftSystem" />
       <ComponentGroupRef Id="SwiftPackageManager" />
       <ComponentGroupRef Id="SourceKitLSP" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift Developer Tools for Windows aarch64" Level="0" Title="Debug Info">
-        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift Developer Tools for Windows aarch64" Level="0" Title="Debug Info">
+        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
         <ComponentGroupRef Id="SwiftCollectionsDebugInfo" />
         <ComponentGroupRef Id="SwiftSystemDebugInfo" />
         <ComponentGroupRef Id="SwiftPackageManagerDebugInfo" />
@@ -240,13 +241,13 @@
     </Feature>
 
     <UI>
-      <UIRef Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
     </UI>
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
     <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
 
-  </Product>
+  </Package>
 </Wix>
