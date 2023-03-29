@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTarget="build">
+<Project Sdk="WixToolset.Sdk/4.0.0-rc.4">
   <PropertyGroup>
-    <OutputName>swift-format</OutputName>
-    <OutputType>Package</OutputType>
-    <ProjectGuid>19d8e67a-655f-4ac2-a868-2ce653506192</ProjectGuid>
-    <SchemaVersion>2.0</SchemaVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,17 +14,6 @@
   <PropertyGroup>
     <OutputPath>build\</OutputPath>
     <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
-    <DefineSolutionProperties>false</DefineSolutionProperties>
-  </PropertyGroup>
-
-  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
-  <Target Name="EnsureWiXToolsetInstalled" Condition="">
-    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
-  </Target>
-
-  <PropertyGroup>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
   </PropertyGroup>
 
   <Import Project="WiXCodeSigning.targets" />
@@ -38,10 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <WixExtension Include="WixUIExtension">
-      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
-      <Name>WixUIExtension</Name>
-    </WixExtension>
+    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0-rc.4" />
   </ItemGroup>
 
   <ItemGroup>

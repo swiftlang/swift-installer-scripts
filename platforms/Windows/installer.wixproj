@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+<Project Sdk="WixToolset.Sdk/4.0.0-rc.4">
   <PropertyGroup>
-    <OutputName>installer</OutputName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <OutputType>Bundle</OutputType>
-    <ProjectGuid>8ae3ad4d-2df4-42b7-890e-decdd5cead0b</ProjectGuid>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -21,14 +18,7 @@
   <PropertyGroup>
     <OutputPath>build\</OutputPath>
     <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
-    <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
-
-  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
-  <Target Name="EnsureWiXToolsetInstalled" Condition="">
-    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
-  </Target>
 
   <Import Project="WiXCodeSigning.targets" />
 
@@ -37,10 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <WixExtension Include="WixBalExtension">
-      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
-      <Name>WixBalExtension</Name>
-    </WixExtension>
+    <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.0-rc.4" />
   </ItemGroup>
 
   <ItemGroup>
