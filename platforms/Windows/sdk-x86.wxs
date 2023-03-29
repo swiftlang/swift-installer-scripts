@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Language="1033" Manufacturer="swift.org" Name="Swift SDK for Windows i686" UpgradeCode="7ab082f9-cd6d-480e-9a97-4186782c3db0" Version="$(var.ProductVersion)">
-    <Package Comments="Copyright (c) 2022 Swift Open Source Project" Compressed="yes" Description="Swift SDK for Windows i686" InstallScope="perMachine" Manufacturer="swift.org" />
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift SDK for Windows i686"
+      UpgradeCode="7ab082f9-cd6d-480e-9a97-4186782c3db0"
+      Version="$(var.ProductVersion)"
+      Scope="perMachine">
+    <SummaryInformation Description="Swift SDK for Windows i686" />
 
     <Media Id="1" Cabinet="WindowsSDK.cab" EmbedCab="yes" />
     <?ifdef INCLUDE_DEBUG_INFO ?>
@@ -9,94 +14,92 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="INSTALLDIR">
-        <Directory Id="Developer" Name="Developer">
-          <Directory Id="DeveloperPlatforms" Name="Platforms">
-            <Directory Id="WindowsPlatform" Name="Windows.platform">
-              <Directory Id="WindowsPlatform_Developer" Name="Developer">
-                <Directory Id="WindowsPlatform_Developer_Library" Name="Library">
+    <Directory Id="INSTALLDIR">
+      <Directory Id="Developer" Name="Developer">
+        <Directory Id="DeveloperPlatforms" Name="Platforms">
+          <Directory Id="WindowsPlatform" Name="Windows.platform">
+            <Directory Id="WindowsPlatform_Developer" Name="Developer">
+              <Directory Id="WindowsPlatform_Developer_Library" Name="Library">
 
-                  <!-- XCTest -->
-                  <!--
-                    FIXME(compnerd) this should actually be the proper version
-                    of XCTest, and needs to be reflected in the plist as well.
-                  -->
-                  <Directory Id="XCTest" Name="XCTest-development">
-                    <Directory Id="XCTest_usr" Name="usr">
-                      <Directory Id="XCTest_usr_bin32" Name="bin32">
-                      </Directory>
-                      <Directory Id="XCTest_usr_lib" Name="lib">
-                        <Directory Id="XCTest_usr_lib_swift" Name="swift">
-                          <Directory Id="XCTest_usr_lib_swift_windows" Name="windows">
-                            <Directory Id="XCTest_usr_lib_swift_windows_i686" Name="i686">
-                            </Directory>
-                            <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule">
-                            </Directory>
+                <!-- XCTest -->
+                <!--
+                  FIXME(compnerd) this should actually be the proper version
+                  of XCTest, and needs to be reflected in the plist as well.
+                -->
+                <Directory Id="XCTest" Name="XCTest-development">
+                  <Directory Id="XCTest_usr" Name="usr">
+                    <Directory Id="XCTest_usr_bin32" Name="bin32">
+                    </Directory>
+                    <Directory Id="XCTest_usr_lib" Name="lib">
+                      <Directory Id="XCTest_usr_lib_swift" Name="swift">
+                        <Directory Id="XCTest_usr_lib_swift_windows" Name="windows">
+                          <Directory Id="XCTest_usr_lib_swift_windows_i686" Name="i686">
+                          </Directory>
+                          <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule">
                           </Directory>
                         </Directory>
                       </Directory>
                     </Directory>
                   </Directory>
                 </Directory>
+              </Directory>
 
-                <Directory Id="SDKs" Name="SDKs">
+              <Directory Id="SDKs" Name="SDKs">
 
-                  <!-- Windows.sdk -->
-                  <Directory Id="WindowsSDK" Name="Windows.sdk">
-                    <Directory Id="WindowsSDK_usr" Name="usr">
-                      <Directory Id="WindowsSDK_usr_include" Name="include">
-                        <Directory Id="WindowsSDK_usr_include_Block" Name="Block">
+                <!-- Windows.sdk -->
+                <Directory Id="WindowsSDK" Name="Windows.sdk">
+                  <Directory Id="WindowsSDK_usr" Name="usr">
+                    <Directory Id="WindowsSDK_usr_include" Name="include">
+                      <Directory Id="WindowsSDK_usr_include_Block" Name="Block">
+                      </Directory>
+                      <Directory Id="WindowsSDK_usr_include_dispatch" Name="dispatch">
+                      </Directory>
+                      <Directory Id="WindowsSDK_usr_include_os" Name="os">
+                      </Directory>
+                      <Directory Id="WindowsSDK_usr_include_swift" Name="swift">
+                        <Directory Id="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror">
                         </Directory>
-                        <Directory Id="WindowsSDK_usr_include_dispatch" Name="dispatch">
+                      </Directory>
+                    </Directory>
+                    <Directory Id="WindowsSDK_usr_lib" Name="lib">
+                      <Directory Id="WindowsSDK_usr_lib_swift" Name="swift">
+                        <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
                         </Directory>
-                        <Directory Id="WindowsSDK_usr_include_os" Name="os">
-                        </Directory>
-                        <Directory Id="WindowsSDK_usr_include_swift" Name="swift">
-                          <Directory Id="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror">
+                        <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
+                          <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
+                          </Directory>
+                          <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
+                          </Directory>
+                          <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
+                          </Directory>
+                          <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule">
+                          </Directory>
+                          <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
+                          </Directory>
+                          <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
+                          </Directory>
+                          <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
+                          </Directory>
+                          <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
+                          </Directory>
+                          <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
+                          </Directory>
+                          <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule">
+                          </Directory>
+                          <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule">
+                          </Directory>
+                          <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule">
+                          </Directory>
+                          <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule">
+                          </Directory>
+                          <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule">
+                          </Directory>
+                          <Directory Id="WindowsSDK_usr_lib_swift_windows_i686" Name="i686">
                           </Directory>
                         </Directory>
                       </Directory>
-                      <Directory Id="WindowsSDK_usr_lib" Name="lib">
-                        <Directory Id="WindowsSDK_usr_lib_swift" Name="swift">
-                          <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
-                          </Directory>
-                          <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
-                            <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
-                            </Directory>
-                            <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
-                            </Directory>
-                            <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
-                            </Directory>
-                            <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule">
-                            </Directory>
-                            <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
-                            </Directory>
-                            <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
-                            </Directory>
-                            <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
-                            </Directory>
-                            <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
-                            </Directory>
-                            <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
-                            </Directory>
-                            <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule">
-                            </Directory>
-                            <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule">
-                            </Directory>
-                            <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule">
-                            </Directory>
-                            <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule">
-                            </Directory>
-                            <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule">
-                            </Directory>
-                            <Directory Id="WindowsSDK_usr_lib_swift_windows_i686" Name="i686">
-                            </Directory>
-                          </Directory>
-                        </Directory>
-                      </Directory>
-                      <Directory Id="WindowsSDK_usr_share" Name="share">
-                      </Directory>
+                    </Directory>
+                    <Directory Id="WindowsSDK_usr_share" Name="share">
                     </Directory>
                   </Directory>
                 </Directory>
@@ -106,10 +109,8 @@
         </Directory>
       </Directory>
     </Directory>
-
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library">
-      NOT INSTALLDIR
-    </SetDirectory>
+    
+    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="XCTest">
@@ -486,7 +487,7 @@
 
 
     <!-- Features -->
-    <Feature Id="Win32SDK" Absent="disallow" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift SDK for Windows i686" Level="1" Title="Swift SDK for Windows i686">
+    <Feature Id="Win32SDK" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift SDK for Windows i686" Level="1" Title="Swift SDK for Windows i686">
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="CRT" />
       <ComponentGroupRef Id="CXX" />
@@ -513,20 +514,20 @@
       <ComponentGroupRef Id="Configuration" />
 
       <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" Absent="allow" AllowAdvertise="yes" Description="Debug Information for Swift SDK for Windows i686" Level="0" Title="Debug Information">
-        <Condition Level="1">INSTALL_DEBUGINFO</Condition>
+      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift SDK for Windows i686" Level="0" Title="Debug Information">
+        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
         <ComponentRef Id="XCTestRuntimeDebugInfo" />
       </Feature>
-      <?endif ?>
+      <?endif?>
     </Feature>
 
     <UI>
-      <UIRef Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2">1</Publish>
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2">1</Publish>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
     </UI>
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" ></Property>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
     <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
-  </Product>
+  </Package>
 </Wix>

@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+<Project Sdk="WixToolset.Sdk/4.0.0-rc.4">
   <PropertyGroup>
-    <OutputName>toolchain</OutputName>
-    <OutputType>Package</OutputType>
-    <ProjectGuid>6ebfb883-fc92-4b73-81ae-ddeb2cec4df9</ProjectGuid>
-    <SchemaVersion>2.0</SchemaVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,14 +14,7 @@
   <PropertyGroup>
     <OutputPath>build\</OutputPath>
     <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
-    <DefineSolutionProperties>false</DefineSolutionProperties>
   </PropertyGroup>
-
-  <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
-  <Target Name="EnsureWiXToolsetInstalled" Condition="">
-    <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/." />
-  </Target>
 
   <Import Project="WiXCodeSigning.targets" />
 
@@ -40,30 +29,23 @@
     <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
   </PropertyGroup>
 
-  <Target Name="BeforeBuild">
-    <ItemGroup>
-      <!-- FIXME(compnerd): include the shims in the toolchain instead of the SDK?
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0-rc.4" />
+    <PackageReference Include="WixToolset.Heat" Version="4.0.0-rc.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- FIXME(compnerd): include the shims in the toolchain instead of the SDK?
       <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\swift\shims">
         <ComponentGroupName>SwiftShims</ComponentGroupName>
         <DirectoryRefId>_usr_lib_swift_shims</DirectoryRefId>
       </HarvestDirectory>
       -->
-      <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\clang">
-        <ComponentGroupName>ClangResources</ComponentGroupName>
-        <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
-        <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
-      </HarvestDirectory>
-    </ItemGroup>
-  </Target>
-
-  <ItemGroup>
-    <WixExtension Include="WixUIExtension">
-      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
-      <Name>WixUIExtension</Name>
-    </WixExtension>
-  </ItemGroup>
-
-  <ItemGroup>
+    <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\clang">
+      <ComponentGroupName>ClangResources</ComponentGroupName>
+      <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
+      <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
+    </HarvestDirectory>
     <Compile Include="toolchain-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>
