@@ -34,7 +34,7 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="INSTALLDIR">
+    <Directory Id="INSTALLDIR" Name="[WindowsVolume]Library">
       <Directory Id="Developer" Name="Developer">
         <Directory Id="Toolchains" Name="Toolchains">
           <!-- TODO(compnerd):
@@ -100,9 +100,6 @@
         </Directory>
       </Directory>
     </Directory>
-    
-
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="binutils">

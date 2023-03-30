@@ -14,7 +14,7 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="INSTALLDIR">
+    <Directory Id="INSTALLDIR" Name="[ProgramFiles64Folder]swift">
       <!-- TODO(compnerd) use $(var.ProductVersion) -->
       <Directory Id="_" Name="runtime-development">
         <Directory Id="_usr" Name="usr">
@@ -22,9 +22,7 @@
           </Directory>
         </Directory>
       </Directory>
-    </Directory>    
-
-    <SetDirectory Id="INSTALLDIR" Value="[ProgramFiles64Folder]swift" Condition="NOT INSTALLDIR" />
+    </Directory>
 
     <!-- Components -->
     <ComponentGroup Id="SwiftRuntime" Directory="_usr_bin">

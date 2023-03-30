@@ -15,14 +15,12 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="INSTALLDIR">
+    <Directory Id="INSTALLDIR" Name="[WindowsVolume]Library">
       <Directory Id="Developer" Name="Developer">
         <Directory Id="Tools" Name="Tools">
         </Directory>
       </Directory>
     </Directory>
-
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="SwiftFormat">
