@@ -14,6 +14,7 @@
     <?endif?>
 
     <!-- Directory Structure -->
+    <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
     <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
     <Directory ComponentGuidGenerationSeed="bedc1fea-99ee-40be-ab38-3101698f2c0b" Id="WINDOWSVOLUME">
       <Directory Id="INSTALLDIR">
