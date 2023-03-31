@@ -34,65 +34,69 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="INSTALLDIR" Name="[WindowsVolume]Library">
-      <Directory Id="Developer" Name="Developer">
-        <Directory Id="Toolchains" Name="Toolchains">
-          <!-- TODO(compnerd):
-            This really should be
-            unknown-Asserts-$(var.ProductVersion).xctoolchain,
-            though before changing, we should setup a
-            `unknown-Asserts-current.xctoolchain`
-            symlink. Additionally, beware that the environment chagnes
-            below will need to be updated to reflect this change. Ideally,
-            we would have as part of this a tool to select the different
-            toolchain versions.
-          -->
-          <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
-            <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin">
-              </Directory>
-              <Directory Id="_usr_include" Name="include">
-                <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan">
+    <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
+    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
+    <Directory ComponentGuidGenerationSeed="ad85d64e-469f-4984-b16e-edb243d8d117" Id="WINDOWSVOLUME">
+      <Directory Id="INSTALLDIR" Name="Library">
+        <Directory Id="Developer" Name="Developer">
+          <Directory Id="Toolchains" Name="Toolchains">
+            <!-- TODO(compnerd):
+              This really should be
+              unknown-Asserts-$(var.ProductVersion).xctoolchain,
+              though before changing, we should setup a
+              `unknown-Asserts-current.xctoolchain`
+              symlink. Additionally, beware that the environment chagnes
+              below will need to be updated to reflect this change. Ideally,
+              we would have as part of this a tool to select the different
+              toolchain versions.
+            -->
+            <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+              <Directory Id="_usr" Name="usr">
+                <Directory Id="_usr_bin" Name="bin">
                 </Directory>
-                <Directory Id="_usr_include_clang_c" Name="clang-c">
+                <Directory Id="_usr_include" Name="include">
+                  <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan">
+                  </Directory>
+                  <Directory Id="_usr_include_clang_c" Name="clang-c">
+                  </Directory>
+                  <Directory Id="_usr_include_dispatch" Name="dispatch">
+                  </Directory>
+                  <Directory Id="_usr_include_indexstore" Name="indexstore">
+                  </Directory>
+                  <Directory Id="_usr_include_lldb" Name="lldb">
+                  </Directory>
+                  <Directory Id="_usr_include_llvm_c" Name="llvm-c">
+                  </Directory>
+                  <Directory Id="_usr_include_os" Name="os">
+                  </Directory>
+                  <Directory Id="_usr_include_SourceKit" Name="SourceKit">
+                  </Directory>
                 </Directory>
-                <Directory Id="_usr_include_dispatch" Name="dispatch">
-                </Directory>
-                <Directory Id="_usr_include_indexstore" Name="indexstore">
-                </Directory>
-                <Directory Id="_usr_include_lldb" Name="lldb">
-                </Directory>
-                <Directory Id="_usr_include_llvm_c" Name="llvm-c">
-                </Directory>
-                <Directory Id="_usr_include_os" Name="os">
-                </Directory>
-                <Directory Id="_usr_include_SourceKit" Name="SourceKit">
-                </Directory>
-              </Directory>
-              <Directory Id="_usr_lib" Name="lib">
-                <Directory Id="_usr_lib_clang" Name="clang">
-                </Directory>
-                <Directory Id="_usr_lib_site_packages" Name="site-packages">
-                  <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
-                    <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
-                      <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp">
+                <Directory Id="_usr_lib" Name="lib">
+                  <Directory Id="_usr_lib_clang" Name="clang">
+                  </Directory>
+                  <Directory Id="_usr_lib_site_packages" Name="site-packages">
+                    <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
+                      <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
+                        <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp">
+                        </Directory>
+                      </Directory>
+                      <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils">
                       </Directory>
                     </Directory>
-                    <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils">
+                  </Directory>
+                  <Directory Id="_usr_lib_swift" Name="swift">
+                    <Directory Id="_usr_lib_swift_migrator" Name="migrator">
+                    </Directory>
+                    <Directory Id="_usr_lib_swift_shims" Name="shims">
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="_usr_lib_swift" Name="swift">
-                  <Directory Id="_usr_lib_swift_migrator" Name="migrator">
-                  </Directory>
-                  <Directory Id="_usr_lib_swift_shims" Name="shims">
-                  </Directory>
+                <Directory Id="_usr_libexec" Name="libexec">
                 </Directory>
-              </Directory>
-              <Directory Id="_usr_libexec" Name="libexec">
-              </Directory>
-              <Directory Id="_usr_share" Name="share">
-                <Directory Id="_usr_share_swift" Name="swift">
+                <Directory Id="_usr_share" Name="share">
+                  <Directory Id="_usr_share_swift" Name="swift">
+                  </Directory>
                 </Directory>
               </Directory>
             </Directory>
