@@ -15,7 +15,7 @@
 
     <!-- Directory Structure -->
     <StandardDirectory Id="ProgramFiles64Folder">
-      <Directory Id="INSTALLDIR" Name="swift">
+      <Directory Id="INSTALLDIR" Name="Swift">
         <!-- TODO(compnerd) use $(var.ProductVersion) -->
         <Directory Id="_" Name="runtime-development">
           <Directory Id="_usr" Name="usr">
