@@ -14,15 +14,17 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="INSTALLDIR" Name="[ProgramFiles64Folder]swift">
-      <!-- TODO(compnerd) use $(var.ProductVersion) -->
-      <Directory Id="_" Name="runtime-development">
-        <Directory Id="_usr" Name="usr">
-          <Directory Id="_usr_bin" Name="bin">
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLDIR" Name="swift">
+        <!-- TODO(compnerd) use $(var.ProductVersion) -->
+        <Directory Id="_" Name="runtime-development">
+          <Directory Id="_usr" Name="usr">
+            <Directory Id="_usr_bin" Name="bin">
+            </Directory>
           </Directory>
         </Directory>
       </Directory>
-    </Directory>
+    </StandardDirectory>
 
     <!-- Components -->
     <ComponentGroup Id="SwiftRuntime" Directory="_usr_bin">
