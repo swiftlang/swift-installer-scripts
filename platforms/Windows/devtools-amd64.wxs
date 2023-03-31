@@ -17,20 +17,22 @@
     <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
     <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
     <Directory ComponentGuidGenerationSeed="07cd7a30-e084-447d-af16-ca3a013c5147" Id="WINDOWSVOLUME">
-      <Directory Id="INSTALLDIR" Name="Library">
-        <Directory Id="Developer" Name="Developer">
-          <Directory Id="Toolchains" Name="Toolchains">
-            <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
-              <Directory Id="_usr" Name="usr">
-                <Directory Id="_usr_bin" Name="bin">
-                </Directory>
-                <Directory Id="_usr_lib" Name="lib">
-                  <!-- FIXME(compnerd) should we include the SPM import libraries? -->
-                  <Directory Id="_usr_lib_swift" Name="swift">
-                    <Directory Id="_usr_lib_swift_pm" Name="pm">
-                      <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
-                      </Directory>
-                      <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
+      <Directory Id="INSTALLDIR">
+        <Directory Id="Library" Name="Library">
+          <Directory Id="Developer" Name="Developer">
+            <Directory Id="Toolchains" Name="Toolchains">
+              <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+                <Directory Id="_usr" Name="usr">
+                  <Directory Id="_usr_bin" Name="bin">
+                  </Directory>
+                  <Directory Id="_usr_lib" Name="lib">
+                    <!-- FIXME(compnerd) should we include the SPM import libraries? -->
+                    <Directory Id="_usr_lib_swift" Name="swift">
+                      <Directory Id="_usr_lib_swift_pm" Name="pm">
+                        <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
+                        </Directory>
+                        <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
+                        </Directory>
                       </Directory>
                     </Directory>
                   </Directory>
