@@ -14,20 +14,26 @@
     <?endif?>
 
     <!-- Directory Structure -->
-    <Directory Id="INSTALLDIR">
-      <Directory Id="Developer" Name="Developer">
-        <Directory Id="Toolchains" Name="Toolchains">
-          <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
-            <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin">
-              </Directory>
-              <Directory Id="_usr_lib" Name="lib">
-                <!-- FIXME(compnerd) should we include the SPM import libraries? -->
-                <Directory Id="_usr_lib_swift" Name="swift">
-                  <Directory Id="_usr_lib_swift_pm" Name="pm">
-                    <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
-                    </Directory>
-                    <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
+    <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
+    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
+    <Directory ComponentGuidGenerationSeed="61297eca-77a2-4749-b2f7-3b7ae6304140" Id="WINDOWSVOLUME">
+      <Directory Id="INSTALLDIR">
+        <Directory Id="Library" Name="Library">
+          <Directory Id="Developer" Name="Developer">
+            <Directory Id="Toolchains" Name="Toolchains">
+              <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+                <Directory Id="_usr" Name="usr">
+                  <Directory Id="_usr_bin" Name="bin">
+                  </Directory>
+                  <Directory Id="_usr_lib" Name="lib">
+                    <!-- FIXME(compnerd) should we include the SPM import libraries? -->
+                    <Directory Id="_usr_lib_swift" Name="swift">
+                      <Directory Id="_usr_lib_swift_pm" Name="pm">
+                        <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
+                        </Directory>
+                        <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
+                        </Directory>
+                      </Directory>
                     </Directory>
                   </Directory>
                 </Directory>
@@ -37,8 +43,6 @@
         </Directory>
       </Directory>
     </Directory>
-
-    <SetDirectory Id="INSTALLDIR" Value="[WindowsVolume]Library" Condition="NOT INSTALLDIR" />
 
     <!-- Components -->
     <ComponentGroup Id="SwiftCollections">
