@@ -3,7 +3,7 @@
       Language="1033"
       Manufacturer="swift.org"
       Name="Swift Developer Tools for Windows aarch64"
-      UpgradeCode=""
+      UpgradeCode="87019842-3f3e-4227-b5c5-23a8ef72ad89"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
     <SummaryInformation Description="Swift Developer Tools for Windows aarch64" />
