@@ -5,6 +5,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
     <ProductVersion>$(ProductVersion)</ProductVersion>
 
@@ -31,6 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="installer.wxs" />
+    <Compile Include="installer-$(ProductArchitecture).wxs" />
   </ItemGroup>
 </Project>
