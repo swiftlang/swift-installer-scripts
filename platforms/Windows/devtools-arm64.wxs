@@ -9,9 +9,6 @@
     <SummaryInformation Description="Swift Developer Tools for Windows aarch64" />
 
     <Media Id="1" Cabinet="devtools.cab" EmbedCab="yes" />
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <Media Id="2" Cabinet="PDBs.cab" EmbedCab="yes" />
-    <?endif?>
 
     <!-- Directory Structure -->
     <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
@@ -57,33 +54,11 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftCollectionsDebugInfo">
-      <Component Id="Collections.pdb" Directory="_usr_bin" Guid="d33e610e-171b-445b-bfbe-8f4dadaa8741">
-        <File Id="Collections.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Collections.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="DequeModule.pdb" Directory="_usr_bin" Guid="779c0307-95fe-4cf8-9631-fe2de10e6031">
-        <File Id="DequeModule.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DequeModule.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="OrderedCollections.pdb" Directory="_usr_bin" Guid="0546f5b7-10c3-4766-968b-0add6b08c3e1">
-        <File Id="OrderedCollections.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\OrderedCollections.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="SwiftSystem">
       <Component Id="SystemPackage.dll" Directory="_usr_bin" Guid="3a77763d-f9fb-4f1e-a056-f785bb1912e9">
         <File Id="SystemPackage.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SystemPackage.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftSystemDebugInfo">
-      <Component Id="SystemPackage.pdb" Directory="_usr_bin" Guid="157a0be9-c296-4244-8975-7125fb8306d4">
-        <File Id="SystemPackage.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SystemPackage.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="SwiftPackageManager">
       <Component Id="Basics.dll" Directory="_usr_bin" Guid="03e5871a-9ded-4010-9708-6217f294edc4">
@@ -157,91 +132,17 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftPackageManagerDebugInfo">
-      <Component Id="Basics.pdb" Directory="_usr_bin" Guid="2fdea2ca-5498-4cb1-bf74-b771321a0b2b">
-        <File Id="Basics.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Basics.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="Build.pdb" Directory="_usr_bin" Guid="cbc19845-fd86-4d2a-977e-5ae49de856d4">
-        <File Id="Build.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Build.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="Commands.pdb" Directory="_usr_bin" Guid="345f96d2-f9ac-4c83-8722-855686401a9d">
-        <File Id="Commands.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Commands.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="CoreCommands.pdb" Directory="_usr_bin" Guid="8925173e-f45d-44ea-bc8f-a936b1a883ad">
-        <File Id="CoreCommands.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CoreCommands.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="DriverSupport.pdb" Directory="_usr_bin" Guid="f8f8cb75-8f42-4522-bdd7-89499943ef32">
-        <File Id="DriverSupport.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="PackageGraph.pdb" Directory="_usr_bin" Guid="71a32056-bb8d-4d9b-ab76-e25ee6fd04bc">
-        <File Id="PackageGraph.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="PackageLoading.pdb" Directory="_usr_bin" Guid="991958ab-0f7b-4547-8286-732671282ec1">
-        <File Id="PackageLoading.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageLoading.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="PackageModel.pdb" Directory="_usr_bin" Guid="511fd24a-f9b9-4c7b-97c1-5845dfc308d0">
-        <File Id="PackageModel.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageModel.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="SPMBuildCore.pdb" Directory="_usr_bin" Guid="3f66ca4f-d560-496f-9f8f-bc350a559ce5">
-        <File Id="SPMBuildCore.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="Workspace.pdb" Directory="_usr_bin" Guid="cf7d3735-03f9-4d17-89b3-c051d1cc3c5a">
-        <File Id="Workspace.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Workspace.pdb" Checksum="yes" />
-      </Component>
-
-      <Component Id="swift_build.pdb" Directory="_usr_bin" Guid="84d4c04b-158f-446b-aa5e-9ffe3318dd02">
-        <File Id="swift_build.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="swift_package.pdb" Directory="_usr_bin" Guid="7038d860-c614-4c74-b2ce-d6dc84f8f638">
-        <File Id="swift_package.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="swift_run.pdb" Directory="_usr_bin" Guid="d5eb453e-1e43-4492-b9d6-e3c08b8f7b80">
-        <File Id="swift_run.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-run.pdb" Checksum="yes" />
-      </Component>
-      <Component Id="swift_test.pdb" Directory="_usr_bin" Guid="a9240a6b-9934-4356-80e9-5311d6c35fa5">
-        <File Id="swift_test.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-test.pdb" Checksum="yes" />
-      </Component>
-
-      <Component Id="PackageDescription.pdb" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="aabedd70-4b90-46ef-8db6-9724c2340f81">
-        <File Id="PackageDescription.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.pdb" Checksum="yes" />
-      </Component>
-
-      <Component Id="PackagePlugin.pdb" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="bbf77ff9-fa10-4fe3-ab4b-3cbf95fa6be9">
-        <File Id="PackagePlugin.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\pluginAPI\PackagePlugin.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="SourceKitLSP">
       <Component Id="sourcekit_lsp.exe" Directory="_usr_bin" Guid="1e4d7fbd-a435-4d11-bd17-2dec0b235c28">
         <File Id="sourcekit_lsp.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SourceKitLSPDebugInfo">
-      <Component Id="sourcekit_lsp.pdb" Directory="_usr_bin" Guid="3a72124e-6b23-42ac-be52-c1ac2d7972f6">
-        <File Id="soucekit_lsp.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <Feature Id="DeveloperTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Developer Tools for Windows aarch64" Level="1" Title="Swift Developer Tools (Windows aarch64)">
       <ComponentGroupRef Id="SwiftCollections" />
       <ComponentGroupRef Id="SwiftSystem" />
       <ComponentGroupRef Id="SwiftPackageManager" />
       <ComponentGroupRef Id="SourceKitLSP" />
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift Developer Tools for Windows aarch64" Level="0" Title="Debug Info">
-        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
-        <ComponentGroupRef Id="SwiftCollectionsDebugInfo" />
-        <ComponentGroupRef Id="SwiftSystemDebugInfo" />
-        <ComponentGroupRef Id="SwiftPackageManagerDebugInfo" />
-        <ComponentGroupRef Id="SourceKitLSPDebugInfo" />
-      </Feature>
-      <?endif?>
     </Feature>
 
     <UI>

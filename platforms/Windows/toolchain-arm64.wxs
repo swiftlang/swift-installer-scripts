@@ -18,21 +18,6 @@
     -->
     <Media Id="1" Cabinet="toolchain.cab" EmbedCab="yes" CompressionLevel="high" />
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <Media Id="2" Cabinet="PDBs.llvm.cab" />
-    <Media Id="3" Cabinet="PDBs.clang.cab" />
-    <Media Id="4" Cabinet="PDBs.lld.cab" />
-    <Media Id="5" Cabinet="PDBs.lldb.cab" />
-    <Media Id="6" Cabinet="PDBs.BlocksRuntime.cab" />
-    <Media Id="7" Cabinet="PDBs.dispatch.cab" />
-    <Media Id="8" Cabinet="PDBs.SourceKit.cab" />
-    <Media Id="9" Cabinet="PDBs.swift.cab" />
-    <Media Id="10" Cabinet="PDBs.llbuild.cab" />
-    <Media Id="11" Cabinet="PDBs.ArgumentParser.cab" />
-    <Media Id="12" Cabinet="PDBs.ToolsSupportCore.cab" />
-    <Media Id="13" Cabinet="PDBs.swift-driver.cab" />
-    <?endif?>
-
     <!-- Directory Structure -->
     <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
     <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
@@ -203,75 +188,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="binutilsDebugInfo">
-      <Component Id="dsymutil.pdb" Directory="_usr_bin" Guid="73c8822d-5711-4ac9-8c24-1d6d299a56b6">
-        <File Id="dsymutil.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dsymutil.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_ar.pdb" Directory="_usr_bin" Guid="84e78011-23e8-4c9f-89ef-5257a3407966">
-        <File Id="llvm_ar.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-ar.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_cov.pdb" Directory="_usr_bin" Guid="04bf4eec-d707-49ad-90ce-1d7c2e057cb6">
-        <File Id="llvm_cov.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-cov.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_cvtres.pdb" Directory="_usr_bin" Guid="b40f1683-fd0d-4e91-8f09-41719acc1694">
-        <File Id="llvm_cvtres.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-cvtres.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_cxxfilt.pdb" Directory="_usr_bin" Guid="e2f84ed3-25fd-4337-99c6-4dec94d18fa0">
-        <File Id="llvm_cxxfilt.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-cxxfilt.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_dwarfdump.pdb" Directory="_usr_bin" Guid="3d33ee41-0766-4644-a7b2-23eb37ec69db">
-        <File Id="llvm_dwarfdump.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-dwarfdump.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_dwp.pdb" Directory="_usr_bin" Guid="141a8180-b655-4fcc-a9f5-b6df56007de9">
-        <File Id="llvm_dwp.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-dwp.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_lipo.pdb" Directory="_usr_bin" Guid="2bbe87ef-2598-4099-a64b-22b3fab16e45">
-        <File Id="llvm_lipo.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-lipo.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_mt.pdb" Directory="_usr_bin" Guid="d8df5263-37e0-45dd-be1b-1d58f6b26e1b">
-        <File Id="llvm_mt.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-mt.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_nm.pdb" Directory="_usr_bin" Guid="2a5ee43c-1c54-4a06-90c1-a408b04af75c">
-        <File Id="llvm_nm.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-nm.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_objcopy.pdb" Directory="_usr_bin" Guid="cc50faea-b1ef-4169-a767-c2b58657df72">
-        <File Id="llvm_objcopy.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-objcopy.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_objdump.pdb" Directory="_usr_bin" Guid="ad547b72-b03d-4341-8ab9-c521913ab492">
-        <File Id="llvm_objdump.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-objdump.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_pdbutil.pdb" Directory="_usr_bin" Guid="5ec1cd38-13cb-4f0d-a87a-e4df5178e404">
-        <File Id="llvm_pdbutil.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-pdbutil.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_profdata.pdb" Directory="_usr_bin" Guid="e1506848-6ba7-49d3-9aff-698b89d99e3f">
-        <File Id="llvm_profdata.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-profdata.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_rc.pdb" Directory="_usr_bin" Guid="a3d95f6f-e763-4f38-a244-2a214f1d84f4">
-        <File Id="llvm_rc.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-rc.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_readobj.pdb" Directory="_usr_bin" Guid="a9ab57da-f803-46c3-a07e-014cc6916ba6">
-        <File Id="llvm_readobj.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-readobj.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_size.pdb" Directory="_usr_bin" Guid="96494ade-83cf-49b9-abc0-f7b9d4ceddb4">
-        <File Id="llvm_size.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-size.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_strings.pdb" Directory="_usr_bin" Guid="853cf1ae-186f-49df-a7a9-0bd95be5d03f">
-        <File Id="llvm_strings.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-strings.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_symbolizer.pdb" Directory="_usr_bin" Guid="74cdda53-a1be-4a7d-8730-0afbe598bfa9">
-        <File Id="llvm_symbolizer.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-symbolizer.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="llvm_undname.pdb" Directory="_usr_bin" Guid="75d9ec7c-9f49-46cb-b593-5e9e0dc16485">
-        <File Id="llvm_undname.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-undname.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-
-      <Component Id="LTO.pdb" Directory="_usr_bin" Guid="1f0e8bee-2049-4b77-a43b-8255f7371f0d">
-        <File Id="LTO.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\LTO.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="clang">
       <!-- TODO(compnerd) can we use symbolic links instead? -->
       <Component Id="clang_cl.exe" Directory="_usr_bin" Guid="6ad2751d-f1e6-47c2-82c7-4bd3c7c51e7b">
@@ -350,30 +266,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="clangDebugInfo">
-      <Component Id="clang_format.pdb" Directory="_usr_bin" Guid="432d6998-0f0b-44ce-97a2-221e1e82e19f">
-        <File Id="clang_format.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang-format.pdb" Checksum="yes" DiskId="3" />
-      </Component>
-      <Component Id="clang_format.pdb" Directory="_usr_bin" Guid="b2dc1258-d664-4850-9c97-6eff66813c84">
-        <File Id="clang_tidy.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang-tidy.pdb" Checksum="yes" DiskId="3" />
-      </Component>
-      <Component Id="clang.pdb" Directory="_usr_bin" Guid="737d7fd3-c932-494b-bfa6-0e3ac9b2820c">
-        <File Id="clang.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang.pdb" Checksum="yes" DiskId="3" />
-      </Component>
-      <Component Id="clangd.pdb" Source="_usr_bin" Guid="9afe1bc9-a814-45e2-ba6a-505f4f18592a">
-        <File Id="clangd.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.pdb" Checksum="yes" DiskId="3" />
-      </Component>
-
-      <Component Id="libclang.pdb" Directory="_usr_bin" Guid="db1b1f54-5646-4e5a-98d2-ef524703bab3">
-        <File Id="libclang.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\libclang.pdb" Checksum="yes" DiskId="3" />
-      </Component>
-      <Component Id="libIndexStore.pdb" Directory="_usr_bin" Guid="0129ab89-71b6-4c52-afdd-c58fbe8792b2">
-        <File Id="libIndexStore.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\libIndexStore.pdb" Checksum="yes" DiskId="3" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="lld">
       <!-- TODO(compnerd) can we use symbolic links instead? -->
       <Component Id="ld.lld.exe" Directory="_usr_bin" Guid="82fcce13-68e0-4048-a935-846111d9bbb2">
@@ -393,14 +285,6 @@
         <File Id="lld.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lld.exe" Checksum="yes" />
       </Component>
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="lldDebugInfo">
-      <Component Id="lld.pdb" Directory="_usr_bin" Guid="e4709585-751e-4708-945c-7c1e4e415d16">
-        <File Id="lld.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lld.pdb" Checksum="yes" DiskId="4" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="lldb">
       <Component Id="lldb_server.exe" Directory="_usr_bin" Guid="d9dbdd0f-9f0b-4aa6-84d0-75d96f4a71e7">
@@ -477,24 +361,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="lldbDebugInfo">
-      <Component Id="lldb_server.pdb" Directory="_usr_bin" Guid="6c5964a1-978c-4c07-b36b-95ace75fba56">
-        <File Id="lldb_server.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-server.pdb" Checksum="yes" DiskId="5" />
-      </Component>
-      <Component Id="lldb_vscode.pdb" Directory="_usr_bin" Guid="4cf41f68-7dfc-4b69-97c5-2c1591b80b40">
-        <File Id="lldb_vscode.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.pdb" Checksum="yes" DiskId="5" />
-      </Component>
-      <Component Id="lldb.pdb" Directory="_usr_bin" Guid="346dd53d-96b3-40c9-b1c9-d3bcbfb1fe9c">
-        <File Id="lldb.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb.pdb" Checksum="yes" DiskId="5" />
-      </Component>
-
-      <Component Id="liblldb.pdb" Directory="_usr_bin" Guid="07a46aa1-620c-43d2-b762-c16b5e0219f3">
-        <File Id="liblldb.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\liblldb.pdb" Checksum="yes" DiskId="5" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="BlocksRuntime">
       <Component Id="BlocksRuntime.dll" Directory="_usr_bin" Guid="a5f1af33-9980-4b5d-a503-7b9aa6b28fae">
         <File Id="BlocksRuntime.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" />
@@ -507,14 +373,6 @@
       <!-- TODO(compnerd) should we install the block headers? -->
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="BlocksRuntimeDebugInfo">
-      <Component Id="BlocksRuntime.pdb" Directory="_usr_bin" Guid="431178b6-2f8a-4484-a012-9f8108613aa7">
-        <File Id="BlocksRuntime.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\BlocksRuntime.pdb" Checksum="yes" DiskId="6" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="dispatch">
       <Component Id="dispatch.dll" Directory="_usr_bin" Guid="3ff2a2ed-6e2d-4065-8de5-aff556f9081c">
         <File Id="dispatch.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dispatch.dll" Checksum="yes" />
@@ -526,14 +384,6 @@
 
       <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="dispatchDebugInfo">
-      <Component Id="dispatch.pdb" Directory="_usr_bin" Guid="1030bebe-2b44-4c47-98f4-0a9bdd9b5963">
-        <File Id="dispatch.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dispatch.pdb" Checksum="yes" DiskId="7" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="SourceKit">
       <Component Id="sourcekitdInProc.dll" Directory="_usr_bin" Guid="56274f9b-be12-4140-a20b-2e2ae2ce0109">
@@ -548,14 +398,6 @@
         <File Id="sourcekitd.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" Checksum="yes" />
       </Component>
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SourceKitDebugInfo">
-      <Component Id="sourcekitdInProc.pdb" Directory="_usr_bin" Guid="d21c977f-c567-4d5b-a53d-15bc841fd1d0">
-        <File Id="sourcekitdInProc.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.pdb" Checksum="yes" DiskId="8" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="swift">
       <!-- TODO(compnerd) can we use symbolic links instead? -->
@@ -636,24 +478,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="swiftDebugInfo">
-      <Component Id="swift_demangle.pdb" Directory="_usr_bin" Guid="5ab65ead-31b4-4f87-b80a-c77f01375a0a">
-        <File Id="swift_demangle.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-demangle.pdb" Checksum="yes" DiskId="9" />
-      </Component>
-      <Component Id="swift_frontend.pdb" Directory="_usr_bin" Guid="103fc70f-d6fa-4325-b13d-8b5678202431">
-        <File Id="swift_frontend.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-frontend.pdb" Checksum="yes" DiskId="9" />
-      </Component>
-
-      <Component Id="swiftDemangle.pdb" Directory="_usr_bin" Guid="9234f831-2587-42f9-b257-7af1f9251816">
-        <File Id="swiftDemangle.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swiftDemangle.pdb" Checksum="yes" DiskId="9" />
-      </Component>
-      <Component Id="_InternalSwiftScan.pdb" Directory="_usr_bin" Guid="79269c96-4952-4028-b764-8cfbac6c2062">
-        <File Id="_InternalSwiftScan.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftScan.pdb" Checksum="yes" DiskId="9" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="llbuild">
       <Component Id="swift_build_tool.exe" Directory="_usr_bin" Guid="b5a61b2e-f18e-444c-8eac-e0401dac965f">
         <File Id="swift_build_tool.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build-tool.exe" Checksum="yes" />
@@ -664,31 +488,11 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="llbuildDebugInfo">
-      <Component Id="swift_build_tool.pdb" Directory="_usr_bin" Guid="93a981d1-a4c4-4949-aee4-762a052212eb">
-        <File Id="swift_build_tool.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build-tool.pdb" Checksum="yes" DiskId="10" />
-      </Component>
-
-      <Component Id="llbuildSwift.pdb" Directory="_usr_bin" Guid="07c8df77-4dd8-4081-90ba-28ebd2b4e560">
-        <File Id="llbuildSwift.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.pdb" Checksum="yes" DiskId="10" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <ComponentGroup Id="SwiftArgumentParser">
       <Component Id="ArgumentParser.dll" Directory="_usr_bin" Guid="1c179884-b2b1-46c8-b359-ef4271001f44">
         <File Id="ArgumentParser.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftArgumentParserDebugInfo">
-      <Component Id="ArgumentParser.pdb" Directory="_usr_bin" Guid="4bd6bcaf-85be-4d3e-b952-4efee6a95f27">
-        <File Id="ArgumentParser.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.pdb" Checksum="yes" DiskId="11" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="SwiftToolsSupportCore">
       <Component Id="TSCBasic.dll" Directory="_usr_bin" Guid="62671622-472e-421d-80ea-39fcb8bf42d4">
@@ -698,17 +502,6 @@
         <File Id="TSCUtility.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftToolsSupportCoreDebugInfo">
-      <Component Id="TSCBasic.pdb" Directory="_usr_bin" Guid="c4cfe6d9-232c-47be-88f3-a84045d20b82">
-        <File Id="TSCBasic.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCBasic.pdb" Checksum="yes" DiskId="12" />
-      </Component>
-      <Component Id="TSCUtility.pdb" Directory="_usr_bin" Guid="c316113b-5459-4d27-b006-122e82687cf7">
-        <File Id="TSCUtility.pdb" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.pdb" Checksum="yes" DiskId="12" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="SwiftDriver">
       <!-- TODO(compnerd) can we use symbolic links instead? -->
@@ -737,30 +530,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftDriverDebugInfo">
-      <Component Id="swift.pdb" Directory="_usr_bin" Guid="1a279dbb-24d1-4025-82c9-b386e5434ae2">
-        <File Id="swift.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift.pdb" Checksum="yes" DiskId="14" />
-      </Component>
-      <Component Id="swift_help.pdb" Directory="_usr_bin" Guid="7e7ea69a-101f-47e3-a74d-b38d00639ad6">
-        <File Id="swift_help.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-help.pdb" Checksum="yes" DiskId="14" />
-      </Component>
-      <Component Id="swift_build_sdk_interfaces.pdb" Directory="_usr_bin" Guid="ea1bcfbf-77a1-4b11-ab94-0981d2bbd2da">
-        <File Id="swift_build_sdk_interfaces.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-build-sdk-interfaces.pdb" Checksum="yes" DiskId="14" />
-      </Component>
-
-      <Component Id="SwiftOptions.pdb" Directory="_usr_bin" Guid="57fbbc35-f028-483b-b976-de0f9c3fe1ad">
-        <File Id="SwiftOptions.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftOptions.pdb" Checksum="yes" DiskId="14" />
-      </Component>
-      <Component Id="SwiftDriver.pdb" Directory="_usr_bin" Guid="f64ba7f7-dd9d-4009-b9ea-54cb4302f058">
-        <File Id="SwiftDriver.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftDriver.pdb" Checksum="yes" DiskId="14" />
-      </Component>
-      <Component Id="SwiftDriverExecution.pdb" Directory="_usr_bin" Guid="477c115e-84cb-4452-8d6c-514ff7851952">
-        <File Id="SwiftDriverExecution.pdb" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftDriverExecution.pdb" Checksum="yes" DiskId="14" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
       <Environment Id="DeveloperDir" Action="set" Name="DEVELOPER_DIR" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer" />
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" />
@@ -786,24 +555,6 @@
       -->
 
       <ComponentRef Id="EnvironmentVariables" />
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Infomation for Swift Toolchain for Windows aarch64" Level="0" Title="Debug Information">
-        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
-        <ComponentGroupRef Id="binutilsDebugInfo" />
-        <ComponentGroupRef Id="clangDebugInfo" />
-        <ComponentGroupRef Id="lldDebugInfo" />
-        <ComponentGroupRef Id="lldbDebugInfo" />
-        <ComponentGroupRef Id="BlocksRuntimeDebugInfo" />
-        <ComponentGroupRef Id="dispatchDebugInfo" />
-        <ComponentGroupRef Id="SourceKitDebugInfo" />
-        <ComponentGroupRef Id="swiftDebugInfo" />
-        <ComponentGroupRef Id="llbuildDebugInfo" />
-        <ComponentGroupRef Id="SwiftArgumentParserDebugInfo" />
-        <ComponentGroupRef Id="SwiftToolsSupportCoreDebugInfo" />
-        <ComponentGroupRef Id="SwiftDriverDebugInfo" />
-      </Feature>
-      <?endif?>
     </Feature>
 
     <UI>
