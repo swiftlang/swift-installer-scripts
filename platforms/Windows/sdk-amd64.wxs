@@ -9,9 +9,6 @@
     <SummaryInformation Description="Swift SDK for Windows x86_64" />
 
     <Media Id="1" Cabinet="WindowsSDK.cab" EmbedCab="yes" />
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <Media Id="2" Cabinet="PDBs.cab" EmbedCab="yes" />
-    <?endif?>
 
     <!-- Directory Structure -->
     <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
@@ -131,14 +128,6 @@
         <File Id="XCTest.swiftmodule" Name="x86_64-unknown-windows-msvc.swiftmodule" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\x86_64\XCTest.swiftmodule" Checksum="yes" />
       </Component>
     </ComponentGroup>
-
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="XCTestDebugInfo">
-      <Component Id="XCTest.pdb" Directory="XCTest_usr_bin64" Guid="6ad780c3-7245-4b63-b0b0-ba04e65f1638">
-        <File Id="XCTest.pdb" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="SwiftRemoteMirror">
       <Component Id="MemoryReaderInterface.h" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Guid="4493ba7f-b3b3-4cb3-b645-6457e81ad752">
@@ -522,13 +511,6 @@
       <ComponentGroupRef Id="Configuration" />
 
       <ComponentRef Id="EnvironmentVariables" />
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" AllowAdvertise="yes" Description="Debug Information for Swift SDK for Windows x86_64" Level="0" Title="Debug Information">
-        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
-        <ComponentRef Id="XCTestRuntimeDebugInfo" />
-      </Feature>
-      <?endif?>
     </Feature>
 
     <UI>

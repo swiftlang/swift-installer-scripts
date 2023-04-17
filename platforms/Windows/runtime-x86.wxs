@@ -9,9 +9,6 @@
     <SummaryInformation Description="Swift Runtime for Windows i686" />
     
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <Media Id="2" Cabinet="PDBs.cab" EmbedCab="yes" />
-    <?endif?>
 
     <!-- Directory Structure -->
     <StandardDirectory Id="ProgramFilesFolder">
@@ -92,73 +89,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftRuntimeDebugInfo">
-      <Component Id="BlocksRuntime.pdb" Guid="ae1e5c85-3672-4114-9e82-f8152ed8e919">
-        <File Id="BlocksRuntime.pdb" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="dispatch.pdb" Guid="1f2385b7-e4d4-464c-b987-5139949499c2">
-        <File Id="dispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\dispatch.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="Foundation.pdb" Guid="2fa5fdb1-e875-46e3-aa18-5aac03ee6f63">
-        <File Id="Foundation.pdb" Source="$(var.SDK_ROOT)\usr\bin\Foundation.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="FoundationNetworking.pdb" Guid="0636b89e-a623-4ef5-adf7-56ab5250987b">
-        <File Id="FoundationNetworking.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="FoundationXML.pdb" Guid="e9e6eb2e-9423-4e6d-8b91-751e174624a4">
-        <File Id="FoundationXML.pdb" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swift_Concurrency.pdb" Guid="4c11a732-031a-4c07-81ba-49407a0870f5">
-        <File Id="swift_Concurrency.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swift_Differentiation.pdb" Guid="e4eb5456-7142-4be4-a1ca-1328f76ed875">
-        <File Id="swift_Differentiation.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftDistributed.pdb" Guid="e6f9a9a6-1ba2-4807-b35a-7726ac30b91e">
-        <File Id="swiftDistributed.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swift_RegexParser.pdb" Guid="c69fd450-0fbf-4b30-baf0-f5107c65cf28">
-        <File Id="swift_RegexParser.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swift_StringProcessing.pdb" Guid="e1d856db-107e-452b-95ba-d8b0c4bc4cbf">
-        <File Id="swift_StringProcessing.pdb" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftCore.pdb" Guid="abd0c880-8dcc-4c23-88d4-afb224d3433b">
-        <File Id="swiftCore.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftCxx.pdb" Guid="e41ad064-6cb2-4fbc-9b7e-44ba17bf8264">
-        <File Id="swiftCxx.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftDispatch.pdb" Guid="cff0a63a-a76a-4785-92b0-4894ffa19a7d">
-        <File Id="swiftDispatch.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <!--
-      <Component Id="swiftDemangle.pdb" Guid="0dd0b3b5-3d85-48aa-a7c7-ca804c685a99">
-        <File Id="swiftDemangle.pdb" Source="$(var.SDK_ROOT)\bin\swiftDemangle.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      -->
-      <Component Id="swiftCRT.pdb" Guid="0f4fbbfa-e85e-4c18-93a0-37ab09b80bf7">
-        <File Id="swiftCRT.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftRemoteMirror.pdb" Guid="2bcc963d-e2d7-44f1-a7aa-0524bec668c6">
-        <File Id="swiftRemoteMirror.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftSwiftOnoneSupport.pdb" Guid="a013f1d6-3e2a-4e0a-b315-e40b87967d1b">
-        <File Id="swiftSwiftOnoneSupport.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-      <Component Id="swiftWinSDK.pdb" Guid="c8924901-6ed0-4629-a940-0eeaeeb5039e">
-        <File Id="swiftWinSDK.pdb" Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="SwiftUtilitiesDebugInfo">
-      <Component Id="plutil.pdb" Guid="76275d27-3e4f-40f5-9810-a4fbe1d16e5e">
-        <File Id="plutil.pdb" Source="$(var.SDK_ROOT)\usr\bin\plutil.pdb" Checksum="yes" DiskId="2" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="3b4386ac-3341-407d-b946-6e670f4a83f6">
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]runtime-development\usr\bin" />
     </Component>
@@ -167,24 +97,10 @@
     <Feature Id="Win32SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows i686" Level="1" Title="Swift Runtime for Windows i686">
       <ComponentGroupRef Id="SwiftRuntime" />
       <ComponentRef Id="EnvironmentVariables" />
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift Runtime for Windows i686" Level="0" Title="Debug Information">
-        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
-        <ComponentGroupRef Id="SwiftRuntimeDebugInfo" />
-      </Feature>
-      <?endif?>
     </Feature>
 
     <Feature Id="Win32SwiftUtilities" AllowAbsent="yes" AllowAdvertise="yes" Description="Extra Swift Utilities for Windows i686" Level="1" Title="Swift Utilities for Windows i686">
       <ComponentGroupRef Id="SwiftUtilities" />
-
-      <?ifdef INCLUDE_DEBUG_INFO ?>
-      <Feature Id="DebugInfo" AllowAbsent="yes" AllowAdvertise="yes" Description="Debug Information for Swift Utilties for Windows x86_64" Level="0" Title="Debug Information">
-        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
-        <ComponentGroupRef Id="SwiftUtilitiesDebugInfo" />
-      </Feature>
-      <?endif?>
     </Feature>
 
     <UI>

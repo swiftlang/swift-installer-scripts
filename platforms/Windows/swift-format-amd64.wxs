@@ -10,9 +10,6 @@
 
     <!-- NOTE(compnerd) use pre-3.0 schema for better compatibility. -->
     <Media Id="1" Cabinet="SwiftFormat.cab" EmbedCab="yes" />
-    <?ifdef INCLUDE_DEBUG_INFO?>
-    <Media Id="2" Cabinet="PDBs.cab" EmbedCab="yes" />
-    <?endif?>
 
     <!-- Directory Structure -->
     <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
@@ -35,14 +32,6 @@
       </Component>
     </ComponentGroup>
 
-    <?ifdef INCLUDE_DEBUG_INFO ?>
-    <ComponentGroup Id="SwiftFormatDebugInfo">
-      <Component Id="swift_format.pdb" Directory="Tools" Guid="c0cd09c3-09be-48af-8321-63fee64cc2c3">
-        <File Id="swift_format.pdb" Source="$(var.SWIFT_FORMAT_BUILD)\swift-format.pdb" Checksum="yes" />
-      </Component>
-    </ComponentGroup>
-    <?endif?>
-
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="645cdd3d-9dde-4e6d-8071-c0349ae87bcf">
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Tools" />
     </Component>
@@ -50,13 +39,6 @@
     <Feature Id="SwiftFormat" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Code Formatter for Windows x86_64" Level="1" Title="Swift Code Formatter (Windows x86_64)">
       <ComponentGroupRef Id="SwiftFormat" />
       <ComponentRef Id="EnvironmentVariables" />
-
-      <?ifdef INCLUDE_DEBUG_INFO?>
-      <Feature Id="DebugInfo" AllowAbsent="yes" Description="Debug Information for Swift Code Formatter for Windows x86_64" Level="0" Title="Debug Information">
-        <Level Value="1" Condition="INSTALL_DEBUGINFO" />
-        <ComponentGroupRef Id="SwiftFormatDebugInfo" />
-      </Feature>
-      <?endif?>
     </Feature>
 
     <UI>

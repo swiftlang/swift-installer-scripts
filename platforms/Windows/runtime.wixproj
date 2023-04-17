@@ -19,7 +19,7 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);SDK_ROOT=$(SDK_ROOT);$(INCLUDE_DEBUG_INFO)</DefineConstants>
+    <DefineConstants>ProductVersion=$(ProductVersion);SDK_ROOT=$(SDK_ROOT)</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
