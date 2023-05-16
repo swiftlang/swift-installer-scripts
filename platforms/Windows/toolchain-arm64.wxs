@@ -87,6 +87,8 @@
                       </Directory>
                     </Directory>
                     <Directory Id="_usr_lib_swift" Name="swift">
+                      <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx">
+                      </Directory>
                       <Directory Id="_usr_lib_swift_migrator" Name="migrator">
                       </Directory>
                       <Directory Id="_usr_lib_swift_shims" Name="shims">
@@ -598,6 +600,16 @@
       </Component>
       <Component Id="_InternalSwiftScan.modulemap" Directory="_usr_include__InternalSwiftScan" Guid="1aed210d-a34a-492e-b570-3e0cf95b653c">
         <File Id="_InternalSwiftScan.modulemap" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\module.modulemap" Checksum="yes" />
+      </Component>
+
+      <Component Id="_SwiftCxxInteroperability.h" Directory="_usr_lib_swift_swiftToCxx" Guid="8c1ba49d-9d1e-4f40-8464-0d4126de6ce6">
+        <File Id="_SwiftCxxInteroperability.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" Checksum="yes" />
+      </Component>
+      <Component Id="_SwiftStdlibCxxOverlay.h" Directory="_usr_lib_swift_swiftToCxx" Guid="05d867e2-da43-49b1-8cf5-3b4daa76773c">
+        <File Id="_SwiftStdlibCxxOverlay.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\_SwiftStdlibCxxOverlay.h" Checksum="yes" />
+      </Component>
+      <Component Id="experimental_interoperability_version.json" Directory="_usr_lib_swift_swiftToCxx" Guid="e2bfde07-43b9-4fe6-9d4a-87d2412349b8">
+        <File Id="experimental_interoperability_version.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" Checksum="yes" />
       </Component>
 
       <Component Id="ios4.json" Directory="_usr_lib_swift_migrator" Guid="86db2678-9f8b-446e-bfbc-eb45e725420e">
