@@ -1,4 +1,4 @@
-<Project Sdk="WixToolset.Sdk/4.0.0-rc.4">
+<Project Sdk="WixToolset.Sdk/4.0.0">
   <PropertyGroup>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
@@ -30,8 +30,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0-rc.4" />
-    <PackageReference Include="WixToolset.Heat" Version="4.0.0-rc.4" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0" />
+    <PackageReference Include="WixToolset.Heat" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
