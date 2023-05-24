@@ -3,11 +3,11 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift Runtime for Windows aarch64"
+      Name="Swift Windows Runtime (ARM64)"
       UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift Runtime for Windows aarch64" />
+    <SummaryInformation Description="Swift Windows Runtime (ARM64)" />
 
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
 
@@ -94,7 +94,7 @@
     </Component>
 
     <!-- Feature -->
-    <Feature Id="WinARM64SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows aarch64" Level="1" Title="Swift Runtime for Windows aarch64">
+    <Feature Id="WinARM64SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows Runtime (ARM64)" Level="1" Title="Swift Windows Runtime (ARM64)">
       <ComponentGroupRef Id="SwiftRuntime" />
       <ComponentRef Id="EnvironmentVariables" />
     </Feature>

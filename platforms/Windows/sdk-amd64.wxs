@@ -2,11 +2,11 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift SDK for Windows x86_64"
+      Name="Swift Windows SDK (AMD64)"
       UpgradeCode="83af0249-2b57-4ce1-8121-c29c6c555225"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift SDK for Windows x86_64" />
+    <SummaryInformation Description="Swift Windows SDK (AMD64)" />
 
     <Media Id="1" Cabinet="WindowsSDK.cab" EmbedCab="yes" />
 
@@ -484,7 +484,7 @@
     </Component>
 
     <!-- Features -->
-    <Feature Id="WinX64SDK" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift SDK for Windows x86_64" Level="1" Title="Swift SDK for Windows x86_64" AllowAbsent="no">
+    <Feature Id="WinX64SDK" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows SDK (AMD64)" Level="1" Title="Swift Windows SDK (AMD64)" AllowAbsent="no">
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="CRT" />
       <ComponentGroupRef Id="CXX" />

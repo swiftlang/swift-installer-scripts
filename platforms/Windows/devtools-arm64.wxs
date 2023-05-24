@@ -3,11 +3,11 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift Developer Tools for Windows aarch64"
+      Name="Swift Developer Tools"
       UpgradeCode="87019842-3f3e-4227-b5c5-23a8ef72ad89"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift Developer Tools for Windows aarch64" />
+    <SummaryInformation Description="Swift Developer Tools" />
 
     <Media Id="1" Cabinet="devtools.cab" EmbedCab="yes" />
 
@@ -152,7 +152,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="DeveloperTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Developer Tools for Windows aarch64" Level="1" Title="Swift Developer Tools (Windows aarch64)">
+    <Feature Id="DeveloperTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Developer Tools" Level="1" Title="Swift Developer Tools">
       <ComponentGroupRef Id="SwiftCollections" />
       <ComponentGroupRef Id="SwiftSystem" />
       <ComponentGroupRef Id="SwiftPackageManager" />

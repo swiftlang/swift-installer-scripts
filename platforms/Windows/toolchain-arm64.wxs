@@ -3,11 +3,11 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift Toolchain for Windows aarch64"
+      Name="Swift Compiler Tools"
       UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift Toolchain for Windows aarch64" />
+    <SummaryInformation Description="Swift Compiler Tools" />
 
     <!--
       NOTE(compnerd) Use high compression as this is an extrodinarily large
@@ -539,7 +539,7 @@
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Toolchains\$(var.ToolchainName)\usr\bin" />
     </Component>
 
-    <Feature Id="Toolchain" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Toolchain for Windows aarch64" Level="1" Title="Swift Toolchain for Windows aarch64">
+    <Feature Id="Toolchain" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Compiler Tools" Level="1" Title="Swift Compiler Tools">
       <ComponentGroupRef Id="binutils" />
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="lld" />
