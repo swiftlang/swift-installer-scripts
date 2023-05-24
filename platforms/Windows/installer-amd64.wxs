@@ -7,17 +7,13 @@
     <Chain>
       <?if $(var.RequiredChain) != "" ?>
       <?foreach MSI in $(var.RequiredChain) ?>
-      <MsiPackage SourceFile="$(var.MSI_LOCATION)\$(var.MSI)" Compressed="yes">
-        <MsiProperty Name="INSTALL_DEBUGINFO" Value="[INSTALL_DEBUGINFO]" />
-      </MsiPackage>
+      <MsiPackage SourceFile="$(var.MSI_LOCATION)\$(var.MSI)" Compressed="yes" />
       <?endforeach?>
       <?endif?>
 
       <?if $(var.OptionalChain) != "" ?>
       <?foreach MSI in $(var.OptionalChain) ?>
-      <MsiPackage SourceFile="$(var.MSI_LOCATION)\$(var.MSI)" Compressed="yes" Visible="yes">
-        <MsiProperty Name="INSTALL_DEBUGINFO" Value="[INSTALL_DEBUGINFO]" />
-      </MsiPackage>
+      <MsiPackage SourceFile="$(var.MSI_LOCATION)\$(var.MSI)" Compressed="yes" Visible="yes" />
       <?endforeach?>
       <?endif?>
     </Chain>
