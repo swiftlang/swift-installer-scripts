@@ -143,6 +143,19 @@
         <File Id="PackageDescription.swiftmodule" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" Checksum="yes" />
       </Component>
 
+      <Component Id="CompilerPluginSupport.dll" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="ca3c9c96-3e52-4632-a72b-e071559561fc">
+        <File Id="CompilerPluginSupport.dll" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" Checksum="yes" />
+      </Component>
+      <Component Id="CompilerPluginSupport.lib" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="2255f581-ddef-4633-8f3f-19b84d46b51b">
+        <File Id="CompilerPluginSupport.lib" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" Checksum="yes" />
+      </Component>
+      <Component Id="CompilerPluginSupport.swiftdoc" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="7ac085c2-0a74-4936-b150-0aef32568e65">
+        <File Id="CompilerPluginSupport.swiftdoc" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" Checksum="yes" />
+      </Component>
+      <Component Id="CompilerPluginSupport.swiftmodule" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="eaf41e9f-4f71-4479-a3b3-b75a95f248ac">
+        <File Id="CompilerPluginSupport.swiftmodule" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" Checksum="yes" />
+      </Component>
+
       <Component Id="PackagePlugin.dll" Directory="_usr_lib_swift_pm_PluginAPI" Guid="7ca18c18-6efa-44e9-af2c-b0196dfb9778">
         <File Id="PackagePlugin.dll" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" Checksum="yes" />
       </Component>
