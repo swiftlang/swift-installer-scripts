@@ -125,7 +125,7 @@
         <File Id="CompilerPluginSupport.lib" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" Checksum="yes" />
       </Component>
       <Component Id="CompilerPluginSupport.swiftdoc" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="fb0b2c0c-49f3-4639-b31f-7d80fa6a8841">
-        <File Id="CompilerPluginSupport.switdoc" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.switdoc" Checksum="yes" />
+        <File Id="CompilerPluginSupport.swiftdoc" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" Checksum="yes" />
       </Component>
       <Component Id="CompilerPluginSupport.swiftmodule" Directory="_usr_lib_swift_pm_ManifestAPI" Guid="8af5e404-7e2d-4b86-99f3-03ce1bb03fff">
         <File Id="CompilerPluginSupport.swiftmodule" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" Checksum="yes" />
