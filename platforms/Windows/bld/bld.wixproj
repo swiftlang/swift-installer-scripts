@@ -13,6 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomActions\CustomActions.vcxproj">
+      <Name>CustomActions</Name>
+      <SetConfiguration>Configuration=Release</SetConfiguration>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\clang">
       <ComponentGroupName>ClangResources</ComponentGroupName>
       <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
