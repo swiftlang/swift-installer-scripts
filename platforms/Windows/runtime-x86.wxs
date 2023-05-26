@@ -1,4 +1,5 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?include version.wxi?>
   <Package
       Language="1033"
       Manufacturer="swift.org"
@@ -7,14 +8,13 @@
       Version="$(var.ProductVersion)"
       Scope="perMachine">
     <SummaryInformation Description="Swift Runtime for Windows i686" />
-    
+
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
 
     <!-- Directory Structure -->
     <StandardDirectory Id="ProgramFilesFolder">
       <Directory Id="INSTALLDIR" Name="Swift">
-        <!-- TODO(compnerd) use $(var.ProductVersion) -->
-        <Directory Id="_" Name="runtime-development">
+        <Directory Id="_" Name="$(var.RuntimeName)">
           <Directory Id="_usr" Name="usr">
             <Directory Id="_usr_bin" Name="bin">
             </Directory>
@@ -90,7 +90,7 @@
     </ComponentGroup>
 
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="3b4386ac-3341-407d-b946-6e670f4a83f6">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]runtime-development\usr\bin" />
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]$(var.RuntimeName)\usr\bin" />
     </Component>
 
     <!-- Feature -->

@@ -1,4 +1,5 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?include version.wxi?>
   <Package
       Language="1033"
       Manufacturer="swift.org"
@@ -18,7 +19,7 @@
         <Directory Id="Library" Name="Library">
           <Directory Id="Developer" Name="Developer">
             <Directory Id="Toolchains" Name="Toolchains">
-              <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+              <Directory Id="xctoolchain" Name="$(var.ToolchainName)">
                 <Directory Id="_usr" Name="usr">
                   <Directory Id="_usr_bin" Name="bin">
                   </Directory>

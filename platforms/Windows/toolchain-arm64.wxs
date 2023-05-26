@@ -1,4 +1,5 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?include version.wxs?>
   <Package
       Language="1033"
       Manufacturer="swift.org"
@@ -26,17 +27,8 @@
         <Directory Id="Library" Name="Library">
           <Directory Id="Developer" Name="Developer">
             <Directory Id="Toolchains" Name="Toolchains">
-              <!-- TODO(compnerd):
-                This really should be
-                unknown-Asserts-$(var.ProductVersion).xctoolchain,
-                though before changing, we should setup a
-                `unknown-Asserts-current.xctoolchain`
-                symlink. Additionally, beware that the environment chagnes
-                below will need to be updated to reflect this change. Ideally,
-                we would have as part of this a tool to select the different
-                toolchain versions.
-              -->
-              <Directory Id="xctoolchain" Name="unknown-Asserts-development.xctoolchain">
+              <!-- TODO(compnerd) We should setup a `unknown-Asserts-current.xctoolchain` symlink  -->
+              <Directory Id="xctoolchain" Name="$(var.ToolchainName)">
                 <Directory Id="_usr" Name="usr">
                   <Directory Id="_usr_bin" Name="bin">
                   </Directory>
@@ -544,7 +536,7 @@
 
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
       <Environment Id="DeveloperDir" Action="set" Name="DEVELOPER_DIR" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer" />
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" />
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Toolchains\$(var.ToolchainName)\usr\bin" />
     </Component>
 
     <Feature Id="Toolchain" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Toolchain for Windows aarch64" Level="1" Title="Swift Toolchain for Windows aarch64">
