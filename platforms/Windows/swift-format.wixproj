@@ -27,6 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="swift-format-$(ProductArchitecture).wxs" />
+    <Compile Include="swift-format.wxs" />
   </ItemGroup>
 </Project>
