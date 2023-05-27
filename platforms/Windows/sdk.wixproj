@@ -19,7 +19,7 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
+    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
     <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
     <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
     <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
@@ -40,6 +40,6 @@
       <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
       <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
     </HarvestDirectory>
-    <Compile Include="sdk-$(ProductArchitecture).wxs" />
+    <Compile Include="sdk.wxs" />
   </ItemGroup>
 </Project>
