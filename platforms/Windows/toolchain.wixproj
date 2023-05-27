@@ -35,17 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- FIXME(compnerd): include the shims in the toolchain instead of the SDK?
-      <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\swift\shims">
-        <ComponentGroupName>SwiftShims</ComponentGroupName>
-        <DirectoryRefId>_usr_lib_swift_shims</DirectoryRefId>
-      </HarvestDirectory>
-      -->
     <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\clang">
       <ComponentGroupName>ClangResources</ComponentGroupName>
       <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
       <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
     </HarvestDirectory>
-    <Compile Include="toolchain-$(ProductArchitecture).wxs" />
+    <Compile Include="toolchain.wxs" />
   </ItemGroup>
 </Project>
