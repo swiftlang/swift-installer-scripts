@@ -32,8 +32,8 @@
   <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <Compile Include="devtools-$(ProductArchitecture).wxs" />
+    <Compile Include="devtools.wxs" />
   </ItemGroup>
 </Project>
