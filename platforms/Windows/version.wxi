@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<Include>
+<?if $(var.ProductVersion) = "0.0.0"?>
+<?define RuntimeName = "runtime-development"?>
+<?define ToolchainName = "unknown-Asserts-development.xctoolchain"?>
+<?else?>
+<?define RuntimeName = "runtime-$(var.ProductVersion)"?>
+<?define ToolchainName = "unknown-Asserts-$(var.ProductVersion).xctoolchain"?>
+<?endif?>
+</Include>
