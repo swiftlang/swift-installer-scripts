@@ -3,11 +3,11 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift Runtime for Windows i686"
+      Name="Swift Windows Runtime (x86)"
       UpgradeCode="01a3fe60-8c3e-4249-8477-deba39b99dd9"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift Runtime for Windows i686" />
+    <SummaryInformation Description="Swift Windows Runtime (x86)" />
 
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" />
 
@@ -94,7 +94,7 @@
     </Component>
 
     <!-- Feature -->
-    <Feature Id="Win32SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Runtime for Windows i686" Level="1" Title="Swift Runtime for Windows i686">
+    <Feature Id="Win32SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows Runtime (x86)" Level="1" Title="Swift Windows Runtime (x86)">
       <ComponentGroupRef Id="SwiftRuntime" />
       <ComponentRef Id="EnvironmentVariables" />
     </Feature>

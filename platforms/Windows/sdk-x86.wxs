@@ -2,11 +2,11 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift SDK for Windows i686"
+      Name="Swift Windows SDK (x86)"
       UpgradeCode="7ab082f9-cd6d-480e-9a97-4186782c3db0"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift SDK for Windows i686" />
+    <SummaryInformation Description="Swift Windows SDK (x86)" />
 
     <Media Id="1" Cabinet="WindowsSDK.cab" EmbedCab="yes" />
 
@@ -478,7 +478,7 @@
 
 
     <!-- Features -->
-    <Feature Id="Win32SDK" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift SDK for Windows i686" Level="1" Title="Swift SDK for Windows i686">
+    <Feature Id="Win32SDK" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows SDK (x86)" Level="1" Title="Swift Windows SDK (x86)">
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="CRT" />
       <ComponentGroupRef Id="CXX" />

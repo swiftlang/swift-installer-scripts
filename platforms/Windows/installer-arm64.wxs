@@ -1,5 +1,5 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
-  <Bundle Name="Swift Developer Package for Windows aarch64" Version="$(var.ProductVersion)" Manufacturer="swift.org" UpgradeCode="151d42d9-8877-4b72-ac62-4695243a35c1">
+  <Bundle Name="Swift Software Development Kit" Version="$(var.ProductVersion)" Manufacturer="swift.org" UpgradeCode="151d42d9-8877-4b72-ac62-4695243a35c1">
     <BootstrapperApplication>
       <bal:WixStandardBootstrapperApplication LicenseUrl="" LogoFile="Resources/swift.png" SuppressOptionsUI="yes" SuppressRepair="no" Theme="hyperlinkLicense" />
     </BootstrapperApplication>
