@@ -20,13 +20,11 @@
 
   <PropertyGroup>
     <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
-    <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
-    <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
-    <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
-    <HarvestDirectorySuppressCom>true</HarvestDirectorySuppressCom>
-    <HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
-    <HarvestDirectorySuppressRegistry>true</HarvestDirectorySuppressRegistry>
-    <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HarvestNoLogo>true</HarvestNoLogo>
+    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,7 +37,11 @@
       <ComponentGroupName>SwiftShims</ComponentGroupName>
       <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
       <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
+
     <Compile Include="sdk.wxs" />
   </ItemGroup>
 </Project>

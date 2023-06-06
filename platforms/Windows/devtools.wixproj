@@ -20,13 +20,8 @@
 
   <PropertyGroup>
     <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);</DefineConstants>
-    <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
-    <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
-    <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
-    <HarvestDirectorySuppressCom>true</HarvestDirectorySuppressCom>
-    <HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
-    <HarvestDirectorySuppressRegistry>true</HarvestDirectorySuppressRegistry>
-    <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
+    <InstallerPlatform Condition=" '$(ProductArchitecture)' == 'amd64' ">x64</InstallerPlatform>
+    <InstallerPlatform Condition=" '$(ProductArchitecture)' == 'arm64' ">arm64</InstallerPlatform>
   </PropertyGroup>
 
   <ItemGroup>

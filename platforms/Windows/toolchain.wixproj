@@ -20,13 +20,13 @@
 
   <PropertyGroup>
     <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang</DefineConstants>
-    <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
-    <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
-    <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
-    <HarvestDirectorySuppressCom>true</HarvestDirectorySuppressCom>
-    <HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
-    <HarvestDirectorySuppressRegistry>true</HarvestDirectorySuppressRegistry>
-    <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
+    <InstallerPlatform Condition=" '$(ProductArchitecture)' == 'amd64' ">x64</InstallerPlatform>
+    <InstallerPlatform Condition=" '$(ProductArchitecture)' == 'arm64' ">arm64</InstallerPlatform>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HarvestNoLogo>true</HarvestNoLogo>
+    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,7 +39,11 @@
       <ComponentGroupName>ClangResources</ComponentGroupName>
       <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
       <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
+
     <Compile Include="toolchain.wxs" />
   </ItemGroup>
 </Project>
