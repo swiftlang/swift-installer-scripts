@@ -92,6 +92,7 @@
                       <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
                       <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
                       <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                      <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
                       <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
@@ -377,6 +378,21 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="RegexBuilder" Directory="RegexBuilder.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftRegexBuilder.lib" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="Swift" Directory="Swift.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -502,6 +518,7 @@
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationXML" />
       <ComponentGroupRef Id="FoundationNetworking" />
+      <ComponentGroupRef Id="RegexBuilder" />
       <ComponentGroupRef Id="Swift" />
       <ComponentGroupRef Id="SwiftOnoneSupport" />
       <ComponentGroupRef Id="WinSDK" />
