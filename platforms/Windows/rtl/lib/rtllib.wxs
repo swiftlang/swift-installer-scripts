@@ -21,6 +21,9 @@
         <File Source="$(SDK_ROOT)\usr\bin\swiftDistributed.dll" />
       </Component>
       <Component>
+        <File Source="$(SDK_ROOT)\usr\bin\swiftRegexBuilder.dll" />
+      </Component>
+      <Component>
         <File Source="$(SDK_ROOT)\usr\bin\swift_RegexParser.dll" />
       </Component>
       <Component>
