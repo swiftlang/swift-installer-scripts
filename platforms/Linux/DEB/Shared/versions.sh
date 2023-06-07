@@ -1,12 +1,12 @@
 #!/bin/sh
 
-debversion=5.7.1
+debversion=5.8.1
 
-swift_version=5.7.1-RELEASE
+swift_version=5.8.1-RELEASE
 icu_version=65-1
 yams_version=4.0.2
 swift_argument_parser_version=1.0.3
-swift_crypto_version=1.1.5
+swift_crypto_version=2.2.3
 ninja_version=1.10.2
 cmake_version=3.19.6
 swift_atomics_version=1.0.2
