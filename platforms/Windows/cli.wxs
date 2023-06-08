@@ -1,0 +1,275 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?include version.wxi?>
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift Command Line Tools"
+      UpgradeCode="87019842-3f3e-4227-b5c5-23a8ef72ad89"
+      Version="$(var.ProductVersion)"
+      Scope="perUserOrMachine">
+    <SummaryInformation Description="Swift Command Line Tools" />
+
+    <Media Id="1" Cabinet="cli.cab" EmbedCab="yes" CompressionLevel="high" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLDIR" Name="Swift">
+        <Directory Id="Toolchains" Name="Toolchains">
+          <Directory Id="xctoolchain" Name="$(var.ProductVersion)+Asserts">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin">
+              </Directory>
+              <Directory Id="_usr_include" Name="include">
+                <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan">
+                </Directory>
+                <Directory Id="_usr_include_clang_c" Name="clang-c">
+                </Directory>
+                <Directory Id="_usr_include_indexstore" Name="indexstore">
+                </Directory>
+              </Directory>
+              <Directory Id="_usr_lib" Name="lib">
+                <Directory Id="_usr_lib_swift" Name="swift">
+                  <Directory Id="_usr_lib_swift_pm" Name="pm">
+                    <Directory Id="_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
+                    </Directory>
+                    <Directory Id="_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
+                    </Directory>
+                  </Directory>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <ComponentGroup Id="clang">
+      <Component Directory="_usr_bin" Id="clang_format.exe">
+        <File Id="clang_format.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang-format.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="clang_tidy.exe">
+        <File Id="clang_tidy.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang-tidy.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="libclang">
+      <Component Directory="_usr_bin" Id="libclang.dll">
+        <File Id="libclang.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\libclang.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="libclang.lib">
+        <File Id="libclang.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\libclang.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_include_clang_c" Id="BuildSystem.h">
+        <File Id="BuildSystem.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\BuildSystem.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="CXCompilationDatabase.h">
+        <File Id="CXCompilationDatabase.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\CXCompilationDatabase.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="CXErrorCode.h">
+        <File Id="CXErrorCode.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\CXErrorCode.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="CXString.h">
+        <File Id="CXString.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\CXString.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="Documentation.h">
+        <File Id="Documentation.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\Documentation.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="FatalErrorHandler.h">
+        <File Id="FatalErrorHandler.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\FatalErrorHandler.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="Index.h">
+        <File Id="Index.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\Index.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="Platform.h">
+        <File Id="Platform.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\Platform.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_clang_c" Id="Refactor.h">
+        <File Id="Refactor.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\clang-c\Refactor.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="IndexStore">
+      <Component Directory="_usr_bin" Id="libIndexStore.dll">
+        <File Id="libIndexStore.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\libIndexStore.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="libIndexStore.lib">
+        <File Id="libIndexStore.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\libIndexStore.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_include_indexstore" Id="indexstore.h">
+        <File Id="indexstore.h" Source="$(var.TOOLCHAIN_ROOT)\usr\local\include\indexstore\indexstore.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include_indexstore" Id="IndexStoreCXX.h">
+        <File Id="IndexStoreCXX.h" Source="$(var.TOOLCHAIN_ROOT)\usr\local\include\indexstore\IndexStoreCXX.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_InternalSwiftScan">
+      <Component Directory="_usr_bin" Id="_InternalSwiftScan.dll">
+        <File Id="_InternalSwiftScan.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftScan.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="_InternalSwiftScan.lib">
+        <File Id="_InternalSwiftScan.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftScan.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_include__InternalSwiftScan" Id="DependencyScan.h">
+        <File Id="DependencyScan.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include__InternalSwiftScan" Id="DependencyScanMacros.h">
+        <File Id="DependencyScanMacros.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_include__InternalSwiftScan" Id="_InternalSwiftScan.modulemap">
+        <File Id="_InternalSwiftScan.modulemap" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\module.modulemap" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="collections">
+      <Component Directory="_usr_bin" Id="Collections.dll">
+        <File Id="Collections.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Collections.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="DequeModule.dll">
+        <File Id="DequeModule.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DequeModule.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="OrderedCollections.dll">
+        <File Id="OrderedCollections.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\OrderedCollections.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="llbuild">
+      <Component Directory="_usr_bin" Id="llbuildSwift.dll">
+        <File Id="llbuildSwift.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\llbuildSwift.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="system">
+      <Component Directory="_usr_bin" Id="SystemPackage.dll">
+        <File Id="SystemPackage.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SystemPackage.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="CompilerPluginSupport">
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="CompilerPluginSupport.dll">
+        <File Id="CompilerPluginSupport.dll" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="CompilerPluginSupport.lib">
+        <File Id="CompilerPluginSupport.lib" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="CompilerPluginSupport.swiftdoc">
+        <File Id="CompilerPluginSupport.swiftdoc" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="CompilerPluginSupport.swiftmodule">
+        <File Id="CompilerPluginSupport.swiftmodule" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="PackageDescription">
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="PackageDescription.dll">
+        <File Id="PackageDescription.dll" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="PackageDescription.lib">
+        <File Id="PackageDescription.lib" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="PackageDescription.swiftdoc">
+        <File Id="PackageDescription.swiftdoc" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftdoc" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_ManifestAPI" Id="PackageDescription.swiftmodule">
+        <File Id="PackageDescription.swiftmodule" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="PackagePlugin">
+      <Component Directory="_usr_lib_swift_pm_PluginAPI" Id="PackagePlugin.dll">
+        <File Id="PackagePlugin.dll" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_PluginAPI" Id="PackagePlugin.lib">
+        <File Id="PackagePlugin.lib" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_PluginAPI" Id="PackagePlugin.swiftdoc">
+        <File Id="PackagePlugin.swiftdoc" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftdoc" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_pm_PluginAPI" Id="PackagePlugin.swiftmodule">
+        <File Id="PackagePlugin.swiftmodule" Source="$(var.DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="package_manager">
+      <ComponentGroupRef Id="CompilerPluginSupport" />
+      <ComponentGroupRef Id="PackageDescription" />
+      <ComponentGroupRef Id="PackagePlugin" />
+
+      <Component Directory="_usr_bin" Id="swift_build.exe">
+        <File Id="swift_build.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-build.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_package.exe">
+        <File Id="swift_package.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-package.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_run.exe">
+        <File Id="swift_run.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-run.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_test.exe">
+        <File Id="swift_test.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-test.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="Basics.dll">
+        <File Id="Basics.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Basics.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="Build.dll">
+        <File Id="Build.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Build.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="Commands.dll">
+        <File Id="Commands.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Commands.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="CoreCommands.dll">
+        <File Id="CoreCommands.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\CoreCommands.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="DriverSupport.dll">
+        <File Id="DriverSupport.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\DriverSupport.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="PackageGraph.dll">
+        <File Id="PackageGraph.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageGraph.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="PackageLoading.dll">
+        <File Id="PackageLoading.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageLoading.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="PackageModel.dll">
+        <File Id="PackageModel.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\PackageModel.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="SPMBuildCore.dll">
+        <File Id="SPMBuildCore.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="Workspace.dll">
+        <File Id="Workspace.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\Workspace.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <!-- FIXME(compnerd) we should include the SPM import libraries -->
+    </ComponentGroup>
+
+    <Feature Id="CLITools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Command Line Tools" Level="1" Title="Swift Command Line Tools">
+      <ComponentGroupRef Id="clang" />
+      <ComponentGroupRef Id="libclang" />
+      <ComponentGroupRef Id="IndexStore" />
+
+      <ComponentGroupRef Id="_InternalSwiftScan" />
+
+      <ComponentGroupRef Id="collections" />
+      <ComponentGroupRef Id="llbuild" />
+      <ComponentGroupRef Id="system" />
+      <ComponentGroupRef Id="package_manager" />
+    </Feature>
+
+    <UI>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+    </UI>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
+
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
+  </Package>
+</Wix>

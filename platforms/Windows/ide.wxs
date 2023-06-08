@@ -1,0 +1,83 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?include version.wxi?>
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift IDE Integration Tools"
+      UpgradeCode="8dd91c86-d13d-490b-b06b-9522a9cf504c"
+      Version="$(var.ProductVersion)"
+      Scope="perUserOrMachine">
+    <SummaryInformation Description="Swift IDE Integration Tools" />
+
+    <Media Id="1" Cabinet="ide.cab" EmbedCab="yes" CompressionLevel="high" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLDIR" Name="Swift">
+        <Directory Id="Toolchains" Name="Toolchains">
+          <Directory Id="xctoolchain" Name="$(var.ProductVersion)+Asserts">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin">
+              </Directory>
+              <Directory Id="_usr_include" Name="include">
+                <Directory Id="_usr_include_SourceKit" Name="SourceKit">
+                </Directory>
+              </Directory>
+              <Directory Id="_usr_lib" Name="lib">
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <ComponentGroup Id="clangd">
+      <Component Directory="_usr_bin" Id="clangd.exe">
+        <File Id="clangd.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lldb">
+      <Component Directory="_usr_bin" Id="lldb_vscode.exe">
+        <File Id="lldb_vscode.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="sourcekitd">
+      <Component Directory="_usr_bin" Id="sourcekitdInProc.dll">
+        <File Id="sourcekitdInProc.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="sourcekitdInProc.lib">
+        <File Id="sourcekitdInProc.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_include_SourceKit" Id="sourcekitd.h">
+        <File Id="sourcekitd.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lsp">
+      <Component Directory="_usr_bin" Id="sourcekit_lsp.exe">
+        <File Id="sourcekit_lsp.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="IDETools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift IDE Integration Tools" Level="1" Title="Swift IDE Integration Tools">
+      <ComponentGroupRef Id="clangd" />
+      <ComponentGroupRef Id="lldb" />
+      <ComponentGroupRef Id="sourcekitd" />
+      <ComponentGroupRef Id="lsp" />
+    </Feature>
+
+    <UI>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+    </UI>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
+
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
+  </Package>
+</Wix>

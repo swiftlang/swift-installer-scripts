@@ -19,9 +19,22 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);</DefineConstants>
-    <InstallerPlatform Condition=" '$(ProductArchitecture)' == 'amd64' ">x64</InstallerPlatform>
-    <InstallerPlatform Condition=" '$(ProductArchitecture)' == 'arm64' ">arm64</InstallerPlatform>
+    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <InstallerPlatform>x64</InstallerPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <InstallerPlatform>arm64</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <InstallerPlatform>arm</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <InstallerPlatform>x86</InstallerPlatform>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="devtools.wxs" />
+    <Compile Include="cli.wxs" />
   </ItemGroup>
 </Project>
