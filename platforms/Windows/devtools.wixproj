@@ -19,7 +19,7 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);</DefineConstants>
+    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);</DefineConstants>
     <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
     <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
     <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>

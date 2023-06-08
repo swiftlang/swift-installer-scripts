@@ -8,4 +8,14 @@
 <?define RuntimeName = "runtime-$(var.ProductVersion)"?>
 <?define ToolchainName = "unknown-Asserts-$(var.ProductVersion).xctoolchain"?>
 <?endif?>
+
+<?if $(var.ProductArchitecture) = "amd64"?>
+  <?define ProcessorArchitecture = "AMD64"?>
+<?elseif $(var.ProductArchitecture) = "arm64"?>
+  <?define ProcessorArchitecture = "ARM64"?>
+<?elseif $(var.ProductArchitecture) = "arm"?>
+  <?define ProcessorArchitecture = "ARM"?>
+<?elseif $(var.ProductArchitecture) = "x86"?>
+  <?define ProcessorArchitecture = "x86"?>
+<?endif?>
 </Include>
