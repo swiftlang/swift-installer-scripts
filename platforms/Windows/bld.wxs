@@ -354,7 +354,6 @@
     </ComponentGroup>
 
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
-      <Environment Id="DeveloperDir" Action="set" Name="DEVELOPER_DIR" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer" />
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Toolchains\$(var.ProductVersion)+Asserts\usr\bin" />
     </Component>
 
