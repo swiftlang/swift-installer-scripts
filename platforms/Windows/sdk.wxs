@@ -13,7 +13,7 @@
 
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLDIR" Name="Swift">
-        <Directory Id="DeveloperPlatforms" Name="Platforms">
+        <Directory Id="Platforms" Name="Platforms">
           <Directory Id="WindowsPlatform" Name="Windows.platform">
             <Directory Id="WindowsPlatform_Developer" Name="Developer">
               <Directory Id="WindowsPlatform_Developer_Library" Name="Library">
@@ -29,10 +29,8 @@
                     <Directory Id="XCTest_usr_lib" Name="lib">
                       <Directory Id="XCTest_usr_lib_swift" Name="swift">
                         <Directory Id="XCTest_usr_lib_swift_windows" Name="windows">
-                          <Directory Id="XCTest_usr_lib_swift_windows_ARCH" Name="$(var.ArchArchDir)">
-                          </Directory>
-                          <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule">
-                          </Directory>
+                          <Directory Id="XCTest_usr_lib_swift_windows_ARCH" Name="$(var.ArchArchDir)" />
+                          <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
                         </Directory>
                       </Directory>
                     </Directory>
@@ -44,57 +42,36 @@
                 <Directory Id="WindowsSDK" Name="Windows.sdk">
                   <Directory Id="WindowsSDK_usr" Name="usr">
                     <Directory Id="WindowsSDK_usr_include" Name="include">
-                      <Directory Id="WindowsSDK_usr_include_Block" Name="Block">
-                      </Directory>
-                      <Directory Id="WindowsSDK_usr_include_dispatch" Name="dispatch">
-                      </Directory>
-                      <Directory Id="WindowsSDK_usr_include_os" Name="os">
-                      </Directory>
+                      <Directory Id="WindowsSDK_usr_include_Block" Name="Block" />
+                      <Directory Id="WindowsSDK_usr_include_dispatch" Name="dispatch" />
+                      <Directory Id="WindowsSDK_usr_include_os" Name="os" />
                       <Directory Id="WindowsSDK_usr_include_swift" Name="swift">
-                        <Directory Id="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror">
-                        </Directory>
+                        <Directory Id="WindowsSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror" />
                       </Directory>
                     </Directory>
                     <Directory Id="WindowsSDK_usr_lib" Name="lib">
                       <Directory Id="WindowsSDK_usr_lib_swift" Name="swift">
-                        <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims">
-                        </Directory>
+                        <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims" />
                         <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
-                          <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule">
-                          </Directory>
-                          <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule">
-                          </Directory>
-                          <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule">
-                          </Directory>
-                          <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule">
-                          </Directory>
-                          <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule">
-                          </Directory>
-                          <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
-                          </Directory>
-                          <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule">
-                          </Directory>
-                          <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
-                          </Directory>
-                          <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
-                          </Directory>
-                          <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule">
-                          </Directory>
-                          <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule">
-                          </Directory>
-                          <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule">
-                          </Directory>
-                          <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule">
-                          </Directory>
-                          <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule">
-                          </Directory>
-                          <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(var.ArchArchDir)">
-                          </Directory>
+                          <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
+                          <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
+                          <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
+                          <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
+                          <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule" />
+                          <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
+                          <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
+                          <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
+                          <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
+                          <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
+                          <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                          <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
+                          <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
+                          <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
+                          <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(var.ArchArchDir)" />
                         </Directory>
                       </Directory>
                     </Directory>
-                    <Directory Id="WindowsSDK_usr_share" Name="share">
-                    </Directory>
+                    <Directory Id="WindowsSDK_usr_share" Name="share" />
                   </Directory>
                 </Directory>
               </Directory>

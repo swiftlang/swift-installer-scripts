@@ -14,19 +14,16 @@
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLDIR" Name="Swift">
         <Directory Id="Toolchains" Name="Toolchains">
-          <Directory Id="xctoolchain" Name="$(var.ProductVersion)+Asserts">
+          <Directory Id="_" Name="$(var.ProductVersion)+Asserts">
             <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin">
-              </Directory>
+              <Directory Id="_usr_bin" Name="bin" />
               <Directory Id="_usr_lib" Name="lib">
                 <Directory Id="_usr_lib_site_packages" Name="site-packages">
                   <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
                     <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
-                      <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp">
-                      </Directory>
+                      <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
                     </Directory>
-                    <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils">
-                    </Directory>
+                    <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils" />
                   </Directory>
                 </Directory>
               </Directory>

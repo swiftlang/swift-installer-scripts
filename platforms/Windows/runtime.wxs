@@ -16,8 +16,7 @@
         <Directory Id="Runtimes" Name="Runtimes">
           <Directory Id="_" Name="$(var.ProductVersion)">
             <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin">
-              </Directory>
+              <Directory Id="_usr_bin" Name="bin" />
             </Directory>
           </Directory>
         </Directory>
