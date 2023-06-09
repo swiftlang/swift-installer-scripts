@@ -353,9 +353,14 @@
       </Component>
     </ComponentGroup>
 
-    <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Toolchains\$(var.ProductVersion)+Asserts\usr\bin" />
-    </Component>
+    <ComponentGroup Id="EnvironmentVariables">
+      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
+        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Toolchains\$(var.ProductVersion)+Asserts\usr\bin" />
+      </Component>
+      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
+        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[INSTALLDIR]Toolchains\$(var.ProductVersion)+Asserts\usr\bin" />
+      </Component>
+    </ComponentGroup>
 
     <Feature Id="BuildTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Build Tools" Level="1" Title="Swift Build Tools">
       <ComponentGroupRef Id="binutils" />
@@ -371,7 +376,7 @@
 
       <ComponentGroupRef Id="ClangResources" />
 
-      <ComponentRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>
 
     <UI>

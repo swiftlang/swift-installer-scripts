@@ -99,9 +99,14 @@
       </Component>
     </ComponentGroup>
 
-    <Component Directory="INSTALLDIR" Id="EnvironmentVariables" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Runtimes\$(var.ProductVersion)\usr\bin" />
-    </Component>
+    <ComponentGroup Id="EnvironmentVariables">
+      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
+        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Runtimes\$(var.ProductVersion)\usr\bin" />
+      </Component>
+      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
+        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[INSTALLDIR]Runtimes\$(var.ProductVersion)\usr\bin" />
+      </Component>
+    </ComponentGroup>
 
     <!-- Feature -->
     <Feature Id="SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows Runtime ($(var.ProcessorArchitecture))" Level="1" Title="Swift Windows Runtime ($(var.ProcessorArchitecture))">
@@ -110,7 +115,7 @@
       <ComponentGroupRef Id="libdispatch" />
       <ComponentGroupRef Id="Foundation" />
 
-      <ComponentRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>
 
     <Feature Id="SwiftUtilities" AllowAbsent="yes" AllowAdvertise="yes" Description="Extra Swift Utilities Windows ($(var.ProcessorArchitecture))" Level="1" Title="Swift Utilities Windows ($(var.ProcessorArchitecture))">

@@ -471,10 +471,16 @@
       </Component>
     </ComponentGroup>
 
-    <Component Directory="INSTALLDIR" Id="EnvironmentVariables" Guid="bd3ddc62-4c5c-4f6b-806e-02d2c6a65b65">
-      <!-- <Condition> %PROCESSOR_ARCHITECTURE~="arm64" </Condition> -->
-      <Environment Id="SDKRoot" Action="set" Name="SDKROOT" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Platforms\Windows.platform\Developer\SDKs\Windows.sdk" />
-    </Component>
+    <ComponentGroup Id="EnvironmentVariables">
+      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="bd3ddc62-4c5c-4f6b-806e-02d2c6a65b65">
+        <!-- <Condition> %PROCESSOR_ARCHITECTURE~="arm64" </Condition> -->
+        <Environment Id="SystemSDKRoot" Action="set" Name="SDKROOT" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Platforms\Windows.platform\Developer\SDKs\Windows.sdk" />
+      </Component>
+      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="580f1edd-8744-4be8-8dd8-e519f70a91e4">
+        <!-- <Condition> %PROCESSOR_ARCHITECTURE~="arm64" </Condition> -->
+        <Environment Id="UserSDKRoot" Action="set" Name="SDKROOT" Part="all" Permanent="no" System="no" Value="[INSTALLDIR]Platforms\Windows.platform\Developer\SDKs\Windows.sdk" />
+      </Component>
+    </ComponentGroup>
 
     <!-- Features -->
     <Feature Id="SDK" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows SDK ($(var.ProcessorArchitecture))" Level="1" Title="Swift Windows SDK ($(var.ProcessorArchitecture))">
@@ -502,7 +508,7 @@
 
       <ComponentGroupRef Id="SwiftShims" />
 
-      <ComponentRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>
 
     <UI>
