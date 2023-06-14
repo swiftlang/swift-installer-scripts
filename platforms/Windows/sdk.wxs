@@ -11,6 +11,19 @@
 
     <Media Id="1" Cabinet="WindowsSDK.cab" EmbedCab="yes" CompressionLevel="high" />
 
+    <!--
+      %ProgramFiles64Folder%
+        └─ Swift
+            └─ Platforms
+                └─ Windows.platform
+                    └─ Developer
+                        ├─ Library
+                        │   └─ XCTest-development
+                        │       └─ ...
+                        └─ SDKs
+                            └─ Windows.sdk
+                                    └─ ...
+    -->
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLDIR" Name="Swift">
         <Directory Id="Platforms" Name="Platforms">
