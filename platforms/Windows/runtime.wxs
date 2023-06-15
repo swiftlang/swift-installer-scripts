@@ -6,7 +6,7 @@
       Name="Swift Windows Runtime ($(var.ProcessorArchitecture))"
       UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886"
       Version="$(var.ProductVersion)"
-      Scope="perUserOrMachine">
+      Scope="perMachine">
     <SummaryInformation Description="Swift Windows Runtime ($(var.ProcessorArchitecture))" />
 
     <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" CompressionLevel="high" />

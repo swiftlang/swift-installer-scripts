@@ -6,7 +6,7 @@
       Name="Swift Windows SDK ($(var.ProcessorArchitecture))"
       UpgradeCode="4c37a396-d9e2-490a-89b7-0a3d271d847f"
       Version="$(var.ProductVersion)"
-      Scope="perUserOrMachine">
+      Scope="perMachine">
     <SummaryInformation Description="Swift Windows SDK ($(var.ProcessorArchitecture))" />
 
     <Media Id="1" Cabinet="WindowsSDK.cab" EmbedCab="yes" CompressionLevel="high" />

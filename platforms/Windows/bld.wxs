@@ -5,7 +5,7 @@
       Name="Swift Build Tools"
       UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
       Version="$(var.ProductVersion)"
-      Scope="perUserOrMachine">
+      Scope="perMachine">
     <SummaryInformation Description="Swift Build Tools" />
 
     <!--

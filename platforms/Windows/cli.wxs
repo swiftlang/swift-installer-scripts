@@ -5,7 +5,7 @@
       Name="Swift Command Line Tools"
       UpgradeCode="87019842-3f3e-4227-b5c5-23a8ef72ad89"
       Version="$(var.ProductVersion)"
-      Scope="perUserOrMachine">
+      Scope="perMachine">
     <SummaryInformation Description="Swift Command Line Tools" />
 
     <Media Id="1" Cabinet="cli.cab" EmbedCab="yes" CompressionLevel="high" />

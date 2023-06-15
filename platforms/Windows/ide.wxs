@@ -5,7 +5,7 @@
       Name="Swift IDE Integration Tools"
       UpgradeCode="8dd91c86-d13d-490b-b06b-9522a9cf504c"
       Version="$(var.ProductVersion)"
-      Scope="perUserOrMachine">
+      Scope="perMachine">
     <SummaryInformation Description="Swift IDE Integration Tools" />
 
     <Media Id="1" Cabinet="ide.cab" EmbedCab="yes" CompressionLevel="high" />

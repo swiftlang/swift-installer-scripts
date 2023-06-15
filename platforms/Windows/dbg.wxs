@@ -5,7 +5,7 @@
       Name="Swift Debugging Tools"
       UpgradeCode="91d382af-1e92-44dc-a4ad-aee91c1b5160"
       Version="$(var.ProductVersion)"
-      Scope="perUserOrMachine">
+      Scope="perMachine">
     <SummaryInformation Description="Swift Debugging Tools" />
 
     <Media Id="1" Cabinet="dbg.cab" EmbedCab="yes" CompressionLevel="high" />
