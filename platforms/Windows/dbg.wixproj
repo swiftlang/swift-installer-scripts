@@ -19,12 +19,7 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <HarvestNoLogo>true</HarvestNoLogo>
-    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
+    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT)</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
@@ -44,19 +39,9 @@
 
   <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0" />
-    <PackageReference Include="WixToolset.Heat" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <HarvestDirectory Include="$(SDK_ROOT)\usr\lib\swift\shims">
-      <ComponentGroupName>SwiftShims</ComponentGroupName>
-      <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-
-    <Compile Include="sdk.wxs" />
+    <Compile Include="dbg.wxs" />
   </ItemGroup>
 </Project>

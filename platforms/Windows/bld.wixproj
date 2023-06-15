@@ -20,13 +20,26 @@
 
   <PropertyGroup>
     <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang</DefineConstants>
-    <HarvestDirectoryAutogenerateGuids>false</HarvestDirectoryAutogenerateGuids>
-    <HarvestDirectoryGenerateGuidsNow>true</HarvestDirectoryGenerateGuidsNow>
-    <HarvestDirectoryNoLogo>true</HarvestDirectoryNoLogo>
-    <HarvestDirectorySuppressCom>true</HarvestDirectorySuppressCom>
-    <HarvestDirectorySuppressFragments>true</HarvestDirectorySuppressFragments>
-    <HarvestDirectorySuppressRegistry>true</HarvestDirectorySuppressRegistry>
-    <HarvestDirectorySuppressRootDirectory>true</HarvestDirectorySuppressRootDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HarvestNoLogo>true</HarvestNoLogo>
+    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <InstallerPlatform>x64</InstallerPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <InstallerPlatform>arm64</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <InstallerPlatform>arm</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <InstallerPlatform>x86</InstallerPlatform>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,7 +52,11 @@
       <ComponentGroupName>ClangResources</ComponentGroupName>
       <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
       <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
-    <Compile Include="toolchain.wxs" />
+
+    <Compile Include="bld.wxs" />
   </ItemGroup>
 </Project>

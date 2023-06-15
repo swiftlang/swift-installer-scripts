@@ -1,0 +1,385 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Swift Build Tools"
+      UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
+      Version="$(var.ProductVersion)"
+      Scope="perMachine">
+    <SummaryInformation Description="Swift Build Tools" />
+
+    <!--
+      NOTE(compnerd) Use high compression as this is an extrodinarily large
+      cabinet.  With upstream being amenable to considering decorations for
+      DLL builds, this might be possible to reduce in the future hopefully.
+      In the mean time, burn the CPU cycles to try to claw back the minimal
+      bit of savings to hedge against the constant complaints that the MSIs
+      are too large.
+    -->
+    <Media Id="1" Cabinet="toolchain.cab" EmbedCab="yes" CompressionLevel="high" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLDIR" Name="Swift">
+        <Directory Id="Toolchains" Name="Toolchains">
+          <Directory Id="_" Name="$(var.ProductVersion)+Asserts">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin" />
+              <Directory Id="_usr_include" Name="include">
+                <Directory Id="_usr_include_llvm_c" Name="llvm-c" />
+              </Directory>
+              <Directory Id="_usr_lib" Name="lib">
+                <Directory Id="_usr_lib_clang" Name="clang" />
+                <Directory Id="_usr_lib_swift" Name="swift">
+                  <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
+                  <Directory Id="_usr_lib_swift_migrator" Name="migrator" />
+                  <Directory Id="_usr_lib_swift_shims" Name="shims" />
+                </Directory>
+              </Directory>
+              <Directory Id="_usr_share" Name="share">
+                <Directory Id="_usr_share_swift" Name="swift" />
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <ComponentGroup Id="binutils">
+      <!-- TODO(compnerd) can we use symbolic links to llvm-ar.exe instead? -->
+      <Component Directory="_usr_bin" Id="llvm_dlltool.exe">
+        <File Id="llvm_dlltool.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-dlltool.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_lib.exe">
+        <File Id="llvm_lib.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-lib.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_ranlib.exe">
+        <File Id="llvm_ranlib.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-ranlib.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <!-- TODO(compnerd) can we use symbolic links to llvm-objdump.exe instead? -->
+      <Component Directory="_usr_bin" Id="llvm_readelf.exe">
+        <File Id="llvm_readelf.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-readelf.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_strip.exe">
+        <File Id="llvm_strip.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-strip.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <!--
+        TODO(compnerd) we should symlink:
+          - addr2line.exe
+          - ar.exe
+          - c++filt.exe
+          - dwp.exe
+          - nm.exe
+          - objcopy.exe
+          - objdump.exe
+          - ranlib.exe
+          - readelf.exe
+          - size.exe
+          - strings.exe
+      -->
+
+      <Component Directory="_usr_bin" Id="dsymutil.exe">
+        <File Id="dsymutil.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dsymutil.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_ar.exe">
+        <File Id="llvm_ar.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-ar.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_cov.exe">
+        <File Id="llvm_cov.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-cov.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_cvtres.exe">
+        <File Id="llvm_cvtres.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-cvtres.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_cxxfilt.exe">
+        <File Id="llvm_cxxfilt.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-cxxfilt.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_dwarfdump.exe">
+        <File Id="llvm_dwarfdump.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-dwarfdump.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_dwp.exe">
+        <File Id="llvm_dwp.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-dwp.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_lipo.exe">
+        <File Id="llvm_lipo.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-lipo.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_mt.exe">
+        <File Id="llvm_mt.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-mt.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_nm.exe">
+        <File Id="llvm_nm.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-nm.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_objcopy.exe">
+        <File Id="llvm_objcopy.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-objcopy.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_objdump.exe">
+        <File Id="llvm_objdump.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-objdump.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_pdbutil.exe">
+        <File Id="llvm_pdbutil.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-pdbutil.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_profdata.exe">
+        <File Id="llvm_profdata.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-profdata.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_rc.exe">
+        <File Id="llvm_rc.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-rc.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_readobj.exe">
+        <File Id="llvm_readobj.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-readobj.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_size.exe">
+        <File Id="llvm_size.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-size.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_strings.exe">
+        <File Id="llvm_strings.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-strings.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_symbolizer.exe">
+        <File Id="llvm_symbolizer.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-symbolizer.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="llvm_undname.exe">
+        <File Id="llvm_undname.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\llvm-undname.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lto">
+      <Component Directory="_usr_bin" Id="LTO.dll">
+        <File Id="LTO.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\LTO.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="LTO.lib">
+        <File Id="LTO.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\LTO.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_include_llvm_c" Id="lto.h">
+        <File Id="lto.h" Source="$(var.TOOLCHAIN_ROOT)\usr\include\llvm-c\lto.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="clang">
+      <!-- TODO(compnerd) can we use symbolic links to clang.exe instead? -->
+      <Component Directory="_usr_bin" Id="clang_cl.exe">
+        <File Id="clang_cl.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang-cl.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="clang_cpp.exe">
+        <File Id="clang_cpp.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang-cpp.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="clang__.exe">
+        <File Id="clang__.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang++.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="clang.exe">
+        <File Id="clang.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clang.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <!--
+        TODO(compnerd) we should include:
+        - clang-offload-bundler
+        - optremarks.dll
+        - scan-build
+        - scan-view
+      -->
+    </ComponentGroup>
+
+    <ComponentGroup Id="lld">
+      <!-- TODO(compnerd) can we use symbolic links to lld.exe instead? -->
+      <Component Directory="_usr_bin" Id="ld.lld.exe">
+        <File Id="ld.lld.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\ld.lld.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="ld64.lld.exe">
+        <File Id="ld64.lld.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\ld64.lld.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="lld_link.exe">
+        <File Id="lld_link.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lld-link.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="wasm_ld.exe">
+        <File Id="wasm_ld.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\wasm-ld.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="lld.exe">
+        <File Id="lld.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lld.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="BlocksRuntime">
+      <Component Directory="_usr_bin" Id="BlocksRuntime.dll">
+        <File Id="BlocksRuntime.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="BlocksRuntime.lib">
+        <File Id="BlocksRuntime.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\BlocksRuntime.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <!-- TODO(compnerd) should we install the block headers? -->
+    </ComponentGroup>
+
+    <ComponentGroup Id="libdispatch">
+      <Component Directory="_usr_bin" Id="dispatch.dll">
+        <File Id="dispatch.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\dispatch.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_lib" Id="dispatch.lib">
+        <File Id="dispatch.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\dispatch.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <!-- TODO(compnerd) should we install the dispatch headers? -->
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftCxx">
+      <Component Directory="_usr_lib_swift_swiftToCxx" Id="_SwiftCxxInteroperability.h">
+        <File Id="_SwiftCxxInteroperability.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_swiftToCxx" Id="_SwiftStdlibCxxOverlay.h">
+        <File Id="_SwiftStdlibCxxOverlay.h" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\_SwiftStdlibCxxOverlay.h" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_swiftToCxx" Id="experimental_interoperability_version.json">
+        <File Id="experimental_interoperability_version.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftDemangle">
+      <Component Directory="_usr_bin" Id="swiftDemangle.dll">
+        <File Id="swiftDemangle.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swiftDemangle.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib" Id="swiftDemangle.lib">
+        <File Id="swiftDemangle.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swiftDemangle.lib" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftFeatures">
+      <Component Directory="_usr_share_swift" Id="features.json">
+        <File Id="features.json" Source="$(var.TOOLCHAIN_ROOT)\usr\share\swift\features.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftMigrator">
+      <Component Directory="_usr_lib_swift_migrator" Id="ios4.json">
+        <File Id="ios4.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\ios4.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="ios42.json">
+        <File Id="ios42.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\ios42.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="macos4.json">
+        <File Id="macos4.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\macos4.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="macos42.json">
+        <File Id="macos42.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\macos42.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="overlay4.json">
+        <File Id="overlay4.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\overlay4.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="overlay42.json">
+        <File Id="overlay42.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\overlay42.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="tvos4.json">
+        <File Id="tvos4.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\tvos4.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="tvos42.json">
+        <File Id="tvos42.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\tvos42.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="watchos4.json">
+        <File Id="watchos4.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\watchos4.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_lib_swift_migrator" Id="watchos42.json">
+        <File Id="watchos42.json" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\swift\migrator\watchos42.json" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="swift">
+      <ComponentGroupRef Id="SwiftCxx" />
+      <ComponentGroupRef Id="SwiftDemangle" />
+      <ComponentGroupRef Id="SwiftFeatures" />
+      <ComponentGroupRef Id="SwiftMigrator" />
+
+      <!-- TODO(compnerd) can we use symbolic links to swift-frontend.exe instead? -->
+      <Component Directory="_usr_bin" Id="swift_api_digester.exe">
+        <File Id="swift_api_digester.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-api-digester.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_autolink_extract.exe">
+        <File Id="swift_autolink_extract.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-autolink-extract.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_symbolgraph_extract.exe">
+        <File Id="swift_symbolgraph_extract.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-symbolgraph-extract.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="swift_demangle.exe">
+        <File Id="swift_demangle.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-demangle.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_frontend.exe">
+        <File Id="swift_frontend.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\swift-frontend.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="argument_parser">
+      <Component Directory="_usr_bin" Id="ArgumentParser.dll">
+        <File Id="ArgumentParser.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="tools_support_core">
+      <Component Directory="_usr_bin" Id="TSCBasic.dll">
+        <File Id="TSCBasic.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCBasic.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="TSCUtility.dll">
+        <File Id="TSCUtility.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\TSCUtility.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="swift_driver">
+      <!-- TODO(compnerd) can we use symbolic links to swift.exe instead? -->
+      <Component Directory="_usr_bin" Id="swiftc.exe">
+        <File Id="swiftc.exe" Name="swiftc.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-driver.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="swift.exe">
+        <File Id="swift.exe" Name="swift.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-driver.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swift_help.exe">
+        <File Id="swift_help.exe" Source="$(var.DEVTOOLS_ROOT)\usr\bin\swift-help.exe" Checksum="yes" KeyPath="yes" />
+      </Component>
+
+      <Component Directory="_usr_bin" Id="swiftOptions.dll">
+        <File Id="SwiftOptions.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftOptions.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swiftDriver.dll">
+        <File Id="SwiftDriver.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftDriver.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+      <Component Directory="_usr_bin" Id="swiftDriverExecution.dll">
+        <File Id="SwiftDriverExecution.dll" Source="$(var.DEVTOOLS_ROOT)\usr\bin\SwiftDriverExecution.dll" Checksum="yes" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="EnvironmentVariables">
+      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
+        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Toolchains\$(var.ProductVersion)+Asserts\usr\bin" />
+      </Component>
+      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
+        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[INSTALLDIR]Toolchains\$(var.ProductVersion)+Asserts\usr\bin" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="BuildTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Build Tools" Level="1" Title="Swift Build Tools">
+      <ComponentGroupRef Id="binutils" />
+      <ComponentGroupRef Id="lto" />
+      <ComponentGroupRef Id="clang" />
+      <ComponentGroupRef Id="lld" />
+      <ComponentGroupRef Id="BlocksRuntime" />
+      <ComponentGroupRef Id="libdispatch" />
+      <ComponentGroupRef Id="swift" />
+      <ComponentGroupRef Id="argument_parser" />
+      <ComponentGroupRef Id="tools_support_core" />
+      <ComponentGroupRef Id="swift_driver" />
+
+      <ComponentGroupRef Id="ClangResources" />
+
+      <ComponentGroupRef Id="EnvironmentVariables" />
+    </Feature>
+
+    <UI>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+    </UI>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
+
+    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
+  </Package>
+</Wix>
