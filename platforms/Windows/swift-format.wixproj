@@ -19,7 +19,22 @@
   <Import Project="WiXCodeSigning.targets" />
 
   <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD)</DefineConstants>
+    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <InstallerPlatform>x64</InstallerPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <InstallerPlatform>arm64</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <InstallerPlatform>arm</InstallerPlatform>
+    <InstallerVersion>500</InstallerVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <InstallerPlatform>x86</InstallerPlatform>
   </PropertyGroup>
 
   <ItemGroup>
