@@ -443,12 +443,12 @@
     </ComponentGroup>
 
     <ComponentGroup Id="CXXShims">
-      <Component Id="libcxxshim.h" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="d9653245-ca31-442a-b122-f5df3a3ad752">
-        <File Id="libcxxshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\libcxxshim.h" Checksum="yes" />
+      <Component Id="libcxxshim.h" Directory="WindowsSDK_usr_lib_swift_windows" Guid="d9653245-ca31-442a-b122-f5df3a3ad752">
+        <File Id="libcxxshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.h" Checksum="yes" />
       </Component>
 
-      <Component Id="libcxxshim.modulemap" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="52c178a4-f65b-46a4-9089-c686c755bf2e">
-        <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\libcxxshim.modulemap" Checksum="yes" />
+      <Component Id="libcxxshim.modulemap" Directory="WindowsSDK_usr_lib_swift_windows" Guid="52c178a4-f65b-46a4-9089-c686c755bf2e">
+        <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
