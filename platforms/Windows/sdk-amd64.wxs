@@ -445,12 +445,12 @@
     </ComponentGroup>
 
     <ComponentGroup Id="CXXShims">
-      <Component Id="libcxxshim.h" Directory="WindowsSDK_usr_lib_swift_windows_x86_64" Guid="77450677-ce9e-43f9-9db1-35231dcf563e">
-        <File Id="libcxxshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\libcxxshim.h" Checksum="yes" />
+      <Component Id="libcxxshim.h" Directory="WindowsSDK_usr_lib_swift_windows" Guid="77450677-ce9e-43f9-9db1-35231dcf563e">
+        <File Id="libcxxshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.h" Checksum="yes" />
       </Component>
 
-      <Component Id="libcxxshim.modulemap" Directory="WindowsSDK_usr_lib_swift_windows_x86_64" Guid="e4fa6e5c-3dd5-49fd-9f27-a72d58c8d156">
-        <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\libcxxshim.modulemap" Checksum="yes" />
+      <Component Id="libcxxshim.modulemap" Directory="WindowsSDK_usr_lib_swift_windows" Guid="e4fa6e5c-3dd5-49fd-9f27-a72d58c8d156">
+        <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
