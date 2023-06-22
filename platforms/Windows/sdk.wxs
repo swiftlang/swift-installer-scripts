@@ -416,12 +416,12 @@
     </ComponentGroup>
 
     <ComponentGroup Id="libcxxshim">
-      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH" Id="libcxxshim.h">
-        <File Id="libcxxshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\libcxxshim.h" Checksum="yes" KeyPath="yes" />
+      <Component Directory="WindowsSDK_usr_lib_swift_windows" Id="libcxxshim.h">
+        <File Id="libcxxshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.h" Checksum="yes" KeyPath="yes" />
       </Component>
 
-      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH" Id="libcxxshim.modulemap">
-        <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\libcxxshim.modulemap" Checksum="yes" KeyPath="yes" />
+      <Component Directory="WindowsSDK_usr_lib_swift_windows" Id="libcxxshim.modulemap">
+        <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" Checksum="yes" KeyPath="yes" />
       </Component>
     </ComponentGroup>
 
