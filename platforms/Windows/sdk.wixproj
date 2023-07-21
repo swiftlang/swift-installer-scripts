@@ -1,35 +1,19 @@
-<Project Sdk="WixToolset.Sdk/4.0.0">
+<Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
-    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
-
-    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
-    <ProductVersion>$(ProductVersion)</ProductVersion>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OutputPath>build\</OutputPath>
-    <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
-  </PropertyGroup>
-
-  <Import Project="WiXCodeSigning.targets" />
-
-  <PropertyGroup>
-    <DefineConstants>ProductArchitecture=$(ProductArchitecture);ProductVersion=$(ProductVersion);PLATFORM_ROOT=$(PLATFORM_ROOT);SDK_ROOT=$(SDK_ROOT);SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <HarvestNoLogo>true</HarvestNoLogo>
-    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
+    <DefineConstants>
+      $(DefineConstants);
+      PLATFORM_ROOT=$(PLATFORM_ROOT);
+      SDK_ROOT=$(SDK_ROOT);
+      SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;
+    </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0" />
-    <PackageReference Include="WixToolset.Heat" Version="4.0.0" />
+    <PackageReference Include="WixToolset.Heat" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="shared.wixproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +25,9 @@
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
+  </ItemGroup>
 
+  <ItemGroup>
     <Compile Include="sdk.wxs" />
   </ItemGroup>
 </Project>

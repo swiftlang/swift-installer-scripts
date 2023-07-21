@@ -1,0 +1,30 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLDIR" Name="Swift" />
+    </StandardDirectory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+        <Directory Name="Toolchains">
+          <Directory Name="$(var.ProductVersion)+Asserts">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin" />
+              <Directory Id="_usr_include" Name="include" />
+              <Directory Id="_usr_lib" Name="lib">
+                <Directory Id="_usr_lib_clang" Name="clang" />
+                <Directory Id="_usr_lib_swift" Name="swift" />
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="Platforms" Name="Platforms" />
+    </DirectoryRef>
+  </Fragment>
+</Wix>

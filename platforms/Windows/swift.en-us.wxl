@@ -1,0 +1,16 @@
+<WixLocalization xmlns="http://wixtoolset.org/schemas/v4/wxl" Culture="en-US">
+  <!-- <String Id="DowngradeError" Value="A newer version of [ProductName] is already installed." /> -->
+
+  <String Id="Bld_ProductName" Value="Swift Build Tools" />
+  <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
+  <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
+  <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
+  <String Id="Runtime_ProductName_AMD64" Value="Swift Utilities Windows (AMD64)" />
+  <String Id="Runtime_ProductName_ARM64" Value="Swift Utilities Windows (ARM64)" />
+  <String Id="Sdk_ProductName_AMD64" Value="Swift Windows SDK (AMD64)" />
+  <String Id="Sdk_ProductName_ARM64" Value="Swift Windows SDK (ARM64)" />
+  <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (x86)" />
+  <String Id="Fmt_ProductName" Value="Swift Code Formatter" />
+  <String Id="Inspect_ProductName" Value="SwiftInspect" />
+  <String Id="BundleName" Value="Swift Software Development Kit" />
+</WixLocalization>

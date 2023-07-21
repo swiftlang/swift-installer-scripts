@@ -2,130 +2,107 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift Debugging Tools"
+      Name="!(loc.Dbg_ProductName)"
       UpgradeCode="91d382af-1e92-44dc-a4ad-aee91c1b5160"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift Debugging Tools" />
 
-    <Media Id="1" Cabinet="dbg.cab" EmbedCab="yes" CompressionLevel="high" />
+    <MediaTemplate CabinetTemplate="dbg{0}.cab" />
 
-    <StandardDirectory Id="ProgramFiles64Folder">
-      <Directory Id="INSTALLDIR" Name="Swift">
-        <Directory Id="Toolchains" Name="Toolchains">
-          <Directory Id="_" Name="$(var.ProductVersion)+Asserts">
-            <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin" />
-              <Directory Id="_usr_lib" Name="lib">
-                <Directory Id="_usr_lib_site_packages" Name="site-packages">
-                  <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
-                    <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
-                      <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
-                    </Directory>
-                    <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils" />
-                  </Directory>
-                </Directory>
-              </Directory>
-            </Directory>
+    <DirectoryRef Id="_usr_lib">
+      <Directory Name="site-packages">
+        <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
+          <Directory Id="_usr_lib_site_packages_lldb_formatters" Name="formatters">
+            <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
           </Directory>
+          <Directory Id="_usr_lib_site_packages_lldb_utils" Name="utils" />
         </Directory>
       </Directory>
-    </StandardDirectory>
+    </DirectoryRef>
 
     <ComponentGroup Id="lldb">
-      <Component Directory="_usr_bin" Id="lldb.exe">
-        <File Id="lldb.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb.exe" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_bin">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb.exe" />
       </Component>
 
-      <Component Directory="_usr_bin" Id="liblldb.dll">
-        <File Id="liblldb.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\liblldb.dll" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_bin">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\liblldb.dll" />
       </Component>
 
-      <Component Directory="_usr_lib" Id="liblldb.lib">
-        <File Id="liblldb.lib" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\liblldb.lib" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\liblldb.lib" />
       </Component>
 
-      <Component Directory="_usr_lib_site_packages_lldb" Id="__init__.py_c31e016e2f8b4fba9eebd73d5009e919">
-        <File Id="___init__.py_c31e016e2f8b4fba9eebd73d5009e919" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\__init__.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\__init__.py" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb" Id="_lldb.py">
-        <File Id="_lldb.pyd" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\_lldb.pyd" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\_lldb.pyd" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb" Id="embedded_interpreter.py">
-        <File Id="embedded_interpreter.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\embedded_interpreter.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\embedded_interpreter.py" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb" Id="lldb_argdumper.exe">
-        <File Id="lldb_argdumper.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\lldb-argdumper.exe" Checksum="yes" KeyPath="yes" />
-      </Component>
-
-      <Component Directory="_usr_lib_site_packages_lldb_formatters" Id="logger.py">
-        <File Id="logger.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\Logger.py" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters" Id="__init__.py_6124a6ee9e584275b153b0e1ddb4a2b2">
-        <File Id="___init__.py_6124a6ee9e584275b153b0e1ddb4a2b2" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\__init__.py" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters" Id="attrib_fromdict.py">
-        <File Id="attrib_fromdict.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters" Id="cache.py">
-        <File Id="cache.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cache.py" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters" Id="metrics.py">
-        <File Id="metrics.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\metrics.py" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters" Id="synth.py">
-        <File Id="synth.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\synth.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\lldb-argdumper.exe" />
       </Component>
 
-      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp" Id="__init__.py_1bd1d2dc68b7417b83484f6183339af2">
-        <File Id="___init__.py_1bd1d2dc68b7417b83484f6183339af2" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\__init__.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb_formatters">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\Logger.py" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp" Id="gnu_libstdcpp.py">
-        <File Id="gnu_libstdcpp.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb_formatters">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\__init__.py" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp" Id="libcxx.py">
-        <File Id="libcxx.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb_formatters">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cache.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\metrics.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\synth.py" />
       </Component>
 
-      <Component Directory="_usr_lib_site_packages_lldb_utils" Id="__init__.py_52ef75ed702f4acc8272e6b2f8aa5392">
-        <File Id="___init__.py_52ef75ed702f4acc8272e6b2f8aa5392" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\__init__.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\__init__.py" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_utils" Id="in_call_stack.py">
-        <File Id="in_call_stack.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\in_call_stack.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" />
       </Component>
-      <Component Directory="_usr_lib_site_packages_lldb_utils" Id="symbolication.py">
-        <File Id="symbolication.py" Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\symbolication.py" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" />
+      </Component>
+
+      <Component Directory="_usr_lib_site_packages_lldb_utils">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\__init__.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_utils">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\in_call_stack.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_utils">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\symbolication.py" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="lldb_server">
-      <Component Directory="_usr_bin" Id="lldb_server.exe">
-        <File Id="lldb_server.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-server.exe" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_bin">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-server.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="swift_repl">
-      <Component Directory="_usr_bin" Id="repl_swift.exe">
-        <File Id="repl_swift.exe" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\repl_swift.exe" Checksum="yes" KeyPath="yes" />
+      <Component Directory="_usr_bin">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\repl_swift.exe" />
       </Component>
     </ComponentGroup>
 
-    <Feature Id="DebuggingTools" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Debugging Tools" Level="1" Title="Swift Debugging Tools">
+    <Feature Id="DebuggingTools" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="!(loc.Dbg_ProductName)">
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="lldb_server" />
 
       <ComponentGroupRef Id="swift_repl" />
     </Feature>
-
-    <UI>
-      <ui:WixUI Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
-    </UI>
-
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
-
-    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
-    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
   </Package>
 </Wix>

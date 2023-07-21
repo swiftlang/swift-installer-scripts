@@ -3,112 +3,99 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="Swift Windows Runtime ($(var.ProcessorArchitecture))"
+      Name="!(loc.Runtime_ProductName_$(var.ProcessorArchitecture))"
       UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="Swift Windows Runtime ($(var.ProcessorArchitecture))" />
 
-    <Media Id="1" Cabinet="runtime.cab" EmbedCab="yes" CompressionLevel="high" />
+    <MediaTemplate CabinetTemplate="rt{0}.cab" />
 
-    <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLDIR" Name="Swift">
-        <Directory Id="Runtimes" Name="Runtimes">
-          <Directory Id="_" Name="$(var.ProductVersion)">
-            <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin" />
-            </Directory>
-          </Directory>
-        </Directory>
-      </Directory>
-    </StandardDirectory>
-
-    <ComponentGroup Id="stdlib">
-      <Component Directory="_usr_bin" Id="swift_Concurrency.dll">
-        <File Id="swift_Concurrency.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" Checksum="yes" KeyPath="yes" />
+    <ComponentGroup Id="stdlib" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swift_Differentiation.dll">
-        <File Id="swift_Differentiation.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swift_Differentiation.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swiftDistributed.dll">
-        <File Id="swiftDistributed.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftDistributed.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swift_RegexParser.dll">
-        <File Id="swift_RegexParser.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swift_RegexParser.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swift_StringProcessing.dll">
-        <File Id="swift_StringProcessing.dll" Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swift_StringProcessing.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swiftCore.dll">
-        <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swiftCxx.dll">
-        <File Id="swiftCxx.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.dll" />
       </Component>
 
       <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
       <Component Directory="_usr_bin" Id="swiftDemangle.dll">
-        <File Id="swiftDemangle.dll" Source="$(var.SDK_ROOT)\bin\swiftDemangle.dll" Checksum="yes" />
+        <File Id="swiftDemangle.dll" Source="$(var.SDK_ROOT)\bin\swiftDemangle.dll" />
       </Component>
       -->
-      <Component Directory="_usr_bin" Id="swiftCRT.dll">
-        <File Id="swiftCRT.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftCRT.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swiftRemoteMirror.dll">
-        <File Id="swiftRemoteMirror.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swiftSwiftOnoneSupport.dll">
-        <File Id="swiftSwiftOnoneSupport.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="swiftWinSDK.dll">
-        <File Id="swiftWinSDK.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.dll" Checksum="yes" KeyPath="yes" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="BlocksRuntime">
-      <Component Directory="_usr_bin" Id="BlocksRuntime.dll">
-        <File Id="BlocksRuntime.dll" Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftWinSDK.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="libdispatch">
-      <Component Directory="_usr_bin" Id="dispatch.dll">
-        <File Id="dispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\dispatch.dll" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_bin" Id="swiftDispatch.dll">
-        <File Id="swiftDispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" KeyPath="yes" />
+    <ComponentGroup Id="BlocksRuntime" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="Foundation">
-      <Component Directory="_usr_bin" Id="Foundation.dll">
-        <File Id="Foundation.dll" Source="$(var.SDK_ROOT)\usr\bin\Foundation.dll" Checksum="yes" KeyPath="yes" />
+    <ComponentGroup Id="libdispatch" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\dispatch.dll" />
       </Component>
-      <Component Directory="_usr_bin" Id="FoundationNetworking.dll">
-        <File Id="FoundationNetworking.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.dll" Checksum="yes" KeyPath="yes" />
-      </Component>
-      <Component Directory="_usr_bin" Id="FoundationXML.dll">
-        <File Id="FoundationXML.dll" Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" Checksum="yes" KeyPath="yes" />
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="plutil">
-      <Component Directory="_usr_bin" Id="plutil.exe">
-        <File Id="plutil.exe" Source="$(var.SDK_ROOT)\usr\bin\plutil.exe" Checksum="yes" KeyPath="yes" />
+    <ComponentGroup Id="Foundation" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\Foundation.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\FoundationNetworking.dll" />
+      </Component>
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\FoundationXML.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
-        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Runtimes\$(var.ProductVersion)\usr\bin" />
+    <ComponentGroup Id="plutil" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\bin\plutil.exe" />
       </Component>
-      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
-        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[INSTALLDIR]Runtimes\$(var.ProductVersion)\usr\bin" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="EnvironmentVariables" Directory="INSTALLDIR">
+      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
+        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[_usr_bin]" />
+      </Component>
+      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
+        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
       </Component>
     </ComponentGroup>
 
     <!-- Feature -->
-    <Feature Id="SwiftRuntime" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="Swift Windows Runtime ($(var.ProcessorArchitecture))" Level="1" Title="Swift Windows Runtime ($(var.ProcessorArchitecture))">
+    <Feature Id="SwiftRuntime" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="Swift Windows Runtime ($(var.ProcessorArchitecture))">
       <ComponentGroupRef Id="stdlib" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
@@ -117,19 +104,8 @@
       <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>
 
-    <Feature Id="SwiftUtilities" AllowAbsent="yes" AllowAdvertise="yes" Description="Extra Swift Utilities Windows ($(var.ProcessorArchitecture))" Level="1" Title="Swift Utilities Windows ($(var.ProcessorArchitecture))">
+    <Feature Id="SwiftUtilities" AllowAbsent="yes" Title="!(loc.Runtime_ProductName_$(var.ProcessorArchitecture))">
       <ComponentGroupRef Id="plutil" />
     </Feature>
-
-    <UI>
-      <ui:WixUI Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
-    </UI>
-
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
-
-    <WixVariable Id="WixUIDialogBmp" Value="Resources\swift_dialog.png" />
-    <WixVariable Id="WixUIBannerBmp" Value="Resources\swift_banner.png" />
   </Package>
 </Wix>

@@ -1,0 +1,10 @@
+﻿<Project Sdk="WixToolset.Sdk/4.0.1">
+  <PropertyGroup>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="shared.wxs" />
+  </ItemGroup>
+</Project>

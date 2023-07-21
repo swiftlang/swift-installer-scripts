@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
+    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
+    <ProductVersion>$(ProductVersion)</ProductVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <Platform>x64</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <Platform>arm64</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <Platform>arm</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <Platform>x86</Platform>
+  </PropertyGroup>
+
+  <PropertyGroup>
+<!--
+    <OutputPath>build\$(ProductArchitecture)\</OutputPath>
+    <IntermediateOutputPath>build\obj\$(ProductArchitecture)\</IntermediateOutputPath>
+-->
+    <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">high</DefaultCompressionLevel>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      ProductArchitecture=$(ProductArchitecture);
+      ProductVersion=$(ProductVersion);
+    </DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HarvestNoLogo>true</HarvestNoLogo>
+    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
+  </PropertyGroup>
+
+  <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
+</Project>

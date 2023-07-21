@@ -1,29 +1,13 @@
-<Project Sdk="WixToolset.Sdk/4.0.0">
+<Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
-    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
-
-    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
-    <ProductVersion>$(ProductVersion)</ProductVersion>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OutputPath>build\</OutputPath>
-    <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
-  </PropertyGroup>
-
-  <Import Project="WiXCodeSigning.targets" />
-
-  <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD)</DefineConstants>
+    <DefineConstants>
+      $(DefineConstants);
+      SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
+    </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0" />
+    <ProjectReference Include="shared.wixproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,43 +6,33 @@
       UpgradeCode="269fd791-fb3d-4311-96a1-cb98243ee857"
       Version="$(var.ProductVersion)"
       Scope="perMachine">
-    <SummaryInformation Description="swift-inspect" />
 
-    <!-- NOTE(compnerd) use pre-3.0 schema for better compatibility. -->
-    <Media Id="1" Cabinet="SwiftFormat.cab" EmbedCab="yes" />
+    <MediaTemplate CabinetTemplate="insp{0}.cab" />
 
     <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
     <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
 
     <Directory ComponentGuidGenerationSeed="4541e7ac-4bf7-47f5-adb2-d3f63006cdcb" Id="WINDOWSVOLUME">
-      <Directory Id="INSTALLDIR">
-        <Directory Id="Library" Name="Library">
-          <Directory Id="Developer" Name="Developer">
-            <Directory Id="Tools" Name="Tools">
-              <Component Id="swift_inspect.exe">
-                <File Id="swift_inspect.exe" Source="$(var.SWIFT_INSPECT_BUILD)\swift-inspect.exe" Checksum="yes" />
-              </Component>
-            </Directory>
+      <Directory Id="INSPECTINSTALLDIR">
+        <Directory Name="Library">
+          <Directory Name="Developer">
+            <Directory Id="Tools" Name="Tools" />
           </Directory>
         </Directory>
-
-        <Component Id="EnvironmentVariables" Guid="61ddbfd1-4051-4964-8a9b-fd0299a358f3">
-          <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Tools" />
-        </Component>
       </Directory>
     </Directory>
 
-    <Feature Id="SwiftInspect" AllowAbsent="no" AllowAdvertise="yes" ConfigurableDirectory="INSTALLDIR" Description="SwiftInspect" Level="1" Title="SwiftInspect">
+    <Component Id="swift_inspect.exe" Directory="Tools">
+      <File Source="$(var.SWIFT_INSPECT_BUILD)\swift-inspect.exe" />
+    </Component>
+
+    <Component Id="EnvironmentVariables" Guid="61ddbfd1-4051-4964-8a9b-fd0299a358f3" Directory="Tools">
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[Tools]" />
+    </Component>
+
+    <Feature Id="SwiftInspect" AllowAbsent="no" ConfigurableDirectory="INSPECTINSTALLDIR" Title="SwiftInspect">
       <ComponentRef Id="swift_inspect.exe" />
       <ComponentRef Id="EnvironmentVariables" />
     </Feature>
-
-    <UI>
-      <ui:WixUI Id="WixUI_InstallDir" />
-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" />
-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
-    </UI>
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"></Property>
-
   </Package>
 </Wix>

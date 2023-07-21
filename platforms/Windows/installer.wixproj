@@ -1,39 +1,26 @@
-<Project Sdk="WixToolset.Sdk/4.0.0">
+<Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <OutputType>Bundle</OutputType>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
-    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
-
-    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
-    <ProductVersion>$(ProductVersion)</ProductVersion>
-
-    <!-- The list must be %3B (;) separated so that it is passed along properly as `;` normally delimit options -->
-    <RequiredChain Condition=" '$(RequiredChain)' == '' ">runtime.msi%3Bbld.msi%3Bcli.msi%3Bdbg.msi%3Bide.msi%3Bsdk.msi</RequiredChain>
-    <RequiredChain>$(RequiredChain)</RequiredChain>
-
-    <OptionalChain>$(OptionalChain)</OptionalChain>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OutputPath>build\</OutputPath>
-    <IntermediateOutputPath>build\obj\</IntermediateOutputPath>
-  </PropertyGroup>
-
-  <Import Project="WiXCodeSigning.targets" />
-
-  <PropertyGroup>
-    <DefineConstants>ProductVersion=$(ProductVersion);RequiredChain=$(RequiredChain);OptionalChain=$(OptionalChain);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
-  </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.0" />
+    <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="installer-$(ProductArchitecture).wxs" />
+    <ProjectReference Include="bld.wixproj" BindName="bld" />
+    <ProjectReference Include="cli.wixproj" BindName="cli" />
+    <ProjectReference Include="dbg.wixproj" BindName="dbg" />
+    <ProjectReference Include="ide.wixproj" BindName="ide" />
+    <ProjectReference Include="runtime.wixproj" BindName="rt" />
+    <ProjectReference Include="sdk.wixproj" Properties="ProductArchitecture=amd64" BindName="sdkx64" />
+    <ProjectReference Include="sdk.wixproj" Properties="ProductArchitecture=arm64" BindName="sdka64" />
+    <ProjectReference Include="sdk.wixproj" Properties="ProductArchitecture=x86" BindName="sdkx86" />
+    <ProjectReference Include="swift-format.wixproj" BindName="fmt" />
+    <ProjectReference Include="swift-inspect.wixproj" BindName="ins" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="installer.wxs" />
   </ItemGroup>
 </Project>
