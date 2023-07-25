@@ -5,12 +5,4 @@
       SDK_ROOT=$(SDK_ROOT)
     </DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="shared.wixproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="runtime.wxs" />
-  </ItemGroup>
 </Project>

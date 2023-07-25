@@ -5,12 +5,4 @@
       SWIFT_INSPECT_BUILD=$(SWIFT_INSPECT_BUILD);
     </DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="shared.wixproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="swift-inspect.wxs" />
-  </ItemGroup>
 </Project>

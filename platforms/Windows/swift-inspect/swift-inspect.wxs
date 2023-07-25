@@ -5,22 +5,9 @@
       Name="swift-inspect"
       UpgradeCode="269fd791-fb3d-4311-96a1-cb98243ee857"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="insp{0}.cab" />
-
-    <!-- WindowsVolume is not a StandardDirectory value, but rather a standard property. See https://github.com/wixtoolset/issues/issues/7314 -->
-    <SetDirectory Id="WINDOWSVOLUME" Value="[WindowsVolume]" />
-
-    <Directory ComponentGuidGenerationSeed="4541e7ac-4bf7-47f5-adb2-d3f63006cdcb" Id="WINDOWSVOLUME">
-      <Directory Id="INSPECTINSTALLDIR">
-        <Directory Name="Library">
-          <Directory Name="Developer">
-            <Directory Id="Tools" Name="Tools" />
-          </Directory>
-        </Directory>
-      </Directory>
-    </Directory>
 
     <Component Id="swift_inspect.exe" Directory="Tools">
       <File Source="$(var.SWIFT_INSPECT_BUILD)\swift-inspect.exe" />
@@ -30,7 +17,7 @@
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[Tools]" />
     </Component>
 
-    <Feature Id="SwiftInspect" AllowAbsent="no" ConfigurableDirectory="INSPECTINSTALLDIR" Title="SwiftInspect">
+    <Feature Id="SwiftInspect" AllowAbsent="no" Title="SwiftInspect">
       <ComponentRef Id="swift_inspect.exe" />
       <ComponentRef Id="EnvironmentVariables" />
     </Feature>

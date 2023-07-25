@@ -5,7 +5,7 @@
       Name="!(loc.Bld_ProductName)"
       UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="bld{0}.cab" />
 
@@ -331,7 +331,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="BuildTools" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="!(loc.Bld_ProductName)">
+    <Feature Id="BuildTools" AllowAbsent="no" Title="!(loc.Bld_ProductName)">
       <ComponentGroupRef Id="binutils" />
       <ComponentGroupRef Id="lto" />
       <ComponentGroupRef Id="clang" />

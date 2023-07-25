@@ -5,12 +5,4 @@
       SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
     </DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="shared.wixproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="swift-format.wxs" />
-  </ItemGroup>
 </Project>

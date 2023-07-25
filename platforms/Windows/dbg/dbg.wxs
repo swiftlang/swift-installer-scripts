@@ -5,7 +5,7 @@
       Name="!(loc.Dbg_ProductName)"
       UpgradeCode="91d382af-1e92-44dc-a4ad-aee91c1b5160"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="dbg{0}.cab" />
 
@@ -98,7 +98,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="DebuggingTools" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="!(loc.Dbg_ProductName)">
+    <Feature Id="DebuggingTools" AllowAbsent="no" Title="!(loc.Dbg_ProductName)">
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="lldb_server" />
 

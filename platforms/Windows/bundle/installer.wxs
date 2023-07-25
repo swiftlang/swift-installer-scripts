@@ -1,0 +1,33 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+  <Bundle
+    Name="!(loc.BundleName)"
+    Version="$(var.ProductVersion)"
+    Manufacturer="swift.org"
+    Compressed="$(IsBundleCompressed)"
+    UpgradeCode="710F1827-DA4A-4BF4-BDCE-D5F2D7C0DEF2">
+
+    <!-- This bundle should also upgrade the "old" bundles. -->
+    <RelatedBundle Id="8c75f32a-7bdf-4c61-abf6-c7e1c4b8fbf6" Action="upgrade" />
+    <RelatedBundle Id="151d42d9-8877-4b72-ac62-4695243a35c1" Action="upgrade" />
+
+    <BootstrapperApplication>
+      <bal:WixStandardBootstrapperApplication
+      LicenseUrl="https://www.swift.org/LICENSE.txt"
+      LogoFile="swift.png"
+      SuppressOptionsUI="yes"
+      SuppressRepair="no"
+      Theme="hyperlinkLicense" />
+    </BootstrapperApplication>
+
+    <Chain>
+      <MsiPackage SourceFile="$(MSI_LOCATION)\runtime.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\bld.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\cli.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\dbg.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\ide.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\swift-format.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\swift-inspect.msi" />
+      <MsiPackage SourceFile="$(MSI_LOCATION)\sdk.msi" />
+    </Chain>
+  </Bundle>
+</Wix>

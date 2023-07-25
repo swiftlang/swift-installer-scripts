@@ -5,7 +5,7 @@
       Name="!(loc.Ide_ProductName)"
       UpgradeCode="8dd91c86-d13d-490b-b06b-9522a9cf504c"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="ide{0}.cab" />
 
@@ -45,7 +45,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="IDETools" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="!(loc.Ide_ProductName)">
+    <Feature Id="IDETools" AllowAbsent="no" Title="!(loc.Ide_ProductName)">
       <ComponentGroupRef Id="clangd" />
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="sourcekitd" />

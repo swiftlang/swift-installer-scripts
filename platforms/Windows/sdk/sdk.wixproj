@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="shared.wixproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <HarvestDirectory Include="$(SDK_ROOT)\usr\lib\swift\shims">
       <ComponentGroupName>SwiftShims</ComponentGroupName>
       <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
@@ -25,9 +21,5 @@
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="sdk.wxs" />
   </ItemGroup>
 </Project>

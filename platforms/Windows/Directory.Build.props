@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
     <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
 
@@ -27,25 +22,40 @@
   </PropertyGroup>
 
   <PropertyGroup>
-<!--
-    <OutputPath>build\$(ProductArchitecture)\</OutputPath>
-    <IntermediateOutputPath>build\obj\$(ProductArchitecture)\</IntermediateOutputPath>
--->
+    <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
+    <BaseOutputPath>$(RootBuildFolder)</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
+
     <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">high</DefaultCompressionLevel>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageScope>perMachine</PackageScope>
+    <IsBundleCompressed>true</IsBundleCompressed>
+    <MSI_LOCATION Condition="'$(MSI_LOCATION)' == ''">$(OutputPath)</MSI_LOCATION>
+  </PropertyGroup>
+
+  <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
 
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
       ProductArchitecture=$(ProductArchitecture);
       ProductVersion=$(ProductVersion);
+      PackageScope=$(PackageScope);
+      IsBundleCompressed=$(IsBundleCompressed);
+      MSI_LOCATION=$(MSI_LOCATION);
     </DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup >
+    <PackageScope>perMachine</PackageScope>
+    <IsBundleCompressed>true</IsBundleCompressed>
   </PropertyGroup>
 
   <PropertyGroup>
     <HarvestNoLogo>true</HarvestNoLogo>
     <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
   </PropertyGroup>
-
-  <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
 </Project>

@@ -3,15 +3,7 @@
     <DefineConstants>
       $(DefineConstants);
       DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
-      TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT)
+      TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
     </DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="shared.wixproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="ide.wxs" />
-  </ItemGroup>
 </Project>

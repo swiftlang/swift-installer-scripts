@@ -27,4 +27,10 @@
       <Directory Id="Platforms" Name="Platforms" />
     </DirectoryRef>
   </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="Tools" Name="Tools" />
+    </DirectoryRef>
+  </Fragment>
 </Wix>

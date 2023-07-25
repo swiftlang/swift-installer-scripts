@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared'">
+    <ProjectReference Include="..\shared\shared.wixproj" />
+  </ItemGroup>
+
   <Import Project="WiXCodeSigning.targets" />
 </Project>

@@ -5,7 +5,7 @@
       Name="!(loc.Cli_ProductName)"
       UpgradeCode="87019842-3f3e-4227-b5c5-23a8ef72ad89"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="cli{0}.cab" />
 
@@ -228,7 +228,7 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <Feature Id="CLITools" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="!(loc.Cli_ProductName)">
+    <Feature Id="CLITools" AllowAbsent="no" Title="!(loc.Cli_ProductName)">
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="libclang" />
       <ComponentGroupRef Id="IndexStore" />

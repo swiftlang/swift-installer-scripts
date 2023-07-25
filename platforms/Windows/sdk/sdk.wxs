@@ -1,13 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <?include config.wxi?>
+  <?include ../shared/config.wxi?>
+
+  <?if $(var.ProductArchitecture) = "amd64"?>
+    <?define ArchBinDir = "bin64"?>
+    <?define ArchArchDir = "x86_64"?>
+    <?define ArchTriple = "x86_64-unknown-windows-msvc"?>
+  <?elseif $(var.ProductArchitecture) = "arm64"?>
+    <?define ArchBinDir = "bin64a"?>
+    <?define ArchArchDir = "aarch64"?>
+    <?define ArchTriple = "aarch64-unknown-windows-msvc"?>
+  <?elseif $(var.ProductArchitecture) = "arm"?>
+    <?define ArchBinDir = "bin32a"?>
+    <?define ArchArchDir = "armv7"?>
+    <?define ArchTriple = "armv7-unknown-windows-msvc"?>
+  <?elseif $(var.ProductArchitecture) = "x86"?>
+    <?define ArchBinDir = "bin32"?>
+    <?define ArchArchDir = "i686"?>
+    <?define ArchTriple = "i686-unknown-windows-msvc"?>
+  <?endif?>
+
   <Package
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Sdk_ProductName_$(var.ProcessorArchitecture))"
       UpgradeCode="4c37a396-d9e2-490a-89b7-0a3d271d847f"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="sdk{0}.cab" />
 
@@ -445,7 +464,7 @@
     </ComponentGroup>
 
     <!-- Features -->
-    <Feature Id="SDK" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="!(loc.Sdk_ProductName_$(var.ProcessorArchitecture))">
+    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(var.ProcessorArchitecture))">
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />

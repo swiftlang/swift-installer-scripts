@@ -1,16 +1,28 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <?include config.wxi?>
+  <?include ../shared/config.wxi?>
+
   <Package
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Runtime_ProductName_$(var.ProcessorArchitecture))"
       UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886"
       Version="$(var.ProductVersion)"
-      Scope="perMachine">
+      Scope="$(PackageScope)">
 
-    <MediaTemplate CabinetTemplate="rt{0}.cab" />
+    <MediaTemplate CabinetTemplate="runtime{0}.cab" />
 
-    <ComponentGroup Id="stdlib" Directory="_usr_bin">
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Name="Runtimes">
+        <Directory Name="$(var.ProductVersion)">
+          <Directory Name="usr">
+            <Directory Id="runtimes_usr_bin" Name="bin" />
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+
+
+    <ComponentGroup Id="stdlib" Directory="runtimes_usr_bin">
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\bin\swift_Concurrency.dll" />
       </Component>
@@ -52,13 +64,13 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="BlocksRuntime" Directory="_usr_bin">
+    <ComponentGroup Id="BlocksRuntime" Directory="runtimes_usr_bin">
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\bin\BlocksRuntime.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="libdispatch" Directory="_usr_bin">
+    <ComponentGroup Id="libdispatch" Directory="runtimes_usr_bin">
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\bin\dispatch.dll" />
       </Component>
@@ -67,7 +79,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="Foundation" Directory="_usr_bin">
+    <ComponentGroup Id="Foundation" Directory="runtimes_usr_bin">
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\bin\Foundation.dll" />
       </Component>
@@ -79,7 +91,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="plutil" Directory="_usr_bin">
+    <ComponentGroup Id="plutil" Directory="runtimes_usr_bin">
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\bin\plutil.exe" />
       </Component>
@@ -87,15 +99,15 @@
 
     <ComponentGroup Id="EnvironmentVariables" Directory="INSTALLDIR">
       <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
-        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[_usr_bin]" />
+        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[runtimes_usr_bin]" />
       </Component>
       <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
-        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
+        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
       </Component>
     </ComponentGroup>
 
     <!-- Feature -->
-    <Feature Id="SwiftRuntime" AllowAbsent="no" ConfigurableDirectory="INSTALLDIR" Title="Swift Windows Runtime ($(var.ProcessorArchitecture))">
+    <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Runtime_ProductName_$(var.ProcessorArchitecture))">
       <ComponentGroupRef Id="stdlib" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
@@ -104,7 +116,7 @@
       <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>
 
-    <Feature Id="SwiftUtilities" AllowAbsent="yes" Title="!(loc.Runtime_ProductName_$(var.ProcessorArchitecture))">
+    <Feature Id="SwiftUtilities" AllowAbsent="yes" Title="Extra Swift Utilities Windows ($(var.ProcessorArchitecture))">
       <ComponentGroupRef Id="plutil" />
     </Feature>
   </Package>
