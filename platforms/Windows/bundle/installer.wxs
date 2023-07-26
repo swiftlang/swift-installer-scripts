@@ -25,10 +25,6 @@
       <MsiPackage SourceFile="$(MSI_LOCATION)\cli.msi" />
       <MsiPackage SourceFile="$(MSI_LOCATION)\dbg.msi" />
       <MsiPackage SourceFile="$(MSI_LOCATION)\ide.msi" />
-      <?if $(sys.BUILDARCH) == x64 ?>
-      <MsiPackage SourceFile="$(MSI_LOCATION)\swift-format.msi" />
-      <MsiPackage SourceFile="$(MSI_LOCATION)\swift-inspect.msi" />
-      <?endif?>
       <MsiPackage SourceFile="$(MSI_LOCATION)\sdk.msi" />
     </Chain>
   </Bundle>

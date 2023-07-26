@@ -1,8 +1,0 @@
-<Project Sdk="WixToolset.Sdk/4.0.1">
-  <PropertyGroup>
-    <DefineConstants>
-      $(DefineConstants);
-      SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
-    </DefineConstants>
-  </PropertyGroup>
-</Project>

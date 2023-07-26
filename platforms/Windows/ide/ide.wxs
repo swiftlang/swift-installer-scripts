@@ -8,6 +8,7 @@
       Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="ide{0}.cab" />
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include_SourceKit" Name="SourceKit" />

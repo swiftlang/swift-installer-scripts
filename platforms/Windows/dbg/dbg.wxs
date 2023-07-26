@@ -8,6 +8,7 @@
       Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="dbg{0}.cab" />
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <DirectoryRef Id="_usr_lib">
       <Directory Name="site-packages">
@@ -98,11 +99,22 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="swift_inspect" Directory="Tools">
+      <?if $(INCLUDE_SWIFT_INSPECT) == true ?>
+        <Component Id="swift_inspect.exe" Directory="Tools">
+          <File Source="$(var.SWIFT_INSPECT_BUILD)\swift-inspect.exe" />
+        </Component>
+
+        <ComponentRef Id="SystemToolsEnvironmentVariables" />
+      <?endif?>
+    </ComponentGroup>
+
     <Feature Id="DebuggingTools" AllowAbsent="no" Title="!(loc.Dbg_ProductName)">
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="lldb_server" />
 
       <ComponentGroupRef Id="swift_repl" />
+      <ComponentGroupRef Id="swift_inspect" />
     </Feature>
   </Package>
 </Wix>

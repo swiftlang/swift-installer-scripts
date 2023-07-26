@@ -8,6 +8,7 @@
       Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="cli{0}.cab" />
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan" />
@@ -228,6 +229,16 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
+    <ComponentGroup Id="swift_format" Directory="Tools">
+      <?if $(INCLUDE_SWIFT_FORMAT) == true ?>
+        <Component Id="swift_format.exe" Directory="Tools">
+          <File Source="$(var.SWIFT_FORMAT_BUILD)\swift-format.exe" />
+        </Component>
+
+        <ComponentRef Id="SystemToolsEnvironmentVariables" />
+      <?endif?>
+    </ComponentGroup>
+
     <Feature Id="CLITools" AllowAbsent="no" Title="!(loc.Cli_ProductName)">
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="libclang" />
@@ -239,6 +250,7 @@
       <ComponentGroupRef Id="llbuild" />
       <ComponentGroupRef Id="system" />
       <ComponentGroupRef Id="package_manager" />
+      <ComponentGroupRef Id="swift_format" />
     </Feature>
   </Package>
 </Wix>

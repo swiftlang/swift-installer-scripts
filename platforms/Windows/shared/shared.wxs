@@ -33,4 +33,10 @@
       <Directory Id="Tools" Name="Tools" />
     </DirectoryRef>
   </Fragment>
+
+  <Fragment>
+    <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="Tools">
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[Tools]" />
+    </Component>
+  </Fragment>
 </Wix>

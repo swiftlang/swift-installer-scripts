@@ -10,6 +10,7 @@
       Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="runtime{0}.cab" />
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <DirectoryRef Id="INSTALLDIR">
       <Directory Name="Runtimes">

@@ -29,6 +29,7 @@
       Scope="$(PackageScope)">
 
     <MediaTemplate CabinetTemplate="sdk{0}.cab" />
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <!--
       %ProgramFiles64Folder%

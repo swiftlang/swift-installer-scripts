@@ -4,6 +4,8 @@
       $(DefineConstants);
       DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
       TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
+      SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
+      INCLUDE_SWIFT_FORMAT=$(INCLUDE_SWIFT_FORMAT);
     </DefineConstants>
   </PropertyGroup>
 </Project>
