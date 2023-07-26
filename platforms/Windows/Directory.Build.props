@@ -33,7 +33,6 @@
   <PropertyGroup>
     <PackageScope>perMachine</PackageScope>
     <IsBundleCompressed>true</IsBundleCompressed>
-    <MSI_LOCATION Condition="'$(MSI_LOCATION)' == ''">$(OutputPath)</MSI_LOCATION>
   </PropertyGroup>
 
   <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
@@ -45,7 +44,6 @@
       ProductVersion=$(ProductVersion);
       PackageScope=$(PackageScope);
       IsBundleCompressed=$(IsBundleCompressed);
-      MSI_LOCATION=$(MSI_LOCATION);
     </DefineConstants>
   </PropertyGroup>
 
@@ -56,6 +54,6 @@
 
   <PropertyGroup>
     <HarvestNoLogo>true</HarvestNoLogo>
-    <HarvestGenerateGuidsNow>true</HarvestGenerateGuidsNow>
+    <HarvestAutogenerateGuids>true</HarvestAutogenerateGuids>
   </PropertyGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
     <OutputType>Bundle</OutputType>
-    <OutputName>swift-$(ProductVersion)-X-windows10</OutputName>
+    <DefineConstants>$(DefineConstants);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
