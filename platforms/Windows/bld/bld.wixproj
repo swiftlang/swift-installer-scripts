@@ -4,7 +4,7 @@
       $(DefineConstants);
       DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
       TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
-      TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT_USR_LIB_CLANG);
+      TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;
     </DefineConstants>
   </PropertyGroup>
 
