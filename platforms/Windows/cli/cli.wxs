@@ -7,7 +7,7 @@
       Version="$(var.ProductVersion)"
       Scope="$(PackageScope)">
 
-    <MediaTemplate CabinetTemplate="cli{0}.cab" EmbedCab="yes" />
+    <Media Id="1" Cabinet="cli.cab" EmbedCab="yes" />
     <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <DirectoryRef Id="_usr_include">
