@@ -9,7 +9,7 @@
       Version="$(var.ProductVersion)"
       Scope="$(PackageScope)">
 
-    <MediaTemplate CabinetTemplate="runtime{0}.cab" />
+    <MediaTemplate CabinetTemplate="runtime{0}.cab" EmbedCab="yes" />
     <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <DirectoryRef Id="INSTALLDIR">

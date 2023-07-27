@@ -28,7 +28,7 @@
       Version="$(var.ProductVersion)"
       Scope="$(PackageScope)">
 
-    <MediaTemplate CabinetTemplate="sdk{0}.cab" />
+    <MediaTemplate CabinetTemplate="sdk{0}.cab" EmbedCab="yes" />
     <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <!--
