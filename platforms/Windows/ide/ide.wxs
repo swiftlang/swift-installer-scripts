@@ -1,0 +1,56 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="!(loc.Ide_ProductName)"
+      UpgradeCode="8dd91c86-d13d-490b-b06b-9522a9cf504c"
+      Version="$(var.ProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="sdk.cab" EmbedCab="yes" />
+    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+
+    <DirectoryRef Id="_usr_include">
+      <Directory Id="_usr_include_SourceKit" Name="SourceKit" />
+    </DirectoryRef>
+
+    <ComponentGroup Id="clangd" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lldb" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="sourcekitd">
+      <Component Directory="_usr_bin">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" />
+      </Component>
+
+      <Component Directory="_usr_lib">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" />
+      </Component>
+
+      <Component Directory="_usr_include_SourceKit">
+        <File Source="$(var.TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lsp" Directory="_usr_bin">
+      <Component>
+        <File Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="IDETools" AllowAbsent="no" Title="!(loc.Ide_ProductName)">
+      <ComponentGroupRef Id="clangd" />
+      <ComponentGroupRef Id="lldb" />
+      <ComponentGroupRef Id="sourcekitd" />
+      <ComponentGroupRef Id="lsp" />
+    </Feature>
+  </Package>
+</Wix>

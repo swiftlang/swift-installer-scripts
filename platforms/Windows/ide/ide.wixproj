@@ -1,0 +1,9 @@
+<Project Sdk="WixToolset.Sdk/4.0.1">
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
+      TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT)
+    </DefineConstants>
+  </PropertyGroup>
+</Project>

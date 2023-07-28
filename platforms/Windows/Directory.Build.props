@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
+    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
+
+    <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
+    <ProductVersion>$(ProductVersion)</ProductVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <Platform>x64</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <Platform>arm64</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <Platform>arm</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <Platform>x86</Platform>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
+    <BaseOutputPath>$(RootBuildFolder)</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
+
+    <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">high</DefaultCompressionLevel>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageScope>perMachine</PackageScope>
+    <IsBundleCompressed>true</IsBundleCompressed>
+  </PropertyGroup>
+
+  <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
+
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      ProductArchitecture=$(ProductArchitecture);
+      ProductVersion=$(ProductVersion);
+      PackageScope=$(PackageScope);
+      IsBundleCompressed=$(IsBundleCompressed);
+    </DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup >
+    <PackageScope>perMachine</PackageScope>
+    <IsBundleCompressed>true</IsBundleCompressed>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HarvestNoLogo>true</HarvestNoLogo>
+    <HarvestAutogenerateGuids>true</HarvestAutogenerateGuids>
+  </PropertyGroup>
+</Project>

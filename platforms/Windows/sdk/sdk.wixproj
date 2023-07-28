@@ -1,0 +1,25 @@
+<Project Sdk="WixToolset.Sdk/4.0.1">
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      PLATFORM_ROOT=$(PLATFORM_ROOT);
+      SDK_ROOT=$(SDK_ROOT);
+      SwiftShimsPath=$(SDK_ROOT)\usr\lib\swift\shims;
+    </DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(SDK_ROOT)\usr\lib\swift\shims">
+      <ComponentGroupName>SwiftShims</ComponentGroupName>
+      <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
+      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+</Project>

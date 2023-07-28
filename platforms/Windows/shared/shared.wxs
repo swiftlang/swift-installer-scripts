@@ -1,0 +1,42 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLDIR" Name="Swift" />
+    </StandardDirectory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+        <Directory Name="Toolchains">
+          <Directory Name="$(var.ProductVersion)+Asserts">
+            <Directory Id="_usr" Name="usr">
+              <Directory Id="_usr_bin" Name="bin" />
+              <Directory Id="_usr_include" Name="include" />
+              <Directory Id="_usr_lib" Name="lib">
+                <Directory Id="_usr_lib_clang" Name="clang" />
+                <Directory Id="_usr_lib_swift" Name="swift" />
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="Platforms" Name="Platforms" />
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="Tools" Name="Tools" />
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="Tools">
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[Tools]" />
+    </Component>
+  </Fragment>
+</Wix>

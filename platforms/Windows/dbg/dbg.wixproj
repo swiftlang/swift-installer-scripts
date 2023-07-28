@@ -1,0 +1,11 @@
+<Project Sdk="WixToolset.Sdk/4.0.1">
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
+      TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
+      SWIFT_INSPECT_BUILD=$(SWIFT_INSPECT_BUILD);
+      INCLUDE_SWIFT_INSPECT=$(INCLUDE_SWIFT_INSPECT);
+    </DefineConstants>
+  </PropertyGroup>
+</Project>
