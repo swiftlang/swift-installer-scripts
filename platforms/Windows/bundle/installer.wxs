@@ -1,7 +1,7 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
   <Bundle
     Name="!(loc.BundleName)"
-    Version="$(var.ProductVersion)"
+    Version="$(ProductVersion)"
     Manufacturer="swift.org"
     Compressed="$(IsBundleCompressed)"
     UpgradeCode="710F1827-DA4A-4BF4-BDCE-D5F2D7C0DEF2">

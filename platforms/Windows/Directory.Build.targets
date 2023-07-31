@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared'">
-    <ProjectReference Include="..\shared\shared.wixproj" />
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'runtimelib'">
+    <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 
   <Import Project="WiXCodeSigning.targets" />
