@@ -416,6 +416,9 @@
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" />
       </Component>
+      <Component>
+        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxstdlibshim.h" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Registrar" Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
