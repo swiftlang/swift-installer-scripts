@@ -453,8 +453,8 @@
         <File Id="libcxxshim.modulemap" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" Checksum="yes" />
       </Component>
 
-      <Component Id="libcxxstdlibshims.h" Directory="WindowsSDK_usr_lib_swift_windows" Guid="8277b66f-31c2-4f51-af1c-f49fb4404a13">
-        <File Id="libcxxstdlibshims.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxstdlibshims.h" Checksum="yes" />
+      <Component Id="libcxxstdlibshim.h" Directory="WindowsSDK_usr_lib_swift_windows" Guid="8277b66f-31c2-4f51-af1c-f49fb4404a13">
+        <File Id="libcxxstdlibshim.h" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxstdlibshim.h" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
