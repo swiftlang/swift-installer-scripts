@@ -99,6 +99,11 @@
                       <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
                     </Directory>
                   </Directory>
+                  <Directory Name="swift_static">
+                    <Directory Id="WindowsSDK_usr_lib_swift_static_windows" Name="windows">
+                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
+                    </Directory>
+                  </Directory>
                 </Directory>
                 <Directory Id="WindowsSDK_usr_share" Name="share" />
               </Directory>
@@ -312,6 +317,21 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="CxxStdlib" Directory="CxxStdlib.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\libswiftCxxStdlib.lib" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="Distributed" Directory="Distributed.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -490,6 +510,7 @@
       <ComponentGroupRef Id="_StringProcessing" />
       <ComponentGroupRef Id="CRT" />
       <ComponentGroupRef Id="Cxx" />
+      <ComponentGroupRef Id="CxxStdlib" />
       <ComponentGroupRef Id="Distributed" />
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationXML" />
