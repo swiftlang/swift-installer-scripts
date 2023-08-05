@@ -1,5 +1,8 @@
 <Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <BindFiles>true</BindFiles>
+
     <DefineConstants>
       $(DefineConstants);
       SDK_ROOT=$(SDK_ROOT)

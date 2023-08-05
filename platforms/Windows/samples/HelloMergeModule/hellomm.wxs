@@ -1,0 +1,26 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Language="1033"
+      Manufacturer="swift.org"
+      Name="Hello Merge Module World"
+      UpgradeCode="C0050D86-A62E-41CD-844D-DF3501C4B5F1"
+      Version="1.0"
+      Scope="perUserOrMachine">
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)">
+        <Merge Id="swift_runtime" Language="0" SourceFile="$(runtimemsm.TargetPath)" />
+      </Directory>
+    </StandardDirectory>
+
+    <Feature Id="Hello" AllowAbsent="no" Title="!(bind.property.ProductName)">
+      <MergeRef Id="swift_runtime" />
+
+      <Component Directory="INSTALLFOLDER">
+        <File Source="hello.exe" />
+      </Component>
+    </Feature>
+  </Package>
+</Wix>

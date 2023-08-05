@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <?include ../shared/config.wxi?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?if $(var.ProductArchitecture) = "amd64"?>
+  <?if $(sys.BUILDARCH) = "x64"?>
     <?define ArchBinDir = "bin64"?>
     <?define ArchArchDir = "x86_64"?>
     <?define ArchTriple = "x86_64-unknown-windows-msvc"?>
-  <?elseif $(var.ProductArchitecture) = "arm64"?>
+  <?elseif $(sys.BUILDARCH) = "arm64"?>
     <?define ArchBinDir = "bin64a"?>
     <?define ArchArchDir = "aarch64"?>
     <?define ArchTriple = "aarch64-unknown-windows-msvc"?>
-  <?elseif $(var.ProductArchitecture) = "arm"?>
+  <?elseif $(sys.BUILDARCH) = "arm"?>
     <?define ArchBinDir = "bin32a"?>
     <?define ArchArchDir = "armv7"?>
     <?define ArchTriple = "armv7-unknown-windows-msvc"?>
-  <?elseif $(var.ProductArchitecture) = "x86"?>
+  <?elseif $(sys.BUILDARCH) = "x86"?>
     <?define ArchBinDir = "bin32"?>
     <?define ArchArchDir = "i686"?>
     <?define ArchTriple = "i686-unknown-windows-msvc"?>
@@ -23,9 +22,9 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="!(loc.Sdk_ProductName_$(var.ProcessorArchitecture))"
+      Name="!(loc.Sdk_ProductName_$(sys.BUILDARCH))"
       UpgradeCode="4c37a396-d9e2-490a-89b7-0a3d271d847f"
-      Version="$(var.ProductVersion)"
+      Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="sdk.cab" EmbedCab="yes" />
@@ -55,11 +54,11 @@
             -->
             <Directory Name="XCTest-development">
               <Directory Name="usr">
-                <Directory Id="XCTest_usr_bin" Name="$(var.ArchBinDir)"></Directory>
+                <Directory Id="XCTest_usr_bin" Name="$(ArchBinDir)" />
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="windows">
-                      <Directory Id="XCTest_usr_lib_swift_windows_ARCH" Name="$(var.ArchArchDir)" />
+                      <Directory Id="XCTest_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
                       <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
                     </Directory>
                   </Directory>
@@ -97,7 +96,7 @@
                       <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
-                      <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(var.ArchArchDir)" />
+                      <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
                     </Directory>
                   </Directory>
                 </Directory>
@@ -111,310 +110,310 @@
 
     <ComponentGroup Id="XCTest">
       <Component Directory="XCTest_usr_bin">
-        <File Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" />
       </Component>
       <Component Directory="XCTest_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(var.ArchTriple).swiftdoc" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(var.ArchArchDir)\XCTest.swiftdoc" />
+        <File Name="$(ArchTriple).swiftdoc" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(ArchArchDir)\XCTest.swiftdoc" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(var.ArchTriple).swiftmodule" Source="$(var.PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(var.ArchArchDir)\XCTest.swiftmodule" />
+        <File Name="$(ArchTriple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(ArchArchDir)\XCTest.swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftRemoteMirror" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\Platform.h" />
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\Platform.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" />
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" />
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\module.modulemap" />
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\module.modulemap" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftRemoteMirror.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftRemoteMirror.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime">
       <Component Directory="WindowsSDK_usr_include_Block">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\Block\Block.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\Block\Block.h" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\BlocksRuntime.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\BlocksRuntime.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch" Directory="WindowsSDK_usr_include_dispatch">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\base.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\base.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\block.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\block.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\data.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\data.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\group.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\group.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\io.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\io.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\object.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\object.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\once.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\once.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\queue.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\queue.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\source.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\source.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\dispatch\time.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\time.h" />
       </Component>
       <Component Directory="WindowsSDK_usr_include_os">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_base.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_base.h" />
       </Component>
       <Component Directory="WindowsSDK_usr_include_os">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" />
       </Component>
       <Component Directory="WindowsSDK_usr_include_os">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\os\generic_win_base.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_win_base.h" />
       </Component>
       <Component Directory="WindowsSDK_usr_include_os">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\os\object.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\object.h" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(var.ArchTriple).swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\Dispatch.swiftdoc" />
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\Dispatch.swiftdoc" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(var.ArchTriple).swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\Dispatch.swiftmodule" />
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\Dispatch.swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_Concurrency" Directory="_Concurrency.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swift_Concurrency.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swift_Concurrency.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_Differentiation" Directory="_Differentiation.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swift_Differentiation.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swift_Differentiation.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_RegexParser" Directory="_RegexParser.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swift_RegexParser.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swift_RegexParser.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_StringProcessing" Directory="_StringProcessing.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swift_StringProcessing.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swift_StringProcessing.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="CRT" Directory="CRT.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftCRT.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftCRT.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Cxx" Directory="Cxx.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftCxx.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftCxx.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Distributed" Directory="Distributed.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftDistributed.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftDistributed.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Foundation" Directory="Foundation.swiftmodule">
       <Component>
-        <File Name="$(var.ArchTriple).swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\Foundation.swiftdoc" />
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\Foundation.swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(var.ArchTriple).swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\Foundation.swiftmodule" />
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\Foundation.swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Foundation.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Foundation.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="FoundationNetworking" Directory="FoundationNetworking.swiftmodule">
       <Component>
-        <File Name="$(var.ArchTriple).swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\FoundationNetworking.swiftdoc" />
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationNetworking.swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(var.ArchTriple).swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\FoundationNetworking.swiftmodule" />
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationNetworking.swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="FoundationXML" Directory="FoundationXML.swiftmodule">
       <Component>
-        <File Name="$(var.ArchTriple).swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\FoundationXML.swiftdoc" />
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationXML.swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(var.ArchTriple).swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\FoundationXML.swiftmodule" />
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationXML.swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\FoundationXML.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationXML.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Swift" Directory="Swift.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftCore.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftCore.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftOnoneSupport" Directory="SwiftOnoneSupport.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftSwiftOnoneSupport.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftSwiftOnoneSupport.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="WinSDK" Directory="WinSDK.swiftmodule">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(var.ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(var.ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(var.ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftWinSDK.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftWinSDK.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="libcxxshim" Directory="WindowsSDK_usr_lib_swift_windows">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\libcxxshim.h" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" />
       </Component>
       <Component>
         <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxstdlibshim.h" />
@@ -423,36 +422,48 @@
 
     <ComponentGroup Id="Registrar" Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftrt.obj" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftrt.obj" />
       </Component>
       <!--
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH" Id="swiftrtd.obj">
-        <File Id="swiftrtd.obj" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\$(var.ArchArchDir)\swiftrtd.obj" />
+        <File Id="swiftrtd.obj" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftrtd.obj" />
       </Component>
       -->
     </ComponentGroup>
 
     <ComponentGroup Id="AuxiliaryFiles" Directory="WindowsSDK_usr_share">
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\share\ucrt.modulemap" />
+        <File Source="$(SDK_ROOT)\usr\share\ucrt.modulemap" />
       </Component>
-      <Component Directory="WindowsSDK_usr_share">
-        <File Source="$(var.SDK_ROOT)\usr\share\winsdk.modulemap" />
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\share\winsdk.modulemap" />
       </Component>
-      <Component Directory="WindowsSDK_usr_share">
-        <File Source="$(var.SDK_ROOT)\usr\share\vcruntime.apinotes" />
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\share\vcruntime.apinotes" />
       </Component>
-      <Component Directory="WindowsSDK_usr_share">
-        <File Source="$(var.SDK_ROOT)\usr\share\vcruntime.modulemap" />
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\share\vcruntime.modulemap" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
       <Component Directory="WindowsSDK">
-        <File Source="$(var.SDK_ROOT)\SDKSettings.plist" />
+        <File Source="$(SDK_ROOT)\SDKSettings.plist" />
       </Component>
       <Component Directory="WindowsPlatform">
-        <File Source="$(var.PLATFORM_ROOT)\Info.plist" />
+        <File Source="$(PLATFORM_ROOT)\Info.plist" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="RuntimeMergeModules" Directory="WindowsSDK_usr_share" Subdirectory="RuntimeMergeModules">
+      <Component>
+        <File Source="!(bindpath.rtmsm.x86)\runtime.x86.msm" />
+      </Component>
+      <Component>
+        <File Source="!(bindpath.rtmsm.amd64)\runtime.amd64.msm" />
+      </Component>
+      <Component>
+        <File Source="!(bindpath.rtmsm.arm64)\runtime.arm64.msm" />
       </Component>
     </ComponentGroup>
 
@@ -468,7 +479,7 @@
     </ComponentGroup>
 
     <!-- Features -->
-    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(var.ProcessorArchitecture))">
+    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(sys.BUILDARCH))">
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
@@ -491,6 +502,7 @@
       <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
+      <ComponentGroupRef Id="RuntimeMergeModules" />
       <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>
   </Package>

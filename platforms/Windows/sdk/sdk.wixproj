@@ -13,6 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\runtimemsm\runtimemsm.wixproj" Properties="ProductArchitecture=x86" BindName="rtmsm.x86" />
+    <ProjectReference Include="..\runtimemsm\runtimemsm.wixproj" Properties="ProductArchitecture=amd64" BindName="rtmsm.amd64" />
+    <ProjectReference Include="..\runtimemsm\runtimemsm.wixproj" Properties="ProductArchitecture=arm64" BindName="rtmsm.arm64" />
+  </ItemGroup>
+
+  <ItemGroup>
     <HarvestDirectory Include="$(SDK_ROOT)\usr\lib\swift\shims">
       <ComponentGroupName>SwiftShims</ComponentGroupName>
       <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>

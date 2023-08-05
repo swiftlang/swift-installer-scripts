@@ -1,10 +1,10 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Ide_ProductName)"
       UpgradeCode="8dd91c86-d13d-490b-b06b-9522a9cf504c"
-      Version="$(var.ProductVersion)"
+      Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="sdk.cab" EmbedCab="yes" />
@@ -16,33 +16,33 @@
 
     <ComponentGroup Id="clangd" Directory="_usr_bin">
       <Component>
-        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clangd.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="lldb" Directory="_usr_bin">
       <Component>
-        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="sourcekitd">
       <Component Directory="_usr_bin">
-        <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" />
       </Component>
 
       <Component Directory="_usr_lib">
-        <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" />
       </Component>
 
       <Component Directory="_usr_include_SourceKit">
-        <File Source="$(var.TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="lsp" Directory="_usr_bin">
       <Component>
-        <File Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" />
+        <File Source="$(DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" />
       </Component>
     </ComponentGroup>
 
