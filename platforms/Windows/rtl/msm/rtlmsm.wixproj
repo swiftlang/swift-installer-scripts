@@ -1,10 +1,10 @@
 <Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
     <OutputType>Module</OutputType>
-    <OutputName>runtime.$(ProductArchitecture)</OutputName>
+    <OutputName>rtl.$(ProductArchitecture)</OutputName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\runtimelib\runtimelib.wixproj" />
+    <ProjectReference Include="..\lib\rtllib.wixproj" />
   </ItemGroup>
 </Project>

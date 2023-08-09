@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'runtimelib'">
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'rtllib'">
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 

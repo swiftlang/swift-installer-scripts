@@ -1,9 +1,9 @@
 <Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
-    <OutputName>runtime</OutputName>
+    <OutputName>rtl</OutputName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\runtimelib\runtimelib.wixproj" />
+    <ProjectReference Include="..\lib\rtllib.wixproj" />
   </ItemGroup>
 </Project>
