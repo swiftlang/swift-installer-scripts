@@ -1,5 +1,6 @@
 <Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
+    <OutputName>rtl</OutputName>
     <OutputType>Library</OutputType>
     <BindFiles>true</BindFiles>
 

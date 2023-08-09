@@ -6,6 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\runtimemsm\runtimemsm.wixproj" BindName="rtmsm" />
+    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" />
   </ItemGroup>
 </Project>

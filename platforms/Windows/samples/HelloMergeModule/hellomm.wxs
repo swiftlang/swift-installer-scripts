@@ -11,7 +11,7 @@
 
     <StandardDirectory Id="ProgramFiles6432Folder">
       <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)">
-        <Merge Id="swift_runtime" Language="0" SourceFile="$(runtimemsm.TargetPath)" />
+        <Merge Id="swift_runtime" Language="0" SourceFile="$(rtlmsm.TargetPath)" />
       </Directory>
     </StandardDirectory>
 
