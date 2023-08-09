@@ -43,8 +43,8 @@
     <PlatformToolset Condition="'$(PlatformToolset)' == ''">$(DefaultPlatformToolset)</PlatformToolset>
     <PlatformToolset>$(PlatformToolset)</PlatformToolset>
 
-    <IntDir>build\$(Configuration)\$(PlatformShortName)\obj\</IntDir>
-    <OutDir>build\$(Configuration)\$(PlatformShortName)\bin\</OutDir>
+    <IntDir>.output\$(Configuration)\$(PlatformShortName)\obj\</IntDir>
+    <OutDir>.output\$(Configuration)\$(PlatformShortName)\bin\</OutDir>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
