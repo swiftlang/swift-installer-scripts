@@ -324,11 +324,8 @@
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
-        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[_usr_bin]" />
-      </Component>
-      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
-        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
       </Component>
     </ComponentGroup>
 
