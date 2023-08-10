@@ -1,7 +1,11 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
-    <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLDIR" Name="Swift" />
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Name="Programs">
+        <Directory Name="Swift">
+          <Directory Id="INSTALLDIR" Name="$(MajorMinorProductVersion)" />
+        </Directory>
+      </Directory>
     </StandardDirectory>
   </Fragment>
 
@@ -36,7 +40,7 @@
 
   <Fragment>
     <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="Tools">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[Tools]" />
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[Tools]" />
     </Component>
   </Fragment>
 </Wix>

@@ -23,11 +23,8 @@
     <SetDirectory Id="RUNTIMEDIR" Value="[runtimes_usr_bin]" Sequence="first" />
 
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR">
-      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Guid="8681d813-eb32-46f9-8b1c-f622b38b5eaf">
-        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[runtimes_usr_bin]" />
-      </Component>
-      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
-        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
       </Component>
     </ComponentGroup>
 
