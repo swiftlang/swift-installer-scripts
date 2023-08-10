@@ -3,12 +3,14 @@
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Ide_ProductName)"
-      UpgradeCode="8dd91c86-d13d-490b-b06b-9522a9cf504c"
+      UpgradeCode="$(IdeUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="sdk.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="ide.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(IdeUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include_SourceKit" Name="SourceKit" />

@@ -43,4 +43,33 @@
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[Tools]" />
     </Component>
   </Fragment>
+
+  <!--
+  To support side-by-side installation for each minor release (the latest point release of each minor release)
+  each package must change its upgrade code for lifetime of that minor release. So, for example, the packages for
+  Swift v5.9.0 through v5.9.99 all have the same set of upgrade codes. They're all changed for v5.10.x, v5.11.x,
+  and so forth. To avoid duplication, the upgrade logic is authored here and referenced from the `Package` of each
+  package.
+  -->
+  <Fragment>
+    <FeatureGroup Id="SideBySideUpgradeStrategy">
+      <FeatureGroupRef Id="SideBySideUpgradeStrategyShared" />
+    </FeatureGroup>
+
+    <Upgrade Id="!(wix.SideBySidePackageUpgradeCode)">
+      <UpgradeVersion Minimum="$(MajorMinorProductVersion).65535" IncludeMinimum="no" OnlyDetect="yes" Property="NEWERVERSIONDETECTED" />
+      <UpgradeVersion Minimum="$(MajorMinorProductVersion).0" IncludeMinimum="yes" Maximum="$(ProductVersion)" IncludeMaximum="yes" Property="OLDERVERSIONBEINGUPGRADED" />
+      <UpgradeVersion Maximum="$(MajorMinorProductVersion).0" IncludeMaximum="no" OnlyDetect="yes" Property="OLDERVERSIONDETECTEDNOTUPGRADED" />
+    </Upgrade>
+  </Fragment>
+
+  <Fragment>
+    <FeatureGroup Id="SideBySideUpgradeStrategyShared" />
+
+    <Launch Message="!(loc.DowngradeError)" Condition="NOT NEWERVERSIONDETECTED" />
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallValidate" />
+    </InstallExecuteSequence>
+  </Fragment>
 </Wix>

@@ -3,12 +3,14 @@
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Dbg_ProductName)"
-      UpgradeCode="91d382af-1e92-44dc-a4ad-aee91c1b5160"
+      UpgradeCode="$(DbgUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="dbg.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="dbg.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(DbgUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_lib">
       <Directory Name="site-packages">

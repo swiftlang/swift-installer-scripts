@@ -23,25 +23,26 @@
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Sdk_ProductName_$(sys.BUILDARCH))"
-      UpgradeCode="4c37a396-d9e2-490a-89b7-0a3d271d847f"
+      UpgradeCode="$(SdkUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="sdk.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="sdk_$(sys.BUILDARCHSHORT).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(SdkUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <!--
-      %ProgramFiles64Folder%
-        └─ Swift
-            └─ Platforms
-                └─ Windows.platform
-                    └─ Developer
-                        ├─ Library
-                        │   └─ XCTest-development
-                        │       └─ ...
-                        └─ SDKs
-                            └─ Windows.sdk
-                                    └─ ...
+      └─ Swift
+          └─ Platforms
+              └─ Windows.platform
+                  └─ Developer
+                      ├─ Library
+                      │   └─ XCTest-development
+                      │       └─ ...
+                      └─ SDKs
+                          └─ Windows.sdk
+                                  └─ ...
     -->
     <DirectoryRef Id="Platforms">
       <Directory Id="WindowsPlatform" Name="Windows.platform">
@@ -105,7 +106,9 @@
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="WindowsSDK_usr_share" Name="share" />
+                <Directory Id="WindowsSDK_usr_share" Name="share">
+                  <Directory Id="RuntimeMergeModules" Name="RuntimeMergeModules" />
+                </Directory>
               </Directory>
             </Directory>
           </Directory>
@@ -436,7 +439,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\libcxxshim.modulemap" />
       </Component>
       <Component>
-        <File Source="$(var.SDK_ROOT)\usr\lib\swift\windows\libcxxstdlibshim.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\libcxxstdlibshim.h" />
       </Component>
     </ComponentGroup>
 
@@ -475,26 +478,21 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="RuntimeMergeModules" Directory="WindowsSDK_usr_share" Subdirectory="RuntimeMergeModules">
-      <Component>
-        <File Source="!(bindpath.rtmsm.x86)\runtime.x86.msm" />
-      </Component>
-      <Component>
-        <File Source="!(bindpath.rtmsm.amd64)\runtime.amd64.msm" />
-      </Component>
-      <Component>
-        <File Source="!(bindpath.rtmsm.arm64)\runtime.arm64.msm" />
-      </Component>
-    </ComponentGroup>
+    <Component Id="runtime.x86.msm" Directory="RuntimeMergeModules">
+      <File Source="!(bindpath.rtlmsm.x86)\rtl.x86.msm" />
+    </Component>
+
+    <Component Id="runtime.amd64.msm" Directory="RuntimeMergeModules">
+      <File Source="!(bindpath.rtlmsm.amd64)\rtl.amd64.msm" />
+    </Component>
+
+    <Component Id="runtime.arm64.msm" Directory="RuntimeMergeModules">
+      <File Source="!(bindpath.rtlmsm.arm64)\rtl.arm64.msm" />
+    </Component>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="bd3ddc62-4c5c-4f6b-806e-02d2c6a65b65">
-        <!-- <Condition> %PROCESSOR_ARCHITECTURE~="arm64" </Condition> -->
-        <Environment Id="SystemSDKRoot" Action="set" Name="SDKROOT" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Platforms\Windows.platform\Developer\SDKs\Windows.sdk" />
-      </Component>
-      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="580f1edd-8744-4be8-8dd8-e519f70a91e4">
-        <!-- <Condition> %PROCESSOR_ARCHITECTURE~="arm64" </Condition> -->
-        <Environment Id="UserSDKRoot" Action="set" Name="SDKROOT" Part="all" Permanent="no" System="no" Value="[INSTALLDIR]Platforms\Windows.platform\Developer\SDKs\Windows.sdk" />
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="580f1edd-8744-4be8-8dd8-e519f70a91e4">
+        <Environment Action="set" Name="SDKROOT" Part="all" Permanent="no" System="no" Value="[WindowsSDK]" />
       </Component>
     </ComponentGroup>
 
@@ -523,8 +521,25 @@
       <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
-      <ComponentGroupRef Id="RuntimeMergeModules" />
       <ComponentGroupRef Id="EnvironmentVariables" />
+
+      <!--
+      Start with all redists and disable the ones the user deselected in the Options page.
+      -->
+      <Feature Id="RedistX86">
+        <Level Value="0" Condition="REDISTX86=0" />
+        <ComponentRef Id="runtime.x86.msm" />
+      </Feature>
+
+      <Feature Id="RedistAMD64">
+        <Level Value="0" Condition="REDISTAMD64=0" />
+        <ComponentRef Id="runtime.amd64.msm" />
+      </Feature>
+
+      <Feature Id="RedistARM64">
+        <Level Value="0" Condition="REDISTARM64=0" />
+        <ComponentRef Id="runtime.arm64.msm" />
+      </Feature>
     </Feature>
   </Package>
 </Wix>

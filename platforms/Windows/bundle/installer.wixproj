@@ -1,10 +1,19 @@
 ﻿<Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
     <OutputType>Bundle</OutputType>
-    <DefineConstants>$(DefineConstants);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
+    <DefaultCompressionLevel>$(BundleCompressionLevel)</DefaultCompressionLevel>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\bld\bld.wixproj" BindName="bld" />
+    <ProjectReference Include="..\cli\cli.wixproj" BindName="cli" />
+    <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
+    <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
+    <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rt" />
+    <ProjectReference Include="..\sdk\sdk.wixproj" BindName="sdk" />
   </ItemGroup>
 </Project>
