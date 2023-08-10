@@ -1,14 +1,16 @@
-﻿﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Runtime_ProductName_$(sys.BUILDARCH))"
-      UpgradeCode="bea8c6dc-f73e-445b-9486-2333d1cf2886"
+      UpgradeCode="$(RtlUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <MediaTemplate CabinetTemplate="runtime{0}.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="rtl.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(RtlUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="INSTALLDIR">
       <Directory Name="Runtimes">

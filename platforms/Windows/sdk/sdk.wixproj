@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\runtimemsm\runtimemsm.wixproj" Properties="ProductArchitecture=x86" BindName="rtmsm.x86" />
-    <ProjectReference Include="..\runtimemsm\runtimemsm.wixproj" Properties="ProductArchitecture=amd64" BindName="rtmsm.amd64" />
-    <ProjectReference Include="..\runtimemsm\runtimemsm.wixproj" Properties="ProductArchitecture=arm64" BindName="rtmsm.arm64" />
+    <ProjectReference Include="..\rtl\msm\rtlmsm.wixproj" Properties="ProductArchitecture=x86" BindName="rtlmsm.x86" />
+    <ProjectReference Include="..\rtl\msm\rtlmsm.wixproj" Properties="ProductArchitecture=amd64" BindName="rtlmsm.amd64" />
+    <ProjectReference Include="..\rtl\msm\rtlmsm.wixproj" Properties="ProductArchitecture=arm64" BindName="rtlmsm.arm64" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,12 +3,14 @@
       Language="1033"
       Manufacturer="swift.org"
       Name="!(loc.Bld_ProductName)"
-      UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
+      UpgradeCode="$(BldUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="bld.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="bld.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(BldUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include_llvm_c" Name="llvm-c" />

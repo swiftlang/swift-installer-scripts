@@ -2,11 +2,16 @@
 <Project>
   <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
-    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
-
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
-    <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <NonSemVerProductVersion>$([System.Text.RegularExpressions.Regex]::Replace($(ProductVersion), `[-+].*`, ``))</NonSemVerProductVersion>
+    <MajorMinorProductVersion>$([System.Text.RegularExpressions.Regex]::Match($(NonSemVerProductVersion), `\d+\.\d+`))</MajorMinorProductVersion>
+    <MajorMinorProductVersion Condition="'$(MajorMinorProductVersion)' == ''">$(NonSemVerProductVersion)</MajorMinorProductVersion>
+  </PropertyGroup>
+
+  <Import Project="SideBySideUpgradeStrategy.props" />
 
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
     <Platform>x64</Platform>
@@ -24,32 +29,54 @@
   <PropertyGroup>
     <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
     <BaseOutputPath>$(RootBuildFolder)</BaseOutputPath>
+    <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
 
-    <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">high</DefaultCompressionLevel>
+    <BundleFlavor Condition="'$(BundleFlavor)' == ''">web</BundleFlavor>
   </PropertyGroup>
 
   <PropertyGroup>
+    <!--
+    ICE38 is about mixing per-user and per-machine resources (not a thing for us).
+    ICE61 is a warning about allowing "same-version" major upgrades, something we want.
+    ICE64 is documented as not being an issue when packages are always per-user.
+    ICE91 is about "roaming scenarios," which doesn't apply to our use of LocalAppDataFolder.
+    -->
+    <SuppressIces>ICE38;ICE61;ICE64;ICE91</SuppressIces>
     <PackageScope>perUser</PackageScope>
+  </PropertyGroup>
+
+  <!-- High package and high bundle compression results in the smallest bundle, at the cost of build time. -->
+  <PropertyGroup Condition="'$(BundleFlavor)' == 'offline'">
+    <PackageCompressionLevel>high</PackageCompressionLevel>
+    <ArePackageCabsEmbedded>false</ArePackageCabsEmbedded>
+
     <IsBundleCompressed>true</IsBundleCompressed>
+    <BundleCompressionLevel>high</BundleCompressionLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(BundleFlavor)' == 'web'">
+    <PackageCompressionLevel>high</PackageCompressionLevel>
+    <ArePackageCabsEmbedded>false</ArePackageCabsEmbedded>
+
+    <IsBundleCompressed>false</IsBundleCompressed>
+    <BundleCompressionLevel>high</BundleCompressionLevel>
   </PropertyGroup>
 
   <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
 
   <PropertyGroup>
+    <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">$(PackageCompressionLevel)</DefaultCompressionLevel>
+
     <DefineConstants>
       $(DefineConstants);
       ProductArchitecture=$(ProductArchitecture);
       ProductVersion=$(ProductVersion);
       PackageScope=$(PackageScope);
       IsBundleCompressed=$(IsBundleCompressed);
+      ArePackageCabsEmbedded=$(ArePackageCabsEmbedded);
     </DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup >
-    <PackageScope>perMachine</PackageScope>
-    <IsBundleCompressed>true</IsBundleCompressed>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,31 +1,101 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
   <Bundle
-    Name="!(loc.BundleName)"
+    Name="!(loc.BundleName) $(ProductVersion)"
     Version="$(ProductVersion)"
     Manufacturer="swift.org"
     Compressed="$(IsBundleCompressed)"
-    UpgradeCode="710F1827-DA4A-4BF4-BDCE-D5F2D7C0DEF2">
-
-    <!-- This bundle should also upgrade the "old" bundles. -->
-    <RelatedBundle Id="8c75f32a-7bdf-4c61-abf6-c7e1c4b8fbf6" Action="upgrade" />
-    <RelatedBundle Id="151d42d9-8877-4b72-ac62-4695243a35c1" Action="upgrade" />
+    UpgradeCode="$(BundleUpgradeCode)">
 
     <BootstrapperApplication>
       <bal:WixStandardBootstrapperApplication
         LicenseUrl="https://www.swift.org/LICENSE.txt"
-        LogoFile="swift.png"
-        SuppressOptionsUI="yes"
-        SuppressRepair="no"
-        Theme="hyperlinkLicense" />
+        Theme="hyperlinkSidebarLicense"
+        LocalizationFile="theme.wxl"
+        ThemeFile="theme.xml" />
+      <Payload SourceFile="swift_side.png" />
     </BootstrapperApplication>
 
+    <!--
+    Keep `InstallFolder` in sync with the INSTALLDIR definition in shared.wxs.
+    The bundle variable here will overwrite the default authored in the MSI
+    packages, but avoid the confusion if the default directory should change.
+    -->
+    <Variable Name="InstallFolder" bal:Overridable="yes" Type="formatted" Persisted="yes"
+      Value="[LocalAppDataFolder]Programs\Swift\$(MajorMinorProductVersion)" />
+    <Variable Name="OptionsInstallBld" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallCli" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRuntime" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallSdk" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
+
+<!--
+  For the web bundle, we need to provide a download URL for each package and its .cabs.
+  (The SourceFile attribute is also required, both for the offline bundle and for Burn
+  to get the hash of the packages. Note that the packages and .cabs available for
+  download must exactly match the ones used when building the bundle. Burn validates
+  downloads by their hashes.)
+
+  `BaseReleaseDownloadUrl` is a preprocessor variable that provides the URL to the
+  directory containing the packages for that bundle. So, for example, for the bundle at:
+
+  https://download.swift.org/swift-5.8.1-release/windows10/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-windows10.exe
+
+  `BaseReleaseDownloadUrl` would be `https://download.swift.org/swift-5.8.1-release/windows10/swift-5.8.1-RELEASE`.
+
+  `{2}` is the file name of the payload.
+
+  Schema doc is at https://wixtoolset.org/docs/schema/wxs/msipackage/.
+-->
+
     <Chain>
-      <MsiPackage SourceFile="$(MSI_LOCATION)\runtime.msi" />
-      <MsiPackage SourceFile="$(MSI_LOCATION)\bld.msi" />
-      <MsiPackage SourceFile="$(MSI_LOCATION)\cli.msi" />
-      <MsiPackage SourceFile="$(MSI_LOCATION)\dbg.msi" />
-      <MsiPackage SourceFile="$(MSI_LOCATION)\ide.msi" />
-      <MsiPackage SourceFile="$(MSI_LOCATION)\sdk.msi" />
+      <MsiPackage
+        SourceFile="!(bindpath.rt)\rtl.msi"
+        InstallCondition="OptionsInstallRuntime"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.bld)\bld.msi"
+        InstallCondition="OptionsInstallBld"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.cli)\cli.msi"
+        InstallCondition="OptionsInstallCli"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.dbg)\dbg.msi"
+        InstallCondition="OptionsInstallDbg"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.ide)\ide.msi"
+        InstallCondition="OptionsInstallIde"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.sdk)\sdk.msi"
+        InstallCondition="OptionsInstallSdk"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="REDISTX86" Value="[OptionsInstallRedistX86]" />
+        <MsiProperty Name="REDISTAMD64" Value="[OptionsInstallRedistAMD64]" />
+        <MsiProperty Name="REDISTARM64" Value="[OptionsInstallRedistArm64]" />
+      </MsiPackage>
     </Chain>
   </Bundle>
 </Wix>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+  Note that these GUIDs are substituted at bind time so they skip the normal cleanup
+  that the compiler does and therefore must be "proper" GUIDs:
+  - Uppercase
+  - Surrounded by curly braces
+  -->
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '0.0'">
+    <BundleUpgradeCode>{963BE094-A046-47B3-83B2-BEBE92859D39}</BundleUpgradeCode>
+    <BldUpgradeCode>{E507284D-138A-41F8-A5F9-99AB5B93E51B}</BldUpgradeCode>
+    <CliUpgradeCode>{37FD1273-011B-4F5E-9706-2EF10732EF24}</CliUpgradeCode>
+    <DbgUpgradeCode>{35083EE2-B323-4FFF-925E-20C32F7CE115}</DbgUpgradeCode>
+    <IdeUpgradeCode>{0CBEC757-9656-4466-A0FF-09E36C11E6BC}</IdeUpgradeCode>
+    <RtlUpgradeCode>{A47763FE-798F-4CAF-A40F-1E7DD4B8A567}</RtlUpgradeCode>
+    <SdkUpgradeCode>{7EDBB57B-A263-447C-BE1E-BF302C215F46}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '5.9'">
+    <BundleUpgradeCode>{710F1827-DA4A-4BF4-BDCE-D5F2D7C0DEF2}</BundleUpgradeCode>
+    <BldUpgradeCode>{7E95DC06-7F84-4E8E-A038-8304AF0468FB}</BldUpgradeCode>
+    <CliUpgradeCode>{87019842-3F3E-4227-B5C5-23A8EF72AD89}</CliUpgradeCode>
+    <DbgUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgUpgradeCode>
+    <IdeUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeUpgradeCode>
+    <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
+    <SdkUpgradeCode>{4C37A396-D9E2-490A-89B7-0A3D271D847F}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '5.10'">
+    <BundleUpgradeCode>{F3764C05-9568-4DE9-98FE-AF64C0B30706}</BundleUpgradeCode>
+    <BldUpgradeCode>{B6D3F8BA-852E-4154-9695-D96CC1AB9106}</BldUpgradeCode>
+    <CliUpgradeCode>{30676806-5205-4AD2-84BC-2E4D43FF3EC0}</CliUpgradeCode>
+    <DbgUpgradeCode>{431EE599-67E3-4D29-92C2-780731113746}</DbgUpgradeCode>
+    <IdeUpgradeCode>{AD7ABDB5-6D22-481A-B1AC-EE77D632A537}</IdeUpgradeCode>
+    <RtlUpgradeCode>{BC0FC4E7-CF16-4489-A0AC-7562C350AB66}</RtlUpgradeCode>
+    <SdkUpgradeCode>{5C928C3E-8253-42A8-8B84-FE1F1F70C68A}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '5.11'">
+    <BundleUpgradeCode>{239DD2D6-3F1B-42AE-8412-4640BD48284D}</BundleUpgradeCode>
+    <BldUpgradeCode>{C8054F49-C202-4E8A-8FD9-B2966BFDD600}</BldUpgradeCode>
+    <CliUpgradeCode>{47480BD8-1F5E-4146-9AA5-E0A622633B3C}</CliUpgradeCode>
+    <DbgUpgradeCode>{544672E2-A047-493C-8DF9-4E9028B53C1C}</DbgUpgradeCode>
+    <IdeUpgradeCode>{D83C2080-23C2-4E30-82C0-C27C67684905}</IdeUpgradeCode>
+    <RtlUpgradeCode>{CCC16743-9AAF-4FF9-9D16-81AC3FB036D6}</RtlUpgradeCode>
+    <SdkUpgradeCode>{1412CA1E-F6FC-4B51-9B61-2BB421F95CC9}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.0'">
+    <BundleUpgradeCode>{71CCD6EF-F3CF-492D-A1DA-D76E50A26EBF}</BundleUpgradeCode>
+    <BldUpgradeCode>{54E8F1D1-A399-4858-B9E7-7AFDB9C7EEF3}</BldUpgradeCode>
+    <CliUpgradeCode>{A4D13EFF-C677-43DB-83F2-879F0BDD6954}</CliUpgradeCode>
+    <DbgUpgradeCode>{8471EA4D-A1B5-4C9A-B357-133E1E93FA35}</DbgUpgradeCode>
+    <IdeUpgradeCode>{6E7B620B-C4EB-441D-AC03-E9EA75890CD1}</IdeUpgradeCode>
+    <RtlUpgradeCode>{E281039A-4FAD-4108-B05A-716ACA3FBC25}</RtlUpgradeCode>
+    <SdkUpgradeCode>{E0DAA36B-2778-44D6-BADD-B80F6AFAE05E}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.5'">
+    <BundleUpgradeCode>{44D57C54-D8F2-4374-8C52-8856EE663D32}</BundleUpgradeCode>
+    <BldUpgradeCode>{F0503D28-C1A1-41ED-A9E8-F9B4A97A1DB7}</BldUpgradeCode>
+    <CliUpgradeCode>{19C9DA70-48D5-4EFB-B490-88AABBA22791}</CliUpgradeCode>
+    <DbgUpgradeCode>{38B13ECD-B15E-4A4D-B054-19BA8F8CCB26}</DbgUpgradeCode>
+    <IdeUpgradeCode>{21754BFE-97FE-493C-9FD6-82ED20085858}</IdeUpgradeCode>
+    <RtlUpgradeCode>{6AFB90F0-6E02-4A09-9E09-B78CA3E7D95C}</RtlUpgradeCode>
+    <SdkUpgradeCode>{6AFB90F0-6E02-4A09-9E09-B78CA3E7D95C}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      MajorMinorProductVersion=$(MajorMinorProductVersion);
+      BundleUpgradeCode=$(BundleUpgradeCode);
+      BldUpgradeCode=$(BldUpgradeCode);
+      CliUpgradeCode=$(CliUpgradeCode);
+      DbgUpgradeCode=$(DbgUpgradeCode);
+      IdeUpgradeCode=$(IdeUpgradeCode);
+      RtlUpgradeCode=$(RtlUpgradeCode);
+      SdkUpgradeCode=$(SdkUpgradeCode);
+    </DefineConstants>
+  </PropertyGroup>
+</Project>
