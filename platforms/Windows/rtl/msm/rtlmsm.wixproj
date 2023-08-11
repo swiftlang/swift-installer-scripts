@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\lib\rtllib.wixproj" />
+    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=x86" />
+    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=amd64" />
+    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=arm64" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,16 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
-    <Directory Id="RUNTIMEDIR" ComponentGuidGenerationSeed="5ACF10A7-6ACC-4649-8839-C8A5B8252B75" />
+    <?if $(sys.BUILDARCH) == x86 ?>
+      <?define RuntimeDirectoryComponentGuidGenerationSeed = "79856274-E0F9-4602-A56A-A8DE16C05C41" ?>
+    <?elseif $(sys.BUILDARCH) == x64 ?>
+      <?define RuntimeDirectoryComponentGuidGenerationSeed = "89EC12D8-2E04-41C5-9685-C38DA162A2DA" ?>
+    <?elseif $(sys.BUILDARCH) == arm64 ?>
+      <?define RuntimeDirectoryComponentGuidGenerationSeed = "E9BC660F-2E0E-48E4-8DE0-18567335AF6B" ?>
+    <?endif?>
 
-    <ComponentGroup Id="stdlib" Directory="RUNTIMEDIR">
+    <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
+
+    <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
         <File Source="$(SDK_ROOT)\usr\bin\swift_Concurrency.dll" />
       </Component>
@@ -44,13 +52,13 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="BlocksRuntime" Directory="RUNTIMEDIR">
+    <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
         <File Source="$(SDK_ROOT)\usr\bin\BlocksRuntime.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="libdispatch" Directory="RUNTIMEDIR">
+    <ComponentGroup Id="libdispatch_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
         <File Source="$(SDK_ROOT)\usr\bin\dispatch.dll" />
       </Component>
@@ -59,7 +67,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="Foundation" Directory="RUNTIMEDIR">
+    <ComponentGroup Id="Foundation_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
         <File Source="$(SDK_ROOT)\usr\bin\Foundation.dll" />
       </Component>
@@ -71,18 +79,18 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="plutil" Directory="RUNTIMEDIR">
+    <ComponentGroup Id="plutil_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
         <File Source="$(SDK_ROOT)\usr\bin\plutil.exe" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_runtime">
-      <ComponentGroupRef Id="stdlib" />
-      <ComponentGroupRef Id="BlocksRuntime" />
-      <ComponentGroupRef Id="libdispatch" />
-      <ComponentGroupRef Id="Foundation" />
-      <ComponentGroupRef Id="plutil" />
+    <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
+      <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="plutil_$(ProductArchitecture)" />
     </ComponentGroup>
   </Fragment>
 </Wix>

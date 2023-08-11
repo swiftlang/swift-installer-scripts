@@ -14,6 +14,6 @@
     Language="0"
     Version="$(ProductVersion)">
 
-    <ComponentGroupRef Id="swift_runtime" />
+    <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
   </Module>
 </Wix>
