@@ -374,7 +374,7 @@
       </Component>
 
       <Component Id="libswiftCxxStdlib.lib" Directory="WindowsSDK_usr_lib_swift_windows_x86_64" Guid="654eedf7-cb83-4589-9c89-d12e8e53b9fa">
-        <File Id="libswiftCxxStdlib.lib" Source="$(var.SDK_ROOT)\usr\lib\swift_static\windows\x86_64\libswiftCxxStdlib.lib" Checksum="yes" />
+        <File Id="libswiftCxxStdlib.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\x86_64\libswiftCxxStdlib.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
