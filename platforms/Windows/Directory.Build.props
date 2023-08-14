@@ -73,9 +73,11 @@
       $(DefineConstants);
       ProductArchitecture=$(ProductArchitecture);
       ProductVersion=$(ProductVersion);
+      MajorMinorProductVersion=$(MajorMinorProductVersion);
       PackageScope=$(PackageScope);
       IsBundleCompressed=$(IsBundleCompressed);
       ArePackageCabsEmbedded=$(ArePackageCabsEmbedded);
+      BaseReleaseDownloadUrl=$(BaseReleaseDownloadUrl);
     </DefineConstants>
   </PropertyGroup>
 
