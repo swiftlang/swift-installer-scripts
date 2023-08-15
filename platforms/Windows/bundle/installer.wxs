@@ -16,12 +16,12 @@
     </BootstrapperApplication>
 
     <!--
-    Keep `InstallFolder` in sync with the INSTALLDIR definition in shared.wxs.
+    Keep `InstallFolder` in sync with the INSTALLROOT definition in shared.wxs.
     The bundle variable here will overwrite the default authored in the MSI
     packages, but avoid the confusion if the default directory should change.
     -->
     <Variable Name="InstallFolder" bal:Overridable="yes" Type="formatted" Persisted="yes"
-      Value="[LocalAppDataFolder]Programs\Swift\$(MajorMinorProductVersion)" />
+      Value="[LocalAppDataFolder]Programs\Swift" />
     <Variable Name="OptionsInstallBld" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallCli" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -56,42 +56,42 @@
         SourceFile="!(bindpath.rt)\rtl.msi"
         InstallCondition="OptionsInstallRuntime"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="INSTALLROOT" Value="[InstallFolder]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.bld)\bld.msi"
         InstallCondition="OptionsInstallBld"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="INSTALLROOT" Value="[InstallFolder]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.cli)\cli.msi"
         InstallCondition="OptionsInstallCli"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="INSTALLROOT" Value="[InstallFolder]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.dbg)\dbg.msi"
         InstallCondition="OptionsInstallDbg"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="INSTALLROOT" Value="[InstallFolder]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.ide)\ide.msi"
         InstallCondition="OptionsInstallIde"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="INSTALLROOT" Value="[InstallFolder]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.sdk)\sdk.msi"
         InstallCondition="OptionsInstallSdk"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLDIR" Value="[InstallFolder]" />
+        <MsiProperty Name="INSTALLROOT" Value="[InstallFolder]" />
         <MsiProperty Name="REDISTX86" Value="[OptionsInstallRedistX86]" />
         <MsiProperty Name="REDISTAMD64" Value="[OptionsInstallRedistAMD64]" />
         <MsiProperty Name="REDISTARM64" Value="[OptionsInstallRedistArm64]" />

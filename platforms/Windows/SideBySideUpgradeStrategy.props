@@ -33,22 +33,6 @@
     <BundleUpgradeCode>{710F1827-DA4A-4BF4-BDCE-D5F2D7C0DEF2}</BundleUpgradeCode>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '5.10'">
-    <BundleUpgradeCode>{F3764C05-9568-4DE9-98FE-AF64C0B30706}</BundleUpgradeCode>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '5.11'">
-    <BundleUpgradeCode>{239DD2D6-3F1B-42AE-8412-4640BD48284D}</BundleUpgradeCode>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.0'">
-    <BundleUpgradeCode>{71CCD6EF-F3CF-492D-A1DA-D76E50A26EBF}</BundleUpgradeCode>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.5'">
-    <BundleUpgradeCode>{44D57C54-D8F2-4374-8C52-8856EE663D32}</BundleUpgradeCode>
-  </PropertyGroup>
-
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);

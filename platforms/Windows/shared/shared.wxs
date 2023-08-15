@@ -2,8 +2,12 @@
   <Fragment>
     <StandardDirectory Id="LocalAppDataFolder">
       <Directory Name="Programs">
-        <Directory Name="Swift">
+        <Directory Id="INSTALLROOT" Name="Swift">
           <Directory Id="INSTALLDIR" Name="$(MajorMinorProductVersion)" />
+
+          <Directory Name="Redistributables">
+            <Directory Id="RedistVersion" Name="$(ProductVersion)" />
+          </Directory>
         </Directory>
       </Directory>
     </StandardDirectory>

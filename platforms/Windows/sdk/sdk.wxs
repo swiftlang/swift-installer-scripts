@@ -106,9 +106,7 @@
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="WindowsSDK_usr_share" Name="share">
-                  <Directory Id="RuntimeMergeModules" Name="RuntimeMergeModules" />
-                </Directory>
+                <Directory Id="WindowsSDK_usr_share" Name="share" />
               </Directory>
             </Directory>
           </Directory>
@@ -478,15 +476,15 @@
       </Component>
     </ComponentGroup>
 
-    <Component Id="runtime.x86.msm" Directory="RuntimeMergeModules">
+    <Component Id="rtl.x86.msm" Directory="RedistVersion">
       <File Source="!(bindpath.rtlmsm.x86)\rtl.x86.msm" />
     </Component>
 
-    <Component Id="runtime.amd64.msm" Directory="RuntimeMergeModules">
+    <Component Id="rtl.amd64.msm" Directory="RedistVersion">
       <File Source="!(bindpath.rtlmsm.amd64)\rtl.amd64.msm" />
     </Component>
 
-    <Component Id="runtime.arm64.msm" Directory="RuntimeMergeModules">
+    <Component Id="rtl.arm64.msm" Directory="RedistVersion">
       <File Source="!(bindpath.rtlmsm.arm64)\rtl.arm64.msm" />
     </Component>
 
@@ -528,17 +526,17 @@
       -->
       <Feature Id="RedistX86">
         <Level Value="0" Condition="REDISTX86=0" />
-        <ComponentRef Id="runtime.x86.msm" />
+        <ComponentRef Id="rtl.x86.msm" />
       </Feature>
 
       <Feature Id="RedistAMD64">
         <Level Value="0" Condition="REDISTAMD64=0" />
-        <ComponentRef Id="runtime.amd64.msm" />
+        <ComponentRef Id="rtl.amd64.msm" />
       </Feature>
 
       <Feature Id="RedistARM64">
         <Level Value="0" Condition="REDISTARM64=0" />
-        <ComponentRef Id="runtime.arm64.msm" />
+        <ComponentRef Id="rtl.arm64.msm" />
       </Feature>
     </Feature>
   </Package>
