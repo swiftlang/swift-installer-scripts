@@ -28,7 +28,7 @@
   <String Id="OptionsInstallCli" Value="Swift Command Line Tools" />
   <String Id="OptionsInstallDbg" Value="Swift Debugging Tools" />
   <String Id="OptionsInstallIde" Value="Swift IDE Integration Tools" />
-  <String Id="OptionsInstallRuntime" Value="Swift Utilities Windows" />
+  <String Id="OptionsInstallRtl" Value="Swift Utilities Windows" />
   <String Id="OptionsInstallSdk" Value="Swift Windows SDK" />
   <String Id="OptionsInstallRedistX86" Value="Swift Windows Redistributables (x86)" />
   <String Id="OptionsInstallRedistAMD64" Value="Swift Windows Redistributables (AMD64)" />

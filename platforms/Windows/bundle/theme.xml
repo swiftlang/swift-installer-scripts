@@ -50,10 +50,10 @@
             <ImageControl X="11" Y="11" Width="165" Height="312" ImageFile="swift_side.png"/>
 
             <Label X="185" Y="11" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
-            <Editbox Name="InstallFolder" X="185" Y="46" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
+            <Editbox Name="InstallRoot" X="185" Y="46" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
             <Button Name="BrowseButton" X="-11" Y="45" Width="75" Height="23" TabStop="yes" FontId="3">
                 <Text>#(loc.OptionsBrowseButton)</Text>
-                <BrowseDirectoryAction VariableName="InstallFolder" />
+                <BrowseDirectoryAction VariableName="InstallRoot" />
             </Button>
 
             <Label X="185" Y="81" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
@@ -61,7 +61,7 @@
             <Checkbox Name="OptionsInstallCli" X="185" Y="134" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallCli)</Checkbox>
             <Checkbox Name="OptionsInstallDbg" X="185" Y="152" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallDbg)</Checkbox>
             <Checkbox Name="OptionsInstallIde" X="185" Y="170" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallIde)</Checkbox>
-            <Checkbox Name="OptionsInstallRuntime" X="185" Y="188" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRuntime)</Checkbox>
+            <Checkbox Name="OptionsInstallRtl" X="185" Y="188" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRtl)</Checkbox>
             <Checkbox Name="OptionsInstallSdk" X="185" Y="206" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallSdk)</Checkbox>
             <Checkbox Name="OptionsInstallRedistX86" X="195" Y="224" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRedistX86)</Checkbox>
             <Checkbox Name="OptionsInstallRedistAMD64" X="195" Y="242" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRedistAMD64)</Checkbox>
