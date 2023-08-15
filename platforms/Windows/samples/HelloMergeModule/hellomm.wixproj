@@ -2,10 +2,7 @@
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
+      RedistributablesDirectory=$(RedistributablesDirectory);
     </DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" />
-  </ItemGroup>
 </Project>

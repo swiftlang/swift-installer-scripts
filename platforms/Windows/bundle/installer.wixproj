@@ -13,7 +13,7 @@
     <ProjectReference Include="..\cli\cli.wixproj" BindName="cli" />
     <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
-    <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rt" />
+    <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
     <ProjectReference Include="..\sdk\sdk.wixproj" BindName="sdk" />
   </ItemGroup>
 </Project>
