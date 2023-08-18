@@ -4,5 +4,9 @@
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Util.wixext" Version="4.0.1" />
+  </ItemGroup>
+
   <Import Project="WiXCodeSigning.targets" />
 </Project>

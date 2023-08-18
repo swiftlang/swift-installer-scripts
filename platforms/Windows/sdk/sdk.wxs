@@ -477,7 +477,7 @@
     </Component>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="580f1edd-8744-4be8-8dd8-e519f70a91e4">
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="WindowsSDK" Guid="580f1edd-8744-4be8-8dd8-e519f70a91e4">
         <Environment Action="set" Name="SDKROOT" Part="all" Permanent="no" System="no" Value="[WindowsSDK]" />
       </Component>
     </ComponentGroup>
@@ -511,6 +511,7 @@
       <ComponentRef Id="rtl.msm" />
 
       <ComponentGroupRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>

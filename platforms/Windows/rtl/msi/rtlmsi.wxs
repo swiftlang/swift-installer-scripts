@@ -33,6 +33,7 @@
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>

@@ -253,6 +253,8 @@
       <ComponentGroupRef Id="system" />
       <ComponentGroupRef Id="package_manager" />
       <ComponentGroupRef Id="swift_format" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>

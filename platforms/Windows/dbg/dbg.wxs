@@ -117,6 +117,8 @@
 
       <ComponentGroupRef Id="swift_repl" />
       <ComponentGroupRef Id="swift_inspect" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>

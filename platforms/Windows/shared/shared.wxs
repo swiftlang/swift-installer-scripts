@@ -1,22 +1,16 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
   <Fragment>
     <StandardDirectory Id="LocalAppDataFolder">
       <Directory Name="Programs">
-        <Directory Id="INSTALLROOT" Name="Swift">
-          <Directory Id="INSTALLDIR" Name="$(MajorMinorProductVersion)" />
-
-          <Directory Name="Redistributables">
-            <Directory Id="RedistVersion" Name="$(ProductVersion)" />
-          </Directory>
-        </Directory>
+        <Directory Id="INSTALLROOT" Name="Swift" />
       </Directory>
     </StandardDirectory>
   </Fragment>
 
   <Fragment>
-    <DirectoryRef Id="INSTALLDIR">
+    <DirectoryRef Id="INSTALLROOT">
         <Directory Name="Toolchains">
-          <Directory Name="$(ProductVersion)+Asserts">
+          <Directory Id="ToolchainsVersioned" Name="$(ProductVersion)+Asserts">
             <Directory Id="_usr" Name="usr">
               <Directory Id="_usr_bin" Name="bin" />
               <Directory Id="_usr_include" Name="include" />
@@ -31,14 +25,38 @@
   </Fragment>
 
   <Fragment>
-    <DirectoryRef Id="INSTALLDIR">
-      <Directory Id="Platforms" Name="Platforms" />
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Runtimes">
+        <Directory Id="RuntimesVersioned" Name="$(ProductVersion)">
+          <Directory Name="usr">
+            <Directory Id="runtimes_usr_bin" Name="bin" />
+          </Directory>
+        </Directory>
+      </Directory>
     </DirectoryRef>
   </Fragment>
 
   <Fragment>
-    <DirectoryRef Id="INSTALLDIR">
-      <Directory Id="Tools" Name="Tools" />
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Platforms">
+        <Directory Id="Platforms" Name="$(ProductVersion)" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Tools">
+        <Directory Id="Tools" Name="$(ProductVersion)" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Redistributables">
+        <Directory Id="RedistVersion" Name="$(ProductVersion)" />
+      </Directory>
     </DirectoryRef>
   </Fragment>
 
@@ -46,6 +64,18 @@
     <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="Tools">
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[Tools]" />
     </Component>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="VersionedDirectoryCleanup">
+      <Component Id="VersionedDirectoryCleanup" Guid="0BCA6DA7-A217-4DB7-9868-37CAC22FFDD9" Directory="INSTALLROOT">
+        <util:RemoveFolderEx Property="ToolchainsVersioned" />
+        <util:RemoveFolderEx Property="Platforms" />
+        <util:RemoveFolderEx Property="Tools" />
+        <util:RemoveFolderEx Property="RuntimesVersioned" />
+        <util:RemoveFolderEx Property="Redistributables" />
+      </Component>
+    </ComponentGroup>
   </Fragment>
 
   <!--
