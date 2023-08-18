@@ -33,7 +33,7 @@
     <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
 
-    <BundleFlavor Condition="'$(BundleFlavor)' == ''">web</BundleFlavor>
+    <BundleFlavor Condition="'$(BundleFlavor)' == ''">online</BundleFlavor>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -56,7 +56,7 @@
     <BundleCompressionLevel>high</BundleCompressionLevel>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(BundleFlavor)' == 'web'">
+  <PropertyGroup Condition="'$(BundleFlavor)' == 'online'">
     <PackageCompressionLevel>high</PackageCompressionLevel>
     <ArePackageCabsEmbedded>false</ArePackageCabsEmbedded>
 

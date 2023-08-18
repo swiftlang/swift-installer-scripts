@@ -2,7 +2,7 @@
   <Package
       Language="1033"
       Manufacturer="swift.org"
-      Name="!(loc.Runtime_ProductName_$(sys.BUILDARCH))"
+      Name="!(loc.Rtl_ProductName_$(sys.BUILDARCH))"
       UpgradeCode="$(RtlUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
@@ -30,7 +30,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Runtime_ProductName_$(sys.BUILDARCH))">
+    <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(sys.BUILDARCH))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="EnvironmentVariables" />
     </Feature>

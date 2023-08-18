@@ -10,7 +10,7 @@
       <bal:WixStandardBootstrapperApplication
         LicenseUrl="https://www.swift.org/LICENSE.txt"
         Theme="hyperlinkSidebarLicense"
-        LocalizationFile="theme.wxl"
+        LocalizationFile="..\shared\swift.en-us.wxl"
         ThemeFile="theme.xml" />
       <Payload SourceFile="swift_side.png" />
     </BootstrapperApplication>

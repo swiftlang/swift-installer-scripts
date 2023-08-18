@@ -57,12 +57,12 @@
             </Button>
 
             <Label X="185" Y="81" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
-            <Checkbox Name="OptionsInstallBld" X="185" Y="116" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallBld)</Checkbox>
-            <Checkbox Name="OptionsInstallCli" X="185" Y="134" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallCli)</Checkbox>
-            <Checkbox Name="OptionsInstallDbg" X="185" Y="152" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallDbg)</Checkbox>
-            <Checkbox Name="OptionsInstallIde" X="185" Y="170" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallIde)</Checkbox>
-            <Checkbox Name="OptionsInstallRtl" X="185" Y="188" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRtl)</Checkbox>
-            <Checkbox Name="OptionsInstallSdk" X="185" Y="206" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallSdk)</Checkbox>
+            <Checkbox Name="OptionsInstallBld" X="185" Y="116" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Bld_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallCli" X="185" Y="134" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallDbg" X="185" Y="152" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallIde" X="185" Y="170" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallRtl" X="185" Y="188" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Rtl_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallSdk" X="185" Y="206" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallRedistX86" X="195" Y="224" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRedistX86)</Checkbox>
             <Checkbox Name="OptionsInstallRedistAMD64" X="195" Y="242" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRedistAMD64)</Checkbox>
             <Checkbox Name="OptionsInstallRedistArm64" X="195" Y="260" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallRedistArm64)</Checkbox>
