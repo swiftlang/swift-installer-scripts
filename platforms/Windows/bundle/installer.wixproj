@@ -14,6 +14,8 @@
     <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
-    <ProjectReference Include="..\sdk\sdk.wixproj" BindName="sdk" />
+    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=x86;Platform=x86" BindName="sdk_x86" />
+    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=amd64;Platform=x86" BindName="sdk_amd64" />
+    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" BindName="sdk_arm64" />
   </ItemGroup>
 </Project>

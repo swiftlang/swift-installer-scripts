@@ -4,9 +4,15 @@
     <OutputName>rtl.$(ProductArchitecture)</OutputName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=x86" />
-    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=amd64" />
-    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=arm64" />
+  <ItemGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=x86;Platform=x86" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=amd64;Platform=x64" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64" />
   </ItemGroup>
 </Project>

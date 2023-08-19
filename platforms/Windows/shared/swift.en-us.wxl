@@ -10,16 +10,12 @@
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Rtl_ProductName_x64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Utilities (x86)" />
-  <String Id="Sdk_ProductName" Value="Swift Windows SDK" />
   <String Id="Sdk_ProductName_arm64" Value="Swift Windows SDK (ARM64)" />
   <String Id="Sdk_ProductName_x64" Value="Swift Windows SDK (AMD64)" />
   <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (x86)" />
   <String Id="BundleName" Value="Swift Tool Kit" />
 
   <String Id="OptionsFeaturesLabel" Value="Choose the features you want to install" />
-  <String Id="OptionsInstallRedistX86" Value="Swift Windows Redistributables (x86)" />
-  <String Id="OptionsInstallRedistAMD64" Value="Swift Windows Redistributables (AMD64)" />
-  <String Id="OptionsInstallRedistArm64" Value="Swift Windows Redistributables (Arm64)" />
 
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />

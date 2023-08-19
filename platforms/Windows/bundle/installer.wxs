@@ -27,10 +27,9 @@
     <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRtl" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallSdk" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <!--
     For the web bundle, we need to provide a download URL for each package and its .cabs.
@@ -88,13 +87,24 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.sdk)\sdk.msi"
-        InstallCondition="OptionsInstallSdk"
+        SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
+        InstallCondition="OptionsInstallSdkX86"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="REDISTX86" Value="[OptionsInstallRedistX86]" />
-        <MsiProperty Name="REDISTAMD64" Value="[OptionsInstallRedistAMD64]" />
-        <MsiProperty Name="REDISTARM64" Value="[OptionsInstallRedistArm64]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
+        InstallCondition="OptionsInstallSdkAMD64"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
+        InstallCondition="OptionsInstallSdkArm64"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
     </Chain>
   </Bundle>

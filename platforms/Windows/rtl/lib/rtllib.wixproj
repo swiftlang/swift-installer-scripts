@@ -3,10 +3,5 @@
     <OutputName>rtl</OutputName>
     <OutputType>Library</OutputType>
     <BindFiles>true</BindFiles>
-
-    <DefineConstants>
-      $(DefineConstants);
-      SDK_ROOT=$(SDK_ROOT)
-    </DefineConstants>
   </PropertyGroup>
 </Project>

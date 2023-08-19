@@ -31,6 +31,7 @@
     <BaseOutputPath>$(RootBuildFolder)</BaseOutputPath>
     <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == '' and '$(PlatformName)' != 'AnyCPU'">$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(Configuration)\</IntermediateOutputPath>
     <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
 
     <BundleFlavor Condition="'$(BundleFlavor)' == ''">online</BundleFlavor>
@@ -66,6 +67,21 @@
 
   <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
 
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_X86)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_X86)</SDK_ROOT>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_AMD64)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_AMD64)</SDK_ROOT>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_ARM64)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_ARM64)</SDK_ROOT>
+  </PropertyGroup>
+
   <PropertyGroup>
     <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">$(PackageCompressionLevel)</DefaultCompressionLevel>
 
@@ -78,6 +94,8 @@
       IsBundleCompressed=$(IsBundleCompressed);
       ArePackageCabsEmbedded=$(ArePackageCabsEmbedded);
       BaseReleaseDownloadUrl=$(BaseReleaseDownloadUrl);
+      SDK_ROOT=$(SDK_ROOT);
+      PLATFORM_ROOT=$(PLATFORM_ROOT);
     </DefineConstants>
   </PropertyGroup>
 

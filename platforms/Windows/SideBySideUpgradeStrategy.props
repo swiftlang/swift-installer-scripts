@@ -22,7 +22,9 @@
     <DbgUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgUpgradeCode>
     <IdeUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeUpgradeCode>
     <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
-    <SdkUpgradeCode>{4C37A396-D9E2-490A-89B7-0A3D271D847F}</SdkUpgradeCode>
+    <SdkUpgradeCode Condition=" '$(ProductArchitecture)' == 'x86' ">{443F4D7F-38F3-47C8-9BEE-37FEB01D13C8}</SdkUpgradeCode>
+    <SdkUpgradeCode Condition=" '$(ProductArchitecture)' == 'amd64' ">{762D10FE-EBE5-4554-BB78-FB13A4A487E3}</SdkUpgradeCode>
+    <SdkUpgradeCode Condition=" '$(ProductArchitecture)' == 'arm64' ">{9749D9E6-E860-4FF6-9E8A-525270F471A3}</SdkUpgradeCode>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '0.0'">

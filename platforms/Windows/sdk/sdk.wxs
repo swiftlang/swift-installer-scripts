@@ -1,19 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?if $(sys.BUILDARCH) = "x64"?>
+  <?if $(ProductArchitecture) = "amd64"?>
     <?define ArchBinDir = "bin64"?>
     <?define ArchArchDir = "x86_64"?>
     <?define ArchTriple = "x86_64-unknown-windows-msvc"?>
-  <?elseif $(sys.BUILDARCH) = "arm64"?>
+  <?elseif $(ProductArchitecture) = "arm64"?>
     <?define ArchBinDir = "bin64a"?>
     <?define ArchArchDir = "aarch64"?>
     <?define ArchTriple = "aarch64-unknown-windows-msvc"?>
-  <?elseif $(sys.BUILDARCH) = "arm"?>
-    <?define ArchBinDir = "bin32a"?>
-    <?define ArchArchDir = "armv7"?>
-    <?define ArchTriple = "armv7-unknown-windows-msvc"?>
-  <?elseif $(sys.BUILDARCH) = "x86"?>
+  <?elseif $(ProductArchitecture) = "x86"?>
     <?define ArchBinDir = "bin32"?>
     <?define ArchArchDir = "i686"?>
     <?define ArchTriple = "i686-unknown-windows-msvc"?>
@@ -27,7 +23,7 @@
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="sdk_$(sys.BUILDARCHSHORT).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(SdkUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
@@ -476,16 +472,8 @@
       </Component>
     </ComponentGroup>
 
-    <Component Id="rtl.x86.msm" Directory="RedistVersion">
-      <File Source="!(bindpath.rtlmsm.x86)\rtl.x86.msm" />
-    </Component>
-
-    <Component Id="rtl.amd64.msm" Directory="RedistVersion">
-      <File Source="!(bindpath.rtlmsm.amd64)\rtl.amd64.msm" />
-    </Component>
-
-    <Component Id="rtl.arm64.msm" Directory="RedistVersion">
-      <File Source="!(bindpath.rtlmsm.arm64)\rtl.arm64.msm" />
+    <Component Id="rtl.msm" Directory="RedistVersion">
+      <File Source="!(bindpath.rtlmsm)\rtl.$(ProductArchitecture).msm" />
     </Component>
 
     <ComponentGroup Id="EnvironmentVariables">
@@ -519,25 +507,10 @@
       <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
+
+      <ComponentRef Id="rtl.msm" />
+
       <ComponentGroupRef Id="EnvironmentVariables" />
-
-      <!--
-      Start with all redists and disable the ones the user deselected in the Options page.
-      -->
-      <Feature Id="RedistX86">
-        <Level Value="0" Condition="REDISTX86=0" />
-        <ComponentRef Id="rtl.x86.msm" />
-      </Feature>
-
-      <Feature Id="RedistAMD64">
-        <Level Value="0" Condition="REDISTAMD64=0" />
-        <ComponentRef Id="rtl.amd64.msm" />
-      </Feature>
-
-      <Feature Id="RedistARM64">
-        <Level Value="0" Condition="REDISTARM64=0" />
-        <ComponentRef Id="rtl.arm64.msm" />
-      </Feature>
     </Feature>
   </Package>
 </Wix>
