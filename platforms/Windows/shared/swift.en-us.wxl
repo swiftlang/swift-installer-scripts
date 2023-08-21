@@ -14,6 +14,7 @@
   <String Id="Sdk_ProductName_x64" Value="Swift Windows SDK (AMD64)" />
   <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (x86)" />
   <String Id="BundleName" Value="Swift Tool Kit" />
+  <String Id="ManufacturerName" Value="swift.org" />
 
   <String Id="OptionsFeaturesLabel" Value="Choose the features you want to install" />
 

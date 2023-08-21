@@ -17,7 +17,7 @@
 
   <Package
       Language="1033"
-      Manufacturer="swift.org"
+      Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Sdk_ProductName_$(sys.BUILDARCH))"
       UpgradeCode="$(SdkUpgradeCode)"
       Version="$(ProductVersion)"

@@ -2,7 +2,7 @@
   <Bundle
     Name="!(loc.BundleName) $(ProductVersion)"
     Version="$(ProductVersion)"
-    Manufacturer="swift.org"
+    Manufacturer="!(loc.ManufacturerName)"
     Compressed="$(IsBundleCompressed)"
     UpgradeCode="$(BundleUpgradeCode)">
 
