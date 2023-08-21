@@ -18,7 +18,7 @@
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Sdk_ProductName_$(sys.BUILDARCH))"
+      Name="!(loc.Sdk_ProductName_$(ProductArchitecture))"
       UpgradeCode="$(SdkUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
@@ -483,7 +483,7 @@
     </ComponentGroup>
 
     <!-- Features -->
-    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(sys.BUILDARCH))">
+    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
