@@ -12,16 +12,7 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(RtlUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="INSTALLDIR">
-      <Directory Name="Runtimes">
-        <Directory Name="$(ProductVersion)">
-          <Directory Name="usr">
-            <Directory Id="runtimes_usr_bin" Name="bin" />
-          </Directory>
-        </Directory>
-      </Directory>
-    </DirectoryRef>
-
+    <!-- Point the RTL component group to the right directory. -->
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
 
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
