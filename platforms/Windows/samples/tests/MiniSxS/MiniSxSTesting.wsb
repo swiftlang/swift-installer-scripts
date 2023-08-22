@@ -9,6 +9,6 @@
     </MappedFolders>
     <MemoryInMB>8192</MemoryInMB>
     <LogonCommand>
-      <Command>C:\sandbox\RunSxSTests.cmd</Command>
+      <Command>C:\sandbox\RunMiniSxSTests.cmd</Command>
     </LogonCommand>
 </Configuration>

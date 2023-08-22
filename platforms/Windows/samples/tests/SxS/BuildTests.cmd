@@ -12,4 +12,5 @@ msbuild -Restore -m -p:ProductVersion=6.0.1  -p:BundleUpgradeCode={71CCD6EF-F3CF
 msbuild -Restore -m -p:ProductVersion=6.5.1  -p:BundleUpgradeCode={44D57C54-D8F2-4374-8C52-8856EE663D32} -p:BaseOutputPath=X:\sandbox\Swift\builds\6.5.1\  bundle\installer.wixproj
 msbuild -Restore -m -p:ProductVersion=6.5.7  -p:BundleUpgradeCode={44D57C54-D8F2-4374-8C52-8856EE663D32} -p:BaseOutputPath=X:\sandbox\Swift\builds\6.5.7\  bundle\installer.wixproj
 
-start X:\sandbox\Swift\SxSTesting.wsb
+copy %~dp0\RunSxSTests.cmd X:\sandbox\Swift\
+start %~dp0\SxSTesting.wsb
