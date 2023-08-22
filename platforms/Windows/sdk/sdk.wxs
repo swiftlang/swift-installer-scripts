@@ -40,7 +40,7 @@
                           └─ Windows.sdk
                                   └─ ...
     -->
-    <DirectoryRef Id="Platforms">
+    <DirectoryRef Id="PlatformsVersioned">
       <Directory Id="WindowsPlatform" Name="Windows.platform">
         <Directory Name="Developer">
           <Directory Name="Library">

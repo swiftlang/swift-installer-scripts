@@ -13,6 +13,7 @@
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <!-- Point the RTL component group to the right directory. -->
+    <DirectoryRef Id="runtimes_usr_bin" />
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
 
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">

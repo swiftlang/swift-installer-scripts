@@ -31,8 +31,8 @@
     <BaseOutputPath>$(RootBuildFolder)</BaseOutputPath>
     <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == '' and '$(PlatformName)' != 'AnyCPU'">$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(Configuration)\</IntermediateOutputPath>
-    <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
+    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == ''">$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(Configuration)\</IntermediateOutputPath>
+    <OutputPath Condition="'$(OutputPath)' == ''">$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
 
     <BundleFlavor Condition="'$(BundleFlavor)' == ''">online</BundleFlavor>
   </PropertyGroup>

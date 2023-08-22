@@ -6,6 +6,9 @@
     Compressed="$(IsBundleCompressed)"
     UpgradeCode="$(BundleUpgradeCode)">
 
+    <!-- Avoid spaces in log file names, for ease of log spelunking. -->
+    <Log Prefix="SwiftToolKit_$(ProductVersion)" />
+
     <BootstrapperApplication>
       <bal:WixStandardBootstrapperApplication
         LicenseUrl="https://www.swift.org/LICENSE.txt"
@@ -32,7 +35,7 @@
     <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <!--
-    For the web bundle, we need to provide a download URL for each package and its .cabs.
+    For the online bundle, we need to provide a download URL for each package and its .cabs.
     (The SourceFile attribute is also required, both for the offline bundle and for Burn
     to get the hash of the packages. Note that the packages and .cabs available for
     download must exactly match the ones used when building the bundle. Burn validates

@@ -231,9 +231,9 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_format" Directory="Tools">
+    <ComponentGroup Id="swift_format" Directory="ToolsVersioned">
       <?if $(INCLUDE_SWIFT_FORMAT) == true ?>
-        <Component Id="swift_format.exe" Directory="Tools">
+        <Component Id="swift_format.exe">
           <File Source="$(SWIFT_FORMAT_BUILD)\swift-format.exe" />
         </Component>
 
