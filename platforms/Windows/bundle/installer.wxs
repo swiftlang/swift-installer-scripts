@@ -89,12 +89,14 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <MsiPackage
-        SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
-        InstallCondition="OptionsInstallSdkX86"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-      </MsiPackage>
+      <?if $(INCLUDE_X86_SDK) == true?>
+        <MsiPackage
+          SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
+          InstallCondition="OptionsInstallSdkX86"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
 
       <MsiPackage
         SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
@@ -103,14 +105,14 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-<!--
-      <MsiPackage
-        SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
-        InstallCondition="OptionsInstallSdkArm64"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-      </MsiPackage>
--->
+      <?if $(INCLUDE_ARM64_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
+          InstallCondition="OptionsInstallSdkArm64"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
      </Chain>
   </Bundle>
 </Wix>
