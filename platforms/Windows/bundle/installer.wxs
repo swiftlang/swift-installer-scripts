@@ -103,12 +103,14 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
+<!--
       <MsiPackage
         SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
         InstallCondition="OptionsInstallSdkArm64"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
-    </Chain>
+-->
+     </Chain>
   </Bundle>
 </Wix>

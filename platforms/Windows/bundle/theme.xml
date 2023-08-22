@@ -64,7 +64,7 @@
             <Checkbox Name="OptionsInstallRtl" X="185" Y="188" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Rtl_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallSdkX86" X="185" Y="206" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_x86)</Checkbox>
             <Checkbox Name="OptionsInstallSdkAMD64" X="185" Y="224" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallSdkArm64" X="185" Y="242" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_arm64)</Checkbox>
+            <!-- <Checkbox Name="OptionsInstallSdkArm64" X="185" Y="242" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_arm64)</Checkbox> -->
 
             <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
                 <Text>#(loc.OptionsOkButton)</Text>
