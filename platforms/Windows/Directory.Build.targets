@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'runtimelib'">
+  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'sdk' AND '$(MSBuildProjectName)' != 'rtllib' AND '$(MSBuildProjectName)' != 'rtlmsm'">
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Util.wixext" Version="4.0.1" />
   </ItemGroup>
 
   <Import Project="WiXCodeSigning.targets" />

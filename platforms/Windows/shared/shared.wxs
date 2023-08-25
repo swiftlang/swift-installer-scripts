@@ -1,14 +1,44 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
   <Fragment>
-    <StandardDirectory Id="ProgramFiles6432Folder">
-      <Directory Id="INSTALLDIR" Name="Swift" />
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Name="Programs">
+        <Directory Id="INSTALLROOT" Name="Swift" />
+      </Directory>
     </StandardDirectory>
   </Fragment>
 
   <Fragment>
-    <DirectoryRef Id="INSTALLDIR">
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Platforms">
+        <Directory Id="PlatformsVersioned" Name="$(ProductVersion)" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Redistributables">
+        <Directory Id="RedistVersion" Name="$(ProductVersion)" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Runtimes">
+        <Directory Id="RuntimesVersioned" Name="$(ProductVersion)">
+          <Directory Name="usr">
+            <Directory Id="runtimes_usr_bin" Name="bin" />
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
         <Directory Name="Toolchains">
-          <Directory Name="$(ProductVersion)+Asserts">
+          <Directory Id="ToolchainsVersioned" Name="$(ProductVersion)+Asserts">
             <Directory Id="_usr" Name="usr">
               <Directory Id="_usr_bin" Name="bin" />
               <Directory Id="_usr_include" Name="include" />
@@ -23,20 +53,98 @@
   </Fragment>
 
   <Fragment>
-    <DirectoryRef Id="INSTALLDIR">
-      <Directory Id="Platforms" Name="Platforms" />
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Name="Tools">
+        <Directory Id="ToolsVersioned" Name="$(ProductVersion)" />
+      </Directory>
     </DirectoryRef>
   </Fragment>
 
   <Fragment>
-    <DirectoryRef Id="INSTALLDIR">
-      <Directory Id="Tools" Name="Tools" />
-    </DirectoryRef>
-  </Fragment>
-
-  <Fragment>
-    <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="Tools">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[Tools]" />
+    <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="ToolsVersioned">
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[Tools]" />
     </Component>
+  </Fragment>
+
+  <!--
+  Use RemoveFolderEx to clean up the empty subdirectories Windows Installer
+  leaves when there are other directory siblings left behind, as happens when
+  you have multiple versions of Swift installed with the versioned
+  directories as children.
+  -->
+  <Fragment>
+    <ComponentGroup Id="VersionedDirectoryCleanup" Directory="INSTALLROOT">
+      <Component Id="VersionedDirectoryCleanupPlatforms">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="PlatformsVersioned" Value="[PlatformsVersioned]" />
+        <util:RemoveFolderEx Property="PLATFORMSVERSIONED" Condition="PLATFORMSVERSIONED" />
+      </Component>
+
+      <Component Id="VersionedDirectoryCleanupRedistVersion">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RedistVersion" Value="[RedistVersion]" />
+        <util:RemoveFolderEx Property="REDISTVERSION" Condition="REDISTVERSION" />
+      </Component>
+
+      <Component Id="VersionedDirectoryCleanupRuntimes">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RuntimesVersioned" Value="[RuntimesVersioned]" />
+        <util:RemoveFolderEx Property="RUNTIMESVERSIONED" Condition="RUNTIMESVERSIONED" />
+      </Component>
+
+      <Component Id="VersionedDirectoryCleanupToolchains">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersioned" Value="[ToolchainsVersioned]" />
+        <util:RemoveFolderEx Property="TOOLCHAINSVERSIONED" Condition="TOOLCHAINSVERSIONED" />
+      </Component>
+
+      <Component Id="VersionedDirectoryCleanupTools">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolsVersioned" Value="[ToolsVersioned]" />
+        <util:RemoveFolderEx Property="TOOLSVERSIONED" Condition="TOOLSVERSIONED" />
+      </Component>
+    </ComponentGroup>
+
+    <Property Id="PLATFORMSVERSIONED">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="PlatformsVersioned" Type="directory" />
+    </Property>
+
+    <Property Id="REDISTVERSION">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RedistVersion" Type="directory" />
+    </Property>
+
+    <Property Id="RUNTIMESVERSIONED">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RuntimesVersioned" Type="directory" />
+    </Property>
+
+    <Property Id="TOOLCHAINSVERSIONED">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersioned" Type="directory" />
+    </Property>
+
+    <Property Id="TOOLSVERSIONED">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolsVersioned" Type="directory" />
+    </Property>
+  </Fragment>
+
+  <!--
+  To support side-by-side installation for each minor release (the latest point release of each minor release),
+  we need to use "old-school" `Upgrade`/`UpgradeVersion` authoring to get the upgrade version ranges, which
+  also requires manually scheduling `RemoveExistingProducts`. To avoid duplication, the upgrade logic is
+  authored here and referenced from the `Package` element of each package.
+  -->
+  <Fragment>
+    <FeatureGroup Id="SideBySideUpgradeStrategy">
+      <FeatureGroupRef Id="SideBySideUpgradeStrategyShared" />
+    </FeatureGroup>
+
+    <Upgrade Id="!(wix.SideBySidePackageUpgradeCode)">
+      <UpgradeVersion Minimum="$(MajorMinorProductVersion).65535" IncludeMinimum="no" OnlyDetect="yes" Property="NEWERVERSIONDETECTED" />
+      <UpgradeVersion Minimum="$(MajorMinorProductVersion).0" IncludeMinimum="yes" Maximum="$(ProductVersion)" IncludeMaximum="yes" Property="OLDERVERSIONBEINGUPGRADED" />
+    </Upgrade>
+  </Fragment>
+
+  <Fragment>
+    <FeatureGroup Id="SideBySideUpgradeStrategyShared" />
+
+    <Launch Message="!(loc.DowngradeError)" Condition="NOT NEWERVERSIONDETECTED" />
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallValidate" />
+    </InstallExecuteSequence>
   </Fragment>
 </Wix>

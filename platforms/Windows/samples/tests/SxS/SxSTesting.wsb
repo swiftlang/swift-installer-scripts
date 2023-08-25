@@ -1,0 +1,14 @@
+<Configuration>
+    <!-- <Networking>Enable</Networking> -->
+    <MappedFolders>
+        <MappedFolder>
+            <HostFolder>X:\sandbox\Swift</HostFolder>
+            <SandboxFolder>C:\sandbox</SandboxFolder>
+            <ReadOnly>false</ReadOnly>
+        </MappedFolder>
+    </MappedFolders>
+    <MemoryInMB>8192</MemoryInMB>
+    <LogonCommand>
+      <Command>C:\sandbox\RunSxSTests.cmd</Command>
+    </LogonCommand>
+</Configuration>

@@ -1,9 +1,0 @@
-<Project Sdk="WixToolset.Sdk/4.0.1">
-  <PropertyGroup>
-    <OutputName>runtime</OutputName>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\runtimelib\runtimelib.wixproj" />
-  </ItemGroup>
-</Project>

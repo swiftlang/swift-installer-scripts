@@ -1,4 +1,11 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?if $(sys.BUILDARCH) == x64 ?>
+    <?define MergeModuleFileName = "rtl.amd64.msm" ?>
+  <?else?>
+    <?define MergeModuleFileName = "rtl.$(sys.BUILDARCH).msm" ?>
+  <?endif?>
+
   <Package
       Language="1033"
       Manufacturer="swift.org"
@@ -7,11 +14,12 @@
       Version="1.0"
       Scope="perUserOrMachine">
 
+    <MediaTemplate EmbedCab="yes" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
     <StandardDirectory Id="ProgramFiles6432Folder">
       <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)">
-        <Merge Id="swift_runtime" Language="0" SourceFile="$(runtimemsm.TargetPath)" />
+        <Merge Id="swift_runtime" Language="0" SourceFile="$(RedistributablesDirectory)\$(MergeModuleFileName)" />
       </Directory>
     </StandardDirectory>
 

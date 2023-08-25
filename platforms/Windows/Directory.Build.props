@@ -2,11 +2,16 @@
 <Project>
   <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
-    <ProductArchitecture>$(ProductArchitecture)</ProductArchitecture>
-
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
-    <ProductVersion>$(ProductVersion)</ProductVersion>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <NonSemVerProductVersion>$([System.Text.RegularExpressions.Regex]::Replace($(ProductVersion), `[-+].*`, ``))</NonSemVerProductVersion>
+    <MajorMinorProductVersion>$([System.Text.RegularExpressions.Regex]::Match($(NonSemVerProductVersion), `\d+\.\d+`))</MajorMinorProductVersion>
+    <MajorMinorProductVersion Condition="'$(MajorMinorProductVersion)' == ''">$(NonSemVerProductVersion)</MajorMinorProductVersion>
+  </PropertyGroup>
+
+  <Import Project="SideBySideUpgradeStrategy.props" />
 
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
     <Platform>x64</Platform>
@@ -24,32 +29,74 @@
   <PropertyGroup>
     <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
     <BaseOutputPath>$(RootBuildFolder)</BaseOutputPath>
+    <BaseOutputPath Condition="!HasTrailingSlash('$(BaseOutputPath)')">$(BaseOutputPath)\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(BaseOutputPath)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <OutputPath>$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
+    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == ''">$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(Configuration)\</IntermediateOutputPath>
+    <OutputPath Condition="'$(OutputPath)' == ''">$(BaseOutputPath)$(Configuration)\$(ProductArchitecture)\</OutputPath>
 
-    <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">high</DefaultCompressionLevel>
+    <BundleFlavor Condition="'$(BundleFlavor)' == ''">online</BundleFlavor>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageScope>perMachine</PackageScope>
+    <!--
+    ICE38 is about mixing per-user and per-machine resources (not a thing for us).
+    ICE61 is a warning about allowing "same-version" major upgrades, something we want.
+    ICE64 is documented as not being an issue when packages are always per-user.
+    ICE91 is about "roaming scenarios," which doesn't apply to our use of LocalAppDataFolder.
+    -->
+    <SuppressIces>ICE38;ICE61;ICE64;ICE91</SuppressIces>
+    <PackageScope>perUser</PackageScope>
+  </PropertyGroup>
+
+  <!-- High package and high bundle compression results in the smallest bundle, at the cost of build time. -->
+  <PropertyGroup Condition="'$(BundleFlavor)' == 'offline'">
+    <PackageCompressionLevel>high</PackageCompressionLevel>
+    <ArePackageCabsEmbedded>false</ArePackageCabsEmbedded>
+
     <IsBundleCompressed>true</IsBundleCompressed>
+    <BundleCompressionLevel>high</BundleCompressionLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(BundleFlavor)' == 'online'">
+    <PackageCompressionLevel>high</PackageCompressionLevel>
+    <ArePackageCabsEmbedded>false</ArePackageCabsEmbedded>
+
+    <IsBundleCompressed>false</IsBundleCompressed>
+    <BundleCompressionLevel>high</BundleCompressionLevel>
   </PropertyGroup>
 
   <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
 
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_X86)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_X86)</SDK_ROOT>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_AMD64)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_AMD64)</SDK_ROOT>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_ARM64)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_ARM64)</SDK_ROOT>
+  </PropertyGroup>
+
   <PropertyGroup>
+    <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">$(PackageCompressionLevel)</DefaultCompressionLevel>
+
     <DefineConstants>
       $(DefineConstants);
       ProductArchitecture=$(ProductArchitecture);
       ProductVersion=$(ProductVersion);
+      MajorMinorProductVersion=$(MajorMinorProductVersion);
       PackageScope=$(PackageScope);
       IsBundleCompressed=$(IsBundleCompressed);
+      ArePackageCabsEmbedded=$(ArePackageCabsEmbedded);
+      BaseReleaseDownloadUrl=$(BaseReleaseDownloadUrl);
+      SDK_ROOT=$(SDK_ROOT);
+      PLATFORM_ROOT=$(PLATFORM_ROOT);
     </DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup >
-    <PackageScope>perMachine</PackageScope>
-    <IsBundleCompressed>true</IsBundleCompressed>
   </PropertyGroup>
 
   <PropertyGroup>

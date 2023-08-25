@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!--
+  Note that these GUIDs are substituted at bind time so they skip the normal
+  validation and cleanup that the compiler does and therefore must be
+  "proper" GUIDs:
+
+  - Uppercase
+  - Surrounded by curly braces
+
+  Packages keep the same upgrade codes "forever" because MSI lets you specify
+  version ranges for upgrades, which you can find in shared/shared.wxs.
+
+  Bundles don't support upgrade version ranges, so the bundle upgrade code
+  must change for every minor version _and_ stay the same for the entire
+  lifetime of that minor version (e.g., v5.10.0 thropugh v5.10.9999).
+  -->
+
+  <PropertyGroup>
+    <BldUpgradeCode>{7E95DC06-7F84-4E8E-A038-8304AF0468FB}</BldUpgradeCode>
+    <CliUpgradeCode>{87019842-3F3E-4227-B5C5-23A8EF72AD89}</CliUpgradeCode>
+    <DbgUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgUpgradeCode>
+    <IdeUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeUpgradeCode>
+    <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
+    <SdkUpgradeCode Condition=" '$(ProductArchitecture)' == 'x86' ">{443F4D7F-38F3-47C8-9BEE-37FEB01D13C8}</SdkUpgradeCode>
+    <SdkUpgradeCode Condition=" '$(ProductArchitecture)' == 'amd64' ">{762D10FE-EBE5-4554-BB78-FB13A4A487E3}</SdkUpgradeCode>
+    <SdkUpgradeCode Condition=" '$(ProductArchitecture)' == 'arm64' ">{9749D9E6-E860-4FF6-9E8A-525270F471A3}</SdkUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '0.0'">
+    <BundleUpgradeCode>{963BE094-A046-47B3-83B2-BEBE92859D39}</BundleUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '5.9'">
+    <BundleUpgradeCode>{710F1827-DA4A-4BF4-BDCE-D5F2D7C0DEF2}</BundleUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      BundleUpgradeCode=$(BundleUpgradeCode);
+      BldUpgradeCode=$(BldUpgradeCode);
+      CliUpgradeCode=$(CliUpgradeCode);
+      DbgUpgradeCode=$(DbgUpgradeCode);
+      IdeUpgradeCode=$(IdeUpgradeCode);
+      RtlUpgradeCode=$(RtlUpgradeCode);
+      SdkUpgradeCode=$(SdkUpgradeCode);
+    </DefineConstants>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,31 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
+      UpgradeCode="$(RtlUpgradeCode)"
+      Version="$(ProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="rtl.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(RtlUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+
+    <!-- Point the RTL component group to the right directory. -->
+    <DirectoryRef Id="runtimes_usr_bin" />
+    <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
+
+    <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
+      <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
+    </Feature>
+  </Package>
+</Wix>

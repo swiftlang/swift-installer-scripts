@@ -1,10 +1,32 @@
 ﻿<Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
     <OutputType>Bundle</OutputType>
-    <DefineConstants>$(DefineConstants);MSI_LOCATION=$(MSI_LOCATION);</DefineConstants>
+    <DefaultCompressionLevel>$(BundleCompressionLevel)</DefaultCompressionLevel>
+    <DefineConstants>
+      $(DefineConstants);
+      INCLUDE_X86_SDK=$(INCLUDE_X86_SDK);
+      INCLUDE_ARM64_SDK=$(INCLUDE_ARM64_SDK);
+    </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\bld\bld.wixproj" BindName="bld" />
+    <ProjectReference Include="..\cli\cli.wixproj" BindName="cli" />
+    <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
+    <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
+    <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
+    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=amd64;Platform=x86" BindName="sdk_amd64" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(INCLUDE_X86_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=x86;Platform=x86" BindName="sdk_x86" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(INCLUDE_ARM64_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" BindName="sdk_arm64" />
   </ItemGroup>
 </Project>

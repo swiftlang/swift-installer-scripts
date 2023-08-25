@@ -1,14 +1,16 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Language="1033"
-      Manufacturer="swift.org"
+      Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Cli_ProductName)"
-      UpgradeCode="87019842-3f3e-4227-b5c5-23a8ef72ad89"
+      UpgradeCode="$(CliUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="cli.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="cli.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(CliUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include__InternalSwiftScan" Name="_InternalSwiftScan" />
@@ -229,9 +231,9 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_format" Directory="Tools">
+    <ComponentGroup Id="swift_format" Directory="ToolsVersioned">
       <?if $(INCLUDE_SWIFT_FORMAT) == true ?>
-        <Component Id="swift_format.exe" Directory="Tools">
+        <Component Id="swift_format.exe">
           <File Source="$(SWIFT_FORMAT_BUILD)\swift-format.exe" />
         </Component>
 
@@ -251,6 +253,8 @@
       <ComponentGroupRef Id="system" />
       <ComponentGroupRef Id="package_manager" />
       <ComponentGroupRef Id="swift_format" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>

@@ -1,14 +1,16 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Language="1033"
-      Manufacturer="swift.org"
+      Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Bld_ProductName)"
-      UpgradeCode="7e95dc06-7f84-4e8e-a038-8304af0468fb"
+      UpgradeCode="$(BldUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="bld.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="bld.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(BldUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include_llvm_c" Name="llvm-c" />
@@ -324,11 +326,8 @@
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="SystemEnvironmentVariables" Condition="ALLUSERS=1" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
-        <Environment Id="SystemPath" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[_usr_bin]" />
-      </Component>
-      <Component Id="UserEnvironmentVariables" Condition="NOT ALLUSERS=1" Directory="INSTALLDIR" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
-        <Environment Id="UserPath" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
       </Component>
     </ComponentGroup>
 
@@ -347,6 +346,7 @@
       <ComponentGroupRef Id="ClangResources" />
 
       <ComponentGroupRef Id="EnvironmentVariables" />
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>

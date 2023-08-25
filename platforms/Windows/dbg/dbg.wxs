@@ -1,14 +1,16 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Language="1033"
-      Manufacturer="swift.org"
+      Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Dbg_ProductName)"
-      UpgradeCode="91d382af-1e92-44dc-a4ad-aee91c1b5160"
+      UpgradeCode="$(DbgUpgradeCode)"
       Version="$(ProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="dbg.cab" EmbedCab="yes" />
-    <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+    <Media Id="1" Cabinet="dbg.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(DbgUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_lib">
       <Directory Name="site-packages">
@@ -99,9 +101,9 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_inspect" Directory="Tools">
+    <ComponentGroup Id="swift_inspect" Directory="ToolsVersioned">
       <?if $(INCLUDE_SWIFT_INSPECT) == true ?>
-        <Component Id="swift_inspect.exe" Directory="Tools">
+        <Component Id="swift_inspect.exe">
           <File Source="$(SWIFT_INSPECT_BUILD)\swift-inspect.exe" />
         </Component>
 
@@ -115,6 +117,8 @@
 
       <ComponentGroupRef Id="swift_repl" />
       <ComponentGroupRef Id="swift_inspect" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Wix>
