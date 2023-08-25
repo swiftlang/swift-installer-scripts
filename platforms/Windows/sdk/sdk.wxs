@@ -80,6 +80,7 @@
                 </Directory>
                 <Directory Name="lib">
                   <Directory Name="swift">
+                    <Directory Id="WindowsSDK_usr_lib_swift_apinotes" Name="apinotes" />
                     <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims" />
                     <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
                       <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
@@ -428,6 +429,12 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="apinotes" Directory="WindowsSDK_usr_lib_swift_apinotes">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\apinotes\std.apinotes" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="libcxxshim" Directory="WindowsSDK_usr_lib_swift_windows">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\libcxxshim.h" />
@@ -519,6 +526,7 @@
       <ComponentGroupRef Id="SwiftOnoneSupport" />
       <ComponentGroupRef Id="WinSDK" />
       <ComponentGroupRef Id="libcxxshim" />
+      <ComponentGroupRef Id="apinotes" />
       <ComponentGroupRef Id="Registrar" />
       <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
