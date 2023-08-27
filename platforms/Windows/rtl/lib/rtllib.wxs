@@ -29,9 +29,6 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\bin\swiftCore.dll" />
       </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftCxx.dll" />
-      </Component>
 
       <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
       <Component Directory="_usr_bin" Id="swiftDemangle.dll">
