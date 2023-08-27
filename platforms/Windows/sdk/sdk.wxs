@@ -310,7 +310,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftCxx.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\libswiftCxx.lib" />
       </Component>
     </ComponentGroup>
 
