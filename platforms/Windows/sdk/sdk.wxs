@@ -472,7 +472,7 @@
       </Component>
     </ComponentGroup>
 
-    <Component Id="rtl.msm" Directory="RedistVersion">
+    <Component Id="rtl.msm" Directory="RedistVersion" Condition="INSTALLREDIST">
       <File Source="!(bindpath.rtlmsm)\rtl.$(ProductArchitecture).msm" />
     </Component>
 

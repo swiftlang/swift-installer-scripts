@@ -3,6 +3,7 @@
     Name="!(loc.BundleName) $(ProductVersion)"
     Version="$(ProductVersion)"
     Manufacturer="!(loc.ManufacturerName)"
+    DisableModify="yes"
     Compressed="$(IsBundleCompressed)"
     UpgradeCode="$(BundleUpgradeCode)">
 
@@ -31,8 +32,11 @@
     <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRtl" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.
@@ -95,6 +99,7 @@
           InstallCondition="OptionsInstallSdkX86"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistX86]" />
         </MsiPackage>
       <?endif?>
 
@@ -103,6 +108,7 @@
         InstallCondition="OptionsInstallSdkAMD64"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistAMD64]" />
       </MsiPackage>
 
       <?if $(INCLUDE_ARM64_SDK) == true ?>
@@ -111,6 +117,7 @@
           InstallCondition="OptionsInstallSdkArm64"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
         </MsiPackage>
       <?endif?>
      </Chain>
