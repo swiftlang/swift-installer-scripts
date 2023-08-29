@@ -2,6 +2,7 @@
   <Bundle
     Name="!(loc.BundleName) $(ProductVersion)"
     Version="$(ProductVersion)"
+    IconSourceFile="logo@256.ico"
     Manufacturer="!(loc.ManufacturerName)"
     Compressed="$(IsBundleCompressed)"
     UpgradeCode="$(BundleUpgradeCode)">
