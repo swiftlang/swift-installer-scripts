@@ -98,23 +98,15 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(INCLUDE_X86_SDK) == true?>
+      <?if $(INCLUDE_AMD64_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
-          InstallCondition="OptionsInstallSdkX86 = 1"
+          SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
+          InstallCondition="OptionsInstallSdkAMD64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistX86]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistAMD64]" />
         </MsiPackage>
       <?endif?>
-
-      <MsiPackage
-        SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
-        InstallCondition="OptionsInstallSdkAMD64 = 1"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistAMD64]" />
-      </MsiPackage>
 
       <?if $(INCLUDE_ARM64_SDK) == true ?>
         <MsiPackage
@@ -123,6 +115,16 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
           <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(INCLUDE_X86_SDK) == true?>
+        <MsiPackage
+          SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
+          InstallCondition="OptionsInstallSdkX86 = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistx86]" />
         </MsiPackage>
       <?endif?>
 
