@@ -17,6 +17,9 @@
   <String Id="ManufacturerName" Value="swift.org" />
 
   <String Id="OptionsFeaturesLabel" Value="Choose the features you want to install" />
+  <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
+  <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
+  <String Id="Redist_x86" Value="Swift Windows Redistributable (x86)" />
 
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />
