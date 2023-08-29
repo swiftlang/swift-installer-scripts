@@ -62,7 +62,7 @@
 
   <Fragment>
     <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="ToolsVersioned">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[Tools]" />
+      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[ToolsVersioned]" />
     </Component>
   </Fragment>
 
