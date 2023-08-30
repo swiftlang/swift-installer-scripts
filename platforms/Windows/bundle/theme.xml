@@ -56,7 +56,7 @@
             </Button>
 
             <Label X="176" Y="111" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
-            <Checkbox Name="OptionsInstallBld" X="176" Y="141" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Bld_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallBld" X="176" Y="141" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallCli" X="176" Y="159" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallDbg" X="176" Y="177" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallIde" X="176" Y="195" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
