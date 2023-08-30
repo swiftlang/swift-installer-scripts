@@ -9,17 +9,17 @@
   <String Id="Rtl_ProductName" Value="Swift Windows Utilities" />
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
-  <String Id="Rtl_ProductName_x86" Value="Swift Windows Utilities (x86)" />
+  <String Id="Rtl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
   <String Id="Sdk_ProductName_arm64" Value="Swift Windows SDK (ARM64)" />
   <String Id="Sdk_ProductName_amd64" Value="Swift Windows SDK (AMD64)" />
-  <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (x86)" />
-  <String Id="BundleName" Value="Swift Tool Kit" />
+  <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (X86)" />
+  <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 
-  <String Id="OptionsFeaturesLabel" Value="Choose the features you want to install" />
+  <String Id="OptionsFeaturesLabel" Value="Feature Selection" />
   <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
   <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
-  <String Id="Redist_x86" Value="Swift Windows Redistributable (x86)" />
+  <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
 
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />
@@ -40,7 +40,7 @@
   <String Id="InstallInstallButton" Value="&amp;Install" />
   <String Id="InstallCancelButton" Value="&amp;Cancel" />
   <String Id="OptionsHeader" Value="Setup Options" />
-  <String Id="OptionsLocationLabel" Value="Install location" />
+  <String Id="OptionsLocationLabel" Value="Install Location" />
   <String Id="OptionsBrowseButton" Value="&amp;Browse" />
   <String Id="OptionsOkButton" Value="&amp;OK" />
   <String Id="OptionsCancelButton" Value="&amp;Cancel" />
