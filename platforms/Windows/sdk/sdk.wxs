@@ -86,6 +86,7 @@
                       <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
                       <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule" />
                       <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
+                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
                       <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
                       <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
                       <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
@@ -95,11 +96,6 @@
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
                       <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
-                    </Directory>
-                  </Directory>
-                  <Directory Name="swift_static">
-                    <Directory Id="WindowsSDK_usr_lib_swift_static_windows" Name="windows">
-                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
                     </Directory>
                   </Directory>
                 </Directory>
@@ -317,13 +313,13 @@
 
     <ComponentGroup Id="CxxStdlib" Directory="CxxStdlib.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\libswiftCxxStdlib.lib" />
