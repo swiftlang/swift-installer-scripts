@@ -2,7 +2,7 @@
   <Bundle
     Name="!(loc.BundleName) $(ProductVersion)"
     Version="$(ProductVersion)"
-    IconSourceFile="logo@256.ico"
+    IconSourceFile="logo.ico"
     Manufacturer="!(loc.ManufacturerName)"
     DisableModify="yes"
     Compressed="$(IsBundleCompressed)"
