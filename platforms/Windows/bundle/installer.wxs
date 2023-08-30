@@ -27,7 +27,7 @@
     -->
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
       Value="[LocalAppDataFolder]Programs\Swift" />
-    <Variable Name="OptionsInstallBld" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallBld" Value="1" />
     <Variable Name="OptionsInstallCli" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -68,7 +68,6 @@
 
       <MsiPackage
         SourceFile="!(bindpath.bld)\bld.msi"
-        InstallCondition="OptionsInstallBld"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
