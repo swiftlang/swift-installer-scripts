@@ -83,6 +83,8 @@
                             </Directory>
                             <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule">
                             </Directory>
+                            <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule">
+                            </Directory>
                             <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule">
                             </Directory>
                             <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule">
@@ -103,7 +105,6 @@
                         </Directory>
                         <Directory Id="WindowsSDK_usr_lib_swift_static" Name="swift_static">
                           <Directory Id="WindowsSDK_usr_lib_swift_static_windows" Name="windows">
-                            <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
                           </Directory>
                         </Directory>
                       </Directory>
@@ -355,20 +356,20 @@
         <File Id="Cxx.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
 
-      <Component Id="swiftCxx.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="b2897a7a-65c2-4f0f-b14c-6b466d2e3d34">
-        <File Id="swiftCxx.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\swiftCxx.lib" Checksum="yes" />
+      <Component Id="libswiftCxx.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="b2897a7a-65c2-4f0f-b14c-6b466d2e3d34">
+        <File Id="libswiftCxx.lib" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\i686\libswiftCxx.lib" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="CxxStdlib">
       <Component Id="CxxStdlib.swiftdoc" Directory="CxxStdlib.swiftmodule" Guid="6edc85d1-5db5-411b-9a15-d0ade693989a">
-        <File Id="CxxStdlib.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
+        <File Id="CxxStdlib.swiftdoc" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftdoc" Checksum="yes" />
       </Component>
       <Component Id="CxxStdlib.swiftinterface" Directory="CxxStdlib.swiftmodule" Guid="9e078f6f-1c64-4af2-8ca5-7dd231c4e545">
-        <File Id="CxxStdlib.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
+        <File Id="CxxStdlib.swiftinterface" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftinterface" Checksum="yes" />
       </Component>
       <Component Id="CxxStdlib.swiftmodule" Directory="CxxStdlib.swiftmodule" Guid="e49baae6-a192-4b91-af90-be5bb51d803c">
-        <File Id="CxxStdlib.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
+        <File Id="CxxStdlib.swiftmodule" Source="$(var.SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftmodule" Checksum="yes" />
       </Component>
 
       <Component Id="libswiftCxxStdlib.lib" Directory="WindowsSDK_usr_lib_swift_windows_i686" Guid="f4342fea-b975-4e24-9881-8927d6ebb0fe">

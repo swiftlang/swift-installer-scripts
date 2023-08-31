@@ -61,9 +61,6 @@
       <Component Id="swiftCore.dll" Guid="4098dff8-8b8d-48ee-a234-d29104d4c809">
         <File Id="swiftCore.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCore.dll" Checksum="yes" />
       </Component>
-      <Component Id="swiftCxx.dll" Guid="45eb46fc-a006-4fe9-abf0-42e26e3d3c87">
-        <File Id="swiftCxx.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftCxx.dll" Checksum="yes" />
-      </Component>
       <Component Id="swiftDispatch.dll" Guid="312ffb9e-7ecf-423f-8f59-3041d2776e4a">
         <File Id="swiftDispatch.dll" Source="$(var.SDK_ROOT)\usr\bin\swiftDispatch.dll" Checksum="yes" />
       </Component>
