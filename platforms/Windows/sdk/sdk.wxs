@@ -92,6 +92,7 @@
                       <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
                       <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
                       <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                      <Directory Id="Observation.swiftmodule" Name="Observation.swiftmodule" />
                       <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
                       <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
@@ -378,6 +379,21 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="Observation" Directory="Observation.swiftmodule">
+      <Component>
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\Observation.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftinterface" Source="$(SDK_ROOT)\usr\lib\swift\windows\Observation.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\Observation.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftObservation.lib" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="RegexBuilder" Directory="RegexBuilder.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -518,6 +534,7 @@
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationXML" />
       <ComponentGroupRef Id="FoundationNetworking" />
+      <ComponentGroupRef Id="Observation" />
       <ComponentGroupRef Id="RegexBuilder" />
       <ComponentGroupRef Id="Swift" />
       <ComponentGroupRef Id="SwiftOnoneSupport" />
