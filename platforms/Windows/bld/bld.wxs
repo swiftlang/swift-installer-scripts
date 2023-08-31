@@ -293,6 +293,12 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SwiftMacros" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\ObservationMacros.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="argument_parser" Directory="_usr_bin">
       <Component>
         <File Source="$(DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" />
@@ -386,6 +392,7 @@
       <ComponentGroupRef Id="tools_support_core" />
       <ComponentGroupRef Id="swift_driver" />
       <ComponentGroupRef Id="swift_syntax" />
+      <ComponentGroupRef Id="SwiftMacros" />
 
       <ComponentGroupRef Id="ClangResources" />
 
