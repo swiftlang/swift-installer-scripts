@@ -42,6 +42,9 @@
         <File Source="$(SDK_ROOT)\usr\bin\swiftCRT.dll" />
       </Component>
       <Component>
+        <File Source="$(SDK_ROOT)\usr\bin\swiftObservation.dll" />
+      </Component>
+      <Component>
         <File Source="$(SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" />
       </Component>
       <Component>
