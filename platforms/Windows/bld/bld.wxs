@@ -28,10 +28,8 @@
       <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
     </DirectoryRef>
 
-    <DirectoryRef Id="_usr">
-      <Directory Name="share">
-        <Directory Id="_usr_share_swift" Name="swift" />
-      </Directory>
+    <DirectoryRef Id="_usr_share">
+      <Directory Id="_usr_share_swift" Name="swift" />
     </DirectoryRef>
 
     <ComponentGroup Id="binutils" Directory="_usr_bin">
