@@ -1,4 +1,11 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?if $(ProductArchitecture) = "amd64"?>
+    <?define ArchTriple = "x86_64-unknown-windows-msvc"?>
+  <?elseif $(ProductArchitecture) = "arm64"?>
+    <?define ArchTriple = "aarch64-unknown-windows-msvc"?>
+  <?endif?>
+
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
@@ -17,8 +24,8 @@
     </DirectoryRef>
 
     <DirectoryRef Id="_usr_lib_swift">
-      <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
       <Directory Id="_usr_lib_swift_migrator" Name="migrator" />
+      <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
     </DirectoryRef>
 
     <DirectoryRef Id="_usr">
@@ -325,6 +332,42 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="swift_syntax" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftBasicFormat.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftCompilerPluginMessageHandling.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftDiagnostics.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftIDEUtils.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftOperators.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftParser.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftParserDiagnostics.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftSyntax.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxBuilder.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxMacroExpansion.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxMacros.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
@@ -342,6 +385,7 @@
       <ComponentGroupRef Id="argument_parser" />
       <ComponentGroupRef Id="tools_support_core" />
       <ComponentGroupRef Id="swift_driver" />
+      <ComponentGroupRef Id="swift_syntax" />
 
       <ComponentGroupRef Id="ClangResources" />
 
