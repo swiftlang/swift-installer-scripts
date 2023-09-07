@@ -773,6 +773,42 @@
     </ComponentGroup>
     <?endif?>
 
+    <ComponentGroup Id="SwiftSyntax">
+      <Component Id="SwiftBasicFormat.dll" Directory="_usr_bin" Guid="db724de5-3471-43eb-9ea4-e831e73cdd4d">
+        <File Id="SwiftBasicFormat.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftBasicFormat.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftCompilerPluginMessageHandling.dll" Directory="_usr_bin" Guid="849a5f28-c7a9-4eb9-8db9-4a47eb3c6cbf">
+        <File Id="SwiftCompilerPluginMessageHandling.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftCompilerPluginMessageHandling.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftDiagnostics.dll" Directory="_usr_bin" Guid="7cf0d11e-48ab-4860-8ad0-1963996407e3">
+        <File Id="SwiftDiagnostics.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftDiagnostics.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftIDEUtils.dll" Directory="_usr_bin" Guid="23dd3d8a-5332-439d-8c27-da6a6b176701">
+        <File Id="SwiftIDEUtils.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftIDEUtils.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftOperators.dll" Directory="_usr_bin" Guid="b69d4cd7-e924-4174-b976-f655ec40bfbc">
+        <File Id="SwiftOperators.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftOperators.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftParser.dll" Directory="_usr_bin" Guid="06a396b7-4939-427f-9331-676bde818c2e">
+        <File Id="SwiftParser.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftParser.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftParserDiagnostics.dll" Directory="_usr_bin" Guid="ae9de1a5-d5fb-4624-9d6c-cbb81fddd3e2">
+        <File Id="SwiftParserDiagnostics.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftParserDiagnostics.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftSyntax.dll" Directory="_usr_bin" Guid="969ea6d3-3ce7-4c88-94e6-eb3a22862a00">
+        <File Id="SwiftSyntax.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSyntax.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftSyntaxBuilder.dll" Directory="_usr_bin" Guid="7b8c8763-9e5a-4569-a2df-683142511476">
+        <File Id="SwiftSyntaxBuilder.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxBuilder.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftSyntaxMacroExpansion.dll" Directory="_usr_bin" Guid="293dbd87-21ec-4083-bd3c-418f15e077ae">
+        <File Id="SwiftSyntaxMacroExpansion.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxMacroExpansion.dll" Checksum="yes" />
+      </Component>
+      <Component Id="SwiftSwiftSyntaxMacros.dll" Directory="_usr_bin" Guid="a9ea7be1-3163-40ce-ae4c-14975b93f73f">
+        <File Id="SwiftSwiftSyntaxMacros.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSwiftSyntaxMacros.dll" Checksum="yes" />
+      </Component>
+    </ComponentGroup>
+
     <Component Id="EnvironmentVariables" Directory="INSTALLDIR" Guid="d01ea5b8-0f8a-4388-9b61-1186efddfc39">
       <Environment Id="DeveloperDir" Action="set" Name="DEVELOPER_DIR" Part="all" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer" />
       <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[INSTALLDIR]Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain\usr\bin" />
@@ -791,6 +827,7 @@
       <ComponentGroupRef Id="SwiftArgumentParser" />
       <ComponentGroupRef Id="SwiftToolsSupportCore" />
       <ComponentGroupRef Id="SwiftDriver" />
+      <ComponentGroupRef Id="SwiftSyntax" />
 
       <ComponentGroupRef Id="ClangResources" />
       <!--
