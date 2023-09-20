@@ -804,8 +804,8 @@
       <Component Id="SwiftSyntaxMacroExpansion.dll" Directory="_usr_bin" Guid="21f83156-dc93-4ece-bbdd-6642d29be1a0">
         <File Id="SwiftSyntaxMacroExpansion.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxMacroExpansion.dll" Checksum="yes" />
       </Component>
-      <Component Id="SwiftSwiftSyntaxMacros.dll" Directory="_usr_bin" Guid="deeb1409-a58f-4ae7-a477-3032fd5bb4e0">
-        <File Id="SwiftSwiftSyntaxMacros.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSwiftSyntaxMacros.dll" Checksum="yes" />
+      <Component Id="SwiftSyntaxMacros.dll" Directory="_usr_bin" Guid="deeb1409-a58f-4ae7-a477-3032fd5bb4e0">
+        <File Id="SwiftSyntaxMacros.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftSyntaxMacros.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
 
