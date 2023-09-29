@@ -343,9 +343,6 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftDiagnostics.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftIDEUtils.dll" />
-      </Component>
-      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftOperators.dll" />
       </Component>
       <Component>
