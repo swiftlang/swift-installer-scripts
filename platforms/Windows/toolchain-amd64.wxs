@@ -783,9 +783,6 @@
       <Component Id="SwiftDiagnostics.dll" Directory="_usr_bin" Guid="7a22d954-714c-49f2-bd21-62b675aad2b1">
         <File Id="SwiftDiagnostics.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftDiagnostics.dll" Checksum="yes" />
       </Component>
-      <Component Id="SwiftIDEUtils.dll" Directory="_usr_bin" Guid="688d421f-a1f2-43df-8aaf-c4bc53ebcf1e">
-        <File Id="SwiftIDEUtils.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftIDEUtils.dll" Checksum="yes" />
-      </Component>
       <Component Id="SwiftOperators.dll" Directory="_usr_bin" Guid="07895d1d-04f9-4529-b0fe-1398f8aaf547">
         <File Id="SwiftOperators.dll" Source="$(var.TOOLCHAIN_ROOT)\usr\bin\SwiftOperators.dll" Checksum="yes" />
       </Component>
