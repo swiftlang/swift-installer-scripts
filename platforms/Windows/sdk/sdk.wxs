@@ -301,9 +301,6 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftinterface" />
-      </Component>
-      <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
@@ -314,9 +311,6 @@
     <ComponentGroup Id="CxxStdlib" Directory="CxxStdlib.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftinterface" />
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
