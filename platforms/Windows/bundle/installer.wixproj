@@ -4,6 +4,8 @@
     <DefaultCompressionLevel>$(BundleCompressionLevel)</DefaultCompressionLevel>
     <DefineConstants>
       $(DefineConstants);
+      VCREDIST_INSTALLER=$(VCREDIST_INSTALLER);
+      VCREDIST_VERSION=$(VCREDIST_VERSION);
       INCLUDE_X86_SDK=$(INCLUDE_X86_SDK);
       INCLUDE_ARM64_SDK=$(INCLUDE_ARM64_SDK);
     </DefineConstants>
