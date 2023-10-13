@@ -2,10 +2,12 @@
   <PropertyGroup>
     <OutputType>Bundle</OutputType>
     <DefaultCompressionLevel>$(BundleCompressionLevel)</DefaultCompressionLevel>
+    <VSMajorVersion Condition=" '$(VSVersion)' != '' ">$(VSVersion.Split('.')[0])</VSMajorVersion>
+    <VCRedistDownloadUrl Condition=" '$(VCRedistDownloadUrl)' == '' AND '$(VSMajorVersion)' != '' ">https://aka.ms/vs/$(VSMajorVersion)/release/vc_redist.$(ProductArchitecture).exe</VCRedistDownloadUrl>
     <DefineConstants>
       $(DefineConstants);
-      VCREDIST_INSTALLER=$(VCREDIST_INSTALLER);
-      VCREDIST_VERSION=$(VCREDIST_VERSION);
+      VCRedistInstaller=$(VCRedistInstaller);
+      VCRedistDownloadUrl=$(VCRedistDownloadUrl);
       INCLUDE_X86_SDK=$(INCLUDE_X86_SDK);
       INCLUDE_ARM64_SDK=$(INCLUDE_ARM64_SDK);
     </DefineConstants>

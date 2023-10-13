@@ -59,23 +59,14 @@
     -->
 
     <Chain>
-      <?if $(VCREDIST_INSTALLER) != ""?>
-        <ExePackage
-          SourceFile="$(VCREDIST_INSTALLER)"
+      <?if $(VCRedistInstaller) != ""?>
+        <BundlePackage
+          SourceFile="$(VCRedistInstaller)"
           InstallCondition="OptionsInstallRtl"
           Permanent="yes"
           InstallArguments="/install /quiet /norestart"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <!--
-            Install only if not already in Add/Remove Programs
-            under the GUID below.
-            TODO: Is this the right GUID for arm64?
-          -->
-          <ArpEntry 
-            Id="9e10fdb5-a50b-4c3b-98a4-aefac04e5970"
-            Version="$(VCREDIST_VERSION)"
-            Win64="yes" />
-        </ExePackage>
+          DownloadUrl="$(VCRedistDownloadUrl)">
+        </BundlePackage>
       <?endif?>
 
       <MsiPackage
