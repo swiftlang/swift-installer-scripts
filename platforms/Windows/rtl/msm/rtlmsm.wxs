@@ -12,7 +12,7 @@
     Guid="$(ModuleId)"
     Id="swift_runtime"
     Language="0"
-    Version="$(ProductVersion)">
+    Version="$(NonSemVerProductVersion)">
 
     <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
   </Module>

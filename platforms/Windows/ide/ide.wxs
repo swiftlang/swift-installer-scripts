@@ -4,7 +4,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Ide_ProductName)"
       UpgradeCode="$(IdeUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="ide.cab" EmbedCab="$(ArePackageCabsEmbedded)" />

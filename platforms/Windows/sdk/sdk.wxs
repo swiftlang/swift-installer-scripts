@@ -20,7 +20,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Sdk_ProductName_$(ProductArchitecture))"
       UpgradeCode="$(SdkUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />

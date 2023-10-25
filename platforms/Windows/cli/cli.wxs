@@ -4,7 +4,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Cli_ProductName)"
       UpgradeCode="$(CliUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="cli.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
