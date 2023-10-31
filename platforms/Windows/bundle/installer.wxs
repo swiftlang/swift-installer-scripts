@@ -31,7 +31,7 @@
     <Variable Name="OptionsInstallCli" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRtl" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRtl" Value="1" />
     <Variable Name="OptionsInstallSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -62,7 +62,6 @@
       <?if $(VCRedistInstaller) != ""?>
         <BundlePackage
           SourceFile="$(VCRedistInstaller)"
-          InstallCondition="OptionsInstallRtl"
           Permanent="yes"
           InstallArguments="/install /quiet /norestart"
           DownloadUrl="$(VCRedistDownloadUrl)">
@@ -71,7 +70,6 @@
 
       <MsiPackage
         SourceFile="!(bindpath.rtl)\rtl.msi"
-        InstallCondition="OptionsInstallRtl"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
