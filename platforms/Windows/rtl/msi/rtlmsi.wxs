@@ -16,11 +16,48 @@
     <DirectoryRef Id="runtimes_usr_bin" />
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
 
+    <ComponentGroup Id="vcruntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component>
+        <File Source="$(VCRedistDir)\concrt140.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\msvcp140.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\msvcp140_1.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\msvcp140_2.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\msvcp140_atomic_wait.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\msvcp140_codecvt_ids.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\vccorlib140.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\vcruntime140.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\vcruntime140_1.dll" />
+      </Component>
+      <Component>
+        <File Source="$(VCRedistDir)\vcruntime140_threads.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
       </Component>
     </ComponentGroup>
+
+    <Feature Id="VCRuntime" AllowAbsent="no" Title="!(loc.VCRuntime_ProductName_$(ProductArchitecture))">
+      <ComponentGroupRef Id="vcruntime_$(ProductArchitecture)" />
+    </Feature>
 
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />

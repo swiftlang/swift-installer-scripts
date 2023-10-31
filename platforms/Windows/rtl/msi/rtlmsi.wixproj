@@ -1,6 +1,10 @@
 <Project Sdk="WixToolset.Sdk/4.0.1">
   <PropertyGroup>
     <OutputName>rtl</OutputName>
+    <DefineConstants>
+      $(DefineConstants);
+      VCRedistDir=$(VCRedistDir);
+    </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'x86' ">

@@ -59,15 +59,6 @@
     -->
 
     <Chain>
-      <?if $(VCRedistInstaller) != ""?>
-        <BundlePackage
-          SourceFile="$(VCRedistInstaller)"
-          Permanent="yes"
-          InstallArguments="/install /quiet /norestart"
-          DownloadUrl="$(VCRedistDownloadUrl)">
-        </BundlePackage>
-      <?endif?>
-
       <MsiPackage
         SourceFile="!(bindpath.rtl)\rtl.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
