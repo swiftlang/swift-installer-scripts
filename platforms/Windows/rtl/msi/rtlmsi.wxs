@@ -17,6 +17,7 @@
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
 
     <ComponentGroup Id="vcruntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <?if $(VCRedistDir) != "" ?>
       <Component>
         <File Source="$(VCRedistDir)\concrt140.dll" />
       </Component>
@@ -47,6 +48,7 @@
       <Component>
         <File Source="$(VCRedistDir)\vcruntime140_threads.dll" />
       </Component>
+      <?endif?>
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
