@@ -18,4 +18,19 @@
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
     <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(VCRedistDir)">
+      <ComponentGroupName>VCRuntime_$(ProductArchitecture)</ComponentGroupName>
+      <DirectoryRefId>RUNTIMEDIR_$(ProductArchitecture)</DirectoryRefId>
+      <PreprocessorVariable>var.VCRedistDir</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
 </Project>
