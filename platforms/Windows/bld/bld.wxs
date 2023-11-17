@@ -21,6 +21,7 @@
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include_llvm_c" Name="llvm-c" />
+      <Directory Id="_usr_include_swift" Name="swift" />
     </DirectoryRef>
 
     <DirectoryRef Id="_usr_lib_swift">
@@ -218,6 +219,13 @@
       </Component>
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
+      </Component>
+
+      <Component Directory="_usr_include_swift">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\module.modulemap" />
+      </Component>
+      <Component Directory="_usr_include_swift">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\bridging" />
       </Component>
     </ComponentGroup>
 
