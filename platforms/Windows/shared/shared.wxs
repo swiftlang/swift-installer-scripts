@@ -134,7 +134,7 @@
 
     <Upgrade Id="!(wix.SideBySidePackageUpgradeCode)">
       <UpgradeVersion Minimum="$(MajorMinorProductVersion).65535" IncludeMinimum="no" OnlyDetect="yes" Property="NEWERVERSIONDETECTED" />
-      <UpgradeVersion Minimum="$(MajorMinorProductVersion).0" IncludeMinimum="yes" Maximum="$(ProductVersion)" IncludeMaximum="yes" Property="OLDERVERSIONBEINGUPGRADED" />
+      <UpgradeVersion Minimum="$(MajorMinorProductVersion).0" IncludeMinimum="yes" Maximum="$(NonSemVerProductVersion)" IncludeMaximum="yes" Property="OLDERVERSIONBEINGUPGRADED" />
     </Upgrade>
   </Fragment>
 

@@ -11,7 +11,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Bld_ProductName)"
       UpgradeCode="$(BldUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="bld.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
