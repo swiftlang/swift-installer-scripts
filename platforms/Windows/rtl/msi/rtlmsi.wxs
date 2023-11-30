@@ -22,6 +22,10 @@
       </Component>
     </ComponentGroup>
 
+    <Feature Id="VCRuntime" AllowAbsent="no" Title="!(loc.VCRuntime_ProductName_$(ProductArchitecture))">
+      <ComponentGroupRef Id="VCRuntime_$(ProductArchitecture)" />
+    </Feature>
+
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="EnvironmentVariables" />

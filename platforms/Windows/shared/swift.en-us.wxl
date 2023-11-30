@@ -7,6 +7,9 @@
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
   <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
   <String Id="Rtl_ProductName" Value="Swift Windows Utilities" />
+  <String Id="VCRuntime_ProductName_arm64" Value="Visual C++ Runtime (ARM64)" />
+  <String Id="VCRuntime_ProductName_amd64" Value="Visual C++ Runtime (AMD64)" />
+  <String Id="VCRuntime_ProductName_x86" Value="Visual C++ Runtime (X86)" />
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
