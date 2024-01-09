@@ -12,6 +12,10 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(DbgUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
+    <DirectoryRef Id="_usr_include">
+      <Directory Id="_usr_include__InternalSwiftStaticMirror" Name="_InternalSwiftStaticMirror" />
+    </DirectoryRef>
+
     <DirectoryRef Id="_usr_lib">
       <Directory Name="site-packages">
         <Directory Id="_usr_lib_site_packages_lldb" Name="lldb">
@@ -111,12 +115,34 @@
       <?endif?>
     </ComponentGroup>
 
+    <ComponentGroup Id="_InternalSwiftStaticMirror" Directory="_usr_include__InternalSwiftStaticMirror">
+      <Component Directory="_usr_bin">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftStaticMirror.dll" />
+      </Component>
+
+      <Component Directory="_usr_lib">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftStaticMirror.lib" />
+      </Component>
+
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftStaticMirror\BinaryScan.h" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftStaticMirror\module.modulemap" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftStaticMirror\StaticMirrorMacros.h" />
+      </Component>
+    </ComponentGroup>
+
     <Feature Id="DebuggingTools" AllowAbsent="no" Title="!(loc.Dbg_ProductName)">
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="lldb_server" />
 
       <ComponentGroupRef Id="swift_repl" />
       <ComponentGroupRef Id="swift_inspect" />
+
+      <ComponentGroupRef Id="_InternalSwiftStaticMirror" />
 
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
