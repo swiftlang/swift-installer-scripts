@@ -239,14 +239,13 @@
       <?endif?>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_format" Directory="ToolsVersioned">
-      <?if $(INCLUDE_SWIFT_FORMAT) == true ?>
-        <Component Id="swift_format.exe">
-          <File Source="$(SWIFT_FORMAT_BUILD)\swift-format.exe" />
-        </Component>
-
-        <ComponentRef Id="SystemToolsEnvironmentVariables" />
-      <?endif?>
+    <ComponentGroup Id="swift_format" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-format.exe" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftFormat.dll" />
+      </Component>
     </ComponentGroup>
 
     <Feature Id="CLITools" AllowAbsent="no" Title="!(loc.Cli_ProductName)">
