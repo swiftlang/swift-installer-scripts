@@ -156,6 +156,12 @@
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang.exe" />
       </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-scan-deps.exe" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-deps-launcher.py" />
+      </Component>
       <!--
         TODO(compnerd) we should include:
         - clang-offload-bundler
