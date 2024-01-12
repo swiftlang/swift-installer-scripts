@@ -96,6 +96,7 @@
                       <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
                       <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
+                      <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
                       <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
                       <Directory Id="WindowsSDK_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
                     </Directory>
@@ -433,6 +434,21 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="Synchronization" Directory="Synchronization.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Synchronization.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Synchronization.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Synchronization.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\swiftSynchronization.lib" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="WinSDK" Directory="WinSDK.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -532,6 +548,7 @@
       <ComponentGroupRef Id="RegexBuilder" />
       <ComponentGroupRef Id="Swift" />
       <ComponentGroupRef Id="SwiftOnoneSupport" />
+      <ComponentGroupRef Id="Synchronization" />
       <ComponentGroupRef Id="WinSDK" />
       <ComponentGroupRef Id="libcxxshim" />
       <ComponentGroupRef Id="apinotes" />

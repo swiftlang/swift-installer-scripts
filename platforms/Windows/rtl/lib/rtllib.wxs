@@ -12,6 +12,9 @@
 
     <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
+        <File Source="$(SDK_ROOT)\usr\bin\swiftSynchronization.dll" />
+      </Component>
+      <Component>
         <File Source="$(SDK_ROOT)\usr\bin\swift_Concurrency.dll" />
       </Component>
       <Component>
