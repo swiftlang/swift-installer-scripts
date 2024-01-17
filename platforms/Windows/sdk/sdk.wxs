@@ -259,9 +259,6 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(ArchTriple).swiftinterface" />
-      </Component>
-      <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_RegexParser.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
