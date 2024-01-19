@@ -24,7 +24,7 @@
 
     <ComponentGroup Id="lldb" Directory="_usr_bin">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-dap.exe" />
       </Component>
     </ComponentGroup>
 
