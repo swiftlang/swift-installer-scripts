@@ -1,6 +1,8 @@
-<!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <WixLocalization xmlns="http://wixtoolset.org/schemas/v4/wxl" Culture="en-US">
+  <!-- Copyright (c) .NET Foundation and contributors. All rights reserved. Licensed under the Microsoft Reciprocal License. See LICENSE.TXT file in the project root for full license information. -->
+
+  <!-- Product Names -->
   <String Id="DowngradeError" Value="A newer version of [ProductName] is already installed." />
   <String Id="Bld_ProductName" Value="Swift Build Tools" />
   <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
@@ -19,15 +21,17 @@
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 
+  <!-- Options and Features -->
   <String Id="OptionsFeaturesLabel" Value="Feature Selection" />
   <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
   <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
   <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
 
+  <!-- Setup UI Text -->
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />
   <String Id="CheckingForUpdatesLabel" Value="Checking for updates" />
-  <String Id="UpdateButton" Value="&amp;Update to version [WixStdBAUpdateAvailable]" />
+  <String Id="UpdateButton" Value="&Update to version [WixStdBAUpdateAvailable]" />
   <String Id="InstallHeader" Value="Welcome" />
   <String Id="InstallMessage" Value="Setup will install [WixBundleName] on your computer. Click Install to continue or Cancel to exit." />
   <String Id="InstallMessageOptions" Value="Setup will install [WixBundleName] on your computer. Click Install to continue, Options to set installation options, or Cancel to exit." />
@@ -36,25 +40,25 @@
   <String Id="ExecuteUpgradeRelatedBundleMessage" Value="Previous version" />
   <String Id="HelpHeader" Value="Setup Help" />
   <String Id="HelpText" Value="/install | /repair | /uninstall | /layout [directory]&#xA;Installs, repairs, uninstalls, or creates a complete local copy of the bundle in [directory]. Install is the default.&#xA;&#xA;/passive | /quiet&#xA;Displays minimal UI with no prompts or displays no UI and no prompts. By default UI and all prompts are displayed.&#xA;&#xA;/norestart&#xA;Suppress any attempts to restart. By default UI will prompt before restart.&#xA;&#xA;/log [path\to\logfile.log]&#xA;Logs to a specific file. By default a log file is created in %TEMP%." />
-  <String Id="HelpCloseButton" Value="&amp;Close" />
+  <String Id="HelpCloseButton" Value="&Close" />
   <String Id="InstallLicenseLinkText" Value="[WixBundleName] &lt;a href=&quot;#&quot;&gt;license terms&lt;/a&gt;." />
-  <String Id="InstallAcceptCheckbox" Value="I &amp;agree to the license terms and conditions" />
-  <String Id="InstallOptionsButton" Value="&amp;Options" />
-  <String Id="InstallInstallButton" Value="&amp;Install" />
-  <String Id="InstallCancelButton" Value="&amp;Cancel" />
+  <String Id="InstallAcceptCheckbox" Value="I &agree to the license terms and conditions" />
+  <String Id="InstallOptionsButton" Value="&Options" />
+  <String Id="InstallInstallButton" Value="&Install" />
+  <String Id="InstallCancelButton" Value="&Cancel" />
   <String Id="OptionsHeader" Value="Setup Options" />
   <String Id="OptionsLocationLabel" Value="Install Location" />
-  <String Id="OptionsBrowseButton" Value="&amp;Browse" />
-  <String Id="OptionsOkButton" Value="&amp;OK" />
-  <String Id="OptionsCancelButton" Value="&amp;Cancel" />
+  <String Id="OptionsBrowseButton" Value="&Browse" />
+  <String Id="OptionsOkButton" Value="&OK" />
+  <String Id="OptionsCancelButton" Value="&Cancel" />
   <String Id="ProgressHeader" Value="Setup Progress" />
   <String Id="ProgressLabel" Value="Processing:" />
   <String Id="OverallProgressPackageText" Value="Initializing..." />
-  <String Id="ProgressCancelButton" Value="&amp;Cancel" />
+  <String Id="ProgressCancelButton" Value="&Cancel" />
   <String Id="ModifyHeader" Value="Modify Setup" />
-  <String Id="ModifyRepairButton" Value="&amp;Repair" />
-  <String Id="ModifyUninstallButton" Value="&amp;Uninstall" />
-  <String Id="ModifyCancelButton" Value="&amp;Cancel" />
+  <String Id="ModifyRepairButton" Value="&Repair" />
+  <String Id="ModifyUninstallButton" Value="&Uninstall" />
+  <String Id="ModifyCancelButton" Value="&Cancel" />
   <String Id="SuccessHeader" Value="Setup Successful" />
   <String Id="SuccessCacheHeader" Value="Cache Successfully Completed" />
   <String Id="SuccessInstallHeader" Value="Installation Successfully Completed" />
@@ -63,11 +67,11 @@
   <String Id="SuccessRepairHeader" Value="Repair Successfully Completed" />
   <String Id="SuccessUninstallHeader" Value="Uninstall Successfully Completed" />
   <String Id="SuccessUnsafeUninstallHeader" Value="Uninstall Successfully Completed" />
-  <String Id="SuccessLaunchButton" Value="&amp;Launch" />
+  <String Id="SuccessLaunchButton" Value="&Launch" />
   <String Id="SuccessRestartText" Value="You must restart your computer before you can use the software." />
   <String Id="SuccessUninstallRestartText" Value="You must restart your computer to complete the removal of the software." />
-  <String Id="SuccessRestartButton" Value="&amp;Restart" />
-  <String Id="SuccessCloseButton" Value="&amp;Close" />
+  <String Id="SuccessRestartButton" Value="&Restart" />
+  <String Id="SuccessCloseButton" Value="&Close" />
   <String Id="FailureHeader" Value="Setup Failed" />
   <String Id="FailureCacheHeader" Value="Cache Failed" />
   <String Id="FailureInstallHeader" Value="Setup Failed" />
@@ -78,14 +82,14 @@
   <String Id="FailureUnsafeUninstallHeader" Value="Uninstall Failed" />
   <String Id="FailureHyperlinkLogText" Value="One or more issues caused the setup to fail. Please fix the issues and then retry setup. For more information see the &lt;a href=&quot;#&quot;&gt;log file&lt;/a&gt;." />
   <String Id="FailureRestartText" Value="You must restart your computer to complete the rollback of the software." />
-  <String Id="FailureRestartButton" Value="&amp;Restart" />
-  <String Id="FailureCloseButton" Value="&amp;Close" />
+  <String Id="FailureRestartButton" Value="&Restart" />
+  <String Id="FailureCloseButton" Value="&Close" />
   <String Id="FilesInUseTitle" Value="Files In Use" />
   <String Id="FilesInUseLabel" Value="The following applications are using files that need to be updated:" />
-  <String Id="FilesInUseNetfxCloseRadioButton" Value="Close the &amp;applications." />
-  <String Id="FilesInUseCloseRadioButton" Value="Close the &amp;applications and attempt to restart them." />
-  <String Id="FilesInUseDontCloseRadioButton" Value="&amp;Do not close applications. A reboot will be required." />
-  <String Id="FilesInUseRetryButton" Value="&amp;Retry" />
-  <String Id="FilesInUseIgnoreButton" Value="&amp;Ignore" />
-  <String Id="FilesInUseExitButton" Value="E&amp;xit" />
+  <String Id="FilesInUseNetfxCloseRadioButton" Value="Close the &applications." />
+  <String Id="FilesInUseCloseRadioButton" Value="Close the &applications and attempt to restart them." />
+  <String Id="FilesInUseDontCloseRadioButton" Value="&Do not close applications. A reboot will be required." />
+  <String Id="FilesInUseRetryButton" Value="&Retry" />
+  <String Id="FilesInUseIgnoreButton" Value="&Ignore" />
+  <String Id="FilesInUseExitButton" Value="E&xit" />
 </WixLocalization>

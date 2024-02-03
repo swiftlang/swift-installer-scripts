@@ -3,7 +3,7 @@
 %global package_version 5.7.3
 %global swift_version 5.7.3-RELEASE
 
-%global cmake_version 3.19.6
+%global cmake_version 3.23.1
 %global icu_version 65-1
 %global ninja_version 1.10.2
 %global swift_argument_parser_version 1.0.3

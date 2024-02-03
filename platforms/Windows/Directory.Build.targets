@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project>
+<Project Sdk="Microsoft.NET.Sdk">
+
   <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'sdk' AND '$(MSBuildProjectName)' != 'rtllib' AND '$(MSBuildProjectName)' != 'rtlmsm'">
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
@@ -9,4 +9,5 @@
   </ItemGroup>
 
   <Import Project="WiXCodeSigning.targets" />
+
 </Project>

@@ -9,12 +9,12 @@ See https://swift.org/LICENSE.txt for license information
 See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
 #]]
 
-cmake_minimum_required(VERSION 3.12.3)
+cmake_minimum_required(VERSION 3.21.3)
 
 project(ICU LANGUAGES C CXX VERSION 69.1)
 
-option(BUILD_SHARED_LIBS "build shared libaries" YES)
-option(BUILD_TOOLS "build tools" NO)
+option(BUILD_SHARED_LIBS "Build shared libraries" YES)
+option(BUILD_TOOLS "Build tools" NO)
 option(ICU_TOOLS_DIR "Path to prebuilt tools" "")
 
 set(CMAKE_CXX_STANDARD 11)
@@ -61,21 +61,23 @@ find_package(Threads)
 
 add_compile_definitions(U_ATTRIBUTE_DEPRECATED=)
 add_compile_definitions(U_DISABLE_RENAMING=0)
-# add_compile_definitions(U_HIDE_DRAFT_API=1)
-# add_compile_definitions(U_HIDE_DEPRECATED_API=1)
+add_compile_definitions(U_HIDE_DEPRECATED_API=1)
 add_compile_definitions(U_ENABLE_DYLOAD=0)
 
-include_directories(source/common)
+target_include_directories(${PROJECT_NAME} PRIVATE source/common)
 
-# icu stub data
+## icu stub data
 add_library(icudt
   source/stubdata/stubdata.cpp)
+
 if(CMAKE_SYSTEM_NAME STREQUAL Windows)
   target_sources(icudt PRIVATE
     source/data/misc/icudata.rc)
 endif()
+
 target_compile_definitions(icudt PRIVATE
   STUBDATA_BUILD)
+
 set_target_properties(icudt PROPERTIES
   OUTPUT_NAME icudt${PROJECT_VERSION_MAJOR})
 
@@ -579,133 +581,7 @@ if(BUILD_TOOLS)
   target_link_libraries(icutu PRIVATE
     icuuc icuin)
 
-  add_executable(gencnval
-    source/tools/gencnval/gencnval.c)
-  target_link_libraries(gencnval PRIVATE
-    icuuc icutu)
-
-  add_executable(gencfu
-    source/tools/gencfu/gencfu.cpp)
-  target_link_libraries(gencfu PRIVATE
-    icuuc icuin icutu)
-
-  add_executable(makeconv
-    source/tools/makeconv/gencnvex.c
-    source/tools/makeconv/genmbcs.cpp
-    source/tools/makeconv/makeconv.cpp
-    source/tools/makeconv/ucnvstat.c)
-  target_link_libraries(makeconv PRIVATE
-    icuuc icutu)
-
-  add_executable(genbrk
-    source/tools/genbrk/genbrk.cpp)
-  target_link_libraries(genbrk PRIVATE
-    icuuc icutu)
-
-  add_executable(gensprep
-    source/tools/gensprep/gensprep.c
-    source/tools/gensprep/store.c)
-  target_link_libraries(gensprep PRIVATE
-    icuuc icutu)
-
-  add_executable(gendict
-    source/tools/gendict/gendict.cpp)
-  target_link_libraries(gendict PRIVATE
-    icuuc icutu)
-
-  add_executable(icupkg
-    source/tools/icupkg/icupkg.cpp)
-  target_link_libraries(icupkg PRIVATE
-    icuuc icutu)
-
-  add_executable(genrb
-    source/tools/genrb/errmsg.c
-    source/tools/genrb/filterrb.cpp
-    source/tools/genrb/genrb.cpp
-    source/tools/genrb/parse.cpp
-    source/tools/genrb/prscmnts.cpp
-    source/tools/genrb/rbutil.c
-    source/tools/genrb/read.c
-    source/tools/genrb/reslist.cpp
-    source/tools/genrb/rle.c
-    source/tools/genrb/ustr.c
-    source/tools/genrb/wrtjava.cpp
-    source/tools/genrb/wrtxml.cpp)
-  target_link_libraries(genrb PRIVATE
-    icuuc icuin icutu)
-
-  add_executable(pkgdata
-    source/tools/pkgdata/pkgdata.cpp
-    source/tools/pkgdata/pkgtypes.c)
-  target_link_libraries(pkgdata PRIVATE
-    icuuc icutu)
-
-  set(ICU_TOOLS_DIR ${CMAKE_CURRENT_BINARY_DIR})
-elseif(ICU_TOOLS_DIR)
-  foreach(tool gencnval;gencfu;makeconv;genbrk;gensprep;gendict;icupkg;genrb;pkgdata)
-    add_executable(${tool} IMPORTED)
-    set_target_properties(${tool} PROPERTIES
-      IMPORTED_LOCATION ${ICU_TOOLS_DIR}/${tool}${CMAKE_EXECUTABLE_SUFFIX})
-  endforeach()
-else()
-  include(ExternalProject)
-  ExternalProject_Add(Tools
-    SOURCE_DIR ${PROJECT_SOURCE_DIR}
-    BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/Tools
-    CMAKE_ARGS
-      -DBUILD_TOOLS=YES
-      -DCMAKE_BUILD_TYPE:STRING=Release
-      -DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}
-      -DCMAKE_SYSTEM_NAME:STRING=${CMAKE_HOST_SYSTEM_NAME}
-      -DCMAKE_SYSTEM_PROCESSOR:STRING=${CMAKE_HOST_SYSTEM_PROCESSOR}
-    BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR>
-    INSTALL_COMMAND ""
-    BUILD_BYPRODUCTS
-      <BINARY_DIR>/gencnval${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/gencfu${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/makeconv${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/genbrk${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/gensprep${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/gendict${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/icupkg${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/genrb${CMAKE_EXECUTABLE_SUFFIX}
-      <BINARY_DIR>/pkgdata${CMAKE_EXECUTABLE_SUFFIX})
-    ExternalProject_Get_Property(Tools BINARY_DIR)
-
-    foreach(tool gencnval;gencfu;makeconv;genbrk;gensprep;gendict;icupkg;genrb;pkgdata)
-      add_executable(${tool} IMPORTED)
-      set_target_properties(${tool} PROPERTIES
-        IMPORTED_LOCATION ${BINARY_DIR}/${tool}${CMAKE_EXECUTABLE_SUFFIX})
-    endforeach()
-
-    set(ICU_TOOLS_DIR ${BINARY_DIR})
-endif()
-
-include(TestBigEndian)
-test_big_endian(IS_BIG_ENDIAN_HOST)
-
-set(U_ICUDATA_NAME icudt${PROJECT_VERSION_MAJOR})
-if(IS_BIG_ENDIAN_HOST)
-  set(U_ICUDATA_PKGN icudt${PROJECT_VERSION_MAJOR}b)
-else()
-  set(U_ICUDATA_PKGN icudt${PROJECT_VERSION_MAJOR}l)
-endif()
-
-add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/icudata.lst
-  COMMAND ${CMAKE_COMMAND} -E env PYTHONPATH=${PROJECT_SOURCE_DIR}/source/python
-    ${Python3_EXECUTABLE} -B -m icutools.databuilder
-    --mode $<IF:$<STREQUAL:${CMAKE_HOST_SYSTEM_NAME},Windows>,windows-exec,unix-exec>
-    --src_dir ${PROJECT_SOURCE_DIR}/source/data
-    --tool_dir ${ICU_TOOLS_DIR}
-    # NOTE(compnerd) setting the configuration allows us to move back into the
-    # binary directory as we emit all the tools into the binary directory.
-    --tool_cfg ..
-    --out_dir ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}
-    --tmp_dir ${CMAKE_CURRENT_BINARY_DIR}/data/tmp
-  DEPENDS gencnval gencfu makeconv genbrk gensprep gendict icupkg genrb
-  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/source/data)
-
-if(CMAKE_SYSTEM_NAME STREQUAL Windows)
+ if(CMAKE_SYSTEM_NAME STREQUAL Windows)
   if(BUILD_SHARED_LIBS)
     set(_U_ICUDATA_LIB ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}/${CMAKE_SHARED_LIBRARY_PREFIX}${U_ICUDATA_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX})
   else()
@@ -755,4 +631,3 @@ install(DIRECTORY source/common/unicode
   DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 install(DIRECTORY source/i18n/unicode
   DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
-

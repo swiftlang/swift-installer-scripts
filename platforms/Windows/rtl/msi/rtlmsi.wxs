@@ -1,11 +1,13 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
   <Package
-      Language="1033"
-      Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
-      UpgradeCode="$(RtlUpgradeCode)"
-      Version="$(NonSemVerProductVersion)"
-      Scope="$(PackageScope)">
+    Language="1033"
+    Manufacturer="!(loc.ManufacturerName)"
+    Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
+    UpgradeCode="$(RtlUpgradeCode)"
+    Version="$(NonSemVerProductVersion)"
+    Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="rtl.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
@@ -27,7 +29,7 @@
     </Feature>
 
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
-      <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="SwiftRuntimeComponents_$(ProductArchitecture)" />
       <ComponentGroupRef Id="EnvironmentVariables" />
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>

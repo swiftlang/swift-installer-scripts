@@ -16,7 +16,7 @@ index 45d80995..558c81e7 100644
  
  /// Information on an individual `pkg-config` supported package.
  public struct PkgConfig {
-+    public static var pkgConfigCache: [String: PkgConfig] = [String: PkgConfig]()
++    public static var pkgConfigCache: [String: PkgConfig] = [:]
 +
      /// The name of the package.
      public let name: String
@@ -37,7 +37,10 @@ index 45d80995..558c81e7 100644
 -
 -                cFlags += pkg.cFlags
 -                libs += pkg.libs
-+                if !PkgConfig.pkgConfigCache.keys.contains(dep) {
++                if let cachedPkg = PkgConfig.pkgConfigCache[dep] {
++                    cFlags += cachedPkg.cFlags
++                    libs += cachedPkg.libs
++                } else {
 +                    PkgConfig.pkgConfigCache[dep] = try PkgConfig(
 +                        name: dep,
 +                        additionalSearchPaths: additionalSearchPaths,
@@ -46,14 +49,14 @@ index 45d80995..558c81e7 100644
 +                        brewPrefix: brewPrefix,
 +                        loadingContext: loadingContext
 +                    )
-+                }
 +
-+                guard let cachedPkg = PkgConfig.pkgConfigCache[dep] else {
-+                    fatalError("Cannot retrieve cached pkgConfig result")
-+                }
++                    guard let cachedPkg = PkgConfig.pkgConfigCache[dep] else {
++                        fatalError("Cannot retrieve cached pkgConfig result")
++                    }
 +
-+                cFlags += cachedPkg.cFlags
-+                libs += cachedPkg.libs
++                    cFlags += cachedPkg.cFlags
++                    libs += cachedPkg.libs
++                }
              }
  
              return (cFlags: cFlags, libs: libs)

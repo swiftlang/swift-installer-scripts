@@ -1,6 +1,12 @@
 %include global.inc
 %include metadata.inc
 
+Name:           swift
+Version:        %{swift_version}
+Release:        1%{?dist}
+Summary:        The Swift Programming Language
+License:        Apache License (v2.0) with Runtime Library Exception
+URL:            https://swift.org/
 Source0:        https://github.com/apple/swift/archive/swift-%{swift_version}.tar.gz#/swift.tar.gz
 Source1:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{swift_version}.tar.gz#/corelibs-libdispatch.tar.gz
 Source2:        https://github.com/apple/swift-corelibs-foundation/archive/swift-%{swift_version}.tar.gz#/corelibs-foundation.tar.gz
@@ -96,7 +102,7 @@ ExclusiveArch:  x86_64 aarch64
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
 # necessary
-mv CMake-%{cmake_version} cmake
+v CMake-%{cmake_version} cmake
 mv icu-release-%{icu_version} icu
 mv indexstore-db-swift-%{swift_version} indexstore-db
 mv llvm-project-swift-%{swift_version} llvm-project

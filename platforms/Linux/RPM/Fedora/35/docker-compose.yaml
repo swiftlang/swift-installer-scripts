@@ -12,7 +12,7 @@
 # to shell into the container for debugging purposes:
 # docker-compose -f platforms/Linux/fedora/35/docker-compose.yaml run build
 
-version: "2"
+version: "3"
 
 services:
 
@@ -24,7 +24,7 @@ services:
 
   common: &common
     image: fedora-35-rpm-builder
-    depends_on: [docker-setup]
+    depends_on: [ docker-setup ]
     volumes:
       - ../../Fedora/35:/code/Fedora/35:z
       - ../../Shared:/code/Shared:z

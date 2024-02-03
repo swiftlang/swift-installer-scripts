@@ -6,13 +6,13 @@
 # See http://swift.org/LICENSE.txt for license information
 # See http://swift.org/CONTRIBUTORS.txt for Swift project authors
 
-# this setup is designed to build the RPM with docker
-# usage:
+# This setup is designed to build the RPM with Docker
+# Usage:
 # docker-compose -f platforms/Linux/oraclelinux/8/docker-compose.yaml build
-# to shell into the container for debugging purposes:
+# To shell into the container for debugging purposes:
 # docker-compose -f platforms/Linux/oraclelinux/8/docker-compose.yaml run build
 
-version: "2"
+version: "3.8" # Use the latest version of Docker Compose syntax
 
 services:
 
@@ -24,7 +24,8 @@ services:
 
   common: &common
     image: oraclelinux-8-rpm-builder
-    depends_on: [docker-setup]
+    depends_on:
+      - docker-setup
     # https://bugs.swift.org/browse/SR-15343
     security_opt:
       - seccomp:unconfined

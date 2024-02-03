@@ -8,7 +8,7 @@
     Compressed="$(IsBundleCompressed)"
     UpgradeCode="$(BundleUpgradeCode)">
 
-    <!-- Avoid spaces in log file names, for ease of log spelunking. -->
+    <!-- Log configuration -->
     <Log Prefix="SwiftToolKit_$(ProductVersion)" />
 
     <BootstrapperApplication>
@@ -20,18 +20,12 @@
       <Payload SourceFile="swift_side.png" />
     </BootstrapperApplication>
 
-    <!--
-    Keep `InstallRoot` in sync with the INSTALLROOT definition in shared.wxs.
-    The bundle variable here will overwrite the default authored in the MSI
-    packages, but avoid the confusion if the default directory should change.
-    -->
+    <!-- Variables -->
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
       Value="[LocalAppDataFolder]Programs\Swift" />
-    <Variable Name="OptionsInstallBld" Value="1" />
     <Variable Name="OptionsInstallCli" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRtl" Value="1" />
     <Variable Name="OptionsInstallSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -39,26 +33,9 @@
     <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
 
-    <!--
-    For the online bundle, we need to provide a download URL for each package and its .cabs.
-    (The SourceFile attribute is also required, both for the offline bundle and for Burn
-    to get the hash of the packages. Note that the packages and .cabs available for
-    download must exactly match the ones used when building the bundle. Burn validates
-    downloads by their hashes.)
-
-    `BaseReleaseDownloadUrl` is a preprocessor variable that provides the URL to the
-    directory containing the packages for that bundle. So, for example, for the bundle at:
-
-    https://download.swift.org/swift-5.8.1-release/windows10/swift-5.8.1-RELEASE/swift-5.8.1-RELEASE-windows10.exe
-
-    `BaseReleaseDownloadUrl` would be `https://download.swift.org/swift-5.8.1-release/windows10/swift-5.8.1-RELEASE`.
-
-    `{2}` is the file name of the payload.
-
-    Schema doc is at https://wixtoolset.org/docs/schema/wxs/msipackage/.
-    -->
-
+    <!-- Chain -->
     <Chain>
+      <!-- MsiPackages -->
       <MsiPackage
         SourceFile="!(bindpath.rtl)\rtl.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
@@ -92,6 +69,7 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
+      <!-- Optional X86 SDK -->
       <?if $(INCLUDE_X86_SDK) == true?>
         <MsiPackage
           SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
@@ -102,6 +80,7 @@
         </MsiPackage>
       <?endif?>
 
+      <!-- AMD64 SDK -->
       <MsiPackage
         SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
         InstallCondition="OptionsInstallSdkAMD64"
@@ -110,6 +89,7 @@
         <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistAMD64]" />
       </MsiPackage>
 
+      <!-- Optional ARM64 SDK -->
       <?if $(INCLUDE_ARM64_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
@@ -119,6 +99,6 @@
           <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
         </MsiPackage>
       <?endif?>
-     </Chain>
+    </Chain>
   </Bundle>
 </Wix>

@@ -1,4 +1,6 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
   <Fragment>
     <?if $(sys.BUILDARCH) == x86 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "79856274-E0F9-4602-A56A-A8DE16C05C41" ?>
@@ -10,93 +12,87 @@
 
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
 
-    <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
+    <ComponentGroup Id="SwiftRuntimeComponents_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Id="SwiftSynchronizationComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftSynchronization.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftConcurrencyComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swift_Concurrency.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftDifferentiationComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swift_Differentiation.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftDistributedComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftDistributed.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftRegexBuilderComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftRegexBuilder.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftRegexParserComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swift_RegexParser.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftStringProcessingComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swift_StringProcessing.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftCoreComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftCore.dll" />
       </Component>
-
-      <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
-      <Component Directory="_usr_bin" Id="swiftDemangle.dll">
-        <File Id="swiftDemangle.dll" Source="$(SDK_ROOT)\bin\swiftDemangle.dll" />
-      </Component>
-      -->
-      <Component>
+      <Component Id="SwiftCRTComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftCRT.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftObservationComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftObservation.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftRemoteMirrorComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftSwiftOnoneSupportComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftWinSDKComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftWinSDK.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
+    <ComponentGroup Id="BlocksRuntimeComponents_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Id="BlocksRuntimeComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\BlocksRuntime.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="libdispatch_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
+    <ComponentGroup Id="LibDispatchComponents_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Id="DispatchComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\dispatch.dll" />
       </Component>
-      <Component>
+      <Component Id="SwiftDispatchComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\swiftDispatch.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="Foundation_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
+    <ComponentGroup Id="FoundationComponents_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Id="FoundationComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\Foundation.dll" />
       </Component>
-      <Component>
+      <Component Id="FoundationNetworkingComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\FoundationNetworking.dll" />
       </Component>
-      <Component>
+      <Component Id="FoundationXMLComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\FoundationXML.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="plutil_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
+    <ComponentGroup Id="PlutilComponents_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Id="PlutilComponent" Guid="{INSERT_GUID_HERE}">
         <File Source="$(SDK_ROOT)\usr\bin\plutil.exe" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
-      <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="plutil_$(ProductArchitecture)" />
+    <ComponentGroup Id="SwiftRuntime_$(ProductArchitecture)">
+      <ComponentGroupRef Id="SwiftRuntimeComponents_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="BlocksRuntimeComponents_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="LibDispatchComponents_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="FoundationComponents_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="PlutilComponents_$(ProductArchitecture)" />
     </ComponentGroup>
   </Fragment>
 </Wix>

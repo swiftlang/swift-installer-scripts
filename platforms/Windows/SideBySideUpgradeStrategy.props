@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+
   <!--
   Note that these GUIDs are substituted at bind time so they skip the normal
   validation and cleanup that the compiler does and therefore must be
@@ -51,4 +52,5 @@
       SdkUpgradeCode=$(SdkUpgradeCode);
     </DefineConstants>
   </PropertyGroup>
+
 </Project>

@@ -1,60 +1,66 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Product
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Ide_ProductName)"
       UpgradeCode="$(IdeUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
-      Scope="$(PackageScope)">
+      Id="*"
+      UpgradeCode="$(var.IdeUpgradeCode)">
 
-    <Media Id="1" Cabinet="ide.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Package
+      Id="*"
+      InstallerVersion="200"
+      Compressed="yes"
+      InstallScope="$(var.PackageScope)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(IdeUpgradeCode)" />
-    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+    <Media Id="1" Cabinet="ide.cab" EmbedCab="$(var.ArePackageCabsEmbedded)" />
 
-    <DirectoryRef Id="_usr_include">
-      <Directory Id="_usr_include_SourceKit" Name="SourceKit" />
-    </DirectoryRef>
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(var.IdeUpgradeCode)" />
+    <FeatureRef Id="IDETools" />
 
-    <ComponentGroup Id="clangd" Directory="_usr_bin">
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clangd.exe" />
-      </Component>
-    </ComponentGroup>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="YourAppFolder">
+          <Directory Id="usr_include" Name="_usr_include">
+            <Directory Id="usr_include_SourceKit" Name="SourceKit" />
+          </Directory>
+          <Directory Id="usr_bin" Name="_usr_bin">
+            <Component Id="ClangdComponent" Guid="*">
+              <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\clangd.exe" />
+            </Component>
+            <Component Id="LldbComponent" Guid="*">
+              <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\lldb-dap.exe" />
+            </Component>
+            <Component Id="SourceKitdComponent" Guid="*">
+              <File Source="$(var.TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" />
+            </Component>
+            <Component Id="LspComponent" Guid="*">
+              <File Source="$(var.DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" />
+            </Component>
+          </Directory>
+          <Directory Id="usr_lib" Name="_usr_lib">
+            <Component Id="SourceKitdLibComponent" Guid="*">
+              <File Source="$(var.TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" />
+            </Component>
+          </Directory>
+          <Directory Id="usr_include_SourceKit">
+            <Component Id="SourceKitIncludeComponent" Guid="*">
+              <File Source="$(var.TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
 
-    <ComponentGroup Id="lldb" Directory="_usr_bin">
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-dap.exe" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="sourcekitd">
-      <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\sourcekitdInProc.dll" />
-      </Component>
-
-      <Component Directory="_usr_lib">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" />
-      </Component>
-
-      <Component Directory="_usr_include_SourceKit">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="lsp" Directory="_usr_bin">
-      <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" />
-      </Component>
-    </ComponentGroup>
-
-    <Feature Id="IDETools" AllowAbsent="no" Title="!(loc.Ide_ProductName)">
-      <ComponentGroupRef Id="clangd" />
-      <ComponentGroupRef Id="lldb" />
-      <ComponentGroupRef Id="sourcekitd" />
-      <ComponentGroupRef Id="lsp" />
-
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
+    <Feature Id="IDETools" Title="!(loc.Ide_ProductName)" Level="1">
+      <ComponentRef Id="ClangdComponent" />
+      <ComponentRef Id="LldbComponent" />
+      <ComponentRef Id="SourceKitdComponent" />
+      <ComponentRef Id="LspComponent" />
+      <ComponentRef Id="SourceKitdLibComponent" />
+      <ComponentRef Id="SourceKitIncludeComponent" />
     </Feature>
-  </Package>
+  </Product>
 </Wix>

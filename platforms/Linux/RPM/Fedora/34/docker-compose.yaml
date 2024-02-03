@@ -6,25 +6,20 @@
 # See http://swift.org/LICENSE.txt for license information
 # See http://swift.org/CONTRIBUTORS.txt for Swift project authors
 
-# this setup is designed to build the RPM with docker
-# usage:
-# docker-compose -f platforms/Linux/fedora/34/docker-compose.yaml build
-# to shell into the container for debugging purposes:
-# docker-compose -f platforms/Linux/fedora/34/docker-compose.yaml run build
-
-version: "2"
+version: "3"
 
 services:
 
   docker-setup:
-    image: fedora-34-rpm-builder
+    image: fedora:34
     build:
       context: .
       dockerfile: Dockerfile
 
   common: &common
-    image: fedora-34-rpm-builder
-    depends_on: [docker-setup]
+    image: fedora:34
+    depends_on:
+      - docker-setup
     volumes:
       - ../../Fedora/34:/code/Fedora/34:z
       - ../../Shared:/code/Shared:z
