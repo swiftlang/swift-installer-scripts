@@ -5,7 +5,6 @@
       DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
       TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
       SWIFT_DOCC_BUILD=$(SWIFT_DOCC_BUILD);
-      INCLUDE_SWIFT_DOCC=$(INCLUDE_SWIFT_DOCC);
       SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
       SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST=$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist;
     </DefineConstants>
@@ -15,7 +14,7 @@
     <PackageReference Include="WixToolset.Heat" Version="4.0.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(INCLUDE_SWIFT_DOCC)' == 'true'">
+  <ItemGroup>
     <HarvestDirectory Include="$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist">
       <ComponentGroupName>DocCRender</ComponentGroupName>
       <DirectoryRefId>_usr_share_docc_render</DirectoryRefId>
