@@ -89,6 +89,7 @@
       $(DefineConstants);
       ProductArchitecture=$(ProductArchitecture);
       ProductVersion=$(ProductVersion);
+      NonSemVerProductVersion=$(NonSemVerProductVersion);
       MajorMinorProductVersion=$(MajorMinorProductVersion);
       PackageScope=$(PackageScope);
       IsBundleCompressed=$(IsBundleCompressed);

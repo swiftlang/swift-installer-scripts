@@ -106,7 +106,7 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This save user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
 | BundleFlavor, IsBundleCompressed | BundleFlavor defaults to `online` to build an online bundle. Set by the invocation of MSBuild to build an online or offline bundle. Controls IsBundleCompressed. |
 | DefineConstants | Passes a subset of MSBuild properties into the WiX build as preprocessor variables. |
-| INCLUDE_SWIFT_FORMAT, INCLUDE_SWIFT_INSPECT | swift-format and swift-inspect are currently conditionalized out. Set these to `true` to include them. The properties `SWIFT_FORMAT_BUILD` and `SWIFT_INSPECT_BUILD` define the directories to find the .exes. |
+| INCLUDE_SWIFT_INSPECT | swift-inspect is currently conditionalized out. Set it to `true` to include it. The property `SWIFT_INSPECT_BUILD` defines the directory to find the artifacts. |
 | INCLUDE_X86_SDK, INCLUDE_ARM64_SDK | The x86 and Arm64 SDKs are currently conditionalized out, pending build changes. Set these to `true` to include them in the bundles. Note that bundle\theme.xml currently has commented-out checkboxes that need to be restored when the x86 and Arm64 SDKs are brought back. |
 
 

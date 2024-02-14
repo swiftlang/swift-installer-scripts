@@ -4,7 +4,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Ide_ProductName)"
       UpgradeCode="$(IdeUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="ide.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
@@ -24,7 +24,7 @@
 
     <ComponentGroup Id="lldb" Directory="_usr_bin">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-vscode.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-dap.exe" />
       </Component>
     </ComponentGroup>
 

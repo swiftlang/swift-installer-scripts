@@ -11,7 +11,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Bld_ProductName)"
       UpgradeCode="$(BldUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="bld.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
@@ -21,6 +21,7 @@
 
     <DirectoryRef Id="_usr_include">
       <Directory Id="_usr_include_llvm_c" Name="llvm-c" />
+      <Directory Id="_usr_include_swift" Name="swift" />
     </DirectoryRef>
 
     <DirectoryRef Id="_usr_lib_swift">
@@ -28,11 +29,18 @@
       <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
     </DirectoryRef>
 
-    <DirectoryRef Id="_usr">
-      <Directory Name="share">
-        <Directory Id="_usr_share_swift" Name="swift" />
-      </Directory>
+    <DirectoryRef Id="_usr_share">
+      <Directory Id="_usr_share_swift" Name="swift" />
     </DirectoryRef>
+
+    <ComponentGroup Id="cmark_gfm" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin/cmark-gfm.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin/cmark-gfm-extensions.dll" />
+      </Component>
+    </ComponentGroup>
 
     <ComponentGroup Id="binutils" Directory="_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to llvm-ar.exe instead? -->
@@ -157,6 +165,12 @@
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang.exe" />
       </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-scan-deps.exe" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-deps-launcher.py" />
+      </Component>
       <!--
         TODO(compnerd) we should include:
         - clang-offload-bundler
@@ -218,6 +232,13 @@
       </Component>
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
+      </Component>
+
+      <Component Directory="_usr_include_swift">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\module.modulemap" />
+      </Component>
+      <Component Directory="_usr_include_swift">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\bridging" />
       </Component>
     </ComponentGroup>
 
@@ -381,6 +402,8 @@
     </ComponentGroup>
 
     <Feature Id="BuildTools" AllowAbsent="no" Title="!(loc.Bld_ProductName)">
+      <ComponentGroupRef Id="cmark_gfm" />
+
       <ComponentGroupRef Id="binutils" />
       <ComponentGroupRef Id="lto" />
       <ComponentGroupRef Id="clang" />

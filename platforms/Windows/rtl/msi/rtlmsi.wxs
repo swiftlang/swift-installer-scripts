@@ -4,7 +4,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
       UpgradeCode="$(RtlUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="rtl.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
@@ -21,6 +21,10 @@
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
       </Component>
     </ComponentGroup>
+
+    <Feature Id="VCRuntime" AllowAbsent="no" Title="!(loc.VCRuntime_ProductName_$(ProductArchitecture))">
+      <ComponentGroupRef Id="VCRuntime_$(ProductArchitecture)" />
+    </Feature>
 
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />

@@ -4,7 +4,7 @@
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Cli_ProductName)"
       UpgradeCode="$(CliUpgradeCode)"
-      Version="$(ProductVersion)"
+      Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="cli.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
@@ -231,14 +231,21 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_format" Directory="ToolsVersioned">
-      <?if $(INCLUDE_SWIFT_FORMAT) == true ?>
-        <Component Id="swift_format.exe">
-          <File Source="$(SWIFT_FORMAT_BUILD)\swift-format.exe" />
+    <ComponentGroup Id="DocC" Directory="_usr_bin">
+      <?if $(INCLUDE_SWIFT_DOCC) == true ?>
+        <Component>
+          <File Source="$(SWIFT_DOCC_BUILD)\docc.exe" />
         </Component>
-
-        <ComponentRef Id="SystemToolsEnvironmentVariables" />
       <?endif?>
+    </ComponentGroup>
+
+    <ComponentGroup Id="swift_format" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-format.exe" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftFormat.dll" />
+      </Component>
     </ComponentGroup>
 
     <Feature Id="CLITools" AllowAbsent="no" Title="!(loc.Cli_ProductName)">
@@ -252,6 +259,12 @@
       <ComponentGroupRef Id="llbuild" />
       <ComponentGroupRef Id="system" />
       <ComponentGroupRef Id="package_manager" />
+
+      <ComponentGroupRef Id="DocC" />
+      <?if $(INCLUDE_SWIFT_DOCC) == true ?>
+        <ComponentGroupRef Id="DocCRender" />
+      <?endif?>
+
       <ComponentGroupRef Id="swift_format" />
 
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
