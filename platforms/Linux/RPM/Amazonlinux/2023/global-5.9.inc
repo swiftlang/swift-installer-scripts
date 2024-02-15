@@ -14,6 +14,8 @@
 %global swift_nio_version 2.31.2
 %global swift_numerics_version 1.0.1
 %global swift_system_version 1.1.1
+%global swift_asn1_version 0.7.0
+%global swift_certificates_version 0.4.1
 %global yams_version 5.0.1
 
 # locations

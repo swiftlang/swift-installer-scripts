@@ -17,13 +17,13 @@ version: "3"
 services:
 
   docker-setup:
-    image: amazonlinux-2023-rpm-builder
+    image: amazonlinux-2023-rpm-builder-5.8
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-5.8
 
   common: &common
-    image: amazonlinux-2023-rpm-builder
+    image: amazonlinux-2023-rpm-builder-5.8
     depends_on: [docker-setup]
     volumes:
       - ../../Amazonlinux/2023:/code/Amazonlinux/2023:z

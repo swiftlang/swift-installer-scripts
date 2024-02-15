@@ -9,8 +9,6 @@
 FROM amazonlinux:2023
 LABEL PURPOSE="This image is configured to build Swift for the version of Amazon Linux listed above"
 
-RUN dnf -y update
-
 # RPM and yum development tools
 RUN dnf install -y rpmdevtools yum-utils createrepo
 
@@ -18,6 +16,12 @@ RUN dnf install -y rpmdevtools yum-utils createrepo
 ADD install_ld.gold.sh /tmp/install_ld.gold.sh
 RUN chmod u+x /tmp/install_ld.gold.sh
 RUN cd tmp && ./install_ld.gold.sh
+
+# Add Swift 5.8 (be sure to have a link to your Swift tar.gz file)
+# ADD a tar.gz files automatically decompress and expand it
+# to be replaced by a download from Swift.org when it will be available
+ADD swift-5.8-amazonlinux2023.tar.gz /
+RUN swift --version 
 
 # Optimization: Install Swift build requirements listed in the spec file
 ADD swiftlang.spec /tmp/swiftlang.spec
@@ -29,7 +33,7 @@ RUN echo -e "\n%description" >> /tmp/optimization.spec
 # install the build requirements
 RUN cd /tmp && yum-builddep -y optimization.spec
 
-# RUN mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}pwd
+# RUN mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 # ADD swiftlang.spec /root/rpmbuild/SPECS/swiftlang.spec
 # ADD description-tmp.inc /root/rpmbuild/SPECS/description.inc
 # ADD global-tmp.inc /root/rpmbuild/SPECS/global.inc

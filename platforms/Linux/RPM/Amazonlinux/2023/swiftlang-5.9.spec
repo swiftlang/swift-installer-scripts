@@ -23,7 +23,7 @@ Source18:       https://github.com/apple/swift-crypto/archive/refs/tags/%{swift_
 Source19:       https://github.com/ninja-build/ninja/archive/refs/tags/v%{ninja_version}.tar.gz#/ninja.tar.gz
 Source20:       https://github.com/KitWare/CMake/archive/refs/tags/v%{cmake_version}.tar.gz#/cmake.tar.gz
 Source21:       https://github.com/apple/swift-atomics/archive/%{swift_atomics_version}.tar.gz#/swift-atomics.tar.gz
-Source22:       https://github.com/apple/swift-cmark/archive/swift-%{swift_version}-gfm.tar.gz#/swift-cmark-gfm.tar.gz
+Source22:       https://github.com/apple/swift-asn1/archive/%{swift_asn1_version}.tar.gz#/swift-asn1.tar.gz
 Source23:       https://github.com/apple/swift-docc/archive/swift-%{swift_version}.tar.gz#/swift-docc.tar.gz
 Source24:       https://github.com/apple/swift-docc-render-artifact/archive/swift-%{swift_version}.tar.gz#/swift-docc-render-artifact.tar.gz
 Source25:       https://github.com/apple/swift-docc-symbolkit/archive/swift-%{swift_version}.tar.gz#/swift-docc-symbolkit.tar.gz
@@ -36,8 +36,7 @@ Source31:       https://github.com/apple/swift-format/archive/swift-%{swift_vers
 Source32:       https://github.com/apple/swift-lmdb/archive/swift-%{swift_version}.tar.gz#/swift-lmdb.tar.gz
 Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_version}.tar.gz#/swift-markdown.tar.gz
 Source34:       https://github.com/apple/swift-experimental-string-processing/archive/swift-%{swift_version}.tar.gz#/swift-experimental-string-processing.tar.gz
-
-Patch0:         hwasan_symbolize.patch
+Source35:       https://github.com/apple/swift-certificates/archive/%{swift_certificates_version}.tar.gz#/swift-certificates.tar.gz
 
 BuildRequires:  clang
 BuildRequires:  curl-devel
@@ -93,7 +92,7 @@ ExclusiveArch:  x86_64 aarch64
 %include description.inc
 
 %prep
-%setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20 -a 21 -a 22 -a 23 -a 24 -a 25 -a 26 -a 27 -a 28 -a 29 -a 30 -a 31 -a 32 -a 33 -a 34
+%setup -q -c -n %{swift_source_location} -a 0 -a 1 -a 2 -a 3 -a 4 -a 5 -a 6 -a 7 -a 8 -a 9 -a 10 -a 11 -a 12 -a 13 -a 14 -a 15 -a 16 -a 17 -a 18 -a 19 -a 20 -a 21 -a 22 -a 23 -a 24 -a 25 -a 26 -a 27 -a 28 -a 29 -a 30 -a 31 -a 32 -a 33 -a 34 -a 35
 
 # The Swift build script requires directories to be named
 # in a specific way so renaming the source directories is
@@ -107,7 +106,7 @@ mv sourcekit-lsp-swift-%{swift_version} sourcekit-lsp
 mv swift-argument-parser-%{swift_argument_parser_version} swift-argument-parser
 mv swift-atomics-%{swift_atomics_version} swift-atomics
 mv swift-cmark-swift-%{swift_version} cmark
-mv swift-cmark-swift-%{swift_version}-gfm swift-cmark-gfm
+mv swift-asn1-%{swift_asn1_version} swift-asn1
 mv swift-collections-%{swift_collections_version} swift-collections
 mv swift-corelibs-foundation-swift-%{swift_version} swift-corelibs-foundation
 mv swift-corelibs-libdispatch-swift-%{swift_version} swift-corelibs-libdispatch
@@ -133,9 +132,7 @@ mv swift-tools-support-core-swift-%{swift_version} swift-tools-support-core
 mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-support
 mv Yams-%{yams_version} yams
 mv swift-experimental-string-processing-swift-%{swift_version} swift-experimental-string-processing
-
-# Adjust python version hwasan_symbolize
-%patch0 -p1
+mv swift-certificates-%{swift_certificates_version} swift-certificates
 
 %build
 export VERBOSE=1
