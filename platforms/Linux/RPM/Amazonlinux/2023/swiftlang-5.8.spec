@@ -37,7 +37,6 @@ Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_ve
 Source34:       https://github.com/apple/swift-experimental-string-processing/archive/swift-%{swift_version}.tar.gz#/swift-experimental-string-processing.tar.gz
 
 Patch0:         patches/hwasan_symbolize.patch
-Patch1:         build-presets.patch
 
 BuildRequires:  clang
 BuildRequires:  curl-devel
@@ -133,9 +132,6 @@ mv swift-experimental-string-processing-swift-%{swift_version} swift-experimenta
 
 # Adjust python version hwasan_symbolize
 %patch0 -p1
-
-# Add a Swift build preset to compile on AmazonLinux 2023
-%patch1 -p1
 
 %build
 export VERBOSE=1
