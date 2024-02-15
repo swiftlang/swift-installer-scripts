@@ -28,14 +28,3 @@ RUN cat /tmp/swiftlang.spec | grep BuildRequires >> /tmp/optimization.spec
 RUN echo -e "\n%description" >> /tmp/optimization.spec
 # install the build requirements
 RUN cd /tmp && yum-builddep -y optimization.spec
-
-# RUN mkdir -p /root/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-# ADD swiftlang.spec /root/rpmbuild/SPECS/swiftlang.spec
-# ADD description-tmp.inc /root/rpmbuild/SPECS/description.inc
-# ADD global-tmp.inc /root/rpmbuild/SPECS/global.inc
-# ADD metadata-tmp.inc /root/rpmbuild/SPECS/metadata.inc
-# ADD patches/hwasan_symbolize.patch /root/rpmbuild/SOURCES/
-# ADD patches/llvm-graviton.patch /root/rpmbuild/SOURCES/
-# WORKDIR /root/rpmbuild/SPECS
-# RUN yum-builddep -y ./swiftlang.spec
-# RUN spectool -g -R ./swiftlang.spec
