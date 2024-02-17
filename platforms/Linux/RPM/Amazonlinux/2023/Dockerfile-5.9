@@ -10,7 +10,7 @@ FROM amazonlinux:2023
 LABEL PURPOSE="This image is configured to build Swift for the version of Amazon Linux listed above"
 
 # RPM and yum development tools
-RUN dnf install -y rpmdevtools yum-utils createrepo
+RUN dnf install -y rpmdevtools yum-utils createrepo diffutils
 
 # Compile ld.gold from the source and install it.
 ADD install_ld.gold.sh /tmp/install_ld.gold.sh
