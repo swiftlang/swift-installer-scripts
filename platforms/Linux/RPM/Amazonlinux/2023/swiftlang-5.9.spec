@@ -38,6 +38,8 @@ Source33:       https://github.com/apple/swift-markdown/archive/swift-%{swift_ve
 Source34:       https://github.com/apple/swift-experimental-string-processing/archive/swift-%{swift_version}.tar.gz#/swift-experimental-string-processing.tar.gz
 Source35:       https://github.com/apple/swift-certificates/archive/%{swift_certificates_version}.tar.gz#/swift-certificates.tar.gz
 
+Patch1:         patches/llvm-graviton.patch
+
 BuildRequires:  clang
 BuildRequires:  curl-devel
 BuildRequires:  gcc-c++
@@ -133,6 +135,9 @@ mv swift-xcode-playground-support-swift-%{swift_version} swift-xcode-playground-
 mv Yams-%{yams_version} yams
 mv swift-experimental-string-processing-swift-%{swift_version} swift-experimental-string-processing
 mv swift-certificates-%{swift_certificates_version} swift-certificates
+
+# Add Amazon Linux aarch64 triplet 
+%patch1 -p1
 
 %build
 export VERBOSE=1
