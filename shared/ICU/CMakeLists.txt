@@ -77,6 +77,7 @@ endif()
 target_compile_definitions(icudt PRIVATE
   STUBDATA_BUILD)
 set_target_properties(icudt PROPERTIES
+  ARCHIVE_OUTPUT_DIRECTORY stubs
   OUTPUT_NAME icudt${PROJECT_VERSION_MAJOR})
 
 # icu common (unicode)
@@ -734,7 +735,7 @@ else()
   add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}_dat.S
     COMMAND $<TARGET_FILE:pkgdata> -f -e ${U_ICUDATA_NAME} -v -m $<IF:$<BOOL:${BUILD_SHARED_LIBS}>,dll,static> -c -p ${U_ICUDATA_PKGN} -T ${CMAKE_CURRENT_BINARY_DIR}/data/tmp -L ${U_ICUDATA_NAME} -d ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} -s ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/icudata.lst -O ${CMAKE_BINARY_DIR}/icupkg.inc
     DEPENDS pkgdata ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/icudata.lst
-    BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}.dat ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}_dat.S)
+    BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}.dat)
 
   add_library(${U_ICUDATA_NAME}
     ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}_dat.S)
