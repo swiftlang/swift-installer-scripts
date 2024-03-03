@@ -382,6 +382,9 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftParserDiagnostics.dll" />
       </Component>
       <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftRefactor.dll" />
+      </Component>
+      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftSyntax.dll" />
       </Component>
       <Component>
