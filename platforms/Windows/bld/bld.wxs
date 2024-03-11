@@ -235,10 +235,13 @@
       </Component>
 
       <Component Directory="_usr_include_swift">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\module.modulemap" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\bridging.modulemap" />
       </Component>
       <Component Directory="_usr_include_swift">
         <File Source="$(TOOLCHAIN_ROOT)\usr\include\swift\bridging" />
+      </Component>
+      <Component Directory="_usr_include_swift">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\include\module.modulemap" />
       </Component>
     </ComponentGroup>
 
