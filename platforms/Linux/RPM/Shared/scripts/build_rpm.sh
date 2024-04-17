@@ -26,8 +26,6 @@ mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 cp swiftlang.spec $HOME/rpmbuild/SPECS/
 # Add the metadata files
 cp *.inc $HOME/rpmbuild/SPECS/
-# Add any patches
-cp patches/*.patch $HOME/rpmbuild/SOURCES/
 
 pushd $HOME/rpmbuild/SPECS
 # install all the dependencies needed to build Swift from the spec file itself

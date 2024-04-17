@@ -18,12 +18,14 @@ services:
 
   docker-setup:
     image: centos-7-rpm-builder
+    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile
 
   common: &common
     image: centos-7-rpm-builder
+    platform: linux/amd64
     depends_on: [docker-setup]
     # https://bugs.swift.org/browse/SR-15343
     security_opt:
