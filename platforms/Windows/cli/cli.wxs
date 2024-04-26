@@ -222,6 +222,9 @@
         <File Source="$(DEVTOOLS_ROOT)\usr\bin\PackageModel.dll" />
       </Component>
       <Component>
+        <File Source="$(DEVTOOLS_ROOT)\usr\bin\PackageModelSyntax.dll" />
+      </Component>
+      <Component>
         <File Source="$(DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
