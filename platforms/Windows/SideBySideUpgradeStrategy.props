@@ -39,6 +39,10 @@
     <BundleUpgradeCode>{917DAD47-82C9-4845-ACBE-57E169EDF799}</BundleUpgradeCode>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.0'">
+    <BundleUpgradeCode>{95A51A3B-1521-4A98-8BE1-6381BA688561}</BundleUpgradeCode>
+  </PropertyGroup>
+
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
