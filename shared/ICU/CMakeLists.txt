@@ -546,6 +546,10 @@ target_link_libraries(icuin PRIVATE
 set_target_properties(icuin PROPERTIES
   OUTPUT_NAME icuin${PROJECT_VERSION_MAJOR})
 
+if(NOT BUILD_DATA)
+  return()
+endif()
+
 if(BUILD_TOOLS)
   add_library(icutu
     source/tools/toolutil/collationinfo.cpp
