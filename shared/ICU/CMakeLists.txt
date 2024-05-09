@@ -643,10 +643,14 @@ if(BUILD_TOOLS)
 
   set(ICU_TOOLS_DIR ${CMAKE_CURRENT_BINARY_DIR})
 elseif(ICU_TOOLS_DIR)
+  if(CMAKE_HOST_SYSTEM_NAME MATCHES Windows)
+    set(CMAKE_HOST_EXECUTABLE_SUFFIX .exe)
+  endif()
+
   foreach(tool gencnval;gencfu;makeconv;genbrk;gensprep;gendict;icupkg;genrb;pkgdata)
     add_executable(${tool} IMPORTED)
     set_target_properties(${tool} PROPERTIES
-      IMPORTED_LOCATION ${ICU_TOOLS_DIR}/${tool}${CMAKE_EXECUTABLE_SUFFIX})
+      IMPORTED_LOCATION ${ICU_TOOLS_DIR}/${tool}${CMAKE_HOST_EXECUTABLE_SUFFIX})
   endforeach()
 else()
   include(ExternalProject)
