@@ -547,14 +547,6 @@ target_link_libraries(icuin PRIVATE
 set_target_properties(icuin PROPERTIES
   OUTPUT_NAME icuin${PROJECT_VERSION_MAJOR})
 
-if(DEFINED BUILD_DATA AND NOT BUILD_DATA)
-  install(TARGETS icuuc icuin
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
-  return()
-endif()
-
 if(BUILD_TOOLS)
   add_library(icutu
     source/tools/toolutil/collationinfo.cpp
@@ -656,10 +648,14 @@ if(BUILD_TOOLS)
 
   set(ICU_TOOLS_DIR ${CMAKE_CURRENT_BINARY_DIR})
 elseif(ICU_TOOLS_DIR)
+  if(CMAKE_HOST_SYSTEM_NAME MATCHES Windows)
+    set(CMAKE_HOST_EXECUTABLE_SUFFIX .exe)
+  endif()
+
   foreach(tool gencnval;gencfu;makeconv;genbrk;gensprep;gendict;icupkg;genrb;pkgdata;genccode)
     add_executable(${tool} IMPORTED)
     set_target_properties(${tool} PROPERTIES
-      IMPORTED_LOCATION ${ICU_TOOLS_DIR}/${tool}${CMAKE_EXECUTABLE_SUFFIX})
+      IMPORTED_LOCATION ${ICU_TOOLS_DIR}/${tool}${CMAKE_HOST_EXECUTABLE_SUFFIX})
   endforeach()
 else()
   include(ExternalProject)
