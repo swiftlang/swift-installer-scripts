@@ -649,9 +649,14 @@ if(BUILD_TOOLS)
   target_link_libraries(pkgdata PRIVATE
     icuuc icutu)
 
+  add_executable(genccode
+    source/tools/genccode/genccode.c)
+  target_link_libraries(genccode PRIVATE
+    icuuc icutu)
+
   set(ICU_TOOLS_DIR ${CMAKE_CURRENT_BINARY_DIR})
 elseif(ICU_TOOLS_DIR)
-  foreach(tool gencnval;gencfu;makeconv;genbrk;gensprep;gendict;icupkg;genrb;pkgdata)
+  foreach(tool gencnval;gencfu;makeconv;genbrk;gensprep;gendict;icupkg;genrb;pkgdata;genccode)
     add_executable(${tool} IMPORTED)
     set_target_properties(${tool} PROPERTIES
       IMPORTED_LOCATION ${ICU_TOOLS_DIR}/${tool}${CMAKE_EXECUTABLE_SUFFIX})
@@ -740,13 +745,17 @@ else()
 
   configure_file(icupkg.inc.cmake ${CMAKE_BINARY_DIR}/icupkg.inc)
 
-  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}_dat.S
-    COMMAND $<TARGET_FILE:pkgdata> -f -e ${U_ICUDATA_NAME} -v -m $<IF:$<BOOL:${BUILD_SHARED_LIBS}>,dll,static> -c -p ${U_ICUDATA_PKGN} -T ${CMAKE_CURRENT_BINARY_DIR}/data/tmp -L ${U_ICUDATA_NAME} -d ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} -s ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/icudata.lst -O ${CMAKE_BINARY_DIR}/icupkg.inc
+  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}/${U_ICUDATA_PKGN}.dat
+    COMMAND $<TARGET_FILE:pkgdata> -f -e ${U_ICUDATA_NAME} -v -m archive -c -p ${U_ICUDATA_PKGN} -T ${CMAKE_CURRENT_BINARY_DIR}/data/tmp -L ${U_ICUDATA_NAME} -d ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} -s ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/icudata.lst -O ${CMAKE_BINARY_DIR}/icupkg.inc
     DEPENDS pkgdata ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/icudata.lst
     BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}.dat)
 
+  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}/${U_ICUDATA_PKGN}_dat.S
+    COMMAND $<TARGET_FILE:genccode> -e ${U_ICUDATA_NAME} -a gcc -d ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN} ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}/${U_ICUDATA_PKGN}.dat
+    DEPENDS genccode ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}/${U_ICUDATA_PKGN}.dat)
+
   add_library(${U_ICUDATA_NAME}
-    ${CMAKE_CURRENT_BINARY_DIR}/data/tmp/${U_ICUDATA_PKGN}_dat.S)
+    ${CMAKE_CURRENT_BINARY_DIR}/data/${U_ICUDATA_PKGN}/${U_ICUDATA_PKGN}_dat.S)
   set_target_properties(${U_ICUDATA_NAME} PROPERTIES
     LINKER_LANGUAGE C
     LINK_OPTIONS "-nodefaultlibs;-nostdlib;-Bsymbolic"
