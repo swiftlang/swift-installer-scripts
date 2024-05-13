@@ -547,14 +547,6 @@ target_link_libraries(icuin PRIVATE
 set_target_properties(icuin PROPERTIES
   OUTPUT_NAME icuin${PROJECT_VERSION_MAJOR})
 
-if(DEFINED BUILD_DATA AND NOT BUILD_DATA)
-  install(TARGETS icuuc icuin
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
-  return()
-endif()
-
 if(BUILD_TOOLS)
   add_library(icutu
     source/tools/toolutil/collationinfo.cpp
