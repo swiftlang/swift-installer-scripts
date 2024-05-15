@@ -1,4 +1,4 @@
-<Project Sdk="WixToolset.Sdk/4.0.1">
+<Project Sdk="WixToolset.Sdk/4.0.5">
   <PropertyGroup>
     <OutputName>sdk.$(ProductArchitecture)</OutputName>
     <Platform>x86</Platform>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="4.0.1" />
+    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
   </ItemGroup>
 
   <!--
