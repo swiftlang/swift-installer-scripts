@@ -1,4 +1,4 @@
-﻿<Project Sdk="WixToolset.Sdk/4.0.1">
+﻿<Project Sdk="WixToolset.Sdk/4.0.5">
   <PropertyGroup>
     <OutputType>Bundle</OutputType>
     <DefaultCompressionLevel>$(BundleCompressionLevel)</DefaultCompressionLevel>
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.1" />
+    <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.5" />
   </ItemGroup>
 
   <ItemGroup>
