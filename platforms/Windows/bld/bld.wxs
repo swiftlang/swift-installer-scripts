@@ -321,6 +321,9 @@
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\ObservationMacros.dll" />
       </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftMacros.dll" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="argument_parser" Directory="_usr_bin">
