@@ -24,6 +24,7 @@
   <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
   <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
   <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
+  <String Id="Android_Skds" Value="Swift Android SDKs" />
 
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />

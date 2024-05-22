@@ -8,6 +8,7 @@
       $(DefineConstants);
       INCLUDE_X86_SDK=$(INCLUDE_X86_SDK);
       INCLUDE_ARM64_SDK=$(INCLUDE_ARM64_SDK);
+      INCLUDE_ANDROID_SDKS=$(INCLUDE_ANDROID_SDKS);
     </DefineConstants>
   </PropertyGroup>
 
@@ -30,5 +31,9 @@
 
   <ItemGroup Condition=" '$(INCLUDE_ARM64_SDK)' != '' ">
     <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" BindName="sdk_arm64" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(INCLUDE_ANDROID_SDKS)' != '' ">
+    <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=aarch64;Platform=x86" BindName="android_sdk_aarch64" />
   </ItemGroup>
 </Project>

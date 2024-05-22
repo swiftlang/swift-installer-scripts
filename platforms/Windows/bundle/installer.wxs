@@ -38,6 +38,7 @@
     <Variable Name="OptionsInstallRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSdks" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.
@@ -117,6 +118,15 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
           <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(INCLUDE_ANDROID_SDKS) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.android_sdk_aarch64)\android_sdk.aarch64.msi"
+          InstallCondition="OptionsInstallAndroidSdks"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
      </Chain>

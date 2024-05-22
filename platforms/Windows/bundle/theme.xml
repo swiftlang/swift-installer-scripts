@@ -67,6 +67,7 @@
             <Checkbox Name="OptionsInstallRedistArm64" X="194" Y="285" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallSdkArm64">#(loc.Redist_arm64)</Checkbox>
             <Checkbox Name="OptionsInstallSdkX86" X="176" Y="303" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_x86)</Checkbox>
             <Checkbox Name="OptionsInstallRedistX86" X="194" Y="321" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallSdkX86">#(loc.Redist_x86)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKs" X="176" Y="338" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidSdks">#(loc.Android_Skds)</Checkbox>
 
             <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
                 <Text>#(loc.OptionsOkButton)</Text>
