@@ -19,13 +19,13 @@
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.AndroidSdk_ProductName_$(ProductArchitecture))"
-      UpgradeCode="$(AndroidSdkUpgradeCode)"
+      UpgradeCode="$(AndroidSDKUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="android_sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(AndroidSdkUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(AndroidSDKUpgradeCode)" />
 
     <!--
       └─ Swift
