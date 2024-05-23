@@ -18,7 +18,7 @@
   <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (X86)" />
   <String Id="AndroidSdk_ProductName_aarch64" Value="Swift Android SDK (Arm64)" />
   <String Id="AndroidSdk_ProductName_x86_64" Value="Swift Android SDK (AMD64)" />
-  <String Id="AndroidSdk_ProductName_armv7" Value="Swift Android SDK (Arm)" />
+  <String Id="AndroidSdk_ProductName_armv7" Value="Swift Android SDK (ARM)" />
   <String Id="AndroidSdk_ProductName_i686" Value="Swift Android SDK (X86)" />
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
@@ -27,7 +27,10 @@
   <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
   <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
   <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
-  <String Id="Android_Skds" Value="Swift Android SDKs" />
+  <String Id="Android_Sdk_arm64" Value="Swift Android SDK (ARM64)" />
+  <String Id="Android_Sdk_amd64" Value="Swift Android SDK (AMD64)" />
+  <String Id="Android_Sdk_arm" Value="Swift Android SDK (ARM)" />
+  <String Id="Android_Sdk_x86" Value="Swift Android SDK (X86)" />
 
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />
