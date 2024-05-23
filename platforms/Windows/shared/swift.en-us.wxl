@@ -16,7 +16,10 @@
   <String Id="Sdk_ProductName_arm64" Value="Swift Windows SDK (ARM64)" />
   <String Id="Sdk_ProductName_amd64" Value="Swift Windows SDK (AMD64)" />
   <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (X86)" />
-  <String Id="AndroidSdk_ProductName_aarch64" Value="Swift Android SDK (Aarch64)" />
+  <String Id="AndroidSdk_ProductName_aarch64" Value="Swift Android SDK (Arm64)" />
+  <String Id="AndroidSdk_ProductName_x86_64" Value="Swift Android SDK (AMD64)" />
+  <String Id="AndroidSdk_ProductName_armv7" Value="Swift Android SDK (Arm)" />
+  <String Id="AndroidSdk_ProductName_i686" Value="Swift Android SDK (X86)" />
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 

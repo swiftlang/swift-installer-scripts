@@ -4,6 +4,15 @@
   <?if $(ProductArchitecture) = "aarch64"?>
     <?define ArchArchDir = "aarch64"?>
     <?define ArchTriple = "aarch64-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "x86_64"?>
+    <?define ArchArchDir = "x86_64"?>
+    <?define ArchTriple = "x86_64-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "armv7"?>
+    <?define ArchArchDir = "armv7"?>
+    <?define ArchTriple = "armv7-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "i686"?>
+    <?define ArchArchDir = "i686"?>
+    <?define ArchTriple = "i686-unknown-linux-android"?>
   <?endif?>
 
   <Package
