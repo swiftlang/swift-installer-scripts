@@ -40,8 +40,8 @@
     <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallAndroidSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallAndroidSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSdkArm" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSdkArm" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <Variable Name="OptionsInstallAndroidSdkX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.

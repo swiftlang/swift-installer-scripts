@@ -10,7 +10,7 @@
     <Font Id="3" Height="-12" Weight="500" Foreground="windowtext" Background="window">Segoe UI</Font>
 
     <Window Width="614" Height="456" HexStyle="100a0000" FontId="0" Caption="#(loc.Caption)">
-        <ImageControl X="0" Y="0" Width="165" Height="384" ImageFile="swift_side.png"/>
+        <ImageControl X="0" Y="0" Width="165" Height="456" ImageFile="swift_side.png"/>
         <Label X="176" Y="11" Width="-11" Height="32" FontId="1" DisablePrefix="yes">#(loc.Title)</Label>
 
         <Page Name="Help">
