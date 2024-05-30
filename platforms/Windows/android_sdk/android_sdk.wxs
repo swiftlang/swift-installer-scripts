@@ -2,15 +2,19 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?if $(ProductArchitecture) = "aarch64"?>
+    <?define ArchName = "arm64"?>
     <?define ArchArchDir = "aarch64"?>
     <?define ArchTriple = "aarch64-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "x86_64"?>
+    <?define ArchName = "amd64"?>
     <?define ArchArchDir = "x86_64"?>
     <?define ArchTriple = "x86_64-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "armv7"?>
+    <?define ArchName = "arm"?>
     <?define ArchArchDir = "armv7"?>
     <?define ArchTriple = "armv7-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "i686"?>
+    <?define ArchName = "x86"?>
     <?define ArchArchDir = "i686"?>
     <?define ArchTriple = "i686-unknown-linux-android"?>
   <?endif?>
@@ -18,7 +22,7 @@
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.AndroidSdk_ProductName_$(ProductArchitecture))"
+      Name="!(loc.Android_Sdk_$(ArchName))"
       UpgradeCode="$(AndroidSDKUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
@@ -487,7 +491,7 @@
     </ComponentGroup>
 
     <!-- Features -->
-    <Feature Id="AndroidSDK" AllowAbsent="no" Title="!(loc.AndroidSdk_ProductName_$(ProductArchitecture))">
+    <Feature Id="AndroidSDK" AllowAbsent="no" Title="!(loc.Android_Sdk_$(ArchName))">
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
