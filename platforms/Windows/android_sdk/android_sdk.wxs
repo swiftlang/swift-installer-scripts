@@ -89,7 +89,7 @@
                       <Directory Id="_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
                       <Directory Id="Android.swiftmodule" Name="Android.swiftmodule" />
                       <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
-                      <!-- FIXME: to add: <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" /> -->
+                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
                       <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
                       <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
                       <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
@@ -331,6 +331,18 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="CxxStdlib" Directory="CxxStdlib.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCxxStdlib.a" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="Distributed" Directory="Distributed.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -503,7 +515,7 @@
       <ComponentGroupRef Id="_Volatile" />
       <ComponentGroupRef Id="Android" />
       <ComponentGroupRef Id="Cxx" />
-      <!-- FIXME: <ComponentGroupRef Id="CxxStdlib" /> -->
+      <ComponentGroupRef Id="CxxStdlib" />
       <ComponentGroupRef Id="Distributed" />
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationXML" />
