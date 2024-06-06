@@ -365,6 +365,42 @@
       </Component>
     </ComponentGroup>
 
+   <ComponentGroup Id="compiler_swift_syntax" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftBasicFormat.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftCompilerPluginMessageHandling.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftDiagnostics.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftIDEUtils.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftOperators.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftParser.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftParserDiagnostics.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftSyntax.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftSyntaxBuilder.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftSyntaxMacroExpansion.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftSyntaxMacros.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="swift_syntax" Directory="_usr_bin">
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftBasicFormat.dll" />
@@ -377,6 +413,9 @@
       </Component>
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftIDEUtils.dll" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftLibraryPluginProvider.dll" />
       </Component>
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftOperators.dll" />
@@ -404,6 +443,15 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="plugin_server" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-plugin-server.exe" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftInProcPluginServer.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
@@ -423,7 +471,9 @@
       <ComponentGroupRef Id="argument_parser" />
       <ComponentGroupRef Id="tools_support_core" />
       <ComponentGroupRef Id="swift_driver" />
+      <ComponentGroupRef Id="compiler_swift_syntax" />
       <ComponentGroupRef Id="swift_syntax" />
+      <ComponentGroupRef Id="plugin_server" />
       <ComponentGroupRef Id="SwiftMacros" />
 
       <ComponentGroupRef Id="ClangResources" />
