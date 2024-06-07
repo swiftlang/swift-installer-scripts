@@ -124,7 +124,7 @@
         </MsiPackage>
       <?endif?>
 
-      <?if $(INCLUDE_ARM64_ANDROID_SDK) == true ?>
+      <?if $(ANDROID_INCLUDE_ARM64_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_aarch64)\android_sdk.aarch64.msi"
           InstallCondition="OptionsInstallAndroidSdkArm64"
@@ -133,7 +133,7 @@
         </MsiPackage>
       <?endif?>
 
-      <?if $(INCLUDE_x86_64_ANDROID_SDK) == true ?>
+      <?if $(ANDROID_INCLUDE_x86_64_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_x86_64)\android_sdk.x86_64.msi"
           InstallCondition="OptionsInstallAndroidSdkAMD64"
@@ -142,7 +142,7 @@
         </MsiPackage>
       <?endif?>
 
-      <?if $(INCLUDE_ARM_ANDROID_SDK) == true ?>
+      <?if $(ANDROID_INCLUDE_ARM_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_armv7)\android_sdk.armv7.msi"
           InstallCondition="OptionsInstallAndroidSdkArm"
@@ -151,7 +151,7 @@
         </MsiPackage>
       <?endif?>
 
-      <?if $(INCLUDE_X86_ANDROID_SDK) == true ?>
+      <?if $(ANDROID_INCLUDE_X86_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_i686)\android_sdk.i686.msi"
           InstallCondition="OptionsInstallAndroidSdkX86"

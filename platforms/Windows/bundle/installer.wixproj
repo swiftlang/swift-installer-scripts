@@ -8,10 +8,10 @@
       $(DefineConstants);
       INCLUDE_X86_SDK=$(INCLUDE_X86_SDK);
       INCLUDE_ARM64_SDK=$(INCLUDE_ARM64_SDK);
-      INCLUDE_ARM64_ANDROID_SDK=$(INCLUDE_ARM64_ANDROID_SDK);
-      INCLUDE_x86_64_ANDROID_SDK=$(INCLUDE_x86_64_ANDROID_SDK);
-      INCLUDE_ARM_ANDROID_SDK=$(INCLUDE_ARM_ANDROID_SDK);
-      INCLUDE_X86_ANDROID_SDK=$(INCLUDE_X86_ANDROID_SDK);
+      ANDROID_INCLUDE_ARM64_SDK=$(ANDROID_INCLUDE_ARM64_SDK);
+      ANDROID_INCLUDE_x86_64_SDK=$(ANDROID_INCLUDE_x86_64_SDK);
+      ANDROID_INCLUDE_ARM_SDK=$(ANDROID_INCLUDE_ARM_SDK);
+      ANDROID_INCLUDE_X86_SDK=$(ANDROID_INCLUDE_X86_SDK);
     </DefineConstants>
   </PropertyGroup>
 
@@ -36,19 +36,19 @@
     <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" BindName="sdk_arm64" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(INCLUDE_ARM64_ANDROID_SDK)' != '' ">
+  <ItemGroup Condition=" '$(ANDROID_INCLUDE_ARM64_SDK)' != '' ">
     <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=aarch64;Platform=x86" BindName="android_sdk_aarch64" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(INCLUDE_x86_64_ANDROID_SDK)' != '' ">
+  <ItemGroup Condition=" '$(ANDROID_INCLUDE_x86_64_SDK)' != '' ">
     <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=x86_64;Platform=x86" BindName="android_sdk_x86_64" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(INCLUDE_ARM_ANDROID_SDK)' != '' ">
+  <ItemGroup Condition=" '$(ANDROID_INCLUDE_ARM_SDK)' != '' ">
     <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=armv7;Platform=x86" BindName="android_sdk_armv7" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(INCLUDE_X86_ANDROID_SDK)' != '' ">
+  <ItemGroup Condition=" '$(ANDROID_INCLUDE_X86_SDK)' != '' ">
     <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=i686;Platform=x86" BindName="android_sdk_i686" />
   </ItemGroup>
 </Project>
