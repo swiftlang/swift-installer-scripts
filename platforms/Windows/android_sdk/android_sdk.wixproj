@@ -1,0 +1,28 @@
+<Project Sdk="WixToolset.Sdk/4.0.1">
+  <PropertyGroup>
+    <OutputName>android_sdk.$(ProductArchitecture)</OutputName>
+    <Platform>x86</Platform>
+
+    <SwiftShimsPath>$(SDK_ROOT)\usr\lib\swift\shims</SwiftShimsPath>
+
+    <DefineConstants>
+      $(DefineConstants);
+      SwiftShimsPath=$(SwiftShimsPath);
+    </DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(SwiftShimsPath)">
+      <ComponentGroupName>SwiftShims</ComponentGroupName>
+      <DirectoryRefId>AndroidSDK_usr_lib_swift_shims</DirectoryRefId>
+      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+</Project>
