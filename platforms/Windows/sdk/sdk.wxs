@@ -19,13 +19,13 @@
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Sdk_ProductName_$(ProductArchitecture))"
-      UpgradeCode="$(SdkUpgradeCode)"
+      UpgradeCode="$(WindowsSDKUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(SdkUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsSDKUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <!--

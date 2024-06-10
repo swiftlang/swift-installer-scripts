@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?if $(ProductArchitecture) = "aarch64"?>
+    <?define ArchName = "arm64"?>
+    <?define ArchArchDir = "aarch64"?>
+    <?define ArchTriple = "aarch64-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "x86_64"?>
+    <?define ArchName = "amd64"?>
+    <?define ArchArchDir = "x86_64"?>
+    <?define ArchTriple = "x86_64-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "armv7"?>
+    <?define ArchName = "arm"?>
+    <?define ArchArchDir = "armv7"?>
+    <?define ArchTriple = "armv7-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "i686"?>
+    <?define ArchName = "x86"?>
+    <?define ArchArchDir = "i686"?>
+    <?define ArchTriple = "i686-unknown-linux-android"?>
+  <?endif?>
+
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="!(loc.Android_Sdk_$(ArchName))"
+      UpgradeCode="$(AndroidSDKUpgradeCode)"
+      Version="$(NonSemVerProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="android_sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(AndroidSDKUpgradeCode)" />
+
+    <!--
+      └─ Swift
+          └─ Platforms
+              └─ Android.platform
+                  └─ Developer
+                      ├─ Library
+                      │   └─ XCTest-development
+                      │       └─ ...
+                      └─ SDKs
+                          └─ Android.sdk
+                                  └─ ...
+    -->
+    <DirectoryRef Id="PlatformsVersioned">
+      <Directory Id="AndroidPlatform" Name="Android.platform">
+        <Directory Name="Developer">
+          <Directory Name="Library">
+            <!-- XCTest -->
+            <!--
+              FIXME(compnerd) this should actually be the proper version
+              of XCTest, and needs to be reflected in the plist as well.
+            -->
+            <Directory Name="XCTest-development">
+              <Directory Name="usr">
+                <Directory Name="lib">
+                  <Directory Name="swift">
+                    <Directory Name="android">
+                      <Directory Id="XCTest_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
+                      <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
+                    </Directory>
+                  </Directory>
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
+          <Directory Name="SDKs">
+            <!-- Android.sdk -->
+            <Directory Id="AndroidSDK" Name="Android.sdk">
+              <Directory Name="usr">
+                <Directory Name="include">
+                  <Directory Id="AndroidSDK_usr_include_Block" Name="Block" />
+                  <Directory Id="AndroidSDK_usr_include_dispatch" Name="dispatch" />
+                  <Directory Id="AndroidSDK_usr_include_os" Name="os" />
+                  <Directory Name="swift">
+                    <Directory Id="AndroidSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror" />
+                  </Directory>
+                </Directory>
+                <Directory Name="lib">
+                  <Directory Name="swift">
+                    <Directory Id="AndroidSDK_usr_lib_swift_apinotes" Name="apinotes" />
+                    <Directory Id="AndroidSDK_usr_lib_swift_shims" Name="shims" />
+                    <Directory Id="AndroidSDK_usr_lib_swift_android" Name="android">
+                      <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
+                      <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
+                      <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
+                      <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
+                      <Directory Id="_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
+                      <Directory Id="Android.swiftmodule" Name="Android.swiftmodule" />
+                      <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
+                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
+                      <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
+                      <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
+                      <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
+                      <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
+                      <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                      <Directory Id="_math.swiftmodule" Name="_math.swiftmodule" />
+                      <Directory Id="Observation.swiftmodule" Name="Observation.swiftmodule" />
+                      <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
+                      <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
+                      <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
+                      <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
+                      <Directory Id="AndroidSDK_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
+                    </Directory>
+                  </Directory>
+                </Directory>
+                <Directory Id="AndroidSDK_usr_share" Name="share" />
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+
+    <ComponentGroup Id="XCTest">
+      <Component Directory="XCTest_usr_lib_swift_android_ARCH">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\libXCTest.so" />
+      </Component>
+      <Component Directory="XCTest.swiftmodule">
+        <File Name="$(ArchTriple).swiftdoc" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(ArchArchDir)\XCTest.swiftdoc" />
+      </Component>
+      <Component Directory="XCTest.swiftmodule">
+        <File Name="$(ArchTriple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(ArchArchDir)\XCTest.swiftmodule" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftRemoteMirror" Directory="AndroidSDK_usr_include_swift_SwiftRemoteMirror">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\Platform.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\include\swift\SwiftRemoteMirror\module.modulemap" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftRemoteMirror.so" />
+      </Component>
+    </ComponentGroup>
+    
+    <ComponentGroup Id="BlocksRuntime">
+      <Component Directory="AndroidSDK_usr_include_Block">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\Block\Block.h" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libBlocksRuntime.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="libdispatch" Directory="AndroidSDK_usr_include_dispatch">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\base.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\block.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\data.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\group.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\io.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\object.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\once.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\queue.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\source.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\time.h" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_include_os">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_base.h" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_include_os">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_include_os">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_win_base.h" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_include_os">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\os\object.h" />
+      </Component>
+      <Component Directory="Dispatch.swiftmodule">
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\Dispatch.swiftdoc" />
+      </Component>
+      <Component Directory="Dispatch.swiftmodule">
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\Dispatch.swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libdispatch.so" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftDispatch.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_Concurrency" Directory="_Concurrency.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Concurrency.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_Differentiation" Directory="_Differentiation.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Differentiation.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_RegexParser" Directory="_RegexParser.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_RegexParser.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_RegexParser.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_RegexParser.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_StringProcessing" Directory="_StringProcessing.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_StringProcessing.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_Volatile" Directory="_Volatile.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Volatile.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Android" Directory="Android.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftAndroid.so" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\android.modulemap" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\SwiftAndroidNDK.h" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\SwiftBionic.h" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Cxx" Directory="Cxx.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Cxx.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Cxx.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCxx.a" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="CxxStdlib" Directory="CxxStdlib.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCxxStdlib.a" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Distributed" Directory="Distributed.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftDistributed.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Foundation" Directory="Foundation.swiftmodule">
+      <Component>
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\Foundation.swiftdoc" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\Foundation.swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundation.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="FoundationNetworking" Directory="FoundationNetworking.swiftmodule">
+      <Component>
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\FoundationNetworking.swiftdoc" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\FoundationNetworking.swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundationNetworking.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="FoundationXML" Directory="FoundationXML.swiftmodule">
+      <Component>
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\FoundationXML.swiftdoc" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\FoundationXML.swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundationXML.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Math" Directory="_math.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_math.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Observation" Directory="Observation.swiftmodule">
+      <Component>
+        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftinterface" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftObservation.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="RegexBuilder" Directory="RegexBuilder.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftRegexBuilder.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Swift" Directory="Swift.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCore.so" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftOnoneSupport" Directory="SwiftOnoneSupport.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftSwiftOnoneSupport.so" />
+      </Component>
+    </ComponentGroup>
+
+    <!-- FIXME: re-enable once https://github.com/apple/swift/issues/74186 is fixed -->
+    <?if $(ProductArchitecture) != "armv7"?>
+    <ComponentGroup Id="Synchronization" Directory="Synchronization.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftinterface" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftSynchronization.so" />
+      </Component>
+    </ComponentGroup>
+    <?endif?>
+
+    <ComponentGroup Id="apinotes" Directory="AndroidSDK_usr_lib_swift_apinotes">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\apinotes\std.apinotes" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="libcxxshim" Directory="AndroidSDK_usr_lib_swift_android">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libcxxshim.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libcxxshim.modulemap" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libcxxstdlibshim.h" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Registrar" Directory="AndroidSDK_usr_lib_swift_android_ARCH">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\swiftrt.o" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Configuration">
+      <Component Directory="AndroidSDK">
+        <File Source="$(SDK_ROOT)\SDKSettings.plist" />
+      </Component>
+      <Component Directory="AndroidPlatform">
+        <File Source="$(PLATFORM_ROOT)\Info.plist" />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Features -->
+    <Feature Id="AndroidSDK" AllowAbsent="no" Title="!(loc.Android_Sdk_$(ArchName))">
+      <ComponentGroupRef Id="XCTest" />
+      <ComponentGroupRef Id="SwiftRemoteMirror" />
+      <ComponentGroupRef Id="BlocksRuntime" />
+      <ComponentGroupRef Id="libdispatch" />
+      <ComponentGroupRef Id="_Concurrency" />
+      <ComponentGroupRef Id="_Differentiation" />
+      <ComponentGroupRef Id="_RegexParser" />
+      <ComponentGroupRef Id="_StringProcessing" />
+      <ComponentGroupRef Id="_Volatile" />
+      <ComponentGroupRef Id="Android" />
+      <ComponentGroupRef Id="Cxx" />
+      <ComponentGroupRef Id="CxxStdlib" />
+      <ComponentGroupRef Id="Distributed" />
+      <ComponentGroupRef Id="Foundation" />
+      <ComponentGroupRef Id="FoundationXML" />
+      <ComponentGroupRef Id="FoundationNetworking" />
+      <ComponentGroupRef Id="Math" />
+      <ComponentGroupRef Id="Observation" />
+      <ComponentGroupRef Id="RegexBuilder" />
+      <ComponentGroupRef Id="Swift" />
+      <ComponentGroupRef Id="SwiftOnoneSupport" />
+      <!-- FIXME: re-enable once https://github.com/apple/swift/issues/74186 is fixed -->
+      <?if $(ProductArchitecture) != "armv7"?>
+      <ComponentGroupRef Id="Synchronization" />
+      <?endif?>
+      <ComponentGroupRef Id="apinotes" />
+      <ComponentGroupRef Id="libcxxshim" />
+      <ComponentGroupRef Id="Registrar" />
+      <ComponentGroupRef Id="Configuration" />
+      <ComponentGroupRef Id="SwiftShims" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
+    </Feature>
+  </Package>
+</Wix>
