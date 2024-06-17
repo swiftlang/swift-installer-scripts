@@ -154,7 +154,7 @@ https://download.swift.org/repo/centos/releases/8/swiftlang.repo
 
 ## Contributing
 
-Before contributing, please read [CONTRIBUTING.md](CONTRIBUTING.md).
+Before contributing, please read [our main guide](https://www.swift.org/contributing)
 
 ## LICENSE
 
