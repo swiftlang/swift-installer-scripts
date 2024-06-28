@@ -509,6 +509,12 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="AuxiliaryFiles" Directory="AndroidSDK_usr_share">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\share\posix_filesystem.apinotes" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="Configuration">
       <Component Directory="AndroidSDK">
         <File Source="$(SDK_ROOT)\SDKSettings.plist" />
@@ -545,6 +551,7 @@
       <ComponentGroupRef Id="apinotes" />
       <ComponentGroupRef Id="libcxxshim" />
       <ComponentGroupRef Id="Registrar" />
+      <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
 
