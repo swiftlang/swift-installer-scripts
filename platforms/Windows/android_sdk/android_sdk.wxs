@@ -470,8 +470,6 @@
       </Component>
     </ComponentGroup>
 
-    <!-- FIXME: re-enable once https://github.com/apple/swift/issues/74186 is fixed -->
-    <?if $(ProductArchitecture) != "armv7"?>
     <ComponentGroup Id="Synchronization" Directory="Synchronization.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -486,7 +484,6 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftSynchronization.so" />
       </Component>
     </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="apinotes" Directory="AndroidSDK_usr_lib_swift_apinotes">
       <Component>
@@ -544,10 +541,7 @@
       <ComponentGroupRef Id="RegexBuilder" />
       <ComponentGroupRef Id="Swift" />
       <ComponentGroupRef Id="SwiftOnoneSupport" />
-      <!-- FIXME: re-enable once https://github.com/apple/swift/issues/74186 is fixed -->
-      <?if $(ProductArchitecture) != "armv7"?>
       <ComponentGroupRef Id="Synchronization" />
-      <?endif?>
       <ComponentGroupRef Id="apinotes" />
       <ComponentGroupRef Id="libcxxshim" />
       <ComponentGroupRef Id="Registrar" />
