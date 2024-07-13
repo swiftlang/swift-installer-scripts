@@ -1008,10 +1008,10 @@
 
     <ComponentGroup Id="_FoundationCollections" Directory="_FoundationCollections.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$_FoundationCollections.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$_FoundationCollections.swiftmodule\$(ArchArchDir).swiftmodule" />
       </Component>
     </ComponentGroup>
 
