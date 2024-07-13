@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?if $(ProductArchitecture) = "amd64"?>
@@ -335,12 +335,45 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="Foundation" Directory="Foundation.swiftmodule">
+    <ComponentGroup Id="_FoundationCollections" Directory="_FoundationCollections.swiftmodule">
       <Component>
-        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\Foundation.swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\Foundation.swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftmodule" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="FoundationEssentials" Directory="FoundationEssentials.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationEssentials.lib" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="FoundationInternationalization" Directory="FoundationInternationalization.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\$(ArchTriple).swiftmodule" />
+      </Component>
+      <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationInternationalization.lib" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Foundation" Directory="Foundation.swiftmodule">
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Foundation.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Foundation.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Foundation.lib" />
@@ -349,10 +382,10 @@
 
     <ComponentGroup Id="FoundationNetworking" Directory="FoundationNetworking.swiftmodule">
       <Component>
-        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationNetworking.swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationNetworking.swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.lib" />
@@ -361,10 +394,10 @@
 
     <ComponentGroup Id="FoundationXML" Directory="FoundationXML.swiftmodule">
       <Component>
-        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationXML.swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationXML.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\FoundationXML.swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationXML.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationXML.lib" />
@@ -530,6 +563,8 @@
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
+      <ComponentGroupRef Id="_foundation_unicode" />
+      <ComponentGroupRef Id="_FoundationCShims" />
       <ComponentGroupRef Id="_Concurrency" />
       <ComponentGroupRef Id="_Differentiation" />
       <ComponentGroupRef Id="_RegexParser" />
@@ -538,6 +573,9 @@
       <ComponentGroupRef Id="Cxx" />
       <ComponentGroupRef Id="CxxStdlib" />
       <ComponentGroupRef Id="Distributed" />
+      <ComponentGroupRef Id="_FoundationCollections" />
+      <ComponentGroupRef Id="FoundationEssentials" />
+      <ComponentGroupRef Id="FoundationInternationalization" />
       <ComponentGroupRef Id="Foundation" />
       <ComponentGroupRef Id="FoundationXML" />
       <ComponentGroupRef Id="FoundationNetworking" />
