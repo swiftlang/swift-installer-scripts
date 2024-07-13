@@ -984,10 +984,10 @@
 
     <ComponentGroup Id="_FoundationCollections" Directory="_FoundationCollections.swiftmodule">
       <Component>
-        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\_FoundationCollections.swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(ArchArchDir)\_FoundationCollections.swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
