@@ -337,10 +337,10 @@
 
     <ComponentGroup Id="_FoundationCollections" Directory="_FoundationCollections.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchTriple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
