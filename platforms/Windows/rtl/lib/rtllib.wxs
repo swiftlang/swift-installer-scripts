@@ -75,6 +75,15 @@
 
     <ComponentGroup Id="Foundation_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
+        <File Source="$(SDK_ROOT)\usr\bin\_FoundationICU.dll" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\bin\FoundationEssentials.dll" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\bin\FoundationInternationalization.dll" />
+      </Component>
+      <Component>
         <File Source="$(SDK_ROOT)\usr\bin\Foundation.dll" />
       </Component>
       <Component>
