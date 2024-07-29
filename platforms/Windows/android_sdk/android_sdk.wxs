@@ -105,7 +105,6 @@
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="AndroidSDK_usr_share" Name="share" />
               </Directory>
             </Directory>
           </Directory>
@@ -489,6 +488,9 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\apinotes\std.apinotes" />
       </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\apinotes\posix_filesystem.apinotes" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="libcxxshim" Directory="AndroidSDK_usr_lib_swift_android">
@@ -506,12 +508,6 @@
     <ComponentGroup Id="Registrar" Directory="AndroidSDK_usr_lib_swift_android_ARCH">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\swiftrt.o" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="AuxiliaryFiles" Directory="AndroidSDK_usr_share">
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\share\posix_filesystem.apinotes" />
       </Component>
     </ComponentGroup>
 
@@ -551,7 +547,6 @@
       <ComponentGroupRef Id="apinotes" />
       <ComponentGroupRef Id="libcxxshim" />
       <ComponentGroupRef Id="Registrar" />
-      <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
 
