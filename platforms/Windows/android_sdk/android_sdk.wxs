@@ -105,7 +105,6 @@
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="AndroidSDK_usr_share" Name="share" />
               </Directory>
             </Directory>
           </Directory>
@@ -491,6 +490,9 @@
     <ComponentGroup Id="apinotes" Directory="AndroidSDK_usr_lib_swift_apinotes">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\apinotes\std.apinotes" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\apinotes\posix_filesystem.apinotes" />
       </Component>
     </ComponentGroup>
 
