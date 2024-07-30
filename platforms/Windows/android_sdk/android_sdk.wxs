@@ -37,7 +37,9 @@
               └─ Android.platform
                   └─ Developer
                       ├─ Library
-                      │   └─ XCTest-development
+                      │   ├─ XCTest-development
+                      │   │   └─ ...
+                      │   └─ Testing-development
                       │       └─ ...
                       └─ SDKs
                           └─ Android.sdk
@@ -47,11 +49,11 @@
       <Directory Id="AndroidPlatform" Name="Android.platform">
         <Directory Name="Developer">
           <Directory Name="Library">
-            <!-- XCTest -->
             <!--
               FIXME(compnerd) this should actually be the proper version
-              of XCTest, and needs to be reflected in the plist as well.
+              of XCTest and Tesing, and needs to be reflected in the plist as well.
             -->
+            <!-- XCTest -->
             <Directory Name="XCTest-development">
               <Directory Name="usr">
                 <Directory Name="lib">
@@ -59,6 +61,19 @@
                     <Directory Name="android">
                       <Directory Id="XCTest_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
                       <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
+                    </Directory>
+                  </Directory>
+                </Directory>
+              </Directory>
+            </Directory>
+            <!-- Testing -->
+            <Directory Name="Testing-development">
+              <Directory Name="usr">
+                <Directory Name="lib">
+                  <Directory Name="swift">
+                    <Directory Name="android">
+                      <Directory Id="Testing_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
+                      <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
                 </Directory>
@@ -126,6 +141,18 @@
       </Component>
       <Component Directory="XCTest.swiftmodule">
         <File Name="$(ArchTriple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(ArchArchDir)\XCTest.swiftmodule" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Testing">
+      <Component Directory="Testing_usr_lib_swift_android_ARCH">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\libTesting.so" />
+      </Component>
+      <Component Directory="Testing.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component Directory="Testing.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
@@ -1203,6 +1230,7 @@
     <!-- Features -->
     <Feature Id="AndroidSDK" AllowAbsent="no" Title="!(loc.Android_Sdk_$(ArchName))">
       <ComponentGroupRef Id="XCTest" />
+      <ComponentGroupRef Id="Testing" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
