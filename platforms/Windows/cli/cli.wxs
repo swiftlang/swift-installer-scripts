@@ -118,6 +118,9 @@
         <File Source="$(DEVTOOLS_ROOT)\usr\bin\DequeModule.dll" />
       </Component>
       <Component>
+        <File Source="$(DEVTOOLS_ROOT)\usr\bin\InternalCollectionsUtilities.dll" />
+      </Component>
+      <Component>
         <File Source="$(DEVTOOLS_ROOT)\usr\bin\OrderedCollections.dll" />
       </Component>
     </ComponentGroup>
