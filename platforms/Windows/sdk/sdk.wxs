@@ -34,7 +34,9 @@
               └─ Windows.platform
                   └─ Developer
                       ├─ Library
-                      │   └─ XCTest-development
+                      │   ├─ XCTest-development
+                      │   │   └─ ...
+                      │   └─ Testing-development
                       │       └─ ...
                       └─ SDKs
                           └─ Windows.sdk
@@ -44,11 +46,11 @@
       <Directory Id="WindowsPlatform" Name="Windows.platform">
         <Directory Name="Developer">
           <Directory Name="Library">
-            <!-- XCTest -->
             <!--
               FIXME(compnerd) this should actually be the proper version
-              of XCTest, and needs to be reflected in the plist as well.
+              of XCTest and Testing, and needs to be reflected in the plist as well.
             -->
+            <!-- XCTest -->
             <Directory Name="XCTest-development">
               <Directory Name="usr">
                 <Directory Id="XCTest_usr_bin" Name="$(ArchBinDir)" />
@@ -57,6 +59,20 @@
                     <Directory Name="windows">
                       <Directory Id="XCTest_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
                       <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
+                    </Directory>
+                  </Directory>
+                </Directory>
+              </Directory>
+            </Directory>
+            <!-- Testing -->
+            <Directory Name="Testing-development">
+              <Directory Name="usr">
+                <Directory Id="Testing_usr_bin" Name="$(ArchBinDir)" />
+                <Directory Name="lib">
+                  <Directory Name="swift">
+                    <Directory Name="windows">
+                      <Directory Id="Testing_usr_lib_swift_windows_ARCH" Name="$(ArchArchDir)" />
+                      <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
                 </Directory>
@@ -127,6 +143,21 @@
       </Component>
       <Component Directory="XCTest.swiftmodule">
         <File Name="$(ArchTriple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(ArchArchDir)\XCTest.swiftmodule" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="Testing">
+      <Component Directory="Testing_usr_bin">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\bin\Testing.dll" />
+      </Component>
+      <Component Directory="Testing_usr_lib_swift_windows_ARCH">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.lib" />
+      </Component>
+      <Component Directory="Testing.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(ArchTriple).swiftdoc" />
+      </Component>
+      <Component Directory="Testing.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
@@ -1228,6 +1259,7 @@
     <!-- Features -->
     <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="XCTest" />
+      <ComponentGroupRef Id="Testing" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
