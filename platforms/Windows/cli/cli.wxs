@@ -139,9 +139,7 @@
 
     <ComponentGroup Id="CompilerPluginSupport" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
-      </Component>
-      <Component>
+        <!-- TODO(compnerd) use a lib prefix -->
         <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
       </Component>
       <Component>
@@ -154,9 +152,7 @@
 
     <ComponentGroup Id="PackageDescription" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
-      </Component>
-      <Component>
+        <!-- TODO(compnerd) use a lib prefix -->
         <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
       </Component>
       <Component>
@@ -169,9 +165,7 @@
 
     <ComponentGroup Id="PackagePlugin" Directory="_usr_lib_swift_pm_PluginAPI">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
-      </Component>
-      <Component>
+        <!-- TODO(compnerd) use a lib prefix -->
         <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
       </Component>
       <Component>
