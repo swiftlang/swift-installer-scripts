@@ -348,6 +348,9 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\formattedvalue.h" />
       </Component>
       <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\formattednumber.h" />
+      </Component>
+      <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\fpositer.h" />
       </Component>
       <Component>
@@ -481,6 +484,9 @@
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\simpleformatter.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\simplenumberformatter.h" />
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\simpletz.h" />
@@ -654,6 +660,9 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uformattedvalue.h" />
       </Component>
       <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uformattednumber.h" />
+      </Component>
+      <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ugender.h" />
       </Component>
       <Component>
@@ -670,6 +679,12 @@
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uloc.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulocale.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulocbuilder.h" />
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulocdata.h" />
@@ -715,6 +730,9 @@
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumberformatter.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumberoptions.h" />
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumberrangeformatter.h" />
@@ -766,6 +784,9 @@
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ushape.h" />
+      </Component>
+      <Component>
+        <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\usimplenumberformatter.h" />
       </Component>
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uspoof.h" />
