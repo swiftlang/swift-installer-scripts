@@ -388,6 +388,9 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftIDEUtils.dll" />
       </Component>
       <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftIfConfig.dll" />
+      </Component>
+      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_CompilerSwiftOperators.dll" />
       </Component>
       <Component>
