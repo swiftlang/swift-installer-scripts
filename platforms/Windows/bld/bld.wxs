@@ -335,6 +335,12 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="FoundationMacros" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\FoundationMacros.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="argument_parser" Directory="_usr_bin">
       <Component>
         <File Source="$(DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" />
@@ -487,6 +493,7 @@
       <ComponentGroupRef Id="swift_syntax" />
       <ComponentGroupRef Id="plugin_server" />
       <ComponentGroupRef Id="SwiftMacros" />
+      <ComponentGroupRef Id="FoundationMacros" />
 
       <ComponentGroupRef Id="ClangResources" />
 
