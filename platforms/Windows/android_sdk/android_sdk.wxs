@@ -994,7 +994,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$_FoundationCollections.swiftmodule\$(ArchArchDir).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftmodule" />
       </Component>
     </ComponentGroup>
 
