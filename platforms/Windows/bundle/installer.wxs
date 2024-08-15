@@ -77,21 +77,21 @@
 
       <MsiPackage
         SourceFile="!(bindpath.cli)\cli.msi"
-        InstallCondition="OptionsInstallCli"
+        InstallCondition="OptionsInstallCli = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.dbg)\dbg.msi"
-        InstallCondition="OptionsInstallDbg"
+        InstallCondition="OptionsInstallDbg = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.ide)\ide.msi"
-        InstallCondition="OptionsInstallIde"
+        InstallCondition="OptionsInstallIde = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
@@ -99,7 +99,7 @@
       <?if $(INCLUDE_X86_SDK) == true?>
         <MsiPackage
           SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
-          InstallCondition="OptionsInstallSdkX86"
+          InstallCondition="OptionsInstallSdkX86 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
           <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistX86]" />
@@ -108,7 +108,7 @@
 
       <MsiPackage
         SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
-        InstallCondition="OptionsInstallSdkAMD64"
+        InstallCondition="OptionsInstallSdkAMD64 = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistAMD64]" />
@@ -117,7 +117,7 @@
       <?if $(INCLUDE_ARM64_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
-          InstallCondition="OptionsInstallSdkArm64"
+          InstallCondition="OptionsInstallSdkArm64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
           <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
@@ -127,7 +127,7 @@
       <?if $(ANDROID_INCLUDE_ARM64_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_aarch64)\android_sdk.aarch64.msi"
-          InstallCondition="OptionsInstallAndroidSdkArm64"
+          InstallCondition="OptionsInstallAndroidSdkArm64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
@@ -136,7 +136,7 @@
       <?if $(ANDROID_INCLUDE_x86_64_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_x86_64)\android_sdk.x86_64.msi"
-          InstallCondition="OptionsInstallAndroidSdkAMD64"
+          InstallCondition="OptionsInstallAndroidSdkAMD64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
@@ -145,7 +145,7 @@
       <?if $(ANDROID_INCLUDE_ARM_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_armv7)\android_sdk.armv7.msi"
-          InstallCondition="OptionsInstallAndroidSdkArm"
+          InstallCondition="OptionsInstallAndroidSdkArm = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
@@ -154,7 +154,7 @@
       <?if $(ANDROID_INCLUDE_X86_SDK) == true ?>
         <MsiPackage
           SourceFile="!(bindpath.android_sdk_i686)\android_sdk.i686.msi"
-          InstallCondition="OptionsInstallAndroidSdkX86"
+          InstallCondition="OptionsInstallAndroidSdkX86 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
