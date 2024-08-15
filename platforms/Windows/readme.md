@@ -60,7 +60,7 @@ The variables are used in `installer.wxs` bundle authoring to control the instal
 ```xml
 <MsiPackage
   SourceFile="!(bindpath.ide)\ide.msi"
-  InstallCondition="OptionsInstallIde"
+  InstallCondition="OptionsInstallIde = 1"
   DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
   <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 </MsiPackage>
