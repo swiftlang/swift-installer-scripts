@@ -101,6 +101,9 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\llvm-lipo.exe" />
       </Component>
       <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\llvm-ml.exe" />
+      </Component>
+      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\llvm-mt.exe" />
       </Component>
       <Component>
