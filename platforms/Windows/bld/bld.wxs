@@ -336,14 +336,17 @@
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftMacros.dll" />
       </Component>
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\TestingMacros.dll" />
-      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="FoundationMacros" Directory="_usr_bin">
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\FoundationMacros.dll" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="TestingMacros" Directory="_usr_bin">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\TestingMacros.dll" />
       </Component>
     </ComponentGroup>
 
@@ -500,6 +503,7 @@
       <ComponentGroupRef Id="plugin_server" />
       <ComponentGroupRef Id="SwiftMacros" />
       <ComponentGroupRef Id="FoundationMacros" />
+      <ComponentGroupRef Id="TestingMacros" />
 
       <ComponentGroupRef Id="ClangResources" />
 
