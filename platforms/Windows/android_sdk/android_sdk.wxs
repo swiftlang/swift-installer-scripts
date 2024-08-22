@@ -79,6 +79,9 @@
                 </Directory>
               </Directory>
             </Directory>
+            <Directory Name="$(ArchTriple)">
+              <Directory Id="Android_Library_ARCH_bin" Name="bin" />
+            </Directory>
           </Directory>
           <Directory Name="SDKs">
             <!-- Android.sdk -->
@@ -154,6 +157,14 @@
       <Component Directory="Testing.swiftmodule">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(ArchTriple).swiftmodule" />
       </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="DS2">
+      <?if $(ANDROID_INCLUDE_DS2) == true ?>
+        <Component Directory="Android_Library_ARCH_bin">
+          <File Source="$(PLATFORM_ROOT)\Developer\Library\$(ArchTriple)\bin\ds2" />
+        </Component>
+      <?endif?>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftRemoteMirror" Directory="AndroidSDK_usr_include_swift_SwiftRemoteMirror">
@@ -1283,6 +1294,7 @@
       <ComponentGroupRef Id="Registrar" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
+      <ComponentGroupRef Id="DS2" />
 
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>

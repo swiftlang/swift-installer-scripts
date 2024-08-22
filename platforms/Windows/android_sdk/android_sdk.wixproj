@@ -7,6 +7,7 @@
 
     <DefineConstants>
       $(DefineConstants);
+      ANDROID_INCLUDE_DS2=$(ANDROID_INCLUDE_DS2);
       SwiftShimsPath=$(SwiftShimsPath);
     </DefineConstants>
   </PropertyGroup>
