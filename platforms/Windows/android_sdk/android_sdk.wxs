@@ -5,18 +5,31 @@
     <?define ArchName = "arm64"?>
     <?define ArchArchDir = "aarch64"?>
     <?define ArchTriple = "aarch64-unknown-linux-android"?>
+    <?define ArchTripleDir = "aarch64-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "x86_64"?>
     <?define ArchName = "amd64"?>
     <?define ArchArchDir = "x86_64"?>
     <?define ArchTriple = "x86_64-unknown-linux-android"?>
+    <?define ArchTripleDir = "x86_64-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "armv7"?>
     <?define ArchName = "arm"?>
     <?define ArchArchDir = "armv7"?>
+    <!--
+      The Swift compiler outputs Android armv7 .swiftdoc, .swiftmodule, and
+      .swiftinterface files with the name armv7-unknown-linux-android. Since the
+      correct triple is armv7-unknown-linux-androideabi, define two constants to
+      deal with the inconsistency.
+
+      TODO: consider updating Swift compiler to output file names matching the
+      correct triple.
+    -->
     <?define ArchTriple = "armv7-unknown-linux-android"?>
+    <?define ArchTripleDir = "armv7-unknown-linux-androideabi"?>
   <?elseif $(ProductArchitecture) = "i686"?>
     <?define ArchName = "x86"?>
     <?define ArchArchDir = "i686"?>
     <?define ArchTriple = "i686-unknown-linux-android"?>
+    <?define ArchTripleDir = "i686-unknown-linux-android"?>
   <?endif?>
 
   <Package
@@ -79,7 +92,7 @@
                 </Directory>
               </Directory>
             </Directory>
-            <Directory Name="$(ArchTriple)">
+            <Directory Name="$(ArchTripleDir)">
               <Directory Id="Android_Library_ARCH_bin" Name="bin" />
             </Directory>
           </Directory>
@@ -162,7 +175,7 @@
     <ComponentGroup Id="DS2">
       <?if $(ANDROID_INCLUDE_DS2) == true ?>
         <Component Directory="Android_Library_ARCH_bin">
-          <File Source="$(PLATFORM_ROOT)\Developer\Library\$(ArchTriple)\bin\ds2" />
+          <File Source="$(PLATFORM_ROOT)\Developer\Library\$(ArchTripleDir)\bin\ds2" />
         </Component>
       <?endif?>
     </ComponentGroup>
