@@ -31,5 +31,10 @@
       <ComponentGroupRef Id="EnvironmentVariables" />
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
+
+    <Feature Id="SwiftRuntimeUtilities" AllowAbsent="yes" Title="!(loc.Utl_ProductName_$(ProductArchitecture))">
+      <Level Condition="INSTALLUTILITIES = 0" Value="0" />
+      <ComponentGroupRef Id="swift_runtime_utilities_$(ProductArchitecture)" />
+    </Feature>
   </Package>
 </Wix>

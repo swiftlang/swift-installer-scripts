@@ -15,5 +15,6 @@
     Version="$(NonSemVerProductVersion)">
 
     <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
+    <ComponentGroupRef Id="swift_runtime_utilities_$(ProductArchitecture)" />
   </Module>
 </Wix>

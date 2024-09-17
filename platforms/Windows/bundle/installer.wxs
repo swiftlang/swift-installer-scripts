@@ -32,6 +32,7 @@
     <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRtl" Value="1" />
+    <Variable Name="OptionsInstallUtl" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -67,6 +68,7 @@
         SourceFile="!(bindpath.rtl)\rtl.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtl]" />
       </MsiPackage>
 
       <MsiPackage

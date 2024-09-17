@@ -105,6 +105,9 @@
       <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
       <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="swift_runtime_utilities_$(ProductArchitecture)">
       <ComponentGroupRef Id="plutil_$(ProductArchitecture)" />
     </ComponentGroup>
   </Fragment>
