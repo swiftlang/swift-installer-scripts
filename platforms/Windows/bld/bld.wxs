@@ -479,6 +479,17 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="mimalloc" Directory="_usr_bin">
+      <?if $(ENABLE_MIMALLOC) == true ?>
+        <Component>
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
+        </Component>
+        <Component>
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-override.dll" />
+        </Component>
+      <?endif?>
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
@@ -504,6 +515,7 @@
       <ComponentGroupRef Id="SwiftMacros" />
       <ComponentGroupRef Id="FoundationMacros" />
       <ComponentGroupRef Id="TestingMacros" />
+      <ComponentGroupRef Id="mimalloc" />
 
       <ComponentGroupRef Id="ClangResources" />
       <ComponentGroupRef Id="SwiftClangResources" />
