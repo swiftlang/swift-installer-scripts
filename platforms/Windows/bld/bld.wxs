@@ -30,6 +30,7 @@
     </DirectoryRef>
 
     <DirectoryRef Id="_usr_share">
+      <Directory Id="_usr_share_clang" Name="clang" />
       <Directory Id="_usr_share_swift" Name="swift" />
     </DirectoryRef>
 
@@ -151,7 +152,15 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="ClangFeatures" Directory="_usr_share_clang">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\clang\features.json" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="clang" Directory="_usr_bin">
+      <ComponentGroupRef Id="ClangFeatures" />
+
       <!-- TODO(compnerd) can we use symbolic links to clang.exe instead? -->
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-cl.exe" />
