@@ -249,9 +249,6 @@
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-format.exe" />
       </Component>
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftFormat.dll" />
-      </Component>
     </ComponentGroup>
 
     <Feature Id="CLITools" AllowAbsent="no" Title="!(loc.Cli_ProductName)">
