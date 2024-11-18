@@ -165,7 +165,6 @@ msbuild %SourceRoot%\swift-installer-scripts\platforms\Windows\bundle\installer.
   -p:BaseReleaseDownloadUrl=todo://base/release/download/url ^
   -p:Configuration=Release ^
   -p:BaseOutputPath=%PackageRoot%\online\ ^
-  -p:DEVTOOLS_ROOT=%BuildRoot%\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain ^
   -p:TOOLCHAIN_ROOT=%BuildRoot%\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain ^
   -p:PLATFORM_ROOT_X86=path\to\x86\platform ^
   -p:PLATFORM_ROOT_AMD64=path\to\amd64\platform ^

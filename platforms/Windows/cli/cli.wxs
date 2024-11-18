@@ -112,73 +112,73 @@
 
     <ComponentGroup Id="collections" Directory="_usr_bin">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\Collections.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Collections.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\DequeModule.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\DequeModule.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\InternalCollectionsUtilities.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\InternalCollectionsUtilities.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\OrderedCollections.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\OrderedCollections.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="llbuild" Directory="_usr_bin">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\llbuildSwift.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\llbuildSwift.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="system" Directory="_usr_bin">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\SystemPackage.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SystemPackage.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="CompilerPluginSupport" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="PackageDescription" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftdoc" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="PackagePlugin" Directory="_usr_lib_swift_pm_PluginAPI">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftdoc" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule" />
       </Component>
     </ComponentGroup>
 
@@ -188,50 +188,50 @@
       <ComponentGroupRef Id="PackagePlugin" />
 
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\swift-build.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-build.exe" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\swift-package.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-package.exe" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\swift-run.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-run.exe" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\swift-test.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-test.exe" />
       </Component>
 
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\Basics.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Basics.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\Build.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Build.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\Commands.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Commands.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\CoreCommands.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\CoreCommands.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\DriverSupport.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\DriverSupport.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\PackageGraph.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageGraph.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\PackageLoading.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageLoading.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\PackageModel.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModel.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\PackageModelSyntax.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModelSyntax.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\SPMBuildCore.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\Workspace.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Workspace.dll" />
       </Component>
 
       <!-- FIXME(compnerd) we should include the SPM import libraries -->

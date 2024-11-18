@@ -352,40 +352,40 @@
 
     <ComponentGroup Id="argument_parser" Directory="_usr_bin">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\ArgumentParser.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\ArgumentParser.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="tools_support_core" Directory="_usr_bin">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\TSCBasic.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\TSCBasic.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\TSCUtility.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\TSCUtility.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="swift_driver" Directory="_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to swift.exe instead? -->
       <Component>
-        <File Name="swiftc.exe" Source="$(DEVTOOLS_ROOT)\usr\bin\swift-driver.exe" />
+        <File Name="swiftc.exe" Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-driver.exe" />
       </Component>
 
       <Component>
-        <File Name="swift.exe" Source="$(DEVTOOLS_ROOT)\usr\bin\swift-driver.exe" />
+        <File Name="swift.exe" Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-driver.exe" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\swift-help.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-help.exe" />
       </Component>
 
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\SwiftOptions.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftOptions.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\SwiftDriver.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftDriver.dll" />
       </Component>
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\SwiftDriverExecution.dll" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftDriverExecution.dll" />
       </Component>
     </ComponentGroup>
 
