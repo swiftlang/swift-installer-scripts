@@ -44,7 +44,7 @@
 
     <ComponentGroup Id="lsp" Directory="_usr_bin">
       <Component>
-        <File Source="$(DEVTOOLS_ROOT)\usr\bin\sourcekit-lsp.exe" />
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\sourcekit-lsp.exe" />
       </Component>
     </ComponentGroup>
 
