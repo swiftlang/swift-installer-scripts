@@ -88,7 +88,6 @@
                       <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
                       <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
                       <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
-                      <Directory Id="_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
                       <Directory Id="Android.swiftmodule" Name="Android.swiftmodule" />
                       <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
                       <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
@@ -927,21 +926,6 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="_Volatile" Directory="_Volatile.swiftmodule">
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftdoc" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftinterface" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftmodule" />
-      </Component>
-      <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Volatile.so" />
-      </Component>
-    </ComponentGroup>
-
     <ComponentGroup Id="Android" Directory="Android.swiftmodule">
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftdoc" />
@@ -1215,7 +1199,6 @@
       <ComponentGroupRef Id="_Differentiation" />
       <ComponentGroupRef Id="_RegexParser" />
       <ComponentGroupRef Id="_StringProcessing" />
-      <ComponentGroupRef Id="_Volatile" />
       <ComponentGroupRef Id="Android" />
       <ComponentGroupRef Id="Cxx" />
       <ComponentGroupRef Id="CxxStdlib" />
