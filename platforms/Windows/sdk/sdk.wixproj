@@ -1,6 +1,6 @@
 <Project Sdk="WixToolset.Sdk/4.0.5">
   <PropertyGroup>
-    <OutputName>sdk.$(ProductArchitecture)</OutputName>
+    <OutputName>sdk.windows.$(ProductArchitecture)</OutputName>
     <Platform>x86</Platform>
 
     <SwiftShimsPath>$(SDK_ROOT)\usr\lib\swift\shims</SwiftShimsPath>
