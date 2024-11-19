@@ -218,7 +218,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 
 | Property | Description |
 | -------- | ----------- |
-| BldUpgradeCode, CliUpgradeCode, DbgUpgradeCode, IdeUpgradeCode, RtlUpgradeCode, SdkUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
+| BldUpgradeCode, CliUpgradeCode, DbgUpgradeCode, IdeUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
 | BundleUpgradeCode | Upgrade codes for the bundle. Bundles don't support upgrade version ranges, so the bundle upgrade code must change for every minor version _and_ stay the same for the entire lifetime of that minor version (e.g., v5.10.0 through v5.10.9999). You can keep the history of upgrade codes using a condition like `Condition="'$(MajorMinorProductVersion)' == '5.10'` or just replace BundleUpgradeCode when forking to a new minor version. |
 
 
@@ -227,7 +227,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 To support side-by-side installation for each minor release (the latest point release of each minor release), we need to use "old-school" `Upgrade`/`UpgradeVersion` authoring to get the upgrade version ranges, which also requires manually scheduling `RemoveExistingProducts`. (We can no longer use WiX's `MajorUpgrade` element because it's intended to support the way-more-common case of upgrading every version.) To avoid duplication, the upgrade logic is authored in `shared\shared.wxs` and referenced from the `Package` element of each package:
 
 ```xml
-<WixVariable Id="SideBySidePackageUpgradeCode" Value="$(SdkUpgradeCode)" />
+<WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsSDKUpgradeCode)" />
 <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 ```
 

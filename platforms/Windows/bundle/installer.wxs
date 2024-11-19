@@ -38,6 +38,10 @@
     <Variable Name="OptionsInstallRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSdkArm" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <Variable Name="OptionsInstallAndroidSdkX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.
@@ -117,6 +121,42 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
           <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(ANDROID_INCLUDE_ARM64_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.android_sdk_aarch64)\android_sdk.aarch64.msi"
+          InstallCondition="OptionsInstallAndroidSdkArm64"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(ANDROID_INCLUDE_x86_64_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.android_sdk_x86_64)\android_sdk.x86_64.msi"
+          InstallCondition="OptionsInstallAndroidSdkAMD64"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(ANDROID_INCLUDE_ARM_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.android_sdk_armv7)\android_sdk.armv7.msi"
+          InstallCondition="OptionsInstallAndroidSdkArm"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(ANDROID_INCLUDE_X86_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.android_sdk_i686)\android_sdk.i686.msi"
+          InstallCondition="OptionsInstallAndroidSdkX86"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
      </Chain>

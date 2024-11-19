@@ -441,6 +441,7 @@
       <ComponentGroupRef Id="TestingMacros" />
 
       <ComponentGroupRef Id="ClangResources" />
+      <ComponentGroupRef Id="SwiftClangResources" />
 
       <ComponentGroupRef Id="EnvironmentVariables" />
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
