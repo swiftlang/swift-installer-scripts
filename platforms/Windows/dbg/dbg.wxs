@@ -105,14 +105,10 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_inspect" Directory="ToolsVersioned">
-      <?if $(INCLUDE_SWIFT_INSPECT) == true ?>
-        <Component Id="swift_inspect.exe">
-          <File Source="$(SWIFT_INSPECT_BUILD)\swift-inspect.exe" />
-        </Component>
-
-        <ComponentRef Id="SystemToolsEnvironmentVariables" />
-      <?endif?>
+    <ComponentGroup Id="swift_inspect">
+      <Component Directory="_usr_bin">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-inspect.exe" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_InternalSwiftStaticMirror" Directory="_usr_include__InternalSwiftStaticMirror">
