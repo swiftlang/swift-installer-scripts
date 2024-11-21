@@ -59,20 +59,6 @@
     </DirectoryRef>
   </Fragment>
 
-  <Fragment>
-    <DirectoryRef Id="INSTALLROOT">
-      <Directory Name="Tools">
-        <Directory Id="ToolsVersioned" Name="$(ProductVersion)" />
-      </Directory>
-    </DirectoryRef>
-  </Fragment>
-
-  <Fragment>
-    <Component Id="SystemToolsEnvironmentVariables" Guid="5BA7803B-1EA5-45D3-8FD7-C75518C2C099" Directory="ToolsVersioned">
-      <Environment Id="Path" Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[ToolsVersioned]" />
-    </Component>
-  </Fragment>
-
   <!--
   Use RemoveFolderEx to clean up the empty subdirectories Windows Installer
   leaves when there are other directory siblings left behind, as happens when
@@ -100,11 +86,6 @@
         <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersioned" Value="[ToolchainsVersioned]" />
         <util:RemoveFolderEx Property="TOOLCHAINSVERSIONED" Condition="TOOLCHAINSVERSIONED" />
       </Component>
-
-      <Component Id="VersionedDirectoryCleanupTools">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolsVersioned" Value="[ToolsVersioned]" />
-        <util:RemoveFolderEx Property="TOOLSVERSIONED" Condition="TOOLSVERSIONED" />
-      </Component>
     </ComponentGroup>
 
     <Property Id="PLATFORMSVERSIONED">
@@ -121,10 +102,6 @@
 
     <Property Id="TOOLCHAINSVERSIONED">
       <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersioned" Type="directory" />
-    </Property>
-
-    <Property Id="TOOLSVERSIONED">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolsVersioned" Type="directory" />
     </Property>
   </Fragment>
 
