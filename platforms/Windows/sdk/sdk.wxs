@@ -23,7 +23,7 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="sdk.windows.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsSDKUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
