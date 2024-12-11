@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+    "name": "swift-tools-support-core",
+    "version-string": "main",
+    "builtin-baseline": "44d94c2edbd44f0c01d66c2ad95eb6982a9a61bc",
+    "dependencies": ["sqlite3"],
+    "overrides": [
+        { "name": "sqlite3", "version": "3.36.0" }
+    ]
+}
