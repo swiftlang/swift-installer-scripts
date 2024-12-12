@@ -13,7 +13,7 @@
 
   Bundles don't support upgrade version ranges, so the bundle upgrade code
   must change for every minor version _and_ stay the same for the entire
-  lifetime of that minor version (e.g., v5.10.0 thropugh v5.10.9999).
+  lifetime of that minor version (e.g., v5.10.0 through v5.10.9999).
   -->
 
   <PropertyGroup>
@@ -45,6 +45,10 @@
 
   <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.0'">
     <BundleUpgradeCode>{95A51A3B-1521-4A98-8BE1-6381BA688561}</BundleUpgradeCode>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '6.1'">
+    <BundleUpgradeCode>{FE697529-162A-4D62-904E-F5BC964C370F}</BundleUpgradeCode>
   </PropertyGroup>
 
   <PropertyGroup>
