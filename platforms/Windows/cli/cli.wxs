@@ -228,6 +228,9 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModelSyntax.dll" />
       </Component>
       <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SourceControl.dll" />
+      </Component>
+      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
