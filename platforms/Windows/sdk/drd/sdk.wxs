@@ -1,19 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?if $(ProductArchitecture) = "aarch64"?>
-    <?define ArchName = "arm64"?>
-    <?define ArchArchDir = "aarch64"?>
-    <?define ArchTriple = "aarch64-unknown-linux-android"?>
-    <?define ArchTripleDir = "aarch64-unknown-linux-android"?>
-  <?elseif $(ProductArchitecture) = "x86_64"?>
-    <?define ArchName = "amd64"?>
-    <?define ArchArchDir = "x86_64"?>
-    <?define ArchTriple = "x86_64-unknown-linux-android"?>
-    <?define ArchTripleDir = "x86_64-unknown-linux-android"?>
-  <?elseif $(ProductArchitecture) = "armv7"?>
-    <?define ArchName = "arm"?>
-    <?define ArchArchDir = "armv7"?>
+  <?if $(ProductArchitecture) = "arm64"?>
+    <?define Architecture = "aarch64"?>
+    <?define SwiftModuleTriple = "aarch64-unknown-linux-android"?>
+    <?define Triple = "aarch64-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "amd64"?>
+    <?define Architecture = "x86_64"?>
+    <?define SwiftModuleTriple = "x86_64-unknown-linux-android"?>
+    <?define Triple = "x86_64-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "arm"?>
+    <?define Architecture = "armv7"?>
     <!--
       The Swift compiler outputs Android armv7 .swiftdoc, .swiftmodule, and
       .swiftinterface files with the name armv7-unknown-linux-android. Since the
@@ -23,19 +20,18 @@
       TODO: consider updating Swift compiler to output file names matching the
       correct triple.
     -->
-    <?define ArchTriple = "armv7-unknown-linux-android"?>
-    <?define ArchTripleDir = "armv7-unknown-linux-androideabi"?>
-  <?elseif $(ProductArchitecture) = "i686"?>
-    <?define ArchName = "x86"?>
-    <?define ArchArchDir = "i686"?>
-    <?define ArchTriple = "i686-unknown-linux-android"?>
-    <?define ArchTripleDir = "i686-unknown-linux-android"?>
+    <?define SwiftModuleTriple = "armv7-unknown-linux-androideabi"?>
+    <?define Triple = "armv7-unknown-linux-android"?>
+  <?elseif $(ProductArchitecture) = "x86"?>
+    <?define Architecture = "i686"?>
+    <?define SwiftModuleTriple = "i686-unknown-linux-android"?>
+    <?define Triple = "i686-unknown-linux-android"?>
   <?endif?>
 
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Android_Sdk_$(ArchName))"
+      Name="!(loc.Android_Sdk_$(ProductArchitecture))"
       UpgradeCode="$(AndroidSDKUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
@@ -72,7 +68,7 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="android">
-                      <Directory Id="XCTest_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
+                      <Directory Id="XCTest_usr_lib_swift_android_ARCH" Name="$(Architecture)" />
                       <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
                     </Directory>
                   </Directory>
@@ -85,14 +81,14 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="android">
-                      <Directory Id="Testing_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
+                      <Directory Id="Testing_usr_lib_swift_android_ARCH" Name="$(Architecture)" />
                       <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
                 </Directory>
               </Directory>
             </Directory>
-            <Directory Name="$(ArchTripleDir)">
+            <Directory Name="$(SwiftModuleTriple)">
               <Directory Id="Android_Library_ARCH_bin" Name="bin" />
             </Directory>
           </Directory>
@@ -137,7 +133,7 @@
                       <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
-                      <Directory Id="AndroidSDK_usr_lib_swift_android_ARCH" Name="$(ArchArchDir)" />
+                      <Directory Id="AndroidSDK_usr_lib_swift_android_ARCH" Name="$(Architecture)" />
                     </Directory>
                   </Directory>
                 </Directory>
@@ -153,10 +149,10 @@
         <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\libXCTest.so" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(ArchTriple).swiftdoc" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(ArchArchDir)\XCTest.swiftdoc" />
+        <File Name="$(Triple).swiftdoc" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(Architecture)\XCTest.swiftdoc" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(ArchTriple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(ArchArchDir)\XCTest.swiftmodule" />
+        <File Name="$(Triple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(Architecture)\XCTest.swiftmodule" />
       </Component>
     </ComponentGroup>
 
@@ -165,17 +161,17 @@
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\libTesting.so" />
       </Component>
       <Component Directory="Testing.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="Testing.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="DS2">
       <?if $(ANDROID_INCLUDE_DS2) == true ?>
         <Component Directory="Android_Library_ARCH_bin">
-          <File Source="$(PLATFORM_ROOT)\Developer\Library\$(ArchTripleDir)\bin\ds2" />
+          <File Source="$(PLATFORM_ROOT)\Developer\Library\$(SwiftModuleTriple)\bin\ds2" />
         </Component>
       <?endif?>
     </ComponentGroup>
@@ -266,10 +262,10 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\os\object.h" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\Dispatch.swiftdoc" />
+        <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\Dispatch.swiftdoc" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\Dispatch.swiftmodule" />
+        <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\Dispatch.swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libdispatch.so" />
@@ -944,13 +940,13 @@
 
     <ComponentGroup Id="_Concurrency" Directory="_Concurrency.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Concurrency.so" />
@@ -959,13 +955,13 @@
 
     <ComponentGroup Id="_Differentiation" Directory="_Differentiation.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Differentiation.so" />
@@ -974,10 +970,10 @@
 
     <ComponentGroup Id="_RegexParser" Directory="_RegexParser.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_RegexParser.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_RegexParser.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_RegexParser.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_RegexParser.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_RegexParser.so" />
@@ -986,13 +982,13 @@
 
     <ComponentGroup Id="_StringProcessing" Directory="_StringProcessing.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_StringProcessing.so" />
@@ -1001,13 +997,13 @@
 
     <ComponentGroup Id="_Volatile" Directory="_Volatile.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_Volatile.so" />
@@ -1016,34 +1012,34 @@
 
     <ComponentGroup Id="Android" Directory="Android.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftAndroid.so" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\android.modulemap" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\android.modulemap" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\SwiftAndroidNDK.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\SwiftAndroidNDK.h" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\SwiftBionic.h" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\SwiftBionic.h" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Cxx" Directory="Cxx.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Cxx.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Cxx.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Cxx.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Cxx.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCxx.a" />
@@ -1052,10 +1048,10 @@
 
     <ComponentGroup Id="CxxStdlib" Directory="CxxStdlib.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\CxxStdlib.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCxxStdlib.a" />
@@ -1064,13 +1060,13 @@
 
     <ComponentGroup Id="Distributed" Directory="Distributed.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftDistributed.so" />
@@ -1079,19 +1075,19 @@
 
     <ComponentGroup Id="_FoundationCollections" Directory="_FoundationCollections.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(Architecture).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(ArchArchDir).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_FoundationCollections.swiftmodule\$(Architecture).swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="FoundationEssentials" Directory="FoundationEssentials.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationEssentials.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationEssentials.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationEssentials.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationEssentials.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundationEssentials.so" />
@@ -1100,10 +1096,10 @@
 
     <ComponentGroup Id="FoundationInternationalization" Directory="FoundationInternationalization.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundationInternationalization.so" />
@@ -1112,10 +1108,10 @@
 
     <ComponentGroup Id="Foundation" Directory="Foundation.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Foundation.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Foundation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Foundation.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Foundation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundation.so" />
@@ -1124,10 +1120,10 @@
 
     <ComponentGroup Id="FoundationNetworking" Directory="FoundationNetworking.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationNetworking.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationNetworking.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationNetworking.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationNetworking.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundationNetworking.so" />
@@ -1136,10 +1132,10 @@
 
     <ComponentGroup Id="FoundationXML" Directory="FoundationXML.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationXML.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationXML.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationXML.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\FoundationXML.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libFoundationXML.so" />
@@ -1148,13 +1144,13 @@
 
     <ComponentGroup Id="Math" Directory="_math.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswift_math.so" />
@@ -1163,13 +1159,13 @@
 
     <ComponentGroup Id="Observation" Directory="Observation.swiftmodule">
       <Component>
-        <File Name="$(ArchTriple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Name="$(ArchTriple).swiftinterface" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Name="$(Triple).swiftinterface" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Name="$(ArchTriple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftObservation.so" />
@@ -1178,13 +1174,13 @@
 
     <ComponentGroup Id="RegexBuilder" Directory="RegexBuilder.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftRegexBuilder.so" />
@@ -1193,13 +1189,13 @@
 
     <ComponentGroup Id="Swift" Directory="Swift.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftCore.so" />
@@ -1208,13 +1204,13 @@
 
     <ComponentGroup Id="SwiftOnoneSupport" Directory="SwiftOnoneSupport.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftSwiftOnoneSupport.so" />
@@ -1223,13 +1219,13 @@
 
     <ComponentGroup Id="Synchronization" Directory="Synchronization.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftinterface" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(Triple).swiftinterface" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(ArchTriple).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftSynchronization.so" />
@@ -1259,7 +1255,7 @@
 
     <ComponentGroup Id="Registrar" Directory="AndroidSDK_usr_lib_swift_android_ARCH">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(ArchArchDir)\swiftrt.o" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\swiftrt.o" />
       </Component>
     </ComponentGroup>
 
@@ -1273,7 +1269,7 @@
     </ComponentGroup>
 
     <!-- Features -->
-    <Feature Id="AndroidSDK" AllowAbsent="no" Title="!(loc.Android_Sdk_$(ArchName))">
+    <Feature Id="AndroidSDK" AllowAbsent="no" Title="!(loc.Android_Sdk_$(ProductArchitecture))">
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="Testing" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />
