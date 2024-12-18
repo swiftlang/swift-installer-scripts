@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\shared\shared.wixproj" />
     <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
   </ItemGroup>
 
