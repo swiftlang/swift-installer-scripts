@@ -493,6 +493,12 @@
       <?endif?>
     </ComponentGroup>
 
+    <ComponentGroup Id="Configuration">
+      <Component Directory="ToolchainsVersioned">
+        <File Source="$(TOOLCHAIN_ROOT)\ToolchainInfo.plist" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
@@ -523,6 +529,7 @@
       <ComponentGroupRef Id="ClangResources" />
       <ComponentGroupRef Id="SwiftClangResources" />
 
+      <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="EnvironmentVariables" />
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
