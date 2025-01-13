@@ -2,7 +2,6 @@
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
-      DEVTOOLS_ROOT=$(DEVTOOLS_ROOT);
       TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
       TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;
       TOOLCHAIN_ROOT_USR_LIB_SWIFT_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\swift\clang;

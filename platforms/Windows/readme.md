@@ -32,14 +32,20 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | Variable | Description |
 | -------- | ----------- |
 | InstallRoot | A formatted string variable that specifies the installation root directory. The default value specified in `installer.wxs` should match the equivalent `INSTALLROOT` authoring in `shared.wxs`. The bundle variable is passed to each `MsiPackage` so overwrites the default directory authored in the MSI packages -- but keeping them in sync avoids the confusion if the default directory should change. |
-| OptionsInstallBld | Controls whether bld.msi will be installed. |
-| OptionsInstallCli | Controls whether cli.msi will be installed. |
-| OptionsInstallDbg | Controls whether dbg.msi will be installed. |
-| OptionsInstallIde | Controls whether ide.msi will be installed. |
-| OptionsInstallRtl | Controls whether rtl.msi will be installed. |
-| OptionsInstallSdkX86 | Controls whether the x86 SDK will be installed. |
-| OptionsInstallSdkAMD64 | Controls whether the AMD64 SDK will be installed. |
-| OptionsInstallSdkArm64 | Controls whether the Arm64 SDK will be installed. |
+| OptionsInstallCLI | Controls whether command-line tools will be installed. |
+| OptionsInstallDBG | Controls whether debugging tools will be installed. |
+| OptionsInstallIDE | Controls whether IDE integration tools will be installed. |
+| OptionsInstallUtilties | Controls whether additional utilities will be installed. |
+| OptionsInstallAndroidSDKAMD64 | Controls whether the Android AMD64 SDK will be installed. |
+| OptionsInstallAndroidSDKARM | Controls whether the Android ARM SDK will be installed. |
+| OptionsInstallAndroidSDKARM64 | Controls whether the Android ARM64 SDK will be installed. |
+| OptionsInstallAndroidSDKX86 | Controls whether the Android X86 SDK will be installed. |
+| OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
+| OptionsInstallWindowsRedistAMD64 | Controls whether the Windows AMD64 Redistributable MSM will be installed. |
+| OptionsInstallWindowsSDKAMD64 | Controls whether the Windows AMD64 SDK will be installed. |
+| OptionsInstallWindowsRedistARM64 | Controls whether the Windows ARM64 Redistributable MSM will be installed. |
+| OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
+| OptionsInstallWindowsRedistX86 | Controls whether the Windows X86 Redistributable MSM will be installed. |
 
 Those variables are tied to controls in the bundle theme (`installer\theme.xml`) on the Options page. For example, the install directory is an `Editbox` control that takes the `InstallRoot` name to tie itself to the `InstallRoot` variable in `installer.wxs`:
 
@@ -50,7 +56,7 @@ Those variables are tied to controls in the bundle theme (`installer\theme.xml`)
 Likewise, the feature selection controls are all checkboxes tied to the variables that control feature selection:
 
 ```xml
-<Checkbox Name="OptionsInstallIde" X="185" Y="170" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallIde)</Checkbox>
+<Checkbox Name="OptionsInstallIDE" X="185" Y="170" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.OptionsInstallIDE)</Checkbox>
 ```
 
 `Checkbox` controls set variables to `1` when checked and `0` when unchecked.
@@ -60,7 +66,7 @@ The variables are used in `installer.wxs` bundle authoring to control the instal
 ```xml
 <MsiPackage
   SourceFile="!(bindpath.ide)\ide.msi"
-  InstallCondition="OptionsInstallIde = 1"
+  InstallCondition="OptionsInstallIDE = 1"
   DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
   <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 </MsiPackage>
@@ -81,7 +87,7 @@ The same variables that drive install directory and feature selection are availa
 
 
 ```sh
-installer.exe /passive InstallRoot=X:\Swift OptionsInstallIde=0 OptionsInstallSdkX86=0 OptionsInstallSdkArm64=0
+installer.exe /passive InstallRoot=X:\Swift OptionsInstallIDE=0 OptionsInstallWindowsSDKX86=0 OptionsInstallWindowsSDKARM64=0
 ```
 
 To create a layout from a online bundle to allow for offline install:
@@ -106,8 +112,8 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This save user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
 | BundleFlavor, IsBundleCompressed | BundleFlavor defaults to `online` to build an online bundle. Set by the invocation of MSBuild to build an online or offline bundle. Controls IsBundleCompressed. |
 | DefineConstants | Passes a subset of MSBuild properties into the WiX build as preprocessor variables. |
-| INCLUDE_SWIFT_INSPECT | swift-inspect is currently conditionalized out. Set it to `true` to include it. The property `SWIFT_INSPECT_BUILD` defines the directory to find the artifacts. |
-| INCLUDE_X86_SDK, INCLUDE_ARM64_SDK | The x86 and Arm64 SDKs are currently conditionalized out, pending build changes. Set these to `true` to include them in the bundles. Note that bundle\theme.xml currently has commented-out checkboxes that need to be restored when the x86 and Arm64 SDKs are brought back. |
+| INCLUDE_SWIFT_DOCC | swift-docc is currently conditionalized out. Set it to `true` to include it. The property `SWIFT_DOCC_BUILD` defines the directory to find the artifacts. |
+| INCLUDE_ANDROID_ARM_SDK, INCLUDE_ANDROID_ARM64_SDK, INCLUDE_ANDROID_X86_SDK, INCLUDE_ANDROID_x86_64_SDK, INCLUDE_WINDOWS_AMD64_SDK, INCLUDE_WINDOWS_ARM64_SDK, INCLUDE_WINDOWS_X86_SDK | The included SDKs are currently conditionalized out. Set these to `true` to include them in the bundles. |
 
 
 ## SDKs
@@ -165,7 +171,6 @@ msbuild %SourceRoot%\swift-installer-scripts\platforms\Windows\bundle\installer.
   -p:BaseReleaseDownloadUrl=todo://base/release/download/url ^
   -p:Configuration=Release ^
   -p:BaseOutputPath=%PackageRoot%\online\ ^
-  -p:DEVTOOLS_ROOT=%BuildRoot%\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain ^
   -p:TOOLCHAIN_ROOT=%BuildRoot%\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain ^
   -p:PLATFORM_ROOT_X86=path\to\x86\platform ^
   -p:PLATFORM_ROOT_AMD64=path\to\amd64\platform ^

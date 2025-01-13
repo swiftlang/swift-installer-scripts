@@ -6,12 +6,13 @@
     <VCRedistDownloadUrl Condition=" '$(VCRedistDownloadUrl)' == '' AND '$(VSMajorVersion)' != '' ">https://aka.ms/vs/$(VSMajorVersion)/release/vc_redist.$(ProductArchitecture).exe</VCRedistDownloadUrl>
     <DefineConstants>
       $(DefineConstants);
-      INCLUDE_X86_SDK=$(INCLUDE_X86_SDK);
-      INCLUDE_ARM64_SDK=$(INCLUDE_ARM64_SDK);
-      ANDROID_INCLUDE_ARM64_SDK=$(ANDROID_INCLUDE_ARM64_SDK);
-      ANDROID_INCLUDE_x86_64_SDK=$(ANDROID_INCLUDE_x86_64_SDK);
-      ANDROID_INCLUDE_ARM_SDK=$(ANDROID_INCLUDE_ARM_SDK);
-      ANDROID_INCLUDE_X86_SDK=$(ANDROID_INCLUDE_X86_SDK);
+      INCLUDE_ANDROID_ARM_SDK=$(INCLUDE_ANDROID_ARM_SDK);
+      INCLUDE_ANDROID_ARM64_SDK=$(INCLUDE_ANDROID_ARM64_SDK);
+      INCLUDE_ANDROID_X86_SDK=$(INCLUDE_ANDROID_X86_SDK);
+      INCLUDE_ANDROID_X86_64_SDK=$(INCLUDE_ANDROID_X86_64_SDK);
+      INCLUDE_WINDOWS_AMD64_SDK=$(INCLUDE_WINDOWS_AMD64_SDK);
+      INCLUDE_WINDOWS_ARM64_SDK=$(INCLUDE_WINDOWS_ARM64_SDK);
+      INCLUDE_WINDOWS_X86_SDK=$(INCLUDE_WINDOWS_X86_SDK);
     </DefineConstants>
   </PropertyGroup>
 
@@ -25,30 +26,33 @@
     <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
-    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=amd64;Platform=x86" BindName="sdk_amd64" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(INCLUDE_X86_SDK)' != '' ">
-    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=x86;Platform=x86" BindName="sdk_x86" />
+  <ItemGroup Condition=" '$(INCLUDE_ANDROID_ARM_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\drd\sdk.wixproj" Properties="ProductArchitecture=armv7;Platform=x86" BindName="android_armv7_sdk" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(INCLUDE_ARM64_SDK)' != '' ">
-    <ProjectReference Include="..\sdk\sdk.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" BindName="sdk_arm64" />
+  <ItemGroup Condition=" '$(INCLUDE_ANDROID_ARM64_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\drd\sdk.wixproj" Properties="ProductArchitecture=aarch64;Platform=x86" BindName="android_aarch64_sdk" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(ANDROID_INCLUDE_ARM64_SDK)' != '' ">
-    <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=aarch64;Platform=x86" BindName="android_sdk_aarch64" />
+  <ItemGroup Condition=" '$(INCLUDE_ANDROID_X86_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\drd\sdk.wixproj" Properties="ProductArchitecture=i686;Platform=x86" BindName="android_i686_sdk" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(ANDROID_INCLUDE_x86_64_SDK)' != '' ">
-    <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=x86_64;Platform=x86" BindName="android_sdk_x86_64" />
+  <ItemGroup Condition=" '$(INCLUDE_ANDROID_x86_64_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\drd\sdk.wixproj" Properties="ProductArchitecture=x86_64;Platform=x86" BindName="android_x86_64_sdk" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(ANDROID_INCLUDE_ARM_SDK)' != '' ">
-    <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=armv7;Platform=x86" BindName="android_sdk_armv7" />
+  <ItemGroup Condition=" '$(INCLUDE_WINDOWS_AMD64_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\win\sdk.wixproj" Properties="ProductArchitecture=amd64;Platform=x86" BindName="windows_amd64_sdk" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(ANDROID_INCLUDE_X86_SDK)' != '' ">
-    <ProjectReference Include="..\android_sdk\android_sdk.wixproj" Properties="ProductArchitecture=i686;Platform=x86" BindName="android_sdk_i686" />
+  <ItemGroup Condition=" '$(INCLUDE_WINDOWS_ARM64_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\win\sdk.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" BindName="windows_arm64_sdk" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(INCLUDE_WINDOWS_X86_SDK)' != '' ">
+    <ProjectReference Include="..\sdk\win\sdk.wixproj" Properties="ProductArchitecture=x86;Platform=x86" BindName="windows_x86_sdk" />
   </ItemGroup>
 </Project>

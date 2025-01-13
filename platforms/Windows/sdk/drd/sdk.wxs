@@ -40,7 +40,7 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="android_sdk.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="sdk.android.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(AndroidSDKUpgradeCode)" />
 

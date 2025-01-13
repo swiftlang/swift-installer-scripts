@@ -1,6 +1,6 @@
 <Project Sdk="WixToolset.Sdk/4.0.5">
   <PropertyGroup>
-    <OutputName>android_sdk.$(ProductArchitecture)</OutputName>
+    <OutputName>sdk.android.$(ProductArchitecture)</OutputName>
     <Platform>x86</Platform>
 
     <SwiftShimsPath>$(SDK_ROOT)\usr\lib\swift\shims</SwiftShimsPath>
@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\shared\shared.wixproj" />
     <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
   </ItemGroup>
 

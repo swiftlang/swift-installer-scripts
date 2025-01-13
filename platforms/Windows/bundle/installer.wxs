@@ -27,22 +27,28 @@
     -->
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
       Value="[LocalAppDataFolder]Programs\Swift" />
-    <Variable Name="OptionsInstallBld" Value="1" />
-    <Variable Name="OptionsInstallCli" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallDbg" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallIde" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRtl" Value="1" />
-    <Variable Name="OptionsInstallUtl" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallSdkX86" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRedistArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSdkArm64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSdkAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSdkArm" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <Variable Name="OptionsInstallAndroidSdkX86" bal:Overridable="yes" Persisted="yes" Value="0" />
+
+    <Variable Name="OptionsInstallBLD" Value="1" />
+    <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallDBG" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallRTL" Value="1" />
+
+    <Variable Name="OptionsInstallUtilities" bal:Overridable="yes" Persisted="yes" Value="1" />
+
+    <Variable Name="OptionsInstallWindowsSDKX86" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallWindowsRedistX86" bal:Overridable="yes" Persisted="yes" Value="1" />
+
+    <Variable Name="OptionsInstallWindowsSDKAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallWindowsRedistAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+
+    <Variable Name="OptionsInstallWindowsSDKARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallWindowsRedistARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
+
+    <Variable Name="OptionsInstallAndroidSDKARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSDKAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallAndroidSDKARM" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <Variable Name="OptionsInstallAndroidSDKX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.
@@ -68,7 +74,7 @@
         SourceFile="!(bindpath.rtl)\rtl.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtl]" />
+        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
 
       <MsiPackage
@@ -79,86 +85,88 @@
 
       <MsiPackage
         SourceFile="!(bindpath.cli)\cli.msi"
-        InstallCondition="OptionsInstallCli = 1"
+        InstallCondition="OptionsInstallCLI = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.dbg)\dbg.msi"
-        InstallCondition="OptionsInstallDbg = 1"
+        InstallCondition="OptionsInstallDBG = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
       <MsiPackage
         SourceFile="!(bindpath.ide)\ide.msi"
-        InstallCondition="OptionsInstallIde = 1"
+        InstallCondition="OptionsInstallIDE = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(INCLUDE_X86_SDK) == true?>
+      <?if $(INCLUDE_ANDROID_ARM_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.sdk_x86)\sdk.x86.msi"
-          InstallCondition="OptionsInstallSdkX86 = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistX86]" />
-        </MsiPackage>
-      <?endif?>
-
-      <MsiPackage
-        SourceFile="!(bindpath.sdk_amd64)\sdk.amd64.msi"
-        InstallCondition="OptionsInstallSdkAMD64 = 1"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistAMD64]" />
-      </MsiPackage>
-
-      <?if $(INCLUDE_ARM64_SDK) == true ?>
-        <MsiPackage
-          SourceFile="!(bindpath.sdk_arm64)\sdk.arm64.msi"
-          InstallCondition="OptionsInstallSdkArm64 = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallRedistArm64]" />
-        </MsiPackage>
-      <?endif?>
-
-      <?if $(ANDROID_INCLUDE_ARM64_SDK) == true ?>
-        <MsiPackage
-          SourceFile="!(bindpath.android_sdk_aarch64)\android_sdk.aarch64.msi"
-          InstallCondition="OptionsInstallAndroidSdkArm64 = 1"
+          SourceFile="!(bindpath.android_armv7_sdk)\sdk.android.armv7.msi"
+          InstallCondition="OptionsInstallAndroidSDKARM = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
 
-      <?if $(ANDROID_INCLUDE_x86_64_SDK) == true ?>
+      <?if $(INCLUDE_ANDROID_ARM64_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_sdk_x86_64)\android_sdk.x86_64.msi"
-          InstallCondition="OptionsInstallAndroidSdkAMD64 = 1"
+          SourceFile="!(bindpath.android_aarch64_sdk)\sdk.android.aarch64.msi"
+          InstallCondition="OptionsInstallAndroidSDKARM64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
 
-      <?if $(ANDROID_INCLUDE_ARM_SDK) == true ?>
+      <?if $(INCLUDE_ANDROID_X86_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_sdk_armv7)\android_sdk.armv7.msi"
-          InstallCondition="OptionsInstallAndroidSdkArm = 1"
+          SourceFile="!(bindpath.android_i686_sdk)\sdk.android.i686.msi"
+          InstallCondition="OptionsInstallAndroidSDKX86 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
 
-      <?if $(ANDROID_INCLUDE_X86_SDK) == true ?>
+      <?if $(INCLUDE_ANDROID_X86_64_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_sdk_i686)\android_sdk.i686.msi"
-          InstallCondition="OptionsInstallAndroidSdkX86 = 1"
+          SourceFile="!(bindpath.android_x86_64_sdk)\sdk.android.x86_64.msi"
+          InstallCondition="OptionsInstallAndroidSDKAMD64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(INCLUDE_WINDOWS_AMD64_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.windows_amd64_sdk)\sdk.windows.amd64.msi"
+          InstallCondition="OptionsInstallWindowsSDKAMD64 = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallWindowsRedistAMD64]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(INCLUDE_WINDOWS_ARM64_SDK) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.windows_arm64_sdk)\sdk.windows.arm64.msi"
+          InstallCondition="OptionsInstallWindowsSDKARM64 = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallWindowsRedistARM64]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(INCLUDE_WINDOWS_X86_SDK) == true?>
+        <MsiPackage
+          SourceFile="!(bindpath.windows_x86_sdk)\sdk.windows.x86.msi"
+          InstallCondition="OptionsInstallWindowsSDKX86 = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="INSTALLREDIST" Value="[OptionsInstallWindowsRedistX86]" />
         </MsiPackage>
       <?endif?>
      </Chain>
