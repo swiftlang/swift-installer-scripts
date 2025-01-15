@@ -77,6 +77,11 @@
     <SDK_ROOT>$(SDK_ROOT_AMD64)</SDK_ROOT>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
+    <PLATFORM_ROOT>$(PLATFORM_ROOT_ARM)</PLATFORM_ROOT>
+    <SDK_ROOT>$(SDK_ROOT_ARM)</SDK_ROOT>
+  </PropertyGroup>
+
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
     <PLATFORM_ROOT>$(PLATFORM_ROOT_ARM64)</PLATFORM_ROOT>
     <SDK_ROOT>$(SDK_ROOT_ARM64)</SDK_ROOT>
