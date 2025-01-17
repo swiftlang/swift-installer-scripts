@@ -131,12 +131,6 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="system" Directory="_usr_bin">
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SystemPackage.dll" />
-      </Component>
-    </ComponentGroup>
-
     <ComponentGroup Id="CompilerPluginSupport" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
@@ -266,7 +260,6 @@
 
       <ComponentGroupRef Id="collections" />
       <ComponentGroupRef Id="llbuild" />
-      <ComponentGroupRef Id="system" />
       <ComponentGroupRef Id="package_manager" />
 
       <ComponentGroupRef Id="DocC" />
