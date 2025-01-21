@@ -31,6 +31,10 @@
       </Component>
 
       <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\git-clang-format" />
+      </Component>
+
+      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-tidy.exe" />
       </Component>
     </ComponentGroup>
