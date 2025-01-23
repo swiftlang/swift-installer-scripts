@@ -1261,6 +1261,9 @@
 
     <ComponentGroup Id="Configuration">
       <Component Directory="AndroidSDK">
+        <File Source="$(SDK_ROOT)\SDKSettings.json" />
+      </Component>
+      <Component Directory="AndroidSDK">
         <File Source="$(SDK_ROOT)\SDKSettings.plist" />
       </Component>
       <Component Directory="AndroidPlatform">

@@ -1245,6 +1245,9 @@
 
     <ComponentGroup Id="Configuration">
       <Component Directory="WindowsSDK">
+        <File Source="$(SDK_ROOT)\SDKSettings.json" />
+      </Component>
+      <Component Directory="WindowsSDK">
         <File Source="$(SDK_ROOT)\SDKSettings.plist" />
       </Component>
       <Component Directory="WindowsPlatform">
