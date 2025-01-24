@@ -25,10 +25,10 @@
     <WindowsSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'x86' ">{443F4D7F-38F3-47C8-9BEE-37FEB01D13C8}</WindowsSDKUpgradeCode>
     <WindowsSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'amd64' ">{762D10FE-EBE5-4554-BB78-FB13A4A487E3}</WindowsSDKUpgradeCode>
     <WindowsSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'arm64' ">{9749D9E6-E860-4FF6-9E8A-525270F471A3}</WindowsSDKUpgradeCode>
-    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'aarch64' ">{485f88f4-9342-48cb-853a-12da885a5818}</AndroidSDKUpgradeCode>
-    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'x86_64' ">{0838ee60-5d4a-4832-b844-73dad6eb1cc1}</AndroidSDKUpgradeCode>
-    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'armv7' ">{1269a926-3528-4ab7-b4d6-386d5c3f903a}</AndroidSDKUpgradeCode>
-    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'i686' ">{d889349b-0000-4600-a04a-93602525d5db}</AndroidSDKUpgradeCode>
+    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'arm64' ">{485f88f4-9342-48cb-853a-12da885a5818}</AndroidSDKUpgradeCode>
+    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'amd64' ">{0838ee60-5d4a-4832-b844-73dad6eb1cc1}</AndroidSDKUpgradeCode>
+    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'arm' ">{1269a926-3528-4ab7-b4d6-386d5c3f903a}</AndroidSDKUpgradeCode>
+    <AndroidSDKUpgradeCode Condition=" '$(ProductArchitecture)' == 'x86' ">{d889349b-0000-4600-a04a-93602525d5db}</AndroidSDKUpgradeCode>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '0.0'">
