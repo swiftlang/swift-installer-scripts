@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
+    <InstallerPlatform Condition=" '$(InstallerPlatform)' == '' ">x86</InstallerPlatform>
   </PropertyGroup>
 
   <PropertyGroup>
