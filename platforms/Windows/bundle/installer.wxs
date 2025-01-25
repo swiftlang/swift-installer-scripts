@@ -106,7 +106,7 @@
 
       <?if $(INCLUDE_ANDROID_ARM_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_armv7_sdk)\sdk.android.armv7.msi"
+          SourceFile="!(bindpath.android_armv7_sdk)\sdk.android.arm.msi"
           InstallCondition="OptionsInstallAndroidSDKARM = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
@@ -115,7 +115,7 @@
 
       <?if $(INCLUDE_ANDROID_ARM64_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_aarch64_sdk)\sdk.android.aarch64.msi"
+          SourceFile="!(bindpath.android_aarch64_sdk)\sdk.android.arm64.msi"
           InstallCondition="OptionsInstallAndroidSDKARM64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
@@ -124,7 +124,7 @@
 
       <?if $(INCLUDE_ANDROID_X86_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_i686_sdk)\sdk.android.i686.msi"
+          SourceFile="!(bindpath.android_i686_sdk)\sdk.android.x86.msi"
           InstallCondition="OptionsInstallAndroidSDKX86 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
@@ -133,7 +133,7 @@
 
       <?if $(INCLUDE_ANDROID_X86_64_SDK) == true ?>
         <MsiPackage
-          SourceFile="!(bindpath.android_x86_64_sdk)\sdk.android.x86_64.msi"
+          SourceFile="!(bindpath.android_x86_64_sdk)\sdk.android.amd64.msi"
           InstallCondition="OptionsInstallAndroidSDKAMD64 = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
