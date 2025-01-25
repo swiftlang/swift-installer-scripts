@@ -37,6 +37,14 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\lib\sourcekitdInProc.lib" />
       </Component>
 
+      <Component Directory="_usr_bin">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\SwiftSourceKitPlugin.dll" />
+      </Component>
+
+      <Component Directory="_usr_bin">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\SwiftSourceKitClientPlugin.dll" />
+      </Component>
+
       <Component Directory="_usr_include_SourceKit">
         <File Source="$(TOOLCHAIN_ROOT)\usr\include\SourceKit\sourcekitd.h" />
       </Component>
