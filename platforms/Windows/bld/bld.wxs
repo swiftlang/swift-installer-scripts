@@ -484,11 +484,27 @@
 
     <ComponentGroup Id="mimalloc" Directory="_usr_bin">
       <?if $(ENABLE_MIMALLOC) == true ?>
+        <?if $(ProductArchitecture) = "amd64" ?>
+          <Component>
+            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
+          </Component>
+          <?if $(WORKAROUND_MIMALLOC_ISSUE_997) ?>
+            <Component>
+              <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
+            </Component>
+          <?endif?>
+        <?elseif $(ProductArchitecture) = "arm64" ?>
+          <Component>
+            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
+          </Component>
+          <?if $(WORKAROUND_MIMALLOC_ISSUE_997) ?>
+            <Component>
+              <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
+            </Component>
+          <?endif?>
+        <?endif?>
         <Component>
-          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
-        </Component>
-        <Component>
-          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-override.dll" />
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc.dll" />
         </Component>
       <?endif?>
     </ComponentGroup>
