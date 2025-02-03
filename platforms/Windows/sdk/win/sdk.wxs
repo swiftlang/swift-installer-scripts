@@ -1042,10 +1042,10 @@
 
     <ComponentGroup Id="_FoundationCollections" Directory="_FoundationCollections.swiftmodule">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(Architecture).swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(Architecture).swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\$(Triple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
