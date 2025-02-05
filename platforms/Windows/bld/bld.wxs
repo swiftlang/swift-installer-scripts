@@ -483,28 +483,23 @@
     </ComponentGroup>
 
     <ComponentGroup Id="mimalloc" Directory="_usr_bin">
-      <?if $(ENABLE_MIMALLOC) == true ?>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc.dll" />
+      </Component>
+      <Component>
         <?if $(ProductArchitecture) = "amd64" ?>
-          <Component>
-            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
-          </Component>
-          <?if $(WORKAROUND_MIMALLOC_ISSUE_997) ?>
-            <Component>
-              <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
-            </Component>
-          <?endif?>
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
         <?elseif $(ProductArchitecture) = "arm64" ?>
-          <Component>
-            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
-          </Component>
-          <?if $(WORKAROUND_MIMALLOC_ISSUE_997) ?>
-            <Component>
-              <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
-            </Component>
-          <?endif?>
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
         <?endif?>
+      </Component>
+      <?if $(WORKAROUND_MIMALLOC_ISSUE_997) ?>
         <Component>
-          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc.dll" />
+          <?if $(ProductArchitecture) = "amd64" ?>
+            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
+          <?elseif $(ProductArchitecture) = "arm64" ?>
+            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
+          <?endif?>
         </Component>
       <?endif?>
     </ComponentGroup>
