@@ -615,8 +615,11 @@
 
     <!-- Features -->
     <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(ProductArchitecture))">
+      <!-- Developer Components -->
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="Testing" />
+
+      <!-- SDK Content for dynamic linking -->
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
@@ -642,6 +645,8 @@
       <ComponentGroupRef Id="SwiftOnoneSupport" />
       <ComponentGroupRef Id="Synchronization" />
       <ComponentGroupRef Id="WinSDK" />
+
+      <!-- Common SDK Content -->
       <ComponentGroupRef Id="libcxxshim" />
       <ComponentGroupRef Id="apinotes" />
       <ComponentGroupRef Id="Registrar" />
@@ -649,8 +654,10 @@
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
 
+      <!-- Redistributable -->
       <ComponentRef Id="rtl.msm" />
 
+      <!-- MSI management Components -->
       <ComponentGroupRef Id="EnvironmentVariables" />
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
