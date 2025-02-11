@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\bplist_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\CFUniCharBitmapData.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\CFUniCharBitmapData.inc.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\filemanager_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\io_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\module.modulemap" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\platform_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\string_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\uuid.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\_CShimsMacros.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\_CShimsTargetConditionals.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\_CStdlib.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDK_ROOT)\usr\lib\swift\_FoundationCShims\_FoundationCShims.h" />
+  </Component>
+</Include>
