@@ -18,7 +18,7 @@
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Sdk_ProductName_$(ProductArchitecture))"
+      Name="!(loc.Windows_Sdk_ProductName_$(ProductArchitecture))"
       UpgradeCode="$(WindowsSDKUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
@@ -614,7 +614,7 @@
     </ComponentGroup>
 
     <!-- Features -->
-    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Sdk_ProductName_$(ProductArchitecture))">
+    <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Windows_Sdk_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="XCTest" />
       <ComponentGroupRef Id="Testing" />
       <ComponentGroupRef Id="SwiftRemoteMirror" />

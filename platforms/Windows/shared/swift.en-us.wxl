@@ -13,12 +13,12 @@
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Runtime (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Runtime (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Runtime (X86)" />
-  <String Id="Sdk_ProductName_arm64" Value="Swift Windows SDK (ARM64)" />
-  <String Id="Sdk_ProductName_amd64" Value="Swift Windows SDK (AMD64)" />
-  <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (X86)" />
   <String Id="Utl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
+  <String Id="Windows_Sdk_ProductName_arm64" Value="Swift Windows SDK (ARM64)" />
+  <String Id="Windows_Sdk_ProductName_amd64" Value="Swift Windows SDK (AMD64)" />
+  <String Id="Windows_Sdk_ProductName_x86" Value="Swift Windows SDK (X86)" />
   <String Id="Android_Sdk_arm64" Value="Swift Android SDK (ARM64)" />
   <String Id="Android_Sdk_amd64" Value="Swift Android SDK (AMD64)" />
   <String Id="Android_Sdk_arm" Value="Swift Android SDK (ARM)" />
