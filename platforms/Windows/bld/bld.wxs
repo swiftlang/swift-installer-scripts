@@ -14,7 +14,7 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="bld.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="bld.$(TOOLCHAIN_VARIANT).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(BldUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
@@ -505,7 +505,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
-      <Component Directory="ToolchainsVersioned">
+      <Component Directory="VersionedToolchainVariant">
         <File Source="$(TOOLCHAIN_ROOT)\ToolchainInfo.plist" />
       </Component>
     </ComponentGroup>

@@ -6,6 +6,8 @@
     <VCRedistDownloadUrl Condition=" '$(VCRedistDownloadUrl)' == '' AND '$(VSMajorVersion)' != '' ">https://aka.ms/vs/$(VSMajorVersion)/release/vc_redist.$(ProductArchitecture).exe</VCRedistDownloadUrl>
     <DefineConstants>
       $(DefineConstants);
+      INCLUDE_ASSERTS_TOOLCHAIN=$(INCLUDE_ASSERTS_TOOLCHAIN);
+      INCLUDE_NOASSERTS_TOOLCHAIN=$(INCLUDE_NOASSERTS_TOOLCHAIN);
       INCLUDE_ANDROID_ARM_SDK=$(INCLUDE_ANDROID_ARM_SDK);
       INCLUDE_ANDROID_ARM64_SDK=$(INCLUDE_ANDROID_ARM64_SDK);
       INCLUDE_ANDROID_X86_SDK=$(INCLUDE_ANDROID_X86_SDK);
@@ -20,8 +22,15 @@
     <PackageReference Include="WixToolset.Bal.wixext" Version="4.0.5" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(INCLUDE_ASSERTS_TOOLCHAIN)' != '' ">
+    <ProjectReference Include="..\bld\bld.wixproj" Properties="TOOLCHAIN_VARIANT=asserts" BindName="bld.asserts" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(INCLUDE_NOASSERTS_TOOLCHAIN)' != '' ">
+    <ProjectReference Include="..\bld\bld.wixproj" Properties="TOOLCHAIN_VARIANT=noasserts" BindName="bld.noasserts" />
+  </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\bld\bld.wixproj" BindName="bld" />
     <ProjectReference Include="..\cli\cli.wixproj" BindName="cli" />
     <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />

@@ -112,6 +112,7 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This save user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
 | BundleFlavor, IsBundleCompressed | BundleFlavor defaults to `online` to build an online bundle. Set by the invocation of MSBuild to build an online or offline bundle. Controls IsBundleCompressed. |
 | DefineConstants | Passes a subset of MSBuild properties into the WiX build as preprocessor variables. |
+| INCLUDE_ASSERTS_TOOLCHAIN,INCLUDE_NOASSERTS_TOOLCHAIN | Specifies the toolchain vaiant to include in the installer. |
 | INCLUDE_SWIFT_DOCC | swift-docc is currently conditionalized out. Set it to `true` to include it. The property `SWIFT_DOCC_BUILD` defines the directory to find the artifacts. |
 | INCLUDE_ANDROID_ARM_SDK, INCLUDE_ANDROID_ARM64_SDK, INCLUDE_ANDROID_X86_SDK, INCLUDE_ANDROID_x86_64_SDK, INCLUDE_WINDOWS_AMD64_SDK, INCLUDE_WINDOWS_ARM64_SDK, INCLUDE_WINDOWS_X86_SDK | The included SDKs are currently conditionalized out. Set these to `true` to include them in the bundles. |
 
