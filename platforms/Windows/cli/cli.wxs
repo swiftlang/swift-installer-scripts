@@ -208,12 +208,6 @@
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Commands.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\CoreCommands.dll" />
-      </Component>
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\DriverSupport.dll" />
-      </Component>
-      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageGraph.dll" />
       </Component>
       <Component>
@@ -221,9 +215,6 @@
       </Component>
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModel.dll" />
-      </Component>
-      <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModelSyntax.dll" />
       </Component>
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SourceControl.dll" />
