@@ -133,25 +133,25 @@
 
     <ComponentGroup Id="XCTest">
       <Component Directory="XCTest_usr_bin">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\bin\XCTest.dll" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\$(ArchitectureBinaryDir)\XCTest.dll" />
       </Component>
       <Component Directory="XCTest_usr_lib_swift_windows_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.lib" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(Architecture)\XCTest.lib" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(Triple).swiftdoc" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(Architecture)\XCTest.swiftdoc" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(Triple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\$(Architecture)\XCTest.swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\windows\XCTest.swiftmodule\$(Triple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Testing">
       <Component Directory="Testing_usr_bin">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\bin\Testing.dll" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\$(ArchitectureBinaryDir)\Testing.dll" />
       </Component>
       <Component Directory="Testing_usr_lib_swift_windows_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.lib" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\$(Architecture)\Testing.lib" />
       </Component>
       <Component Directory="Testing.swiftmodule">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(Triple).swiftdoc" />
