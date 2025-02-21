@@ -196,10 +196,10 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libswiftRemoteMirror.so" />
       </Component>
     </ComponentGroup>
-    
+
     <ComponentGroup Id="BlocksRuntime">
       <Component Directory="AndroidSDK_usr_include_Block">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\Block\Block.h" />
+        <File Source="$(SDK_ROOT)\usr\include\Block\Block.h" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libBlocksRuntime.so" />
@@ -209,16 +209,16 @@
     <ComponentGroup Id="libdispatch" Directory="AndroidSDK_usr_include_dispatch">
       <?include ../CDispatch.wxi?>
       <Component Directory="AndroidSDK_usr_include_os">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_base.h" />
+        <File Source="$(SDK_ROOT)\usr\include\os\generic_base.h" />
       </Component>
       <Component Directory="AndroidSDK_usr_include_os">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_unix_base.h" />
+        <File Source="$(SDK_ROOT)\usr\include\os\generic_unix_base.h" />
       </Component>
       <Component Directory="AndroidSDK_usr_include_os">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_win_base.h" />
+        <File Source="$(SDK_ROOT)\usr\include\os\generic_win_base.h" />
       </Component>
       <Component Directory="AndroidSDK_usr_include_os">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\os\object.h" />
+        <File Source="$(SDK_ROOT)\usr\include\os\object.h" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
         <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\Dispatch.swiftdoc" />
