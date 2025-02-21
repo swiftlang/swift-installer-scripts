@@ -207,48 +207,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch" Directory="AndroidSDK_usr_include_dispatch">
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\base.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\block.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\data.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\group.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\io.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\object.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\once.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\queue.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\source.h" />
-      </Component>
-      <Component>
-        <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\time.h" />
-      </Component>
+      <?include ../CDispatch.wxi?>
       <Component Directory="AndroidSDK_usr_include_os">
         <File Source="$(SDK_ROOT)\usr\lib\swift\os\generic_base.h" />
       </Component>
