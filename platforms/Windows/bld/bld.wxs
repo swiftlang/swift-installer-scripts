@@ -32,6 +32,12 @@
     <DirectoryRef Id="_usr_share">
       <Directory Id="_usr_share_clang" Name="clang" />
       <Directory Id="_usr_share_swift" Name="swift" />
+      <Directory Id="_usr_share_doc" Name="doc">
+        <Directory Id="_usr_share_doc_swift" Name="swift">
+          <Directory Id="_usr_share_doc_swift_diagnostics" Name="diagnostics">
+          </Directory>
+        </Directory>
+      </Directory>
     </DirectoryRef>
 
     <ComponentGroup Id="cmark_gfm" Directory="_usr_bin">
@@ -266,6 +272,48 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SwiftEducationalNotes" Directory="_usr_share_doc_swift_diagnostics">
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\complex-closure-inference.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\dynamic-callable-requirements.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\error-in-future-swift-version.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\existential-member-access-limitations.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\multiple-inheritance.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\nominal-types.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\opaque-type-inference.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\property-wrapper-requirements.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\protocol-type-non-conformance.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\result-builder-methods.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\string-interpolation-conformance.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\temporary-pointers.md" />
+      </Component>
+      <Component>
+        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\trailing-closure-matching.md" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="SwiftFeatures" Directory="_usr_share_swift">
       <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\share\swift\features.json" />
@@ -308,6 +356,7 @@
     <ComponentGroup Id="swift" Directory="_usr_bin">
       <ComponentGroupRef Id="SwiftCxx" />
       <ComponentGroupRef Id="SwiftDemangle" />
+      <ComponentGroupRef Id="SwiftEducationalNotes" />
       <ComponentGroupRef Id="SwiftFeatures" />
       <ComponentGroupRef Id="SwiftMigrator" />
 
