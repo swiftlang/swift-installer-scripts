@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <Target Name="FindSignTool">
-    <PropertyGroup>
+    <PropertyGroup Condition=" '$(AZURE_SIGN_TOOL)' == '' ">
       <WindowsKitsRoot Condition=" '$(WindowsKitsRoot)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot10', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
       <WindowsKitsRoot Condition=" '$(WindowsKitsRoot)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot81', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
       <WindowsKitsRoot Condition=" '$(WindowsKitsRoot)' == '' ">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Kits\Installed Roots', 'KitsRoot', null, RegistryView.Registry32, RegistryView.Default))</WindowsKitsRoot>
@@ -42,28 +42,33 @@
       <SignToolPath Condition=" '$(SignToolPath)' == '' AND '$(PROCESSOR_ARCHITECTURE)' == 'ARM64' AND Exists('$(WindowsKitsRoot)bin\10.0.14393.0\arm64\signtool.exe')">$(WindowsKitsRoot)bin\10.0.14393.0\arm64\</SignToolPath>
       <SignToolPath Condition=" '$(SignToolPath)' == '' AND '$(PROCESSOR_ARCHITECTURE)' == 'ARM64' AND Exists('$(WindowsKitsRoot)bin\10.0.10586.0\arm64\signtool.exe')">$(WindowsKitsRoot)bin\10.0.10586.0\arm64\</SignToolPath>
       <SignToolPath Condition=" '$(SignToolPath)' == '' AND '$(PROCESSOR_ARCHITECTURE)' == 'ARM64' AND Exists('$(WindowsKitsRoot)bin\10.0.10240.0\arm64\signtool.exe')">$(WindowsKitsRoot)bin\10.0.10240.0\arm64\</SignToolPath>
-
-      <SignTool>"$(SignToolPath)signtool.exe" sign /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" /tr http://timestamp.digicert.com /fd sha256 /td sha256</SignTool>
     </PropertyGroup>
   </Target>
 
-  <Target Name="SignCabs" DependsOnTargets="FindSignTool">
+  <Target Name="SetSignTool" DependsOnTargets="FindSignTool">
+    <PropertyGroup>
+      <SignTool Condition=" '$(AZURE_SIGN_TOOL)' != '' ">"$(AZURE_SIGN_TOOL)" sign -kvu "$(AZURE_VAULT_URI)" -kvi "$(AZURE_CLIENT_ID)" -kvt "$(AZURE_TENANT_ID)" -kvs "(AZURE_CLIENT_SECRET)" -kvc "$(AZURE_CERTIFICATE_NAME)" -tr http://timestamp.digicert.com -v</SignTool>
+      <SignTool Condition=" '$(AZURE_SIGN_TOOL)' == '' ">"$(SignToolPath)signtool.exe" sign /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" /tr http://timestamp.digicert.com /fd sha256 /td sha256</SignTool>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="SignCabs" DependsOnTargets="SetSignTool">
     <Exec Command="$(SignTool) &quot;%(SignCabs.FullPath)&quot;" />
   </Target>
 
-  <Target Name="SignMsi" DependsOnTargets="FindSignTool">
+  <Target Name="SignMsi" DependsOnTargets="SetSignTool">
     <Exec Command="$(SignTool) &quot;%(SignMsi.FullPath)&quot;" />
   </Target>
 
-  <Target Name="SignMsm" DependsOnTargets="FindSignTool">
+  <Target Name="SignMsm" DependsOnTargets="SetSignTool">
     <Exec Command="$(SignTool) &quot;%(SignMsm.FullPath)&quot;" />
   </Target>
 
-  <Target Name="SignBundleEngine" DependsOnTargets="FindSignTool">
+  <Target Name="SignBundleEngine" DependsOnTargets="SetSignTool">
     <Exec Command="$(SignTool) &quot;@(SignBundleEngine)&quot;" />
   </Target>
 
-  <Target Name="SignBundle" DependsOnTargets="FindSignTool">
+  <Target Name="SignBundle" DependsOnTargets="SetSignTool">
     <Exec Command="$(SignTool) &quot;@(SignBundle)&quot;" />
   </Target>
 </Project>
