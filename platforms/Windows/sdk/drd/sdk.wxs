@@ -46,6 +46,8 @@
               └─ Android.platform
                   └─ Developer
                       ├─ Library
+                      │   ├─ ds2
+                      │   │   └─ ...
                       │   ├─ XCTest-development
                       │   │   └─ ...
                       │   └─ Testing-development
@@ -88,8 +90,11 @@
                 </Directory>
               </Directory>
             </Directory>
-            <Directory Name="$(SwiftModuleTriple)">
-              <Directory Id="Android_Library_ARCH_bin" Name="bin" />
+            <!-- ds2 -->
+            <Directory Name="ds2">
+              <Directory Name="usr">
+                <Directory Id="_ds2_usr_bin" Name="bin" />
+              </Directory>
             </Directory>
           </Directory>
           <Directory Name="SDKs">
@@ -170,8 +175,8 @@
 
     <ComponentGroup Id="DS2">
       <?if $(ANDROID_INCLUDE_DS2) == true ?>
-        <Component Directory="Android_Library_ARCH_bin">
-          <File Source="$(PLATFORM_ROOT)\Developer\Library\$(SwiftModuleTriple)\bin\ds2" />
+        <Component Directory="_ds2_usr_bin">
+          <File Source="$(PLATFORM_ROOT)\Developer\Library\ds\usr\bin\$(SwiftModuleTriple)-ds2" />
         </Component>
       <?endif?>
     </ComponentGroup>
