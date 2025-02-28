@@ -60,7 +60,7 @@
           <Directory Name="Library">
             <!--
               FIXME(compnerd) this should actually be the proper version
-              of XCTest and Tesing, and needs to be reflected in the plist as well.
+              of XCTest and Testing, and needs to be reflected in the plist as well.
             -->
             <!-- XCTest -->
             <Directory Name="XCTest-development">
@@ -164,7 +164,7 @@
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="Testing.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftinterface" />
       </Component>
     </ComponentGroup>
 
