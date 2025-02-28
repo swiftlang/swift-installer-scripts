@@ -151,19 +151,19 @@
 
     <ComponentGroup Id="XCTest">
       <Component Directory="XCTest_usr_lib_swift_android_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\libXCTest.so" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(Architecture)\libXCTest.so" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(Triple).swiftdoc" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(Architecture)\XCTest.swiftdoc" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftdoc" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Name="$(Triple).swiftmodule" Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(Architecture)\XCTest.swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Testing">
       <Component Directory="Testing_usr_lib_swift_android_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\libTesting.so" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\$(Architecture)\libTesting.so" />
       </Component>
       <Component Directory="Testing.swiftmodule">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
@@ -176,7 +176,7 @@
     <ComponentGroup Id="DS2">
       <?if $(ANDROID_INCLUDE_DS2) == true ?>
         <Component Directory="_ds2_usr_bin">
-          <File Source="$(PLATFORM_ROOT)\Developer\Library\ds\usr\bin\$(SwiftModuleTriple)-ds2" />
+          <File Source="$(PLATFORM_ROOT)\Developer\Library\ds2\usr\bin\$(SwiftModuleTriple)-ds2" />
         </Component>
       <?endif?>
     </ComponentGroup>
