@@ -48,9 +48,9 @@
                       ├─ Library
                       │   ├─ ds2
                       │   │   └─ ...
-                      │   ├─ XCTest-development
+                      │   ├─ XCTest-$ProductVersion
                       │   │   └─ ...
-                      │   └─ Testing-development
+                      │   └─ Testing-$ProductVersion
                       │       └─ ...
                       └─ SDKs
                           └─ Android.sdk
@@ -60,12 +60,8 @@
       <Directory Id="AndroidPlatform" Name="Android.platform">
         <Directory Name="Developer">
           <Directory Name="Library">
-            <!--
-              FIXME(compnerd) this should actually be the proper version
-              of XCTest and Testing, and needs to be reflected in the plist as well.
-            -->
             <!-- XCTest -->
-            <Directory Name="XCTest-development">
+            <Directory Name="XCTest-$(ProductVersion)">
               <Directory Name="usr">
                 <Directory Name="lib">
                   <Directory Name="swift">
@@ -78,7 +74,7 @@
               </Directory>
             </Directory>
             <!-- Testing -->
-            <Directory Name="Testing-development">
+            <Directory Name="Testing-$(ProductVersion)">
               <Directory Name="usr">
                 <Directory Name="lib">
                   <Directory Name="swift">
@@ -151,25 +147,25 @@
 
     <ComponentGroup Id="XCTest">
       <Component Directory="XCTest_usr_lib_swift_android_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\$(Architecture)\libXCTest.so" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\$(Architecture)\libXCTest.so" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftdoc" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftdoc" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-development\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Testing">
       <Component Directory="Testing_usr_lib_swift_android_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\$(Architecture)\libTesting.so" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVerison)\usr\lib\swift\android\$(Architecture)\libTesting.so" />
       </Component>
       <Component Directory="Testing.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="Testing.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftinterface" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftinterface" />
       </Component>
     </ComponentGroup>
 
