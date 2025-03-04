@@ -274,9 +274,6 @@
 
     <ComponentGroup Id="SwiftEducationalNotes" Directory="_usr_share_doc_swift_diagnostics">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\complex-closure-inference.md" />
-      </Component>
-      <Component>
         <File Source="$(TOOLCHAIN_ROOT)\usr\share\doc\swift\diagnostics\dynamic-callable-requirements.md" />
       </Component>
       <Component>
