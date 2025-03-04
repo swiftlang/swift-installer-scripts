@@ -539,15 +539,6 @@
           <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
         <?endif?>
       </Component>
-      <?if $(WORKAROUND_MIMALLOC_ISSUE_997) ?>
-        <Component>
-          <?if $(ProductArchitecture) = "amd64" ?>
-            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect-arm64.dll" />
-          <?elseif $(ProductArchitecture) = "arm64" ?>
-            <File Source="$(TOOLCHAIN_ROOT)\usr\bin\mimalloc-redirect.dll" />
-          <?endif?>
-        </Component>
-      <?endif?>
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
