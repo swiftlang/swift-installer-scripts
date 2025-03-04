@@ -1,618 +1,618 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\alphaindex.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\alphaindex.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\appendable.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\appendable.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\basictz.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\basictz.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\brkiter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\brkiter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\bytestream.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\bytestream.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\bytestrie.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\bytestrie.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\bytestriebuilder.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\bytestriebuilder.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\calendar.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\calendar.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\caniter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\caniter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\casemap.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\casemap.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\char16ptr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\char16ptr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\chariter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\chariter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\choicfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\choicfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\coleitr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\coleitr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\coll.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\coll.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\compactdecimalformat.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\compactdecimalformat.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\curramt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\curramt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\currpinf.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\currpinf.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\currunit.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\currunit.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\datefmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\datefmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dbbi.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dbbi.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dcfmtsym.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dcfmtsym.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\decimfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\decimfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\displayoptions.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\displayoptions.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\docmain.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\docmain.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dtfmtsym.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dtfmtsym.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dtintrv.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dtintrv.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dtitvfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dtitvfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dtitvinf.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dtitvinf.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dtptngen.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dtptngen.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\dtrule.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\dtrule.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\edits.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\edits.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\enumset.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\enumset.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\errorcode.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\errorcode.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\fieldpos.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\fieldpos.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\filteredbrk.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\filteredbrk.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\fmtable.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\fmtable.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\format.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\format.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\formattedvalue.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\formattedvalue.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\formattednumber.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\formattednumber.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\fpositer.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\fpositer.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\gender.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\gender.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\gregocal.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\gregocal.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\icudataver.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\icudataver.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\icuplug.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\icuplug.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\idna.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\idna.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\listformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\listformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\localebuilder.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\localebuilder.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\localematcher.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\localematcher.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\localpointer.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\localpointer.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\locdspnm.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\locdspnm.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\locid.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\locid.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\measfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\measfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\measunit.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\measunit.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\measure.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\measure.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\messagepattern.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\messagepattern.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\module.modulemap" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\module.modulemap" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\msgfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\msgfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\normalizer2.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\normalizer2.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\normlzr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\normlzr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\nounit.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\nounit.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\numberformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\numberformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\numberrangeformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\numberrangeformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\numfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\numfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\numsys.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\numsys.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\parseerr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\parseerr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\parsepos.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\parsepos.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\platform.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\platform.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\plurfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\plurfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\plurrule.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\plurrule.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ptypes.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ptypes.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\putil.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\putil.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\rbbi.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\rbbi.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\rbnf.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\rbnf.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\rbtz.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\rbtz.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\regex.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\regex.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\region.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\region.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\reldatefmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\reldatefmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\rep.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\rep.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\resbund.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\resbund.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\schriter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\schriter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\scientificnumberformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\scientificnumberformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\search.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\search.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\selfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\selfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\simpleformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\simpleformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\simplenumberformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\simplenumberformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\simpletz.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\simpletz.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\smpdtfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\smpdtfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\sortkey.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\sortkey.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\std_string.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\std_string.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\strenum.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\strenum.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\stringoptions.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\stringoptions.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\stringpiece.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\stringpiece.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\stringtriebuilder.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\stringtriebuilder.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\stsearch.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\stsearch.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\symtable.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\symtable.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tblcoll.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tblcoll.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\timezone.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\timezone.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tmunit.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tmunit.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tmutamt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tmutamt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tmutfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tmutfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\translit.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\translit.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tzfmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tzfmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tznames.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tznames.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tzrule.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tzrule.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\tztrans.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\tztrans.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ualoc.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ualoc.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uameasureformat.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uameasureformat.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uameasureunit.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uameasureunit.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uatimeunitformat.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uatimeunitformat.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ubidi.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ubidi.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ubiditransform.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ubiditransform.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ubrk.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ubrk.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucal.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucal.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucasemap.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucasemap.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucat.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucat.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uchar.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uchar.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucharstrie.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucharstrie.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucharstriebuilder.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucharstriebuilder.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uchriter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uchriter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uclean.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uclean.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucnv.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucnv.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucnvsel.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucnvsel.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucnv_cb.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucnv_cb.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucnv_err.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucnv_err.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucol.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucol.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucoleitr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucoleitr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uconfig.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uconfig.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucpmap.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucpmap.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucptrie.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucptrie.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucsdet.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucsdet.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ucurr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ucurr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udat.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udat.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udata.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udata.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udateintervalformat.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udateintervalformat.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udatintv.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udatintv.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udatpg.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udatpg.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udisplaycontext.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udisplaycontext.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\udisplayoptions.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\udisplayoptions.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uenum.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uenum.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ufieldpositer.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ufieldpositer.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uformattable.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uformattable.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uformattedvalue.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uformattedvalue.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uformattednumber.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uformattednumber.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ugender.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ugender.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uidna.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uidna.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uiter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uiter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uldnames.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uldnames.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulistformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ulistformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uloc.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uloc.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulocale.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ulocale.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulocbuilder.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ulocbuilder.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ulocdata.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ulocdata.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\umachine.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\umachine.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\umisc.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\umisc.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\umsg.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\umsg.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\umutablecptrie.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\umutablecptrie.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unifilt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unifilt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unifunct.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unifunct.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unimatch.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unimatch.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unirepl.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unirepl.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uniset.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uniset.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unistr.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unistr.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unorm.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unorm.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unorm2.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unorm2.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unum.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unum.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumberformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unumberformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumberoptions.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unumberoptions.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumberrangeformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unumberrangeformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\unumsys.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\unumsys.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uobject.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uobject.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uplrule.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uplrule.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\upluralrules.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\upluralrules.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\urbtok.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\urbtok.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uregex.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uregex.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uregion.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uregion.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ureldatefmt.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ureldatefmt.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\urename.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\urename.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\urep.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\urep.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ures.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ures.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uscript.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uscript.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\usearch.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\usearch.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uset.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uset.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\usetiter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\usetiter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ushape.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ushape.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\usimplenumberformatter.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\usimplenumberformatter.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uspoof.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uspoof.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\usprep.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\usprep.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ustdio.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ustdio.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ustream.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ustream.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ustring.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ustring.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\ustringtrie.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\ustringtrie.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utext.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utext.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utf.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utf.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utf16.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utf16.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utf32.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utf32.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utf8.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utf8.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utf_old.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utf_old.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utmscale.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utmscale.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utrace.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utrace.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utrans.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utrans.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\utypes.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\utypes.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uvernum.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uvernum.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\uversion.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\uversion.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\_foundation_unicode\vtzone.h" />
+    <File Source="$(SDK_ROOT)\usr\include\_foundation_unicode\vtzone.h" />
   </Component>
 </Include>

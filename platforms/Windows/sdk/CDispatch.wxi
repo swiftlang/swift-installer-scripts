@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\base.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\base.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\block.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\block.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\data.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\data.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\dispatch.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\dispatch.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\group.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\group.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\introspection.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\introspection.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\io.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\io.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\module.modulemap" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\module.modulemap" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\object.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\object.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\once.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\once.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\queue.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\queue.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\semaphore.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\semaphore.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\source.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\source.h" />
   </Component>
   <Component>
-    <File Source="$(SDK_ROOT)\usr\lib\swift\dispatch\time.h" />
+    <File Source="$(SDK_ROOT)\usr\include\dispatch\time.h" />
   </Component>
 </Include>
