@@ -157,7 +157,7 @@
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="Testing.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(Triple).swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(Triple).swiftinterface" />
       </Component>
     </ComponentGroup>
 
