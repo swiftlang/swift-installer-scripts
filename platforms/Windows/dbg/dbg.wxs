@@ -105,6 +105,12 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SwiftSynthesizeInterface">
+      <Component Directory="_usr_bin">
+        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-synthesize-interface.exe" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="SwiftInspect">
       <Component Directory="_usr_bin">
         <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-inspect.exe" />
@@ -137,6 +143,7 @@
 
       <ComponentGroupRef Id="SwiftREPL" />
       <ComponentGroupRef Id="SwiftInspect" />
+      <ComponentGroupRef Id="SwiftSynthesizeInterface" />
 
       <ComponentGroupRef Id="_InternalSwiftStaticMirror" />
 
