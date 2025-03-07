@@ -234,9 +234,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Concurrency.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -249,9 +251,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_Differentiation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -276,9 +280,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_StringProcessing.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -291,9 +297,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CRT.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -306,9 +314,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Cxx.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -321,9 +331,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\CxxStdlib.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -336,9 +348,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Distributed.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -420,9 +434,11 @@
       <Component>
         <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\Observation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Name="$(Triple).swiftinterface" Source="$(SDK_ROOT)\usr\lib\swift\windows\Observation.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\Observation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -435,9 +451,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\RegexBuilder.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -450,9 +468,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Swift.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -465,9 +485,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -480,9 +502,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Synchronization.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Synchronization.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Synchronization.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -495,9 +519,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\WinSDK.swiftmodule\$(Triple).swiftmodule" />
       </Component>
