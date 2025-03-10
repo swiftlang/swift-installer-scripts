@@ -254,9 +254,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Concurrency.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -269,9 +271,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Differentiation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -296,9 +300,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_StringProcessing.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -311,9 +317,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_Volatile.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -326,9 +334,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Android.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -374,9 +384,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Distributed.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -458,9 +470,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\_math.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -473,9 +487,11 @@
       <Component>
         <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Name="$(Triple).swiftinterface" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\Observation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -488,9 +504,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\RegexBuilder.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -503,9 +521,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Swift.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -518,9 +538,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\$(Triple).swiftmodule" />
       </Component>
@@ -533,9 +555,11 @@
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(Triple).swiftdoc" />
       </Component>
+      <!-- FIXME(swiftlang/swift#79839)
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(Triple).swiftinterface" />
       </Component>
+      -->
       <Component>
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\Synchronization.swiftmodule\$(Triple).swiftmodule" />
       </Component>
