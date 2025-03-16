@@ -226,10 +226,10 @@
         <File Source="$(SDK_ROOT)\usr\include\os\object.h" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\Dispatch.swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Dispatch.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\android\$(Architecture)\Dispatch.swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\android\Dispatch.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="AndroidSDK_usr_lib_swift_android_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\android\libdispatch.so" />

@@ -206,10 +206,10 @@
         <File Source="$(SDK_ROOT)\usr\include\os\object.h" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(Triple).swiftdoc" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\Dispatch.swiftdoc" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Dispatch.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="Dispatch.swiftmodule">
-        <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\Dispatch.swiftmodule" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Dispatch.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" />
