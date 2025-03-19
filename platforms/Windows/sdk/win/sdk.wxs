@@ -71,7 +71,9 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="windows">
+                      <Directory Id="_Testing_Foundation.swiftmodule" Name="_Testing_Foundation.swiftmodule" />
                       <Directory Id="Testing_usr_lib_swift_windows_ARCH" Name="$(Architecture)" />
+                      <Directory Id="Testing.swiftcrossimport" Name="Testing.swiftcrossimport" />
                       <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
@@ -147,11 +149,23 @@
     </ComponentGroup>
 
     <ComponentGroup Id="Testing">
+      <Component Directory="_Testing_Foundation.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Test-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\$(Triple).swiftdoc" />
+      </Component>
+      <Component Directory="_Testing_Foundation.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Test-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\$(Triple).swiftinterface" />
+      </Component>
       <Component Directory="Testing_usr_bin">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\$(ArchitectureBinaryDir)\Testing.dll" />
       </Component>
       <Component Directory="Testing_usr_lib_swift_windows_ARCH">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\$(Architecture)\Testing.lib" />
+      </Component>
+      <Component Directory="Testing_usr_lib_swift_windows_ARCH">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\$(Architecture)\_Testing_Foundation.lib" />
+      </Component>
+      <Component Directory="Testing.swiftcrossimport">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Test-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftcrossimport\Foundation.swiftoverlay" />
       </Component>
       <Component Directory="Testing.swiftmodule">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-development\usr\lib\swift\windows\Testing.swiftmodule\$(Triple).swiftdoc" />
