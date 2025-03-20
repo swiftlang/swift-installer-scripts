@@ -159,7 +159,7 @@
 
     <ComponentGroup Id="Testing">
       <Component Directory="Testing_usr_lib_swift_android_ARCH">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVerison)\usr\lib\swift\android\$(Architecture)\libTesting.so" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\$(Architecture)\libTesting.so" />
       </Component>
       <Component Directory="Testing.swiftmodule">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
