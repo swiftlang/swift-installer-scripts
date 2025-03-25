@@ -75,7 +75,9 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="android">
+                      <Directory Id="_Testing_Foundation.swiftmodule" Name="_Testing_Foundation.swiftmodule" />
                       <Directory Id="Testing_usr_lib_swift_android_ARCH" Name="$(Architecture)" />
+                      <Directory Id="Testing.swiftcrossimport" Name="Testing.swiftcrossimport" />
                       <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
@@ -154,8 +156,20 @@
     </ComponentGroup>
 
     <ComponentGroup Id="Testing">
+      <Component Directory="_Testing_Foundation.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Test-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\$(Triple).swiftdoc" />
+      </Component>
+      <Component Directory="_Testing_Foundation.swiftmodule">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Test-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\$(Triple).swiftinterface" />
+      </Component>
       <Component Directory="Testing_usr_lib_swift_android_ARCH">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\$(Architecture)\libTesting.so" />
+      </Component>
+      <Component Directory="Testing_usr_lib_swift_android_ARCH">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVerison)\usr\lib\swift\android\$(Architecture)\lib_Testing_Foundation.so" />
+      </Component>
+      <Component Directory="Testing.swiftcrossimport">
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\Test-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftcrossimport\Foundation.swiftoverlay" />
       </Component>
       <Component Directory="Testing.swiftmodule">
         <File Source="$(PLATFORM_ROOT)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\$(Triple).swiftdoc" />
