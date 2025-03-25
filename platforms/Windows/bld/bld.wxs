@@ -590,5 +590,28 @@
       <ComponentGroupRef Id="EnvironmentVariables" />
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
+
+    <!-- CustomActions -->
+    <Binary Id="CustomActions" SourceFile="$(CustomActions.TargetDir)\CustomActions.dll" />
+
+    <CustomAction Id="CopyClangResources.SetProperty"
+                  Property="CopyClangResources"
+                  Value="[_usr_lib_swift]" />
+    <CustomAction Id="CopyClangResources"
+                  BinaryRef="CustomActions"
+                  DllEntry="CopyClangResources"
+                  Execute="deferred"
+                  Impersonate="no"
+                  Return="check" />
+    <CustomAction Id="RemoveClangResources"
+                  BinaryRef="CustomActions"
+                  DllEntry="RemoveClangResources"
+                  Return="check" />
+
+    <InstallExecuteSequence>
+      <Custom Action="CopyClangResources.SetProperty" Before="CopyClangResources" />
+      <Custom Action="CopyClangResources" After="InstallFiles" Condition="NOT REMOVE" />
+      <Custom Action="RemoveClangResources" Before="RemoveFiles" Condition='REMOVE="ALL"' />
+    </InstallExecuteSequence>
   </Package>
 </Wix>
