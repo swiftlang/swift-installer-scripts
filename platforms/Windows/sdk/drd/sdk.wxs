@@ -3,11 +3,9 @@
 
   <?if $(ProductArchitecture) = "arm64"?>
     <?define Architecture = "aarch64"?>
-    <?define SwiftModuleTriple = "aarch64-unknown-linux-android"?>
     <?define Triple = "aarch64-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "amd64"?>
     <?define Architecture = "x86_64"?>
-    <?define SwiftModuleTriple = "x86_64-unknown-linux-android"?>
     <?define Triple = "x86_64-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "arm"?>
     <?define Architecture = "armv7"?>
@@ -20,11 +18,9 @@
       TODO: consider updating Swift compiler to output file names matching the
       correct triple.
     -->
-    <?define SwiftModuleTriple = "armv7-unknown-linux-androideabi"?>
     <?define Triple = "armv7-unknown-linux-android"?>
   <?elseif $(ProductArchitecture) = "x86"?>
     <?define Architecture = "i686"?>
-    <?define SwiftModuleTriple = "i686-unknown-linux-android"?>
     <?define Triple = "i686-unknown-linux-android"?>
   <?endif?>
 
@@ -150,10 +146,10 @@
         <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\$(Architecture)\libXCTest.so" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftdoc" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\$(Triple).swiftdoc" />
       </Component>
       <Component Directory="XCTest.swiftmodule">
-        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\$(SwiftModuleTriple).swiftmodule" />
+        <File Source="$(PLATFORM_ROOT)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\$(Triple).swiftmodule" />
       </Component>
     </ComponentGroup>
 
@@ -172,7 +168,7 @@
     <ComponentGroup Id="DS2">
       <?if $(ANDROID_INCLUDE_DS2) == true ?>
         <Component Directory="_ds2_usr_bin">
-          <File Source="$(PLATFORM_ROOT)\Developer\Library\ds2\usr\bin\$(SwiftModuleTriple)-ds2" />
+          <File Source="$(PLATFORM_ROOT)\Developer\Library\ds2\usr\bin\$(Triple)-ds2" />
         </Component>
       <?endif?>
     </ComponentGroup>
