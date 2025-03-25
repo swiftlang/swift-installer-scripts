@@ -77,11 +77,21 @@
         <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
 
-      <MsiPackage
-        SourceFile="!(bindpath.bld)\bld.msi"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-      </MsiPackage>
+      <?if $(INCLUDE_ASSERTS_TOOLCHAIN) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.bld.asserts)\bld.asserts.msi"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
+
+      <?if $(INCLUDE_NOASSERTS_TOOLCHAIN) == true ?>
+        <MsiPackage
+          SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
 
       <MsiPackage
         SourceFile="!(bindpath.cli)\cli.msi"
