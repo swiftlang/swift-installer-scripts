@@ -1,4 +1,7 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
+
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
@@ -29,111 +32,111 @@
 
     <ComponentGroup Id="LLDB">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\lldb.exe" />
       </Component>
 
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\liblldb.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\liblldb.dll" />
       </Component>
 
       <Component Directory="_usr_lib">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\liblldb.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\liblldb.lib" />
       </Component>
 
       <Component Directory="_usr_lib_site_packages_lldb">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\__init__.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\__init__.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\_lldb.pyd" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\_lldb.pyd" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\embedded_interpreter.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\embedded_interpreter.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\lldb-argdumper.exe" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\lldb-argdumper.exe" />
       </Component>
 
       <Component Directory="_usr_lib_site_packages_lldb_formatters">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\Logger.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\Logger.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\__init__.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\__init__.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cache.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cache.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\metrics.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\metrics.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\synth.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\synth.py" />
       </Component>
 
       <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\__init__.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\__init__.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" />
       </Component>
 
       <Component Directory="_usr_lib_site_packages_lldb_utils">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\__init__.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\__init__.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_utils">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\in_call_stack.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\in_call_stack.py" />
       </Component>
       <Component Directory="_usr_lib_site_packages_lldb_utils">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\site-packages\lldb\utils\symbolication.py" />
+        <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\symbolication.py" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="LLDBServer">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\lldb-server.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\lldb-server.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftREPL">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\repl_swift.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\repl_swift.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftSynthesizeInterface">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-synthesize-interface.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-synthesize-interface.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftInspect">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-inspect.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-inspect.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_InternalSwiftStaticMirror" Directory="_usr_include__InternalSwiftStaticMirror">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftStaticMirror.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\_InternalSwiftStaticMirror.dll" />
       </Component>
 
       <Component Directory="_usr_lib">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftStaticMirror.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftStaticMirror.lib" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftStaticMirror\BinaryScan.h" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftStaticMirror\BinaryScan.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftStaticMirror\module.modulemap" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftStaticMirror\module.modulemap" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftStaticMirror\StaticMirrorMacros.h" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftStaticMirror\StaticMirrorMacros.h" />
       </Component>
     </ComponentGroup>
 
