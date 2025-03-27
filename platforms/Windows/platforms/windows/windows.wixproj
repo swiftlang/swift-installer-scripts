@@ -1,0 +1,42 @@
+<Project Sdk="WixToolset.Sdk/4.0.5">
+  <PropertyGroup>
+    <OutputName>windows</OutputName>
+
+    <SwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\Windows.sdk\usr\lib\swift\shims</SwiftShimsPath>
+
+    <DefineConstants>
+      $(DefineConstants);
+      SwiftShimsPath=$(SwiftShimsPath);
+      IncludeARM64=$(WindowsArchitectures.Contains("aarch64"));
+      IncludeX64=$(WindowsArchitectures.Contains("x86_64"));
+      IncludeX86=$(WindowsArchitectures.Contains("i686"));
+    </DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(WindowsArchitectures.Contains('i686')) ">
+    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.x86.msm" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(WindowsArchitectures.Contains('x86_64')) ">
+    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.amd64.msm" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(WindowsArchitectures.Contains('aarch64')) ">
+    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.arm64.msm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(SwiftShimsPath)">
+      <ComponentGroupName>SwiftShims</ComponentGroupName>
+      <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
+      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+</Project>
