@@ -2,9 +2,8 @@
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
-      TOOLCHAIN_ROOT=$(TOOLCHAIN_ROOT);
-      TOOLCHAIN_ROOT_USR_LIB_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\clang;
-      TOOLCHAIN_ROOT_USR_LIB_SWIFT_CLANG=$(TOOLCHAIN_ROOT)\usr\lib\swift\clang;
+      _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang;
+      _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang;
       WORKAROUND_MIMALLOC_ISSUE_997=$(WORKAROUND_MIMALLOC_ISSUE_997);
     </DefineConstants>
   </PropertyGroup>
@@ -14,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\clang">
+    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang">
       <ComponentGroupName>ClangResources</ComponentGroupName>
       <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
-      <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_CLANG</PreprocessorVariable>
+      <PreprocessorVariable>var._USR_LIB_CLANG</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
@@ -25,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <HarvestDirectory Include="$(TOOLCHAIN_ROOT)\usr\lib\swift\clang">
+    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang">
       <ComponentGroupName>SwiftClangResources</ComponentGroupName>
       <DirectoryRefId>_usr_lib_swift_clang</DirectoryRefId>
-      <PreprocessorVariable>var.TOOLCHAIN_ROOT_USR_LIB_SWIFT_CLANG</PreprocessorVariable>
+      <PreprocessorVariable>var._USR_LIB_SWIFT_CLANG</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>

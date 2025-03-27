@@ -67,26 +67,6 @@
 
   <Import Project="$(USERNAME).props" Condition="Exists('$(USERNAME).props')" />
 
-  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
-    <PLATFORM_ROOT>$(PLATFORM_ROOT_X86)</PLATFORM_ROOT>
-    <SDK_ROOT>$(SDK_ROOT_X86)</SDK_ROOT>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
-    <PLATFORM_ROOT>$(PLATFORM_ROOT_AMD64)</PLATFORM_ROOT>
-    <SDK_ROOT>$(SDK_ROOT_AMD64)</SDK_ROOT>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm' ">
-    <PLATFORM_ROOT>$(PLATFORM_ROOT_ARM)</PLATFORM_ROOT>
-    <SDK_ROOT>$(SDK_ROOT_ARM)</SDK_ROOT>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
-    <PLATFORM_ROOT>$(PLATFORM_ROOT_ARM64)</PLATFORM_ROOT>
-    <SDK_ROOT>$(SDK_ROOT_ARM64)</SDK_ROOT>
-  </PropertyGroup>
-
   <PropertyGroup>
     <DefaultCompressionLevel Condition="'$(DefaultCompressionLevel)' == ''">$(PackageCompressionLevel)</DefaultCompressionLevel>
 
@@ -100,8 +80,10 @@
       IsBundleCompressed=$(IsBundleCompressed);
       ArePackageCabsEmbedded=$(ArePackageCabsEmbedded);
       BaseReleaseDownloadUrl=$(BaseReleaseDownloadUrl);
-      SDK_ROOT=$(SDK_ROOT);
-      PLATFORM_ROOT=$(PLATFORM_ROOT);
+      ImageRoot=$(ImageRoot);
+      WindowsRuntimeARM64=$(WindowsRuntimeARM64);
+      WindowsRuntimeX64=$(WindowsRuntimeX64);
+      WindowsRuntimeX86=$(WindowsRuntimeX86);
     </DefineConstants>
   </PropertyGroup>
 

@@ -1,4 +1,7 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
+
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
@@ -27,156 +30,156 @@
 
     <ComponentGroup Id="clang" Directory="_usr_bin">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-format.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\clang-format.exe" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\git-clang-format" />
+        <File Source="$(ToolchainRoot)\usr\bin\git-clang-format" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\clang-tidy.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\clang-tidy.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="libclang" Directory="_usr_include_clang_c">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\libclang.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\libclang.dll" />
       </Component>
 
       <Component Directory="_usr_lib">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\libclang.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\libclang.lib" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\BuildSystem.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\BuildSystem.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\CXCompilationDatabase.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXCompilationDatabase.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\CXErrorCode.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXErrorCode.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\CXString.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXString.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\Documentation.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\Documentation.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\FatalErrorHandler.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\FatalErrorHandler.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\Index.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\Index.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\Platform.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\Platform.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\include\clang-c\Refactor.h" />
+        <File Source="$(ToolchainRoot)\usr\include\clang-c\Refactor.h" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="IndexStore" Directory="_usr_include_indexstore">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\libIndexStore.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\libIndexStore.dll" />
       </Component>
 
       <Component Directory="_usr_lib">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\libIndexStore.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\libIndexStore.lib" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\local\include\indexstore\indexstore.h" />
+        <File Source="$(ToolchainRoot)\usr\local\include\indexstore\indexstore.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\local\include\indexstore\IndexStoreCXX.h" />
+        <File Source="$(ToolchainRoot)\usr\local\include\indexstore\IndexStoreCXX.h" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_InternalSwiftScan" Directory="_usr_include__InternalSwiftScan">
       <Component Directory="_usr_bin">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\_InternalSwiftScan.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\_InternalSwiftScan.dll" />
       </Component>
 
       <Component Directory="_usr_lib">
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\_InternalSwiftScan\module.modulemap" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\module.modulemap" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="collections" Directory="_usr_bin">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Collections.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\Collections.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\DequeModule.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\DequeModule.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\InternalCollectionsUtilities.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\InternalCollectionsUtilities.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\OrderedCollections.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\OrderedCollections.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="llbuild" Directory="_usr_bin">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\llbuildSwift.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\llbuildSwift.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="CompilerPluginSupport" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="PackageDescription" Directory="_usr_lib_swift_pm_ManifestAPI">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftdoc" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="PackagePlugin" Directory="_usr_lib_swift_pm_PluginAPI">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftdoc" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftdoc" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule" />
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule" />
       </Component>
     </ComponentGroup>
 
@@ -186,60 +189,60 @@
       <ComponentGroupRef Id="PackagePlugin" />
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-build.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-build.exe" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-package.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-package.exe" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-run.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-run.exe" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-test.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-test.exe" />
       </Component>
 
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Basics.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\Basics.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Build.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\Build.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Commands.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\Commands.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\CoreCommands.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\CoreCommands.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\DriverSupport.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\DriverSupport.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageGraph.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\PackageGraph.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageLoading.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\PackageLoading.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModel.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\PackageModel.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\PackageModelSyntax.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\PackageModelSyntax.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SourceControl.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\SourceControl.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SPMBuildCore.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\Workspace.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
       </Component>
 
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
     <ComponentGroup Id="DocC" Directory="_usr_bin">
-      <?if $(INCLUDE_SWIFT_DOCC) == true ?>
+      <?if $(INCLUDE_SWIFT_DOCC) = True?>
         <Component>
           <File Source="$(SWIFT_DOCC_BUILD)\docc.exe" />
         </Component>
@@ -248,10 +251,10 @@
 
     <ComponentGroup Id="swift_format" Directory="_usr_bin">
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\swift-format.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\swift-format.exe" />
       </Component>
       <Component>
-        <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftFormat.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftFormat.dll" />
       </Component>
     </ComponentGroup>
 
@@ -267,7 +270,7 @@
       <ComponentGroupRef Id="package_manager" />
 
       <ComponentGroupRef Id="DocC" />
-      <?if $(INCLUDE_SWIFT_DOCC) == true ?>
+      <?if $(INCLUDE_SWIFT_DOCC) = True?>
         <ComponentGroupRef Id="DocCRender" />
       <?endif?>
 

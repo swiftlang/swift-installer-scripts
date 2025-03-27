@@ -8,95 +8,103 @@
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "E9BC660F-2E0E-48E4-8DE0-18567335AF6B" ?>
     <?endif?>
 
+    <?if $(ProductArchitecture) == amd64?>
+      <?define RuntimeRoot = $(WindowsRuntimeX64)?>
+    <?elseif $(ProductArchitecture) == arm64?>
+      <?define RuntimeRoot = $(WindowsRuntimeARM64)?>
+    <?elseif $(ProductArchitecture) == x86?>
+      <?define RuntimeRoot = $(WindowsRuntimeX86)?>
+    <?endif?>
+
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
 
     <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftSynchronization.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftSynchronization.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swift_Concurrency.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swift_Concurrency.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swift_Differentiation.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swift_Differentiation.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftDistributed.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftDistributed.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftRegexBuilder.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftRegexBuilder.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swift_RegexParser.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swift_RegexParser.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swift_StringProcessing.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swift_StringProcessing.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftCore.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftCore.dll" />
       </Component>
 
       <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
       <Component Directory="_usr_bin" Id="swiftDemangle.dll">
-        <File Id="swiftDemangle.dll" Source="$(SDK_ROOT)\bin\swiftDemangle.dll" />
+        <File Id="swiftDemangle.dll" Source="$(RuntimeRoot)\bin\swiftDemangle.dll" />
       </Component>
       -->
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftCRT.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftCRT.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftObservation.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftObservation.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftRemoteMirror.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftRemoteMirror.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftSwiftOnoneSupport.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftSwiftOnoneSupport.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftWinSDK.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\BlocksRuntime.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\BlocksRuntime.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\dispatch.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\dispatch.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\swiftDispatch.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\swiftDispatch.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="Foundation_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\_FoundationICU.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\_FoundationICU.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\FoundationEssentials.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\FoundationEssentials.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\FoundationInternationalization.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\FoundationInternationalization.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\Foundation.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\Foundation.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\FoundationNetworking.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\FoundationNetworking.dll" />
       </Component>
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\FoundationXML.dll" />
+        <File Source="$(RuntimeRoot)\usr\bin\FoundationXML.dll" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="plutil_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
-        <File Source="$(SDK_ROOT)\usr\bin\plutil.exe" />
+        <File Source="$(RuntimeRoot)\usr\bin\plutil.exe" />
       </Component>
     </ComponentGroup>
 
