@@ -1,19 +1,21 @@
 <Project Sdk="WixToolset.Sdk/4.0.5">
   <PropertyGroup>
-    <OutputName>sdk.android.$(ProductArchitecture)</OutputName>
-    <Platform>x86</Platform>
+    <OutputName>android</OutputName>
 
-    <SwiftShimsPath>$(SDK_ROOT)\usr\lib\swift\shims</SwiftShimsPath>
+    <SwiftShimsPath>$(ImageRoot)\Platforms\Android.platform\Developer\SDKs\Android.sdk\usr\lib\swift\shims</SwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
       ANDROID_INCLUDE_DS2=$(ANDROID_INCLUDE_DS2);
       SwiftShimsPath=$(SwiftShimsPath);
+      IncludeARM64=$(AndroidArchitectures.Contains("aarch64"));
+      IncludeARM=$(AndroidArchitectures.Contains("armv7"));
+      IncludeX64=$(AndroidArchitectures.Contains("x86_64"));
+      IncludeX86=$(AndroidArchitectures.Contains("i686"));
     </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\shared\shared.wixproj" />
     <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
   </ItemGroup>
 

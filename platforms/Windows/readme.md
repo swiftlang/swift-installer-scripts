@@ -36,10 +36,12 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | OptionsInstallDBG | Controls whether debugging tools will be installed. |
 | OptionsInstallIDE | Controls whether IDE integration tools will be installed. |
 | OptionsInstallUtilties | Controls whether additional utilities will be installed. |
+| OptionsInstallAndroidPlatform | Controls whether the Android platform will be installed. |
 | OptionsInstallAndroidSDKAMD64 | Controls whether the Android AMD64 SDK will be installed. |
 | OptionsInstallAndroidSDKARM | Controls whether the Android ARM SDK will be installed. |
 | OptionsInstallAndroidSDKARM64 | Controls whether the Android ARM64 SDK will be installed. |
 | OptionsInstallAndroidSDKX86 | Controls whether the Android X86 SDK will be installed. |
+| OptionsInstallWindowsPlatform | Controls whether the Windows platform will be installed. |
 | OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
 | OptionsInstallWindowsRedistAMD64 | Controls whether the Windows AMD64 Redistributable MSM will be installed. |
 | OptionsInstallWindowsSDKAMD64 | Controls whether the Windows AMD64 SDK will be installed. |
@@ -112,19 +114,10 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This save user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
 | BundleFlavor, IsBundleCompressed | BundleFlavor defaults to `online` to build an online bundle. Set by the invocation of MSBuild to build an online or offline bundle. Controls IsBundleCompressed. |
 | DefineConstants | Passes a subset of MSBuild properties into the WiX build as preprocessor variables. |
-| INCLUDE_SWIFT_DOCC | swift-docc is currently conditionalized out. Set it to `true` to include it. The property `SWIFT_DOCC_BUILD` defines the directory to find the artifacts. |
-| INCLUDE_ANDROID_ARM_SDK, INCLUDE_ANDROID_ARM64_SDK, INCLUDE_ANDROID_X86_SDK, INCLUDE_ANDROID_x86_64_SDK, INCLUDE_WINDOWS_AMD64_SDK, INCLUDE_WINDOWS_ARM64_SDK, INCLUDE_WINDOWS_X86_SDK | The included SDKs are currently conditionalized out. Set these to `true` to include them in the bundles. |
-
-
-## SDKs
-
-The SDKs contain architecture-specific payloads like libraries and architecture-neutral payloads like headers. However, as Arm64 packages cannot be installed on an x64 Windows host, all SDKs are built as x86 packages. (Windows Installer doesn't have the concept of an architecture-neutral package, so we use x86 as the package architecture that can be installed on all Windows hosts.)
-
-Because we need 32-bit components in an x86 package, we have to force the shared .wixlib project to an x86 `Platform` at the same using the correct `ProductArchitecture` for the SDK being built. That happens by setting those properties in the `ProjectReference`:
-
-```xml
-<ProjectReference Include="..\shared\shared.wixproj" Properties="ProductArchitecture=arm64;Platform=x86" />
-```
+| Platforms | A semi-colon delimited list of platforms which are bundled. Set it to `android;windows` to package both platforms. |
+| AndroidArchitectures | A semi-colon delimited list of architectures which the Android platform supports. Set it to `aarch64;armv7;i686;x86_64` to package all architectures. |
+| WindowsArchitectures | A semi-colon delimited list of architectures which the Windows platform supports. Set it to `aarch64;i686;x86_64` to package all architectures. |
+| INCLUDE_SWIFT_DOCC | swift-docc is currently conditionalized out. Set it to `True` to include it. The property `SWIFT_DOCC_BUILD` defines the directory to find the artifacts. |
 
 
 ## User.props
@@ -155,13 +148,13 @@ To support the three architecture flavors of the SDK and RTL MSI packages, you n
 
 | MSBuild property | Description |
 | ---------------- | ----------- |
-| PLATFORM_ROOT_X86 | PLATFORM_ROOT when building x86 SDK and RTL |
-| PLATFORM_ROOT_AMD64 | PLATFORM_ROOT when building AMD64 SDK and RTL |
-| PLATFORM_ROOT_ARM64 | PLATFORM_ROOT when building ARM64 SDK and RTL |
-| SDK_ROOT_X86 | SDK_ROOT when building x86 SDK and RTL |
-| SDK_ROOT_AMD64 | SDK_ROOT when building AMD64 SDK and RTL |
-| SDK_ROOT_ARM64 | SDK_ROOT when building ARM64 SDK and RTL |
-
+| ImageRoot | Path to the root of the installed Swift image to package |
+| Platforms | Semicolon delimited list of platforms to package (android;windows) |
+| AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch54;armv7;i686;x86_64) |
+| WindowsArchitectures | Semicolon delimited list of architectures the Windows platform supports (aarch64;i686;x86_64) |
+| WindowsRuntimeARM64 | Path to the staged Windows ARM64 runtime |
+| WindowsRuntimeX64 | Path to the staged Windows AMD64 runtime |
+| WindowsRuntimeX86 | Path to the staged Windows x86 runtime |
 
 ```sh
 msbuild %SourceRoot%\swift-installer-scripts\platforms\Windows\bundle\installer.wixproj ^
@@ -171,13 +164,13 @@ msbuild %SourceRoot%\swift-installer-scripts\platforms\Windows\bundle\installer.
   -p:BaseReleaseDownloadUrl=todo://base/release/download/url ^
   -p:Configuration=Release ^
   -p:BaseOutputPath=%PackageRoot%\online\ ^
-  -p:TOOLCHAIN_ROOT=%BuildRoot%\Library\Developer\Toolchains\unknown-Asserts-development.xctoolchain ^
-  -p:PLATFORM_ROOT_X86=path\to\x86\platform ^
-  -p:PLATFORM_ROOT_AMD64=path\to\amd64\platform ^
-  -p:PLATFORM_ROOT_ARM64=path\to\arm64\platform ^
-  -p:SDK_ROOT_X86=path\to\x86\sdk ^
-  -p:SDK_ROOT_AMD64=path\to\amd64\sdk ^
-  -p:SDK_ROOT_ARM64=path\to\arm64\sdk
+  -p:ImageRoot=%ImageRoot%\Program Files\Swift ^
+  -p:Platforms="android;windows" ^
+  -p:AndroidArchitectures="aarch64;armv7;i686;x86_64" ^
+  -p:WindowsArchitectures="aarch64;i686;x86_64" ^
+  -p:WindowsRuntimeARM64=%ImageRoot%\Prograam Files (Arm64)\Swift\Runtimes\0.0.0 ^
+  -p:WindowsRuntimeX64=%ImageRoot%\Program Files\Swift\Runtimes\0.0.0 ^
+  -p:WindowsRuntimeX86=%ImageRoot%\Program Files (x86)\Swift\Runtimes\0.0.0
 ```
 
 
