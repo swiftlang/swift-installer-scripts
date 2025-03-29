@@ -183,7 +183,7 @@
         <File Source="$(SDK_ROOT)\usr\include\Block\Block.h" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\BlocksRuntime.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\BlocksRuntime.lib" />
       </Component>
     </ComponentGroup>
 
@@ -208,17 +208,17 @@
         <File Name="$(Triple).swiftmodule" Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\Dispatch.swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\dispatch.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\dispatch.lib" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\swiftDispatch.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\swiftDispatch.lib" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_foundation_unicode" Directory="WindowsSDK_usr_include__foundation_unicode">
       <?include ../_FoundationUnicode.wxi?>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\_FoundationICU.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\_FoundationICU.lib" />
       </Component>
     </ComponentGroup>
 
@@ -360,7 +360,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationEssentials.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\FoundationEssentials.lib" />
       </Component>
     </ComponentGroup>
 
@@ -372,7 +372,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationInternationalization.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\FoundationInternationalization.lib" />
       </Component>
     </ComponentGroup>
 
@@ -384,7 +384,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Foundation.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\Foundation.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\Foundation.lib" />
       </Component>
     </ComponentGroup>
 
@@ -396,7 +396,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationNetworking.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\FoundationNetworking.lib" />
       </Component>
     </ComponentGroup>
 
@@ -408,7 +408,7 @@
         <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationXML.swiftmodule\$(Triple).swiftmodule" />
       </Component>
       <Component Directory="WindowsSDK_usr_lib_swift_windows_ARCH">
-        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\FoundationXML.lib" />
+        <File Source="$(SDK_ROOT)\usr\lib\swift\windows\$(Architecture)\FoundationXML.lib" />
       </Component>
     </ComponentGroup>
 
