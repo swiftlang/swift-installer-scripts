@@ -200,7 +200,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
-    <?if $(IncludeX64) = true?>
+    <?if $(IncludeX64) = True?>
       <ComponentGroup Id="XCTest.x64">
         <Component Directory="XCTest.swiftmodule" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
@@ -464,10 +464,10 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="3">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libdispatch.so" />
         </Component>
-        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="3">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDispatch.so" />
         </Component>
       </ComponentGroup>
@@ -559,7 +559,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="3">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_arm" DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Builtin_float.so" />
         </Component>
       </ComponentGroup>
@@ -576,7 +576,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="4">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Builtin_float.so" />
         </Component>
       </ComponentGroup>
@@ -593,7 +593,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="5">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x86" DiskId="5">
           <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Builtin_float.so" />
         </Component>
       </ComponentGroup>
@@ -1083,14 +1083,14 @@
     <?if $(IncludeX64) = True?>
       <ComponentGroup Id="Cxx.x64" Directory="Cxx.swiftmodule">
         <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
+          <File Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         </Component>
         <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
+          <File Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
         </Component>
 
         <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCxx.a" />
+          <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCxx.a" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -1363,7 +1363,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="5">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x86" DiskId="5">
           <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationEssentials.so" />
         </Component>
       </ComponentGroup>
@@ -1648,7 +1648,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="4">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_math.so" />
         </Component>
       </ComponentGroup>
@@ -1665,7 +1665,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\i686-unknown-linux-android.swiftmodule" />
         </Component>
 
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="5">
+        <Component Directory="AndroidSDK_usr_lib_swift_android_x86" DiskId="5">
           <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_math.so" />
         </Component>
       </ComponentGroup>
@@ -2146,7 +2146,7 @@
     <?endif?>
 
     <?if $(IncludeARM) = True?>
-      <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_armv7)">
+      <Feature Id="armv7" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_armv7)">
         <Level Condition="InstallARMSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.arm" />
@@ -2191,7 +2191,7 @@
     <?endif?>
 
     <?if $(IncludeX64) = True?>
-      <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_amd64)">
+      <Feature Id="amd64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_amd64)">
         <Level Condition="InstallX64SDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.x64" />
@@ -2236,7 +2236,7 @@
     <?endif?>
 
     <?if $(IncludeX86) = True?>
-      <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_x86)">
+      <Feature Id="x86" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_x86)">
         <Level Condition="InstallX86SDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.x86" />
@@ -2274,7 +2274,7 @@
 
         <ComponentGroupRef Id="Registrar.x86" />
 
-          <?if $(ANDROID_INCLUDE_DS2) = True?>
+        <?if $(ANDROID_INCLUDE_DS2) = True?>
           <ComponentGroupRef Id="ds2.x86" />
         <?endif?>
       </Feature>
