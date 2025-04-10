@@ -198,6 +198,9 @@
         <File Source="$(ToolchainRoot)\usr\bin\swift-run.exe" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\swift-sdk.exe" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-test.exe" />
       </Component>
 
