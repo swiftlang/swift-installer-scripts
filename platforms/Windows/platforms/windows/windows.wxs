@@ -362,10 +362,10 @@
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="libdispatch.arm64">
         <Component Directory="Dispatch.swiftmodule" DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+          <File Name="aarch64-unknown-windows-msvc.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\Dispatch.swiftdoc" />
         </Component>
         <Component Directory="Dispatch.swiftmodule" DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+          <File Name="aarch64-unknown-windows-msvc.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\Dispatch.swiftmodule" />
         </Component>
 
         <Component Directory="WindowsSDK_usr_lib_swift_windows_arm64" DiskId="2">
@@ -379,10 +379,10 @@
     <?if $(IncludeX64) = True?>
       <ComponentGroup Id="libdispatch.x64">
         <Component Directory="Dispatch.swiftmodule" DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+          <File Name="x86_64-unknown-windows-msvc.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\Dispatch.swiftdoc" />
         </Component>
         <Component Directory="Dispatch.swiftmodule" DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+          <File Name="x86_64-unknown-windows-msvc.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\Dispatch.swiftmodule" />
         </Component>
 
         <Component Directory="WindowsSDK_usr_lib_swift_windows_x64" DiskId="3">
@@ -396,10 +396,10 @@
     <?if $(IncludeX86) = True?>
       <ComponentGroup Id="libdispatch.x86">
         <Component Directory="Dispatch.swiftmodule" DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+          <File Name="i686-unknown-windows-msvc.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\windows\i686\Dispatch.swiftdoc" />
         </Component>
         <Component Directory="Dispatch.swiftmodule" DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+          <File Name="i686-unknown-windows-msvc.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\windows\i686\Dispatch.swiftmodule" />
         </Component>
 
         <Component Directory="WindowsSDK_usr_lib_swift_windows_x86" DiskId="4">
