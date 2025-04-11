@@ -78,6 +78,7 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="android">
+                      <Directory Id="_Testing_Foundation.swiftmodule" Name="_Testing_Foundation.swiftmodule" />
                       <?if $(IncludeARM64) = True?>
                         <Directory Id="Testing_usr_lib_swift_android_arm64" Name="aarch64" DiskId="2" />
                       <?endif?>
@@ -90,6 +91,7 @@
                       <?if $(IncludeX86) = True?>
                         <Directory Id="Testing_usr_lib_swift_android_x86" Name="i686" DiskId="5" />
                       <?endif?>
+                      <Directory Id="Testing.swiftcrossimport" Name="Testing.swiftcrossimport" />
                       <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
@@ -230,6 +232,11 @@
     <?endif?>
 
     <!-- Testing -->
+    <ComponentGroup Id="Testing">
+      <Component Directory="Testing.swiftcrossimport">
+        <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftcrossimport\Foundation.swiftoverlay" />
+      </Component>
+    </ComponentGroup>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Testing.arm64">
         <Component Directory="Testing.swiftmodule" DiskId="2">
@@ -239,8 +246,18 @@
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\aarch64-unknown-linux-android.swiftinterface" />
         </Component>
 
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\aarch64-unknown-linux-android.swiftinterface" />
+        </Component>
+
         <Component Directory="Testing_usr_lib_swift_android_arm64" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\aarch64\libTesting.so" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_android_arm64" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\aarch64\lib_Testing_Foundation.so" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -253,8 +270,18 @@
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\armv7-unknown-linux-android.swiftinterface" />
         </Component>
 
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\armv7-unknown-linux-android.swiftinterface" />
+        </Component>
+
         <Component Directory="Testing_usr_lib_swift_android_arm" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\armv7\libTesting.so" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_android_arm" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\armv7\lib_Testing_Foundation.so" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -267,8 +294,18 @@
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\x86_64-unknown-linux-android.swiftinterface" />
         </Component>
 
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\x86_64-unknown-linux-android.swiftinterface" />
+        </Component>
+
         <Component Directory="Testing_usr_lib_swift_android_x64" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\x86_64\libTesting.so" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_android_x64" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\x86_64\lib_Testing_Foundation.so" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -281,8 +318,18 @@
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\i686-unknown-linux-android.swiftinterface" />
         </Component>
 
-        <Component Directory="Testing.swiftmodule" DiskId="5">
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="5">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="5">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\_Testing_Foundation.swiftmodule\i686-unknown-linux-android.swiftinterface" />
+        </Component>
+
+        <Component Directory="Testing_usr_lib_swift_android_x86" DiskId="5">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\i686\libTesting.so" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_android_x86" DiskId="5">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\i686\lib_Testing_Foundation.so" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -2091,6 +2138,8 @@
       <ComponentGroupRef Id="libdispatch" />
       <ComponentGroupRef Id="_FoundationUnicode" />
       <ComponentGroupRef Id="_FoundationCShims" />
+
+      <ComponentGroupRef Id="Testing" />
 
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="SwiftShims" />
