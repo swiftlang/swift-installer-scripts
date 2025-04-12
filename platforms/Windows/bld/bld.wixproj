@@ -4,7 +4,6 @@
       $(DefineConstants);
       _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang;
       _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang;
-      WORKAROUND_MIMALLOC_ISSUE_997=$(WORKAROUND_MIMALLOC_ISSUE_997);
     </DefineConstants>
   </PropertyGroup>
 
