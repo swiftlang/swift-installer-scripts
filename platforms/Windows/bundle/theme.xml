@@ -6,7 +6,7 @@
 <Theme xmlns="http://wixtoolset.org/schemas/v4/thmutil">
     <Font Id="0" Height="-12" Weight="500" Foreground="windowtext" Background="window">Segoe UI</Font>
     <Font Id="1" Height="-24" Weight="500" Foreground="windowtext">Segoe UI</Font>
-    <Font Id="2" Height="-22" Weight="500" Foreground="graytext">Segoe UI</Font>
+    <Font Id="2" Height="-18" Weight="500" Foreground="graytext">Segoe UI</Font>
     <Font Id="3" Height="-12" Weight="500" Foreground="windowtext" Background="window">Segoe UI</Font>
 
     <Window Width="614" Height="456" HexStyle="100a0000" FontId="0" Caption="#(loc.Caption)">
@@ -48,29 +48,31 @@
         </Page>
 
         <Page Name="Options">
-            <Label X="176" Y="46" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
-            <Editbox Name="InstallRoot" X="176" Y="80" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
-            <Button Name="BrowseButton" X="-11" Y="79" Width="75" Height="23" TabStop="yes" FontId="3">
+            <Label X="176" Y="46" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
+            <Editbox Name="InstallRoot" X="176" Y="70" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
+            <Button Name="BrowseButton" X="-11" Y="69" Width="75" Height="23" TabStop="yes" FontId="3">
                 <Text>#(loc.OptionsBrowseButton)</Text>
                 <BrowseDirectoryAction VariableName="InstallRoot" />
             </Button>
 
-            <Label X="176" Y="111" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
-            <Checkbox Name="OptionsInstallBLD" X="176" Y="141" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallCLI" X="176" Y="159" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallDBG" X="176" Y="177" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallIDE" X="176" Y="195" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallRTL" X="176" Y="213" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallSDKAMD64" X="176" Y="231" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallRedistAMD64" X="194" Y="249" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallSDKAMD64">#(loc.Redist_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallSDKARM64" X="176" Y="267" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallRedistARM64" X="194" Y="285" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallSDKArm64">#(loc.Redist_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallSDKX86" X="176" Y="303" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Sdk_ProductName_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallRedistX86" X="194" Y="321" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallSDKX86">#(loc.Redist_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKARM4" X="176" Y="339" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Android_Sdk_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKAMD64" X="176" Y="357" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Android_Sdk_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKARM" X="176" Y="375" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Android_Sdk_arm)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKX86" X="176" Y="393" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Android_Sdk_x86)</Checkbox>
+            <Label X="176" Y="88" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
+            <Checkbox Name="OptionsInstallBLD" X="176" Y="111" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallCLI" X="176" Y="129" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallDBG" X="176" Y="147" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallIDE" X="176" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallRTL" X="176" Y="183" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsPlatform" X="176" Y="201" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Windows)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsSDKAMD64" X="194" Y="219" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsRedistAMD64" X="212" Y="237" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKAMD64">#(loc.Redist_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsSDKARM64" X="194" Y="255" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsRedistARM64" X="212" Y="273" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKARM64">#(loc.Redist_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsSDKX86" X="194" Y="291" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_x86)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsRedistX86" X="212" Y="309" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKX86">#(loc.Redist_x86)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidPlatform" X="176" Y="327" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Android)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKARM64" X="194" Y="345" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKAMD64" X="194" Y="363" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKARM" X="194" Y="381" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_armv7)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKX86" X="194" Y="399" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_x86)</Checkbox>
 
             <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
                 <Text>#(loc.OptionsOkButton)</Text>

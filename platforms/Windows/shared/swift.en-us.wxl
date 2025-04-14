@@ -10,19 +10,21 @@
   <String Id="VCRuntime_ProductName_arm64" Value="Visual C++ Runtime (ARM64)" />
   <String Id="VCRuntime_ProductName_amd64" Value="Visual C++ Runtime (AMD64)" />
   <String Id="VCRuntime_ProductName_x86" Value="Visual C++ Runtime (X86)" />
+  <String Id="Plt_ProductName_Android" Value="Swift Android Platform Support" />
+  <String Id="Plt_ProductName_Windows" Value="Swift Windows Platform Support" />
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Runtime (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Runtime (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Runtime (X86)" />
-  <String Id="Sdk_ProductName_arm64" Value="Swift Windows SDK (ARM64)" />
-  <String Id="Sdk_ProductName_amd64" Value="Swift Windows SDK (AMD64)" />
-  <String Id="Sdk_ProductName_x86" Value="Swift Windows SDK (X86)" />
+  <String Id="Sdk_ProductName_Android_arm64" Value="Swift Android SDK (ARM64)" />
+  <String Id="Sdk_ProductName_Android_armv7" Value="Swift Android SDK (ARMv7)" />
+  <String Id="Sdk_ProductName_Android_amd64" Value="Swift Android SDK (AMD64)" />
+  <String Id="Sdk_ProductName_Android_x86" Value="Swift Android SDK (X86)" />
+  <String Id="Sdk_ProductName_Windows_arm64" Value="Swift Windows SDK (ARM64)" />
+  <String Id="Sdk_ProductName_Windows_amd64" Value="Swift Windows SDK (AMD64)" />
+  <String Id="Sdk_ProductName_Windows_x86" Value="Swift Windows SDK (X86)" />
   <String Id="Utl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
-  <String Id="Android_Sdk_arm64" Value="Swift Android SDK (ARM64)" />
-  <String Id="Android_Sdk_amd64" Value="Swift Android SDK (AMD64)" />
-  <String Id="Android_Sdk_arm" Value="Swift Android SDK (ARM)" />
-  <String Id="Android_Sdk_x86" Value="Swift Android SDK (X86)" />
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 
