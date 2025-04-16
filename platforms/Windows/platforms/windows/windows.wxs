@@ -89,6 +89,7 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="windows">
+                      <Directory Id="_Testing_Foundation.swiftmodule" Name="_Testing_Foundation.swiftmodule" />
                       <?if $(IncludeARM64) = True?>
                         <Directory DiskId="2" Id="Testing_usr_lib_swift_windows_arm64" Name="aarch64" />
                       <?endif?>
@@ -98,6 +99,7 @@
                       <?if $(IncludeX86) = True?>
                         <Directory DiskId="4" Id="Testing_usr_lib_swift_windows_x86" Name="i686" />
                       <?endif?>
+                      <Directory Id="Testing.swiftcrossimport" Name="Testing.swiftcrossimport" />
                       <Directory Id="Testing.swiftmodule" Name="Testing.swiftmodule" />
                     </Directory>
                   </Directory>
@@ -222,19 +224,39 @@
     <?endif?>
 
     <!-- Testing -->
+    <ComponentGroup Id="Testing">
+      <Component Directory="Testing.swiftcrossimport">
+        <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftcrossimport\Foundation.swiftoverlay" />
+      </Component>
+    </ComponentGroup>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Testing.arm64">
         <Component Directory="Testing_usr_bin64a" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64a\Testing.dll" />
         </Component>
+        <Component Directory="Testing_usr_bin64a" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64a\_Testing_Foundation.dll" />
+        </Component>
+
         <Component Directory="Testing_usr_lib_swift_windows_arm64" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\aarch64\Testing.lib" />
         </Component>
+        <Component Directory="Testing_usr_lib_swift_windows_arm64" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\aarch64\_Testing_Foundation.lib" />
+        </Component>
+
         <Component Directory="Testing.swiftmodule" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component Directory="Testing.swiftmodule" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
+        </Component>
+
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -243,14 +265,29 @@
         <Component Directory="Testing_usr_bin64" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64\Testing.dll" />
         </Component>
+        <Component Directory="Testing_usr_bin64" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64\_Testing_Foundation.dll" />
+        </Component>
+
         <Component Directory="Testing_usr_lib_swift_windows_x64" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\x86_64\Testing.lib" />
         </Component>
+        <Component Directory="Testing_usr_lib_swift_windows_x64" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\x86_64\_Testing_Foundation.lib" />
+        </Component>
+
         <Component Directory="Testing.swiftmodule" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component Directory="Testing.swiftmodule" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
+        </Component>
+
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -259,14 +296,29 @@
         <Component Directory="Testing_usr_bin32" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin32\Testing.dll" />
         </Component>
+        <Component Directory="Testing_usr_bin32" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin32\_Testing_Foundation.dll" />
+        </Component>
+
         <Component Directory="Testing_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\i686\Testing.lib" />
         </Component>
+        <Component Directory="Testing_usr_lib_swift_windows_x86" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\i686\_Testing_Foundation.lib" />
+        </Component>
+
         <Component Directory="Testing.swiftmodule" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component Directory="Testing.swiftmodule" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\Testing.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
+        </Component>
+
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component Directory="_Testing_Foundation.swiftmodule" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\_Testing_Foundation.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -1665,6 +1717,8 @@
       <ComponentGroupRef Id="libdispatch" />
       <ComponentGroupRef Id="_FoundationUnicode" />
       <ComponentGroupRef Id="_FoundationCShims" />
+
+      <ComponentGroupRef Id="Testing" />
 
       <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="Configuration" />
