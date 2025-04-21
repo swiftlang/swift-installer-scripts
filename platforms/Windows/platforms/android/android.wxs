@@ -128,7 +128,6 @@
                     <Directory Id="AndroidSDK_usr_lib_swift_apinotes" Name="apinotes" />
                     <Directory Id="AndroidSDK_usr_lib_swift_shims" Name="shims" />
                     <Directory Id="AndroidSDK_usr_lib_swift_android" Name="android">
-                      <Directory Id="_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
                       <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
                       <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
                       <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
@@ -575,76 +574,6 @@
     <ComponentGroup Id="_FoundationCShims" Directory="AndroidSDK_usr_include__FoundationCShims">
       <?include ../_FoundationCShims.wxi?>
     </ComponentGroup>
-
-    <!-- _Builtin_float -->
-    <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_Builtin_float.arm64" Directory="_Builtin_float.swiftmodule">
-        <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
-        </Component>
-        <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
-        </Component>
-
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm64" DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Builtin_float.so" />
-        </Component>
-      </ComponentGroup>
-    <?endif?>
-    <?if $(IncludeARM) = True?>
-      <ComponentGroup Id="_Builtin_float.arm" Directory="_Builtin_float.swiftmodule">
-        <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
-        </Component>
-        <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
-        </Component>
-
-        <Component Directory="AndroidSDK_usr_lib_swift_android_arm" DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Builtin_float.so" />
-        </Component>
-      </ComponentGroup>
-    <?endif?>
-    <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_Builtin_float.x64" Directory="_Builtin_float.swiftmodule">
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftinterface" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
-        </Component>
-
-        <Component Directory="AndroidSDK_usr_lib_swift_android_x64" DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Builtin_float.so" />
-        </Component>
-      </ComponentGroup>
-    <?endif?>
-    <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_Builtin_float.x86" Directory="_Builtin_float.swiftmodule">
-        <Component DiskId="5">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftdoc" />
-        </Component>
-        <Component DiskId="5">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftinterface" />
-        </Component>
-        <Component DiskId="5">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftmodule" />
-        </Component>
-
-        <Component Directory="AndroidSDK_usr_lib_swift_android_x86" DiskId="5">
-          <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Builtin_float.so" />
-        </Component>
-      </ComponentGroup>
-    <?endif?>
 
     <!-- _Concurrency -->
     <?if $(IncludeARM64) = True?>
@@ -2177,7 +2106,6 @@
         <ComponentGroupRef Id="Swift.arm64" />
         <ComponentGroupRef Id="SwiftOnoneSupport.arm64" />
         <ComponentGroupRef Id="Synchronization.arm64" />
-        <ComponentGroupRef Id="_Builtin_float.arm64" />
         <ComponentGroupRef Id="_Concurrency.arm64" />
         <ComponentGroupRef Id="_Differentiation.arm64" />
         <ComponentGroupRef Id="_FoundationCollections.arm64" />
@@ -2222,7 +2150,6 @@
         <ComponentGroupRef Id="Swift.arm" />
         <ComponentGroupRef Id="SwiftOnoneSupport.arm" />
         <ComponentGroupRef Id="Synchronization.arm" />
-        <ComponentGroupRef Id="_Builtin_float.arm" />
         <ComponentGroupRef Id="_Concurrency.arm" />
         <ComponentGroupRef Id="_Differentiation.arm" />
         <ComponentGroupRef Id="_FoundationCollections.arm" />
@@ -2267,7 +2194,6 @@
         <ComponentGroupRef Id="Swift.x64" />
         <ComponentGroupRef Id="SwiftOnoneSupport.x64" />
         <ComponentGroupRef Id="Synchronization.x64" />
-        <ComponentGroupRef Id="_Builtin_float.x64" />
         <ComponentGroupRef Id="_Concurrency.x64" />
         <ComponentGroupRef Id="_Differentiation.x64" />
         <ComponentGroupRef Id="_FoundationCollections.x64" />
@@ -2312,7 +2238,6 @@
         <ComponentGroupRef Id="Swift.x86" />
         <ComponentGroupRef Id="SwiftOnoneSupport.x86" />
         <ComponentGroupRef Id="Synchronization.x86" />
-        <ComponentGroupRef Id="_Builtin_float.x86" />
         <ComponentGroupRef Id="_Concurrency.x86" />
         <ComponentGroupRef Id="_Differentiation.x86" />
         <ComponentGroupRef Id="_FoundationCollections.x86" />
