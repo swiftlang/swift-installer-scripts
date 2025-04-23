@@ -108,7 +108,7 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(IncludeAndroid) == true?>
+      <?if $(IncludeAndroid) == True?>
         <MsiPackage
           SourceFile="!(bindpath.platform.android)\android.msi"
           InstallCondition="OptionsInstallAndroidPlatform = 1"
@@ -122,7 +122,7 @@
         </MsiPackage>
       <?endif?>
 
-      <?if $(IncludeWindows) == true?>
+      <?if $(IncludeWindows) == True?>
         <MsiPackage
           SourceFile="!(bindpath.platform.windows)\windows.msi"
           InstallCondition="OptionsInstallWindowsPlatform = 1"
