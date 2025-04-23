@@ -2241,7 +2241,7 @@
 
     <?if $(IncludeX64) = True?>
       <Feature Id="amd64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_amd64)">
-        <Level Condition="InstallX64SDK = 0" Value="0" />
+        <Level Condition="InstallAMD64SDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.x64" />
         <ComponentGroupRef Id="Testing.x64" />
