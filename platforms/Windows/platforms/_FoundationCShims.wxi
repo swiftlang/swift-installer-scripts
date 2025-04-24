@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\bplist_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.inc.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\filemanager_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\io_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\module.modulemap" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\platform_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\string_shims.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\uuid.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_CShimsMacros.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_CShimsTargetConditionals.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_CStdlib.h" />
+  </Component>
+  <Component>
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_FoundationCShims.h" />
+  </Component>
+</Include>
