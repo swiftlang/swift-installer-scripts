@@ -183,6 +183,78 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SwiftBuild" Directory="_usr_bin">
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBAndroidPlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBApplePlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBBuildService.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBBuildSystem.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBCAS.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBCLibc.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBCore.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBCSupport.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBGenericUnixPlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBLibc.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBLLBuild.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBMacro.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBProjectModel.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBProtocol.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBQNXPlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBServiceCore.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBTaskConstruction.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBTaskExecution.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBUniversalPlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBUtil.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBWebAssemblyPlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SWBWindowsPlatform.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftBuild.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="package_manager" Directory="_usr_bin">
       <ComponentGroupRef Id="CompilerPluginSupport" />
       <ComponentGroupRef Id="PackageDescription" />
@@ -267,6 +339,7 @@
 
       <ComponentGroupRef Id="collections" />
       <ComponentGroupRef Id="llbuild" />
+      <ComponentGroupRef Id="SwiftBuild" />
       <ComponentGroupRef Id="package_manager" />
 
       <ComponentGroupRef Id="DocC" />
