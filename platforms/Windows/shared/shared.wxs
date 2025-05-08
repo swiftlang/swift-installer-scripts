@@ -47,6 +47,9 @@
                 <Directory Id="_usr_lib_swift" Name="swift">
                   <Directory Id="_usr_lib_swift_clang" Name="clang" />
                 </Directory>
+                <Directory Id="_usr_lib_swift_static" Name="swift_static">
+                  <Directory Id="_usr_lib_swift_static_clang" Name="clang" />
+                </Directory>
               </Directory>
               <Directory Id="_usr_share" Name="share">
                 <Directory Id="_usr_share_docc" Name="docc">
