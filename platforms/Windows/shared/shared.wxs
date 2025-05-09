@@ -52,6 +52,16 @@
                 <Directory Id="_usr_share_docc" Name="docc">
                   <Directory Id="_usr_share_docc_render" Name="render" />
                 </Directory>
+                <Directory Id="_usr_share_pm" Name="pm">
+                  <Directory Id="_usr_share_pm_SWBAndroidPlatform" Name="SwiftBuild_SWBAndroidPlatform.resources" />
+                  <Directory Id="_usr_share_pm_SWBApplePlatform" Name="SwiftBuild_SWBApplePlatform.resources" />
+                  <Directory Id="_usr_share_pm_SWBCore" Name="SwiftBuild_SWBCore.resources" />
+                  <Directory Id="_usr_share_pm_SWBGenericUnixPlatform" Name="SwiftBuild_SWBGenericUnixPlatform.resources" />
+                  <Directory Id="_usr_share_pm_SWBQNXPlatform" Name="SwiftBuild_SWBQNXPlatform.resources" />
+                  <Directory Id="_usr_share_pm_SWBUniversalPlatform" Name="SwiftBuild_SWBUniversalPlatform.resources" />
+                  <Directory Id="_usr_share_pm_SWBWebAssemblyPlatform" Name="SwiftBuild_SWBWebAssemblyPlatform.resources" />
+                  <Directory Id="_usr_share_pm_SWBWindowsPlatform" Name="SwiftBuild_SWBWindowsPlatform.resources" />
+                </Directory>
               </Directory>
             </Directory>
           </Directory>
