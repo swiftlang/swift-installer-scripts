@@ -238,6 +238,9 @@
         <File Source="$(ToolchainRoot)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftFixIt.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
       </Component>
 
