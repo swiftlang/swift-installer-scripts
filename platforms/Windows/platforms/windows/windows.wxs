@@ -595,7 +595,7 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
         </Component>
 
-        <Component Directory="WindowsSDK_usr_lib_swift_windows_x86">
+        <Component Directory="WindowsSDK_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swift_Concurrency.lib" />
         </Component>
       </ComponentGroup>
@@ -1602,20 +1602,20 @@
 
     <!-- apinotes -->
     <ComponentGroup Id="apinotes" Directory="WindowsSDK_usr_lib_swift_apinotes">
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\lib\swift\apinotes\std.apinotes" />
       </Component>
     </ComponentGroup>
 
     <!-- libcxxshim -->
     <ComponentGroup Id="libcxxshim" Directory="WindowsSDK_usr_lib_swift_windows">
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\libcxxshim.h" />
       </Component>
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\libcxxshim.modulemap" />
       </Component>
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\libcxxstdlibshim.h" />
       </Component>
     </ComponentGroup>
@@ -1660,46 +1660,46 @@
 
     <!-- clang modules -->
     <ComponentGroup Id="AuxiliaryFiles" Directory="WindowsSDK_usr_share">
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\ucrt.modulemap" />
       </Component>
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\winsdk.modulemap" />
       </Component>
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\vcruntime.apinotes" />
       </Component>
-      <Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\vcruntime.modulemap" />
       </Component>
     </ComponentGroup>
 
     <!-- Configuration -->
     <ComponentGroup Id="Configuration">
-      <Component Directory="WindowsSDK">
+      <Component Directory="WindowsSDK" DiskId="1">
         <File Source="$(SDKRoot)\SDKSettings.json" />
       </Component>
-      <Component Directory="WindowsSDK">
+      <Component Directory="WindowsSDK" DiskId="1">
         <File Source="$(SDKRoot)\SDKSettings.plist" />
       </Component>
-      <Component Directory="WindowsPlatform">
+      <Component Directory="WindowsPlatform" DiskId="1">
         <File Source="$(PlatformRoot)\Info.plist" />
       </Component>
     </ComponentGroup>
 
     <!-- Redistributables -->
     <?if $(IncludeARM64) = True?>
-      <Component Id="rtl.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST">
+      <Component Id="rtl.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
         <File Source="!(bindpath.rtl.arm64.msm)\rtl.arm64.msm" />
       </Component>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <Component Id="rtl.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST">
+      <Component Id="rtl.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
         <File Source="!(bindpath.rtl.amd64.msm)\rtl.amd64.msm" />
       </Component>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <Component Id="rtl.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST">
+      <Component Id="rtl.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
         <File Source="!(bindpath.rtl.x86.msm)\rtl.x86.msm" />
       </Component>
     <?endif?>
