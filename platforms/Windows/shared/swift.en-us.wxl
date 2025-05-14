@@ -28,7 +28,6 @@
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 
-  <String Id="OptionsFeaturesLabel" Value="Feature Selection" />
   <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
   <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
   <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
@@ -48,13 +47,21 @@
   <String Id="HelpCloseButton" Value="&amp;Close" />
   <String Id="InstallLicenseLinkText" Value="[WixBundleName] &lt;a href=&quot;#&quot;&gt;license terms&lt;/a&gt;." />
   <String Id="InstallAcceptCheckbox" Value="I &amp;agree to the license terms and conditions" />
-  <String Id="InstallOptionsButton" Value="&amp;Options" />
+  <String Id="InstallOptionsButton" Value="Customi&amp;ze" />
   <String Id="InstallInstallButton" Value="&amp;Install" />
   <String Id="InstallCancelButton" Value="&amp;Cancel" />
-  <String Id="OptionsHeader" Value="Setup Options" />
-  <String Id="OptionsLocationLabel" Value="Install Location" />
+  <String Id="OptionsLocationHeader" Value="Install Location" />
+  <String Id="OptionsLocationLabel" Value="Select where [ProductName] will be installed" />
+  <String Id="OptionsToolsHeader" Value="Tools" />
+  <String Id="OptionsToolsLabel" Value="Select which Swift development tools you want to install" />
+  <String Id="OptionsWindowsSDKHeader" Value="Windows Platform Support"/>
+  <String Id="OptionsWindowsSDKLabel" Value="Select which Windows platform components to install. Choose the architectures that match your development targets." />
+  <String Id="OptionsAndroidSDKHeader" Value="Android Platform Support"/>
+  <String Id="OptionsAndroidSDKLabel" Value="Select which Android platform components to install. Choose the architectures that match your development targets." />
   <String Id="OptionsBrowseButton" Value="&amp;Browse" />
   <String Id="OptionsOkButton" Value="&amp;OK" />
+  <String Id="OptionsBackButton" Value="&amp;Back" />
+  <String Id="OptionsNextButton" Value="&amp;Next" />
   <String Id="OptionsCancelButton" Value="&amp;Cancel" />
   <String Id="ProgressHeader" Value="Setup Progress" />
   <String Id="ProgressLabel" Value="Processing:" />

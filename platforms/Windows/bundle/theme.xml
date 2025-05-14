@@ -38,7 +38,7 @@
             <Button Name="InstallUpdateButton" X="11" Y="-11" Width="200" Height="23" TabStop="yes" FontId="0" EnableCondition="WixStdBAUpdateAvailable" HideWhenDisabled="yes">#(loc.UpdateButton)</Button>
             <Button Name="OptionsButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" VisibleCondition="NOT WixStdBASuppressOptionsUI">
                 <Text>#(loc.InstallOptionsButton)</Text>
-                <ChangePageAction Page="Options" />
+                <ChangePageAction Page="OptionsInstallRoot" />
             </Button>
             <Button Name="InstallButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">#(loc.InstallInstallButton)</Button>
             <Button Name="InstallCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
@@ -47,35 +47,96 @@
             </Button>
         </Page>
 
-        <Page Name="Options">
-            <Label X="176" Y="46" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
-            <Editbox Name="InstallRoot" X="176" Y="70" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
-            <Button Name="BrowseButton" X="-11" Y="69" Width="75" Height="23" TabStop="yes" FontId="3">
+        <Page Name="OptionsInstallRoot">
+            <Label X="176" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.OptionsLocationHeader)</Label>
+            <Label X="176" Y="91" Width="-11" Height="32" FontId="3" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
+            
+            <Editbox Name="InstallRoot" X="176" Y="130" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
+            <Button Name="BrowseButton" X="-11" Y="131" Width="75" Height="23" TabStop="yes" FontId="3">
                 <Text>#(loc.OptionsBrowseButton)</Text>
                 <BrowseDirectoryAction VariableName="InstallRoot" />
             </Button>
 
-            <Label X="176" Y="88" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
-            <Checkbox Name="OptionsInstallBLD" X="176" Y="111" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallCLI" X="176" Y="129" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallDBG" X="176" Y="147" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallIDE" X="176" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallRTL" X="176" Y="183" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsPlatform" X="176" Y="201" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Windows)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsSDKAMD64" X="194" Y="219" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsRedistAMD64" X="212" Y="237" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKAMD64">#(loc.Redist_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsSDKARM64" X="194" Y="255" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsRedistARM64" X="212" Y="273" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKARM64">#(loc.Redist_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsSDKX86" X="194" Y="291" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsRedistX86" X="212" Y="309" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKX86">#(loc.Redist_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidPlatform" X="176" Y="327" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Android)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKARM64" X="194" Y="345" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKAMD64" X="194" Y="363" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKARM" X="194" Y="381" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_armv7)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKX86" X="194" Y="399" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_x86)</Checkbox>
+            <Button Name="OptionsBackButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" >
+                <Text>#(loc.OptionsBackButton)</Text>
+                <ChangePageAction Page="Install" />
+            </Button>
+            <Button Name="OptionsNextButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsNextButton)</Text>
+                <ChangePageAction Page="OptionsTools" />
+            </Button>
+            <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsCancelButton)</Text>
+                <ChangePageAction Page="Install" Cancel="yes" />
+            </Button>
+        </Page>
 
-            <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
-                <Text>#(loc.OptionsOkButton)</Text>
+        <Page Name="OptionsTools">
+            <Label X="176" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.OptionsToolsHeader)</Label>
+            <Label X="176" Y="91" Width="-11" Height="64" FontId="3" DisablePrefix="yes">#(loc.OptionsToolsLabel)</Label>
+            
+            <Checkbox Name="OptionsInstallBLD" X="176" Y="130" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallCLI" X="176" Y="148" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallDBG" X="176" Y="166" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallIDE" X="176" Y="184" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallRTL" X="176" Y="202" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
+           
+            <Button Name="OptionsBackButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" >
+                <Text>#(loc.OptionsBackButton)</Text>
+                <ChangePageAction Page="OptionsInstallRoot" />
+            </Button>
+            <Button Name="OptionsNextButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsNextButton)</Text>
+                <ChangePageAction Page="OptionsWindowsSDK" />
+            </Button>
+            <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsCancelButton)</Text>
+                <ChangePageAction Page="Install" Cancel="yes" />
+            </Button>
+        </Page>
+
+        <Page Name="OptionsWindowsSDK">
+            <Label X="176" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.OptionsWindowsSDKHeader)</Label>
+            <Label X="176" Y="91" Width="-11" Height="64" FontId="3" DisablePrefix="yes">#(loc.OptionsWindowsSDKLabel)</Label>
+
+            <Checkbox Name="OptionsInstallWindowsPlatform" X="176" Y="130" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Windows)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsSDKAMD64" X="194" Y="148" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsRedistAMD64" X="212" Y="166" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKAMD64">#(loc.Redist_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsSDKARM64" X="194" Y="184" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsRedistARM64" X="212" Y="202" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKARM64">#(loc.Redist_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsSDKX86" X="194" Y="220" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_x86)</Checkbox>
+            <Checkbox Name="OptionsInstallWindowsRedistX86" X="212" Y="238" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKX86">#(loc.Redist_x86)</Checkbox>
+    
+            <Button Name="OptionsBackButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" >
+                <Text>#(loc.OptionsBackButton)</Text>
+                <ChangePageAction Page="OptionsTools" />
+            </Button>
+            <Button Name="OptionsNextButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsNextButton)</Text>
+                <ChangePageAction Page="OptionsAndroidSDK" />
+            </Button>
+            <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsCancelButton)</Text>
+                <ChangePageAction Page="Install" Cancel="yes" />
+            </Button>
+        </Page>
+
+        <Page Name="OptionsAndroidSDK">
+            <Label X="176" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.OptionsAndroidSDKHeader)</Label>
+            <Label X="176" Y="91" Width="-11" Height="64" FontId="3" DisablePrefix="yes">#(loc.OptionsAndroidSDKLabel)</Label>
+
+            <Checkbox Name="OptionsInstallAndroidPlatform" X="176" Y="130" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Android)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKARM64" X="194" Y="148" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKAMD64" X="194" Y="166" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKARM" X="194" Y="184" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_armv7)</Checkbox>
+            <Checkbox Name="OptionsInstallAndroidSDKX86" X="194" Y="202" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_x86)</Checkbox>
+
+            <Button Name="OptionsBackButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" >
+                <Text>#(loc.OptionsBackButton)</Text>
+                <ChangePageAction Page="OptionsWindowsSDK" />
+            </Button>
+            <Button Name="OptionsNextButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+                <Text>#(loc.OptionsNextButton)</Text>
                 <ChangePageAction Page="Install" />
             </Button>
             <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
