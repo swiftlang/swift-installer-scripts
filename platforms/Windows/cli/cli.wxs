@@ -654,6 +654,12 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="System" Directory="_usr_bin">
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SystemPackage.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="package_manager" Directory="_usr_bin">
       <ComponentGroupRef Id="CompilerPluginSupport" />
       <ComponentGroupRef Id="PackageDescription" />
@@ -709,6 +715,9 @@
         <File Source="$(ToolchainRoot)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftSDKCommand.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
       </Component>
 
@@ -742,6 +751,7 @@
       <ComponentGroupRef Id="collections" />
       <ComponentGroupRef Id="llbuild" />
       <ComponentGroupRef Id="SwiftBuild" />
+      <ComponentGroupRef Id="System" />
       <ComponentGroupRef Id="package_manager" />
 
       <ComponentGroupRef Id="DocC" />
