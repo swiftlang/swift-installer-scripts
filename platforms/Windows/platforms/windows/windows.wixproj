@@ -10,7 +10,12 @@
       IncludeARM64=$(WindowsArchitectures.Contains("aarch64"));
       IncludeX64=$(WindowsArchitectures.Contains("x86_64"));
       IncludeX86=$(WindowsArchitectures.Contains("i686"));
+      IncludeExperimentalSDK=$(IncludeExperimentalSDK);
     </DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IncludeExperimentalSDK)' == '' ">
+    <IncludeExperimentalSDK>False</IncludeExperimentalSDK>
   </PropertyGroup>
 
   <ItemGroup>
