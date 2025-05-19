@@ -5,11 +5,11 @@
   <String Id="Bld_ProductName" Value="Swift Build Tools" />
   <String Id="BldNoAsserts_ProductName" Value="Swift Build Tools (Asserts disabled)" />
   <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
-  <String Id="CliNoAsserts_ProductName" Value="Swift Command Line Tools" />
+  <String Id="CliNoAsserts_ProductName" Value="Swift Command Line Tools (Asserts disabled)" />
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
-  <String Id="DbgNoAsserts_ProductName" Value="Swift Debugging Tools" />
+  <String Id="DbgNoAsserts_ProductName" Value="Swift Debugging Tools (Asserts disabled)" />
   <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
-  <String Id="IdeNoAsserts_ProductName" Value="Swift IDE Integration Tools" />
+  <String Id="IdeNoAsserts_ProductName" Value="Swift IDE Integration Tools (Asserts disabled)" />
   <String Id="Rtl_ProductName" Value="Swift Windows Runtime" />
   <String Id="VCRuntime_ProductName_arm64" Value="Visual C++ Runtime (ARM64)" />
   <String Id="VCRuntime_ProductName_amd64" Value="Visual C++ Runtime (AMD64)" />
