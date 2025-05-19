@@ -42,90 +42,90 @@
 
     <ComponentGroup Id="clang" Directory="_usr_bin$(VariantSuffix)">
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-format.exe" />
+        <File Source="$(ToolchainVariantRoot)\usr\bin\clang-format.exe" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\git-clang-format" />
+        <File Source="$(ToolchainVariantRoot)\usr\bin\git-clang-format" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-tidy.exe" />
+        <File Source="$(ToolchainVariantRoot)\usr\bin\clang-tidy.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="libclang" Directory="_usr_include_clang_c$(VariantSuffix)">
       <Component Directory="_usr_bin$(VariantSuffix)">
-        <File Source="$(ToolchainRoot)\usr\bin\libclang.dll" />
+        <File Source="$(ToolchainVariantRoot)\usr\bin\libclang.dll" />
       </Component>
 
       <Component Directory="_usr_lib$(VariantSuffix)">
-        <File Source="$(ToolchainRoot)\usr\lib\libclang.lib" />
+        <File Source="$(ToolchainVariantRoot)\usr\lib\libclang.lib" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\BuildSystem.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\BuildSystem.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXCompilationDatabase.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\CXCompilationDatabase.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXErrorCode.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\CXErrorCode.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXString.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\CXString.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Documentation.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\Documentation.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\FatalErrorHandler.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\FatalErrorHandler.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Index.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\Index.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Platform.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\Platform.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Refactor.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\include\clang-c\Refactor.h" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="IndexStore" Directory="_usr_include_indexstore$(VariantSuffix)">
       <Component Directory="_usr_bin$(VariantSuffix)">
-        <File Source="$(ToolchainRoot)\usr\bin\libIndexStore.dll" />
+        <File Source="$(ToolchainVariantRoot)\usr\bin\libIndexStore.dll" />
       </Component>
 
       <Component Directory="_usr_lib$(VariantSuffix)">
-        <File Source="$(ToolchainRoot)\usr\lib\libIndexStore.lib" />
+        <File Source="$(ToolchainVariantRoot)\usr\lib\libIndexStore.lib" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\local\include\indexstore\indexstore.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\local\include\indexstore\indexstore.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\local\include\indexstore\IndexStoreCXX.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\local\include\indexstore\IndexStoreCXX.h" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="_InternalSwiftScan" Directory="_usr_include__InternalSwiftScan$(VariantSuffix)">
       <Component Directory="_usr_bin$(VariantSuffix)">
-        <File Source="$(ToolchainRoot)\usr\bin\_InternalSwiftScan.dll" />
+        <File Source="$(ToolchainVariantRoot)\usr\bin\_InternalSwiftScan.dll" />
       </Component>
 
       <Component Directory="_usr_lib$(VariantSuffix)">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" />
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\module.modulemap" />
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\_InternalSwiftScan\module.modulemap" />
       </Component>
     </ComponentGroup>
 
