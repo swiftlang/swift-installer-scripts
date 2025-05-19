@@ -85,7 +85,15 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.bld)\bld.msi"
+        SourceFile="!(bindpath.bld.asserts)\bld.asserts.msi"
+        InstallCondition="OptionsInstallAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
+        InstallCondition="OptionsInstallNoAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>

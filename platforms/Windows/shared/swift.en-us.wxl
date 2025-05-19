@@ -3,7 +3,7 @@
 <WixLocalization xmlns="http://wixtoolset.org/schemas/v4/wxl" Culture="en-US">
   <String Id="DowngradeError" Value="A newer version of [ProductName] is already installed." />
   <String Id="Bld_ProductName" Value="Swift Build Tools" />
-  <String Id="Bld_NoAsserts_ProductName" Value="Swift Build Tools (Asserts disabled)" />
+  <String Id="BldNoAsserts_ProductName" Value="Swift Build Tools (Asserts disabled)" />
   <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
   <String Id="CliNoAsserts_ProductName" Value="Swift Command Line Tools" />
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
