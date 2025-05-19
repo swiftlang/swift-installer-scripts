@@ -3,6 +3,7 @@
 <WixLocalization xmlns="http://wixtoolset.org/schemas/v4/wxl" Culture="en-US">
   <String Id="DowngradeError" Value="A newer version of [ProductName] is already installed." />
   <String Id="Bld_ProductName" Value="Swift Build Tools" />
+  <String Id="Bld_NoAsserts_ProductName" Value="Swift Build Tools (Asserts disabled)" />
   <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
   <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
@@ -25,6 +26,8 @@
   <String Id="Utl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
+  <String Id="Asserts_Toolchain_ProductName" Value="Swift Toolchain (Asserts enabled)" />
+  <String Id="NoAsserts_Toolchain_ProductName" Value="Swift Toolchain (Asserts disabled)" />
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 

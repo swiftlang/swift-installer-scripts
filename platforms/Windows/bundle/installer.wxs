@@ -54,6 +54,9 @@
     <Variable Name="OptionsInstallAndroidSDKARM" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="OptionsInstallAndroidSDKX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
+    <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
+
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.
     (The SourceFile attribute is also required, both for the offline bundle and for Burn
@@ -85,6 +88,8 @@
         SourceFile="!(bindpath.bld)\bld.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="InstallAssertsToolchain" Value="[OptionsInstallAssertsToolchain]" />
+        <MsiProperty Name="InstallNoAssertsToolchain" Value="[OptionsInstallNoAssertsToolchain]" />
       </MsiPackage>
 
       <MsiPackage
