@@ -105,12 +105,19 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.dbg)\dbg.msi"
-        InstallCondition="OptionsInstallDBG = 1"
+        SourceFile="!(bindpath.dbg.asserts)\dbg.asserts.msi"
+        InstallCondition="OptionsInstallDBG = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
+      <MsiPackage
+        SourceFile="!(bindpath.dbg.noasserts)\dbg.noasserts.msi"
+        InstallCondition="OptionsInstallDBG = 1 and OptionsInstallNoAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+  
       <MsiPackage
         SourceFile="!(bindpath.ide)\ide.msi"
         InstallCondition="OptionsInstallIDE = 1"

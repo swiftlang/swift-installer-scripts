@@ -19,7 +19,8 @@
     <ProjectReference Include="..\bld\bld.wixproj" BindName="bld" />
     <ProjectReference Include="..\cli\asserts\cli.asserts.wixproj" BindName="cli.asserts" />
     <ProjectReference Include="..\cli\noasserts\cli.noasserts.wixproj" BindName="cli.noasserts" />
-    <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
+    <ProjectReference Include="..\dbg\asserts\dbg.asserts.wixproj" BindName="dbg.asserts" />
+    <ProjectReference Include="..\dbg\noasserts\dbg.noasserts.wixproj" BindName="dbg.noasserts" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
   </ItemGroup>

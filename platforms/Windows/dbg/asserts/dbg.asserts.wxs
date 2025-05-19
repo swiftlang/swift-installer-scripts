@@ -1,0 +1,10 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
+  <?define ToolchainVariantRoot = $(ToolchainRoot)?>
+  <?define VariantSuffix ?>
+  <?define VariantUpgradeCode = $(DbgUpgradeCode)?>
+  <?define VariantProductName = !(loc.Dbg_ProductName)?>
+  <?define VariantCabName = dbg.asserts.cab?>
+
+  <?include ../dbg.wxi ?>
+</Wix>
