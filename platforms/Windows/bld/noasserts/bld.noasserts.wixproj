@@ -2,8 +2,8 @@
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
-      _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang;
-      _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang;
+      _USR_LIB_CLANG_NOASSERTS=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang;
+      _USR_LIB_SWIFT_CLANG_NOASSERTS=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang;
     </DefineConstants>
     <OutputName>bld.noasserts</OutputName>
   </PropertyGroup>
@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang">
-      <ComponentGroupName>ClangResources</ComponentGroupName>
-      <DirectoryRefId>_usr_lib_clang</DirectoryRefId>
-      <PreprocessorVariable>var._USR_LIB_CLANG</PreprocessorVariable>
+      <ComponentGroupName>ClangResources_noasserts</ComponentGroupName>
+      <DirectoryRefId>_usr_lib_clang_noasserts</DirectoryRefId>
+      <PreprocessorVariable>var._USR_LIB_CLANG_NOASSERTS</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
@@ -24,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang">
-      <ComponentGroupName>SwiftClangResources</ComponentGroupName>
-      <DirectoryRefId>_usr_lib_swift_clang</DirectoryRefId>
-      <PreprocessorVariable>var._USR_LIB_SWIFT_CLANG</PreprocessorVariable>
+    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift\clang">
+      <ComponentGroupName>SwiftClangResources_noasserts</ComponentGroupName>
+      <DirectoryRefId>_usr_lib_swift_clang_noasserts</DirectoryRefId>
+      <PreprocessorVariable>var._USR_LIB_SWIFT_CLANG_NOASSERTS</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>

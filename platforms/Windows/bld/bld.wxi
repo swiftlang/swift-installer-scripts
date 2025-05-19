@@ -14,28 +14,28 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="_usr_include">
-      <Directory Id="_usr_include_llvm_c" Name="llvm-c" />
-      <Directory Id="_usr_include_swift" Name="swift" />
+    <DirectoryRef Id="_usr_include$(VariantSuffix)">
+      <Directory Id="_usr_include_llvm_c$(VariantSuffix)" Name="llvm-c" />
+      <Directory Id="_usr_include_swift$(VariantSuffix)" Name="swift" />
     </DirectoryRef>
 
-    <DirectoryRef Id="_usr_lib_swift">
-      <Directory Id="_usr_lib_swift_migrator" Name="migrator" />
-      <Directory Id="_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
+    <DirectoryRef Id="_usr_lib_swift$(VariantSuffix)">
+      <Directory Id="_usr_lib_swift_migrator$(VariantSuffix)" Name="migrator" />
+      <Directory Id="_usr_lib_swift_swiftToCxx$(VariantSuffix)" Name="swiftToCxx" />
     </DirectoryRef>
 
-    <DirectoryRef Id="_usr_share">
-      <Directory Id="_usr_share_clang" Name="clang" />
-      <Directory Id="_usr_share_swift" Name="swift" />
-      <Directory Id="_usr_share_doc" Name="doc">
-        <Directory Id="_usr_share_doc_swift" Name="swift">
-          <Directory Id="_usr_share_doc_swift_diagnostics" Name="diagnostics">
+    <DirectoryRef Id="_usr_share$(VariantSuffix)">
+      <Directory Id="_usr_share_clang$(VariantSuffix)" Name="clang" />
+      <Directory Id="_usr_share_swift$(VariantSuffix)" Name="swift" />
+      <Directory Id="_usr_share_doc$(VariantSuffix)" Name="doc">
+        <Directory Id="_usr_share_doc_swift$(VariantSuffix)" Name="swift">
+          <Directory Id="_usr_share_doc_swift_diagnostics$(VariantSuffix)" Name="diagnostics">
           </Directory>
         </Directory>
       </Directory>
     </DirectoryRef>
 
-    <ComponentGroup Id="cmark_gfm" Directory="_usr_bin">
+    <ComponentGroup Id="cmark_gfm" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin/cmark-gfm.dll" />
       </Component>
@@ -44,7 +44,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="binutils" Directory="_usr_bin">
+    <ComponentGroup Id="binutils" Directory="_usr_bin$(VariantSuffix)">
       <!-- TODO(compnerd) can we use symbolic links to llvm-ar.exe instead? -->
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\llvm-dlltool.exe" />
@@ -143,26 +143,26 @@
     </ComponentGroup>
 
     <ComponentGroup Id="lto">
-      <Component Directory="_usr_bin">
+      <Component Directory="_usr_bin$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\bin\LTO.dll" />
       </Component>
 
-      <Component Directory="_usr_lib">
+      <Component Directory="_usr_lib$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\lib\LTO.lib" />
       </Component>
 
-      <Component Directory="_usr_include_llvm_c">
+      <Component Directory="_usr_include_llvm_c$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\include\llvm-c\lto.h" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="ClangFeatures" Directory="_usr_share_clang">
+    <ComponentGroup Id="ClangFeatures" Directory="_usr_share_clang$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\clang\features.json" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="clang" Directory="_usr_bin">
+    <ComponentGroup Id="clang" Directory="_usr_bin$(VariantSuffix)">
       <ComponentGroupRef Id="ClangFeatures" />
 
       <!-- TODO(compnerd) can we use symbolic links to clang.exe instead? -->
@@ -193,7 +193,7 @@
       -->
     </ComponentGroup>
 
-    <ComponentGroup Id="lld" Directory="_usr_bin">
+    <ComponentGroup Id="lld" Directory="_usr_bin$(VariantSuffix)">
       <!-- TODO(compnerd) can we use symbolic links to lld.exe instead? -->
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\ld.lld.exe" />
@@ -213,11 +213,11 @@
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime">
-      <Component Directory="_usr_bin">
+      <Component Directory="_usr_bin$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\bin\BlocksRuntime.dll" />
       </Component>
 
-      <Component Directory="_usr_lib">
+      <Component Directory="_usr_lib$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\lib\BlocksRuntime.lib" />
       </Component>
 
@@ -225,18 +225,18 @@
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch">
-      <Component Directory="_usr_bin">
+      <Component Directory="_usr_bin$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\bin\dispatch.dll" />
       </Component>
 
-      <Component Directory="_usr_lib">
+      <Component Directory="_usr_lib$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\lib\dispatch.lib" />
       </Component>
 
       <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftCxx" Directory="_usr_lib_swift_swiftToCxx">
+    <ComponentGroup Id="SwiftCxx" Directory="_usr_lib_swift_swiftToCxx$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" />
       </Component>
@@ -247,27 +247,27 @@
         <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
       </Component>
 
-      <Component Directory="_usr_include_swift">
+      <Component Directory="_usr_include_swift$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\include\swift\bridging.modulemap" />
       </Component>
-      <Component Directory="_usr_include_swift">
+      <Component Directory="_usr_include_swift$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\include\swift\bridging" />
       </Component>
-      <Component Directory="_usr_include_swift">
+      <Component Directory="_usr_include_swift$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\include\module.modulemap" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftDemangle">
-      <Component Directory="_usr_bin">
+      <Component Directory="_usr_bin$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\bin\swiftDemangle.dll" />
       </Component>
-      <Component Directory="_usr_lib">
+      <Component Directory="_usr_lib$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\usr\lib\swiftDemangle.lib" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftEducationalNotes" Directory="_usr_share_doc_swift_diagnostics">
+    <ComponentGroup Id="SwiftEducationalNotes" Directory="_usr_share_doc_swift_diagnostics$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\dynamic-callable-requirements.md" />
       </Component>
@@ -306,13 +306,13 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftFeatures" Directory="_usr_share_swift">
+    <ComponentGroup Id="SwiftFeatures" Directory="_usr_share_swift$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\swift\features.json" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftMigrator" Directory="_usr_lib_swift_migrator">
+    <ComponentGroup Id="SwiftMigrator" Directory="_usr_lib_swift_migrator$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\ios4.json" />
       </Component>
@@ -345,7 +345,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift" Directory="_usr_bin">
+    <ComponentGroup Id="swift" Directory="_usr_bin$(VariantSuffix)">
       <ComponentGroupRef Id="SwiftCxx" />
       <ComponentGroupRef Id="SwiftDemangle" />
       <ComponentGroupRef Id="SwiftEducationalNotes" />
@@ -370,7 +370,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftMacros" Directory="_usr_bin">
+    <ComponentGroup Id="SwiftMacros" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\ObservationMacros.dll" />
       </Component>
@@ -379,25 +379,25 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="FoundationMacros" Directory="_usr_bin">
+    <ComponentGroup Id="FoundationMacros" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\FoundationMacros.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="TestingMacros" Directory="_usr_bin">
+    <ComponentGroup Id="TestingMacros" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\TestingMacros.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="argument_parser" Directory="_usr_bin">
+    <ComponentGroup Id="argument_parser" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\ArgumentParser.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="tools_support_core" Directory="_usr_bin">
+    <ComponentGroup Id="tools_support_core" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\TSCBasic.dll" />
       </Component>
@@ -406,7 +406,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_driver" Directory="_usr_bin">
+    <ComponentGroup Id="swift_driver" Directory="_usr_bin$(VariantSuffix)">
       <!-- TODO(compnerd) can we use symbolic links to swift.exe instead? -->
       <Component>
         <File Name="swiftc.exe" Source="$(ToolchainRoot)\usr\bin\swift-driver.exe" />
@@ -430,7 +430,7 @@
       </Component>
     </ComponentGroup>
 
-   <ComponentGroup Id="compiler_swift_syntax" Directory="_usr_bin">
+   <ComponentGroup Id="compiler_swift_syntax" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftBasicFormat.dll" />
       </Component>
@@ -472,7 +472,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_syntax" Directory="_usr_bin">
+    <ComponentGroup Id="swift_syntax" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\SwiftBasicFormat.dll" />
       </Component>
@@ -514,7 +514,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="plugin_server" Directory="_usr_bin">
+    <ComponentGroup Id="plugin_server" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-plugin-server.exe" />
       </Component>
@@ -523,7 +523,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="mimalloc" Directory="_usr_bin">
+    <ComponentGroup Id="mimalloc" Directory="_usr_bin$(VariantSuffix)">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\mimalloc.dll" />
       </Component>
@@ -537,13 +537,13 @@
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
-      <Component Directory="ToolchainsVersioned">
+      <Component Directory="ToolchainsVersioned$(VariantSuffix)">
         <File Source="$(ToolchainRoot)\ToolchainInfo.plist" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin$(VariantSuffix)" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
       </Component>
     </ComponentGroup>
@@ -569,8 +569,8 @@
       <ComponentGroupRef Id="TestingMacros" />
       <ComponentGroupRef Id="mimalloc" />
 
-      <ComponentGroupRef Id="ClangResources" />
-      <ComponentGroupRef Id="SwiftClangResources" />
+      <ComponentGroupRef Id="ClangResources$(VariantSuffix)" />
+      <ComponentGroupRef Id="SwiftClangResources$(VariantSuffix)" />
 
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="EnvironmentVariables" />
