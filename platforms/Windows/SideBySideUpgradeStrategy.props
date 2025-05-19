@@ -23,6 +23,7 @@
     <DbgUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgUpgradeCode>
     <DbgNoAssertsUpgradeCode>{6F26625B-7662-4631-8E0E-F2244339ED37}</DbgNoAssertsUpgradeCode>
     <IdeUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeUpgradeCode>
+    <IdeNoAssertsUpgradeCode>{C5519168-CF7B-4127-98B7-D886D9789B42}</IdeNoAssertsUpgradeCode>
     <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
     <AndroidPlatformUpgradeCode>{313B9C1F-D5B5-4FED-B7E0-138F1EE6B26A}</AndroidPlatformUpgradeCode>
     <WindowsPlatformUpgradeCode>{01AFF1CF-A025-41B6-BCBC-728D794353FD}</WindowsPlatformUpgradeCode>
@@ -62,6 +63,7 @@
       DbgUpgradeCode=$(DbgUpgradeCode);
       DbgNoAssertsUpgradeCode=$(DbgNoAssertsUpgradeCode);
       IdeUpgradeCode=$(IdeUpgradeCode);
+      IdeNoAssertsUpgradeCode=$(IdeNoAssertsUpgradeCode);
       RtlUpgradeCode=$(RtlUpgradeCode);
       AndroidPlatformUpgradeCode=$(AndroidPlatformUpgradeCode);
       WindowsPlatformUpgradeCode=$(WindowsPlatformUpgradeCode);

@@ -1,18 +1,17 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-
-  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Ide_ProductName)"
-      UpgradeCode="$(IdeUpgradeCode)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="ide.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="$(VariantCabName)" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(IdeUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
@@ -59,7 +58,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="IDETools" AllowAbsent="no" Title="!(loc.Ide_ProductName)">
+    <Feature Id="IDETools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="clangd" />
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="sourcekitd" />
@@ -68,4 +67,4 @@
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
-</Wix>
+</Include>

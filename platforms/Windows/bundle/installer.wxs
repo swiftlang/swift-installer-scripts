@@ -119,8 +119,15 @@
       </MsiPackage>
   
       <MsiPackage
-        SourceFile="!(bindpath.ide)\ide.msi"
-        InstallCondition="OptionsInstallIDE = 1"
+        SourceFile="!(bindpath.ide.asserts)\ide.asserts.msi"
+        InstallCondition="OptionsInstallIDE = 1 OptionsInstallAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.ide.noasserts)\ide.noasserts.msi"
+        InstallCondition="OptionsInstallIDE = 1 and OptionsInstallNoAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
