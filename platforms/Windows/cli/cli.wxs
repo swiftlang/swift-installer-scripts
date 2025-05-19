@@ -709,6 +709,9 @@
         <File Source="$(ToolchainRoot)\usr\bin\SPMBuildCore.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftSDKCommand.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
       </Component>
 
