@@ -1,0 +1,27 @@
+<Project Sdk="WixToolset.Sdk/4.0.5">
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      SWIFT_DOCC_BUILD=$(SWIFT_DOCC_BUILD);
+      INCLUDE_SWIFT_DOCC=$(INCLUDE_SWIFT_DOCC);
+      SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
+      SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST=$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist;
+    </DefineConstants>
+    <OutputName>cli.noasserts</OutputName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(INCLUDE_SWIFT_DOCC)' == 'True' ">
+    <HarvestDirectory Include="$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist">
+      <ComponentGroupName>DocCRender</ComponentGroupName>
+      <DirectoryRefId>_usr_share_docc_render</DirectoryRefId>
+      <PreprocessorVariable>var.SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+</Project>

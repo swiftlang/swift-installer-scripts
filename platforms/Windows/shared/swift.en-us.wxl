@@ -5,6 +5,7 @@
   <String Id="Bld_ProductName" Value="Swift Build Tools" />
   <String Id="Bld_NoAsserts_ProductName" Value="Swift Build Tools (Asserts disabled)" />
   <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
+  <String Id="CliNoAsserts_ProductName" Value="Swift Command Line Tools" />
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
   <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
   <String Id="Rtl_ProductName" Value="Swift Windows Runtime" />
