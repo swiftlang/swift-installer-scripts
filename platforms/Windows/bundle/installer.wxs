@@ -95,6 +95,7 @@
         InstallCondition="OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="ADDTOOLCHAINTOPATH" Value="1"/>
       </MsiPackage>
 
       <?if $(INCLUDE_NOASSERTS) == True?> 
@@ -103,6 +104,7 @@
           InstallCondition="OptionsInstallNoAssertsToolchain = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsInstallAssertsToolchain = 0" Value="1" />
         </MsiPackage>
       <?endif?>
 

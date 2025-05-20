@@ -543,8 +543,8 @@
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="_usr_bin$(VariantSuffix)" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
-        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
+      <Component Id="UserPathVariable$(VariantSuffix)" Condition="NOT ALLUSERS=1 AND ADDTOOLCHAINTOPATH=1" Directory="_usr_bin$(VariantSuffix)" Guid="$(VariantEnvironmentComponentGUID)">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin$(VariantSuffix)]" />
       </Component>
     </ComponentGroup>
 
