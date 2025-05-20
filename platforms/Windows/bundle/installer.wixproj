@@ -8,6 +8,7 @@
       $(DefineConstants);
       IncludeAndroid=$(Platforms.Contains("android"));
       IncludeWindows=$(Platforms.Contains("windows"));
+      INCLUDE_NOASSERTS=$(INCLUDE_NOASSERTS);
     </DefineConstants>
   </PropertyGroup>
 
@@ -17,13 +18,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\bld\asserts\bld.asserts.wixproj" BindName="bld.asserts" />
-    <ProjectReference Include="..\bld\noasserts\bld.noasserts.wixproj" BindName="bld.noasserts" />
+    <ProjectReference Include="..\bld\noasserts\bld.noasserts.wixproj" BindName="bld.noasserts" Condition="$(INCLUDE_NOASSERTS) == True"/>
     <ProjectReference Include="..\cli\asserts\cli.asserts.wixproj" BindName="cli.asserts" />
-    <ProjectReference Include="..\cli\noasserts\cli.noasserts.wixproj" BindName="cli.noasserts" />
+    <ProjectReference Include="..\cli\noasserts\cli.noasserts.wixproj" BindName="cli.noasserts" Condition="$(INCLUDE_NOASSERTS) == True"/>
     <ProjectReference Include="..\dbg\asserts\dbg.asserts.wixproj" BindName="dbg.asserts" />
-    <ProjectReference Include="..\dbg\noasserts\dbg.noasserts.wixproj" BindName="dbg.noasserts" />
+    <ProjectReference Include="..\dbg\noasserts\dbg.noasserts.wixproj" BindName="dbg.noasserts" Condition="$(INCLUDE_NOASSERTS) == True"/>
     <ProjectReference Include="..\ide\asserts\ide.asserts.wixproj" BindName="ide.asserts" />
-    <ProjectReference Include="..\ide\noasserts\ide.noasserts.wixproj" BindName="ide.noasserts" />
+    <ProjectReference Include="..\ide\noasserts\ide.noasserts.wixproj" BindName="ide.noasserts" Condition="$(INCLUDE_NOASSERTS) == True"/>
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
   </ItemGroup>
 
