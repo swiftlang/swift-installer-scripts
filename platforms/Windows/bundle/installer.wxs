@@ -57,7 +57,13 @@
     <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
 
-    <!--
+    <?if $(INCLUDE_NOASSERTS) == True?> 
+      <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <?else ?>
+      <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <?endif?>
+
+    <!-- 
     For the online bundle, we need to provide a download URL for each package and its .cabs.
     (The SourceFile attribute is also required, both for the offline bundle and for Burn
     to get the hash of the packages. Note that the packages and .cabs available for
@@ -91,7 +97,7 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(INCLUDE_NOASSERTS) == True?>
+      <?if $(INCLUDE_NOASSERTS) == True?> 
         <MsiPackage
           SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
           InstallCondition="OptionsInstallNoAssertsToolchain = 1"
