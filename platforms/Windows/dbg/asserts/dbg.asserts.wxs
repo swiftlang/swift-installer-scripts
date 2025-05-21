@@ -2,8 +2,8 @@
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
   <?define ToolchainVariantRoot = $(ToolchainRoot)?>
   <?define VariantSuffix ?>
-  <?define VariantUpgradeCode = $(DbgUpgradeCode)?>
-  <?define VariantProductName = !(loc.Dbg_ProductName)?>
+  <?define VariantUpgradeCode = $(DbgAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.DbgAsserts_ProductName)?>
   <?define VariantCabName = dbg.asserts.cab?>
 
   <?include ../dbg.wxi ?>

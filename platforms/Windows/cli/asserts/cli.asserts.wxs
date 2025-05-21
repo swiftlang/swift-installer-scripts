@@ -2,8 +2,8 @@
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
   <?define ToolchainVariantRoot = $(ToolchainRoot)?>
   <?define VariantSuffix ?>
-  <?define VariantUpgradeCode = $(CliUpgradeCode)?>
-  <?define VariantProductName = !(loc.Cli_ProductName)?>
+  <?define VariantUpgradeCode = $(CliAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.CliAsserts_ProductName)?>
   <?define VariantCabName = cli.asserts.cab?>
 
   <?include ../cli.wxi ?>

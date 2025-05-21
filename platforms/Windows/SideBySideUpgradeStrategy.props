@@ -17,13 +17,13 @@
   -->
 
   <PropertyGroup>
-    <BldUpgradeCode>{7E95DC06-7F84-4E8E-A038-8304AF0468FB}</BldUpgradeCode>
+    <BldAssertsUpgradeCode>{7E95DC06-7F84-4E8E-A038-8304AF0468FB}</BldAssertsUpgradeCode>
     <BldNoAssertsUpgradeCode>{0F18B0C5-F6EE-46DE-A930-E666BEE6A9C3}</BldNoAssertsUpgradeCode>
-    <CliUpgradeCode>{87019842-3F3E-4227-B5C5-23A8EF72AD89}</CliUpgradeCode>
+    <CliAssertsUpgradeCode>{87019842-3F3E-4227-B5C5-23A8EF72AD89}</CliAssertsUpgradeCode>
     <CliNoAssertsUpgradeCode>{BBF4E043-FAB3-4E7A-9E6D-714E3F3EBA9C}</CliNoAssertsUpgradeCode>
-    <DbgUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgUpgradeCode>
+    <DbgAssertsUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgAssertsUpgradeCode>
     <DbgNoAssertsUpgradeCode>{6F26625B-7662-4631-8E0E-F2244339ED37}</DbgNoAssertsUpgradeCode>
-    <IdeUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeUpgradeCode>
+    <IdeAssertsUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeAssertsUpgradeCode>
     <IdeNoAssertsUpgradeCode>{C5519168-CF7B-4127-98B7-D886D9789B42}</IdeNoAssertsUpgradeCode>
     <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
     <AndroidPlatformUpgradeCode>{313B9C1F-D5B5-4FED-B7E0-138F1EE6B26A}</AndroidPlatformUpgradeCode>
@@ -58,13 +58,13 @@
     <DefineConstants>
       $(DefineConstants);
       BundleUpgradeCode=$(BundleUpgradeCode);
-      BldUpgradeCode=$(BldUpgradeCode);
+      BldAssertsUpgradeCode=$(BldAssertsUpgradeCode);
       BldNoAssertsUpgradeCode=$(BldNoAssertsUpgradeCode);
-      CliUpgradeCode=$(CliUpgradeCode);
+      CliAssertUpgradeCode=$(CliAssertUpgradeCode);
       CliNoAssertsUpgradeCode=$(CliNoAssertsUpgradeCode);
-      DbgUpgradeCode=$(DbgUpgradeCode);
+      DbgAssertsUpgradeCode=$(DbgAssertsUpgradeCode);
       DbgNoAssertsUpgradeCode=$(DbgNoAssertsUpgradeCode);
-      IdeUpgradeCode=$(IdeUpgradeCode);
+      IdeAssertsUpgradeCode=$(IdeAssertsUpgradeCode);
       IdeNoAssertsUpgradeCode=$(IdeNoAssertsUpgradeCode);
       RtlUpgradeCode=$(RtlUpgradeCode);
       AndroidPlatformUpgradeCode=$(AndroidPlatformUpgradeCode);

@@ -2,8 +2,8 @@
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
   <?define ToolchainVariantRoot = $(ToolchainRoot)?>
   <?define VariantSuffix ?>
-  <?define VariantUpgradeCode = $(IdeUpgradeCode)?>
-  <?define VariantProductName = !(loc.Ide_ProductName)?>
+  <?define VariantUpgradeCode = $(IdeAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.IdeAsserts_ProductName)?>
   <?define VariantCabName = ide.asserts.cab?>
 
   <?include ../ide.wxi ?>

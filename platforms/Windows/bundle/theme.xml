@@ -56,10 +56,10 @@
             </Button>
 
             <Label X="192" Y="88" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
-            <Checkbox Name="OptionsInstallBLD" X="192" Y="111" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallCLI" X="192" Y="129" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallDBG" X="192" Y="147" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallIDE" X="192" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallBLD" X="192" Y="111" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.BldAsserts_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallCLI" X="192" Y="129" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.CliAsserts_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallDBG" X="192" Y="147" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.DbgAsserts_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallIDE" X="192" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.IdeAsserts_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallRTL" X="192" Y="183" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallWindowsPlatform" X="192" Y="201" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Windows)</Checkbox>
             <Checkbox Name="OptionsInstallWindowsSDKAMD64" X="210" Y="219" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_amd64)</Checkbox>

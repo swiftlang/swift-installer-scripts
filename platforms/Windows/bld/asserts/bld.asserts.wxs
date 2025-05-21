@@ -2,8 +2,8 @@
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
   <?define ToolchainVariantRoot = $(ToolchainRoot)?>
   <?define VariantSuffix ?>
-  <?define VariantUpgradeCode = $(BldUpgradeCode)?>
-  <?define VariantProductName = !(loc.Bld_ProductName)?>
+  <?define VariantUpgradeCode = $(BldAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.BldAsserts_ProductName)?>
   <?define VariantCabName = bld.asserts.cab?>
   <?define VariantEnvironmentComponentGUID = ab52b870-23ee-42e8-9581-3fcbdfb9228c?>
 
