@@ -18,13 +18,19 @@
 
   <ItemGroup>
     <ProjectReference Include="..\bld\asserts\bld.asserts.wixproj" BindName="bld.asserts" />
-    <ProjectReference Include="..\bld\noasserts\bld.noasserts.wixproj" BindName="bld.noasserts" Condition="$(IncludeNoAsserts) == True"/>
     <ProjectReference Include="..\cli\asserts\cli.asserts.wixproj" BindName="cli.asserts" />
-    <ProjectReference Include="..\cli\noasserts\cli.noasserts.wixproj" BindName="cli.noasserts" Condition="$(IncludeNoAsserts) == True"/>
     <ProjectReference Include="..\dbg\asserts\dbg.asserts.wixproj" BindName="dbg.asserts" />
-    <ProjectReference Include="..\dbg\noasserts\dbg.noasserts.wixproj" BindName="dbg.noasserts" Condition="$(IncludeNoAsserts) == True"/>
     <ProjectReference Include="..\ide\asserts\ide.asserts.wixproj" BindName="ide.asserts" />
-    <ProjectReference Include="..\ide\noasserts\ide.noasserts.wixproj" BindName="ide.noasserts" Condition="$(IncludeNoAsserts) == True"/>
+  </ItemGroup>
+ 
+ <ItemGroup Condition=" $(ToolchainVariants.Contains('noasserts')) ">
+    <ProjectReference Include="..\bld\noasserts\bld.noasserts.wixproj" BindName="bld.noasserts" />
+    <ProjectReference Include="..\cli\noasserts\cli.noasserts.wixproj" BindName="cli.noasserts" />
+    <ProjectReference Include="..\dbg\noasserts\dbg.noasserts.wixproj" BindName="dbg.noasserts" />
+    <ProjectReference Include="..\ide\noasserts\ide.noasserts.wixproj" BindName="ide.noasserts" />
+  </ItemGroup>
+ 
+  <ItemGroup>
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
   </ItemGroup>
 
