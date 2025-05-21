@@ -33,8 +33,8 @@
   <String Id="Utl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
-  <String Id="Asserts_Toolchain_ProductName" Value="Swift Toolchain (Asserts enabled)" />
-  <String Id="NoAsserts_Toolchain_ProductName" Value="Swift Toolchain (Asserts disabled)" />
+  <String Id="Asserts_Toolchain_ProductName" Value="Swift Toolchain (Asserts)" />
+  <String Id="NoAsserts_Toolchain_ProductName" Value="Swift Toolchain (NoAsserts)" />
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 
