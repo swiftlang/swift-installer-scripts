@@ -57,7 +57,7 @@
     <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
 
-    <?if $(Include_NoAsserts) == True?>
+    <?if $(IncludeNoAsserts) == True?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
     <?else ?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
@@ -98,7 +98,7 @@
         <MsiProperty Name="ADDTOOLCHAINTOPATH" Value="1"/>
       </MsiPackage>
 
-      <?if $(Include_NoAsserts) == True?>
+      <?if $(IncludeNoAsserts) == True?>
         <MsiPackage
           SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
           InstallCondition="OptionsInstallNoAssertsToolchain = 1"
@@ -115,7 +115,7 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(Include_NoAsserts) == True?>
+      <?if $(IncludeNoAsserts) == True?>
         <MsiPackage
           SourceFile="!(bindpath.cli.noasserts)\cli.noasserts.msi"
           InstallCondition="OptionsInstallCLI = 1 and OptionsInstallNoAssertsToolchain = 1"
@@ -131,7 +131,7 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(Include_NoAsserts) == True?>
+      <?if $(IncludeNoAsserts) == True?>
         <MsiPackage
           SourceFile="!(bindpath.dbg.noasserts)\dbg.noasserts.msi"
           InstallCondition="OptionsInstallDBG = 1 and OptionsInstallNoAssertsToolchain = 1"
@@ -147,7 +147,7 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
-      <?if $(Include_NoAsserts) == True?>
+      <?if $(IncludeNoAsserts) == True?>
         <MsiPackage
           SourceFile="!(bindpath.ide.noasserts)\ide.noasserts.msi"
           InstallCondition="OptionsInstallIDE = 1 and OptionsInstallNoAssertsToolchain = 1"
