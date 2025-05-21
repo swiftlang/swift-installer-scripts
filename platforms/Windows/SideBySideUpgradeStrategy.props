@@ -60,7 +60,7 @@
       BundleUpgradeCode=$(BundleUpgradeCode);
       BldAssertsUpgradeCode=$(BldAssertsUpgradeCode);
       BldNoAssertsUpgradeCode=$(BldNoAssertsUpgradeCode);
-      CliAssertUpgradeCode=$(CliAssertUpgradeCode);
+      CliAssertsUpgradeCode=$(CliAssertsUpgradeCode);
       CliNoAssertsUpgradeCode=$(CliNoAssertsUpgradeCode);
       DbgAssertsUpgradeCode=$(DbgAssertsUpgradeCode);
       DbgNoAssertsUpgradeCode=$(DbgNoAssertsUpgradeCode);
