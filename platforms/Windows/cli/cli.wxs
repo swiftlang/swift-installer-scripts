@@ -721,7 +721,14 @@
     <ComponentGroup Id="DocC" Directory="_usr_bin">
       <?if $(INCLUDE_SWIFT_DOCC) = True?>
         <Component>
-          <File Source="$(SWIFT_DOCC_BUILD)\docc.exe" />
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\docc.exe" />
+        </Component>
+        <Component>
+          <File Source="$(TOOLCHAIN_ROOT)\usr\bin\SwiftDocC.dll" />
+        </Component>
+
+        <Component Directory="_usr_lib">
+          <File Source="$(TOOLCHAIN_ROOT)\usr\lib\SwiftDocC.lib" />
         </Component>
       <?endif?>
     </ComponentGroup>
