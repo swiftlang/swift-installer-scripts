@@ -95,7 +95,7 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.dbg)\dbg.msi"
+        SourceFile="!(bindpath.dbg.asserts)\dbg.asserts.msi"
         InstallCondition="OptionsInstallDBG = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />

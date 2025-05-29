@@ -19,7 +19,7 @@
   <PropertyGroup>
     <BldAssertsUpgradeCode>{7E95DC06-7F84-4E8E-A038-8304AF0468FB}</BldAssertsUpgradeCode>
     <CliAssertsUpgradeCode>{87019842-3F3E-4227-B5C5-23A8EF72AD89}</CliAssertsUpgradeCode>
-    <DbgUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgUpgradeCode>
+    <DbgAssertsUpgradeCode>{91D382AF-1E92-44DC-A4AD-AEE91C1B5160}</DbgAssertsUpgradeCode>
     <IdeUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeUpgradeCode>
     <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
     <AndroidPlatformUpgradeCode>{313B9C1F-D5B5-4FED-B7E0-138F1EE6B26A}</AndroidPlatformUpgradeCode>
@@ -56,7 +56,7 @@
       BundleUpgradeCode=$(BundleUpgradeCode);
       BldAssertsUpgradeCode=$(BldAssertsUpgradeCode);
       CliAssertsUpgradeCode=$(CliAssertsUpgradeCode);
-      DbgUpgradeCode=$(DbgUpgradeCode);
+      DbgAssertsUpgradeCode=$(DbgAssertsUpgradeCode);
       IdeUpgradeCode=$(IdeUpgradeCode);
       RtlUpgradeCode=$(RtlUpgradeCode);
       AndroidPlatformUpgradeCode=$(AndroidPlatformUpgradeCode);
