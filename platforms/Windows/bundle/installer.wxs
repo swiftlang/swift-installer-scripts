@@ -102,7 +102,7 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.ide)\ide.msi"
+        SourceFile="!(bindpath.ide.asserts)\ide.asserts.msi"
         InstallCondition="OptionsInstallIDE = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
