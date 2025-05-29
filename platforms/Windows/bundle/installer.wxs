@@ -82,7 +82,7 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.bld)\bld.msi"
+        SourceFile="!(bindpath.bld.asserts)\bld.asserts.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
