@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\bld\bld.wixproj" BindName="bld" />
+    <ProjectReference Include="..\bld\asserts\bld.asserts.wixproj" BindName="bld.asserts" />
     <ProjectReference Include="..\cli\cli.wixproj" BindName="cli" />
     <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
