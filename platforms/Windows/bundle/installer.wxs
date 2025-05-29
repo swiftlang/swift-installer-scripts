@@ -88,7 +88,7 @@
       </MsiPackage>
 
       <MsiPackage
-        SourceFile="!(bindpath.cli)\cli.msi"
+        SourceFile="!(bindpath.cli.asserts)\cli.asserts.msi"
         InstallCondition="OptionsInstallCLI = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />

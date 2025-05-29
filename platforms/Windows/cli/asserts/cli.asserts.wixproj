@@ -7,6 +7,7 @@
       SWIFT_FORMAT_BUILD=$(SWIFT_FORMAT_BUILD);
       SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST=$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist;
     </DefineConstants>
+    <OutputName>cli.asserts</OutputName>
   </PropertyGroup>
 
   <ItemGroup>
