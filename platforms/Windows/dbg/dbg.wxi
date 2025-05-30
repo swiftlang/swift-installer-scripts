@@ -1,18 +1,19 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
 
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Dbg_ProductName)"
-      UpgradeCode="$(DbgUpgradeCode)"
+      Name="!(loc.DbgAsserts_ProductName)"
+      UpgradeCode="$(DbgAssertsUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="dbg.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="dbg.asserts.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(DbgUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(DbgAssertsUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
@@ -140,7 +141,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="DebuggingTools" AllowAbsent="no" Title="!(loc.Dbg_ProductName)">
+    <Feature Id="DebuggingTools" AllowAbsent="no" Title="!(loc.DbgAsserts_ProductName)">
       <ComponentGroupRef Id="LLDB" />
       <ComponentGroupRef Id="LLDBServer" />
 
@@ -153,4 +154,4 @@
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
-</Wix>
+</Include>
