@@ -11,7 +11,7 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="ide.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="ide.asserts.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(IdeAssertsUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
