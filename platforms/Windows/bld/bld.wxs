@@ -572,6 +572,7 @@
 
       <ComponentGroupRef Id="ClangResources" />
       <ComponentGroupRef Id="SwiftClangResources" />
+      <ComponentGroupRef Id="SwiftStaticClangResources" />
 
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="EnvironmentVariables" />
