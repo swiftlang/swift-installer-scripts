@@ -85,7 +85,7 @@
         </Page>
 
         <Page Name="Progress">
-            <Label X="176" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.ProgressHeader)</Label>
+            <Label X="192" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.ProgressHeader)</Label>
             <Label Name="OverallProgressPackageText" X="192" Y="89" Width="-11" Height="17" FontId="3" DisablePrefix="yes">#(loc.OverallProgressPackageText)</Label>
             <Progressbar Name="OverallCalculatedProgressbar" X="192" Y="111" Width="-11" Height="20" />
             <Button Name="ProgressCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">#(loc.ProgressCancelButton)</Button>
