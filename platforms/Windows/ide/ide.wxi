@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
+      Version="$(NonSemVerProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="$(VariantCabName)" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+
+    <DirectoryRef Id="_usr_include$(VariantSuffix)">
+      <Directory Id="_usr_include_SourceKit$(VariantSuffix)" Name="SourceKit" />
+    </DirectoryRef>
+
+    <ComponentGroup Id="clangd" Directory="_usr_bin$(VariantSuffix)">
+      <Component>
+        <File Source="$(ToolchainVariantRoot)\usr\bin\clangd.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lldb" Directory="_usr_bin$(VariantSuffix)">
+      <Component>
+        <File Source="$(ToolchainVariantRoot)\usr\bin\lldb-dap.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="sourcekitd">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\sourcekitdInProc.dll" />
+      </Component>
+
+      <Component Directory="_usr_lib$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\sourcekitdInProc.lib" />
+      </Component>
+
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitPlugin.dll" />
+      </Component>
+
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitClientPlugin.dll" />
+      </Component>
+
+      <Component Directory="_usr_include_SourceKit$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\include\SourceKit\sourcekitd.h" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="lsp" Directory="_usr_bin$(VariantSuffix)">
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\sourcekit-lsp.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="IDETools" AllowAbsent="no" Title="$(VariantProductName)">
+      <ComponentGroupRef Id="clangd" />
+      <ComponentGroupRef Id="lldb" />
+      <ComponentGroupRef Id="sourcekitd" />
+      <ComponentGroupRef Id="lsp" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
+    </Feature>
+  </Package>
+</Include>

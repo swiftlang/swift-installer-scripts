@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
+      Version="$(NonSemVerProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="$(VariantCabName)" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+
+    <DirectoryRef Id="_usr_include$(VariantSuffix)">
+      <Directory Id="_usr_include__InternalSwiftStaticMirror$(VariantSuffix)" Name="_InternalSwiftStaticMirror" />
+    </DirectoryRef>
+
+    <DirectoryRef Id="_usr_lib$(VariantSuffix)">
+      <Directory Name="site-packages$(VariantSuffix)">
+        <Directory Id="_usr_lib_site_packages_lldb$(VariantSuffix)" Name="lldb">
+          <Directory Id="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)" Name="formatters">
+            <Directory Id="_usr_lib_site_packages_lldb_formatters_cpp$(VariantSuffix)" Name="cpp" />
+          </Directory>
+          <Directory Id="_usr_lib_site_packages_lldb_utils$(VariantSuffix)" Name="utils" />
+        </Directory>
+      </Directory>
+    </DirectoryRef> 
+
+    <ComponentGroup Id="LLDB">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\lldb.exe" />
+      </Component>
+
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\liblldb.dll" />
+      </Component>
+
+      <Component Directory="_usr_lib$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\liblldb.lib" />
+      </Component>
+
+      <Component Directory="_usr_lib_site_packages_lldb$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\__init__.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\_lldb.pyd" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\embedded_interpreter.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\lldb-argdumper.exe" />
+      </Component>
+
+      <Component Directory="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\Logger.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\__init__.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\cache.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\metrics.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\synth.py" />
+      </Component>
+
+      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\cpp\__init__.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_formatters_cpp$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" />
+      </Component>
+
+      <Component Directory="_usr_lib_site_packages_lldb_utils$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\utils\__init__.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_utils$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\utils\in_call_stack.py" />
+      </Component>
+      <Component Directory="_usr_lib_site_packages_lldb_utils$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\site-packages\lldb\utils\symbolication.py" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="LLDBServer">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\lldb-server.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftREPL">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\repl_swift.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftSynthesizeInterface">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\swift-synthesize-interface.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftInspect">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainRoot)\usr\bin\swift-inspect.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="_InternalSwiftStaticMirror" Directory="_usr_include__InternalSwiftStaticMirror$(VariantSuffix)">
+      <Component Directory="_usr_bin$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\bin\_InternalSwiftStaticMirror.dll" />
+      </Component>
+
+      <Component Directory="_usr_lib$(VariantSuffix)">
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\windows\_InternalSwiftStaticMirror.lib" />
+      </Component>
+
+      <Component>
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\_InternalSwiftStaticMirror\BinaryScan.h" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\_InternalSwiftStaticMirror\module.modulemap" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainVariantRoot)\usr\lib\swift\_InternalSwiftStaticMirror\StaticMirrorMacros.h" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="DebuggingTools" AllowAbsent="no" Title="$(VariantProductName)">
+      <ComponentGroupRef Id="LLDB" />
+      <ComponentGroupRef Id="LLDBServer" />
+
+      <ComponentGroupRef Id="SwiftREPL" />
+      <ComponentGroupRef Id="SwiftInspect" />
+      <ComponentGroupRef Id="SwiftSynthesizeInterface" />
+
+      <ComponentGroupRef Id="_InternalSwiftStaticMirror" />
+
+      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
+    </Feature>
+  </Package>
+</Include>
