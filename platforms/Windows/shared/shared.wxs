@@ -38,7 +38,7 @@
   <Fragment>
     <DirectoryRef Id="INSTALLROOT">
         <Directory Name="Toolchains">
-          <Directory Id="ToolchainsVersioned" Name="$(ProductVersion)+Asserts">
+          <Directory Id="ToolchainsVersionedAsserts" Name="$(ProductVersion)+Asserts">
             <Directory Id="_usr" Name="usr">
               <Directory Id="_usr_bin" Name="bin" />
               <Directory Id="_usr_include" Name="include" />
@@ -86,8 +86,8 @@
       </Component>
 
       <Component Id="VersionedDirectoryCleanupToolchains">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersioned" Value="[ToolchainsVersioned]" />
-        <util:RemoveFolderEx Property="TOOLCHAINSVERSIONED" Condition="TOOLCHAINSVERSIONED" />
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersionedAsserts" Value="[ToolchainsVersionedAsserts]" />
+        <util:RemoveFolderEx Property="TOOLCHAINSVERSIONEDASSERTS" Condition="TOOLCHAINSVERSIONEDASSERTS" />
       </Component>
     </ComponentGroup>
 
@@ -103,8 +103,8 @@
       <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RuntimesVersioned" Type="directory" />
     </Property>
 
-    <Property Id="TOOLCHAINSVERSIONED">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersioned" Type="directory" />
+    <Property Id="TOOLCHAINSVERSIONEDASSERTS">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersionedAsserts" Type="directory" />
     </Property>
   </Fragment>
 
