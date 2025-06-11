@@ -539,7 +539,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
-      <Component Directory="ToolchainsVersioned">
+      <Component Directory="ToolchainsVersionedAsserts">
         <File Source="$(ToolchainRoot)\ToolchainInfo.plist" />
       </Component>
     </ComponentGroup>
