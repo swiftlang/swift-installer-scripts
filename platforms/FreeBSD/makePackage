@@ -1,0 +1,141 @@
+#!/bin/sh -e
+#
+# Builds a FreeBSD package out of a toolchain.
+# Usage: makePackage /path/to/toolchain /path/to/final/package
+
+# Validate the command line arguments.
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 /path/to/toolchain /path/to/final/package" >/dev/stderr
+    exit 1
+fi
+
+# Create some variables for ease of use.
+PLATFORM="$(uname)"
+CURRENT_DIRECTORY="$(pwd)"
+TOOLCHAIN_PATH="$1"
+PACKAGE_PATH="$2"
+PACKAGE_STAGING="$(mktemp -d)"
+METADATA_STAGING="$(mktemp -d)"
+SWIFT_TOOLCHAIN_HOME="$PACKAGE_STAGING/usr/local/swift"
+
+# Check the platform and exit if we aren't running on FreeBSD.
+if [ ! "$PLATFORM" = "FreeBSD" ]; then
+  echo "Platform $PLATFORM is not supported" >/dev/stderr
+  exit 1
+fi
+
+# Create necessary directories on disk.
+mkdir -p "$METADATA_STAGING"
+mkdir -p "$PACKAGE_STAGING/usr/local/bin"
+echo "Staging Swift package files in $PACKAGE_STAGING..."
+
+# Check the path that we were provided. We want to ensure that the
+# path that we were given is the root of the produced toolchain.
+# In other words, directly below the directory that we were passed
+# should be another directory named `usr`.
+if [ ! -d "$TOOLCHAIN_PATH/usr" ]; then
+  echo "error: Directory provided was not the root directory of a toolchain" >/dev/stderr
+  exit 1
+fi
+
+# Stage the package files, dropping the initial usr/ directory
+# that is at the root of the provided toolchain from the path
+# but keeping everything after it.
+# So, the directory structure relative to the root of the staging
+# area will be
+# - ./usr/local/swift/bin
+# - ./usr/local/swift/lib
+# and so on.
+mkdir -p "$SWIFT_TOOLCHAIN_HOME"
+cp -R "$TOOLCHAIN_PATH/usr/" "$SWIFT_TOOLCHAIN_HOME"
+echo "Copied toolchain into $SWIFT_TOOLCHAIN_HOME."
+
+# Because the Swift toolchain will be installed to /usr/local/swift,
+# we need to create symlinks to the actual Swift binaries. This is
+# because users expect the installed binaries to be in the path at
+# /usr/local/bin.
+echo "Creating symlinks to Swift tools..."
+echo "Entering $PACKAGE_STAGING/usr/local/bin"
+cd "$PACKAGE_STAGING/usr/local/bin"
+ln -s "../swift/bin/swift" "swift"
+ln -s "../swift/bin/swiftc" "swiftc"
+echo "Returning to $CURRENT_DIRECTORY"
+
+# Once the symlink structure has been created, then we must generate
+# the list of files to store in the package. To do so, we iterate over
+# the staging area, and generate the list of files. These paths need
+# to be relative to ./usr/local since that is the prefix that we indicate
+# below in the manifest file.
+#
+# When the package is created using `pkg create`, pkg will handle the
+# process of generating the file hashes, etc. for everything here.
+echo "Generate package list..."
+cd "$PACKAGE_STAGING/usr/local"
+find "." -type l >  "$METADATA_STAGING/pkg-plist"
+find "." -type f >> "$METADATA_STAGING/pkg-plist"
+cd "$CURRENT_DIRECTORY"
+
+SWIFT_VERSION="$("$SWIFT_TOOLCHAIN_HOME/bin/swift" --version | grep -Eo 'version [0-9.]+' | sed 's/version //')"
+echo "Swift version being packaged is $SWIFT_VERSION"
+
+# Create the manifest file. All fields below are required. pkg_create(3)
+# will add additional fields as part of generating the package.
+echo "Generating manifest..."
+cat > "$METADATA_STAGING/manifest" <<EOF
+{
+  "name": "swift",
+  "version": "$SWIFT_VERSION",
+  "desc": "The Swift programming language",
+  "arch": "$(uname -m)",
+  "prefix": "/usr/local",
+  "origin": "",
+  "comment": "The Swift programming language",
+  "maintainer": "swift-infrastructure@forums.swift.org",
+  "www": "https://www.swift.org",
+  "deps": {
+    "e2fsprogs-libuuid": {
+      "version": "1.47.1",
+      "origin": "misc/e2fsprogs-libuuid"
+    },
+    "libffi": {
+      "version": "3.4.6",
+      "origin": "devel/libffi"
+    },
+    "libxml2": {
+      "version": "2.11.9",
+      "origin": "textproc/libxml2"
+    },
+    "mpdecimal": {
+      "version": "4.0.0",
+      "origin": "math/mpdecimal",
+    },
+    "python311": {
+      "version": "3.11.11",
+      "origin": "lang/python311"
+    },
+    "readline": {
+      "version": "8.2.13_2",
+      "origin": "devel/readline"
+    },
+    "sqlite3": {
+      "version": "3.46.1_1,1",
+      "origin": "databases/sqlite3"
+    }
+  }
+}
+EOF
+
+# Log where we wrote the metadata files.
+echo "Wrote manifest file to $METADATA_STAGING/manifest"
+echo "Wrote package file list to $METADATA_STAGING/pkg-plist"
+
+# Generate the package. This can take some time because pkg uses a high level
+# of compression.
+echo "Building package..."
+PACKAGE_FILE_NAME="$METADATA_STAGING/swift-$SWIFT_VERSION.pkg"
+mkdir -p "$(dirname $PACKAGE_PATH)"
+pkg create -f tzst -M "$METADATA_STAGING/manifest" -r "$PACKAGE_STAGING" -p "$METADATA_STAGING/pkg-plist" -o "$METADATA_STAGING"
+mv "$PACKAGE_FILE_NAME" "$PACKAGE_PATH"
+
+# Cleanup.
+rm -rf "$PACKAGE_STAGING" "$METADATA_STAGING"
