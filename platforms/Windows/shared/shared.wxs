@@ -39,21 +39,21 @@
     <DirectoryRef Id="INSTALLROOT">
         <Directory Name="Toolchains">
           <Directory Id="ToolchainsVersionedAsserts" Name="$(ProductVersion)+Asserts">
-            <Directory Id="_usr" Name="usr">
-              <Directory Id="_usr_bin" Name="bin" />
-              <Directory Id="_usr_include" Name="include" />
-              <Directory Id="_usr_lib" Name="lib">
-                <Directory Id="_usr_lib_clang" Name="clang" />
-                <Directory Id="_usr_lib_swift" Name="swift">
-                  <Directory Id="_usr_lib_swift_clang" Name="clang" />
+            <Directory Id="toolchains_asserts_usr" Name="usr">
+              <Directory Id="toolchains_asserts_usr_bin" Name="bin" />
+              <Directory Id="toolchains_asserts_usr_include" Name="include" />
+              <Directory Id="toolchains_asserts_usr_lib" Name="lib">
+                <Directory Id="toolchains_asserts_usr_lib_clang" Name="clang" />
+                <Directory Id="toolchains_asserts_usr_lib_swift" Name="swift">
+                  <Directory Id="toolchains_asserts_usr_lib_swift_clang" Name="clang" />
                 </Directory>
                 <Directory Id="_usr_lib_swift_static" Name="swift_static">
                   <Directory Id="_usr_lib_swift_static_clang" Name="clang" />
                 </Directory>
               </Directory>
-              <Directory Id="_usr_share" Name="share">
-                <Directory Id="_usr_share_docc" Name="docc">
-                  <Directory Id="_usr_share_docc_render" Name="render" />
+              <Directory Id="toolchains_asserts_usr_share" Name="share">
+                <Directory Id="toolchains_asserts_usr_share_docc" Name="docc">
+                  <Directory Id="toolchains_asserts_usr_share_docc_render" Name="render" />
                 </Directory>
               </Directory>
             </Directory>

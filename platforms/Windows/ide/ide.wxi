@@ -16,45 +16,45 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(IdeAssertsUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="_usr_include">
-      <Directory Id="_usr_include_SourceKit" Name="SourceKit" />
+    <DirectoryRef Id="toolchains_asserts_usr_include">
+      <Directory Id="toolchains_asserts_usr_include_SourceKit" Name="SourceKit" />
     </DirectoryRef>
 
-    <ComponentGroup Id="clangd" Directory="_usr_bin">
+    <ComponentGroup Id="clangd" Directory="toolchains_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\clangd.exe" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="lldb" Directory="_usr_bin">
+    <ComponentGroup Id="lldb" Directory="toolchains_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\lldb-dap.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="sourcekitd">
-      <Component Directory="_usr_bin">
+      <Component Directory="toolchains_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\sourcekitdInProc.dll" />
       </Component>
 
-      <Component Directory="_usr_lib">
+      <Component Directory="toolchains_asserts_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\sourcekitdInProc.lib" />
       </Component>
 
-      <Component Directory="_usr_bin">
+      <Component Directory="toolchains_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitPlugin.dll" />
       </Component>
 
-      <Component Directory="_usr_bin">
+      <Component Directory="toolchains_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitClientPlugin.dll" />
       </Component>
 
-      <Component Directory="_usr_include_SourceKit">
+      <Component Directory="toolchains_asserts_usr_include_SourceKit">
         <File Source="$(ToolchainRoot)\usr\include\SourceKit\sourcekitd.h" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="lsp" Directory="_usr_bin">
+    <ComponentGroup Id="lsp" Directory="toolchains_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\sourcekit-lsp.exe" />
       </Component>
