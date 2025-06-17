@@ -3,9 +3,13 @@
 <WixLocalization xmlns="http://wixtoolset.org/schemas/v4/wxl" Culture="en-US">
   <String Id="DowngradeError" Value="A newer version of [ProductName] is already installed." />
   <String Id="Bld_ProductName" Value="Swift Build Tools" />
+  <String Id="BldAsserts_ProductName" Value="Swift Build Tools (Asserts)" />
   <String Id="Cli_ProductName" Value="Swift Command Line Tools" />
+  <String Id="CliAsserts_ProductName" Value="Swift Command Line Tools (Asserts)" />
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
+  <String Id="DbgAsserts_ProductName" Value="Swift Debugging Tools (Asserts)" />
   <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
+  <String Id="IdeAsserts_ProductName" Value="Swift IDE Integration Tools (Asserts)" />
   <String Id="Rtl_ProductName" Value="Swift Windows Runtime" />
   <String Id="VCRuntime_ProductName_arm64" Value="Visual C++ Runtime (ARM64)" />
   <String Id="VCRuntime_ProductName_amd64" Value="Visual C++ Runtime (AMD64)" />
