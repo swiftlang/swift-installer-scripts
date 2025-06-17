@@ -39,4 +39,15 @@
       <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
   </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(SwiftShimsPath)">
+      <ComponentGroupName>ExperimentalSwiftShims</ComponentGroupName>
+      <DirectoryRefId>WindowsExperimentalSDK_usr_lib_swift_shims</DirectoryRefId>
+      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
 </Project>

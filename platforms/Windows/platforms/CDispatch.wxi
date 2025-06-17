@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\base.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\block.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\data.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\dispatch.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\group.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\introspection.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\io.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\module.modulemap" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\object.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\once.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\queue.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\semaphore.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\source.h" />
   </Component>
-  <Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\dispatch\time.h" />
   </Component>
 </Include>
