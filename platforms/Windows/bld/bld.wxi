@@ -1,18 +1,19 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
 
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.Bld_ProductName)"
-      UpgradeCode="$(BldUpgradeCode)"
+      Name="!(loc.BldAsserts_ProductName)"
+      UpgradeCode="$(BldAssertsUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="bld.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="bld.asserts.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(BldUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(BldAssertsUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="_usr_include">
@@ -549,7 +550,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="BuildTools" AllowAbsent="no" Title="!(loc.Bld_ProductName)">
+    <Feature Id="BuildTools" AllowAbsent="no" Title="!(loc.BldAsserts_ProductName)">
       <ComponentGroupRef Id="cmark_gfm" />
 
       <ComponentGroupRef Id="binutils" />
@@ -578,4 +579,4 @@
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
-</Wix>
+</Include>

@@ -5,6 +5,7 @@
       _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang;
       _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang;
     </DefineConstants>
+    <OutputName>bld.asserts</OutputName>
   </PropertyGroup>
 
   <ItemGroup>
