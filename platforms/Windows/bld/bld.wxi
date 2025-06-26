@@ -571,8 +571,8 @@
       <ComponentGroupRef Id="TestingMacros" />
       <ComponentGroupRef Id="mimalloc" />
 
-      <ComponentGroupRef Id="ClangResources" />
-      <ComponentGroupRef Id="SwiftClangResources" />
+      <ComponentGroupRef Id="ClangResources_asserts" />
+      <ComponentGroupRef Id="SwiftClangResources_asserts" />
 
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="EnvironmentVariables" />
