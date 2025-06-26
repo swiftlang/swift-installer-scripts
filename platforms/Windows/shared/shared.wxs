@@ -58,6 +58,23 @@
               </Directory>
             </Directory>
           </Directory>
+          <Directory Id="ToolchainsVersionedNoAsserts" Name="$(ProductVersion)+NoAsserts">
+            <Directory Id="toolchains_noasserts_usr" Name="usr">
+              <Directory Id="toolchains_noasserts_usr_bin" Name="bin" />
+              <Directory Id="toolchains_noasserts_usr_include" Name="include" />
+              <Directory Id="toolchains_noasserts_usr_lib" Name="lib">
+                <Directory Id="toolchains_noasserts_usr_lib_clang" Name="clang" />
+                <Directory Id="toolchains_noasserts_usr_lib_swift" Name="swift">
+                  <Directory Id="toolchains_noasserts_usr_lib_swift_clang" Name="clang" />
+                </Directory>
+              </Directory>
+              <Directory Id="toolchains_noasserts_usr_share" Name="share">
+                <Directory Id="toolchains_noasserts_usr_share_docc" Name="docc">
+                  <Directory Id="toolchains_noasserts_usr_share_docc_render" Name="render" />
+                </Directory>
+              </Directory>
+            </Directory>
+          </Directory>
         </Directory>
     </DirectoryRef>
   </Fragment>
@@ -89,6 +106,11 @@
         <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainVersionedAsserts" Value="[ToolchainVersionedAsserts]" />
         <util:RemoveFolderEx Property="TOOLCHAINVERSIONEDASSERTS" Condition="TOOLCHAINVERSIONEDASSERTS" />
       </Component>
+
+      <Component Id="VersionedDirectoryCleanupToolchains_noasserts">
+        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersionedNoAsserts" Value="[ToolchainsVersionedNoAsserts]" />
+        <util:RemoveFolderEx Property="TOOLCHAINSVERSIONEDNOASSERTS" Condition="TOOLCHAINSVERSIONEDNOASSERTS" />
+      </Component>
     </ComponentGroup>
 
     <Property Id="PLATFORMSVERSIONED">
@@ -105,6 +127,10 @@
 
     <Property Id="TOOLCHAINVERSIONEDASSERTS">
       <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainVersionedAsserts" Type="directory" />
+    </Property>
+
+    <Property Id="TOOLCHAINSVERSIONEDNOASSERTS">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainsVersionedNoAsserts" Type="directory" />
     </Property>
   </Fragment>
 

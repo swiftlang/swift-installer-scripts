@@ -1,0 +1,10 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts?>
+  <?define VariantName = noasserts ?>
+  <?define VariantUpgradeCode = $(BldNoAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.BldNoAsserts_ProductName)?>
+  <?define VariantCabName = bld.noasserts.cab?>
+  <?define VariantEnvironmentComponentGUID = ab52b870-23ee-42e8-9581-3fcbdfb9228c?>
+
+  <?include ../bld.wxi ?>
+</Wix>

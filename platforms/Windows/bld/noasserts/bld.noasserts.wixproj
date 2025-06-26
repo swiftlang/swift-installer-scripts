@@ -1,0 +1,36 @@
+<Project Sdk="WixToolset.Sdk/4.0.5">
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\clang;
+      _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift\clang;
+    </DefineConstants>
+    <OutputName>bld.noasserts</OutputName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\clang">
+      <ComponentGroupName>ClangResources_noasserts</ComponentGroupName>
+      <DirectoryRefId>toolchains_noasserts_usr_lib_clang</DirectoryRefId>
+      <PreprocessorVariable>var._USR_LIB_CLANG</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+
+  <ItemGroup>
+    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift\clang">
+      <ComponentGroupName>SwiftClangResources_noasserts</ComponentGroupName>
+      <DirectoryRefId>toolchains_noasserts_usr_lib_swift_clang</DirectoryRefId>
+      <PreprocessorVariable>var._USR_LIB_SWIFT_CLANG</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+</Project>
