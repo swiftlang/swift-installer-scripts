@@ -16,28 +16,28 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(BldAssertsUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchains_asserts_usr_include">
-      <Directory Id="toolchains_asserts_usr_include_llvm_c" Name="llvm-c" />
-      <Directory Id="toolchains_asserts_usr_include_swift" Name="swift" />
+    <DirectoryRef Id="toolchain_asserts_usr_include">
+      <Directory Id="toolchain_asserts_usr_include_llvm_c" Name="llvm-c" />
+      <Directory Id="toolchain_asserts_usr_include_swift" Name="swift" />
     </DirectoryRef>
 
-    <DirectoryRef Id="toolchains_asserts_usr_lib_swift">
-      <Directory Id="toolchains_asserts_usr_lib_swift_migrator" Name="migrator" />
-      <Directory Id="toolchains_asserts_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
+    <DirectoryRef Id="toolchain_asserts_usr_lib_swift">
+      <Directory Id="toolchain_asserts_usr_lib_swift_migrator" Name="migrator" />
+      <Directory Id="toolchain_asserts_usr_lib_swift_swiftToCxx" Name="swiftToCxx" />
     </DirectoryRef>
 
-    <DirectoryRef Id="toolchains_asserts_usr_share">
-      <Directory Id="toolchains_asserts_usr_share_clang" Name="clang" />
-      <Directory Id="toolchains_asserts_usr_share_swift" Name="swift" />
-      <Directory Id="toolchains_asserts_usr_share_doc" Name="doc">
-        <Directory Id="toolchains_asserts_usr_share_doc_swift" Name="swift">
-          <Directory Id="toolchains_asserts_usr_share_doc_swift_diagnostics" Name="diagnostics">
+    <DirectoryRef Id="toolchain_asserts_usr_share">
+      <Directory Id="toolchain_asserts_usr_share_clang" Name="clang" />
+      <Directory Id="toolchain_asserts_usr_share_swift" Name="swift" />
+      <Directory Id="toolchain_asserts_usr_share_doc" Name="doc">
+        <Directory Id="toolchain_asserts_usr_share_doc_swift" Name="swift">
+          <Directory Id="toolchain_asserts_usr_share_doc_swift_diagnostics" Name="diagnostics">
           </Directory>
         </Directory>
       </Directory>
     </DirectoryRef>
 
-    <ComponentGroup Id="cmark_gfm" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="cmark_gfm" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin/cmark-gfm.dll" />
       </Component>
@@ -46,7 +46,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="binutils" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="binutils" Directory="toolchain_asserts_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to llvm-ar.exe instead? -->
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\llvm-dlltool.exe" />
@@ -145,26 +145,26 @@
     </ComponentGroup>
 
     <ComponentGroup Id="lto">
-      <Component Directory="toolchains_asserts_usr_bin">
+      <Component Directory="toolchain_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\LTO.dll" />
       </Component>
 
-      <Component Directory="toolchains_asserts_usr_lib">
+      <Component Directory="toolchain_asserts_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\LTO.lib" />
       </Component>
 
-      <Component Directory="toolchains_asserts_usr_include_llvm_c">
+      <Component Directory="toolchain_asserts_usr_include_llvm_c">
         <File Source="$(ToolchainRoot)\usr\include\llvm-c\lto.h" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="ClangFeatures" Directory="toolchains_asserts_usr_share_clang">
+    <ComponentGroup Id="ClangFeatures" Directory="toolchain_asserts_usr_share_clang">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\clang\features.json" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="clang" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="clang" Directory="toolchain_asserts_usr_bin">
       <ComponentGroupRef Id="ClangFeatures" />
 
       <!-- TODO(compnerd) can we use symbolic links to clang.exe instead? -->
@@ -195,7 +195,7 @@
       -->
     </ComponentGroup>
 
-    <ComponentGroup Id="lld" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="lld" Directory="toolchain_asserts_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to lld.exe instead? -->
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\ld.lld.exe" />
@@ -215,11 +215,11 @@
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime">
-      <Component Directory="toolchains_asserts_usr_bin">
+      <Component Directory="toolchain_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\BlocksRuntime.dll" />
       </Component>
 
-      <Component Directory="toolchains_asserts_usr_lib">
+      <Component Directory="toolchain_asserts_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\BlocksRuntime.lib" />
       </Component>
 
@@ -227,18 +227,18 @@
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch">
-      <Component Directory="toolchains_asserts_usr_bin">
+      <Component Directory="toolchain_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\dispatch.dll" />
       </Component>
 
-      <Component Directory="toolchains_asserts_usr_lib">
+      <Component Directory="toolchain_asserts_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\dispatch.lib" />
       </Component>
 
       <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftCxx" Directory="toolchains_asserts_usr_lib_swift_swiftToCxx">
+    <ComponentGroup Id="SwiftCxx" Directory="toolchain_asserts_usr_lib_swift_swiftToCxx">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" />
       </Component>
@@ -249,27 +249,27 @@
         <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
       </Component>
 
-      <Component Directory="toolchains_asserts_usr_include_swift">
+      <Component Directory="toolchain_asserts_usr_include_swift">
         <File Source="$(ToolchainRoot)\usr\include\swift\bridging.modulemap" />
       </Component>
-      <Component Directory="toolchains_asserts_usr_include_swift">
+      <Component Directory="toolchain_asserts_usr_include_swift">
         <File Source="$(ToolchainRoot)\usr\include\swift\bridging" />
       </Component>
-      <Component Directory="toolchains_asserts_usr_include_swift">
+      <Component Directory="toolchain_asserts_usr_include_swift">
         <File Source="$(ToolchainRoot)\usr\include\module.modulemap" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftDemangle">
-      <Component Directory="toolchains_asserts_usr_bin">
+      <Component Directory="toolchain_asserts_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\swiftDemangle.dll" />
       </Component>
-      <Component Directory="toolchains_asserts_usr_lib">
+      <Component Directory="toolchain_asserts_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\swiftDemangle.lib" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftEducationalNotes" Directory="toolchains_asserts_usr_share_doc_swift_diagnostics">
+    <ComponentGroup Id="SwiftEducationalNotes" Directory="toolchain_asserts_usr_share_doc_swift_diagnostics">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\dynamic-callable-requirements.md" />
       </Component>
@@ -308,13 +308,13 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftFeatures" Directory="toolchains_asserts_usr_share_swift">
+    <ComponentGroup Id="SwiftFeatures" Directory="toolchain_asserts_usr_share_swift">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\swift\features.json" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftMigrator" Directory="toolchains_asserts_usr_lib_swift_migrator">
+    <ComponentGroup Id="SwiftMigrator" Directory="toolchain_asserts_usr_lib_swift_migrator">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\ios4.json" />
       </Component>
@@ -347,7 +347,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="swift" Directory="toolchain_asserts_usr_bin">
       <ComponentGroupRef Id="SwiftCxx" />
       <ComponentGroupRef Id="SwiftDemangle" />
       <ComponentGroupRef Id="SwiftEducationalNotes" />
@@ -372,7 +372,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftMacros" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="SwiftMacros" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\ObservationMacros.dll" />
       </Component>
@@ -381,25 +381,25 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="FoundationMacros" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="FoundationMacros" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\FoundationMacros.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="TestingMacros" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="TestingMacros" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\TestingMacros.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="argument_parser" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="argument_parser" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\ArgumentParser.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="tools_support_core" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="tools_support_core" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\TSCBasic.dll" />
       </Component>
@@ -408,7 +408,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_driver" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="swift_driver" Directory="toolchain_asserts_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to swift.exe instead? -->
       <Component>
         <File Name="swiftc.exe" Source="$(ToolchainRoot)\usr\bin\swift-driver.exe" />
@@ -432,7 +432,7 @@
       </Component>
     </ComponentGroup>
 
-   <ComponentGroup Id="compiler_swift_syntax" Directory="toolchains_asserts_usr_bin">
+   <ComponentGroup Id="compiler_swift_syntax" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftBasicFormat.dll" />
       </Component>
@@ -474,7 +474,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_syntax" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="swift_syntax" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\SwiftBasicFormat.dll" />
       </Component>
@@ -516,7 +516,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="plugin_server" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="plugin_server" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-plugin-server.exe" />
       </Component>
@@ -525,7 +525,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="mimalloc" Directory="toolchains_asserts_usr_bin">
+    <ComponentGroup Id="mimalloc" Directory="toolchain_asserts_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\mimalloc.dll" />
       </Component>
@@ -539,13 +539,13 @@
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
-      <Component Directory="ToolchainsVersionedAsserts">
+      <Component Directory="ToolchainVersionedAsserts">
         <File Source="$(ToolchainRoot)\ToolchainInfo.plist" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="toolchains_asserts_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="toolchain_asserts_usr_bin" Guid="ab52b870-23ee-42e8-9581-3fcbdfb9228c">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[_usr_bin]" />
       </Component>
     </ComponentGroup>
