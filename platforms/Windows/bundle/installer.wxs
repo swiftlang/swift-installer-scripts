@@ -54,6 +54,15 @@
     <Variable Name="OptionsInstallAndroidSDKARM" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="OptionsInstallAndroidSDKX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
+    <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
+
+    <?if $(IncludeNoAsserts) == True?>
+      <Variable Name="OptionsInstallNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <?else ?>
+      <Variable Name="OptionsInstallNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <?endif?>
+
     <!--
     For the online bundle, we need to provide a download URL for each package and its .cabs.
     (The SourceFile attribute is also required, both for the offline bundle and for Burn
@@ -83,30 +92,68 @@
 
       <MsiPackage
         SourceFile="!(bindpath.bld.asserts)\bld.asserts.msi"
+        InstallCondition="OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+
+      <?if $(IncludeNoAsserts) == True?>
+        <MsiPackage
+          SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
+          InstallCondition="OptionsInstallNoAssertsToolchain = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+          <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsInstallAssertsToolchain = 0" Value="1" />
+        </MsiPackage>
+      <?endif?>
 
       <MsiPackage
         SourceFile="!(bindpath.cli.asserts)\cli.asserts.msi"
-        InstallCondition="OptionsInstallCLI = 1"
+        InstallCondition="OptionsInstallCLI = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+
+      <?if $(IncludeNoAsserts) == True?>
+        <MsiPackage
+          SourceFile="!(bindpath.cli.noasserts)\cli.noasserts.msi"
+          InstallCondition="OptionsInstallCLI = 1 and OptionsInstallNoAssertsToolchain = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
 
       <MsiPackage
         SourceFile="!(bindpath.dbg.asserts)\dbg.asserts.msi"
-        InstallCondition="OptionsInstallDBG = 1"
+        InstallCondition="OptionsInstallDBG = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
 
+      <?if $(IncludeNoAsserts) == True?>
+        <MsiPackage
+          SourceFile="!(bindpath.dbg.noasserts)\dbg.noasserts.msi"
+          InstallCondition="OptionsInstallDBG = 1 and OptionsInstallNoAssertsToolchain = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
+
       <MsiPackage
         SourceFile="!(bindpath.ide.asserts)\ide.asserts.msi"
-        InstallCondition="OptionsInstallIDE = 1"
+        InstallCondition="OptionsInstallIDE = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+
+      <?if $(IncludeNoAsserts) == True?>
+        <MsiPackage
+          SourceFile="!(bindpath.ide.noasserts)\ide.noasserts.msi"
+          InstallCondition="OptionsInstallIDE = 1 and OptionsInstallNoAssertsToolchain = 1"
+          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        </MsiPackage>
+      <?endif?>
 
       <?if $(IncludeAndroid) == True?>
         <MsiPackage
