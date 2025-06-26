@@ -750,7 +750,7 @@
 
       <ComponentGroupRef Id="DocC" />
       <?if $(INCLUDE_SWIFT_DOCC) = True?>
-        <ComponentGroupRef Id="DocCRender" />
+        <ComponentGroupRef Id="DocCRender_asserts" />
       <?endif?>
 
       <ComponentGroupRef Id="swift_format" />
