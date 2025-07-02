@@ -539,7 +539,9 @@
 
     <!-- _FoundationUnicode -->
     <ComponentGroup Id="_FoundationUnicode" Directory="AndroidSDK_usr_include__foundation_unicode">
+      <?define Disk = 1?>
       <?include ../_FoundationUnicode.wxi?>
+      <?undef Disk?>
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
@@ -573,7 +575,9 @@
 
     <!-- _FoundationCShims -->
     <ComponentGroup Id="_FoundationCShims" Directory="AndroidSDK_usr_include__FoundationCShims">
+      <?define Disk = 1?>
       <?include ../_FoundationCShims.wxi?>
+      <?undef Disk?>
     </ComponentGroup>
 
     <!-- _Builtin_float -->
