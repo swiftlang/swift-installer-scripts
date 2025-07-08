@@ -39,7 +39,7 @@
     <!-- FIXME(#81557) this needs to be properly staged once the sanitizers are included -->
     <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang">
       <ComponentGroupName>SwiftStaticClangResources_asserts</ComponentGroupName>
-      <DirectoryRefId>_usr_lib_swift_static_clang</DirectoryRefId>
+      <DirectoryRefId>toolchain_asserts_usr_lib_swift_static_clang</DirectoryRefId>
       <PreprocessorVariable>var._USR_LIB_SWIFT_STATIC_CLANG</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>

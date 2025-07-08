@@ -47,8 +47,8 @@
                 <Directory Id="toolchain_asserts_usr_lib_swift" Name="swift">
                   <Directory Id="toolchain_asserts_usr_lib_swift_clang" Name="clang" />
                 </Directory>
-                <Directory Id="_usr_lib_swift_static" Name="swift_static">
-                  <Directory Id="_usr_lib_swift_static_clang" Name="clang" />
+                <Directory Id="toolchain_asserts_usr_lib_swift_static" Name="swift_static">
+                  <Directory Id="toolchain_asserts_usr_lib_swift_static_clang" Name="clang" />
                 </Directory>
               </Directory>
               <Directory Id="toolchain_asserts_usr_share" Name="share">
