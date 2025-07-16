@@ -452,7 +452,9 @@
 
     <!-- libdispatch -->
     <ComponentGroup Id="libdispatch" Directory="AndroidSDK_usr_include_dispatch">
+      <?define Disk = 1?>
       <?include ../CDispatch.wxi?>
+      <?undef Disk?>
 
       <Component Directory="AndroidSDK_usr_include_os">
         <File Source="$(SDKRoot)\usr\include\os\generic_base.h" />
