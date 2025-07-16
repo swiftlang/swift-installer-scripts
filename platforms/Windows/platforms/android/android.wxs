@@ -1293,73 +1293,41 @@
     <!-- _FoundationCollections -->
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_FoundationCollections.arm64" Directory="_FoundationCollections.swiftmodule">
-        <!-- FIXME(swiftlang/swift-foundation#1230)
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         </Component>
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
         </Component>
-        -->
-        <Component DiskId="2">
-          <File Name="aarch64-unknown-linux-android.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\aarch64.swiftdoc" />
-        </Component>
-        <Component DiskId="2">
-          <File Name="aarch64-unknown-linux-android.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\aarch64.swiftmodule" />
-        </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeARM) = True?>
       <ComponentGroup Id="_FoundationCollections.arm" Directory="_FoundationCollections.swiftmodule">
-        <!-- FIXME(swiftlang/swift-foundation#1230)
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         </Component>
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
         </Component>
-        -->
-        <Component DiskId="3">
-          <File Name="armv7-unknown-linux-android.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\armv7.swiftdoc" />
-        </Component>
-        <Component DiskId="3">
-          <File Name="armv7-unknown-linux-android.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\armv7.swiftmodule" />
-        </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
       <ComponentGroup Id="_FoundationCollections.x64" Directory="_FoundationCollections.swiftmodule">
-        <!-- FIXME(swiftlang/swift-foundation#1230)
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
         </Component>
-        -->
-        <Component DiskId="4">
-          <File Name="x86_64-unknown-linux-android.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\x86_64.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Name="x86_64-unknown-linux-android.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\x86_64.swiftmodule" />
-        </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
       <ComponentGroup Id="_FoundationCollections.x86" Directory="_FoundationCollections.swiftmodule">
-        <!-- FIXME(swiftlang/swift-foundation#1230)
         <Component DiskId="5">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         </Component>
         <Component DiskId="5">
           <File Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\i686-unknown-linux-android.swiftmodule" />
-        </Component>
-        -->
-        <Component DiskId="5">
-          <File Name="i686-unknown-linux-android.swiftdoc" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\i686.swiftdoc" />
-        </Component>
-        <Component DiskId="5">
-          <File Name="i686-unknown-linux-android.swiftmodule" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\i686.swiftmodule" />
         </Component>
       </ComponentGroup>
     <?endif?>
