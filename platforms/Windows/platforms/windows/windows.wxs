@@ -205,6 +205,7 @@
                       <Directory Id="lib_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
                       <Directory Id="lib_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
                       <Directory Id="lib_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
+                      <Directory Id="lib_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
                       <Directory Id="libCRT.swiftmodule" Name="CRT.swiftmodule" />
                       <Directory Id="libDispatch.swiftmodule" Name="Dispatch.swiftmodule" />
                       <Directory Id="libDistributed.swiftmodule" Name="Distributed.swiftmodule" />
@@ -1258,6 +1259,49 @@
 
         <Component Directory="WindowsSDK_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swift_Volatile.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="lib_Volatile.arm64" Directory="lib_Volatile.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libswift_Volatile.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="lib_Volatile.x64" Directory="lib_Volatile.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libswift_Volatile.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="lib_Volatile.x86" Directory="lib_Volatile.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswift_Volatile.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -3034,6 +3078,7 @@
         <ComponentGroupRef Id="lib_FoundationUnicode.arm64" />
         <ComponentGroupRef Id="lib_RegexParser.arm64" />
         <ComponentGroupRef Id="lib_StringProcessing.arm64" />
+        <ComponentGroupRef Id="lib_Volatile.arm64" />
         <ComponentGroupRef Id="libBlocksRuntime.arm64" />
         <ComponentGroupRef Id="libCRT.arm64" />
         <ComponentGroupRef Id="libDistributed.arm64" />
@@ -3068,6 +3113,7 @@
         <ComponentGroupRef Id="lib_FoundationUnicode.x64" />
         <ComponentGroupRef Id="lib_RegexParser.x64" />
         <ComponentGroupRef Id="lib_StringProcessing.x64" />
+        <ComponentGroupRef Id="lib_Volatile.x64" />
         <ComponentGroupRef Id="libBlocksRuntime.x64" />
         <ComponentGroupRef Id="libCRT.x64" />
         <ComponentGroupRef Id="libDistributed.x64" />
@@ -3102,6 +3148,7 @@
         <ComponentGroupRef Id="lib_FoundationUnicode.x86" />
         <ComponentGroupRef Id="lib_RegexParser.x86" />
         <ComponentGroupRef Id="lib_StringProcessing.x86" />
+        <ComponentGroupRef Id="lib_Volatile.x86" />
         <ComponentGroupRef Id="libBlocksRuntime.x86" />
         <ComponentGroupRef Id="libCRT.x86" />
         <ComponentGroupRef Id="libDistributed.x86" />
