@@ -17,7 +17,7 @@
   <ItemGroup Condition=" '$(INCLUDE_SWIFT_DOCC)' == 'True' ">
     <HarvestDirectory Include="$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist">
       <ComponentGroupName>DocCRender_asserts</ComponentGroupName>
-      <DirectoryRefId>_usr_share_docc_render</DirectoryRefId>
+      <DirectoryRefId>toolchain_asserts_usr_share_docc_render</DirectoryRefId>
       <PreprocessorVariable>var.SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
