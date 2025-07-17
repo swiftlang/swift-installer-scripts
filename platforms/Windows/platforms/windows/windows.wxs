@@ -201,6 +201,7 @@
                     <Directory Name="windows">
                       <Directory Id="lib_Builtin_float.swiftmodule" Name="Builtin_float.swiftmodule" />
                       <Directory Id="lib_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
+                      <Directory Id="lib_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
                       <Directory Id="lib_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
                       <Directory Id="lib_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
                       <Directory Id="lib_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
@@ -978,6 +979,49 @@
 
         <Component Directory="WindowsSDK_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swift_Differentiation.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="lib_Differentiation.arm64" Directory="lib_Differentiation.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64" DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libswift_Differentiation.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="lib_Differentiation.x64" Directory="lib_Differentiation.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64" DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libswift_Differentiation.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="lib_Differentiation.x86" Directory="lib_Differentiation.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86" DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswift_Differentiation.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -2984,6 +3028,7 @@
         <ComponentGroupRef Id="CoreFoundation.arm64" />
         <ComponentGroupRef Id="lib_Builtin_float.arm64" />
         <ComponentGroupRef Id="lib_Concurrency.arm64" />
+        <ComponentGroupRef Id="lib_Differentiation.arm64" />
         <ComponentGroupRef Id="lib_FoundationCollections.arm64" />
         <ComponentGroupRef Id="lib_FoundationCShims.arm64" />
         <ComponentGroupRef Id="lib_FoundationUnicode.arm64" />
@@ -3017,6 +3062,7 @@
         <ComponentGroupRef Id="CoreFoundation.x64" />
         <ComponentGroupRef Id="lib_Builtin_float.x64" />
         <ComponentGroupRef Id="lib_Concurrency.x64" />
+        <ComponentGroupRef Id="lib_Differentiation.x64" />
         <ComponentGroupRef Id="lib_FoundationCollections.x64" />
         <ComponentGroupRef Id="lib_FoundationCShims.x64" />
         <ComponentGroupRef Id="lib_FoundationUnicode.x64" />
@@ -3050,6 +3096,7 @@
         <ComponentGroupRef Id="CoreFoundation.x86" />
         <ComponentGroupRef Id="lib_Builtin_float.x86" />
         <ComponentGroupRef Id="lib_Concurrency.x86" />
+        <ComponentGroupRef Id="lib_Differentiation.x86" />
         <ComponentGroupRef Id="lib_FoundationCollections.x86" />
         <ComponentGroupRef Id="lib_FoundationCShims.x86" />
         <ComponentGroupRef Id="lib_FoundationUnicode.x86" />
