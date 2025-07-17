@@ -211,6 +211,7 @@
                       <Directory Id="libFoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
                       <Directory Id="libFoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
                       <Directory Id="libFoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                      <Directory Id="libObservation.swiftmodule" Name="Observation.swiftmodule" />
                       <Directory Id="libRegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
                       <Directory Id="libSwift.swiftmodule" Name="Swift.swiftmodule" />
                       <Directory Id="libSwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
@@ -2031,6 +2032,49 @@
       </ComponentGroup>
     <?endif?>
 
+    <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="libObservation.arm64" Directory="libObservation.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libswiftObservation.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="libObservation.x64" Directory="libObservation.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libswiftObservation.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="libObservation.x86" Directory="libObservation.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswiftObservation.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+
     <!-- RegexBuilder -->
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="RegexBuilder.arm64" Directory="RegexBuilder.swiftmodule">
@@ -2908,6 +2952,7 @@
         <ComponentGroupRef Id="libFoundationInternationalization.arm64" />
         <ComponentGroupRef Id="libFoundationNetworking.arm64" />
         <ComponentGroupRef Id="libFoundationXML.arm64" />
+        <ComponentGroupRef Id="libObservation.arm64" />
         <ComponentGroupRef Id="libRegexBuilder.arm64" />
         <ComponentGroupRef Id="libSwift.arm64" />
         <ComponentGroupRef Id="libswiftDispatch.arm64" />
@@ -2939,6 +2984,7 @@
         <ComponentGroupRef Id="libFoundationInternationalization.x64" />
         <ComponentGroupRef Id="libFoundationNetworking.x64" />
         <ComponentGroupRef Id="libFoundationXML.x64" />
+        <ComponentGroupRef Id="libObservation.x64" />
         <ComponentGroupRef Id="libRegexBuilder.x64" />
         <ComponentGroupRef Id="libSwift.x64" />
         <ComponentGroupRef Id="libswiftDispatch.x64" />
@@ -2970,6 +3016,7 @@
         <ComponentGroupRef Id="libFoundationInternationalization.x86" />
         <ComponentGroupRef Id="libFoundationNetworking.x86" />
         <ComponentGroupRef Id="libFoundationXML.x86" />
+        <ComponentGroupRef Id="libObservation.x86" />
         <ComponentGroupRef Id="libRegexBuilder.x86" />
         <ComponentGroupRef Id="libSwift.x86" />
         <ComponentGroupRef Id="libswiftDispatch.x86" />
