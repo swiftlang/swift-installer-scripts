@@ -206,6 +206,7 @@
                       <Directory Id="lib_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
                       <Directory Id="libCRT.swiftmodule" Name="CRT.swiftmodule" />
                       <Directory Id="libDispatch.swiftmodule" Name="Dispatch.swiftmodule" />
+                      <Directory Id="libDistributed.swiftmodule" Name="Distributed.swiftmodule" />
                       <Directory Id="libFoundation.swiftmodule" Name="Foundation.swiftmodule" />
                       <Directory Id="libFoundationEssentials.swiftmodule" Name="FoundationEssentials.swiftmodule" />
                       <Directory Id="libFoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
@@ -1467,6 +1468,49 @@
 
         <Component Directory="WindowsSDK_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swiftDistributed.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="libDistributed.arm64" Directory="libDistributed.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libswiftDistributed.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="libDistributed.x64" Directory="libDistributed.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libswiftDistributed.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="libDistributed.x86" Directory="libDistributed.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswiftDistributed.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -2946,6 +2990,7 @@
         <ComponentGroupRef Id="lib_StringProcessing.arm64" />
         <ComponentGroupRef Id="libBlocksRuntime.arm64" />
         <ComponentGroupRef Id="libCRT.arm64" />
+        <ComponentGroupRef Id="libDistributed.arm64" />
         <ComponentGroupRef Id="libdispatch.arm64" />
         <ComponentGroupRef Id="libFoundation.arm64" />
         <ComponentGroupRef Id="libFoundationEssentials.arm64" />
@@ -2978,6 +3023,7 @@
         <ComponentGroupRef Id="lib_StringProcessing.x64" />
         <ComponentGroupRef Id="libBlocksRuntime.x64" />
         <ComponentGroupRef Id="libCRT.x64" />
+        <ComponentGroupRef Id="libDistributed.x64" />
         <ComponentGroupRef Id="libdispatch.x64" />
         <ComponentGroupRef Id="libFoundation.x64" />
         <ComponentGroupRef Id="libFoundationEssentials.x64" />
@@ -3010,6 +3056,7 @@
         <ComponentGroupRef Id="lib_StringProcessing.x86" />
         <ComponentGroupRef Id="libBlocksRuntime.x86" />
         <ComponentGroupRef Id="libCRT.x86" />
+        <ComponentGroupRef Id="libDistributed.x86" />
         <ComponentGroupRef Id="libdispatch.x86" />
         <ComponentGroupRef Id="libFoundation.x86" />
         <ComponentGroupRef Id="libFoundationEssentials.x86" />
