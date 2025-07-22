@@ -133,29 +133,29 @@
                     <Directory Id="WindowsSDK_usr_lib_swift_apinotes" Name="apinotes" />
                     <Directory Id="WindowsSDK_usr_lib_swift_shims" Name="shims" />
                     <Directory Id="WindowsSDK_usr_lib_swift_windows" Name="windows">
-                      <Directory Id="_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
-                      <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
-                      <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
-                      <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
-                      <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
-                      <Directory Id="_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
-                      <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule" />
-                      <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
-                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
-                      <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
-                      <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
-                      <Directory Id="_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
-                      <Directory Id="FoundationEssentials.swiftmodule" Name="FoundationEssentials.swiftmodule" />
-                      <Directory Id="FoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
-                      <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
-                      <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
-                      <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
-                      <Directory Id="Observation.swiftmodule" Name="Observation.swiftmodule" />
-                      <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
-                      <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
-                      <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
-                      <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
-                      <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
+                      <Directory Id="Legacy_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
+                      <Directory Id="Legacy_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
+                      <Directory Id="Legacy_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
+                      <Directory Id="Legacy_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
+                      <Directory Id="Legacy_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
+                      <Directory Id="Legacy_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
+                      <Directory Id="LegacyCRT.swiftmodule" Name="CRT.swiftmodule" />
+                      <Directory Id="LegacyCxx.swiftmodule" Name="Cxx.swiftmodule" />
+                      <Directory Id="LegacyCxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
+                      <Directory Id="LegacyDistributed.swiftmodule" Name="Distributed.swiftmodule" />
+                      <Directory Id="LegacyDispatch.swiftmodule" Name="Dispatch.swiftmodule" />
+                      <Directory Id="Legacy_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
+                      <Directory Id="LegacyFoundationEssentials.swiftmodule" Name="FoundationEssentials.swiftmodule" />
+                      <Directory Id="LegacyFoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
+                      <Directory Id="LegacyFoundation.swiftmodule" Name="Foundation.swiftmodule" />
+                      <Directory Id="LegacyFoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
+                      <Directory Id="LegacyFoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                      <Directory Id="LegacyObservation.swiftmodule" Name="Observation.swiftmodule" />
+                      <Directory Id="LegacyRegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
+                      <Directory Id="LegacySwift.swiftmodule" Name="Swift.swiftmodule" />
+                      <Directory Id="LegacySwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
+                      <Directory Id="LegacySynchronization.swiftmodule" Name="Synchronization.swiftmodule" />
+                      <Directory Id="LegacyWinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
                       <?if $(IncludeARM64) = True?>
                         <Directory DiskId="2" Id="WindowsSDK_usr_lib_swift_windows_arm64" Name="aarch64" />
                       <?endif?>
@@ -433,28 +433,28 @@
     <?endif?>
 
     <!-- BlocksRuntime -->
-    <ComponentGroup Id="BlocksRuntime">
+    <ComponentGroup Id="LegacyBlocksRuntime">
       <Component Directory="WindowsSDK_usr_include_Block">
         <File Source="$(SDKRoot)\usr\include\Block\Block.h" />
       </Component>
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="BlocksRuntime.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
+      <ComponentGroup Id="LegacyBlocksRuntime.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\BlocksRuntime.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="BlocksRuntime.x64" Directory="WindowsSDK_usr_lib_swift_windows_x64">
+      <ComponentGroup Id="LegacyBlocksRuntime.x64" Directory="WindowsSDK_usr_lib_swift_windows_x64">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\BlocksRuntime.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="BlocksRuntime.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
+      <ComponentGroup Id="LegacyBlocksRuntime.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\BlocksRuntime.lib" />
         </Component>
@@ -466,6 +466,7 @@
         <File Source="$(ExperimentalSDKRoot)\usr\include\Block\Block.h" />
       </Component>
     </ComponentGroup>
+
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="libBlocksRuntime.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
         <Component DiskId="6">
@@ -489,7 +490,7 @@
     <?endif?>
 
     <!-- libdispatch -->
-    <ComponentGroup Id="dispatch" Directory="WindowsSDK_usr_include_dispatch">
+    <ComponentGroup Id="Legacydispatch" Directory="WindowsSDK_usr_include_dispatch">
       <?define Disk = 1?>
       <?include ../CDispatch.wxi?>
       <?undef Disk?>
@@ -509,11 +510,11 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="dispatch.arm64">
-        <Component Directory="Dispatch.swiftmodule" DiskId="2">
+      <ComponentGroup Id="Legacydispatch.arm64">
+        <Component Directory="LegacyDispatch.swiftmodule" DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
-        <Component Directory="Dispatch.swiftmodule" DiskId="2">
+        <Component Directory="LegacyDispatch.swiftmodule" DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -526,11 +527,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="dispatch.x64">
-        <Component Directory="Dispatch.swiftmodule" DiskId="3">
+      <ComponentGroup Id="Legacydispatch.x64">
+        <Component Directory="LegacyDispatch.swiftmodule" DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
-        <Component Directory="Dispatch.swiftmodule" DiskId="3">
+        <Component Directory="LegacyDispatch.swiftmodule" DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -543,11 +544,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="dispatch.x86">
-        <Component Directory="Dispatch.swiftmodule" DiskId="4">
+      <ComponentGroup Id="Legacydispatch.x86">
+        <Component Directory="LegacyDispatch.swiftmodule" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
-        <Component Directory="Dispatch.swiftmodule" DiskId="4">
+        <Component Directory="LegacyDispatch.swiftmodule" DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -645,28 +646,28 @@
     <?endif?>
 
     <!-- _FoundationUnicode -->
-    <ComponentGroup Id="_FoundationUnicode" Directory="WindowsSDK_usr_include__foundation_unicode">
+    <ComponentGroup Id="Legacy_FoundationUnicode" Directory="WindowsSDK_usr_include__foundation_unicode">
       <?define Disk = 1?>
       <?include ../_FoundationUnicode.wxi?>
       <?undef Disk?>
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_FoundationUnicode.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
+      <ComponentGroup Id="Legacy_FoundationUnicode.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\_FoundationICU.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_FoundationUnicode.x64" Directory="WindowsSDK_usr_lib_swift_windows_x64">
+      <ComponentGroup Id="Legacy_FoundationUnicode.x64" Directory="WindowsSDK_usr_lib_swift_windows_x64">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\_FoundationICU.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_FoundationUnicode.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
+      <ComponentGroup Id="Legacy_FoundationUnicode.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\_FoundationICU.lib" />
         </Component>
@@ -702,7 +703,7 @@
     <?endif?>
 
     <!-- _FoundationCShims -->
-    <ComponentGroup Id="_FoundationCShims" Directory="WindowsSDK_usr_include__FoundationCShims">
+    <ComponentGroup Id="Legacy_FoundationCShims" Directory="WindowsSDK_usr_include__FoundationCShims">
       <?define Disk = 1?>
       <?include ../_FoundationCShims.wxi?>
       <?undef Disk?>
@@ -738,7 +739,7 @@
 
     <!-- _Builtin_float -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_Builtin_float.arm64" Directory="_Builtin_float.swiftmodule">
+      <ComponentGroup Id="Legacy_Builtin_float.arm64" Directory="Legacy_Builtin_float.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -755,7 +756,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_Builtin_float.x64" Directory="_Builtin_float.swiftmodule">
+      <ComponentGroup Id="Legacy_Builtin_float.x64" Directory="Legacy_Builtin_float.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -772,7 +773,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_Builtin_float.x86" Directory="_Builtin_float.swiftmodule">
+      <ComponentGroup Id="Legacy_Builtin_float.x86" Directory="Legacy_Builtin_float.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -834,7 +835,7 @@
 
     <!-- _Concurrency -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_Concurrency.arm64" Directory="_Concurrency.swiftmodule">
+      <ComponentGroup Id="Legacy_Concurrency.arm64" Directory="Legacy_Concurrency.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -851,7 +852,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_Concurrency.x64" Directory="_Concurrency.swiftmodule">
+      <ComponentGroup Id="Legacy_Concurrency.x64" Directory="Legacy_Concurrency.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -868,7 +869,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_Concurrency.x86" Directory="_Concurrency.swiftmodule">
+      <ComponentGroup Id="Legacy_Concurrency.x86" Directory="Legacy_Concurrency.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -930,7 +931,7 @@
 
     <!-- _Differentiation -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_Differentiation.arm64" Directory="_Differentiation.swiftmodule">
+      <ComponentGroup Id="Legacy_Differentiation.arm64" Directory="Legacy_Differentiation.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -947,7 +948,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_Differentiation.x64" Directory="_Differentiation.swiftmodule">
+      <ComponentGroup Id="Legacy_Differentiation.x64" Directory="Legacy_Differentiation.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -964,7 +965,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_Differentiation.x86" Directory="_Differentiation.swiftmodule">
+      <ComponentGroup Id="Legacy_Differentiation.x86" Directory="Legacy_Differentiation.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -983,7 +984,7 @@
 
     <!-- _RegexParser -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_RegexParser.arm64" Directory="_RegexParser.swiftmodule">
+      <ComponentGroup Id="Legacy_RegexParser.arm64" Directory="Legacy_RegexParser.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -997,7 +998,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_RegexParser.x64" Directory="_RegexParser.swiftmodule">
+      <ComponentGroup Id="Legacy_RegexParser.x64" Directory="Legacy_RegexParser.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1011,7 +1012,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_RegexParser.x86" Directory="_RegexParser.swiftmodule">
+      <ComponentGroup Id="Legacy_RegexParser.x86" Directory="Legacy_RegexParser.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1070,7 +1071,7 @@
 
     <!-- _StringProcessing -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_StringProcessing.arm64" Directory="_StringProcessing.swiftmodule">
+      <ComponentGroup Id="Legacy_StringProcessing.arm64" Directory="Legacy_StringProcessing.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1087,7 +1088,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_StringProcessing.x64" Directory="_StringProcessing.swiftmodule">
+      <ComponentGroup Id="Legacy_StringProcessing.x64" Directory="Legacy_StringProcessing.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1104,7 +1105,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_StringProcessing.x86" Directory="_StringProcessing.swiftmodule">
+      <ComponentGroup Id="Legacy_StringProcessing.x86" Directory="Legacy_StringProcessing.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1166,7 +1167,7 @@
 
     <!-- _Volatile -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_Volatile.arm64" Directory="_Volatile.swiftmodule">
+      <ComponentGroup Id="Legacy_Volatile.arm64" Directory="Legacy_Volatile.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1183,7 +1184,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_Volatile.x64" Directory="_Volatile.swiftmodule">
+      <ComponentGroup Id="Legacy_Volatile.x64" Directory="Legacy_Volatile.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1200,7 +1201,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_Volatile.x86" Directory="_Volatile.swiftmodule">
+      <ComponentGroup Id="Legacy_Volatile.x86" Directory="Legacy_Volatile.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1219,7 +1220,7 @@
 
     <!-- CRT -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="CRT.arm64" Directory="CRT.swiftmodule">
+      <ComponentGroup Id="LegacyCRT.arm64" Directory="LegacyCRT.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1236,7 +1237,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="CRT.x64" Directory="CRT.swiftmodule">
+      <ComponentGroup Id="LegacyCRT.x64" Directory="LegacyCRT.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1253,7 +1254,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="CRT.x86" Directory="CRT.swiftmodule">
+      <ComponentGroup Id="LegacyCRT.x86" Directory="LegacyCRT.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1315,7 +1316,7 @@
 
     <!-- Cxx -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="Cxx.arm64" Directory="Cxx.swiftmodule">
+      <ComponentGroup Id="LegacyCxx.arm64" Directory="LegacyCxx.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1332,7 +1333,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="Cxx.x64" Directory="Cxx.swiftmodule">
+      <ComponentGroup Id="LegacyCxx.x64" Directory="LegacyCxx.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1349,7 +1350,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="Cxx.x86" Directory="Cxx.swiftmodule">
+      <ComponentGroup Id="LegacyCxx.x86" Directory="LegacyCxx.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1368,7 +1369,7 @@
 
     <!-- CxxStdlib -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="CxxStdlib.arm64" Directory="CxxStdlib.swiftmodule">
+      <ComponentGroup Id="LegacyCxxStdlib.arm64" Directory="LegacyCxxStdlib.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1385,7 +1386,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="CxxStdlib.x64" Directory="CxxStdlib.swiftmodule">
+      <ComponentGroup Id="LegacyCxxStdlib.x64" Directory="LegacyCxxStdlib.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1402,7 +1403,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="CxxStdlib.x86" Directory="CxxStdlib.swiftmodule">
+      <ComponentGroup Id="LegacyCxxStdlib.x86" Directory="LegacyCxxStdlib.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1421,7 +1422,7 @@
 
     <!-- Distributed -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="Distributed.arm64" Directory="Distributed.swiftmodule">
+      <ComponentGroup Id="LegacyDistributed.arm64" Directory="LegacyDistributed.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1438,7 +1439,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="Distributed.x64" Directory="Distributed.swiftmodule">
+      <ComponentGroup Id="LegacyDistributed.x64" Directory="LegacyDistributed.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1455,7 +1456,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="Distributed.x86" Directory="Distributed.swiftmodule">
+      <ComponentGroup Id="LegacyDistributed.x86" Directory="LegacyDistributed.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1517,7 +1518,7 @@
 
     <!-- _FoundationCollections -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="_FoundationCollections.arm64" Directory="_FoundationCollections.swiftmodule">
+      <ComponentGroup Id="Legacy_FoundationCollections.arm64" Directory="Legacy_FoundationCollections.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1527,7 +1528,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="_FoundationCollections.x64" Directory="_FoundationCollections.swiftmodule">
+      <ComponentGroup Id="Legacy_FoundationCollections.x64" Directory="Legacy_FoundationCollections.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1537,7 +1538,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="_FoundationCollections.x86" Directory="_FoundationCollections.swiftmodule">
+      <ComponentGroup Id="Legacy_FoundationCollections.x86" Directory="Legacy_FoundationCollections.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1592,7 +1593,7 @@
 
     <!-- FoundationEssentials -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="FoundationEssentials.arm64" Directory="FoundationEssentials.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationEssentials.arm64" Directory="LegacyFoundationEssentials.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1606,7 +1607,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="FoundationEssentials.x64" Directory="FoundationEssentials.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationEssentials.x64" Directory="LegacyFoundationEssentials.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1620,7 +1621,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="FoundationEssentials.x86" Directory="FoundationEssentials.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationEssentials.x86" Directory="LegacyFoundationEssentials.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1679,7 +1680,7 @@
 
     <!-- FoundationInternationalization -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="FoundationInternationalization.arm64" Directory="FoundationInternationalization.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationInternationalization.arm64" Directory="LegacyFoundationInternationalization.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1693,7 +1694,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="FoundationInternationalization.x64" Directory="FoundationInternationalization.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationInternationalization.x64" Directory="LegacyFoundationInternationalization.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1707,7 +1708,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="FoundationInternationalization.x86" Directory="FoundationInternationalization.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationInternationalization.x86" Directory="LegacyFoundationInternationalization.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1766,7 +1767,7 @@
 
     <!-- Foundation -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="Foundation.arm64" Directory="Foundation.swiftmodule">
+      <ComponentGroup Id="LegacyFoundation.arm64" Directory="LegacyFoundation.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1780,7 +1781,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="Foundation.x64" Directory="Foundation.swiftmodule">
+      <ComponentGroup Id="LegacyFoundation.x64" Directory="LegacyFoundation.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1793,7 +1794,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="Foundation.x86" Directory="Foundation.swiftmodule">
+      <ComponentGroup Id="LegacyFoundation.x86" Directory="LegacyFoundation.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1851,7 +1852,7 @@
 
     <!-- FoundationNetworking -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="FoundationNetworking.arm64" Directory="FoundationNetworking.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationNetworking.arm64" Directory="LegacyFoundationNetworking.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1865,7 +1866,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="FoundationNetworking.x64" Directory="FoundationNetworking.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationNetworking.x64" Directory="LegacyFoundationNetworking.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1879,7 +1880,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="FoundationNetworking.x86" Directory="FoundationNetworking.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationNetworking.x86" Directory="LegacyFoundationNetworking.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1938,7 +1939,7 @@
 
     <!-- FoundationXML -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="FoundationXML.arm64" Directory="FoundationXML.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationXML.arm64" Directory="LegacyFoundationXML.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1952,7 +1953,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="FoundationXML.x64" Directory="FoundationXML.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationXML.x64" Directory="LegacyFoundationXML.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -1966,7 +1967,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="FoundationXML.x86" Directory="FoundationXML.swiftmodule">
+      <ComponentGroup Id="LegacyFoundationXML.x86" Directory="LegacyFoundationXML.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2025,7 +2026,7 @@
 
     <!-- Observation -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="Observation.arm64" Directory="Observation.swiftmodule">
+      <ComponentGroup Id="LegacyObservation.arm64" Directory="LegacyObservation.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2042,7 +2043,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="Observation.x64" Directory="Observation.swiftmodule">
+      <ComponentGroup Id="LegacyObservation.x64" Directory="LegacyObservation.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2059,7 +2060,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="Observation.x86" Directory="Observation.swiftmodule">
+      <ComponentGroup Id="LegacyObservation.x86" Directory="LegacyObservation.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2121,7 +2122,7 @@
 
     <!-- RegexBuilder -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="RegexBuilder.arm64" Directory="RegexBuilder.swiftmodule">
+      <ComponentGroup Id="LegacyRegexBuilder.arm64" Directory="LegacyRegexBuilder.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2138,7 +2139,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="RegexBuilder.x64" Directory="RegexBuilder.swiftmodule">
+      <ComponentGroup Id="LegacyRegexBuilder.x64" Directory="LegacyRegexBuilder.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2155,7 +2156,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="RegexBuilder.x86" Directory="RegexBuilder.swiftmodule">
+      <ComponentGroup Id="LegacyRegexBuilder.x86" Directory="LegacyRegexBuilder.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2217,7 +2218,7 @@
 
     <!-- Swift -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="Swift.arm64" Directory="Swift.swiftmodule">
+      <ComponentGroup Id="LegacySwift.arm64" Directory="LegacySwift.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2233,7 +2234,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="Swift.x64" Directory="Swift.swiftmodule">
+      <ComponentGroup Id="LegacySwift.x64" Directory="LegacySwift.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2249,7 +2250,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="Swift.x86" Directory="Swift.swiftmodule">
+      <ComponentGroup Id="LegacySwift.x86" Directory="LegacySwift.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2310,7 +2311,7 @@
 
     <!-- SwiftOnoneSupport -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="SwiftOnoneSupport.arm64" Directory="SwiftOnoneSupport.swiftmodule">
+      <ComponentGroup Id="LegacySwiftOnoneSupport.arm64" Directory="LegacySwiftOnoneSupport.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2327,7 +2328,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="SwiftOnoneSupport.x64" Directory="SwiftOnoneSupport.swiftmodule">
+      <ComponentGroup Id="LegacySwiftOnoneSupport.x64" Directory="LegacySwiftOnoneSupport.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2344,7 +2345,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="SwiftOnoneSupport.x86" Directory="SwiftOnoneSupport.swiftmodule">
+      <ComponentGroup Id="LegacySwiftOnoneSupport.x86" Directory="LegacySwiftOnoneSupport.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2406,7 +2407,7 @@
 
     <!-- Synchronization -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="Synchronization.arm64" Directory="Synchronization.swiftmodule">
+      <ComponentGroup Id="LegacySynchronization.arm64" Directory="LegacySynchronization.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2423,7 +2424,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="Synchronization.x64" Directory="Synchronization.swiftmodule">
+      <ComponentGroup Id="LegacySynchronization.x64" Directory="LegacySynchronization.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2440,7 +2441,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="Synchronization.x86" Directory="Synchronization.swiftmodule">
+      <ComponentGroup Id="LegacySynchronization.x86" Directory="LegacySynchronization.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2502,7 +2503,7 @@
 
     <!-- WinSDK -->
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="WinSDK.arm64" Directory="WinSDK.swiftmodule">
+      <ComponentGroup Id="LegacyWinSDK.arm64" Directory="LegacyWinSDK.swiftmodule">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2519,7 +2520,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="WinSDK.x64" Directory="WinSDK.swiftmodule">
+      <ComponentGroup Id="LegacyWinSDK.x64" Directory="LegacyWinSDK.swiftmodule">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2536,7 +2537,7 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="WinSDK.x86" Directory="WinSDK.swiftmodule">
+      <ComponentGroup Id="LegacyWinSDK.x86" Directory="LegacyWinSDK.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         </Component>
@@ -2814,10 +2815,10 @@
     <!-- Features -->
     <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Plt_ProductName_Windows)">
       <ComponentGroupRef Id="SwiftRemoteMirror" />
-      <ComponentGroupRef Id="BlocksRuntime" />
-      <ComponentGroupRef Id="dispatch" />
-      <ComponentGroupRef Id="_FoundationUnicode" />
-      <ComponentGroupRef Id="_FoundationCShims" />
+      <ComponentGroupRef Id="LegacyBlocksRuntime" />
+      <ComponentGroupRef Id="Legacydispatch" />
+      <ComponentGroupRef Id="Legacy_FoundationUnicode" />
+      <ComponentGroupRef Id="Legacy_FoundationCShims" />
 
       <ComponentGroupRef Id="Testing" />
 
@@ -2841,33 +2842,33 @@
 
         <ComponentGroupRef Id="SwiftRemoteMirror.arm64" />
 
-        <ComponentGroupRef Id="BlocksRuntime.arm64" />
-        <ComponentGroupRef Id="dispatch.arm64" />
+        <ComponentGroupRef Id="LegacyBlocksRuntime.arm64" />
+        <ComponentGroupRef Id="Legacydispatch.arm64" />
 
-        <ComponentGroupRef Id="CRT.arm64" />
-        <ComponentGroupRef Id="WinSDK.arm64" />
+        <ComponentGroupRef Id="LegacyCRT.arm64" />
+        <ComponentGroupRef Id="LegacyWinSDK.arm64" />
 
-        <ComponentGroupRef Id="Cxx.arm64" />
-        <ComponentGroupRef Id="CxxStdlib.arm64" />
-        <ComponentGroupRef Id="Distributed.arm64" />
-        <ComponentGroupRef Id="Foundation.arm64" />
-        <ComponentGroupRef Id="FoundationEssentials.arm64" />
-        <ComponentGroupRef Id="FoundationInternationalization.arm64" />
-        <ComponentGroupRef Id="FoundationNetworking.arm64" />
-        <ComponentGroupRef Id="FoundationXML.arm64" />
-        <ComponentGroupRef Id="Observation.arm64" />
-        <ComponentGroupRef Id="RegexBuilder.arm64" />
-        <ComponentGroupRef Id="Swift.arm64" />
-        <ComponentGroupRef Id="SwiftOnoneSupport.arm64" />
-        <ComponentGroupRef Id="Synchronization.arm64" />
-        <ComponentGroupRef Id="_Builtin_float.arm64" />
-        <ComponentGroupRef Id="_Concurrency.arm64" />
-        <ComponentGroupRef Id="_Differentiation.arm64" />
-        <ComponentGroupRef Id="_FoundationCollections.arm64" />
-        <ComponentGroupRef Id="_FoundationUnicode.arm64" />
-        <ComponentGroupRef Id="_RegexParser.arm64" />
-        <ComponentGroupRef Id="_StringProcessing.arm64" />
-        <ComponentGroupRef Id="_Volatile.arm64" />
+        <ComponentGroupRef Id="LegacyCxx.arm64" />
+        <ComponentGroupRef Id="LegacyCxxStdlib.arm64" />
+        <ComponentGroupRef Id="LegacyDistributed.arm64" />
+        <ComponentGroupRef Id="LegacyFoundation.arm64" />
+        <ComponentGroupRef Id="LegacyFoundationEssentials.arm64" />
+        <ComponentGroupRef Id="LegacyFoundationInternationalization.arm64" />
+        <ComponentGroupRef Id="LegacyFoundationNetworking.arm64" />
+        <ComponentGroupRef Id="LegacyFoundationXML.arm64" />
+        <ComponentGroupRef Id="LegacyObservation.arm64" />
+        <ComponentGroupRef Id="LegacyRegexBuilder.arm64" />
+        <ComponentGroupRef Id="LegacySwift.arm64" />
+        <ComponentGroupRef Id="LegacySwiftOnoneSupport.arm64" />
+        <ComponentGroupRef Id="LegacySynchronization.arm64" />
+        <ComponentGroupRef Id="Legacy_Builtin_float.arm64" />
+        <ComponentGroupRef Id="Legacy_Concurrency.arm64" />
+        <ComponentGroupRef Id="Legacy_Differentiation.arm64" />
+        <ComponentGroupRef Id="Legacy_FoundationCollections.arm64" />
+        <ComponentGroupRef Id="Legacy_FoundationUnicode.arm64" />
+        <ComponentGroupRef Id="Legacy_RegexParser.arm64" />
+        <ComponentGroupRef Id="Legacy_StringProcessing.arm64" />
+        <ComponentGroupRef Id="Legacy_Volatile.arm64" />
 
         <ComponentGroupRef Id="Registrar.arm64" />
 
@@ -2885,33 +2886,33 @@
 
         <ComponentGroupRef Id="SwiftRemoteMirror.x64" />
 
-        <ComponentGroupRef Id="BlocksRuntime.x64" />
-        <ComponentGroupRef Id="dispatch.x64" />
+        <ComponentGroupRef Id="LegacyBlocksRuntime.x64" />
+        <ComponentGroupRef Id="Legacydispatch.x64" />
 
-        <ComponentGroupRef Id="CRT.x64" />
-        <ComponentGroupRef Id="WinSDK.x64" />
+        <ComponentGroupRef Id="LegacyCRT.x64" />
+        <ComponentGroupRef Id="LegacyWinSDK.x64" />
 
-        <ComponentGroupRef Id="Cxx.x64" />
-        <ComponentGroupRef Id="CxxStdlib.x64" />
-        <ComponentGroupRef Id="Distributed.x64" />
-        <ComponentGroupRef Id="Foundation.x64" />
-        <ComponentGroupRef Id="FoundationEssentials.x64" />
-        <ComponentGroupRef Id="FoundationInternationalization.x64" />
-        <ComponentGroupRef Id="FoundationNetworking.x64" />
-        <ComponentGroupRef Id="FoundationXML.x64" />
-        <ComponentGroupRef Id="Observation.x64" />
-        <ComponentGroupRef Id="RegexBuilder.x64" />
-        <ComponentGroupRef Id="Swift.x64" />
-        <ComponentGroupRef Id="SwiftOnoneSupport.x64" />
-        <ComponentGroupRef Id="Synchronization.x64" />
-        <ComponentGroupRef Id="_Builtin_float.x64" />
-        <ComponentGroupRef Id="_Concurrency.x64" />
-        <ComponentGroupRef Id="_Differentiation.x64" />
-        <ComponentGroupRef Id="_FoundationCollections.x64" />
-        <ComponentGroupRef Id="_FoundationUnicode.x64" />
-        <ComponentGroupRef Id="_RegexParser.x64" />
-        <ComponentGroupRef Id="_StringProcessing.x64" />
-        <ComponentGroupRef Id="_Volatile.x64" />
+        <ComponentGroupRef Id="LegacyCxx.x64" />
+        <ComponentGroupRef Id="LegacyCxxStdlib.x64" />
+        <ComponentGroupRef Id="LegacyDistributed.x64" />
+        <ComponentGroupRef Id="LegacyFoundation.x64" />
+        <ComponentGroupRef Id="LegacyFoundationEssentials.x64" />
+        <ComponentGroupRef Id="LegacyFoundationInternationalization.x64" />
+        <ComponentGroupRef Id="LegacyFoundationNetworking.x64" />
+        <ComponentGroupRef Id="LegacyFoundationXML.x64" />
+        <ComponentGroupRef Id="LegacyObservation.x64" />
+        <ComponentGroupRef Id="LegacyRegexBuilder.x64" />
+        <ComponentGroupRef Id="LegacySwift.x64" />
+        <ComponentGroupRef Id="LegacySwiftOnoneSupport.x64" />
+        <ComponentGroupRef Id="LegacySynchronization.x64" />
+        <ComponentGroupRef Id="Legacy_Builtin_float.x64" />
+        <ComponentGroupRef Id="Legacy_Concurrency.x64" />
+        <ComponentGroupRef Id="Legacy_Differentiation.x64" />
+        <ComponentGroupRef Id="Legacy_FoundationCollections.x64" />
+        <ComponentGroupRef Id="Legacy_FoundationUnicode.x64" />
+        <ComponentGroupRef Id="Legacy_RegexParser.x64" />
+        <ComponentGroupRef Id="Legacy_StringProcessing.x64" />
+        <ComponentGroupRef Id="Legacy_Volatile.x64" />
 
         <ComponentGroupRef Id="Registrar.x64" />
 
@@ -2929,33 +2930,33 @@
 
         <ComponentGroupRef Id="SwiftRemoteMirror.x86" />
 
-        <ComponentGroupRef Id="BlocksRuntime.x86" />
-        <ComponentGroupRef Id="dispatch.x86" />
+        <ComponentGroupRef Id="LegacyBlocksRuntime.x86" />
+        <ComponentGroupRef Id="Legacydispatch.x86" />
 
-        <ComponentGroupRef Id="CRT.x86" />
-        <ComponentGroupRef Id="WinSDK.x86" />
+        <ComponentGroupRef Id="LegacyCRT.x86" />
+        <ComponentGroupRef Id="LegacyWinSDK.x86" />
 
-        <ComponentGroupRef Id="Cxx.x86" />
-        <ComponentGroupRef Id="CxxStdlib.x86" />
-        <ComponentGroupRef Id="Distributed.x86" />
-        <ComponentGroupRef Id="Foundation.x86" />
-        <ComponentGroupRef Id="FoundationEssentials.x86" />
-        <ComponentGroupRef Id="FoundationInternationalization.x86" />
-        <ComponentGroupRef Id="FoundationNetworking.x86" />
-        <ComponentGroupRef Id="FoundationXML.x86" />
-        <ComponentGroupRef Id="Observation.x86" />
-        <ComponentGroupRef Id="RegexBuilder.x86" />
-        <ComponentGroupRef Id="Swift.x86" />
-        <ComponentGroupRef Id="SwiftOnoneSupport.x86" />
-        <ComponentGroupRef Id="Synchronization.x86" />
-        <ComponentGroupRef Id="_Builtin_float.x86" />
-        <ComponentGroupRef Id="_Concurrency.x86" />
-        <ComponentGroupRef Id="_Differentiation.x86" />
-        <ComponentGroupRef Id="_FoundationCollections.x86" />
-        <ComponentGroupRef Id="_FoundationUnicode.x86" />
-        <ComponentGroupRef Id="_RegexParser.x86" />
-        <ComponentGroupRef Id="_StringProcessing.x86" />
-        <ComponentGroupRef Id="_Volatile.x86" />
+        <ComponentGroupRef Id="LegacyCxx.x86" />
+        <ComponentGroupRef Id="LegacyCxxStdlib.x86" />
+        <ComponentGroupRef Id="LegacyDistributed.x86" />
+        <ComponentGroupRef Id="LegacyFoundation.x86" />
+        <ComponentGroupRef Id="LegacyFoundationEssentials.x86" />
+        <ComponentGroupRef Id="LegacyFoundationInternationalization.x86" />
+        <ComponentGroupRef Id="LegacyFoundationNetworking.x86" />
+        <ComponentGroupRef Id="LegacyFoundationXML.x86" />
+        <ComponentGroupRef Id="LegacyObservation.x86" />
+        <ComponentGroupRef Id="LegacyRegexBuilder.x86" />
+        <ComponentGroupRef Id="LegacySwift.x86" />
+        <ComponentGroupRef Id="LegacySwiftOnoneSupport.x86" />
+        <ComponentGroupRef Id="LegacySynchronization.x86" />
+        <ComponentGroupRef Id="Legacy_Builtin_float.x86" />
+        <ComponentGroupRef Id="Legacy_Concurrency.x86" />
+        <ComponentGroupRef Id="Legacy_Differentiation.x86" />
+        <ComponentGroupRef Id="Legacy_FoundationCollections.x86" />
+        <ComponentGroupRef Id="Legacy_FoundationUnicode.x86" />
+        <ComponentGroupRef Id="Legacy_RegexParser.x86" />
+        <ComponentGroupRef Id="Legacy_StringProcessing.x86" />
+        <ComponentGroupRef Id="Legacy_Volatile.x86" />
 
         <ComponentGroupRef Id="Registrar.x86" />
 
