@@ -4,6 +4,7 @@
       $(DefineConstants);
       _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\clang;
       _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift\clang;
+      _USR_LIB_SWIFT_STATIC_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift_static\clang;
     </DefineConstants>
     <OutputName>bld.noasserts</OutputName>
   </PropertyGroup>
@@ -15,7 +16,7 @@
   <ItemGroup>
     <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\clang">
       <ComponentGroupName>ClangResources_noasserts</ComponentGroupName>
-      <DirectoryRefId>toolchains_noasserts_usr_lib_clang</DirectoryRefId>
+      <DirectoryRefId>toolchain_noasserts_usr_lib_clang</DirectoryRefId>
       <PreprocessorVariable>var._USR_LIB_CLANG</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
@@ -26,8 +27,20 @@
   <ItemGroup>
     <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift\clang">
       <ComponentGroupName>SwiftClangResources_noasserts</ComponentGroupName>
-      <DirectoryRefId>toolchains_noasserts_usr_lib_swift_clang</DirectoryRefId>
+      <DirectoryRefId>toolchain_noasserts_usr_lib_swift_clang</DirectoryRefId>
       <PreprocessorVariable>var._USR_LIB_SWIFT_CLANG</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- FIXME(#81557) this needs to be properly staged once the sanitizers are included -->
+    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts\usr\lib\swift\clang">
+      <ComponentGroupName>SwiftStaticClangResources_noasserts</ComponentGroupName>
+      <DirectoryRefId>toolchain_noasserts_usr_lib_swift_static_clang</DirectoryRefId>
+      <PreprocessorVariable>var._USR_LIB_SWIFT_STATIC_CLANG</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
