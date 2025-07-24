@@ -543,7 +543,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">
-      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="toolchain_$(VariantName)_usr_bin" Guid="$(VariantEnvironmentComponentGUID)">
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1 AND ADDTOOLCHAINTOPATH=1" Directory="toolchain_$(VariantName)_usr_bin" Guid="$(VariantEnvironmentComponentGUID)">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[toolchain_$(VariantName)_usr_bin]" />
       </Component>
     </ComponentGroup>

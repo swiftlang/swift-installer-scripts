@@ -3,7 +3,7 @@
   <?define VariantName = noasserts ?>
   <?define VariantUpgradeCode = $(CliNoAssertsUpgradeCode)?>
   <?define VariantProductName = !(loc.CliNoAsserts_ProductName)?>
-  <?define VariantCabName = cli.noasserts.cab?>
+  <?define VariantCabinetName = cli.noasserts.cab?>
 
   <?include ../cli.wxi ?>
 </Wix>

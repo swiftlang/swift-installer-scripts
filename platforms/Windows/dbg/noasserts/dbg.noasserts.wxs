@@ -3,7 +3,7 @@
   <?define VariantName = noasserts ?>
   <?define VariantUpgradeCode = $(DbgNoAssertsUpgradeCode)?>
   <?define VariantProductName = !(loc.DbgNoAsserts_ProductName)?>
-  <?define VariantCabName = dbg.noasserts.cab?>
+  <?define VariantCabinetName = dbg.noasserts.cab?>
 
   <?include ../dbg.wxi ?>
 </Wix>
