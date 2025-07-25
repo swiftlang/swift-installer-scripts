@@ -1,132 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
-
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.DbgAsserts_ProductName)"
-      UpgradeCode="$(DbgAssertsUpgradeCode)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="dbg.asserts.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="$(VariantCabName)" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(DbgAssertsUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchain_asserts_usr_include">
-      <Directory Id="toolchain_asserts_usr_include__InternalSwiftStaticMirror" Name="_InternalSwiftStaticMirror" />
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
+      <Directory Id="toolchain_$(VariantName)_usr_include__InternalSwiftStaticMirror" Name="_InternalSwiftStaticMirror" />
     </DirectoryRef>
 
-    <DirectoryRef Id="toolchain_asserts_usr_lib">
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_lib">
       <Directory Name="site-packages">
-        <Directory Id="toolchain_asserts_usr_lib_site_packages_lldb" Name="lldb">
-          <Directory Id="toolchain_asserts_usr_lib_site_packages_lldb_formatters" Name="formatters">
-            <Directory Id="toolchain_asserts_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
+        <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb" Name="lldb">
+          <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters" Name="formatters">
+            <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
           </Directory>
-          <Directory Id="toolchain_asserts_usr_lib_site_packages_lldb_utils" Name="utils" />
+          <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Name="utils" />
         </Directory>
       </Directory>
     </DirectoryRef>
 
     <ComponentGroup Id="LLDB">
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\lldb.exe" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\liblldb.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib">
+      <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\liblldb.lib" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\__init__.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\_lldb.pyd" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\embedded_interpreter.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\lldb-argdumper.exe" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\Logger.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\__init__.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cache.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\metrics.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\synth.py" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters_cpp">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\__init__.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters_cpp">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_formatters_cpp">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_utils">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\__init__.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_utils">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\in_call_stack.py" />
       </Component>
-      <Component Directory="toolchain_asserts_usr_lib_site_packages_lldb_utils">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils">
         <File Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\symbolication.py" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="LLDBServer">
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\lldb-server.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftREPL">
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\repl_swift.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftSynthesizeInterface">
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\swift-synthesize-interface.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftInspect">
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\swift-inspect.exe" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="_InternalSwiftStaticMirror" Directory="toolchain_asserts_usr_include__InternalSwiftStaticMirror">
-      <Component Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="_InternalSwiftStaticMirror" Directory="toolchain_$(VariantName)_usr_include__InternalSwiftStaticMirror">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\_InternalSwiftStaticMirror.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib">
+      <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftStaticMirror.lib" />
       </Component>
 
@@ -141,7 +139,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="DebuggingTools" AllowAbsent="no" Title="!(loc.DbgAsserts_ProductName)">
+    <Feature Id="DebuggingTools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="LLDB" />
       <ComponentGroupRef Id="LLDBServer" />
 

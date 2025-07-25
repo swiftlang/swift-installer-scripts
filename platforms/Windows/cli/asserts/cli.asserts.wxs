@@ -1,3 +1,9 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
+  <?define VariantName = asserts ?>
+  <?define VariantUpgradeCode = $(CliAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.CliAsserts_ProductName)?>
+  <?define VariantCabName = cli.asserts.cab?>
+
   <?include ../cli.wxi ?>
 </Wix>
