@@ -722,7 +722,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <ComponentGroup Id="lib_FoundationUnicode" Directory="WindowsExperimentalSDK_usr_include__foundation_unicode">
+    <ComponentGroup Id="Experimental_FoundationUnicode" Directory="WindowsExperimentalSDK_usr_include__foundation_unicode">
       <?define Disk = 5?>
       <?include ../_FoundationUnicode.wxi?>
       <?undef Disk?>
@@ -757,7 +757,7 @@
       <?undef Disk?>
     </ComponentGroup>
 
-    <ComponentGroup Id="lib_FoundationCShims" Directory="WindowsExperimentalSDK_usr_include__FoundationCShims">
+    <ComponentGroup Id="Experimental_FoundationCShims" Directory="WindowsExperimentalSDK_usr_include__FoundationCShims">
       <?define Disk = 5?>
       <?include ../_FoundationCShims.wxi?>
       <?undef Disk?>
@@ -3204,9 +3204,6 @@
     <?endif?>
 
     <Feature Id="ExperimentalSDK" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental)">
-      <ComponentGroupRef Id="lib_FoundationUnicode" />
-      <ComponentGroupRef Id="lib_FoundationCShims" />
-
       <ComponentGroupRef Id="ExperimentalAPINotes" />
       <ComponentGroupRef Id="ExperimentalAuxiliaryFiles" />
       <ComponentGroupRef Id="ExperimentalBlocksRuntime" />
@@ -3215,6 +3212,8 @@
       <ComponentGroupRef Id="ExperimentalDispatch" />
       <ComponentGroupRef Id="ExperimentalSwiftRemoteMirror" />
       <ComponentGroupRef Id="ExperimentalSwiftShims" />
+      <ComponentGroupRef Id="Experimental_FoundationCShims" />
+      <ComponentGroupRef Id="Experimental_FoundationUnicode" />
 
       <!-- MSI management Components -->
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
