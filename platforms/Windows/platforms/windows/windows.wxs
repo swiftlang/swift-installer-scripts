@@ -187,7 +187,7 @@
                 </Directory>
                 <Directory Name="lib">
                   <Directory Name="swift">
-                    <Directory Id="WindowsExperimentalSDK_usr_lib_swift_apinotes" Name="apinotes" />
+                    <Directory Id="WindowsExperimentalSDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="5" />
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_shims" Name="shims" />
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_windows" Name="windows">
                       <?if $(IncludeARM64) = True?>
@@ -2825,7 +2825,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="ExperimentalAPINotes" Directory="WindowsExperimentalSDK_usr_lib_swift_apinotes">
-      <Component DiskId="5">
+      <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\apinotes\std.apinotes" />
       </Component>
     </ComponentGroup>
