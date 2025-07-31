@@ -1598,7 +1598,7 @@
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
         </Component>
 
-        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswiftDistributed.lib" />
         </Component>
       </ComponentGroup>
