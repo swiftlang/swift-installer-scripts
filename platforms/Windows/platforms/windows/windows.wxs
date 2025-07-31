@@ -3069,6 +3069,8 @@
 
     <?if $(IncludeARM64) = True?>
       <Feature Id="ExperimentalARM64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_arm64)">
+        <Level Condition="InstallARM64ExperimentalSDK = 1" Value="1" />
+
         <ComponentGroupRef Id="CoreFoundation.arm64" />
         <ComponentGroupRef Id="lib_Builtin_float.arm64" />
         <ComponentGroupRef Id="lib_Concurrency.arm64" />
