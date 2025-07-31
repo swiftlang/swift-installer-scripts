@@ -190,6 +190,29 @@
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="5" />
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_shims" Name="shims" DiskId="5" />
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_windows" Name="windows">
+                      <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule" />
+                      <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
+                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
+                      <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
+                      <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
+                      <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
+                      <Directory Id="FoundationEssentials.swiftmodule" Name="FoundationEssentials.swiftmodule" />
+                      <Directory Id="FoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
+                      <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
+                      <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
+                      <Directory Id="Observation.swiftmodule" Name="Observation.swiftmodule" />
+                      <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
+                      <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
+                      <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
+                      <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
+                      <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
+                      <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
+                      <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
+                      <Directory Id="_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
+                      <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
+                      <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
+                      <Directory Id="_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
+                      <Directory Id="_Builtin_float.swiftmodule" Name="Builtin_float.swiftmodule" />
                       <?if $(IncludeARM64) = True?>
                         <Directory Id="WindowsExperimentalSDK_usr_lib_swift_windows_arm64" Name="aarch64" DiskId="6" />
                       <?endif?>
@@ -459,6 +482,11 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftRemoteMirror.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwiftRemoteMirror.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\swiftRemoteMirror.lib" />
@@ -466,6 +494,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="SwiftRemoteMirror.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftRemoteMirror.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwiftRemoteMirror.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\swiftRemoteMirror.lib" />
@@ -473,6 +506,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="SwiftRemoteMirror.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftRemoteMirror.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwiftRemoteMirror.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\swiftRemoteMirror.lib" />
@@ -629,6 +667,11 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="dispatch.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\dispatch.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libdispatch.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\dispatch.lib" />
@@ -636,6 +679,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="dispatch.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\dispatch.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libdispatch.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\dispatch.lib" />
@@ -643,6 +691,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="dispatch.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\dispatch.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libdispatch.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\dispatch.lib" />
@@ -651,6 +704,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="swiftDispatch.arm64" Directory="Dispatch.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64" DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftDispatch.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libswiftDispatch.arm64" Directory="libDispatch.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -665,6 +730,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="swiftDispatch.x64" Directory="Dispatch.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64" DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftDispatch.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libswiftDispatch.x64" Directory="libDispatch.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -679,6 +756,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="swiftDispatch.x86" Directory="Dispatch.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86" DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftDispatch.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libswiftDispatch.x86" Directory="libDispatch.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -729,6 +818,11 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_FoundationUnicode.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\_FoundationICU.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_FoundationUnicode.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\_FoundationICU.lib" />
@@ -736,6 +830,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_FoundationUnicode.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\_FoundationICU.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_FoundationUnicode.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\_FoundationICU.lib" />
@@ -743,6 +842,11 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_FoundationUnicode.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\_FoundationICU.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_FoundationUnicode.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\_FoundationICU.lib" />
@@ -839,6 +943,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_Builtin_float.arm64" Directory="_Builtin_float.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swift_Builtin_float.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Builtin_float.arm64" Directory="lib_Builtin_float.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -853,6 +969,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_Builtin_float.x64" Directory="_Builtin_float.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swift_Builtin_float.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Builtin_float.x64" Directory="lib_Builtin_float.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -867,6 +995,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_Builtin_float.x86" Directory="_Builtin_float.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swift_Builtin_float.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Builtin_float.x86" Directory="lib_Builtin_float.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -935,6 +1075,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_Concurrency.arm64" Directory="_Concurrency.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swift_Concurrency.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Concurrency.arm64" Directory="lib_Concurrency.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -949,6 +1101,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_Concurrency.x64" Directory="_Concurrency.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swift_Concurrency.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Concurrency.x64" Directory="lib_Concurrency.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -963,6 +1127,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_Concurrency.x86" Directory="_Concurrency.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swift_Concurrency.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Concurrency.x86" Directory="lib_Concurrency.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1031,6 +1207,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_Differentiation.arm64" Directory="_Differentiation.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swift_Differentiation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Differentiation.arm64" Directory="lib_Differentiation.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1045,6 +1233,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_Differentiation.x64" Directory="_Differentiation.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swift_Differentiation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Differentiation.x64" Directory="lib_Differentiation.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1059,6 +1259,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_Differentiation.x86" Directory="_Differentiation.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swift_Differentiation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Differentiation.x86" Directory="lib_Differentiation.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1118,6 +1330,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_RegexParser.arm64" Directory="_RegexParser.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swift_RegexParser.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_RegexParser.arm64" Directory="lib_RegexParser.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_RegexParser.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1132,6 +1356,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_RegexParser.x64" Directory="_RegexParser.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swift_RegexParser.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_RegexParser.x64" Directory="lib_RegexParser.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_RegexParser.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1146,6 +1382,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_RegexParser.x86" Directory="_RegexParser.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swift_RegexParser.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_RegexParser.x86" Directory="lib_RegexParser.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_RegexParser.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1214,6 +1462,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_StringProcessing.arm64" Directory="_StringProcessing.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swift_StringProcessing.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_StringProcessing.arm64" Directory="lib_StringProcessing.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1228,6 +1488,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_StringProcessing.x64" Directory="_StringProcessing.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swift_StringProcessing.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_StringProcessing.x64" Directory="lib_StringProcessing.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1242,6 +1514,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_StringProcessing.x86" Directory="_StringProcessing.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swift_StringProcessing.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_StringProcessing.x86" Directory="lib_StringProcessing.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1310,6 +1594,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_Volatile.arm64" Directory="_Volatile.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swift_Volatile.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Volatile.arm64" Directory="lib_Volatile.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1324,6 +1620,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_Volatile.x64" Directory="_Volatile.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swift_Volatile.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Volatile.x64" Directory="lib_Volatile.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1338,6 +1646,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_Volatile.x86" Directory="_Volatile.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swift_Volatile.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_Volatile.x86" Directory="lib_Volatile.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1406,6 +1726,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="CRT.arm64" Directory="CRT.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftCRT.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCRT.arm64" Directory="libCRT.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1420,6 +1752,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="CRT.x64" Directory="CRT.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftCRT.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCRT.x64" Directory="libCRT.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1434,6 +1778,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="CRT.x86" Directory="CRT.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftCRT.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCRT.x86" Directory="libCRT.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1502,6 +1858,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="Cxx.arm64" Directory="Cxx.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\libswiftCxx.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCxx.arm64" Directory="libCxx.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1516,6 +1884,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="Cxx.x64" Directory="Cxx.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\libswiftCxx.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCxx.x64" Directory="libCxx.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1530,6 +1910,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="Cxx.x86" Directory="Cxx.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\libswiftCxx.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCxx.x86" Directory="libCxx.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1598,6 +1990,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="CxxStdlib.arm64" Directory="CxxStdlib.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\libswiftCxxStdlib.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCxxStdlib.arm64" Directory="libCxxStdlib.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1612,6 +2016,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="CxxStdlib.x64" Directory="CxxStdlib.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\libswiftCxxStdlib.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCxxStdlib.x64" Directory="libCxxStdlib.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1626,6 +2042,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="CxxStdlib.x86" Directory="CxxStdlib.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\libswiftCxxStdlib.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libCxxStdlib.x86" Directory="libCxxStdlib.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1694,6 +2122,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="Distributed.arm64" Directory="Distributed.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftDistributed.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libDistributed.arm64" Directory="libDistributed.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1708,6 +2148,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="Distributed.x64" Directory="Distributed.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftDistributed.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libDistributed.x64" Directory="libDistributed.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1722,6 +2174,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="Distributed.x86" Directory="Distributed.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftDistributed.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libDistributed.x86" Directory="libDistributed.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1769,6 +2233,14 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="_FoundationCollections.arm64" Directory="_FoundationCollections.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_FoundationCollections.arm64" Directory="lib_FoundationCollections.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_FoundationCollections.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1783,6 +2255,14 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="_FoundationCollections.x64" Directory="_FoundationCollections.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_FoundationCollections.x64" Directory="lib_FoundationCollections.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_FoundationCollections.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1797,6 +2277,14 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="_FoundationCollections.x86" Directory="_FoundationCollections.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\_FoundationCollections.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="lib_FoundationCollections.x86" Directory="lib_FoundationCollections.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_FoundationCollections.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1856,6 +2344,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="FoundationEssentials.arm64" Directory="FoundationEssentials.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\FoundationEssentials.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationEssentials.arm64" Directory="libFoundationEssentials.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationEssentials.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1870,6 +2370,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="FoundationEssentials.x64" Directory="FoundationEssentials.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\FoundationEssentials.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationEssentials.x64" Directory="libFoundationEssentials.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationEssentials.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1884,6 +2396,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="FoundationEssentials.x86" Directory="FoundationEssentials.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationEssentials.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\FoundationEssentials.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationEssentials.x86" Directory="libFoundationEssentials.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationEssentials.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -1943,6 +2467,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="FoundationInternationalization.arm64" Directory="FoundationInternationalization.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\FoundationInternationalization.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationInternationalization.arm64" Directory="libFoundationInternationalization.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationInternationalization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -1957,6 +2493,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="FoundationInternationalization.x64" Directory="FoundationInternationalization.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\FoundationInternationalization.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationInternationalization.x64" Directory="libFoundationInternationalization.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationInternationalization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -1971,6 +2519,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="FoundationInternationalization.x86" Directory="FoundationInternationalization.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationInternationalization.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\FoundationInternationalization.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationInternationalization.x86" Directory="libFoundationInternationalization.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationInternationalization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2029,6 +2589,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="Foundation.arm64" Directory="Foundation.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\Foundation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundation.arm64" Directory="libFoundation.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Foundation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2043,6 +2615,17 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="Foundation.x64" Directory="Foundation.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\Foundation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundation.x64" Directory="libFoundation.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Foundation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2056,6 +2639,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="Foundation.x86" Directory="Foundation.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Foundation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\Foundation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundation.x86" Directory="libFoundation.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Foundation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2115,6 +2710,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="FoundationNetworking.arm64" Directory="FoundationNetworking.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\FoundationNetworking.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationNetworking.arm64" Directory="libFoundationNetworking.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationNetworking.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2129,6 +2736,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="FoundationNetworking.x64" Directory="FoundationNetworking.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\FoundationNetworking.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationNetworking.x64" Directory="libFoundationNetworking.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationNetworking.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2143,6 +2762,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="FoundationNetworking.x86" Directory="FoundationNetworking.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationNetworking.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\FoundationNetworking.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationNetworking.x86" Directory="libFoundationNetworking.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationNetworking.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2202,6 +2833,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="FoundationXML.arm64" Directory="FoundationXML.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\FoundationXML.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationXML.arm64" Directory="libFoundationXML.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationXML.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2216,6 +2859,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="FoundationXML.x64" Directory="FoundationXML.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\FoundationXML.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationXML.x64" Directory="libFoundationXML.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationXML.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2230,6 +2885,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="FoundationXML.x86" Directory="FoundationXML.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\FoundationXML.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\FoundationXML.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libFoundationXML.x86" Directory="libFoundationXML.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\FoundationXML.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2298,6 +2965,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="Observation.arm64" Directory="Observation.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftObservation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libObservation.arm64" Directory="libObservation.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2312,6 +2991,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="Observation.x64" Directory="Observation.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftObservation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libObservation.x64" Directory="libObservation.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2326,6 +3017,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="Observation.x86" Directory="Observation.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftObservation.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libObservation.x86" Directory="libObservation.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2394,6 +3097,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="RegexBuilder.arm64" Directory="RegexBuilder.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftRegexBuilder.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libRegexBuilder.arm64" Directory="libRegexBuilder.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2408,6 +3123,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="RegexBuilder.x64" Directory="RegexBuilder.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftRegexBuilder.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libRegexBuilder.x64" Directory="libRegexBuilder.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2422,6 +3149,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="RegexBuilder.x86" Directory="RegexBuilder.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftRegexBuilder.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libRegexBuilder.x86" Directory="libRegexBuilder.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2487,6 +3226,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="Swift.arm64" Directory="Swift.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftCore.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwift.arm64" Directory="libSwift.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2501,6 +3252,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="Swift.x64" Directory="Swift.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftCore.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwift.x64" Directory="libSwift.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2515,6 +3278,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="Swift.x86" Directory="Swift.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftCore.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwift.x86" Directory="libSwift.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2583,6 +3358,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="SwiftOnoneSupport.arm64" Directory="SwiftOnoneSupport.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftSwiftOnoneSupport.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwiftOnoneSupport.arm64" Directory="libSwiftOnoneSupport.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2597,6 +3384,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="SwiftOnoneSupport.x64" Directory="SwiftOnoneSupport.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftSwiftOnoneSupport.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwiftOnoneSupport.x64" Directory="libSwiftOnoneSupport.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2611,6 +3410,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="SwiftOnoneSupport.x86" Directory="SwiftOnoneSupport.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftSwiftOnoneSupport.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSwiftOnoneSupport.x86" Directory="libSwiftOnoneSupport.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2679,6 +3490,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="Synchronization.arm64" Directory="Synchronization.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64" DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftSynchronization.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSynchronization.arm64" Directory="libSynchronization.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2693,6 +3516,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="Synchronization.x64" Directory="Synchronization.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64" DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftSynchronization.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSynchronization.x64" Directory="libSynchronization.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2707,6 +3542,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="Synchronization.x86" Directory="Synchronization.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86" DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftSynchronization.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libSynchronization.x86" Directory="libSynchronization.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -2775,6 +3622,18 @@
     <?endif?>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="WinSDK.arm64" Directory="WinSDK.swiftmodule">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\swiftWinSDK.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libWinSDK.arm64" Directory="libWinSDK.swiftmodule">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
@@ -2789,6 +3648,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="WinSDK.x64" Directory="WinSDK.swiftmodule">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\swiftWinSDK.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libWinSDK.x64" Directory="libWinSDK.swiftmodule">
         <Component DiskId="7">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
@@ -2803,6 +3674,18 @@
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="WinSDK.x86" Directory="WinSDK.swiftmodule">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        </Component>
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+        </Component>
+
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\swiftWinSDK.lib" />
+        </Component>
+      </ComponentGroup>
       <ComponentGroup Id="libWinSDK.x86" Directory="libWinSDK.swiftmodule">
         <Component DiskId="8">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
@@ -3223,6 +4106,33 @@
       <Feature Id="ExperimentalARM64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_arm64)">
         <Level Condition="InstallARM64ExperimentalSDK = 1" Value="1" />
 
+        <ComponentGroupRef Id="CRT.arm64" />
+        <ComponentGroupRef Id="Cxx.arm64" />
+        <ComponentGroupRef Id="CxxStdlib.arm64" />
+        <ComponentGroupRef Id="Distributed.arm64" />
+        <ComponentGroupRef Id="Foundation.arm64" />
+        <ComponentGroupRef Id="FoundationEssentials.arm64" />
+        <ComponentGroupRef Id="FoundationInternationalization.arm64" />
+        <ComponentGroupRef Id="FoundationNetworking.arm64" />
+        <ComponentGroupRef Id="FoundationXML.arm64" />
+        <ComponentGroupRef Id="Observation.arm64" />
+        <ComponentGroupRef Id="RegexBuilder.arm64" />
+        <ComponentGroupRef Id="Swift.arm64" />
+        <ComponentGroupRef Id="SwiftOnoneSupport.arm64" />
+        <ComponentGroupRef Id="SwiftRemoteMirror.arm64" />
+        <ComponentGroupRef Id="Synchronization.arm64" />
+        <ComponentGroupRef Id="WinSDK.arm64" />
+        <ComponentGroupRef Id="_Builtin_float.arm64" />
+        <ComponentGroupRef Id="_Concurrency.arm64" />
+        <ComponentGroupRef Id="_Differentiation.arm64" />
+        <ComponentGroupRef Id="_FoundationCollections.arm64" />
+        <ComponentGroupRef Id="_FoundationUnicode.arm64" />
+        <ComponentGroupRef Id="_RegexParser.arm64" />
+        <ComponentGroupRef Id="_StringProcessing.arm64" />
+        <ComponentGroupRef Id="_Volatile.arm64" />
+        <ComponentGroupRef Id="dispatch.arm64" />
+        <ComponentGroupRef Id="swiftDispatch.arm64" />
+
         <ComponentGroupRef Id="CoreFoundation.arm64" />
         <ComponentGroupRef Id="libBlocksRuntime.arm64" />
         <ComponentGroupRef Id="libCRT.arm64" />
@@ -3261,6 +4171,33 @@
       <Feature Id="ExperimentalX64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_amd64)">
         <Level Condition="InstallX64ExperimentalSDK = 1" Value="1" />
 
+        <ComponentGroupRef Id="CRT.x64" />
+        <ComponentGroupRef Id="Cxx.x64" />
+        <ComponentGroupRef Id="CxxStdlib.x64" />
+        <ComponentGroupRef Id="Distributed.x64" />
+        <ComponentGroupRef Id="Foundation.x64" />
+        <ComponentGroupRef Id="FoundationEssentials.x64" />
+        <ComponentGroupRef Id="FoundationInternationalization.x64" />
+        <ComponentGroupRef Id="FoundationNetworking.x64" />
+        <ComponentGroupRef Id="FoundationXML.x64" />
+        <ComponentGroupRef Id="Observation.x64" />
+        <ComponentGroupRef Id="RegexBuilder.x64" />
+        <ComponentGroupRef Id="Swift.x64" />
+        <ComponentGroupRef Id="SwiftOnoneSupport.x64" />
+        <ComponentGroupRef Id="SwiftRemoteMirror.x64" />
+        <ComponentGroupRef Id="Synchronization.x64" />
+        <ComponentGroupRef Id="WinSDK.x64" />
+        <ComponentGroupRef Id="_Builtin_float.x64" />
+        <ComponentGroupRef Id="_Concurrency.x64" />
+        <ComponentGroupRef Id="_Differentiation.x64" />
+        <ComponentGroupRef Id="_FoundationCollections.x64" />
+        <ComponentGroupRef Id="_FoundationUnicode.x64" />
+        <ComponentGroupRef Id="_RegexParser.x64" />
+        <ComponentGroupRef Id="_StringProcessing.x64" />
+        <ComponentGroupRef Id="_Volatile.x64" />
+        <ComponentGroupRef Id="dispatch.x64" />
+        <ComponentGroupRef Id="swiftDispatch.x64" />
+
         <ComponentGroupRef Id="CoreFoundation.x64" />
         <ComponentGroupRef Id="libBlocksRuntime.x64" />
         <ComponentGroupRef Id="libCRT.x64" />
@@ -3298,6 +4235,33 @@
     <?if $(IncludeX86) = True?>
       <Feature Id="ExperimentalX86" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_x86)">
         <Level Condition="InstallX86ExperimentalSDK = 1" Value="1" />
+
+        <ComponentGroupRef Id="CRT.x86" />
+        <ComponentGroupRef Id="Cxx.x86" />
+        <ComponentGroupRef Id="CxxStdlib.x86" />
+        <ComponentGroupRef Id="Distributed.x86" />
+        <ComponentGroupRef Id="Foundation.x86" />
+        <ComponentGroupRef Id="FoundationEssentials.x86" />
+        <ComponentGroupRef Id="FoundationInternationalization.x86" />
+        <ComponentGroupRef Id="FoundationNetworking.x86" />
+        <ComponentGroupRef Id="FoundationXML.x86" />
+        <ComponentGroupRef Id="Observation.x86" />
+        <ComponentGroupRef Id="RegexBuilder.x86" />
+        <ComponentGroupRef Id="Swift.x86" />
+        <ComponentGroupRef Id="SwiftOnoneSupport.x86" />
+        <ComponentGroupRef Id="SwiftRemoteMirror.x86" />
+        <ComponentGroupRef Id="Synchronization.x86" />
+        <ComponentGroupRef Id="WinSDK.x86" />
+        <ComponentGroupRef Id="_Builtin_float.x86" />
+        <ComponentGroupRef Id="_Concurrency.x86" />
+        <ComponentGroupRef Id="_Differentiation.x86" />
+        <ComponentGroupRef Id="_FoundationCollections.x86" />
+        <ComponentGroupRef Id="_FoundationUnicode.x86" />
+        <ComponentGroupRef Id="_RegexParser.x86" />
+        <ComponentGroupRef Id="_StringProcessing.x86" />
+        <ComponentGroupRef Id="_Volatile.x86" />
+        <ComponentGroupRef Id="dispatch.x86" />
+        <ComponentGroupRef Id="swiftDispatch.x86" />
 
         <ComponentGroupRef Id="CoreFoundation.x86" />
         <ComponentGroupRef Id="libBlocksRuntime.x86" />
