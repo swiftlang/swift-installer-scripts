@@ -829,7 +829,7 @@
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
         </Component>
 
-        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86" DiskId="8">
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswift_Builtin_float.lib" />
         </Component>
       </ComponentGroup>
@@ -993,7 +993,7 @@
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
-        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64" DiskId="6">
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libswift_Differentiation.lib" />
         </Component>
       </ComponentGroup>
@@ -1007,7 +1007,7 @@
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
-        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64" DiskId="7">
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libswift_Differentiation.lib" />
         </Component>
       </ComponentGroup>
@@ -1021,7 +1021,7 @@
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
         </Component>
 
-        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86" DiskId="8">
+        <Component Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libswift_Differentiation.lib" />
         </Component>
       </ComponentGroup>
