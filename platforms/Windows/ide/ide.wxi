@@ -1,66 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
-
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.IdeAsserts_ProductName)"
-      UpgradeCode="$(IdeAssertsUpgradeCode)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="ide.asserts.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="$(VariantCabinetName)" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(IdeAssertsUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchain_asserts_usr_include">
-      <Directory Id="toolchain_asserts_usr_include_SourceKit" Name="SourceKit" />
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
+      <Directory Id="toolchain_$(VariantName)_usr_include_SourceKit" Name="SourceKit" />
     </DirectoryRef>
 
-    <ComponentGroup Id="clangd" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="clangd" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\clangd.exe" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="lldb" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="lldb" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\lldb-dap.exe" />
       </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="sourcekitd">
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\sourcekitdInProc.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib">
+      <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\sourcekitdInProc.lib" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitPlugin.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_bin">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitClientPlugin.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_include_SourceKit">
+      <Component Directory="toolchain_$(VariantName)_usr_include_SourceKit">
         <File Source="$(ToolchainRoot)\usr\include\SourceKit\sourcekitd.h" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="lsp" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="lsp" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\sourcekit-lsp.exe" />
       </Component>
     </ComponentGroup>
 
-    <Feature Id="IDETools" AllowAbsent="no" Title="!(loc.IdeAsserts_ProductName)">
+    <Feature Id="IDETools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="clangd" />
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="sourcekitd" />

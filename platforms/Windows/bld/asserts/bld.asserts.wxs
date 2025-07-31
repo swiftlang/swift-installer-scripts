@@ -1,3 +1,11 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
+  <?define VariantName = asserts ?>
+  <?define VariantUpgradeCode = $(BldAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.BldAsserts_ProductName)?>
+  <?define VariantCabinetName = bld.asserts.cab?>
+  <?define ToolchainVersionedVariantDirectory = ToolchainVersionedAsserts ?>
+  <?define VariantEnvironmentComponentGUID = ab52b870-23ee-42e8-9581-3fcbdfb9228c?>
+
   <?include ../bld.wxi ?>
 </Wix>

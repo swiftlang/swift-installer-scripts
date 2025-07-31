@@ -1,48 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
-
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
-      Name="!(loc.CliAsserts_ProductName)"
-      UpgradeCode="$(CliAssertsUpgradeCode)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Media Id="1" Cabinet="cli.asserts.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+    <Media Id="1" Cabinet="$(VariantCabinetName)" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(CliAssertsUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchain_asserts_usr_include">
-      <Directory Id="toolchain_asserts_usr_include__InternalSwiftScan" Name="_InternalSwiftScan" />
-      <Directory Id="toolchain_asserts_usr_include_clang_c" Name="clang-c" />
-      <Directory Id="toolchain_asserts_usr_include_indexstore" Name="indexstore" />
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
+      <Directory Id="toolchain_$(VariantName)_usr_include__InternalSwiftScan" Name="_InternalSwiftScan" />
+      <Directory Id="toolchain_$(VariantName)_usr_include_clang_c" Name="clang-c" />
+      <Directory Id="toolchain_$(VariantName)_usr_include_indexstore" Name="indexstore" />
     </DirectoryRef>
 
-    <DirectoryRef Id="toolchain_asserts_usr_lib_swift">
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_lib_swift">
       <Directory Name="pm">
-        <Directory Id="toolchain_asserts_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI" />
-        <Directory Id="toolchain_asserts_usr_lib_swift_pm_PluginAPI" Name="PluginAPI" />
+        <Directory Id="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI" />
+        <Directory Id="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI" Name="PluginAPI" />
       </Directory>
     </DirectoryRef>
 
-    <DirectoryRef Id="toolchain_asserts_usr_share">
-      <Directory Id="toolchain_asserts_usr_share_pm" Name="pm">
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBAndroidPlatform" Name="SwiftBuild_SWBAndroidPlatform.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBApplePlatform" Name="SwiftBuild_SWBApplePlatform.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBCore" Name="SwiftBuild_SWBCore.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBGenericUnixPlatform" Name="SwiftBuild_SWBGenericUnixPlatform.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBQNXPlatform" Name="SwiftBuild_SWBQNXPlatform.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBUniversalPlatform" Name="SwiftBuild_SWBUniversalPlatform.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBWebAssemblyPlatform" Name="SwiftBuild_SWBWebAssemblyPlatform.resources" />
-        <Directory Id="toolchain_asserts_usr_share_pm_SWBWindowsPlatform" Name="SwiftBuild_SWBWindowsPlatform.resources" />
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_share">
+      <Directory Id="toolchain_$(VariantName)_usr_share_pm" Name="pm">
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBAndroidPlatform" Name="SwiftBuild_SWBAndroidPlatform.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBApplePlatform" Name="SwiftBuild_SWBApplePlatform.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBCore" Name="SwiftBuild_SWBCore.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBGenericUnixPlatform" Name="SwiftBuild_SWBGenericUnixPlatform.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBQNXPlatform" Name="SwiftBuild_SWBQNXPlatform.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBUniversalPlatform" Name="SwiftBuild_SWBUniversalPlatform.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBWebAssemblyPlatform" Name="SwiftBuild_SWBWebAssemblyPlatform.resources" />
+        <Directory Id="toolchain_$(VariantName)_usr_share_pm_SWBWindowsPlatform" Name="SwiftBuild_SWBWindowsPlatform.resources" />
       </Directory>
     </DirectoryRef>
 
-    <ComponentGroup Id="clang" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="clang" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\clang-format.exe" />
       </Component>
@@ -56,12 +54,12 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="libclang" Directory="toolchain_asserts_usr_include_clang_c">
-      <Component Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="libclang" Directory="toolchain_$(VariantName)_usr_include_clang_c">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\libclang.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib">
+      <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\libclang.lib" />
       </Component>
 
@@ -94,12 +92,12 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="IndexStore" Directory="toolchain_asserts_usr_include_indexstore">
-      <Component Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="IndexStore" Directory="toolchain_$(VariantName)_usr_include_indexstore">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\libIndexStore.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib">
+      <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\libIndexStore.lib" />
       </Component>
 
@@ -111,12 +109,12 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="_InternalSwiftScan" Directory="toolchain_asserts_usr_include__InternalSwiftScan">
-      <Component Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="_InternalSwiftScan" Directory="toolchain_$(VariantName)_usr_include__InternalSwiftScan">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\_InternalSwiftScan.dll" />
       </Component>
 
-      <Component Directory="toolchain_asserts_usr_lib">
+      <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
       </Component>
 
@@ -131,7 +129,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="collections" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="collections" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\Collections.dll" />
       </Component>
@@ -146,13 +144,13 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="llbuild" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="llbuild" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\llbuildSwift.dll" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="CompilerPluginSupport" Directory="toolchain_asserts_usr_lib_swift_pm_ManifestAPI">
+    <ComponentGroup Id="CompilerPluginSupport" Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
       </Component>
@@ -167,7 +165,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="PackageDescription" Directory="toolchain_asserts_usr_lib_swift_pm_ManifestAPI">
+    <ComponentGroup Id="PackageDescription" Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
       </Component>
@@ -182,7 +180,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="PackagePlugin" Directory="toolchain_asserts_usr_lib_swift_pm_PluginAPI">
+    <ComponentGroup Id="PackagePlugin" Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI">
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
       </Component>
@@ -197,12 +195,12 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SWBAndroidPlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBAndroidPlatform">
+    <ComponentGroup Id="SWBAndroidPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBAndroidPlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBAndroidPlatform.resources\Android.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBApplePlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBApplePlatform">
+    <ComponentGroup Id="SWBApplePlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBApplePlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsMetadata.xcspec" />
       </Component>
@@ -414,7 +412,7 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSSimulator.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBCoreResources" Directory="toolchain_asserts_usr_share_pm_SWBCore">
+    <ComponentGroup Id="SWBCoreResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBCore">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\CoreBuildSystem.xcspec" />
       </Component>
@@ -425,7 +423,7 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\NativeBuildSystem.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBGenericUnixPlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBGenericUnixPlatform">
+    <ComponentGroup Id="SWBGenericUnixPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBGenericUnixPlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\Unix.xcspec" />
       </Component>
@@ -439,7 +437,7 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixLibtool.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBQNXPlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBQNXPlatform">
+    <ComponentGroup Id="SWBQNXPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBQNXPlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNX.xcspec" />
       </Component>
@@ -453,7 +451,7 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXLibtool.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBUniversalPlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBUniversalPlatform">
+    <ComponentGroup Id="SWBUniversalPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBUniversalPlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInBuildRules.xcbuildrules" />
       </Component>
@@ -545,7 +543,7 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\swift-stdlib-tool.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBWebAssemblyPlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBWebAssemblyPlatform">
+    <ComponentGroup Id="SWBWebAssemblyPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBWebAssemblyPlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmCompile.xcspec" />
       </Component>
@@ -559,7 +557,7 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WebAssembly.xcspec" />
       </Component>
     </ComponentGroup>
-    <ComponentGroup Id="SWBWindowsPlatformResources" Directory="toolchain_asserts_usr_share_pm_SWBWindowsPlatform">
+    <ComponentGroup Id="SWBWindowsPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBWindowsPlatform">
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\Windows.xcspec" />
       </Component>
@@ -574,7 +572,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftBuild" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="SwiftBuild" Directory="toolchain_$(VariantName)_usr_bin">
       <ComponentGroupRef Id="SWBAndroidPlatformResources" />
       <ComponentGroupRef Id="SWBApplePlatformResources" />
       <ComponentGroupRef Id="SWBCoreResources" />
@@ -655,7 +653,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="package_manager" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="package_manager" Directory="toolchain_$(VariantName)_usr_bin">
       <ComponentGroupRef Id="CompilerPluginSupport" />
       <ComponentGroupRef Id="PackageDescription" />
       <ComponentGroupRef Id="PackagePlugin" />
@@ -719,7 +717,7 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <ComponentGroup Id="DocC" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
       <?if $(INCLUDE_SWIFT_DOCC) = True?>
         <Component>
           <File Source="$(SWIFT_DOCC_BUILD)\docc.exe" />
@@ -727,7 +725,7 @@
       <?endif?>
     </ComponentGroup>
 
-    <ComponentGroup Id="swift_format" Directory="toolchain_asserts_usr_bin">
+    <ComponentGroup Id="swift_format" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-format.exe" />
       </Component>
@@ -736,7 +734,7 @@
       </Component>
     </ComponentGroup>
 
-    <Feature Id="CLITools" AllowAbsent="no" Title="!(loc.CliAsserts_ProductName)">
+    <Feature Id="CLITools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="libclang" />
       <ComponentGroupRef Id="IndexStore" />
@@ -750,7 +748,7 @@
 
       <ComponentGroupRef Id="DocC" />
       <?if $(INCLUDE_SWIFT_DOCC) = True?>
-        <ComponentGroupRef Id="DocCRender_asserts" />
+        <ComponentGroupRef Id="DocCRender_$(VariantName)" />
       <?endif?>
 
       <ComponentGroupRef Id="swift_format" />
