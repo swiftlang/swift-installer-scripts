@@ -34,6 +34,7 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | InstallRoot | A formatted string variable that specifies the installation root directory. The default value specified in `installer.wxs` should match the equivalent `INSTALLROOT` authoring in `shared.wxs`. The bundle variable is passed to each `MsiPackage` so overwrites the default directory authored in the MSI packages -- but keeping them in sync avoids the confusion if the default directory should change. |
 | OptionsInstallCLI | Controls whether command-line tools will be installed. |
 | OptionsInstallDBG | Controls whether debugging tools will be installed. |
+| OptionsInstallEmbeddedPython | Controls whether embeddable Python will be installed. |
 | OptionsInstallIDE | Controls whether IDE integration tools will be installed. |
 | OptionsInstallUtilties | Controls whether additional utilities will be installed. |
 | OptionsInstallAndroidPlatform | Controls whether the Android platform will be installed. |
