@@ -102,6 +102,13 @@
       </MsiPackage>
 
       <MsiPackage
+        SourceFile="!(bindpath.python)\python.msi"
+        InstallCondition="OptionsInstallEmbeddedPython = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+
+      <MsiPackage
         SourceFile="!(bindpath.ide.asserts)\ide.asserts.msi"
         InstallCondition="OptionsInstallIDE = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">

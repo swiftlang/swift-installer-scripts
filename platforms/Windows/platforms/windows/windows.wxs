@@ -9,6 +9,7 @@
       Scope="$(PackageScope)">
 
     <?define PlatformRoot = "$(ImageRoot)\Platforms\Windows.platform"?>
+    <?define PythonRoot = "$(ImageRoot)\python"?>
     <?define SDKRoot = "$(PlatformRoot)\Developer\SDKs\Windows.sdk"?>
 
     <?define ExperimentalSDKRoot = "$(PlatformRoot)\Developer\SDKs\WindowsExperimental.sdk"?>
