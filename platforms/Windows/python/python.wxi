@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
+      Version="$(NonSemVerProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="$(VariantCabinetName)" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+
+    <ComponentGroup Id="EmbeddedPython">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\libcrypto-1_1-arm64.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\libffi-7.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\libssl-1_1-arm64.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\LICENSE.txt" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\pyexpat.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\python.cat" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\python.exe" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\python3.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\python310.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\python310.zip" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\python310._pth" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\pythonw.exe" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\select.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\sqlite3.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\unicodedata.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\vcruntime140.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\vcruntime140_1.dll" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\winsound.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_asyncio.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_bz2.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_ctypes.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_decimal.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_elementtree.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_hashlib.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_lzma.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_msi.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_multiprocessing.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_overlapped.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_queue.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_socket.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_sqlite3.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_ssl.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_uuid.pyd" />
+      </Component>
+
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
+        <File Source="$(PythonRoot)\_zoneinfo.pyd" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="EmbeddedPython" AllowAbsent="yes" Title="$(VariantProductName)">
+      <ComponentGroupRef Id="EmbeddedPython" />
+    </Feature>
+  </Package>
+</Include>
