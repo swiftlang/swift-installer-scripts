@@ -217,7 +217,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 
 | Property | Description |
 | -------- | ----------- |
-| BldAssertsUpgradeCode, CliAssertsUpgradeCode, DbgAssertsUpgradeCode, IdeUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
+| BldAssertsUpgradeCode, BldNoAssertsUpgradeCode, CliAssertsUpgradeCode, CliNoAssertsUpgradeCode, DbgAssertsUpgradeCode, DbgNoAssertsUpgradeCode, IdeUpgradeCode, IdeNoUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
 | BundleUpgradeCode | Upgrade codes for the bundle. Bundles don't support upgrade version ranges, so the bundle upgrade code must change for every minor version _and_ stay the same for the entire lifetime of that minor version (e.g., v5.10.0 through v5.10.9999). You can keep the history of upgrade codes using a condition like `Condition="'$(MajorMinorProductVersion)' == '5.10'` or just replace BundleUpgradeCode when forking to a new minor version. |
 
 
