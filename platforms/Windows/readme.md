@@ -151,6 +151,7 @@ To support the three architecture flavors of the SDK and RTL MSI packages, you n
 | ImageRoot | Path to the root of the installed Swift image to package |
 | Platforms | Semicolon delimited list of platforms to package (android;windows) |
 | AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch54;armv7;i686;x86_64) |
+| ToolchainVariants | Semicolon delimited list of toolchain variants to package (assert;noassert) |
 | WindowsArchitectures | Semicolon delimited list of architectures the Windows platform supports (aarch64;i686;x86_64) |
 | WindowsRuntimeARM64 | Path to the staged Windows ARM64 runtime |
 | WindowsRuntimeX64 | Path to the staged Windows AMD64 runtime |
