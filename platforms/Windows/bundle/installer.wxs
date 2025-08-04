@@ -59,9 +59,9 @@
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
 
     <?if $(IncludeNoAsserts) == True?>
-      <Variable Name="OptionsInstallNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
+      <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
     <?else ?>
-      <Variable Name="OptionsInstallNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
+      <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
     <?endif?>
 
     <!--
