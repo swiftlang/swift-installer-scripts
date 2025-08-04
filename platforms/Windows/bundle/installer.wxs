@@ -54,6 +54,7 @@
     <Variable Name="OptionsInstallAndroidSDKARM" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="OptionsInstallAndroidSDKX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
+    <Variable Name="OptionsInstallToolchain" Value="1" />
     <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
 
