@@ -41,6 +41,8 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | OptionsInstallAndroidSDKARM | Controls whether the Android ARM SDK will be installed. |
 | OptionsInstallAndroidSDKARM64 | Controls whether the Android ARM64 SDK will be installed. |
 | OptionsInstallAndroidSDKX86 | Controls whether the Android X86 SDK will be installed. |
+| OptionsInstallAssertsToolchain | Controls whether the Assert variant of the toolchain is installed. |
+| OptionsInstallNoAssertsToolchain | Controls whether the NoAssert variant of the toolchain is installed. |
 | OptionsInstallWindowsPlatform | Controls whether the Windows platform will be installed. |
 | OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
 | OptionsInstallWindowsRedistAMD64 | Controls whether the Windows AMD64 Redistributable MSM will be installed. |
