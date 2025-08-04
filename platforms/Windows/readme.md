@@ -141,6 +141,32 @@ That lets you override settings in Directory.Build.props for local dev builds. F
 </Project>
 ```
 
+## Toolchain variants
+
+The Swift toolchain for Windows is built in multiple variants, e.g. with LLVM assertions enabled (asserts) and disapled (noasserts). These variants contribute components to several MSI packages, including the build tools (bld), command-line tools (cli), debugging tools (dbg), and IDE integration (ide). The layout is the same in the InstallDir, but the files are diffrent and come from diffrent RootDir. 
+
+To handle this without duplicating our authoring, we parametrize the WiX authoring so that the installer logic and build diffrent msi's for each variant that includes the correct files. 
+
+For example, the folder structure for the bld package might look like:
+```
+bld/
+  asserts/
+    bld.asserts.wixproj
+    bld.asserts.wxs
+    ...
+  noasserts/
+    bld.noasserts.wixproj
+    bld.noasserts.wxs
+    ...
+  bld.wxi
+```
+
+Each subfolder (`asserts` and `noasserts`) contains the project file that produces an msi (`bld.asserts.msi` and `bld.noasserts.msi`). Each project includes `bld.wxi` file that has the authoring for this module. New files/components would be added in `bld.wxi` ensuring they appear in all variants.
+
+The main bundle (`installer.wxs`) includes these variants conditionally, allowing users to choose which toolchain flavor to install. This parametrized structure ensures that all supported toolchain configurations are available in a single bundle, while keeping the installer authoring organized and scalable.
+
+Identifying which variants are included in the bundle is controled by the `ToolchainVariants` MSBuild property.
+
 
 ## Building the installers
 
