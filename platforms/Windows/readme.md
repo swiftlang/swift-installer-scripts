@@ -150,6 +150,7 @@ To support the three architecture flavors of the SDK and RTL MSI packages, you n
 | MSBuild property | Description |
 | ---------------- | ----------- |
 | ImageRoot | Path to the root of the installed Swift image to package |
+| PythonRoot | Path to the root of the Python distribution to package |
 | Platforms | Semicolon delimited list of platforms to package (android;windows) |
 | AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch54;armv7;i686;x86_64) |
 | WindowsArchitectures | Semicolon delimited list of architectures the Windows platform supports (aarch64;i686;x86_64) |
@@ -166,10 +167,11 @@ msbuild %SourceRoot%\swift-installer-scripts\platforms\Windows\bundle\installer.
   -p:Configuration=Release ^
   -p:BaseOutputPath=%PackageRoot%\online\ ^
   -p:ImageRoot=%ImageRoot%\Program Files\Swift ^
+  -p:PythonRoot=%ImageRoot%\Program Files\Python-3.10.1 ^
   -p:Platforms="android;windows" ^
   -p:AndroidArchitectures="aarch64;armv7;i686;x86_64" ^
   -p:WindowsArchitectures="aarch64;i686;x86_64" ^
-  -p:WindowsRuntimeARM64=%ImageRoot%\Prograam Files (Arm64)\Swift\Runtimes\0.0.0 ^
+  -p:WindowsRuntimeARM64=%ImageRoot%\Program Files (Arm64)\Swift\Runtimes\0.0.0 ^
   -p:WindowsRuntimeX64=%ImageRoot%\Program Files\Swift\Runtimes\0.0.0 ^
   -p:WindowsRuntimeX86=%ImageRoot%\Program Files (x86)\Swift\Runtimes\0.0.0
 ```
