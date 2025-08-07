@@ -41,6 +41,8 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | OptionsInstallAndroidSDKARM | Controls whether the Android ARM SDK will be installed. |
 | OptionsInstallAndroidSDKARM64 | Controls whether the Android ARM64 SDK will be installed. |
 | OptionsInstallAndroidSDKX86 | Controls whether the Android X86 SDK will be installed. |
+| OptionsInstallAssertsToolchain | Controls whether the Assert variant of the toolchain is installed. |
+| OptionsInstallNoAssertsToolchain | Controls whether the NoAssert variant of the toolchain is installed. |
 | OptionsInstallWindowsPlatform | Controls whether the Windows platform will be installed. |
 | OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
 | OptionsInstallWindowsRedistAMD64 | Controls whether the Windows AMD64 Redistributable MSM will be installed. |
@@ -139,6 +141,32 @@ That lets you override settings in Directory.Build.props for local dev builds. F
 </Project>
 ```
 
+## Toolchain variants
+
+The Swift toolchain for Windows is built in multiple variants, e.g. with LLVM assertions enabled (asserts) and disapled (noasserts). These variants contribute components to several MSI packages, including the build tools (bld), command-line tools (cli), debugging tools (dbg), and IDE integration (ide). The layout is the same in the InstallDir, but the files are diffrent and come from diffrent RootDir. 
+
+To handle this without duplicating our authoring, we parametrize the WiX authoring so that the installer logic and build diffrent msi's for each variant that includes the correct files. 
+
+For example, the folder structure for the bld package might look like:
+```
+bld/
+  asserts/
+    bld.asserts.wixproj
+    bld.asserts.wxs
+    ...
+  noasserts/
+    bld.noasserts.wixproj
+    bld.noasserts.wxs
+    ...
+  bld.wxi
+```
+
+Each subfolder (`asserts` and `noasserts`) contains the project file that produces an msi (`bld.asserts.msi` and `bld.noasserts.msi`). Each project includes `bld.wxi` file that has the authoring for this module. New files/components would be added in `bld.wxi` ensuring they appear in all variants.
+
+The main bundle (`installer.wxs`) includes these variants conditionally, allowing users to choose which toolchain flavor to install. This parametrized structure ensures that all supported toolchain configurations are available in a single bundle, while keeping the installer authoring organized and scalable.
+
+Identifying which variants are included in the bundle is controled by the `ToolchainVariants` MSBuild property.
+
 
 ## Building the installers
 
@@ -151,6 +179,7 @@ To support the three architecture flavors of the SDK and RTL MSI packages, you n
 | ImageRoot | Path to the root of the installed Swift image to package |
 | Platforms | Semicolon delimited list of platforms to package (android;windows) |
 | AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch54;armv7;i686;x86_64) |
+| ToolchainVariants | Semicolon delimited list of toolchain variants to package (assert;noassert) |
 | WindowsArchitectures | Semicolon delimited list of architectures the Windows platform supports (aarch64;i686;x86_64) |
 | WindowsRuntimeARM64 | Path to the staged Windows ARM64 runtime |
 | WindowsRuntimeX64 | Path to the staged Windows AMD64 runtime |
@@ -216,7 +245,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 
 | Property | Description |
 | -------- | ----------- |
-| BldAssertsUpgradeCode, CliAssertsUpgradeCode, DbgAssertsUpgradeCode, IdeUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
+| BldAssertsUpgradeCode, BldNoAssertsUpgradeCode, CliAssertsUpgradeCode, CliNoAssertsUpgradeCode, DbgAssertsUpgradeCode, DbgNoAssertsUpgradeCode, IdeUpgradeCode, IdeNoUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
 | BundleUpgradeCode | Upgrade codes for the bundle. Bundles don't support upgrade version ranges, so the bundle upgrade code must change for every minor version _and_ stay the same for the entire lifetime of that minor version (e.g., v5.10.0 through v5.10.9999). You can keep the history of upgrade codes using a condition like `Condition="'$(MajorMinorProductVersion)' == '5.10'` or just replace BundleUpgradeCode when forking to a new minor version. |
 
 

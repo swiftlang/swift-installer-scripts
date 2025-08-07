@@ -1,0 +1,9 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+NoAsserts?>
+  <?define VariantName = noasserts ?>
+  <?define VariantUpgradeCode = $(IdeNoAssertsUpgradeCode)?>
+  <?define VariantProductName = !(loc.IdeNoAsserts_ProductName)?>
+  <?define VariantCabinetName = ide.noasserts.cab?>
+
+  <?include ../ide.wxi ?>
+</Wix>
