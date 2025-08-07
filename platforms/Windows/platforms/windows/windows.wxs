@@ -176,11 +176,11 @@
             <Directory Id="WindowsExperimentalSDK" Name="WindowsExperimental.sdk">
               <Directory Name="usr">
                 <Directory Name="include">
-                  <Directory Id="WindowsExperimentalSDK_usr_include_Block" Name="Block" />
-                  <Directory Id="WindowsExperimentalSDK_usr_include_dispatch" Name="dispatch" />
-                  <Directory Id="WindowsExperimentalSDK_usr_include_os" Name="os" />
-                  <Directory Id="WindowsExperimentalSDK_usr_include__foundation_unicode" Name="_foundation_unicode" />
-                  <Directory Id="WindowsExperimentalSDK_usr_include__FoundationCShims" Name="_Foundation_CShims" />
+                  <Directory Id="WindowsExperimentalSDK_usr_include_Block" Name="Block" DiskId="5" />
+                  <Directory Id="WindowsExperimentalSDK_usr_include_dispatch" Name="dispatch" DiskId="5" />
+                  <Directory Id="WindowsExperimentalSDK_usr_include_os" Name="os" DiskId="5" />
+                  <Directory Id="WindowsExperimentalSDK_usr_include__foundation_unicode" Name="_foundation_unicode" DiskId="5" />
+                  <Directory Id="WindowsExperimentalSDK_usr_include__FoundationCShims" Name="_Foundation_CShims" DiskId="5" />
                 </Directory>
                 <Directory Name="lib">
                   <Directory Name="swift">
@@ -232,7 +232,7 @@
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="WindowsExperimentalSDK_usr_share" Name="share" />
+                <Directory Id="WindowsExperimentalSDK_usr_share" Name="share" DiskId="5" />
               </Directory>
             </Directory>
           </Directory>
@@ -464,7 +464,7 @@
     <?endif?>
 
     <ComponentGroup Id="libBlocksRuntime" Directory="WindowsExperimentalSDK_usr_include_Block">
-      <Component DiskId="5">
+      <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\include\Block\Block.h" />
       </Component>
     </ComponentGroup>
@@ -568,16 +568,16 @@
       <?include ../CDispatch.wxi?>
       <?undef Disk?>
 
-      <Component Directory="WindowsExperimentalSDK_usr_include_os" DiskId="5">
+      <Component Directory="WindowsExperimentalSDK_usr_include_os">
         <File Source="$(ExperimentalSDKRoot)\usr\include\os\generic_base.h" />
       </Component>
-      <Component Directory="WindowsExperimentalSDK_usr_include_os" DiskId="5">
+      <Component Directory="WindowsExperimentalSDK_usr_include_os">
         <File Source="$(ExperimentalSDKRoot)\usr\include\os\generic_unix_base.h" />
       </Component>
-      <Component Directory="WindowsExperimentalSDK_usr_include_os" DiskId="5">
+      <Component Directory="WindowsExperimentalSDK_usr_include_os">
         <File Source="$(ExperimentalSDKRoot)\usr\include\os\generic_win_base.h" />
       </Component>
-      <Component Directory="WindowsExperimentalSDK_usr_include_os" DiskId="5">
+      <Component Directory="WindowsExperimentalSDK_usr_include_os">
         <File Source="$(ExperimentalSDKRoot)\usr\include\os\object.h" />
       </Component>
     </ComponentGroup>
@@ -2794,16 +2794,16 @@
     </ComponentGroup>
 
     <ComponentGroup Id="ExperimentalAuxiliaryFiles" Directory="WindowsExperimentalSDK_usr_share">
-      <Component DiskId="5">
+      <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\ucrt.modulemap" />
       </Component>
-      <Component DiskId="5">
+      <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\winsdk.modulemap" />
       </Component>
-      <Component DiskId="5">
+      <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\vcruntime.apinotes" />
       </Component>
-      <Component DiskId="5">
+      <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\vcruntime.modulemap" />
       </Component>
     </ComponentGroup>
