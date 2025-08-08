@@ -85,6 +85,7 @@
       WindowsRuntimeARM64=$(WindowsRuntimeARM64);
       WindowsRuntimeX64=$(WindowsRuntimeX64);
       WindowsRuntimeX86=$(WindowsRuntimeX86);
+      RedistributablesDirectory=$(RedistributablesDirectory);
     </DefineConstants>
   </PropertyGroup>
 
