@@ -413,21 +413,21 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
-      <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
+      <ComponentGroup Id="LegacySwiftRemoteMirror.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
         <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\swiftRemoteMirror.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX64) = True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x64" Directory="WindowsSDK_usr_lib_swift_windows_x64">
+      <ComponentGroup Id="LegacySwiftRemoteMirror.x64" Directory="WindowsSDK_usr_lib_swift_windows_x64">
         <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\swiftRemoteMirror.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
     <?if $(IncludeX86) = True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
+      <ComponentGroup Id="LegacySwiftRemoteMirror.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swiftRemoteMirror.lib" />
         </Component>
@@ -2928,7 +2928,7 @@
         <ComponentGroupRef Id="XCTest.arm64" />
         <ComponentGroupRef Id="Testing.arm64" />
 
-        <ComponentGroupRef Id="SwiftRemoteMirror.arm64" />
+        <ComponentGroupRef Id="LegacySwiftRemoteMirror.arm64" />
 
         <ComponentGroupRef Id="LegacyBlocksRuntime.arm64" />
         <ComponentGroupRef Id="Legacydispatch.arm64" />
@@ -2972,7 +2972,7 @@
         <ComponentGroupRef Id="XCTest.x64" />
         <ComponentGroupRef Id="Testing.x64" />
 
-        <ComponentGroupRef Id="SwiftRemoteMirror.x64" />
+        <ComponentGroupRef Id="LegacySwiftRemoteMirror.x64" />
 
         <ComponentGroupRef Id="LegacyBlocksRuntime.x64" />
         <ComponentGroupRef Id="Legacydispatch.x64" />
@@ -3016,7 +3016,7 @@
         <ComponentGroupRef Id="XCTest.x86" />
         <ComponentGroupRef Id="Testing.x86" />
 
-        <ComponentGroupRef Id="SwiftRemoteMirror.x86" />
+        <ComponentGroupRef Id="LegacySwiftRemoteMirror.x86" />
 
         <ComponentGroupRef Id="LegacyBlocksRuntime.x86" />
         <ComponentGroupRef Id="Legacydispatch.x86" />
