@@ -32,7 +32,8 @@
     <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDBG" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRTL" Value="1" />
+    <!-- TODO(compnerd) enable installing non-native RTL (e.g. X64 on ARM64) -->
+    <Variable Name="OptionsInstallRTL" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <Variable Name="OptionsInstallUtilities" bal:Overridable="yes" Persisted="yes" Value="1" />
 
