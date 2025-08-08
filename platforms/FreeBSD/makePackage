@@ -78,6 +78,20 @@ cd "$CURRENT_DIRECTORY"
 SWIFT_VERSION="$("$SWIFT_TOOLCHAIN_HOME/bin/swift" --version | grep -Eo 'version [0-9.]+' | sed 's/version //')"
 echo "Swift version being packaged is $SWIFT_VERSION"
 
+# Get the currently installed version for all of the packages that we need.
+# This script assumes that it was run on the build machine and therefore
+# that the packages on this machine correspond to those Swift was built
+# against.
+get_package_version()
+{
+  echo "$(pkg info "$1" | grep Version | sed 's/Version.*: //')"
+}
+
+LIBUUID_PKG_VERSION=$(get_package_version libuuid)
+LIBXML2_PKG_VERSION=$(get_package_version libxml2)
+PYTHON_PKG_VERSION=$(get_package_version python311)
+SQLITE3_PKG_VERSION=$(get_package_version sqlite3)
+
 # Create the manifest file. All fields below are required. pkg_create(3)
 # will add additional fields as part of generating the package.
 echo "Generating manifest..."
@@ -93,32 +107,20 @@ cat > "$METADATA_STAGING/manifest" <<EOF
   "maintainer": "swift-infrastructure@forums.swift.org",
   "www": "https://www.swift.org",
   "deps": {
-    "e2fsprogs-libuuid": {
-      "version": "1.47.1",
-      "origin": "misc/e2fsprogs-libuuid"
-    },
-    "libffi": {
-      "version": "3.4.6",
-      "origin": "devel/libffi"
+    "libuuid": {
+      "version": "$LIBUUID_PKG_VERSION",
+      "origin": "misc/libuuid"
     },
     "libxml2": {
-      "version": "2.11.9",
+      "version": "$LIBXML2_PKG_VERSION",
       "origin": "textproc/libxml2"
     },
-    "mpdecimal": {
-      "version": "4.0.0",
-      "origin": "math/mpdecimal",
-    },
     "python311": {
-      "version": "3.11.11",
+      "version": "$PYTHON_PKG_VERSION",
       "origin": "lang/python311"
     },
-    "readline": {
-      "version": "8.2.13_2",
-      "origin": "devel/readline"
-    },
     "sqlite3": {
-      "version": "3.46.1_1,1",
+      "version": "$SQLITE3_PKG_VERSION",
       "origin": "databases/sqlite3"
     }
   }
