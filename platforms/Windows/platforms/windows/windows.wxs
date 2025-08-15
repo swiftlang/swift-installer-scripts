@@ -609,7 +609,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <ComponentGroup Id="libdispatch" Directory="WindowsExperimentalSDK_usr_include_dispatch">
+    <ComponentGroup Id="ExperimentalDispatch" Directory="WindowsExperimentalSDK_usr_include_dispatch">
       <?define Disk = 5?>
       <?include ../CDispatch.wxi?>
       <?undef Disk?>
@@ -3206,13 +3206,13 @@
     <Feature Id="ExperimentalSDK" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental)">
       <ComponentGroupRef Id="lib_FoundationUnicode" />
       <ComponentGroupRef Id="lib_FoundationCShims" />
-      <ComponentGroupRef Id="libdispatch" />
 
       <ComponentGroupRef Id="ExperimentalAPINotes" />
       <ComponentGroupRef Id="ExperimentalAuxiliaryFiles" />
       <ComponentGroupRef Id="ExperimentalBlocksRuntime" />
       <ComponentGroupRef Id="ExperimentalCXXShim" />
       <ComponentGroupRef Id="ExperimentalConfiguration" />
+      <ComponentGroupRef Id="ExperimentalDispatch" />
       <ComponentGroupRef Id="ExperimentalSwiftRemoteMirror" />
       <ComponentGroupRef Id="ExperimentalSwiftShims" />
 
