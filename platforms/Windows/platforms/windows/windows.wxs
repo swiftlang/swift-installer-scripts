@@ -203,13 +203,6 @@
                   </Directory>
                   <Directory Name="swift_static">
                     <Directory Name="windows">
-                      <Directory Id="lib_Builtin_float.swiftmodule" Name="Builtin_float.swiftmodule" />
-                      <Directory Id="lib_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
-                      <Directory Id="lib_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
-                      <Directory Id="lib_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
-                      <Directory Id="lib_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
-                      <Directory Id="lib_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
-                      <Directory Id="lib_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
                       <Directory Id="libCRT.swiftmodule" Name="CRT.swiftmodule" />
                       <Directory Id="libCxx.swiftmodule" Name="Cxx.swiftmodule" />
                       <Directory Id="libCxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
@@ -226,6 +219,13 @@
                       <Directory Id="libSwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="libSynchronization.swiftmodule" Name="Synchronization.swiftmodule" />
                       <Directory Id="libWinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
+                      <Directory Id="lib_Builtin_float.swiftmodule" Name="Builtin_float.swiftmodule" />
+                      <Directory Id="lib_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
+                      <Directory Id="lib_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
+                      <Directory Id="lib_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
+                      <Directory Id="lib_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
+                      <Directory Id="lib_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
+                      <Directory Id="lib_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
                       <?if $(IncludeARM64) = True?>
                         <Directory Id="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64" Name="aarch64" DiskId="6" />
                       <?endif?>
@@ -3225,21 +3225,11 @@
         <Level Condition="InstallARM64ExperimentalSDK = 1" Value="1" />
 
         <ComponentGroupRef Id="CoreFoundation.arm64" />
-        <ComponentGroupRef Id="lib_Builtin_float.arm64" />
-        <ComponentGroupRef Id="lib_Concurrency.arm64" />
-        <ComponentGroupRef Id="lib_Differentiation.arm64" />
-        <ComponentGroupRef Id="lib_FoundationCollections.arm64" />
-        <ComponentGroupRef Id="lib_FoundationCShims.arm64" />
-        <ComponentGroupRef Id="lib_FoundationUnicode.arm64" />
-        <ComponentGroupRef Id="lib_RegexParser.arm64" />
-        <ComponentGroupRef Id="lib_StringProcessing.arm64" />
-        <ComponentGroupRef Id="lib_Volatile.arm64" />
         <ComponentGroupRef Id="libBlocksRuntime.arm64" />
         <ComponentGroupRef Id="libCRT.arm64" />
         <ComponentGroupRef Id="libCxx.arm64" />
         <ComponentGroupRef Id="libCxxStdlib.arm64" />
         <ComponentGroupRef Id="libDistributed.arm64" />
-        <ComponentGroupRef Id="libdispatch.arm64" />
         <ComponentGroupRef Id="libFoundation.arm64" />
         <ComponentGroupRef Id="libFoundationEssentials.arm64" />
         <ComponentGroupRef Id="libFoundationInternationalization.arm64" />
@@ -3248,11 +3238,21 @@
         <ComponentGroupRef Id="libObservation.arm64" />
         <ComponentGroupRef Id="libRegexBuilder.arm64" />
         <ComponentGroupRef Id="libSwift.arm64" />
-        <ComponentGroupRef Id="libswiftDispatch.arm64" />
         <ComponentGroupRef Id="libSwiftOnoneSupport.arm64" />
         <ComponentGroupRef Id="libSwiftRemoteMirror.arm64" />
         <ComponentGroupRef Id="libSynchronization.arm64" />
         <ComponentGroupRef Id="libWinSDK.arm64" />
+        <ComponentGroupRef Id="lib_Builtin_float.arm64" />
+        <ComponentGroupRef Id="lib_Concurrency.arm64" />
+        <ComponentGroupRef Id="lib_Differentiation.arm64" />
+        <ComponentGroupRef Id="lib_FoundationCShims.arm64" />
+        <ComponentGroupRef Id="lib_FoundationCollections.arm64" />
+        <ComponentGroupRef Id="lib_FoundationUnicode.arm64" />
+        <ComponentGroupRef Id="lib_RegexParser.arm64" />
+        <ComponentGroupRef Id="lib_StringProcessing.arm64" />
+        <ComponentGroupRef Id="lib_Volatile.arm64" />
+        <ComponentGroupRef Id="libdispatch.arm64" />
+        <ComponentGroupRef Id="libswiftDispatch.arm64" />
 
         <ComponentGroupRef Id="ExperimentalRegistrar.arm64" />
       </Feature>
@@ -3263,21 +3263,11 @@
         <Level Condition="InstallX64ExperimentalSDK = 1" Value="1" />
 
         <ComponentGroupRef Id="CoreFoundation.x64" />
-        <ComponentGroupRef Id="lib_Builtin_float.x64" />
-        <ComponentGroupRef Id="lib_Concurrency.x64" />
-        <ComponentGroupRef Id="lib_Differentiation.x64" />
-        <ComponentGroupRef Id="lib_FoundationCollections.x64" />
-        <ComponentGroupRef Id="lib_FoundationCShims.x64" />
-        <ComponentGroupRef Id="lib_FoundationUnicode.x64" />
-        <ComponentGroupRef Id="lib_RegexParser.x64" />
-        <ComponentGroupRef Id="lib_StringProcessing.x64" />
-        <ComponentGroupRef Id="lib_Volatile.x64" />
         <ComponentGroupRef Id="libBlocksRuntime.x64" />
         <ComponentGroupRef Id="libCRT.x64" />
         <ComponentGroupRef Id="libCxx.x64" />
         <ComponentGroupRef Id="libCxxStdlib.x64" />
         <ComponentGroupRef Id="libDistributed.x64" />
-        <ComponentGroupRef Id="libdispatch.x64" />
         <ComponentGroupRef Id="libFoundation.x64" />
         <ComponentGroupRef Id="libFoundationEssentials.x64" />
         <ComponentGroupRef Id="libFoundationInternationalization.x64" />
@@ -3286,11 +3276,21 @@
         <ComponentGroupRef Id="libObservation.x64" />
         <ComponentGroupRef Id="libRegexBuilder.x64" />
         <ComponentGroupRef Id="libSwift.x64" />
-        <ComponentGroupRef Id="libswiftDispatch.x64" />
         <ComponentGroupRef Id="libSwiftOnoneSupport.x64" />
         <ComponentGroupRef Id="libSwiftRemoteMirror.x64" />
         <ComponentGroupRef Id="libSynchronization.x64" />
         <ComponentGroupRef Id="libWinSDK.x64" />
+        <ComponentGroupRef Id="lib_Builtin_float.x64" />
+        <ComponentGroupRef Id="lib_Concurrency.x64" />
+        <ComponentGroupRef Id="lib_Differentiation.x64" />
+        <ComponentGroupRef Id="lib_FoundationCShims.x64" />
+        <ComponentGroupRef Id="lib_FoundationCollections.x64" />
+        <ComponentGroupRef Id="lib_FoundationUnicode.x64" />
+        <ComponentGroupRef Id="lib_RegexParser.x64" />
+        <ComponentGroupRef Id="lib_StringProcessing.x64" />
+        <ComponentGroupRef Id="lib_Volatile.x64" />
+        <ComponentGroupRef Id="libdispatch.x64" />
+        <ComponentGroupRef Id="libswiftDispatch.x64" />
 
         <ComponentGroupRef Id="ExperimentalRegistrar.x64" />
       </Feature>
@@ -3301,21 +3301,11 @@
         <Level Condition="InstallX86ExperimentalSDK = 1" Value="1" />
 
         <ComponentGroupRef Id="CoreFoundation.x86" />
-        <ComponentGroupRef Id="lib_Builtin_float.x86" />
-        <ComponentGroupRef Id="lib_Concurrency.x86" />
-        <ComponentGroupRef Id="lib_Differentiation.x86" />
-        <ComponentGroupRef Id="lib_FoundationCollections.x86" />
-        <ComponentGroupRef Id="lib_FoundationCShims.x86" />
-        <ComponentGroupRef Id="lib_FoundationUnicode.x86" />
-        <ComponentGroupRef Id="lib_RegexParser.x86" />
-        <ComponentGroupRef Id="lib_StringProcessing.x86" />
-        <ComponentGroupRef Id="lib_Volatile.x86" />
         <ComponentGroupRef Id="libBlocksRuntime.x86" />
         <ComponentGroupRef Id="libCRT.x86" />
         <ComponentGroupRef Id="libCxx.x86" />
         <ComponentGroupRef Id="libCxxStdlib.x86" />
         <ComponentGroupRef Id="libDistributed.x86" />
-        <ComponentGroupRef Id="libdispatch.x86" />
         <ComponentGroupRef Id="libFoundation.x86" />
         <ComponentGroupRef Id="libFoundationEssentials.x86" />
         <ComponentGroupRef Id="libFoundationInternationalization.x86" />
@@ -3324,11 +3314,21 @@
         <ComponentGroupRef Id="libObservation.x86" />
         <ComponentGroupRef Id="libRegexBuilder.x86" />
         <ComponentGroupRef Id="libSwift.x86" />
-        <ComponentGroupRef Id="libswiftDispatch.x86" />
         <ComponentGroupRef Id="libSwiftOnoneSupport.x86" />
         <ComponentGroupRef Id="libSwiftRemoteMirror.x86" />
         <ComponentGroupRef Id="libSynchronization.x86" />
         <ComponentGroupRef Id="libWinSDK.x86" />
+        <ComponentGroupRef Id="lib_Builtin_float.x86" />
+        <ComponentGroupRef Id="lib_Concurrency.x86" />
+        <ComponentGroupRef Id="lib_Differentiation.x86" />
+        <ComponentGroupRef Id="lib_FoundationCShims.x86" />
+        <ComponentGroupRef Id="lib_FoundationCollections.x86" />
+        <ComponentGroupRef Id="lib_FoundationUnicode.x86" />
+        <ComponentGroupRef Id="lib_RegexParser.x86" />
+        <ComponentGroupRef Id="lib_StringProcessing.x86" />
+        <ComponentGroupRef Id="lib_Volatile.x86" />
+        <ComponentGroupRef Id="libdispatch.x86" />
+        <ComponentGroupRef Id="libswiftDispatch.x86" />
 
         <ComponentGroupRef Id="ExperimentalRegistrar.x86" />
       </Feature>
