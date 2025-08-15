@@ -509,7 +509,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <ComponentGroup Id="libBlocksRuntime" Directory="WindowsExperimentalSDK_usr_include_Block">
+    <ComponentGroup Id="ExperimentalBlocksRuntime" Directory="WindowsExperimentalSDK_usr_include_Block">
       <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\include\Block\Block.h" />
       </Component>
@@ -3206,11 +3206,11 @@
     <Feature Id="ExperimentalSDK" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental)">
       <ComponentGroupRef Id="lib_FoundationUnicode" />
       <ComponentGroupRef Id="lib_FoundationCShims" />
-      <ComponentGroupRef Id="libBlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
 
       <ComponentGroupRef Id="ExperimentalAPINotes" />
       <ComponentGroupRef Id="ExperimentalAuxiliaryFiles" />
+      <ComponentGroupRef Id="ExperimentalBlocksRuntime" />
       <ComponentGroupRef Id="ExperimentalCXXShim" />
       <ComponentGroupRef Id="ExperimentalConfiguration" />
       <ComponentGroupRef Id="ExperimentalSwiftRemoteMirror" />
