@@ -400,7 +400,7 @@
     <?endif?>
 
     <!-- SwiftRemoteMirror -->
-    <ComponentGroup Id="SwiftRemoteMirror" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror">
+    <ComponentGroup Id="LegacySwiftRemoteMirror" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror">
       <Component>
         <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
       </Component>
@@ -3052,7 +3052,7 @@
 
     <!-- Features -->
     <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Plt_ProductName_Windows)">
-      <ComponentGroupRef Id="SwiftRemoteMirror" />
+      <ComponentGroupRef Id="LegacySwiftRemoteMirror" />
       <ComponentGroupRef Id="LegacyBlocksRuntime" />
       <ComponentGroupRef Id="Legacydispatch" />
       <ComponentGroupRef Id="Legacy_FoundationUnicode" />
