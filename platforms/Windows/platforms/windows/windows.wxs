@@ -181,6 +181,9 @@
                   <Directory Id="WindowsExperimentalSDK_usr_include_os" Name="os" DiskId="5" />
                   <Directory Id="WindowsExperimentalSDK_usr_include__foundation_unicode" Name="_foundation_unicode" DiskId="5" />
                   <Directory Id="WindowsExperimentalSDK_usr_include__FoundationCShims" Name="_Foundation_CShims" DiskId="5" />
+                  <Directory Name="swift">
+                    <Directory Id="WindowsExperimentalSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror" DiskId="5" />
+                  </Directory>
                 </Directory>
                 <Directory Name="lib">
                   <Directory Name="swift">
@@ -433,6 +436,46 @@
       <ComponentGroup Id="LegacySwiftRemoteMirror.x86" Directory="WindowsSDK_usr_lib_swift_windows_x86">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swiftRemoteMirror.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+
+    <ComponentGroup Id="ExperimentalSwiftRemoteMirror" Directory="WindowsExperimentalSDK_usr_include_swift_SwiftRemoteMirror">
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
+      </Component>
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\include\swift\SwiftRemoteMirror\Platform.h" />
+      </Component>
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" />
+      </Component>
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" />
+      </Component>
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\include\swift\SwiftRemoteMirror\module.modulemap" />
+      </Component>
+    </ComponentGroup>
+
+    <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="libSwiftRemoteMirror.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\swiftRemoteMirror.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="libSwiftRemoteMirror.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\swiftRemoteMirror.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="libSwiftRemoteMirror.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\swiftRemoteMirror.lib" />
         </Component>
       </ComponentGroup>
     <?endif?>
@@ -3170,6 +3213,7 @@
       <ComponentGroupRef Id="ExperimentalAuxiliaryFiles" />
       <ComponentGroupRef Id="ExperimentalCXXShim" />
       <ComponentGroupRef Id="ExperimentalConfiguration" />
+      <ComponentGroupRef Id="ExperimentalSwiftRemoteMirror" />
       <ComponentGroupRef Id="ExperimentalSwiftShims" />
 
       <!-- MSI management Components -->
@@ -3206,6 +3250,7 @@
         <ComponentGroupRef Id="libSwift.arm64" />
         <ComponentGroupRef Id="libswiftDispatch.arm64" />
         <ComponentGroupRef Id="libSwiftOnoneSupport.arm64" />
+        <ComponentGroupRef Id="libSwiftRemoteMirror.arm64" />
         <ComponentGroupRef Id="libSynchronization.arm64" />
         <ComponentGroupRef Id="libWinSDK.arm64" />
 
@@ -3243,6 +3288,7 @@
         <ComponentGroupRef Id="libSwift.x64" />
         <ComponentGroupRef Id="libswiftDispatch.x64" />
         <ComponentGroupRef Id="libSwiftOnoneSupport.x64" />
+        <ComponentGroupRef Id="libSwiftRemoteMirror.x64" />
         <ComponentGroupRef Id="libSynchronization.x64" />
         <ComponentGroupRef Id="libWinSDK.x64" />
 
@@ -3280,6 +3326,7 @@
         <ComponentGroupRef Id="libSwift.x86" />
         <ComponentGroupRef Id="libswiftDispatch.x86" />
         <ComponentGroupRef Id="libSwiftOnoneSupport.x86" />
+        <ComponentGroupRef Id="libSwiftRemoteMirror.x86" />
         <ComponentGroupRef Id="libSynchronization.x86" />
         <ComponentGroupRef Id="libWinSDK.x86" />
 
