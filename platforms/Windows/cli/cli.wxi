@@ -699,9 +699,6 @@
         <File Source="$(ToolchainRoot)\usr\bin\PackageModel.dll" />
       </Component>
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageModelSyntax.dll" />
-      </Component>
-      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\SourceControl.dll" />
       </Component>
       <Component>
