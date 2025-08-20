@@ -1,0 +1,6 @@
+<Project Sdk="WixToolset.Sdk/4.0.5">
+  <PropertyGroup>
+    <OutputType>Module</OutputType>
+    <OutputName>rtl.static.$(ProductArchitecture)</OutputName>
+  </PropertyGroup>
+</Project>

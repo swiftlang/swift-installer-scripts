@@ -26,6 +26,7 @@
     <IdeAssertsUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeAssertsUpgradeCode>
     <IdeNoAssertsUpgradeCode>{C5519168-CF7B-4127-98B7-D886D9789B42}</IdeNoAssertsUpgradeCode>
     <RtlUpgradeCode>{BEA8C6DC-F73E-445B-9486-2333D1CF2886}</RtlUpgradeCode>
+    <ExperimentalRTLUpgradeCode>{F9BA01C7-0C7C-4898-90BD-9D6BB308F0B3}</ExperimentalRTLUpgradeCode>
     <AndroidPlatformUpgradeCode>{313B9C1F-D5B5-4FED-B7E0-138F1EE6B26A}</AndroidPlatformUpgradeCode>
     <WindowsPlatformUpgradeCode>{01AFF1CF-A025-41B6-BCBC-728D794353FD}</WindowsPlatformUpgradeCode>
   </PropertyGroup>
@@ -67,6 +68,7 @@
       IdeAssertsUpgradeCode=$(IdeAssertsUpgradeCode);
       IdeNoAssertsUpgradeCode=$(IdeNoAssertsUpgradeCode);
       RtlUpgradeCode=$(RtlUpgradeCode);
+      ExperimentalRTLUpgradeCode=$(ExperimentalRTLUpgradeCode);
       AndroidPlatformUpgradeCode=$(AndroidPlatformUpgradeCode);
       WindowsPlatformUpgradeCode=$(WindowsPlatformUpgradeCode);
     </DefineConstants>
