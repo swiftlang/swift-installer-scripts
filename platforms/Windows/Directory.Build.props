@@ -84,6 +84,9 @@
       WindowsRuntimeARM64=$(WindowsRuntimeARM64);
       WindowsRuntimeX64=$(WindowsRuntimeX64);
       WindowsRuntimeX86=$(WindowsRuntimeX86);
+      WindowsExperimentalRuntimeARM64=$(WindowsExperimentalRuntimeARM64);
+      WindowsExperimentalRuntimeX64=$(WindowsExperimentalRuntimeX64);
+      WindowsExperimentalRuntimeX86=$(WindowsExperimentalRuntimeX86);
     </DefineConstants>
   </PropertyGroup>
 
