@@ -34,6 +34,10 @@
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\rtl\shared\msi\rtl.shared.msi.wixproj" Properties="ProductArchitecture=$(ProductArchitecture)" BindName="rtl.shared" />
+  </ItemGroup>
+
   <ItemGroup Condition=" $(Platforms.Contains('android')) ">
     <ProjectReference Include="..\platforms\android\android.wixproj" Properties="AndroidArchitectures=$(AndroidArchitectures)" BindName="platform.android" />
   </ItemGroup>

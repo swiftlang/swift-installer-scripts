@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ItemGroup Condition="'$(MSBuildProjectName)' != 'shared' AND '$(MSBuildProjectName)' != 'rtllib' AND '$(MSBuildProjectName)' != 'rtlmsm'">
+  <PropertyGroup>
+    <RuntimePackages>;rtllib;rtlmsm;rtl.static.msm;rtl.shared.lib;rtl.shared.msm;</RuntimePackages>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" ! $([System.String]::Copy('$(RuntimePackages)').Contains($(MSBuildProjectName))) ">
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 

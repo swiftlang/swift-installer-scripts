@@ -3874,15 +3874,33 @@
       <Component Id="rtl.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
         <File Source="!(bindpath.rtl.arm64.msm)\rtl.arm64.msm" />
       </Component>
+      <Component Id="rtl.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="6">
+        <File Source="!(bindpath.rtl.shared.arm64.msm)\rtl.shared.arm64.msm" />
+      </Component>
+      <Component Id="rtl.static.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="6">
+        <File Source="!(bindpath.rtl.static.arm64.msm)\rtl.static.arm64.msm" />
+      </Component>
     <?endif?>
     <?if $(IncludeX64) = True?>
       <Component Id="rtl.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
         <File Source="!(bindpath.rtl.amd64.msm)\rtl.amd64.msm" />
       </Component>
+      <Component Id="rtl.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="7">
+        <File Source="!(bindpath.rtl.shared.amd64.msm)\rtl.shared.amd64.msm" />
+      </Component>
+      <Component Id="rtl.static.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="7">
+        <File Source="!(bindpath.rtl.static.amd64.msm)\rtl.static.amd64.msm" />
+      </Component>
     <?endif?>
     <?if $(IncludeX86) = True?>
       <Component Id="rtl.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
         <File Source="!(bindpath.rtl.x86.msm)\rtl.x86.msm" />
+      </Component>
+      <Component Id="rtl.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="8">
+        <File Source="!(bindpath.rtl.shared.x86.msm)\rtl.shared.x86.msm" />
+      </Component>
+      <Component Id="rtl.static.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="8">
+        <File Source="!(bindpath.rtl.static.x86.msm)\rtl.static.x86.msm" />
       </Component>
     <?endif?>
 
@@ -4164,6 +4182,10 @@
         <ComponentGroupRef Id="libswiftDispatch.arm64" />
 
         <ComponentGroupRef Id="ExperimentalRegistrar.arm64" />
+
+        <!-- Redistributable -->
+        <ComponentRef Id="rtl.shared.arm64.msm" />
+        <ComponentRef Id="rtl.static.arm64.msm" />
       </Feature>
     <?endif?>
 
@@ -4229,6 +4251,10 @@
         <ComponentGroupRef Id="libswiftDispatch.x64" />
 
         <ComponentGroupRef Id="ExperimentalRegistrar.x64" />
+
+        <!-- Redistributable -->
+        <ComponentRef Id="rtl.shared.amd64.msm" />
+        <ComponentRef Id="rtl.static.amd64.msm" />
       </Feature>
     <?endif?>
 
@@ -4294,6 +4320,10 @@
         <ComponentGroupRef Id="libswiftDispatch.x86" />
 
         <ComponentGroupRef Id="ExperimentalRegistrar.x86" />
+
+        <!-- Redistributable -->
+        <ComponentRef Id="rtl.shared.x86.msm" />
+        <ComponentRef Id="rtl.static.x86.msm" />
       </Feature>
     <?endif?>
   </Package>
