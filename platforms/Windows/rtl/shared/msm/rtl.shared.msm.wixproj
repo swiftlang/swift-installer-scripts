@@ -1,0 +1,18 @@
+<Project Sdk="WixToolset.Sdk/4.0.5">
+  <PropertyGroup>
+    <OutputType>Module</OutputType>
+    <OutputName>rtl.shared.$(ProductArchitecture)</OutputName>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
+    <ProjectReference Include="..\lib\rtl.shared.lib.wixproj" Properties="ProductArchitecture=amd64;Platform=x64" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
+    <ProjectReference Include="..\lib\rtl.shared.lib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
+    <ProjectReference Include="..\lib\rtl.shared.lib.wixproj" Properties="ProductArchitecture=x86;Platform=x86" />
+  </ItemGroup>
+</Project>

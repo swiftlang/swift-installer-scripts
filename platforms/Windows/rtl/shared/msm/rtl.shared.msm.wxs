@@ -1,0 +1,15 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?if $(sys.BUILDARCH) == x64 ?>
+    <?define ModuleId = "18546442-4BD6-4B39-B030-7B4F46CF07F8" ?>
+  <?elseif $(sys.BUILDARCH) == arm64 ?>
+    <?define ModuleId = "41013040-0B93-4BA0-8544-9437366AD3CF" ?>
+  <?elseif $(sys.BUILDARCH) == x86 ?>
+    <?define ModuleId = "B4250F08-F3A0-4A7A-A27D-24CC473D5F16" ?>
+  <?endif?>
+
+  <Module Guid="$(ModuleId)" Id="swift_runtime" Language="0" Version="$(NonSemVerProductVersion)">
+    <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
+    <ComponentGroupRef Id="swift_runtime_utilities_$(ProductArchitecture)" />
+  </Module>
+</Wix>
