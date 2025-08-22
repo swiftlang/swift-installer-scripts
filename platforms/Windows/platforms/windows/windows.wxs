@@ -188,7 +188,7 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="5" />
-                    <Directory Id="WindowsExperimentalSDK_usr_lib_swift_shims" Name="shims" />
+                    <Directory Id="WindowsExperimentalSDK_usr_lib_swift_shims" Name="shims" DiskId="5" />
                     <Directory Id="WindowsExperimentalSDK_usr_lib_swift_windows" Name="windows">
                       <?if $(IncludeARM64) = True?>
                         <Directory Id="WindowsExperimentalSDK_usr_lib_swift_windows_arm64" Name="aarch64" DiskId="6" />
