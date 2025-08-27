@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?if " '$(ProductArchitecture)' " == " 'arm64' "?>
+    <?define ModuleTriple = 'aarch64-unknown-windows-msvc' ?>
+  <?elseif " '$(ProductArchitecture)' " == " 'amd64' "?>
+    <?define ModuleTriple = 'x86_64-unknown-windows-msvc' ?>
+  <?endif?>
 
   <Package
       Language="1033"
@@ -22,8 +29,13 @@
 
     <DirectoryRef Id="toolchain_$(VariantName)_usr_lib_swift">
       <Directory Name="pm">
-        <Directory Id="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI" />
-        <Directory Id="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI" Name="PluginAPI" />
+        <Directory Id="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Name="ManifestAPI">
+          <Directory Id="CompilerPluginSupport.swiftmodule" Name="CompilerPluginSupport.swiftmodule" />
+          <Directory Id="PackageDescription.swiftmodule" Name="PackageDescription.swiftmodule" />
+        </Directory>
+        <Directory Id="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI" Name="PluginAPI">
+          <Directory Id="PackagePlugin.swiftmodule" Name="PackagePlugin.swiftmodule" />
+        </Directory>
       </Directory>
     </DirectoryRef>
 
@@ -150,48 +162,48 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="CompilerPluginSupport" Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
-      <Component>
+    <ComponentGroup Id="CompilerPluginSupport">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
       </Component>
-      <Component>
+      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
       </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftdoc" />
+      <Component Directory="CompilerPluginSupport.swiftmodule">
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule\$(ModuleTriple).swiftdoc" />
       </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule" />
+      <Component Directory="CompilerPluginSupport.swiftmodule">
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule\$(ModuleTriple).swiftinterface" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="PackageDescription" Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
-      <Component>
+    <ComponentGroup Id="PackageDescription">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
       </Component>
-      <Component>
+      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
       </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftdoc" />
+      <Component Directory="PackageDescription.swiftmodule">
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule\$(ModuleTriple).swiftdoc" />
       </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule" />
+      <Component Directory="PackageDescription.swiftmodule">
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule\$(ModuleTriple).swiftinterface" />
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="PackagePlugin" Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI">
-      <Component>
+    <ComponentGroup Id="PackagePlugin">
+      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
       </Component>
-      <Component>
+      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
       </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftdoc" />
+      <Component Directory="PackagePlugin.swiftmodule">
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule\$(ModuleTriple).swiftdoc" />
       </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule" />
+      <Component Directory="PackagePlugin.swiftmodule">
+        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule\$(ModuleTriple).swiftinterface" />
       </Component>
     </ComponentGroup>
 
@@ -653,11 +665,7 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="package_manager" Directory="toolchain_$(VariantName)_usr_bin">
-      <ComponentGroupRef Id="CompilerPluginSupport" />
-      <ComponentGroupRef Id="PackageDescription" />
-      <ComponentGroupRef Id="PackagePlugin" />
-
+    <ComponentGroup Id="PackageManager" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-build.exe" />
       </Component>
@@ -741,7 +749,11 @@
       <ComponentGroupRef Id="collections" />
       <ComponentGroupRef Id="llbuild" />
       <ComponentGroupRef Id="SwiftBuild" />
-      <ComponentGroupRef Id="package_manager" />
+      <ComponentGroupRef Id="PackageManager" />
+      <!-- Package Manager Manifest Runtime -->
+      <ComponentGroupRef Id="CompilerPluginSupport" />
+      <ComponentGroupRef Id="PackageDescription" />
+      <ComponentGroupRef Id="PackagePlugin" />
 
       <ComponentGroupRef Id="DocC" />
       <?if $(INCLUDE_SWIFT_DOCC) = True?>
