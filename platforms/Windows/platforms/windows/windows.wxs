@@ -554,6 +554,27 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="BlocksRuntime.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
+        <Component DiskId="6">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\aarch64\BlocksRuntime.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="BlocksRuntime.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x64">
+        <Component DiskId="7">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\x86_64\BlocksRuntime.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="BlocksRuntime.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_x86">
+        <Component DiskId="8">
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift\windows\i686\BlocksRuntime.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="libBlocksRuntime.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
         <Component DiskId="6">
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\BlocksRuntime.lib" />
@@ -4124,6 +4145,7 @@
       <Feature Id="ExperimentalARM64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_arm64)">
         <Level Condition="InstallARM64ExperimentalSDK = 1" Value="1" />
 
+        <ComponentGroupRef Id="BlocksRuntime.arm64" />
         <ComponentGroupRef Id="CRT.arm64" />
         <ComponentGroupRef Id="Cxx.arm64" />
         <ComponentGroupRef Id="CxxStdlib.arm64" />
@@ -4193,6 +4215,7 @@
       <Feature Id="ExperimentalX64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_amd64)">
         <Level Condition="InstallX64ExperimentalSDK = 1" Value="1" />
 
+        <ComponentGroupRef Id="BlocksRuntime.x64" />
         <ComponentGroupRef Id="CRT.x64" />
         <ComponentGroupRef Id="Cxx.x64" />
         <ComponentGroupRef Id="CxxStdlib.x64" />
@@ -4262,6 +4285,7 @@
       <Feature Id="ExperimentalX86" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_x86)">
         <Level Condition="InstallX86ExperimentalSDK = 1" Value="1" />
 
+        <ComponentGroupRef Id="BlocksRuntime.x86" />
         <ComponentGroupRef Id="CRT.x86" />
         <ComponentGroupRef Id="Cxx.x86" />
         <ComponentGroupRef Id="CxxStdlib.x86" />
