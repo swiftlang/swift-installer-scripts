@@ -1,0 +1,14 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define VariantName = asserts ?>
+  <?define VariantUpgradeCode = $(PythonUpgradeCode)?>
+  <?define VariantProductName = !(loc.EmbeddedPython_ProductName)?>
+  <?define VariantCabinetName = python.asserts.cab?>
+  <?define ToolchainVersionedVariantDirectory = ToolchainVersionedAsserts ?>
+  <?define VariantEnvironmentComponentGUID = 30629e0c-b376-47bc-bedf-fefb7d4ca61d?>
+  <?if $(ProductArchitecture) = "arm64" ?>
+    <?define ArchSuffix = "-arm64" ?>
+  <?else?>
+    <?define ArchSuffix = "" ?>
+  <?endif?>
+  <?include ../python.wxi ?>
+</Wix>

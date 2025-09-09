@@ -76,7 +76,7 @@
             <Checkbox Name="OptionsInstallToolchain" X="192" Y="417" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Toolchain_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallAssertsToolchain" X="210" Y="435" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsIncludeNoAsserts and OptionsInstallNoAssertsToolchain">#(loc.Asserts_Toolchain_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallNoAssertsToolchain" X="210" Y="453" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsIncludeNoAsserts and OptionsInstallAssertsToolchain">#(loc.NoAsserts_Toolchain_ProductName)</Checkbox>
-           
+            <Checkbox Name="OptionsInstallEmbeddedPython" X="192" Y="471" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.EmbeddedPython_ProductName)</Checkbox>
             <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
                 <Text>#(loc.OptionsOkButton)</Text>
                 <ChangePageAction Page="Install" />
