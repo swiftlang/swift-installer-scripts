@@ -3837,7 +3837,10 @@
         <File Source="$(SDKRoot)\usr\share\ucrt.modulemap" />
       </Component>
       <Component DiskId="1">
-        <File Source="$(SDKRoot)\usr\share\winsdk.modulemap" />
+        <File Source="$(SDKRoot)\usr\share\winsdk_um.modulemap" />
+      </Component>
+      <Component DiskId="1">
+        <File Source="$(SDKRoot)\usr\share\winsdk_shared.modulemap" />
       </Component>
       <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\vcruntime.apinotes" />
@@ -3852,7 +3855,10 @@
         <File Source="$(ExperimentalSDKRoot)\usr\share\ucrt.modulemap" />
       </Component>
       <Component>
-        <File Source="$(ExperimentalSDKRoot)\usr\share\winsdk.modulemap" />
+        <File Source="$(ExperimentalSDKRoot)\usr\share\winsdk_um.modulemap" />
+      </Component>
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\share\winsdk_shared.modulemap" />
       </Component>
       <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\vcruntime.apinotes" />
