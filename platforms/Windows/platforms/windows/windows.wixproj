@@ -18,19 +18,19 @@
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('i686')) ">
-    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.x86.msm" />
+    <ProjectReference Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.x86.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.shared.x86.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.static.x86.msm" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('x86_64')) ">
-    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.amd64.msm" />
+    <ProjectReference Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.amd64.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.shared.amd64.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.static.amd64.msm" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('aarch64')) ">
-    <ProjectReference Include="..\..\rtl\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.arm64.msm" />
+    <ProjectReference Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.arm64.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.shared.arm64.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.static.arm64.msm" />
   </ItemGroup>
