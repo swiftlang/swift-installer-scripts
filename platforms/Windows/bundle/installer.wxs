@@ -85,13 +85,6 @@
 
     <Chain>
       <MsiPackage
-        SourceFile="!(bindpath.rtl)\rtl.msi"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
-      </MsiPackage>
-
-      <MsiPackage
         SourceFile="!(bindpath.bld.asserts)\bld.asserts.msi"
         InstallCondition="OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
@@ -156,6 +149,22 @@
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
+
+<?if $(IncludeLegacySDK) == True?>
+      <MsiPackage
+        SourceFile="!(bindpath.rtl)\rtl.msi"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
+      </MsiPackage>
+<?else?>
+      <MsiPackage
+        SourceFile="!(bindpath.rtl.shared)\rtl.$(ProductArchitecture).msi"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
+      </MsiPackage>
+<?endif?>
 
       <?if $(IncludeAndroid) == True?>
         <MsiPackage

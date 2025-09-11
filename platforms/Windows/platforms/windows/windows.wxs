@@ -9,9 +9,14 @@
       Scope="$(PackageScope)">
 
     <?define PlatformRoot = "$(ImageRoot)\Platforms\Windows.platform"?>
-    <?define SDKRoot = "$(PlatformRoot)\Developer\SDKs\Windows.sdk"?>
 
     <?define ExperimentalSDKRoot = "$(PlatformRoot)\Developer\SDKs\WindowsExperimental.sdk"?>
+    <?if $(IncludeLegacySDK) = True?>
+      <?define SDKRoot = "$(PlatformRoot)\Developer\SDKs\Windows.sdk"?>
+    <?else?>
+      <!-- NOTE(compnerd) this is temporary while we transition to the new SDK -->
+      <?define SDKRoot = "$(ExperimentalSDKRoot)"?>
+    <?endif?>
 
     <Media Id="1" Cabinet="windows.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <Media Id="5" Cabinet="windows.experimental.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
@@ -116,6 +121,7 @@
           </Directory>
 
           <Directory Name="SDKs">
+<?if $(IncludeLegacySDK) = True?>
             <!-- Windows.sdk -->
             <Directory Id="WindowsSDK" Name="Windows.sdk">
               <Directory Name="usr">
@@ -172,6 +178,7 @@
                 <Directory Id="WindowsSDK_usr_share" Name="share" />
               </Directory>
             </Directory>
+<?endif?>
 
             <!-- WindowsExperimental.sdk -->
             <Directory Id="WindowsExperimentalSDK" Name="WindowsExperimental.sdk">
@@ -466,6 +473,7 @@
     <?endif?>
 
     <!-- SwiftRemoteMirror -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="LegacySwiftRemoteMirror" Directory="WindowsSDK_usr_include_swift_SwiftRemoteMirror">
       <Component>
         <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
@@ -505,6 +513,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalSwiftRemoteMirror" Directory="WindowsExperimentalSDK_usr_include_swift_SwiftRemoteMirror">
       <Component>
@@ -562,6 +571,7 @@
     <?endif?>
 
     <!-- BlocksRuntime -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="LegacyBlocksRuntime">
       <Component Directory="WindowsSDK_usr_include_Block">
         <File Source="$(SDKRoot)\usr\include\Block\Block.h" />
@@ -589,6 +599,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalBlocksRuntime" Directory="WindowsExperimentalSDK_usr_include_Block">
       <Component>
@@ -640,6 +651,7 @@
     <?endif?>
 
     <!-- libdispatch -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="Legacydispatch" Directory="WindowsSDK_usr_include_dispatch">
       <?define Disk = 1?>
       <?include ../CDispatch.wxi?>
@@ -710,6 +722,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalDispatch" Directory="WindowsExperimentalSDK_usr_include_dispatch">
       <?define Disk = 5?>
@@ -847,6 +860,7 @@
     <?endif?>
 
     <!-- _FoundationUnicode -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="Legacy_FoundationUnicode" Directory="WindowsSDK_usr_include__foundation_unicode">
       <?define Disk = 1?>
       <?include ../_FoundationUnicode.wxi?>
@@ -874,6 +888,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <ComponentGroup Id="Experimental_FoundationUnicode" Directory="WindowsExperimentalSDK_usr_include__foundation_unicode">
       <?define Disk = 5?>
@@ -919,11 +934,13 @@
     <?endif?>
 
     <!-- _FoundationCShims -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="Legacy_FoundationCShims" Directory="WindowsSDK_usr_include__FoundationCShims">
       <?define Disk = 1?>
       <?include ../_FoundationCShims.wxi?>
       <?undef Disk?>
     </ComponentGroup>
+<?endif?>
 
     <ComponentGroup Id="Experimental_FoundationCShims" Directory="WindowsExperimentalSDK_usr_include__FoundationCShims">
       <?define Disk = 5?>
@@ -954,6 +971,7 @@
     <?endif?>
 
     <!-- _Builtin_float -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_Builtin_float.arm64" Directory="Legacy_Builtin_float.swiftmodule">
         <Component DiskId="2">
@@ -1005,6 +1023,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_Builtin_float.arm64" Directory="_Builtin_float.swiftmodule">
@@ -1086,6 +1105,7 @@
     <?endif?>
 
     <!-- _Concurrency -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_Concurrency.arm64" Directory="Legacy_Concurrency.swiftmodule">
         <Component DiskId="2">
@@ -1137,6 +1157,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_Concurrency.arm64" Directory="_Concurrency.swiftmodule">
@@ -1218,6 +1239,7 @@
     <?endif?>
 
     <!-- _Differentiation -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_Differentiation.arm64" Directory="Legacy_Differentiation.swiftmodule">
         <Component DiskId="2">
@@ -1269,6 +1291,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_Differentiation.arm64" Directory="_Differentiation.swiftmodule">
@@ -1350,6 +1373,7 @@
     <?endif?>
 
     <!-- _RegexParser -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_RegexParser.arm64" Directory="Legacy_RegexParser.swiftmodule">
         <Component DiskId="2">
@@ -1392,6 +1416,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_RegexParser.arm64" Directory="_RegexParser.swiftmodule">
@@ -1473,6 +1498,7 @@
     <?endif?>
 
     <!-- _StringProcessing -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_StringProcessing.arm64" Directory="Legacy_StringProcessing.swiftmodule">
         <Component DiskId="2">
@@ -1524,6 +1550,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_StringProcessing.arm64" Directory="_StringProcessing.swiftmodule">
@@ -1605,6 +1632,7 @@
     <?endif?>
 
     <!-- _Volatile -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_Volatile.arm64" Directory="Legacy_Volatile.swiftmodule">
         <Component DiskId="2">
@@ -1656,6 +1684,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_Volatile.arm64" Directory="_Volatile.swiftmodule">
@@ -1737,6 +1766,7 @@
     <?endif?>
 
     <!-- CRT -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyCRT.arm64" Directory="LegacyCRT.swiftmodule">
         <Component DiskId="2">
@@ -1788,6 +1818,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="CRT.arm64" Directory="CRT.swiftmodule">
@@ -1869,6 +1900,7 @@
     <?endif?>
 
     <!-- Cxx -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyCxx.arm64" Directory="LegacyCxx.swiftmodule">
         <Component DiskId="2">
@@ -1920,6 +1952,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Cxx.arm64" Directory="Cxx.swiftmodule">
@@ -2001,6 +2034,7 @@
     <?endif?>
 
     <!-- CxxStdlib -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyCxxStdlib.arm64" Directory="LegacyCxxStdlib.swiftmodule">
         <Component DiskId="2">
@@ -2052,6 +2086,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="CxxStdlib.arm64" Directory="CxxStdlib.swiftmodule">
@@ -2133,6 +2168,7 @@
     <?endif?>
 
     <!-- Distributed -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyDistributed.arm64" Directory="LegacyDistributed.swiftmodule">
         <Component DiskId="2">
@@ -2184,6 +2220,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Distributed.arm64" Directory="Distributed.swiftmodule">
@@ -2265,6 +2302,7 @@
     <?endif?>
 
     <!-- _FoundationCollections -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Legacy_FoundationCollections.arm64" Directory="Legacy_FoundationCollections.swiftmodule">
         <Component DiskId="2">
@@ -2295,6 +2333,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="_FoundationCollections.arm64" Directory="_FoundationCollections.swiftmodule">
@@ -2364,6 +2403,7 @@
     <?endif?>
 
     <!-- FoundationEssentials -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyFoundationEssentials.arm64" Directory="LegacyFoundationEssentials.swiftmodule">
         <Component DiskId="2">
@@ -2406,6 +2446,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="FoundationEssentials.arm64" Directory="FoundationEssentials.swiftmodule">
@@ -2487,6 +2528,7 @@
     <?endif?>
 
     <!-- FoundationInternationalization -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyFoundationInternationalization.arm64" Directory="LegacyFoundationInternationalization.swiftmodule">
         <Component DiskId="2">
@@ -2529,6 +2571,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="FoundationInternationalization.arm64" Directory="FoundationInternationalization.swiftmodule">
@@ -2610,6 +2653,7 @@
     <?endif?>
 
     <!-- Foundation -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyFoundation.arm64" Directory="LegacyFoundation.swiftmodule">
         <Component DiskId="2">
@@ -2651,6 +2695,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Foundation.arm64" Directory="Foundation.swiftmodule">
@@ -2730,6 +2775,7 @@
     <?endif?>
 
     <!-- FoundationNetworking -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyFoundationNetworking.arm64" Directory="LegacyFoundationNetworking.swiftmodule">
         <Component DiskId="2">
@@ -2772,6 +2818,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="FoundationNetworking.arm64" Directory="FoundationNetworking.swiftmodule">
@@ -2853,6 +2900,7 @@
     <?endif?>
 
     <!-- FoundationXML -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyFoundationXML.arm64" Directory="LegacyFoundationXML.swiftmodule">
         <Component DiskId="2">
@@ -2895,6 +2943,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="FoundationXML.arm64" Directory="FoundationXML.swiftmodule">
@@ -2976,6 +3025,7 @@
     <?endif?>
 
     <!-- Observation -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyObservation.arm64" Directory="LegacyObservation.swiftmodule">
         <Component DiskId="2">
@@ -3027,6 +3077,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Observation.arm64" Directory="Observation.swiftmodule">
@@ -3108,6 +3159,7 @@
     <?endif?>
 
     <!-- RegexBuilder -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyRegexBuilder.arm64" Directory="LegacyRegexBuilder.swiftmodule">
         <Component DiskId="2">
@@ -3159,6 +3211,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="RegexBuilder.arm64" Directory="RegexBuilder.swiftmodule">
@@ -3240,6 +3293,7 @@
     <?endif?>
 
     <!-- Swift -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacySwift.arm64" Directory="LegacySwift.swiftmodule">
         <Component DiskId="2">
@@ -3288,6 +3342,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Swift.arm64" Directory="Swift.swiftmodule">
@@ -3369,6 +3424,7 @@
     <?endif?>
 
     <!-- SwiftOnoneSupport -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacySwiftOnoneSupport.arm64" Directory="LegacySwiftOnoneSupport.swiftmodule">
         <Component DiskId="2">
@@ -3420,6 +3476,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="SwiftOnoneSupport.arm64" Directory="SwiftOnoneSupport.swiftmodule">
@@ -3501,6 +3558,7 @@
     <?endif?>
 
     <!-- Synchronization -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacySynchronization.arm64" Directory="LegacySynchronization.swiftmodule">
         <Component DiskId="2">
@@ -3552,6 +3610,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Synchronization.arm64" Directory="Synchronization.swiftmodule">
@@ -3633,6 +3692,7 @@
     <?endif?>
 
     <!-- WinSDK -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="LegacyWinSDK.arm64" Directory="LegacyWinSDK.swiftmodule">
         <Component DiskId="2">
@@ -3684,6 +3744,7 @@
         </Component>
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="WinSDK.arm64" Directory="WinSDK.swiftmodule">
@@ -3765,11 +3826,13 @@
     <?endif?>
 
     <!-- apinotes -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="apinotes" Directory="WindowsSDK_usr_lib_swift_apinotes">
       <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\lib\swift\apinotes\std.apinotes" />
       </Component>
     </ComponentGroup>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalAPINotes" Directory="WindowsExperimentalSDK_usr_lib_swift_apinotes">
       <Component>
@@ -3778,6 +3841,7 @@
     </ComponentGroup>
 
     <!-- libcxxshim -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="libcxxshim" Directory="WindowsSDK_usr_lib_swift_windows">
       <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\libcxxshim.h" />
@@ -3789,6 +3853,7 @@
         <File Source="$(SDKRoot)\usr\lib\swift\windows\libcxxstdlibshim.h" />
       </Component>
     </ComponentGroup>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalCXXShim" Directory="WindowsExperimentalSDK_usr_lib_swift_windows">
       <Component DiskId="5">
@@ -3803,6 +3868,7 @@
     </ComponentGroup>
 
     <!-- Registrar -->
+<?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="Registrar.arm64" Directory="WindowsSDK_usr_lib_swift_windows_arm64">
         <Component DiskId="2">
@@ -3839,6 +3905,7 @@
         -->
       </ComponentGroup>
     <?endif?>
+<?endif?>
 
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="ExperimentalRegistrar.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_windows_arm64">
@@ -3875,6 +3942,7 @@
     <?endif?>
 
     <!-- clang modules -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="AuxiliaryFiles" Directory="WindowsSDK_usr_share">
       <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\ucrt.modulemap" />
@@ -3892,6 +3960,7 @@
         <File Source="$(SDKRoot)\usr\share\vcruntime.modulemap" />
       </Component>
     </ComponentGroup>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalAuxiliaryFiles" Directory="WindowsExperimentalSDK_usr_share">
       <Component>
@@ -3912,7 +3981,7 @@
     </ComponentGroup>
 
     <!-- Configuration -->
-    <!-- NOTE(compnerd): do not remove this without preserving the Platform Info.plist -->
+<?if $(IncludeLegacySDK) = True?>
     <ComponentGroup Id="Configuration">
       <Component Directory="WindowsSDK" DiskId="1">
         <File Source="$(SDKRoot)\SDKSettings.json" />
@@ -3924,6 +3993,7 @@
         <File Source="$(PlatformRoot)\Info.plist" />
       </Component>
     </ComponentGroup>
+<?endif?>
 
     <ComponentGroup Id="ExperimentalConfiguration">
       <Component Directory="WindowsExperimentalSDK" DiskId="5">
@@ -3932,18 +4002,20 @@
       <Component Directory="WindowsExperimentalSDK" DiskId="5">
         <File Source="$(ExperimentalSDKRoot)\SDKSettings.plist" />
       </Component>
-      <!--
+<?if $(IncludeLegacySDK) = False?>
       <Component Directory="WindowsPlatform" DiskId="5">
         <File Source="$(PlatformRoot)\Info.plist" />
       </Component>
-      -->
+<?endif?>
     </ComponentGroup>
 
     <!-- Redistributables -->
     <?if $(IncludeARM64) = True?>
+<?if $(IncludeLegacySDK) = True?>
       <Component Id="rtl.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
         <File Source="!(bindpath.rtl.arm64.msm)\rtl.arm64.msm" />
       </Component>
+<?endif?>
       <Component Id="rtl.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="6">
         <File Source="!(bindpath.rtl.shared.arm64.msm)\rtl.shared.arm64.msm" />
       </Component>
@@ -3952,9 +4024,11 @@
       </Component>
     <?endif?>
     <?if $(IncludeX64) = True?>
+<?if $(IncludeLegacySDK) = True?>
       <Component Id="rtl.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
         <File Source="!(bindpath.rtl.amd64.msm)\rtl.amd64.msm" />
       </Component>
+<?endif?>
       <Component Id="rtl.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="7">
         <File Source="!(bindpath.rtl.shared.amd64.msm)\rtl.shared.amd64.msm" />
       </Component>
@@ -3963,9 +4037,11 @@
       </Component>
     <?endif?>
     <?if $(IncludeX86) = True?>
+<?if $(IncludeLegacySDK) = True?>
       <Component Id="rtl.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
         <File Source="!(bindpath.rtl.x86.msm)\rtl.x86.msm" />
       </Component>
+<?endif?>
       <Component Id="rtl.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="8">
         <File Source="!(bindpath.rtl.shared.x86.msm)\rtl.shared.x86.msm" />
       </Component>
@@ -3975,9 +4051,15 @@
     <?endif?>
 
     <ComponentGroup Id="EnvironmentVariables">
+<?if $(IncludeLegacySDK) = True?>
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="WindowsSDK" Guid="580f1edd-8744-4be8-8dd8-e519f70a91e4">
         <Environment Action="set" Name="SDKROOT" Part="all" Permanent="no" System="no" Value="[WindowsSDK]" />
       </Component>
+<?else?>
+      <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Directory="WindowsExperimentalSDK" Guid="9344f841-d071-4080-b1d6-afc0261326e9">
+        <Environment Action="set" Name="SDKROOT" Part="all" Permanent="no" System="no" Value="[WindowsExperimentalSDK]" />
+      </Component>
+<?endif?>
     </ComponentGroup>
 
     <!-- CoreFoundation -->
@@ -4022,6 +4104,7 @@
     <?endif?>
 
     <!-- Features -->
+<?if $(IncludeLegacySDK) = True?>
     <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Plt_ProductName_Windows)">
       <ComponentGroupRef Id="LegacySwiftRemoteMirror" />
       <ComponentGroupRef Id="LegacyBlocksRuntime" />
@@ -4173,6 +4256,7 @@
         <ComponentRef Id="rtl.x86.msm" />
       </Feature>
     <?endif?>
+<?endif?>
 
     <Feature Id="ExperimentalSDK" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental)">
       <ComponentGroupRef Id="ExperimentalAPINotes" />
