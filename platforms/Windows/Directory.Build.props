@@ -25,6 +25,9 @@
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
     <Platform>x86</Platform>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(IncludeLegacySDK)' == '' ">
+    <IncludeLegacySDK>true</IncludeLegacySDK>
+  </PropertyGroup>
 
   <PropertyGroup>
     <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
@@ -87,6 +90,7 @@
       WindowsExperimentalRuntimeARM64=$(WindowsExperimentalRuntimeARM64);
       WindowsExperimentalRuntimeX64=$(WindowsExperimentalRuntimeX64);
       WindowsExperimentalRuntimeX86=$(WindowsExperimentalRuntimeX86);
+      IncludeLegacySDK=$(IncludeLegacySDK);
     </DefineConstants>
   </PropertyGroup>
 
