@@ -3,10 +3,12 @@
     <OutputName>windows</OutputName>
 
     <SwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\Windows.sdk\usr\lib\swift\shims</SwiftShimsPath>
+    <ExperimentalSwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\WindowsExperimental.sdk\usr\lib\swift\shims</ExperimentalSwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
       SwiftShimsPath=$(SwiftShimsPath);
+      ExperimentalSwiftShimsPath=$(ExperimentalSwiftShimsPath);
       IncludeARM64=$(WindowsArchitectures.Contains("aarch64"));
       IncludeX64=$(WindowsArchitectures.Contains("x86_64"));
       IncludeX86=$(WindowsArchitectures.Contains("i686"));
@@ -47,10 +49,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <HarvestDirectory Include="$(SwiftShimsPath)">
+    <HarvestDirectory Include="$(ExperimentalSwiftShimsPath)">
       <ComponentGroupName>ExperimentalSwiftShims</ComponentGroupName>
       <DirectoryRefId>WindowsExperimentalSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
+      <PreprocessorVariable>var.ExperimentalSwiftShimsPath</PreprocessorVariable>
       <SuppressCom>true</SuppressCom>
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
