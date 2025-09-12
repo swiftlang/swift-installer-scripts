@@ -31,6 +31,9 @@
   <String Id="Sdk_ProductName_Windows_arm64" Value="Swift Windows SDK (ARM64)" />
   <String Id="Sdk_ProductName_Windows_amd64" Value="Swift Windows SDK (AMD64)" />
   <String Id="Sdk_ProductName_Windows_x86" Value="Swift Windows SDK (X86)" />
+  <String Id="Plt_ProductName_Windows_arm64" Value="Swift Windows Platform Support (ARM64)" />
+  <String Id="Plt_ProductName_Windows_amd64" Value="Swift Windows Platform Support (AMD64)" />
+  <String Id="Plt_ProductName_Windows_x86" Value="Swift Windows Platform Support (X86)" />
   <String Id="Plt_ProductName_Windows_Experimental_arm64" Value="Swift Windows Platform Support (ARM64) [Experimental]" />
   <String Id="Plt_ProductName_Windows_Experimental_amd64" Value="Swift Windows Platform Support (AMD64) [Experimental]" />
   <String Id="Plt_ProductName_Windows_Experimental_x86" Value="Swift Windows Platform Support (X86) [Experimental]" />
