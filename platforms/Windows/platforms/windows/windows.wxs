@@ -3024,6 +3024,47 @@
       </ComponentGroup>
     <?endif?>
 
+    <!-- Foundation Dependencies -->
+    <?if $(IncludeARM64) = True?>
+      <ComponentGroup Id="FoundationDependencies.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libcurl.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libxml2s.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\zlibstatic.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX64) = True?>
+      <ComponentGroup Id="FoundationDependencies.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libcurl.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libxml2s.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\zlibstatic.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+    <?if $(IncludeX86) = True?>
+      <ComponentGroup Id="FoundationDependencies.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libcurl.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libxml2s.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\zlibstatic.lib" />
+        </Component>
+      </ComponentGroup>
+    <?endif?>
+
     <!-- Observation -->
 <?if $(IncludeLegacySDK) = True?>
     <?if $(IncludeARM64) = True?>
@@ -4324,6 +4365,7 @@
         <ComponentGroupRef Id="swiftDispatch.arm64" />
 
         <ComponentGroupRef Id="CoreFoundation.arm64" />
+        <ComponentGroupRef Id="FoundationDependencies.arm64" />
         <ComponentGroupRef Id="libBlocksRuntime.arm64" />
         <ComponentGroupRef Id="libCRT.arm64" />
         <ComponentGroupRef Id="libCxx.arm64" />
@@ -4394,6 +4436,7 @@
         <ComponentGroupRef Id="swiftDispatch.x64" />
 
         <ComponentGroupRef Id="CoreFoundation.x64" />
+        <ComponentGroupRef Id="FoundationDependencies.x64" />
         <ComponentGroupRef Id="libBlocksRuntime.x64" />
         <ComponentGroupRef Id="libCRT.x64" />
         <ComponentGroupRef Id="libCxx.x64" />
@@ -4464,6 +4507,7 @@
         <ComponentGroupRef Id="swiftDispatch.x86" />
 
         <ComponentGroupRef Id="CoreFoundation.x86" />
+        <ComponentGroupRef Id="FoundationDependencies.x86" />
         <ComponentGroupRef Id="libBlocksRuntime.x86" />
         <ComponentGroupRef Id="libCRT.x86" />
         <ComponentGroupRef Id="libCxx.x86" />
