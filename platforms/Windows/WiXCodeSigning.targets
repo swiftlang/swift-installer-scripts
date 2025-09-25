@@ -43,8 +43,9 @@
       <SignToolPath Condition=" '$(SignToolPath)' == '' AND '$(PROCESSOR_ARCHITECTURE)' == 'ARM64' AND Exists('$(WindowsKitsRoot)bin\10.0.10586.0\arm64\signtool.exe')">$(WindowsKitsRoot)bin\10.0.10586.0\arm64\</SignToolPath>
       <SignToolPath Condition=" '$(SignToolPath)' == '' AND '$(PROCESSOR_ARCHITECTURE)' == 'ARM64' AND Exists('$(WindowsKitsRoot)bin\10.0.10240.0\arm64\signtool.exe')">$(WindowsKitsRoot)bin\10.0.10240.0\arm64\</SignToolPath>
 
+      <!-- Microsoft recommends using their timestamp server for trusted signing: https://learn.microsoft.com/en-us/azure/trusted-signing/how-to-signing-integrations#:~:text=Trusted%20Signing%20certificates,microsoft.com/-->
       <SignTool Condition=" '$(AzureSignMetadata)' != '' ">"$(SignToolPath)signtool.exe" sign /tr http://timestamp.acs.microsoft.com /fd sha256 /td sha256 /dlib "$(AzureSignDlib)" /dmdf "$(AzureSignMetadata)"</SignTool>
-      <SignTool Condition=" '$(AzureSignMetadata)' == '' ">"$(SignToolPath)signtool.exe" sign /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" /tr http://timestamp.digicert.com /fd sha256 /td sha256</SignTool>
+      <SignTool Condition=" '$(AzureSignMetadata)' == '' ">"$(SignToolPath)signtool.exe" sign /tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </SignTool>
     </PropertyGroup>
   </Target>
 
