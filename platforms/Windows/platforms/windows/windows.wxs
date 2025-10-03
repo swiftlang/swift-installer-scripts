@@ -3995,6 +3995,9 @@
         <File Source="$(SDKRoot)\usr\share\winsdk_shared.modulemap" />
       </Component>
       <Component DiskId="1">
+        <File Source="$(SDKRoot)\usr\share\WinRT.modulemap" />
+      </Component>
+      <Component DiskId="1">
         <File Source="$(SDKRoot)\usr\share\vcruntime.apinotes" />
       </Component>
       <Component DiskId="1">
@@ -4012,6 +4015,9 @@
       </Component>
       <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\winsdk_shared.modulemap" />
+      </Component>
+      <Component>
+        <File Source="$(ExperimentalSDKRoot)\usr\share\WinRT.modulemap" />
       </Component>
       <Component>
         <File Source="$(ExperimentalSDKRoot)\usr\share\vcruntime.apinotes" />
