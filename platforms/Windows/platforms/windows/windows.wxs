@@ -4155,7 +4155,7 @@
 
     <?if $(IncludeARM64) = True?>
       <Feature Display="hidden" Id="arm64.platform" Level="0" Title="!(loc.Plt_ProductName_Windows_arm64)">
-        <Level Condition="InstallARM64Platform = 1 OR InstallARM64ExperimentalSDK = 1" Value="1" />
+        <Level Condition="InstallARM64SDK = 1 OR InstallARM64ExperimentalSDK = 1" Value="1" />
 
         <ComponentGroupRef Id="XCTest.arm64" />
         <ComponentGroupRef Id="Testing.arm64" />
@@ -4164,7 +4164,7 @@
 
     <?if $(IncludeX64) = True?>
       <Feature Display="hidden" Id="x64.platform" Level="0" Title="!(loc.Plt_ProductName_Windows_amd64)">
-        <Level Condition="InstallAMD64Platform = 1 OR InstallAMD64ExperimentalSDK = 1" Value="1" />
+        <Level Condition="InstallAMD64SDK = 1 OR InstallAMD64ExperimentalSDK = 1" Value="1" />
 
         <ComponentGroupRef Id="XCTest.x64" />
         <ComponentGroupRef Id="Testing.x64" />
@@ -4173,7 +4173,7 @@
 
     <?if $(IncludeX86) = True?>
       <Feature Display="hidden" Id="x86.platform" Level="0" Title="!(loc.Plt_ProductName_Windows_x86)">
-        <Level Condition="InstallX86Platform = 1 OR InstallX86ExperimentalSDK = 1" Value="1" />
+        <Level Condition="InstallX86SDK = 1 OR InstallX86ExperimentalSDK = 1" Value="1" />
 
         <ComponentGroupRef Id="XCTest.x86" />
         <ComponentGroupRef Id="Testing.x86" />
