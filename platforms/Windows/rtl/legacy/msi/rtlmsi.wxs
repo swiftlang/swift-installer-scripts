@@ -7,6 +7,7 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
+    <Property Id="INSTALLUTILITIES" Value="0" />
     <Media Id="1" Cabinet="rtl.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(RtlUpgradeCode)" />

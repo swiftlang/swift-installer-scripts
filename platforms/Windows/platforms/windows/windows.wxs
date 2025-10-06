@@ -8,6 +8,16 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
+    <Property Id="INSTALLARM64SDK" Value="0" />
+    <Property Id="INSTALLARM64EXPERIMENTALSDK" Value="0" />
+    <Property Id="INSTALLARM64REDIST" Value="0" />
+    <Property Id="INSTALLAMD64SDK" Value="0" />
+    <Property Id="INSTALLAMD64EXPERIMENTALSDK" Value="0" />
+    <Property Id="INSTALLAMD64REDIST" Value="0" />
+    <Property Id="INSTALLX86SDK" Value="0" />
+    <Property Id="INSTALLX86EXPERIMENTALSDK" Value="0" />
+    <Property Id="INSTALLX86REDIST" Value="0" />
+
     <?define PlatformRoot = "$(ImageRoot)\Platforms\Windows.platform"?>
 
     <?define ExperimentalSDKRoot = "$(PlatformRoot)\Developer\SDKs\WindowsExperimental.sdk"?>
@@ -4154,8 +4164,8 @@
     </Feature>
 
     <?if $(IncludeARM64) = True?>
-      <Feature Display="hidden" Id="arm64.platform" Level="0" Title="!(loc.Plt_ProductName_Windows_arm64)">
-        <Level Condition="InstallARM64SDK = 1 OR InstallARM64ExperimentalSDK = 1" Value="1" />
+      <Feature Id="arm64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_arm64)">
+        <Level Condition="INSTALLARM64SDK = 0 AND INSTALLARM64EXPERIMENTALSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.arm64" />
         <ComponentGroupRef Id="Testing.arm64" />
@@ -4163,8 +4173,8 @@
     <?endif?>
 
     <?if $(IncludeX64) = True?>
-      <Feature Display="hidden" Id="x64.platform" Level="0" Title="!(loc.Plt_ProductName_Windows_amd64)">
-        <Level Condition="InstallAMD64SDK = 1 OR InstallAMD64ExperimentalSDK = 1" Value="1" />
+      <Feature Id="x64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_amd64)">
+        <Level Condition="INSTALLAMD64SDK = 0 AND INSTALLAMD64EXPERIMENTALSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.x64" />
         <ComponentGroupRef Id="Testing.x64" />
@@ -4172,8 +4182,8 @@
     <?endif?>
 
     <?if $(IncludeX86) = True?>
-      <Feature Display="hidden" Id="x86.platform" Level="0" Title="!(loc.Plt_ProductName_Windows_x86)">
-        <Level Condition="InstallX86SDK = 1 OR InstallX86ExperimentalSDK = 1" Value="1" />
+      <Feature Id="x86.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_x86)">
+        <Level Condition="INSTALLX86SDK = 0 AND INSTALLX86EXPERIMENTALSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="XCTest.x86" />
         <ComponentGroupRef Id="Testing.x86" />
@@ -4197,7 +4207,7 @@
 
     <?if $(IncludeARM64) = True?>
       <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_arm64)">
-        <Level Condition="InstallARM64SDK = 0" Value="0" />
+        <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
         <ComponentGroupRef Id="LegacySwiftRemoteMirror.arm64" />
 
@@ -4238,7 +4248,7 @@
 
     <?if $(IncludeX64) = True?>
       <Feature Id="x64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_amd64)">
-        <Level Condition="InstallAMD64SDK = 0" Value="0" />
+        <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
         <ComponentGroupRef Id="LegacySwiftRemoteMirror.x64" />
 
@@ -4279,7 +4289,7 @@
 
     <?if $(IncludeX86) = True?>
       <Feature Id="x86" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_x86)">
-        <Level Condition="InstallX86SDK = 0" Value="0" />
+        <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
         <ComponentGroupRef Id="LegacySwiftRemoteMirror.x86" />
 
@@ -4334,7 +4344,7 @@
 
     <?if $(IncludeARM64) = True?>
       <Feature Id="ExperimentalARM64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_arm64)">
-        <Level Condition="InstallARM64ExperimentalSDK = 1" Value="1" />
+        <Level Condition="INSTALLARM64EXPERIMENTALSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="BlocksRuntime.arm64" />
         <ComponentGroupRef Id="CRT.arm64" />
@@ -4405,7 +4415,7 @@
 
     <?if $(IncludeX64) = True?>
       <Feature Id="ExperimentalX64" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_amd64)">
-        <Level Condition="InstallX64ExperimentalSDK = 1" Value="1" />
+        <Level Condition="INSTALLAMD64EXPERIMENTALSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="BlocksRuntime.x64" />
         <ComponentGroupRef Id="CRT.x64" />
@@ -4476,7 +4486,7 @@
 
     <?if $(IncludeX86) = True?>
       <Feature Id="ExperimentalX86" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_Experimental_x86)">
-        <Level Condition="InstallX86ExperimentalSDK = 1" Value="1" />
+        <Level Condition="INSTALLX86EXPERIMENTALSDK = 0" Value="0" />
 
         <ComponentGroupRef Id="BlocksRuntime.x86" />
         <ComponentGroupRef Id="CRT.x86" />
