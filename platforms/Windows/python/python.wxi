@@ -1,0 +1,40 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <?define PythonRoot = "$(ImageRoot)\Python-$(PythonVersion)"?>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Id="Python" Name="Python-$(PythonVersion)" >
+        <Directory Id="python_licenses" Name="licenses" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Package
+    Language="1033"
+    Manufacturer="!(loc.ManufacturerName)"
+    Name="!(loc.EmbeddedPython_ProductName)"
+    UpgradeCode="$(PythonUpgradeCode)"
+    Version="$(PythonVersion)"
+    Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="python.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(PythonUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+
+    <ComponentGroup Id="EmbeddedPython" Directory="Python">
+      <Files Include="$(PythonRoot)/**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="EmbeddedPythonLicense">
+      <Component Directory="python_licenses">
+        <File Source="$(PythonRoot)\LICENSE.txt" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="EmbeddedPython" AllowAbsent="no" Title="$(VariantProductName)">
+      <ComponentGroupRef Id="EmbeddedPython" />
+      <ComponentGroupRef Id="EmbeddedPythonLicense" />
+    </Feature>
+  </Package>
+</Wix>
