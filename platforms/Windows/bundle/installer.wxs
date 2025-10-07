@@ -155,14 +155,14 @@
         SourceFile="!(bindpath.rtl)\rtl.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
+        <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
 <?else?>
       <MsiPackage
         SourceFile="!(bindpath.rtl.shared)\rtl.$(ProductArchitecture).msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="InstallUtilities" Value="[OptionsInstallUtilities]" />
+        <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
 <?endif?>
 
@@ -173,10 +173,10 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
-          <MsiProperty Name="InstallARM64SDK" Value="[OptionsInstallAndroidSDKARM64]" />
-          <MsiProperty Name="InstallAMD64SDK" Value="[OptionsInstallAndroidSDKAMD64]" />
-          <MsiProperty Name="InstallARMSDK" Value="[OptionsInstallAndroidSDKARM]" />
-          <MsiProperty Name="InstallX86SDK" Value="[OptionsInstallAndroidSDKX86]" />
+          <MsiProperty Name="INSTALLARM64SDK" Value="[OptionsInstallAndroidSDKARM64]" />
+          <MsiProperty Name="INSTALLAMD64SDK" Value="[OptionsInstallAndroidSDKAMD64]" />
+          <MsiProperty Name="INSTALLARMSDK" Value="[OptionsInstallAndroidSDKARM]" />
+          <MsiProperty Name="INSTALLX86SDK" Value="[OptionsInstallAndroidSDKX86]" />
         </MsiPackage>
       <?endif?>
 
@@ -187,14 +187,17 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
-          <MsiProperty Name="InstallARM64SDK" Value="[OptionsInstallWindowsSDKARM64]" />
-          <MsiProperty Name="InstallARM64REDIST" Value="[OptionsInstallWindowsRedistARM64]" />
+          <MsiProperty Name="INSTALLARM64SDK" Value="[OptionsInstallWindowsSDKARM64]" />
+          <MsiProperty Name="INSTALLARM64EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKARM64]" />
+          <MsiProperty Name="INSTALLARM64REDIST" Value="[OptionsInstallWindowsRedistARM64]" />
 
-          <MsiProperty Name="InstallAMD64SDK" Value="[OptionsInstallWindowsSDKAMD64]" />
-          <MsiProperty Name="InstallAMD64REDIST" Value="[OptionsInstallWindowsRedistAMD64]" />
+          <MsiProperty Name="INSTALLAMD64SDK" Value="[OptionsInstallWindowsSDKAMD64]" />
+          <MsiProperty Name="INSTALLAMD64EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKAMD64]" />
+          <MsiProperty Name="INSTALLAMD64REDIST" Value="[OptionsInstallWindowsRedistAMD64]" />
 
-          <MsiProperty Name="InstallX86SDK" Value="[OptionsInstallWindowsSDKX86]" />
-          <MsiProperty Name="InstallX86REDIST" Value="[OptionsInstallWindowsRedistX86]" />
+          <MsiProperty Name="INSTALLX86SDK" Value="[OptionsInstallWindowsSDKX86]" />
+          <MsiProperty Name="INSTALLX86EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKX86]" />
+          <MsiProperty Name="INSTALLX86REDIST" Value="[OptionsInstallWindowsRedistX86]" />
         </MsiPackage>
       <?endif?>
      </Chain>
