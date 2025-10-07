@@ -486,6 +486,9 @@
         <File Source="$(ToolchainRoot)\usr\bin\SwiftIDEUtils.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftIfConfig.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\SwiftLibraryPluginProvider.dll" />
       </Component>
       <Component>
