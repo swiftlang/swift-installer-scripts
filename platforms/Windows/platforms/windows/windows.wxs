@@ -8,15 +8,15 @@
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
-    <Property Id="INSTALLARM64SDK" Value="0" />
-    <Property Id="INSTALLARM64EXPERIMENTALSDK" Value="0" />
-    <Property Id="INSTALLARM64REDIST" Value="0" />
-    <Property Id="INSTALLAMD64SDK" Value="0" />
-    <Property Id="INSTALLAMD64EXPERIMENTALSDK" Value="0" />
-    <Property Id="INSTALLAMD64REDIST" Value="0" />
-    <Property Id="INSTALLX86SDK" Value="0" />
-    <Property Id="INSTALLX86EXPERIMENTALSDK" Value="0" />
-    <Property Id="INSTALLX86REDIST" Value="0" />
+    <Property Id="INSTALLARM64SDK" Value="1" />
+    <Property Id="INSTALLARM64EXPERIMENTALSDK" Value="1" />
+    <Property Id="INSTALLARM64REDIST" Value="1" />
+    <Property Id="INSTALLAMD64SDK" Value="1" />
+    <Property Id="INSTALLAMD64EXPERIMENTALSDK" Value="1" />
+    <Property Id="INSTALLAMD64REDIST" Value="1" />
+    <Property Id="INSTALLX86SDK" Value="1" />
+    <Property Id="INSTALLX86EXPERIMENTALSDK" Value="1" />
+    <Property Id="INSTALLX86REDIST" Value="1" />
 
     <?define PlatformRoot = "$(ImageRoot)\Platforms\Windows.platform"?>
 

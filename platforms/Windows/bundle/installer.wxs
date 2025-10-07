@@ -188,12 +188,15 @@
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
           <MsiProperty Name="INSTALLARM64SDK" Value="[OptionsInstallWindowsSDKARM64]" />
+          <MsiProperty Name="INSTALLARM64EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKARM64]" />
           <MsiProperty Name="INSTALLARM64REDIST" Value="[OptionsInstallWindowsRedistARM64]" />
 
           <MsiProperty Name="INSTALLAMD64SDK" Value="[OptionsInstallWindowsSDKAMD64]" />
+          <MsiProperty Name="INSTALLAMD64EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKAMD64]" />
           <MsiProperty Name="INSTALLAMD64REDIST" Value="[OptionsInstallWindowsRedistAMD64]" />
 
           <MsiProperty Name="INSTALLX86SDK" Value="[OptionsInstallWindowsSDKX86]" />
+          <MsiProperty Name="INSTALLX86EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKX86]" />
           <MsiProperty Name="INSTALLX86REDIST" Value="[OptionsInstallWindowsRedistX86]" />
         </MsiPackage>
       <?endif?>
