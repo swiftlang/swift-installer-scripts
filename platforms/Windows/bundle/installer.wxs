@@ -32,7 +32,8 @@
     <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDBG" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRTL" Value="1" />
+    <!-- TODO(compnerd) enable installing non-native RTL (e.g. X64 on ARM64) -->
+    <Variable Name="OptionsInstallRTL" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <Variable Name="OptionsInstallUtilities" bal:Overridable="yes" Persisted="yes" Value="1" />
 
@@ -150,21 +151,12 @@
         </MsiPackage>
       <?endif?>
 
-<?if $(IncludeLegacySDK) == True?>
-      <MsiPackage
-        SourceFile="!(bindpath.rtl)\rtl.msi"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
-      </MsiPackage>
-<?else?>
       <MsiPackage
         SourceFile="!(bindpath.rtl.shared)\rtl.$(ProductArchitecture).msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
-<?endif?>
 
       <?if $(IncludeAndroid) == True?>
         <MsiPackage
