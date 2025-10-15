@@ -3038,6 +3038,12 @@
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="FoundationDependencies.arm64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_arm64">
         <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\brotlicommon.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\brotlidec.lib" />
+        </Component>
+        <Component>
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\aarch64\libcurl.lib" />
         </Component>
         <Component>
@@ -3051,6 +3057,12 @@
     <?if $(IncludeX64) = True?>
       <ComponentGroup Id="FoundationDependencies.x64" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x64">
         <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\brotlicommon.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\brotlidec.lib" />
+        </Component>
+        <Component>
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\x86_64\libcurl.lib" />
         </Component>
         <Component>
@@ -3063,6 +3075,12 @@
     <?endif?>
     <?if $(IncludeX86) = True?>
       <ComponentGroup Id="FoundationDependencies.x86" Directory="WindowsExperimentalSDK_usr_lib_swift_static_windows_x86">
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\brotlicommon.lib" />
+        </Component>
+        <Component>
+          <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\brotlidec.lib" />
+        </Component>
         <Component>
           <File Source="$(ExperimentalSDKRoot)\usr\lib\swift_static\windows\i686\libcurl.lib" />
         </Component>
