@@ -166,6 +166,24 @@
     <File Source="$(SDKRoot)\usr\include\_foundation_unicode\measure.h" />
   </Component>
   <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messageformat2.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messageformat2_arguments.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messageformat2_data_model.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messageformat2_data_model_names.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messageformat2_formattable.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messageformat2_function_registry.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\_foundation_unicode\messagepattern.h" />
   </Component>
   <Component DiskId="$(var.Disk)">
@@ -329,6 +347,9 @@
   </Component>
   <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\_foundation_unicode\uatimeunitformat.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_foundation_unicode\uatimezone.h" />
   </Component>
   <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\_foundation_unicode\ubidi.h" />
