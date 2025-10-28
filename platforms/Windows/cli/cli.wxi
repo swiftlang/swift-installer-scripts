@@ -723,11 +723,12 @@
     </ComponentGroup>
 
     <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
-      <?if $(INCLUDE_SWIFT_DOCC) = True?>
-        <Component>
-          <File Source="$(SWIFT_DOCC_BUILD)\docc.exe" />
-        </Component>
-      <?endif?>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftDocC.dll" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="swift_format" Directory="toolchain_$(VariantName)_usr_bin">
@@ -756,9 +757,7 @@
       <ComponentGroupRef Id="PackagePlugin" />
 
       <ComponentGroupRef Id="DocC" />
-      <?if $(INCLUDE_SWIFT_DOCC) = True?>
-        <ComponentGroupRef Id="DocCRender_$(VariantName)" />
-      <?endif?>
+      <ComponentGroupRef Id="DocCRender" />
 
       <ComponentGroupRef Id="swift_format" />
 
