@@ -162,6 +162,30 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SwiftToolsProtocols" Directory="toolchain_$(VariantName)_usr_bin">
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\BuildServerProtocol.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\LanguageServerProtocol.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\LanguageServerProtocolTransport.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\SKLogging.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\ToolsProtocolsSwiftExtensions.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_SKLoggingForPlugin.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_ToolsProtocolsSwiftExtensionsForPlugin.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="CompilerPluginSupport">
       <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
@@ -748,6 +772,7 @@
 
       <ComponentGroupRef Id="collections" />
       <ComponentGroupRef Id="llbuild" />
+      <ComponentGroupRef Id="SwiftToolsProtocols" />
       <ComponentGroupRef Id="SwiftBuild" />
       <ComponentGroupRef Id="PackageManager" />
       <!-- Package Manager Manifest Runtime -->
