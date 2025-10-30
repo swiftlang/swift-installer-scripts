@@ -360,6 +360,9 @@
         <Component Directory="Testing_usr_bin64a" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64a\_Testing_WinSDK.dll" />
         </Component>
+        <Component Directory="Testing_usr_bin64a" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64a\_TestingInterop.dll" />
+        </Component>
 
         <Component Directory="Testing_usr_lib_swift_windows_arm64" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\aarch64\Testing.lib" />
@@ -369,6 +372,9 @@
         </Component>
         <Component Directory="Testing_usr_lib_swift_windows_arm64" DiskId="2">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\aarch64\_Testing_WinSDK.lib" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_windows_arm64" DiskId="2">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\aarch64\_TestingInterop.lib" />
         </Component>
 
         <Component Directory="Testing.swiftmodule" DiskId="2">
@@ -404,6 +410,9 @@
         <Component Directory="Testing_usr_bin64" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64\_Testing_WinSDK.dll" />
         </Component>
+        <Component Directory="Testing_usr_bin64" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin64\_TestingInterop.dll" />
+        </Component>
 
         <Component Directory="Testing_usr_lib_swift_windows_x64" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\x86_64\Testing.lib" />
@@ -413,6 +422,9 @@
         </Component>
         <Component Directory="Testing_usr_lib_swift_windows_x64" DiskId="3">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\x86_64\_Testing_WinSDK.lib" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_windows_x64" DiskId="3">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\x86_64\_TestingInterop.lib" />
         </Component>
 
         <Component Directory="Testing.swiftmodule" DiskId="3">
@@ -448,6 +460,9 @@
         <Component Directory="Testing_usr_bin32" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin32\_Testing_WinSDK.dll" />
         </Component>
+        <Component Directory="Testing_usr_bin32" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\bin32\_TestingInterop.dll" />
+        </Component>
 
         <Component Directory="Testing_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\i686\Testing.lib" />
@@ -457,6 +472,9 @@
         </Component>
         <Component Directory="Testing_usr_lib_swift_windows_x86" DiskId="4">
           <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\i686\_Testing_WinSDK.lib" />
+        </Component>
+        <Component Directory="Testing_usr_lib_swift_windows_x86" DiskId="4">
+          <File Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\windows\i686\_TestingInterop.lib" />
         </Component>
 
         <Component Directory="Testing.swiftmodule" DiskId="4">
