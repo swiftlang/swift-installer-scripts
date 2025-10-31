@@ -37,6 +37,14 @@
 
   <Fragment>
     <DirectoryRef Id="INSTALLROOT">
+      <Directory Id="Python" Name="Python-$(PythonVersion)" >
+        <Directory Id="python_licenses" Name="licenses" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
         <Directory Name="Toolchains">
           <Directory Id="ToolchainVersionedAsserts" Name="$(ProductVersion)+Asserts">
             <Directory Id="toolchain_asserts_usr" Name="usr">
