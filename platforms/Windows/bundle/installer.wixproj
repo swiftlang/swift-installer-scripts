@@ -21,6 +21,7 @@
     <ProjectReference Include="..\dbg\dbg.wixproj" BindName="dbg" />
     <ProjectReference Include="..\ide\ide.wixproj" BindName="ide" />
     <ProjectReference Include="..\rtl\msi\rtlmsi.wixproj" BindName="rtl" />
+    <ProjectReference Include="..\python\python.wixproj" BindName="python" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(Platforms.Contains('android')) ">
