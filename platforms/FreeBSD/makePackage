@@ -88,7 +88,6 @@ get_package_version()
 }
 
 LIBUUID_PKG_VERSION=$(get_package_version libuuid)
-LIBXML2_PKG_VERSION=$(get_package_version libxml2)
 PYTHON_PKG_VERSION=$(get_package_version python311)
 SQLITE3_PKG_VERSION=$(get_package_version sqlite3)
 
@@ -110,10 +109,6 @@ cat > "$METADATA_STAGING/manifest" <<EOF
     "libuuid": {
       "version": "$LIBUUID_PKG_VERSION",
       "origin": "misc/libuuid"
-    },
-    "libxml2": {
-      "version": "$LIBXML2_PKG_VERSION",
-      "origin": "textproc/libxml2"
     },
     "python311": {
       "version": "$PYTHON_PKG_VERSION",
