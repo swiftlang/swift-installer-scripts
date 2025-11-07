@@ -37,6 +37,389 @@
 
   <Fragment>
     <DirectoryRef Id="INSTALLROOT">
+      <Directory Id="python" Name="Python-$(PythonVersion)">
+        <Directory Id="python_lib" Name="Lib">
+          <Directory Id="python_lib_site_packages" Name="site-packages">
+            <Directory Id="python_lib_site_packages_pip" Name="pip">
+              <Directory Id="python_lib_site_packages_pip__internal" Name="_internal">
+                <Directory Id="python_lib_site_packages_pip__internal_cli" Name="cli" />
+                <Directory Id="python_lib_site_packages_pip__internal_commands" Name="commands" />
+                <Directory Id="python_lib_site_packages_pip__internal_distributions"
+                  Name="distributions" />
+                <Directory Id="python_lib_site_packages_pip__internal_index" Name="index" />
+                <Directory Id="python_lib_site_packages_pip__internal_locations"
+                  Name="locations" />
+                <Directory Id="python_lib_site_packages_pip__internal_metadata" Name="metadata">
+                  <Directory Id="python_lib_site_packages_pip__internal_metadata_importlib"
+                    Name="importlib" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__internal_models" Name="models" />
+                <Directory Id="python_lib_site_packages_pip__internal_network" Name="network" />
+                <Directory Id="python_lib_site_packages_pip__internal_operations"
+                  Name="operations">
+                  <Directory Id="python_lib_site_packages_pip__internal_operations_build"
+                    Name="build" />
+                  <Directory Id="python_lib_site_packages_pip__internal_operations_install"
+                    Name="install" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__internal_req" Name="req" />
+                <Directory Id="python_lib_site_packages_pip__internal_resolution"
+                  Name="resolution">
+                  <Directory Id="python_lib_site_packages_pip__internal_resolution_legacy"
+                    Name="legacy" />
+                  <Directory Id="python_lib_site_packages_pip__internal_resolution_resolvelib"
+                    Name="resolvelib" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__internal_utils" Name="utils" />
+                <Directory Id="python_lib_site_packages_pip__internal_vcs" Name="vcs" />
+              </Directory>
+              <Directory Id="python_lib_site_packages_pip__vendor" Name="_vendor">
+                <Directory Id="python_lib_site_packages_pip__vendor_cachecontrol"
+                  Name="cachecontrol">
+                  <Directory Id="python_lib_site_packages_pip__vendor_cachecontrol_caches"
+                    Name="caches" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__vendor_certifi" Name="certifi" />
+                <Directory Id="python_lib_site_packages_pip__vendor_dependency_groups"
+                  Name="dependency_groups" />
+                <Directory Id="python_lib_site_packages_pip__vendor_distlib" Name="distlib" />
+                <Directory Id="python_lib_site_packages_pip__vendor_distro" Name="distro" />
+                <Directory Id="python_lib_site_packages_pip__vendor_idna" Name="idna" />
+                <Directory Id="python_lib_site_packages_pip__vendor_msgpack" Name="msgpack" />
+                <Directory Id="python_lib_site_packages_pip__vendor_packaging" Name="packaging">
+                  <Directory Id="python_lib_site_packages_pip__vendor_packaging_licenses"
+                    Name="licenses" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__vendor_pkg_resources"
+                  Name="pkg_resources" />
+                <Directory Id="python_lib_site_packages_pip__vendor_platformdirs"
+                  Name="platformdirs" />
+                <Directory Id="python_lib_site_packages_pip__vendor_pygments" Name="pygments">
+                  <Directory Id="python_lib_site_packages_pip__vendor_pygments_filters"
+                    Name="filters" />
+                  <Directory Id="python_lib_site_packages_pip__vendor_pygments_formatters"
+                    Name="formatters" />
+                  <Directory Id="python_lib_site_packages_pip__vendor_pygments_lexers"
+                    Name="lexers" />
+                  <Directory Id="python_lib_site_packages_pip__vendor_pygments_styles"
+                    Name="styles" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__vendor_pyproject_hooks"
+                  Name="pyproject_hooks">
+                  <Directory
+                    Id="python_lib_site_packages_pip__vendor_pyproject_hooks__in_process"
+                    Name="_in_process" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__vendor_requests" Name="requests" />
+                <Directory Id="python_lib_site_packages_pip__vendor_resolvelib"
+                  Name="resolvelib">
+                  <Directory Id="python_lib_site_packages_pip__vendor_resolvelib_resolvers"
+                    Name="resolvers" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_pip__vendor_rich" Name="rich" />
+                <Directory Id="python_lib_site_packages_pip__vendor_tomli" Name="tomli" />
+                <Directory Id="python_lib_site_packages_pip__vendor_tomli_w" Name="tomli_w" />
+                <Directory Id="python_lib_site_packages_pip__vendor_truststore"
+                  Name="truststore" />
+                <Directory Id="python_lib_site_packages_pip__vendor_urllib3" Name="urllib3">
+                  <Directory Id="python_lib_site_packages_pip__vendor_urllib3_contrib"
+                    Name="contrib">
+                    <Directory
+                      Id="python_lib_site_packages_pip__vendor_urllib3_contrib__securetransport"
+                      Name="_securetransport" />
+                  </Directory>
+                  <Directory Id="python_lib_site_packages_pip__vendor_urllib3_packages"
+                    Name="packages">
+                    <Directory
+                      Id="python_lib_site_packages_pip__vendor_urllib3_packages_backports"
+                      Name="backports" />
+                  </Directory>
+                  <Directory Id="python_lib_site_packages_pip__vendor_urllib3_util"
+                    Name="util" />
+                </Directory>
+              </Directory>
+            </Directory>
+            <Directory Id="python_lib_site_packages_pip_25.3.dist_info" Name="pip-25.3.dist-info">
+              <Directory Id="python_lib_site_packages_pip_25.3.dist_info_licenses" Name="licenses">
+                <Directory Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src"
+                  Name="src">
+                  <Directory Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip"
+                    Name="pip">
+                    <Directory
+                      Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip__vendor"
+                      Name="_vendor">
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_c"
+                        Name="cachecontrol" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_c1"
+                        Name="certifi" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_d_g"
+                        Name="dependency_groups" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_d"
+                        Name="distlib" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_d1"
+                        Name="distro" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_i"
+                        Name="idna" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_m"
+                        Name="msgpack" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_p"
+                        Name="packaging" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_p_r"
+                        Name="pkg_resources" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_p1"
+                        Name="platformdirs" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_p2"
+                        Name="pygments" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_p_h"
+                        Name="pyproject_hooks" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_r"
+                        Name="requests" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_r1"
+                        Name="resolvelib" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_r2"
+                        Name="rich" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_t"
+                        Name="tomli" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_t_w"
+                        Name="tomli_w" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_t1"
+                        Name="truststore" />
+                      <Directory
+                        Id="python_lib_site_packages_pip_25.3.dist_info_licenses_src_pip_v_u"
+                        Name="urllib3" />
+                    </Directory>
+                  </Directory>
+                </Directory>
+              </Directory>
+            </Directory>
+            <Directory Id="python_lib_site_packages_pkg_resources" Name="pkg_resources">
+              <Directory Id="python_lib_site_packages_pkg_resources_tests" Name="tests">
+                <Directory Id="python_lib_site_packages_pkg_resources_tests_data" Name="data">
+                  <Directory
+                    Id="python_lib_site_packages_pkg_resources_tests_data_my_test_package_source"
+                    Name="my-test-package-source" />
+                  <Directory
+                    Id="python_lib_site_packages_pkg_resources_tests_data_my_test_package_zip"
+                    Name="my-test-package-zip" />
+                  <Directory
+                    Id="python_lib_site_packages_pkg_resources_tests_data_my_test_package_u_e"
+                    Name="my-test-package_unpacked-egg">
+                    <Directory
+                      Id="python_lib_site_packages_pkg_resources_tests_data_m_t_p_u_e_m_t_p_1_p"
+                      Name="my_test_package-1.0-py3.7.egg">
+                      <Directory
+                        Id="python_lib_site_packages_pkg_resources_tests_d_m_t_p_u_e_m_t_p_1_p_e_i"
+                        Name="EGG-INFO" />
+                    </Directory>
+                  </Directory>
+                  <Directory
+                    Id="python_lib_site_packages_pkg_resources_tests_data_my_test_package_z_e"
+                    Name="my-test-package_zipped-egg" />
+                </Directory>
+              </Directory>
+            </Directory>
+            <Directory Id="python_lib_site_packages_setuptools" Name="setuptools">
+              <Directory Id="python_lib_site_packages_setuptools_command" Name="command" />
+              <Directory Id="python_lib_site_packages_setuptools_compat" Name="compat" />
+              <Directory Id="python_lib_site_packages_setuptools_config" Name="config">
+                <Directory Id="python_lib_site_packages_setuptools_config__validate_pyproject"
+                  Name="_validate_pyproject" />
+              </Directory>
+              <Directory Id="python_lib_site_packages_setuptools_tests" Name="tests">
+                <Directory Id="python_lib_site_packages_setuptools_tests_compat" Name="compat" />
+                <Directory Id="python_lib_site_packages_setuptools_tests_config" Name="config">
+                  <Directory Id="python_lib_site_packages_setuptools_tests_config_downloads"
+                    Name="downloads" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_setuptools_tests_indexes" Name="indexes">
+                  <Directory
+                    Id="python_lib_site_packages_setuptools_tests_indexes_test_links_priority"
+                    Name="test_links_priority">
+                    <Directory
+                      Id="python_lib_site_packages_setuptools_tests_indexes_test_links_p_s"
+                      Name="simple">
+                      <Directory
+                        Id="python_lib_site_packages_setuptools_tests_indexes_test_links_p_s_f"
+                        Name="foobar" />
+                    </Directory>
+                  </Directory>
+                </Directory>
+                <Directory Id="python_lib_site_packages_setuptools_tests_integration"
+                  Name="integration" />
+              </Directory>
+              <Directory Id="python_lib_site_packages_setuptools__distutils" Name="_distutils">
+                <Directory Id="python_lib_site_packages_setuptools__distutils_command"
+                  Name="command" />
+                <Directory Id="python_lib_site_packages_setuptools__distutils_compat"
+                  Name="compat" />
+                <Directory Id="python_lib_site_packages_setuptools__distutils_compilers"
+                  Name="compilers">
+                  <Directory Id="python_lib_site_packages_setuptools__distutils_compilers_c"
+                    Name="C">
+                    <Directory
+                      Id="python_lib_site_packages_setuptools__distutils_compilers_c_tests"
+                      Name="tests" />
+                  </Directory>
+                </Directory>
+                <Directory Id="python_lib_site_packages_setuptools__distutils_tests"
+                  Name="tests">
+                  <Directory Id="python_lib_site_packages_setuptools__distutils_tests_compat"
+                    Name="compat" />
+                </Directory>
+              </Directory>
+              <Directory Id="python_lib_site_packages_setuptools__vendor" Name="_vendor">
+                <Directory Id="python_lib_site_packages_setuptools__vendor_autocommand"
+                  Name="autocommand" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_autocommand_2.2.2.dist_info"
+                  Name="autocommand-2.2.2.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_backports"
+                  Name="backports">
+                  <Directory
+                    Id="python_lib_site_packages_setuptools__vendor_backports_tarfile"
+                    Name="tarfile">
+                    <Directory
+                      Id="python_lib_site_packages_setuptools__vendor_backports_tarfile_compat"
+                      Name="compat" />
+                  </Directory>
+                </Directory>
+                <Directory Id="python_lib_site_packages_setuptools_vendor_backports.tarfile_1_i"
+                  Name="backports.tarfile-1.2.0.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_importlib_metadata"
+                  Name="importlib_metadata">
+                  <Directory
+                    Id="python_lib_site_packages_setuptools__vendor_importlib_metadata_compat"
+                    Name="compat" />
+                </Directory>
+                <Directory
+                  Id="python_lib_site_packages_setuptools_vendor_importlib_metadata_8_i"
+                  Name="importlib_metadata-8.0.0.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_inflect"
+                  Name="inflect">
+                  <Directory Id="python_lib_site_packages_setuptools__vendor_inflect_compat"
+                    Name="compat" />
+                </Directory>
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_inflect_7.3.1.dist_info"
+                  Name="inflect-7.3.1.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_jaraco" Name="jaraco">
+                  <Directory
+                    Id="python_lib_site_packages_setuptools__vendor_jaraco_collections"
+                    Name="collections" />
+                  <Directory Id="python_lib_site_packages_setuptools__vendor_jaraco_functools"
+                    Name="functools" />
+                  <Directory Id="python_lib_site_packages_setuptools__vendor_jaraco_text"
+                    Name="text" />
+                </Directory>
+                <Directory
+                  Id="python_lib_site_packages_setuptools_vendor_jaraco.collections_5_i"
+                  Name="jaraco.collections-5.1.0.dist-info" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools_vendor_jaraco.context_5.3.0.dist_i"
+                  Name="jaraco.context-5.3.0.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools_vendor_jaraco.functools_4_i"
+                  Name="jaraco.functools-4.0.1.dist-info" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_jaraco.text_3.12.1.dist_info"
+                  Name="jaraco.text-3.12.1.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_more_itertools"
+                  Name="more_itertools" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools_vendor_more_itertools_10.3.0.dist_i"
+                  Name="more_itertools-10.3.0.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_packaging"
+                  Name="packaging">
+                  <Directory
+                    Id="python_lib_site_packages_setuptools__vendor_packaging_licenses"
+                    Name="licenses" />
+                </Directory>
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_packaging_24.2.dist_info"
+                  Name="packaging-24.2.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_platformdirs"
+                  Name="platformdirs" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_platformdirs_4.2.2.dist_info"
+                  Name="platformdirs-4.2.2.dist-info">
+                  <Directory
+                    Id="python_lib_site_packages_setuptools_vendor_platformdirs_4.2.2.dist_i_l"
+                    Name="licenses" />
+                </Directory>
+                <Directory Id="python_lib_site_packages_setuptools__vendor_tomli" Name="tomli" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_tomli_2.0.1.dist_info"
+                  Name="tomli-2.0.1.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_typeguard"
+                  Name="typeguard" />
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_typeguard_4.3.0.dist_info"
+                  Name="typeguard-4.3.0.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools_vendor_typing_extensions_4_i"
+                  Name="typing_extensions-4.12.2.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_wheel" Name="wheel">
+                  <Directory Id="python_lib_site_packages_setuptools__vendor_wheel_cli"
+                    Name="cli" />
+                  <Directory Id="python_lib_site_packages_setuptools__vendor_wheel_vendored"
+                    Name="vendored">
+                    <Directory
+                      Id="python_lib_site_packages_setuptools__vendor_wheel_vendored_packaging"
+                      Name="packaging" />
+                  </Directory>
+                </Directory>
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_wheel_0.45.1.dist_info"
+                  Name="wheel-0.45.1.dist-info" />
+                <Directory Id="python_lib_site_packages_setuptools__vendor_zipp" Name="zipp">
+                  <Directory Id="python_lib_site_packages_setuptools__vendor_zipp_compat"
+                    Name="compat" />
+                </Directory>
+                <Directory
+                  Id="python_lib_site_packages_setuptools__vendor_zipp_3.19.2.dist_info"
+                  Name="zipp-3.19.2.dist-info" />
+              </Directory>
+            </Directory>
+            <Directory Id="python_lib_site_packages_setuptools_80.9.0.dist_info"
+              Name="setuptools-80.9.0.dist-info">
+              <Directory Id="python_lib_site_packages_setuptools_80.9.0.dist_info_licenses"
+                Name="licenses" />
+            </Directory>
+            <Directory Id="python_lib_site_packages_wheel" Name="wheel">
+              <Directory Id="python_lib_site_packages_wheel_cli" Name="cli" />
+              <Directory Id="python_lib_site_packages_wheel_vendored" Name="vendored">
+                <Directory Id="python_lib_site_packages_wheel_vendored_packaging"
+                  Name="packaging" />
+              </Directory>
+            </Directory>
+            <Directory Id="python_lib_site_packages_wheel_0.45.1.dist_info"
+              Name="wheel-0.45.1.dist-info" />
+            <Directory Id="python_lib_site_packages__distutils_hack" Name="_distutils_hack" />
+          </Directory>
+        </Directory>
+        <Directory Id="python_scripts" Name="Scripts" />
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLROOT">
         <Directory Name="Toolchains">
           <Directory Id="ToolchainVersionedAsserts" Name="$(ProductVersion)+Asserts">
             <Directory Id="toolchain_asserts_usr" Name="usr">
