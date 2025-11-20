@@ -55,7 +55,6 @@
                 <Directory Id="toolchain_asserts_usr_share_docc" Name="docc">
                   <Directory Id="toolchain_asserts_usr_share_docc_render" Name="render" />
                 </Directory>
-                <Directory Id="toolchain_asserts_usr_share_licenses" Name="licenses" />
               </Directory>
             </Directory>
           </Directory>
