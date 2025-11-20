@@ -11,6 +11,7 @@
   <String Id="Dbg_ProductName" Value="Swift Debugging Tools" />
   <String Id="DbgAsserts_ProductName" Value="Swift Debugging Tools (Asserts)" />
   <String Id="DbgNoAsserts_ProductName" Value="Swift Debugging Tools (NoAsserts)" />
+  <String Id="EmbeddedPython_ProductName" Value="Embedded Python" />
   <String Id="Ide_ProductName" Value="Swift IDE Integration Tools" />
   <String Id="IdeAsserts_ProductName" Value="Swift IDE Integration Tools (Asserts)" />
   <String Id="IdeNoAsserts_ProductName" Value="Swift IDE Integration Tools (NoAsserts)" />
