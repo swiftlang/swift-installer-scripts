@@ -21,10 +21,17 @@
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="INSTALLROOT">
-      <Directory Id="python" Name="Python-$(PythonVersion)" />
+      <Directory Id="python" Name="Python-$(PythonVersion)">
+        <Directory Id="_usr" Name="usr">
+          <Directory Id="_usr_bin" Name="bin" />
+          <Directory Id="_usr_share" Name="share">
+            <Directory Id="_usr_share_licenses" Name="licenses" />
+          </Directory>
+        </Directory>
+      </Directory>
     </DirectoryRef>
 
-    <ComponentGroup Id="EmbeddedPython" Directory="python">
+    <ComponentGroup Id="EmbeddedPython" Directory="_usr_bin">
       <Component>
         <File Source="$(PythonRoot)\libcrypto-1_1$(ArchSuffix).dll" />
       </Component>
@@ -124,17 +131,14 @@
       <Component>
         <File Source="$(PythonRoot)\_zoneinfo.pyd" />
       </Component>
-    </ComponentGroup>
 
-    <ComponentGroup Id="EmbeddedPythonLicense">
-      <Component Directory="toolchain_asserts_usr_share_licenses">
-        <File Source="$(PythonRoot)\LICENSE.txt" />
+      <Component Directory="_usr_share_licenses">
+        <File Name="python.txt" Source="$(PythonRoot)\LICENSE.txt" />
       </Component>
     </ComponentGroup>
 
     <Feature Id="EmbeddedPython" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="EmbeddedPython" />
-      <ComponentGroupRef Id="EmbeddedPythonLicense" />
     </Feature>
   </Package>
 </Wix>
