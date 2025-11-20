@@ -52,7 +52,6 @@
                 <Directory Id="_usr_share_docc" Name="docc">
                   <Directory Id="_usr_share_docc_render" Name="render" />
                 </Directory>
-                <Directory Id="_usr_share_licenses" Name="licenses" />
               </Directory>
             </Directory>
           </Directory>
