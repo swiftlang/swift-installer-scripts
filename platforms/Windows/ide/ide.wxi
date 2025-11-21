@@ -18,6 +18,10 @@
       <Directory Id="toolchain_$(VariantName)_usr_include_SourceKit" Name="SourceKit" />
     </DirectoryRef>
 
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_share">
+      <Directory Id="toolchain_$(VariantName)_usr_share_sourcekit_lsp" Name="sourcekit-lsp" />
+    </DirectoryRef>
+
     <ComponentGroup Id="clangd" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\clangd.exe" />
@@ -52,9 +56,12 @@
       </Component>
     </ComponentGroup>
 
-    <ComponentGroup Id="lsp" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
+    <ComponentGroup Id="lsp">
+      <Component Directory="toolchain_$(VariantName)_usr_bin">
         <File Source="$(ToolchainRoot)\usr\bin\sourcekit-lsp.exe" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_share_sourcekit_lsp">
+        <File Source="$(ToolchainRoot)\usr\share\sourcekit-lsp\config.schema.json" />
       </Component>
     </ComponentGroup>
 
