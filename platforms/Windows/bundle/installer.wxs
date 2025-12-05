@@ -31,6 +31,7 @@
     <Variable Name="OptionsInstallBLD" Value="1" />
     <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDBG" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <Variable Name="OptionsInstallPy" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRTL" Value="1" />
 
@@ -97,6 +98,13 @@
       <MsiPackage
         SourceFile="!(bindpath.dbg)\dbg.msi"
         InstallCondition="OptionsInstallDBG = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+
+      <MsiPackage
+        SourceFile="!(bindpath.python)\python.msi"
+        InstallCondition="OptionsInstallDBG = 1 and OptionsInstallPy = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
