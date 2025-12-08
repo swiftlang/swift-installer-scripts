@@ -21,6 +21,7 @@
     <ProjectReference Include="..\cli\asserts\cli.asserts.wixproj" BindName="cli.asserts" />
     <ProjectReference Include="..\dbg\asserts\dbg.asserts.wixproj" BindName="dbg.asserts" />
     <ProjectReference Include="..\ide\asserts\ide.asserts.wixproj" BindName="ide.asserts" />
+    <ProjectReference Include="..\python\python.wixproj" BindName="python" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(ToolchainVariants.Contains('noasserts')) ">
