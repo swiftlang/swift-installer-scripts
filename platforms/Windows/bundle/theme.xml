@@ -9,9 +9,9 @@
     <Font Id="2" Height="-18" Weight="500" Foreground="graytext">Segoe UI</Font>
     <Font Id="3" Height="-12" Weight="500" Foreground="windowtext" Background="window">Segoe UI</Font>
 
-    <Window Width="630" Height="530" HexStyle="100a0000" FontId="0" Caption="#(loc.Caption)">
-        <ImageControl X="0" Y="0" Width="181" Height="530" ImageFile="swift_side.png"/>
-        <Label X="192" Y="11" Width="-11" Height="32" FontId="1" DisablePrefix="yes">#(loc.Title)</Label>
+    <Window Width="614" Height="456" HexStyle="100a0000" FontId="0" Caption="#(loc.Caption)">
+        <ImageControl X="0" Y="0" Width="165" Height="456" ImageFile="swift_side.png"/>
+        <Label X="176" Y="11" Width="-11" Height="32" FontId="1" DisablePrefix="yes">#(loc.Title)</Label>
 
         <Page Name="Help">
             <Label X="176" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.HelpHeader)</Label>
@@ -59,7 +59,6 @@
             <Checkbox Name="OptionsInstallBLD" X="176" Y="111" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallCLI" X="176" Y="129" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallDBG" X="176" Y="147" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallPy" X="210" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallDBG">#(loc.EmbeddedPython_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallIDE" X="176" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallRTL" X="176" Y="183" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
             <Checkbox Name="OptionsInstallWindowsPlatform" X="176" Y="201" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Windows)</Checkbox>

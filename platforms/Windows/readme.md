@@ -34,7 +34,6 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | InstallRoot | A formatted string variable that specifies the installation root directory. The default value specified in `installer.wxs` should match the equivalent `INSTALLROOT` authoring in `shared.wxs`. The bundle variable is passed to each `MsiPackage` so overwrites the default directory authored in the MSI packages -- but keeping them in sync avoids the confusion if the default directory should change. |
 | OptionsInstallCLI | Controls whether command-line tools will be installed. |
 | OptionsInstallDBG | Controls whether debugging tools will be installed. |
-| OptionsInstallPy | Controls whether embeddable Python will be installed. |
 | OptionsInstallIDE | Controls whether IDE integration tools will be installed. |
 | OptionsInstallUtilties | Controls whether additional utilities will be installed. |
 | OptionsInstallAndroidPlatform | Controls whether the Android platform will be installed. |
@@ -150,7 +149,6 @@ To support the three architecture flavors of the SDK and RTL MSI packages, you n
 | MSBuild property | Description |
 | ---------------- | ----------- |
 | ImageRoot | Path to the root of the installed Swift image to package |
-| PythonVersion | Version of the Embeddable Python to package |
 | Platforms | Semicolon delimited list of platforms to package (android;windows) |
 | AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch54;armv7;i686;x86_64) |
 | WindowsArchitectures | Semicolon delimited list of architectures the Windows platform supports (aarch64;i686;x86_64) |
@@ -167,11 +165,10 @@ msbuild %SourceRoot%\swift-installer-scripts\platforms\Windows\bundle\installer.
   -p:Configuration=Release ^
   -p:BaseOutputPath=%PackageRoot%\online\ ^
   -p:ImageRoot=%ImageRoot%\Program Files\Swift ^
-  -p:PythonVersion=3.10.1 ^
   -p:Platforms="android;windows" ^
   -p:AndroidArchitectures="aarch64;armv7;i686;x86_64" ^
   -p:WindowsArchitectures="aarch64;i686;x86_64" ^
-  -p:WindowsRuntimeARM64=%ImageRoot%\Program Files (Arm64)\Swift\Runtimes\0.0.0 ^
+  -p:WindowsRuntimeARM64=%ImageRoot%\Prograam Files (Arm64)\Swift\Runtimes\0.0.0 ^
   -p:WindowsRuntimeX64=%ImageRoot%\Program Files\Swift\Runtimes\0.0.0 ^
   -p:WindowsRuntimeX86=%ImageRoot%\Program Files (x86)\Swift\Runtimes\0.0.0
 ```
@@ -219,7 +216,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 
 | Property | Description |
 | -------- | ----------- |
-| BldUpgradeCode, CliUpgradeCode, DbgUpgradeCode, IdeUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode, PythonUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
+| BldUpgradeCode, CliUpgradeCode, DbgUpgradeCode, IdeUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
 | BundleUpgradeCode | Upgrade codes for the bundle. Bundles don't support upgrade version ranges, so the bundle upgrade code must change for every minor version _and_ stay the same for the entire lifetime of that minor version (e.g., v5.10.0 through v5.10.9999). You can keep the history of upgrade codes using a condition like `Condition="'$(MajorMinorProductVersion)' == '5.10'` or just replace BundleUpgradeCode when forking to a new minor version. |
 
 
