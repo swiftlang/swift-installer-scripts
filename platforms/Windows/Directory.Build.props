@@ -81,7 +81,6 @@
       ArePackageCabsEmbedded=$(ArePackageCabsEmbedded);
       BaseReleaseDownloadUrl=$(BaseReleaseDownloadUrl);
       ImageRoot=$(ImageRoot);
-      PythonVersion=$(PythonVersion);
       WindowsRuntimeARM64=$(WindowsRuntimeARM64);
       WindowsRuntimeX64=$(WindowsRuntimeX64);
       WindowsRuntimeX86=$(WindowsRuntimeX86);
