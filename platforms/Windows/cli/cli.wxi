@@ -746,6 +746,7 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
+    <?if True == False?>
     <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
@@ -754,6 +755,7 @@
         <File Source="$(ToolchainRoot)\usr\bin\SwiftDocC.dll" />
       </Component>
     </ComponentGroup>
+    <?endif?>
 
     <ComponentGroup Id="swift_format" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
