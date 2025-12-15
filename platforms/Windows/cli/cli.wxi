@@ -746,7 +746,7 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <?if True == False?>
+    <?if False?>
     <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
@@ -783,7 +783,9 @@
       <ComponentGroupRef Id="PackageDescription" />
       <ComponentGroupRef Id="PackagePlugin" />
 
+      <?if False?>
       <ComponentGroupRef Id="DocC" />
+      <?endif?>
       <ComponentGroupRef Id="DocCRender" />
 
       <ComponentGroupRef Id="swift_format" />
