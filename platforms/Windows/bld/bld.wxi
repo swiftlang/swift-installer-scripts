@@ -470,6 +470,9 @@
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxMacros.dll" />
       </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftWarningControl.dll" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="swift_syntax" Directory="toolchain_$(VariantName)_usr_bin">
