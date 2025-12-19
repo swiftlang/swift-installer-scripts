@@ -247,6 +247,9 @@
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppShortcutStringsMetadata.xcspec" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppleFileTypes.xcspec" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AssetCatalogCompiler.xcspec" />
       </Component>
       <Component>
@@ -275,6 +278,9 @@
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DriverKit.xcspec" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EXUtil.xcspec" />
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Device.xcspec" />
@@ -461,6 +467,9 @@
     </ComponentGroup>
     <ComponentGroup Id="SWBGenericUnixPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBGenericUnixPlatform">
       <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\FreeBSDLibtool.xcspec" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\Unix.xcspec" />
       </Component>
       <Component>
@@ -538,6 +547,9 @@
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Libtool.xcspec" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ObjectLibraryAssembler.xcspec" />
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\PBXCp.xcspec" />
