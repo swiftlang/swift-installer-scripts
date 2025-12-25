@@ -44,11 +44,11 @@
       </Component>
 
       <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitPlugin.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftSourceKitPlugin.dll" />
       </Component>
 
       <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitClientPlugin.dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\SwiftSourceKitClientPlugin.dll" />
       </Component>
 
       <Component Directory="toolchain_$(VariantName)_usr_include_SourceKit">
