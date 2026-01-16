@@ -3,12 +3,10 @@
     <OutputName>windows</OutputName>
 
     <SwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\Windows.sdk\usr\lib\swift\shims</SwiftShimsPath>
-    <ExperimentalSwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\WindowsExperimental.sdk\usr\lib\swift\shims</ExperimentalSwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
       SwiftShimsPath=$(SwiftShimsPath);
-      ExperimentalSwiftShimsPath=$(ExperimentalSwiftShimsPath);
       IncludeARM64=$(WindowsArchitectures.Contains("aarch64"));
       IncludeX64=$(WindowsArchitectures.Contains("x86_64"));
       IncludeX86=$(WindowsArchitectures.Contains("i686"));
@@ -20,24 +18,21 @@
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('i686')) ">
-    <ProjectReference Condition=" '$(IncludeLegacySDK)' == 'True' " Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.x86.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.shared.x86.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.static.x86.msm" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('x86_64')) ">
-    <ProjectReference Condition=" '$(IncludeLegacySDK)' == 'True' " Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.amd64.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.shared.amd64.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=amd64" BindName="rtl.static.amd64.msm" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('aarch64')) ">
-    <ProjectReference Condition=" '$(IncludeLegacySDK)' == 'True' " Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.arm64.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.shared.arm64.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.static.arm64.msm" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(IncludeLegacySDK)' == 'True' ">
+  <ItemGroup>
     <HarvestDirectory Include="$(SwiftShimsPath)">
       <ComponentGroupName>SwiftShims</ComponentGroupName>
       <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
@@ -48,14 +43,13 @@
     </HarvestDirectory>
   </ItemGroup>
 
-  <ItemGroup>
-    <HarvestDirectory Include="$(ExperimentalSwiftShimsPath)">
-      <ComponentGroupName>ExperimentalSwiftShims</ComponentGroupName>
-      <DirectoryRefId>WindowsExperimentalSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.ExperimentalSwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
+  <Target Name="PostProcessHeatFragment" BeforeTargets="CoreCompile">
+    <PropertyGroup>
+      <Fragment>$(IntermediateOutputPath)_SwiftShims_dir.wxs</Fragment>
+      <Temporary>$(IntermediateOutputPath)_SwiftShims_dir.wxs.tmp</Temporary>
+    </PropertyGroup>
+
+    <XslTransformation XslInputPath="AddDiskIds.xsl" XmlInputPaths="$(Fragment)" OutputPaths="$(Temporary)" />
+    <Move SourceFiles="$(Temporary)" DestinationFiles="$(Fragment)" />
+  </Target>
 </Project>

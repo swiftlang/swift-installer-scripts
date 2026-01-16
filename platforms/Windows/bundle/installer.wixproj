@@ -31,10 +31,6 @@
     <ProjectReference Include="..\ide\noasserts\ide.noasserts.wixproj" BindName="ide.noasserts" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(IncludeLegacySDK)' == 'True' ">
-    <ProjectReference Include="..\rtl\legacy\msi\rtlmsi.wixproj" BindName="rtl" />
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\rtl\shared\msi\rtl.shared.msi.wixproj" Properties="ProductArchitecture=$(ProductArchitecture)" BindName="rtl.shared" />
   </ItemGroup>
