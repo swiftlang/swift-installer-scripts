@@ -54,15 +54,19 @@
 
     <ComponentGroup Id="clang" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\clang-cache.exe" />
+      </Component>
+
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\clang-format.exe" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\git-clang-format" />
+        <File Source="$(ToolchainRoot)\usr\bin\clang-tidy.exe" />
       </Component>
 
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-tidy.exe" />
+        <File Source="$(ToolchainRoot)\usr\bin\git-clang-format" />
       </Component>
     </ComponentGroup>
 
