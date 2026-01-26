@@ -737,13 +737,13 @@
         <File Source="$(ToolchainRoot)\usr\bin\PackageGraph.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\PackageCollections.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\PackageLoading.dll" />
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\PackageModel.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SBOMModel.dll" />
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\SourceControl.dll" />
