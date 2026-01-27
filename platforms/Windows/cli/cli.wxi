@@ -741,6 +741,15 @@
         <File Source="$(ToolchainRoot)\usr\bin\PackageGraph.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\PackageCollections.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsModel.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsSigning.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\PackageLoading.dll" />
       </Component>
       <Component>
