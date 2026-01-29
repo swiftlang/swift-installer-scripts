@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
+  <?if $(sys.BUILDARCH) == x64 ?>
+    <?define MergeModuleFileName = "rtl.amd64.msm" ?>
+  <?else?>
+    <?define MergeModuleFileName = "rtl.$(sys.BUILDARCH).msm" ?>
+  <?endif?>
+
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
@@ -33,6 +39,10 @@
           </Directory>
         </Directory>
       </Directory>
+    </DirectoryRef>
+
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
+      <Merge DiskId="1" Id="swift_runtime" Language="0" SourceFile="$(RedistributablesDirectory)\$(MergeModuleFileName)" />
     </DirectoryRef>
 
     <ComponentGroup Id="cmark_gfm" Directory="toolchain_$(VariantName)_usr_bin">
@@ -210,30 +220,6 @@
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\lld.exe" />
       </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="BlocksRuntime">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\BlocksRuntime.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\BlocksRuntime.lib" />
-      </Component>
-
-      <!-- TODO(compnerd) should we install the block headers? -->
-    </ComponentGroup>
-
-    <ComponentGroup Id="libdispatch">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\dispatch.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\dispatch.lib" />
-      </Component>
-
-      <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftCxx" Directory="toolchain_$(VariantName)_usr_lib_swift_swiftToCxx">
@@ -554,6 +540,10 @@
       </Component>
     </ComponentGroup>
 
+    <Feature Id="SwiftRuntimeRedistributable" Title="Swift Runtime Redistributable" AllowAdvertise="no" Display="hidden" Level="1">
+      <MergeRef Id="swift_runtime" />
+    </Feature>
+
     <Feature Id="BuildTools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="cmark_gfm" />
 
@@ -561,8 +551,6 @@
       <ComponentGroupRef Id="lto" />
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="lld" />
-      <ComponentGroupRef Id="BlocksRuntime" />
-      <ComponentGroupRef Id="libdispatch" />
       <ComponentGroupRef Id="swift" />
       <ComponentGroupRef Id="argument_parser" />
       <ComponentGroupRef Id="tools_support_core" />

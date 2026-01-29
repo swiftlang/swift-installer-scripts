@@ -33,7 +33,8 @@
     <Variable Name="OptionsInstallDBG" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallPy" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRTL" Value="1" />
+    <!-- TODO(compnerd) enable installing non-native RTL (e.g. X64 on ARM64) -->
+    <Variable Name="OptionsInstallRTL" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <Variable Name="OptionsInstallUtilities" bal:Overridable="yes" Persisted="yes" Value="1" />
 
@@ -158,21 +159,12 @@
         </MsiPackage>
       <?endif?>
 
-<?if $(IncludeLegacySDK) == True?>
-      <MsiPackage
-        SourceFile="!(bindpath.rtl)\rtl.msi"
-        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
-      </MsiPackage>
-<?else?>
       <MsiPackage
         SourceFile="!(bindpath.rtl.shared)\rtl.$(ProductArchitecture).msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
-<?endif?>
 
       <?if $(IncludeAndroid) == True?>
         <MsiPackage
@@ -196,15 +188,12 @@
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
           <MsiProperty Name="INSTALLARM64SDK" Value="[OptionsInstallWindowsSDKARM64]" />
-          <MsiProperty Name="INSTALLARM64EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKARM64]" />
           <MsiProperty Name="INSTALLARM64REDIST" Value="[OptionsInstallWindowsRedistARM64]" />
 
           <MsiProperty Name="INSTALLAMD64SDK" Value="[OptionsInstallWindowsSDKAMD64]" />
-          <MsiProperty Name="INSTALLAMD64EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKAMD64]" />
           <MsiProperty Name="INSTALLAMD64REDIST" Value="[OptionsInstallWindowsRedistAMD64]" />
 
           <MsiProperty Name="INSTALLX86SDK" Value="[OptionsInstallWindowsSDKX86]" />
-          <MsiProperty Name="INSTALLX86EXPERIMENTALSDK" Value="[OptionsInstallWindowsSDKX86]" />
           <MsiProperty Name="INSTALLX86REDIST" Value="[OptionsInstallWindowsRedistX86]" />
         </MsiPackage>
       <?endif?>

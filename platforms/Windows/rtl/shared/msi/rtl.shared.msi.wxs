@@ -3,13 +3,13 @@
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
       Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
-      UpgradeCode="$(ExperimentalRTLUpgradeCode)"
+      UpgradeCode="$(RTLUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
       Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="rtl.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
-    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(ExperimentalRTLUpgradeCode)" />
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(RTLUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <!-- Point the RTL component group to the right directory. -->

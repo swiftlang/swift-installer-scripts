@@ -25,9 +25,6 @@
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
     <Platform>x86</Platform>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(IncludeLegacySDK)' == '' ">
-    <IncludeLegacySDK>true</IncludeLegacySDK>
-  </PropertyGroup>
 
   <PropertyGroup>
     <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
@@ -45,9 +42,10 @@
     ICE38 is about mixing per-user and per-machine resources (not a thing for us).
     ICE61 is a warning about allowing "same-version" major upgrades, something we want.
     ICE64 is documented as not being an issue when packages are always per-user.
+    ICE71 is an error if the Media table does not contain an entry with DiskId equal to 1.
     ICE91 is about "roaming scenarios," which doesn't apply to our use of LocalAppDataFolder.
     -->
-    <SuppressIces>ICE38;ICE61;ICE64;ICE91</SuppressIces>
+    <SuppressIces>ICE38;ICE61;ICE64;ICE71;ICE91</SuppressIces>
     <PackageScope>perUser</PackageScope>
   </PropertyGroup>
 
@@ -88,10 +86,7 @@
       WindowsRuntimeARM64=$(WindowsRuntimeARM64);
       WindowsRuntimeX64=$(WindowsRuntimeX64);
       WindowsRuntimeX86=$(WindowsRuntimeX86);
-      WindowsExperimentalRuntimeARM64=$(WindowsExperimentalRuntimeARM64);
-      WindowsExperimentalRuntimeX64=$(WindowsExperimentalRuntimeX64);
-      WindowsExperimentalRuntimeX86=$(WindowsExperimentalRuntimeX86);
-      IncludeLegacySDK=$(IncludeLegacySDK);
+      RedistributablesDirectory=$(RedistributablesDirectory);
     </DefineConstants>
   </PropertyGroup>
 
