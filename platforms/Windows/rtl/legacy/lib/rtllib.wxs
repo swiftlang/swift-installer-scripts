@@ -2,10 +2,13 @@
   <Fragment>
     <?if $(sys.BUILDARCH) == x86 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "79856274-E0F9-4602-A56A-A8DE16C05C41" ?>
+      <?define LibexecDirectoryComponentGuidGenerationSeed = "1D2D9D05-6EB4-45A1-A23E-980FCC78CA90" ?>
     <?elseif $(sys.BUILDARCH) == x64 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "89EC12D8-2E04-41C5-9685-C38DA162A2DA" ?>
+      <?define LibexecDirectoryComponentGuidGenerationSeed = "303ABB32-9479-4F81-92D5-5599C6BD3A54" ?>
     <?elseif $(sys.BUILDARCH) == arm64 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "E9BC660F-2E0E-48E4-8DE0-18567335AF6B" ?>
+      <?define LibexecDirectoryComponentGuidGenerationSeed = "F713CE0B-3385-4F79-A690-25384497B172" ?>
     <?endif?>
 
     <?if $(ProductArchitecture) == amd64?>
@@ -17,6 +20,7 @@
     <?endif?>
 
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
+    <Directory Id="LIBEXECDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(LibexecDirectoryComponentGuidGenerationSeed)" />
 
     <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>
@@ -43,6 +47,9 @@
       <Component>
         <File Source="$(RuntimeRoot)\usr\bin\swiftCore.dll" />
       </Component>
+      <Component>
+        <File Source="$(RuntimeRoot)\usr\bin\swiftRuntime.dll" />
+      </Component>
 
       <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
       <Component Directory="_usr_bin" Id="swiftDemangle.dll">
@@ -63,6 +70,12 @@
       </Component>
       <Component>
         <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="libexec_$(ProductArchitecture)" Directory="LIBEXECDIR_$(ProductArchitecture)">
+      <Component>
+        <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
       </Component>
     </ComponentGroup>
 
@@ -110,6 +123,7 @@
 
     <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
       <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
+      <ComponentGroupRef Id="libexec_$(ProductArchitecture)" />
       <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
       <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
