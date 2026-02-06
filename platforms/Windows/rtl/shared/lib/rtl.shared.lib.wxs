@@ -67,20 +67,18 @@
         <File Source="$(RuntimeRoot)\usr\bin\swift_Volatile.dll" />
       </Component>
 
+      <!-- TODO Enable when the experimental Runtimes build builds swift-backtrace
+      <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
+        <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
+      </Component>
+      -->
+
       <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
       <Component Directory="_usr_bin" Id="swiftDemangle.dll">
         <File Id="swiftDemangle.dll" Source="$(RuntimeRoot)\bin\swiftDemangle.dll" />
       </Component>
       -->
     </ComponentGroup>
-
-    <!-- TODO Enable when the experimental Runtimes build builds swift-backtrace
-    <ComponentGroup Id="libexec_$(ProductArchitecture)" Directory="LIBEXECDIR_$(ProductArchitecture)">
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
-      </Component>
-    </ComponentGroup>
-    -->
 
     <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component>

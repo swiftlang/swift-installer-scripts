@@ -71,10 +71,8 @@
       <Component>
         <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
       </Component>
-    </ComponentGroup>
 
-    <ComponentGroup Id="libexec_$(ProductArchitecture)" Directory="LIBEXECDIR_$(ProductArchitecture)">
-      <Component>
+      <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
         <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
       </Component>
     </ComponentGroup>
