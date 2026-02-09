@@ -54,6 +54,10 @@
 
     <ComponentGroup Id="clang" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\cache-build-session.exe" />
+      </Component>
+
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\clang-cache.exe" />
       </Component>
 
