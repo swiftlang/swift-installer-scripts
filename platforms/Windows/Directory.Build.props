@@ -31,6 +31,12 @@
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
     <Platform>x86</Platform>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(IncludeLlvmDll)' == '' ">
+    <IncludeLlvmDll>false</IncludeLlvmDll>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(LlvmVersion)' == '' ">
+    <LlvmVersion>21</LlvmVersion>
+  </PropertyGroup>
 
   <PropertyGroup>
     <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
@@ -88,6 +94,8 @@
       WindowsRuntimeARM64=$(WindowsRuntimeARM64);
       WindowsRuntimeX64=$(WindowsRuntimeX64);
       WindowsRuntimeX86=$(WindowsRuntimeX86);
+      IncludeLlvmDll=$(IncludeLlvmDll);
+      LlvmVersion=$(LlvmVersion);
     </DefineConstants>
   </PropertyGroup>
 

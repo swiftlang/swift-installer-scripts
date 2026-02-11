@@ -144,6 +144,14 @@
       -->
     </ComponentGroup>
 
+    <?if $(IncludeLlvmDll) = True?>
+    <ComponentGroup Id="llvm" Directory="toolchain_$(VariantName)_usr_bin">
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\LLVM-$(LlvmVersion).dll" />
+      </Component>
+    </ComponentGroup>
+    <?endif?>
+
     <ComponentGroup Id="lld" Directory="toolchain_$(VariantName)_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to lld.exe instead? -->
       <File Source="$(ToolchainRoot)\usr\bin\ld.lld.exe" />
@@ -345,6 +353,9 @@
       <ComponentGroupRef Id="binutils" />
       <ComponentGroupRef Id="lto" />
       <ComponentGroupRef Id="clang" />
+      <?if $(IncludeLlvmDll) = True?>
+      <ComponentGroupRef Id="llvm" />
+      <?endif?>
       <ComponentGroupRef Id="lld" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="libdispatch" />
