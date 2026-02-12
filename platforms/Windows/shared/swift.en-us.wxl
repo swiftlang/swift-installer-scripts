@@ -21,7 +21,6 @@
   <String Id="VCRuntime_ProductName_x86" Value="Visual C++ Runtime (X86)" />
   <String Id="Plt_ProductName_Android" Value="Swift Android Platform Support" />
   <String Id="Plt_ProductName_Windows" Value="Swift Windows Platform Support" />
-  <String Id="Plt_ProductName_Windows_Experimental" Value="Swift Windows Platform Support [Experimental]" />
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Runtime (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Runtime (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Runtime (X86)" />
@@ -32,12 +31,13 @@
   <String Id="Sdk_ProductName_Windows_arm64" Value="Swift Windows SDK (ARM64)" />
   <String Id="Sdk_ProductName_Windows_amd64" Value="Swift Windows SDK (AMD64)" />
   <String Id="Sdk_ProductName_Windows_x86" Value="Swift Windows SDK (X86)" />
+  <String Id="Plt_ProductName_Android_arm64" Value="Swift Android Platform Support (ARM64)" />
+  <String Id="Plt_ProductName_Android_armv7" Value="Swift Android Platform Support (ARMv7)" />
+  <String Id="Plt_ProductName_Android_amd64" Value="Swift Android Platform Support (AMD64)" />
+  <String Id="Plt_ProductName_Android_x86" Value="Swift Android Platform Support (X86)" />
   <String Id="Plt_ProductName_Windows_arm64" Value="Swift Windows Platform Support (ARM64)" />
   <String Id="Plt_ProductName_Windows_amd64" Value="Swift Windows Platform Support (AMD64)" />
   <String Id="Plt_ProductName_Windows_x86" Value="Swift Windows Platform Support (X86)" />
-  <String Id="Plt_ProductName_Windows_Experimental_arm64" Value="Swift Windows Platform Support (ARM64) [Experimental]" />
-  <String Id="Plt_ProductName_Windows_Experimental_amd64" Value="Swift Windows Platform Support (AMD64) [Experimental]" />
-  <String Id="Plt_ProductName_Windows_Experimental_x86" Value="Swift Windows Platform Support (X86) [Experimental]" />
   <String Id="Utl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
