@@ -14,7 +14,9 @@
 
     <!-- Point the RTL component group to the right directory. -->
     <DirectoryRef Id="runtimes_usr_bin" />
+    <DirectoryRef Id="runtimes_usr_libexec_swift" />
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
+    <SetDirectory Id="LIBEXECDIR_$(ProductArchitecture)" Value="[runtimes_usr_libexec_swift]" Sequence="first" />
 
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="bc309c80-221e-48db-b989-07157ac8f286">

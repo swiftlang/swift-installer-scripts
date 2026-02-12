@@ -29,6 +29,9 @@
         <Directory Id="RuntimesVersioned" Name="$(ProductVersion)">
           <Directory Name="usr">
             <Directory Id="runtimes_usr_bin" Name="bin" />
+            <Directory Name="libexec">
+              <Directory Id="runtimes_usr_libexec_swift" Name="swift" />
+            </Directory>
           </Directory>
         </Directory>
       </Directory>
