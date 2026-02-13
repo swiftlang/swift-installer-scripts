@@ -121,7 +121,6 @@
 
     <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
       <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="libexec_$(ProductArchitecture)" />
       <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
       <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />

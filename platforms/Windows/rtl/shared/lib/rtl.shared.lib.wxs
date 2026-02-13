@@ -124,9 +124,6 @@
 
     <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
       <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
-      <!-- TODO Enable when the experimental Runtimes build builds swift-backtrace
-      <ComponentGroupRef id="libexec_$(ProductArchitecture)" />
-      -->
       <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
       <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
