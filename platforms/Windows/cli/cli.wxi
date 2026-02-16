@@ -626,6 +626,9 @@
       <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsLibtool.xcspec" />
       </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsStripSymbols.xcspec" />
+      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftBuild" Directory="toolchain_$(VariantName)_usr_bin">
