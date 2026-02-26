@@ -72,9 +72,12 @@
         <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
       </Component>
 
-      <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
-        <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
-      </Component>
+      <!-- TODO(hjyamauchi) enable this when we build this for x86 https://github.com/swiftlang/swift/issues/87499 -->
+      <?if $(ProductArchitecture) != x86?>
+        <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
+          <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
+        </Component>
+      <?endif?>
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
