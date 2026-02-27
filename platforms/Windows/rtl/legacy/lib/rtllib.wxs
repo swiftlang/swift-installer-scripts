@@ -71,13 +71,6 @@
       <Component>
         <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
       </Component>
-
-      <!-- TODO(hjyamauchi) enable this when we build this for x86 https://github.com/swiftlang/swift/issues/87499 -->
-      <?if $(ProductArchitecture) != x86?>
-        <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
-          <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
-        </Component>
-      <?endif?>
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
@@ -122,12 +115,28 @@
       </Component>
     </ComponentGroup>
 
+    <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->
+    <?if $(ProductArchitecture) != x86?>
+    <ComponentGroup Id="swift_backtrace_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
+        <File Source="$(RuntimeRoot)\usr\libexec\swift\windows\swift-backtrace.exe" />
+      </Component>
+    </ComponentGroup>
+    <?endif?>
+
     <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
       <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
       <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
       <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
     </ComponentGroup>
+
+    <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->
+    <?if $(ProductArchitecture) != x86?>
+    <ComponentGroup Id="swift_runtime_support_$(ProductArchitecture)">
+      <ComponentGroupRef Id="swift_backtrace_$(ProductArchitecture)" />
+    </ComponentGroup>
+    <?endif?>
 
     <ComponentGroup Id="swift_runtime_utilities_$(ProductArchitecture)">
       <ComponentGroupRef Id="plutil_$(ProductArchitecture)" />

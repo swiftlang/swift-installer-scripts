@@ -35,6 +35,7 @@
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallRTL" Value="1" />
 
+    <Variable Name="OptionsInstallSupport" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallUtilities" bal:Overridable="yes" Persisted="yes" Value="1" />
 
     <Variable Name="OptionsInstallWindowsPlatform" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -163,6 +164,7 @@
         SourceFile="!(bindpath.rtl)\rtl.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="INSTALLSUPPORT" Value="[OptionsInstallSupport]" />
         <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
 <?else?>
@@ -170,6 +172,7 @@
         SourceFile="!(bindpath.rtl.shared)\rtl.$(ProductArchitecture).msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="INSTALLSUPPORT" Value="[OptionsInstallSupport]" />
         <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
 <?endif?>
