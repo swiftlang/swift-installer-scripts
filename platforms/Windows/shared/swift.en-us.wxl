@@ -38,6 +38,9 @@
   <String Id="Plt_ProductName_Windows_Experimental_arm64" Value="Swift Windows Platform Support (ARM64) [Experimental]" />
   <String Id="Plt_ProductName_Windows_Experimental_amd64" Value="Swift Windows Platform Support (AMD64) [Experimental]" />
   <String Id="Plt_ProductName_Windows_Experimental_x86" Value="Swift Windows Platform Support (X86) [Experimental]" />
+  <String Id="Sup_ProductName_arm64" Value="Swift Runtime Support (ARM64)" />
+  <String Id="Sup_ProductName_amd64" Value="Swift Runtime Support (AMD64)" />
+  <String Id="Sup_ProductName_x86" Value="Swift Runtime Support (X86)" />
   <String Id="Utl_ProductName_arm64" Value="Swift Windows Utilities (ARM64)" />
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />

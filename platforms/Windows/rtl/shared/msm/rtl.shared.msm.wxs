@@ -10,6 +10,10 @@
 
   <Module Guid="$(ModuleId)" Id="swift_runtime" Language="0" Version="$(NonSemVerProductVersion)">
     <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
+    <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->
+    <?if $(ProductArchitecture) != x86?>
+    <ComponentGroupRef Id="swift_runtime_support_$(ProductArchitecture)" />
+    <?endif?>
     <ComponentGroupRef Id="swift_runtime_utilities_$(ProductArchitecture)" />
   </Module>
 </Wix>
