@@ -1006,9 +1006,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1023,9 +1020,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1038,9 +1032,6 @@
       <ComponentGroup Id="Legacy_Builtin_float.x86" Directory="Legacy_Builtin_float.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Builtin_float.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -1140,9 +1131,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1157,9 +1145,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1172,9 +1157,6 @@
       <ComponentGroup Id="Legacy_Concurrency.x86" Directory="Legacy_Concurrency.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -1274,9 +1256,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1291,9 +1270,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1306,9 +1282,6 @@
       <ComponentGroup Id="Legacy_Differentiation.x86" Directory="Legacy_Differentiation.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Differentiation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -1533,9 +1506,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1550,9 +1520,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1565,9 +1532,6 @@
       <ComponentGroup Id="Legacy_StringProcessing.x86" Directory="Legacy_StringProcessing.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_StringProcessing.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -1667,9 +1631,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1684,9 +1645,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1699,9 +1657,6 @@
       <ComponentGroup Id="Legacy_Volatile.x86" Directory="Legacy_Volatile.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -1801,9 +1756,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1818,9 +1770,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1833,9 +1782,6 @@
       <ComponentGroup Id="LegacyCRT.x86" Directory="LegacyCRT.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CRT.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -1935,9 +1881,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1952,9 +1895,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -1967,9 +1907,6 @@
       <ComponentGroup Id="LegacyCxx.x86" Directory="LegacyCxx.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Cxx.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -2069,9 +2006,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -2086,9 +2020,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -2101,9 +2032,6 @@
       <ComponentGroup Id="LegacyCxxStdlib.x86" Directory="LegacyCxxStdlib.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\CxxStdlib.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -2203,9 +2131,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -2220,9 +2145,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -2235,9 +2157,6 @@
       <ComponentGroup Id="LegacyDistributed.x86" Directory="LegacyDistributed.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Distributed.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -3119,9 +3038,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3136,9 +3052,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3151,9 +3064,6 @@
       <ComponentGroup Id="LegacyObservation.x86" Directory="LegacyObservation.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Observation.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -3253,9 +3163,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3270,9 +3177,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3285,9 +3189,6 @@
       <ComponentGroup Id="LegacyRegexBuilder.x86" Directory="LegacyRegexBuilder.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\RegexBuilder.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -3387,9 +3288,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
         <Component Directory="WindowsSDK_usr_lib_swift_windows_arm64" DiskId="2">
@@ -3403,9 +3301,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
         <Component Directory="WindowsSDK_usr_lib_swift_windows_x64" DiskId="3">
@@ -3417,9 +3312,6 @@
       <ComponentGroup Id="LegacySwift.x86" Directory="LegacySwift.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Swift.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -3518,9 +3410,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3535,9 +3424,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3550,9 +3436,6 @@
       <ComponentGroup Id="LegacySwiftOnoneSupport.x86" Directory="LegacySwiftOnoneSupport.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\SwiftOnoneSupport.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -3652,9 +3535,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3669,9 +3549,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3684,9 +3561,6 @@
       <ComponentGroup Id="LegacySynchronization.x86" Directory="LegacySynchronization.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\Synchronization.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
@@ -3786,9 +3660,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="2">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="2">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3803,9 +3674,6 @@
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         </Component>
         <Component DiskId="3">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftinterface" />
-        </Component>
-        <Component DiskId="3">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
         </Component>
 
@@ -3818,9 +3686,6 @@
       <ComponentGroup Id="LegacyWinSDK.x86" Directory="LegacyWinSDK.swiftmodule">
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
-        </Component>
-        <Component DiskId="4">
-          <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftinterface" />
         </Component>
         <Component DiskId="4">
           <File Source="$(SDKRoot)\usr\lib\swift\windows\WinSDK.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
