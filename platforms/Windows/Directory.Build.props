@@ -31,11 +31,11 @@
   <PropertyGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
     <Platform>x86</Platform>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(IncludeLlvmDll)' == '' ">
-    <IncludeLlvmDll>false</IncludeLlvmDll>
+  <PropertyGroup Condition=" '$(IncludeLLVMDLL)' == '' ">
+    <IncludeLLVMDLL>false</IncludeLLVMDLL>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(LlvmVersion)' == '' ">
-    <LlvmVersion>21</LlvmVersion>
+  <PropertyGroup Condition=" '$(LLVMVersion)' == '' ">
+    <LLVMVersion>21</LLVMVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -94,8 +94,8 @@
       WindowsRuntimeARM64=$(WindowsRuntimeARM64);
       WindowsRuntimeX64=$(WindowsRuntimeX64);
       WindowsRuntimeX86=$(WindowsRuntimeX86);
-      IncludeLlvmDll=$(IncludeLlvmDll);
-      LlvmVersion=$(LlvmVersion);
+      IncludeLLVMDLL=$(IncludeLLVMDLL);
+      LLVMVersion=$(LLVMVersion);
     </DefineConstants>
   </PropertyGroup>
 
