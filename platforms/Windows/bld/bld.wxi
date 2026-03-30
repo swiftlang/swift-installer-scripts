@@ -193,10 +193,10 @@
       -->
     </ComponentGroup>
 
-    <?if $(IncludeLlvmDll) = True?>
+    <?if $(IncludeLLVMDLL) = True?>
     <ComponentGroup Id="llvm" Directory="toolchain_$(VariantName)_usr_bin">
       <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\LLVM-$(LlvmVersion).dll" />
+        <File Source="$(ToolchainRoot)\usr\bin\LLVM-$(LLVMVersion).dll" />
       </Component>
     </ComponentGroup>
     <?endif?>
@@ -568,7 +568,7 @@
       <ComponentGroupRef Id="binutils" />
       <ComponentGroupRef Id="lto" />
       <ComponentGroupRef Id="clang" />
-      <?if $(IncludeLlvmDll) = True?>
+      <?if $(IncludeLLVMDLL) = True?>
       <ComponentGroupRef Id="llvm" />
       <?endif?>
       <ComponentGroupRef Id="lld" />
