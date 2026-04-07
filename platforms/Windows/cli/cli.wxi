@@ -778,7 +778,30 @@
         <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
       </Component>
 
-      <!-- FIXME(compnerd) we should include the SPM import libraries -->
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftBasicFormat.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftDiagnostics.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftIDEUtils.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftParser.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftParserDiagnostics.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftRefactor.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftSyntax.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\_PMSwiftSyntaxBuilder.dll" />
+      </Component>
     </ComponentGroup>
 
     <?if True == False?>
