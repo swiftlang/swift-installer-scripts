@@ -475,9 +475,6 @@
     </ComponentGroup>
     <ComponentGroup Id="SWBGenericUnixPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBGenericUnixPlatform">
       <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\FreeBSDLibtool.xcspec" />
-      </Component>
-      <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\Unix.xcspec" />
       </Component>
       <Component>
