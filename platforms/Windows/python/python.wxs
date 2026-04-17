@@ -32,109 +32,41 @@
     </DirectoryRef>
 
     <ComponentGroup Id="EmbeddedPython" Directory="_usr_bin">
-      <Component>
-        <File Source="$(PythonRoot)\libcrypto-1_1$(ArchSuffix).dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\libffi-7.dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\libssl-1_1$(ArchSuffix).dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\pyexpat.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\python.cat" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\python.exe" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\python3.dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\python310.dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\python310.zip" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\python310._pth" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\pythonw.exe" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\select.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\sqlite3.dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\unicodedata.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\vcruntime140.dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\vcruntime140_1.dll" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\winsound.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_asyncio.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_bz2.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_ctypes.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_decimal.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_elementtree.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_hashlib.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_lzma.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_msi.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_multiprocessing.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_overlapped.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_queue.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_socket.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_sqlite3.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_ssl.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_uuid.pyd" />
-      </Component>
-      <Component>
-        <File Source="$(PythonRoot)\_zoneinfo.pyd" />
-      </Component>
+      <File Source="$(PythonRoot)\libcrypto-1_1$(ArchSuffix).dll" />
+      <File Source="$(PythonRoot)\libffi-7.dll" />
+      <File Source="$(PythonRoot)\libssl-1_1$(ArchSuffix).dll" />
+      <File Source="$(PythonRoot)\pyexpat.pyd" />
+      <File Source="$(PythonRoot)\python.cat" />
+      <File Source="$(PythonRoot)\python.exe" />
+      <File Source="$(PythonRoot)\python3.dll" />
+      <File Source="$(PythonRoot)\python310.dll" />
+      <File Source="$(PythonRoot)\python310.zip" />
+      <File Source="$(PythonRoot)\python310._pth" />
+      <File Source="$(PythonRoot)\pythonw.exe" />
+      <File Source="$(PythonRoot)\select.pyd" />
+      <File Source="$(PythonRoot)\sqlite3.dll" />
+      <File Source="$(PythonRoot)\unicodedata.pyd" />
+      <File Source="$(PythonRoot)\vcruntime140.dll" />
+      <File Source="$(PythonRoot)\vcruntime140_1.dll" />
+      <File Source="$(PythonRoot)\winsound.pyd" />
+      <File Source="$(PythonRoot)\_asyncio.pyd" />
+      <File Source="$(PythonRoot)\_bz2.pyd" />
+      <File Source="$(PythonRoot)\_ctypes.pyd" />
+      <File Source="$(PythonRoot)\_decimal.pyd" />
+      <File Source="$(PythonRoot)\_elementtree.pyd" />
+      <File Source="$(PythonRoot)\_hashlib.pyd" />
+      <File Source="$(PythonRoot)\_lzma.pyd" />
+      <File Source="$(PythonRoot)\_msi.pyd" />
+      <File Source="$(PythonRoot)\_multiprocessing.pyd" />
+      <File Source="$(PythonRoot)\_overlapped.pyd" />
+      <File Source="$(PythonRoot)\_queue.pyd" />
+      <File Source="$(PythonRoot)\_socket.pyd" />
+      <File Source="$(PythonRoot)\_sqlite3.pyd" />
+      <File Source="$(PythonRoot)\_ssl.pyd" />
+      <File Source="$(PythonRoot)\_uuid.pyd" />
+      <File Source="$(PythonRoot)\_zoneinfo.pyd" />
 
-      <Component Directory="_usr_share_licenses">
-        <File Name="python.txt" Source="$(PythonRoot)\LICENSE.txt" />
-      </Component>
+      <File Directory="_usr_share_licenses" Name="python.txt" Source="$(PythonRoot)\LICENSE.txt" />
     </ComponentGroup>
 
     <Feature Id="EmbeddedPython" AllowAbsent="no" Title="$(VariantProductName)">

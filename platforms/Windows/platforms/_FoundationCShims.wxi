@@ -1,42 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\bplist_shims.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.inc.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\filemanager_shims.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\io_shims.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\module.modulemap" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\platform_shims.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\string_shims.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\uuid.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_CShimsMacros.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_CShimsTargetConditionals.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_CStdlib.h" />
-  </Component>
-  <Component DiskId="$(var.Disk)">
-    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\_FoundationCShims.h" />
-  </Component>
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\bplist_shims.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.inc.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\filemanager_shims.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\io_shims.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\module.modulemap" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\platform_shims.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\string_shims.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\uuid.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\_CShimsMacros.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\_CShimsTargetConditionals.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\_CStdlib.h" />
+  <File DiskId="$(var.Disk)" Source="$(SDKRoot)\usr\include\_FoundationCShims\_FoundationCShims.h" />
 </Include>
