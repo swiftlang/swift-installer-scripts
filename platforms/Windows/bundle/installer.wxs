@@ -159,6 +159,12 @@
         </MsiPackage>
       <?endif?>
 
+      <MsiPackage
+        SourceFile="!(bindpath.res)\res.msi"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+
 <?if $(IncludeLegacySDK) == True?>
       <MsiPackage
         SourceFile="!(bindpath.rtl)\rtl.msi"

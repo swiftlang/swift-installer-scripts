@@ -22,6 +22,7 @@
   <String Id="Plt_ProductName_Android" Value="Swift Android Platform Support" />
   <String Id="Plt_ProductName_Windows" Value="Swift Windows Platform Support" />
   <String Id="Plt_ProductName_Windows_Experimental" Value="Swift Windows Platform Support [Experimental]" />
+  <String Id="Res_ProductName" Value="Swift Developer Toolkit Resources" />
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Runtime (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Runtime (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Runtime (X86)" />
@@ -54,6 +55,13 @@
   <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
   <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
   <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
+
+  <String Id="SwiftSourceFileDescription" Value="Swift Source File" />
+  <String Id="SwiftModuleFileDescription" Value="Swift Interface Definition (binary)" />
+  <String Id="SwiftInterfaceFileDescription" Value="Swift Interface Definition (textual)" />
+  <String Id="SwiftDocumentationFileDescription" Value="Swift Module Documentation" />
+  <String Id="SwiftSourceInfoFileDescription" Value="Swift Source Location Map" />
+  <String Id="SwiftOverlayFileDescription" Value="Swift Cross-Import Overlay" />
 
   <String Id="Caption" Value="[WixBundleName] Setup" />
   <String Id="Title" Value="[WixBundleName]" />
