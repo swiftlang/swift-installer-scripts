@@ -1,49 +1,5 @@
-﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+<Project Sdk="WixToolset.Sdk/5.0.2">
   <PropertyGroup>
-    <DefineConstants>
-      $(DefineConstants);
-      _USR_LIB_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang;
-      _USR_LIB_SWIFT_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang;
-      _USR_LIB_SWIFT_STATIC_CLANG=$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift_static\clang;
-    </DefineConstants>
     <OutputName>bld.asserts</OutputName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\clang">
-      <ComponentGroupName>ClangResources_asserts</ComponentGroupName>
-      <DirectoryRefId>toolchain_asserts_usr_lib_clang</DirectoryRefId>
-      <PreprocessorVariable>var._USR_LIB_CLANG</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang">
-      <ComponentGroupName>SwiftClangResources_asserts</ComponentGroupName>
-      <DirectoryRefId>toolchain_asserts_usr_lib_swift_clang</DirectoryRefId>
-      <PreprocessorVariable>var._USR_LIB_SWIFT_CLANG</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
-
-  <ItemGroup>
-    <!-- FIXME(#81557) this needs to be properly staged once the sanitizers are included -->
-    <HarvestDirectory Include="$(ImageRoot)\Toolchains\$(ProductVersion)+Asserts\usr\lib\swift\clang">
-      <ComponentGroupName>SwiftStaticClangResources_asserts</ComponentGroupName>
-      <DirectoryRefId>toolchain_asserts_usr_lib_swift_static_clang</DirectoryRefId>
-      <PreprocessorVariable>var._USR_LIB_SWIFT_STATIC_CLANG</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
 </Project>

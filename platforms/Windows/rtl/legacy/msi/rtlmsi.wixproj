@@ -1,4 +1,4 @@
-﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+<Project Sdk="WixToolset.Sdk/5.0.2">
   <PropertyGroup>
     <OutputName>rtl</OutputName>
     <DefineConstants>
@@ -17,20 +17,5 @@
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
     <ProjectReference Include="..\lib\rtllib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(VCRedistDir)">
-      <ComponentGroupName>VCRuntime_$(ProductArchitecture)</ComponentGroupName>
-      <DirectoryRefId>RUNTIMEDIR_$(ProductArchitecture)</DirectoryRefId>
-      <PreprocessorVariable>var.VCRedistDir</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
   </ItemGroup>
 </Project>
