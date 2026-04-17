@@ -1,4 +1,4 @@
-﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+<Project Sdk="WixToolset.Sdk/5.0.2">
   <PropertyGroup>
     <DefineConstants>
       $(DefineConstants);
@@ -6,19 +6,4 @@
     </DefineConstants>
     <OutputName>cli.asserts</OutputName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist">
-      <ComponentGroupName>DocCRender</ComponentGroupName>
-      <DirectoryRefId>toolchain_asserts_usr_share_docc_render</DirectoryRefId>
-      <PreprocessorVariable>var.SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
 </Project>
