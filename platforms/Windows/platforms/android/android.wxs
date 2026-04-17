@@ -2172,6 +2172,10 @@
       <File DiskId="1" Directory="AndroidPlatform" Source="$(PlatformRoot)\Info.plist" />
     </ComponentGroup>
 
+    <ComponentGroup Id="SwiftShims" Directory="AndroidSDK_usr_lib_swift_shims">
+      <Files Include="$(SwiftShimsPath)\**" />
+    </ComponentGroup>
+
     <!-- Features -->
     <Feature Display="hidden" Id="PlatformSupport" Title="!(loc.Plt_ProductName_Android)">
       <ComponentGroupRef Id="Testing" />
