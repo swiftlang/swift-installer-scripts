@@ -1,4 +1,4 @@
-<Project Sdk="WixToolset.Sdk/4.0.5">
+﻿<Project Sdk="WixToolset.Sdk/5.0.2">
   <PropertyGroup>
     <OutputName>android</OutputName>
 
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
+    <PackageReference Include="WixToolset.Heat" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
