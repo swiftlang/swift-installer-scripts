@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
+    <AcceptEula>wix7</AcceptEula>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
   </PropertyGroup>
