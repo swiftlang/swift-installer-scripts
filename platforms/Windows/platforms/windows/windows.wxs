@@ -3999,6 +3999,16 @@
       </ComponentGroup>
     <?endif?>
 
+<?if $(IncludeLegacySDK) = True?>
+    <ComponentGroup Id="SwiftShims" Directory="WindowsSDK_usr_lib_swift_shims">
+      <Files Include="$(SwiftShimsPath)\**" />
+    </ComponentGroup>
+<?endif?>
+
+    <ComponentGroup Id="ExperimentalSwiftShims" Directory="WindowsExperimentalSDK_usr_lib_swift_shims">
+      <Files Include="$(ExperimentalSwiftShimsPath)\**" />
+    </ComponentGroup>
+
     <!-- Features -->
     <Feature Display="hidden" Id="PlatformSupport" Title="!(loc.Plt_ProductName_Windows)">
       <ComponentGroupRef Id="Testing" />

@@ -284,6 +284,18 @@
       <File Directory="$(ToolchainVersionedVariantDirectory)" Source="$(ToolchainRoot)\ToolchainInfo.plist" />
     </ComponentGroup>
 
+    <ComponentGroup Id="ClangResources_$(VariantName)" Directory="toolchain_$(VariantName)_usr_lib_clang">
+      <Files Include="$(ToolchainRoot)\usr\lib\clang\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftClangResources_$(VariantName)" Directory="toolchain_$(VariantName)_usr_lib_swift_clang">
+      <Files Include="$(ToolchainRoot)\usr\lib\swift\clang\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="SwiftStaticClangResources_$(VariantName)" Directory="toolchain_$(VariantName)_usr_lib_swift_static_clang">
+      <Files Include="$(ToolchainRoot)\usr\lib\swift_static\clang\**" />
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1 AND ADDTOOLCHAINTOPATH=1" Directory="toolchain_$(VariantName)_usr_bin" Guid="$(VariantEnvironmentComponentGUID)">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[toolchain_$(VariantName)_usr_bin]" />

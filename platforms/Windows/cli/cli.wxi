@@ -363,6 +363,10 @@
     </ComponentGroup>
     <?endif?>
 
+    <ComponentGroup Id="DocCRender" Directory="toolchain_$(VariantName)_usr_share_docc_render">
+      <Files Include="$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST)\**" />
+    </ComponentGroup>
+
     <ComponentGroup Id="swift_format" Directory="toolchain_$(VariantName)_usr_bin">
       <File Source="$(ToolchainRoot)\usr\bin\swift-format.exe" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftFormat.dll" />

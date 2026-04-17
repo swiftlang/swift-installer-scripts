@@ -1,4 +1,4 @@
-﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+<Project Sdk="WixToolset.Sdk/5.0.2">
   <PropertyGroup>
     <OutputName>windows</OutputName>
 
@@ -14,10 +14,6 @@
       IncludeX86=$(WindowsArchitectures.Contains("i686"));
     </DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="5.0.2" />
-  </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('i686')) ">
     <ProjectReference Condition=" '$(IncludeLegacySDK)' == 'True' " Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=x86" BindName="rtl.x86.msm" />
@@ -35,27 +31,5 @@
     <ProjectReference Condition=" '$(IncludeLegacySDK)' == 'True' " Include="..\..\rtl\legacy\msm\rtlmsm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.arm64.msm" />
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.shared.arm64.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.static.arm64.msm" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(IncludeLegacySDK)' == 'True' ">
-    <HarvestDirectory Include="$(SwiftShimsPath)">
-      <ComponentGroupName>SwiftShims</ComponentGroupName>
-      <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(ExperimentalSwiftShimsPath)">
-      <ComponentGroupName>ExperimentalSwiftShims</ComponentGroupName>
-      <DirectoryRefId>WindowsExperimentalSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.ExperimentalSwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
   </ItemGroup>
 </Project>
