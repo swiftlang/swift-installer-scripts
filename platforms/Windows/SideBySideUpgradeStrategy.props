@@ -30,6 +30,7 @@
     <AndroidPlatformUpgradeCode>{313B9C1F-D5B5-4FED-B7E0-138F1EE6B26A}</AndroidPlatformUpgradeCode>
     <WindowsPlatformUpgradeCode>{01AFF1CF-A025-41B6-BCBC-728D794353FD}</WindowsPlatformUpgradeCode>
     <PythonUpgradeCode>{5FC42BA9-ABF5-4CCD-B93B-BDFED936BA37}</PythonUpgradeCode>
+    <ResUpgradeCode>{070A2507-E1AA-4903-99FB-D28E27C3A2A0}</ResUpgradeCode>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(MajorMinorProductVersion)' == '0.0'">
@@ -77,6 +78,7 @@
       AndroidPlatformUpgradeCode=$(AndroidPlatformUpgradeCode);
       WindowsPlatformUpgradeCode=$(WindowsPlatformUpgradeCode);
       PythonUpgradeCode=$(PythonUpgradeCode);
+      ResUpgradeCode=$(ResUpgradeCode);
     </DefineConstants>
   </PropertyGroup>
 </Project>
