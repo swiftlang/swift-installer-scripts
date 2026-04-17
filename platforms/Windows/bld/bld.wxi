@@ -36,32 +36,18 @@
     </DirectoryRef>
 
     <ComponentGroup Id="cmark_gfm" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin/cmark-gfm.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin/cmark-gfm-extensions.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\cmark-gfm.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\cmark-gfm-extensions.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="binutils" Directory="toolchain_$(VariantName)_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to llvm-ar.exe instead? -->
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-dlltool.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-lib.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-ranlib.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-dlltool.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-lib.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-ranlib.exe" />
       <!-- TODO(compnerd) can we use symbolic links to llvm-objdump.exe instead? -->
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-readelf.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-strip.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-readelf.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-strip.exe" />
       <!--
         TODO(compnerd) we should symlink:
           - addr2line.exe
@@ -77,113 +63,49 @@
           - strings.exe
       -->
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\dsymutil.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-ar.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-cov.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-cvtres.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-cxxfilt.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-dwarfdump.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-dwp.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-lipo.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-ml.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-mt.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-nm.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-objcopy.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-objdump.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-pdbutil.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-profdata.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-rc.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-readobj.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-size.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-strings.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-symbolizer.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llvm-undname.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\dsymutil.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-ar.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-cov.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-cvtres.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-cxxfilt.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-dwarfdump.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-dwp.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-lipo.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-ml.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-mt.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-nm.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-objcopy.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-objdump.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-pdbutil.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-profdata.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-rc.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-readobj.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-size.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-strings.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-symbolizer.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\llvm-undname.exe" />
     </ComponentGroup>
 
     <ComponentGroup Id="lto">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\LTO.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\LTO.lib" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_include_llvm_c">
-        <File Source="$(ToolchainRoot)\usr\include\llvm-c\lto.h" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\LTO.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\LTO.lib" />
+      <File Directory="toolchain_$(VariantName)_usr_include_llvm_c" Source="$(ToolchainRoot)\usr\include\llvm-c\lto.h" />
     </ComponentGroup>
 
     <ComponentGroup Id="ClangFeatures" Directory="toolchain_$(VariantName)_usr_share_clang">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\clang\features.json" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\clang\features.json" />
     </ComponentGroup>
 
     <ComponentGroup Id="clang" Directory="toolchain_$(VariantName)_usr_bin">
       <ComponentGroupRef Id="ClangFeatures" />
 
       <!-- TODO(compnerd) can we use symbolic links to clang.exe instead? -->
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-cl.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-cpp.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang++.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-scan-deps.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-deps-launcher.py" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\clang-cl.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\clang-cpp.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\clang++.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\clang.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\clang-scan-deps.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\clang-deps-launcher.py" />
       <!--
         TODO(compnerd) we should include:
         - clang-offload-bundler
@@ -195,154 +117,70 @@
 
     <ComponentGroup Id="lld" Directory="toolchain_$(VariantName)_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to lld.exe instead? -->
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\ld.lld.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\ld64.lld.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\lld-link.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\wasm-ld.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\lld.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\ld.lld.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\ld64.lld.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\lld-link.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\wasm-ld.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\lld.exe" />
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\BlocksRuntime.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\BlocksRuntime.lib" />
-      </Component>
-
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\BlocksRuntime.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\BlocksRuntime.lib" />
       <!-- TODO(compnerd) should we install the block headers? -->
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\dispatch.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\dispatch.lib" />
-      </Component>
-
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\dispatch.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\dispatch.lib" />
       <!-- TODO(compnerd) should we install the dispatch headers? -->
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftCxx" Directory="toolchain_$(VariantName)_usr_lib_swift_swiftToCxx">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftStdlibCxxOverlay.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftStdlibCxxOverlay.h" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
 
-      <Component Directory="toolchain_$(VariantName)_usr_include_swift">
-        <File Source="$(ToolchainRoot)\usr\include\swift\bridging.modulemap" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_include_swift">
-        <File Source="$(ToolchainRoot)\usr\include\swift\bridging" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_include_swift">
-        <File Source="$(ToolchainRoot)\usr\include\module.modulemap" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_include_swift" Source="$(ToolchainRoot)\usr\include\swift\bridging.modulemap" />
+      <File Directory="toolchain_$(VariantName)_usr_include_swift" Source="$(ToolchainRoot)\usr\include\swift\bridging" />
+      <File Directory="toolchain_$(VariantName)_usr_include_swift" Source="$(ToolchainRoot)\usr\include\module.modulemap" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftDemangle">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\swiftDemangle.dll" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\swiftDemangle.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\swiftDemangle.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\swiftDemangle.lib" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftEducationalNotes" Directory="toolchain_$(VariantName)_usr_share_doc_swift_diagnostics">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\dynamic-callable-requirements.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\error-in-future-swift-version.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\existential-member-access-limitations.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\multiple-inheritance.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\nominal-types.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\opaque-type-inference.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\property-wrapper-requirements.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\protocol-type-non-conformance.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\result-builder-methods.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\string-interpolation-conformance.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\temporary-pointers.md" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\trailing-closure-matching.md" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\dynamic-callable-requirements.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\error-in-future-swift-version.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\existential-member-access-limitations.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\multiple-inheritance.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\nominal-types.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\opaque-type-inference.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\property-wrapper-requirements.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\protocol-type-non-conformance.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\result-builder-methods.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\string-interpolation-conformance.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\temporary-pointers.md" />
+      <File Source="$(ToolchainRoot)\usr\share\doc\swift\diagnostics\trailing-closure-matching.md" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftFeatures" Directory="toolchain_$(VariantName)_usr_share_swift">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\swift\features.json" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\swift\features.json" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftMigrator" Directory="toolchain_$(VariantName)_usr_lib_swift_migrator">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\ios4.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\ios42.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\macos4.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\macos42.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\overlay4.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\overlay42.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\tvos4.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\tvos42.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\watchos4.json" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\watchos42.json" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\ios4.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\ios42.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\macos4.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\macos42.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\overlay4.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\overlay42.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\tvos4.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\tvos42.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\watchos4.json" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\migrator\watchos42.json" />
     </ComponentGroup>
 
     <ComponentGroup Id="swift" Directory="toolchain_$(VariantName)_usr_bin">
@@ -353,199 +191,97 @@
       <ComponentGroupRef Id="SwiftMigrator" />
 
       <!-- TODO(compnerd) can we use symbolic links to swift-frontend.exe instead? -->
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-api-digester.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-autolink-extract.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-symbolgraph-extract.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-demangle.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-frontend.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\swift-api-digester.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-autolink-extract.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-symbolgraph-extract.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-demangle.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-frontend.exe" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftMacros" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\ObservationMacros.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftMacros.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\ObservationMacros.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftMacros.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="FoundationMacros" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\FoundationMacros.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\FoundationMacros.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="TestingMacros" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\TestingMacros.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\TestingMacros.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="argument_parser" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\ArgumentParser.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\ArgumentParser.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="tools_support_core" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\TSCBasic.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\TSCUtility.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\TSCBasic.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\TSCUtility.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="swift_driver" Directory="toolchain_$(VariantName)_usr_bin">
       <!-- TODO(compnerd) can we use symbolic links to swift.exe instead? -->
-      <Component>
-        <File Name="swiftc.exe" Source="$(ToolchainRoot)\usr\bin\swift-driver.exe" />
-      </Component>
+      <File Name="swiftc.exe" Source="$(ToolchainRoot)\usr\bin\swift-driver.exe" />
 
-      <Component>
-        <File Name="swift.exe" Source="$(ToolchainRoot)\usr\bin\swift-driver.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-help.exe" />
-      </Component>
+      <File Name="swift.exe" Source="$(ToolchainRoot)\usr\bin\swift-driver.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-help.exe" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftOptions.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftDriver.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftDriverExecution.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftOptions.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftDriver.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftDriverExecution.dll" />
     </ComponentGroup>
 
    <ComponentGroup Id="compiler_swift_syntax" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftBasicFormat.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftCompilerPluginMessageHandling.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftDiagnostics.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftIDEUtils.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftIfConfig.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftLexicalLookup.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftOperators.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftParser.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftParserDiagnostics.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntax.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxBuilder.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxMacroExpansion.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxMacros.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftWarningControl.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftBasicFormat.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftCompilerPluginMessageHandling.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftDiagnostics.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftIDEUtils.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftIfConfig.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftLexicalLookup.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftOperators.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftParser.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftParserDiagnostics.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntax.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxBuilder.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxMacroExpansion.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftSyntaxMacros.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_CompilerSwiftWarningControl.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="swift_syntax" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftBasicFormat.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftCompilerPluginMessageHandling.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftDiagnostics.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftIDEUtils.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftIfConfig.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftLibraryPluginProvider.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftOperators.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftParser.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftParserDiagnostics.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftRefactor.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntax.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntaxBuilder.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntaxMacroExpansion.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntaxMacros.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftBasicFormat.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftCompilerPluginMessageHandling.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftDiagnostics.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftIDEUtils.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftIfConfig.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftLibraryPluginProvider.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftOperators.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftParser.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftParserDiagnostics.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftRefactor.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntax.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntaxBuilder.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntaxMacroExpansion.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftSyntaxMacros.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="plugin_server" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-plugin-server.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftInProcPluginServer.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\swift-plugin-server.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftInProcPluginServer.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="mimalloc" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\mimalloc.dll" />
-      </Component>
-      <Component>
-        <?if $(ProductArchitecture) = "amd64" ?>
-          <File Source="$(ToolchainRoot)\usr\bin\mimalloc-redirect.dll" />
-        <?elseif $(ProductArchitecture) = "arm64" ?>
-          <File Source="$(ToolchainRoot)\usr\bin\mimalloc-redirect-arm64.dll" />
-        <?endif?>
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\mimalloc.dll" />
+      <?if $(ProductArchitecture) = "amd64" ?>
+        <File Source="$(ToolchainRoot)\usr\bin\mimalloc-redirect.dll" />
+      <?elseif $(ProductArchitecture) = "arm64" ?>
+        <File Source="$(ToolchainRoot)\usr\bin\mimalloc-redirect-arm64.dll" />
+      <?endif?>
     </ComponentGroup>
 
     <ComponentGroup Id="Configuration">
-      <Component Directory="$(ToolchainVersionedVariantDirectory)">
-        <File Source="$(ToolchainRoot)\ToolchainInfo.plist" />
-      </Component>
+      <File Directory="$(ToolchainVersionedVariantDirectory)" Source="$(ToolchainRoot)\ToolchainInfo.plist" />
     </ComponentGroup>
 
     <ComponentGroup Id="EnvironmentVariables">

@@ -1,4 +1,4 @@
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <?if $(PackageScope) = "perUser"?>
     <?define RegistryRoot = "HKCU"?>
   <?else?>
@@ -24,24 +24,12 @@
     </DirectoryRef>
 
     <ComponentGroup Id="Icons" Directory="Resources">
-      <Component>
-        <File Name="source.ico" Source="orange.ico" />
-      </Component>
-      <Component>
-        <File Name="documentation.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="interface.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="module.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="overlay.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="sourceinfo.ico" Source="blue.ico" />
-      </Component>
+      <File Name="source.ico" Source="orange.ico" />
+      <File Name="documentation.ico" Source="blue.ico" />
+      <File Name="interface.ico" Source="blue.ico" />
+      <File Name="module.ico" Source="blue.ico" />
+      <File Name="overlay.ico" Source="blue.ico" />
+      <File Name="sourceinfo.ico" Source="blue.ico" />
     </ComponentGroup>
 
     <ComponentGroup Id="FileTypeRegistrations">
