@@ -53,154 +53,76 @@
     </DirectoryRef>
 
     <ComponentGroup Id="clang" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\cache-build-session.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\cache-build-session.exe" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-cache.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\clang-cache.exe" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-format.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\clang-format.exe" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clang-tidy.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\clang-tidy.exe" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\git-clang-format" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\git-clang-format" />
     </ComponentGroup>
 
     <ComponentGroup Id="libclang" Directory="toolchain_$(VariantName)_usr_include_clang_c">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\libclang.dll" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\libclang.dll" />
 
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\libclang.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\libclang.lib" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\BuildSystem.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXCompilationDatabase.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXErrorCode.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\CXString.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Documentation.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\FatalErrorHandler.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Index.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Platform.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\include\clang-c\Refactor.h" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\BuildSystem.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\CXCompilationDatabase.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\CXErrorCode.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\CXString.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\Documentation.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\FatalErrorHandler.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\Index.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\Platform.h" />
+      <File Source="$(ToolchainRoot)\usr\include\clang-c\Refactor.h" />
     </ComponentGroup>
 
     <ComponentGroup Id="IndexStore" Directory="toolchain_$(VariantName)_usr_include_indexstore">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\libIndexStore.dll" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\libIndexStore.dll" />
 
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\libIndexStore.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\libIndexStore.lib" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\local\include\indexstore\indexstore.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\local\include\indexstore\IndexStoreCXX.h" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\local\include\indexstore\indexstore.h" />
+      <File Source="$(ToolchainRoot)\usr\local\include\indexstore\IndexStoreCXX.h" />
     </ComponentGroup>
 
     <ComponentGroup Id="_InternalSwiftScan" Directory="toolchain_$(VariantName)_usr_include__InternalSwiftScan">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\_InternalSwiftScan.dll" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\_InternalSwiftScan.dll" />
 
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\swift\windows\_InternalSwiftScan.lib" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\module.modulemap" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScan.h" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\DependencyScanMacros.h" />
+      <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftScan\module.modulemap" />
     </ComponentGroup>
 
     <ComponentGroup Id="collections" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\Collections.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\DequeModule.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\InternalCollectionsUtilities.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\OrderedCollections.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\Collections.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\DequeModule.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\InternalCollectionsUtilities.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\OrderedCollections.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="llbuild" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\llbuildSwift.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\llbuildSwift.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftToolsProtocols" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\BuildServerProtocol.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\LanguageServerProtocol.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\LanguageServerProtocolTransport.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SKLogging.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\ToolsProtocolsSwiftExtensions.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_SKLoggingForPlugin.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\_ToolsProtocolsSwiftExtensionsForPlugin.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\BuildServerProtocol.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\LanguageServerProtocol.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\LanguageServerProtocolTransport.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SKLogging.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\ToolsProtocolsSwiftExtensions.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_SKLoggingForPlugin.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\_ToolsProtocolsSwiftExtensionsForPlugin.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="CompilerPluginSupport">
-      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.lib" />
       <Component Directory="CompilerPluginSupport.swiftmodule">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\CompilerPluginSupport.swiftmodule\$(ModuleTriple).swiftdoc" />
       </Component>
@@ -210,12 +132,8 @@
     </ComponentGroup>
 
     <ComponentGroup Id="PackageDescription">
-      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_swift_pm_ManifestAPI" Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.lib" />
       <Component Directory="PackageDescription.swiftmodule">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\ManifestAPI\PackageDescription.swiftmodule\$(ModuleTriple).swiftdoc" />
       </Component>
@@ -225,12 +143,8 @@
     </ComponentGroup>
 
     <ComponentGroup Id="PackagePlugin">
-      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI">
-        <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI" Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_swift_pm_PluginAPI" Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.lib" />
       <Component Directory="PackagePlugin.swiftmodule">
         <File Source="$(ToolchainRoot)\usr\lib\swift\pm\PluginAPI\PackagePlugin.swiftmodule\$(ModuleTriple).swiftdoc" />
       </Component>
@@ -240,392 +154,144 @@
     </ComponentGroup>
 
     <ComponentGroup Id="SWBAndroidPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBAndroidPlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBAndroidPlatform.resources\Android.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBAndroidPlatform.resources\Android.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBApplePlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBApplePlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsMetadata.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsNLTraining.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppShortcutStringsMetadata.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppleFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AssetCatalogCompiler.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CompileSkybox.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CopyPNGFile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CopyTiffFile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CoreData.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CoreML.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DTrace.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DarwinPackageTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DarwinProductTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DriverKit.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EXUtil.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Device.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Shared.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Simulator.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EmbeddedBinaryValidationUtility.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\GenerateAppPlaygroundAssetCatalog.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\GenerateTextureAtlas.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBCompiler.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBPostprocessor.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBStoryboardCompiler.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBStoryboardLinker.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBStoryboardPostprocessor.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Iconutil.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Iig.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\InfoPlistUtility.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\InstrumentsPackage.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Intents.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\InterfaceBuilderFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\KernelExtension.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\LSRegisterURL.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Lipo.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalCompiler.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalLinker.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalPackageTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalProductTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MiG.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\OSACompile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\OpenCL.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\RCFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\RealityAssets.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\ReferenceObject.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\ResMerger.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Rez.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SceneKitFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SceneKitTools.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SpriteKitFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\TiffUtil.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\WatchKit1ProductTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\XCAppExtensionPoints.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\XCStrings.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\iOSDevice.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\iOSShared.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\iOSSimulator.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSArchitectures.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSCoreBuildSystem.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSNativeBuildSystem.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSPackageTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSProductTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\tvOSDevice.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\tvOSShared.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\tvOSSimulator.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\watchOSDevice.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\watchOSShared.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\watchOSSimulator.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSDevice.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSShared.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSSimulator.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsMetadata.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsNLTraining.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppShortcutStringsMetadata.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppleFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AssetCatalogCompiler.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CompileSkybox.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CopyPNGFile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CopyTiffFile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CoreData.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\CoreML.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DTrace.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DarwinPackageTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DarwinProductTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\DriverKit.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EXUtil.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Device.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Shared.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Simulator.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EmbeddedBinaryValidationUtility.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\GenerateAppPlaygroundAssetCatalog.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\GenerateTextureAtlas.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBCompiler.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBPostprocessor.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBStoryboardCompiler.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBStoryboardLinker.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBStoryboardPostprocessor.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Iconutil.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Iig.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\InfoPlistUtility.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\InstrumentsPackage.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Intents.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\InterfaceBuilderFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\KernelExtension.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\LSRegisterURL.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Lipo.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalCompiler.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalLinker.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalPackageTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MetalProductTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\MiG.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\OSACompile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\OpenCL.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\RCFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\RealityAssets.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\ReferenceObject.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\ResMerger.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Rez.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SceneKitFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SceneKitTools.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SpriteKitFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\TiffUtil.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\WatchKit1ProductTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\XCAppExtensionPoints.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\XCStrings.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\iOSDevice.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\iOSShared.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\iOSSimulator.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSArchitectures.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSCoreBuildSystem.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSNativeBuildSystem.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSPackageTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\macOSProductTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\tvOSDevice.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\tvOSShared.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\tvOSSimulator.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\watchOSDevice.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\watchOSShared.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\watchOSSimulator.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSDevice.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSShared.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\xrOSSimulator.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBCoreResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBCore">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\CoreBuildSystem.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\ExternalBuildSystem.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\NativeBuildSystem.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\CoreBuildSystem.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\ExternalBuildSystem.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBCore.resources\NativeBuildSystem.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBGenericUnixPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBGenericUnixPlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\Unix.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixCompile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixLd.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixLibtool.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\Unix.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixCompile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixLd.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBGenericUnixPlatform.resources\UnixLibtool.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBQNXPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBQNXPlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNX.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXCompile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXLd.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXLibtool.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNX.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXCompile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXLd.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXLibtool.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBUniversalPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBUniversalPlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInBuildRules.xcbuildrules" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInCompilers.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Clang.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangModuleVerifierInputGenerator.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangStatCache.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangSymbolExtractor.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangVerifier.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\CodeSign.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\CopyPlistFile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\CopyStringsFile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Cpp.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\DefaultCompiler.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Documentation.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Ld.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Lex.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Libtool.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ObjectLibraryAssembler.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\PBXCp.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\PackageTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ProductTypeValidationTool.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ProductTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\StandardFileTypes.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\StripSymbols.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Swift.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\SwiftBuildSettings.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\TAPI.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\TestEntryPointGenerator.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Unifdef.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Yacc.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\swift-stdlib-tool.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInBuildRules.xcbuildrules" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInCompilers.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Clang.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangModuleVerifierInputGenerator.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangStatCache.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangSymbolExtractor.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ClangVerifier.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\CodeSign.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\CopyPlistFile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\CopyStringsFile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Cpp.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\DefaultCompiler.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Documentation.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Ld.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Lex.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Libtool.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ObjectLibraryAssembler.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\PBXCp.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\PackageTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ProductTypeValidationTool.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\ProductTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\StandardFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\StripSymbols.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Swift.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\SwiftBuildSettings.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\TAPI.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\TestEntryPointGenerator.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Unifdef.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\Yacc.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\swift-stdlib-tool.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBWebAssemblyPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBWebAssemblyPlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmCompile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmLd.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmLibtool.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WebAssembly.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmCompile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmLd.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WasmLibtool.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWebAssemblyPlatform.resources\WebAssembly.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBWindowsPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBWindowsPlatform">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\Windows.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsCompile.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsLd.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsLibtool.xcspec" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsStripSymbols.xcspec" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\Windows.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsCompile.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsLd.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsLibtool.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBWindowsPlatform.resources\WindowsStripSymbols.xcspec" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftBuild" Directory="toolchain_$(VariantName)_usr_bin">
@@ -638,176 +304,72 @@
       <ComponentGroupRef Id="SWBWebAssemblyPlatformResources" />
       <ComponentGroupRef Id="SWBWindowsPlatformResources" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBAndroidPlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBApplePlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBBuildService.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBBuildSystem.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBCAS.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBCLibc.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBCSupport.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBCore.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBGenericUnixPlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBLLBuild.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBLibc.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBMacro.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBProjectModel.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBProtocol.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBQNXPlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBServiceCore.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBTaskConstruction.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBTaskExecution.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBUniversalPlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBUtil.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBWebAssemblyPlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SWBWindowsPlatform.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftBuild.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\SWBAndroidPlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBApplePlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBBuildService.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBBuildSystem.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBCAS.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBCLibc.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBCSupport.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBCore.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBGenericUnixPlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBLLBuild.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBLibc.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBMacro.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBProjectModel.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBProtocol.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBQNXPlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBServiceCore.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBTaskConstruction.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBTaskExecution.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBUniversalPlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBUtil.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBWebAssemblyPlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SWBWindowsPlatform.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftBuild.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="PackageManager" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-build.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-package.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-package-collection.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-package-registry.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-run.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-sdk.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-test.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\swift-build.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-package.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-package-collection.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-package-registry.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-run.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-sdk.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\swift-test.exe" />
 
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\Basics.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\Build.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\Commands.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\CoreCommands.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\DriverSupport.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageGraph.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageCollections.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsCommand.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsModel.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsSigning.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageLoading.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageModel.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\PackageRegistryCommand.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SourceControl.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SPMBuildCore.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftBuildSupport.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftSDKCommand.dll" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\Basics.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\Build.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\Commands.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\CoreCommands.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\DriverSupport.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageGraph.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageCollections.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsCommand.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsModel.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsSigning.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageLoading.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageModel.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\PackageRegistryCommand.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SourceControl.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SPMBuildCore.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftBuildSupport.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftSDKCommand.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\Workspace.dll" />
 
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
     <?if True == False?>
     <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftDocC.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftDocC.dll" />
     </ComponentGroup>
     <?endif?>
 
     <ComponentGroup Id="swift_format" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\swift-format.exe" />
-      </Component>
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\SwiftFormat.dll" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\swift-format.exe" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftFormat.dll" />
     </ComponentGroup>
 
     <Feature Id="CLITools" AllowAbsent="no" Title="$(VariantProductName)">

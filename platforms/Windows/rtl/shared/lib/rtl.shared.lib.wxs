@@ -1,4 +1,4 @@
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <?if $(sys.BUILDARCH) == x64 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "E33B165B-8460-467D-ABCD-27EA8197A3CF" ?>
@@ -19,54 +19,22 @@
     <Directory Id="LIBEXECDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(LibexecDirectoryComponentGuidGenerationSeed)" />
 
     <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftCore.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftRuntime.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftCRT.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftDistributed.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftObservation.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftRegexBuilder.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftRemoteMirror.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftSwiftOnoneSupport.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftSynchronization.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swift_Builtin_float.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swift_Concurrency.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swift_Differentiation.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swift_RegexParser.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swift_StringProcessing.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swift_Volatile.dll" />
-      </Component>
+      <File Source="$(RuntimeRoot)\usr\bin\swiftCore.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftRuntime.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftCRT.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftDistributed.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftObservation.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftRegexBuilder.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftRemoteMirror.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftSwiftOnoneSupport.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftSynchronization.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swift_Builtin_float.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swift_Concurrency.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swift_Differentiation.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swift_RegexParser.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swift_StringProcessing.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swift_Volatile.dll" />
 
       <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
       <Component Directory="_usr_bin" Id="swiftDemangle.dll">
@@ -76,53 +44,31 @@
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\BlocksRuntime.dll" />
-      </Component>
+      <File Source="$(RuntimeRoot)\usr\bin\BlocksRuntime.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\dispatch.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\swiftDispatch.dll" />
-      </Component>
+      <File Source="$(RuntimeRoot)\usr\bin\dispatch.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\swiftDispatch.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="Foundation_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\Foundation.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\FoundationEssentials.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\FoundationInternationalization.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\FoundationNetworking.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\FoundationXML.dll" />
-      </Component>
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\_FoundationICU.dll" />
-      </Component>
+      <File Source="$(RuntimeRoot)\usr\bin\Foundation.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\FoundationEssentials.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\FoundationInternationalization.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\FoundationNetworking.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\FoundationXML.dll" />
+      <File Source="$(RuntimeRoot)\usr\bin\_FoundationICU.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="plutil_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component>
-        <File Source="$(RuntimeRoot)\usr\bin\plutil.exe" />
-      </Component>
+      <File Source="$(RuntimeRoot)\usr\bin\plutil.exe" />
     </ComponentGroup>
 
     <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->
     <?if $(ProductArchitecture) != x86?>
     <ComponentGroup Id="swift_backtrace_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
-        <File Source="$(SDKRoot)\usr\libexec\swift\swift-backtrace.exe" />
-      </Component>
+      <File Directory="LIBEXECDIR_$(ProductArchitecture)" Source="$(SDKRoot)\usr\libexec\swift\swift-backtrace.exe" />
     </ComponentGroup>
     <?endif?>
 
