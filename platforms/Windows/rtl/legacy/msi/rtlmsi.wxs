@@ -27,6 +27,9 @@
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
       </Component>
+      <Component Id="SystemPathVariable" Condition="ALLUSERS=1" Guid="a1d3e7f2-5c94-4b8a-9e06-3f2d1c8b7a45">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[runtimes_usr_bin]" />
+      </Component>
     </ComponentGroup>
 
     <Feature Id="VCRuntime" AllowAbsent="no" Title="!(loc.VCRuntime_ProductName_$(ProductArchitecture))">
