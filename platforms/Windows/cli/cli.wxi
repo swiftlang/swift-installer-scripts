@@ -2,9 +2,9 @@
 
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?if " '$(ProductArchitecture)' " == " 'arm64' "?>
+  <?if $(ProductArchitecture) == arm64?>
     <?define ModuleTriple = 'aarch64-unknown-windows-msvc' ?>
-  <?elseif " '$(ProductArchitecture)' " == " 'amd64' "?>
+  <?elseif $(ProductArchitecture) == amd64?>
     <?define ModuleTriple = 'x86_64-unknown-windows-msvc' ?>
   <?endif?>
 
