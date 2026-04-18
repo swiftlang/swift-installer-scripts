@@ -26,7 +26,7 @@
     packages, but avoid the confusion if the default directory should change.
     -->
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
-      Value="[LocalAppDataFolder]Programs\Swift" />
+      Value="[PerUserProgramFilesFolder]Swift" />
 
     <Variable Name="OptionsInstallBLD" Value="1" />
     <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
