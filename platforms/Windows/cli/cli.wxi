@@ -2,6 +2,17 @@
 
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+$(VariantName)?>
+  <?if $(VariantName) == Asserts?>
+    <?define VariantUpgradeCode = $(CliAssertsUpgradeCode)?>
+    <?define VariantProductName = !(loc.CliAsserts_ProductName)?>
+    <?define VariantCabinetName = cli.asserts.cab?>
+  <?else?>
+    <?define VariantUpgradeCode = $(CliNoAssertsUpgradeCode)?>
+    <?define VariantProductName = !(loc.CliNoAsserts_ProductName)?>
+    <?define VariantCabinetName = cli.noasserts.cab?>
+  <?endif?>
+
   <?if $(ProductArchitecture) == arm64?>
     <?define ModuleTriple = 'aarch64-unknown-windows-msvc' ?>
   <?elseif $(ProductArchitecture) == amd64?>

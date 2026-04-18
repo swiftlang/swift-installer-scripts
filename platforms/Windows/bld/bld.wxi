@@ -1,6 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+$(VariantName)?>
+  <?if $(VariantName) == Asserts?>
+    <?define VariantUpgradeCode = $(BldAssertsUpgradeCode)?>
+    <?define VariantProductName = !(loc.BldAsserts_ProductName)?>
+    <?define VariantCabinetName = bld.asserts.cab?>
+    <?define ToolchainVersionedVariantDirectory = ToolchainVersionedAsserts?>
+    <?define VariantEnvironmentComponentGUID = ab52b870-23ee-42e8-9581-3fcbdfb9228c?>
+  <?else?>
+    <?define VariantUpgradeCode = $(BldNoAssertsUpgradeCode)?>
+    <?define VariantProductName = !(loc.BldNoAsserts_ProductName)?>
+    <?define VariantCabinetName = bld.noasserts.cab?>
+    <?define ToolchainVersionedVariantDirectory = ToolchainVersionedNoAsserts?>
+    <?define VariantEnvironmentComponentGUID = d612c6f1-d74e-46b4-8efe-a4fd8a1b2be7?>
+  <?endif?>
+
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
