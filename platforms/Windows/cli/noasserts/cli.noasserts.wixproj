@@ -1,9 +1,1 @@
-<Project Sdk="WixToolset.Sdk/7.0.0">
-  <PropertyGroup>
-    <DefineConstants>
-      $(DefineConstants);
-      SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST=$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist;
-    </DefineConstants>
-    <OutputName>cli.noasserts</OutputName>
-  </PropertyGroup>
-</Project>
+<Project Sdk="WixToolset.Sdk/7.0.0" />
