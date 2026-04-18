@@ -1,9 +1,7 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
   <Fragment>
-    <StandardDirectory Id="LocalAppDataFolder">
-      <Directory Name="Programs">
-        <Directory Id="INSTALLROOT" Name="Swift" />
-      </Directory>
+    <StandardDirectory Id="PerUserProgramFilesFolder">
+      <Directory Id="INSTALLROOT" Name="Swift" />
     </StandardDirectory>
   </Fragment>
 
