@@ -1,4 +1,4 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <?define PythonRoot = "$(ImageRoot)\Python-$(PythonVersion)"?>
   <?if $(ProductArchitecture) = "arm64"?>
   <?define ArchSuffix = "-arm64"?>
