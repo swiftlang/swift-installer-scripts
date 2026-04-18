@@ -1,6 +1,6 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+Asserts?>
-  <?define VariantName = asserts ?>
+  <?define VariantName = Asserts ?>
   <?define VariantUpgradeCode = $(DbgAssertsUpgradeCode)?>
   <?define VariantProductName = !(loc.DbgAsserts_ProductName)?>
   <?define VariantCabinetName = dbg.asserts.cab?>
