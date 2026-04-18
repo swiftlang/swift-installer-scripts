@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <DefineConstants>
+      $(DefineConstants);
+      SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST=$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT)\dist;
+    </DefineConstants>
+  </PropertyGroup>
+</Project>
