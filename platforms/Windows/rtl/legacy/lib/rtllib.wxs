@@ -1,4 +1,4 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <?if $(sys.BUILDARCH) == x86 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "79856274-E0F9-4602-A56A-A8DE16C05C41" ?>

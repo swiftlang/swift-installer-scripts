@@ -1,4 +1,4 @@
-﻿<Project Sdk="WixToolset.Sdk/7.0.0">
+<Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputName>rtl.shared.$(ProductArchitecture)</OutputName>
     <OutputType>Library</OutputType>
