@@ -24,6 +24,8 @@
     Keep `InstallRoot` in sync with the INSTALLROOT definition in shared.wxs.
     The bundle variable here will overwrite the default authored in the MSI
     packages, but avoid the confusion if the default directory should change.
+    The default is per-user; per-machine support will be wired up with the
+    scope selection UI.
     -->
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
       Value="[PerUserProgramFilesFolder]Swift" />
