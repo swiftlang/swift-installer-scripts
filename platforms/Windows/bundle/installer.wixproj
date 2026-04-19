@@ -9,11 +9,28 @@
       IncludeAndroid=$(Platforms.Contains("android"));
       IncludeWindows=$(Platforms.Contains("windows"));
       IncludeNoAsserts=$(ToolchainVariants.Contains("noasserts"));
+      <!--
+        WindowsArchitectures / AndroidArchitectures use LLVM triples
+        (aarch64, x86_64, i686, armv7). Map those to the installer's
+        internal arch names (ARM64, AMD64, X86, ARMv7) so downstream
+        BAFAvail* flags align with the OptionsInstall* variable naming.
+      -->
+      IncludeWindowsAMD64=$(WindowsArchitectures.Contains("x86_64"));
+      IncludeWindowsARM64=$(WindowsArchitectures.Contains("aarch64"));
+      IncludeWindowsX86=$(WindowsArchitectures.Contains("i686"));
+      IncludeAndroidARM64=$(AndroidArchitectures.Contains("aarch64"));
+      IncludeAndroidAMD64=$(AndroidArchitectures.Contains("x86_64"));
+      IncludeAndroidARMv7=$(AndroidArchitectures.Contains("armv7"));
+      IncludeAndroidX86=$(AndroidArchitectures.Contains("i686"));
     </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="WixToolset.BootstrapperApplications.wixext" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="baf\baf.vcxproj" BindName="baf" />
   </ItemGroup>
 
   <ItemGroup>
