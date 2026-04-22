@@ -1,4 +1,4 @@
-<Project Sdk="WixToolset.Sdk/4.0.5">
+<Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputName>android</OutputName>
 
@@ -15,18 +15,4 @@
     </DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(SwiftShimsPath)">
-      <ComponentGroupName>SwiftShims</ComponentGroupName>
-      <DirectoryRefId>AndroidSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
 </Project>

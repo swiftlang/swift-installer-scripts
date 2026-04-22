@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
   <PropertyGroup>
+    <AcceptEula>wix7</AcceptEula>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>
   </PropertyGroup>
@@ -44,11 +48,10 @@
     <!--
     ICE38 is about mixing per-user and per-machine resources (not a thing for us).
     ICE61 is a warning about allowing "same-version" major upgrades, something we want.
-    ICE64 is documented as not being an issue when packages are always per-user.
-    ICE91 is about "roaming scenarios," which doesn't apply to our use of LocalAppDataFolder.
+    ICE64 is documented as not being an issue when packages support per-user installation.
     -->
-    <SuppressIces>ICE38;ICE61;ICE64;ICE91</SuppressIces>
-    <PackageScope>perUser</PackageScope>
+    <SuppressIces>ICE38;ICE61;ICE64</SuppressIces>
+    <PackageScope>perUserOrMachine</PackageScope>
   </PropertyGroup>
 
   <!-- High package and high bundle compression results in the smallest bundle, at the cost of build time. -->

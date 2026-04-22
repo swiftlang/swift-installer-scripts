@@ -6,16 +6,19 @@
 <Theme xmlns="http://wixtoolset.org/schemas/v4/thmutil">
     <Font Id="0" Height="-12" Weight="500" Foreground="windowtext" Background="window">Segoe UI</Font>
     <Font Id="1" Height="-24" Weight="500" Foreground="windowtext">Segoe UI</Font>
-    <Font Id="2" Height="-18" Weight="500" Foreground="graytext">Segoe UI</Font>
+    <Font Id="2" Height="-14" Weight="600" Foreground="windowtext">Segoe UI</Font>
     <Font Id="3" Height="-12" Weight="500" Foreground="windowtext" Background="window">Segoe UI</Font>
+    <Font Id="4" Height="-11" Weight="400" Foreground="graytext" Background="window">Segoe UI</Font>
+    <Font Id="5" Height="-11" Weight="650" Foreground="666666" Background="window">Segoe UI</Font>
+    <Font Id="6" Height="-14" Weight="500" Foreground="windowtext">Segoe UI</Font>
 
-    <Window Width="630" Height="530" HexStyle="100a0000" FontId="0" Caption="#(loc.Caption)">
-        <ImageControl X="0" Y="0" Width="181" Height="530" ImageFile="swift_side.png"/>
-        <Label X="192" Y="11" Width="-11" Height="32" FontId="1" DisablePrefix="yes">#(loc.Title)</Label>
+    <Window Width="614" Height="456" HexStyle="100a0000" FontId="0" Caption="#(loc.Caption)">
+        <ImageControl X="0" Y="0" Width="165" Height="456" ImageFile="swift_side.png"/>
+        <Label X="176" Y="11" Width="-11" Height="30" FontId="1" DisablePrefix="yes">#(loc.Title)</Label>
 
         <Page Name="Help">
-            <Label X="192" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.HelpHeader)</Label>
-            <Label X="192" Y="91" Width="-11" Height="-35" FontId="3" DisablePrefix="yes">#(loc.HelpText)</Label>
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">#(loc.HelpHeader)</Label>
+            <Label X="176" Y="82" Width="-11" Height="-45" FontId="3" DisablePrefix="yes">#(loc.HelpText)</Label>
             <Button Name="HelpCloseButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
                 <Text>#(loc.HelpCloseButton)</Text>
                 <CloseWindowAction />
@@ -23,79 +26,186 @@
         </Page>
 
         <Page Name="Loading">
-            <Label X="192" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes" Visible="no" Name="CheckingForUpdatesLabel" />
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes" Visible="no" Name="CheckingForUpdatesLabel" />
         </Page>
 
         <Page Name="Install">
-            <Label X="192" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.InstallHeader)</Label>
-            <Label X="192" Y="91" Width="-11" Height="64" FontId="3" DisablePrefix="yes">
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">#(loc.InstallHeader)</Label>
+            <Label X="176" Y="82" Width="-11" Height="48" FontId="3" DisablePrefix="yes">
                 <Text Condition="WixStdBASuppressOptionsUI">#(loc.InstallMessage)</Text>
                 <Text Condition="NOT WixStdBASuppressOptionsUI">#(loc.InstallMessageOptions)</Text>
             </Label>
-            <Hypertext Name="EulaHyperlink" X="192" Y="-73" Width="-11" Height="17" TabStop="yes" FontId="3" HideWhenDisabled="yes">#(loc.InstallLicenseLinkText)</Hypertext>
-            <Label Name="InstallVersion" X="192" Y="-103" Width="-11" Height="17" FontId="3" DisablePrefix="yes" VisibleCondition="WixStdBAShowVersion">#(loc.InstallVersion)</Label>
-            <Checkbox Name="EulaAcceptCheckbox" X="192" Y="-51" Width="-11" Height="17" TabStop="yes" FontId="3" HideWhenDisabled="yes">#(loc.InstallAcceptCheckbox)</Checkbox>
+
+            <!--
+              "Install Location" label / editbox / scope checkbox cluster
+              keeps the location controls visually grouped while leaving a
+              little extra room below the label for readability and at
+              least 16px between the elevation hint and the license row.
+            -->
+            <Label Name="InstallVersion" X="176" Y="-177" Width="-11" Height="15" FontId="4" DisablePrefix="yes" VisibleCondition="WixStdBAShowVersion">#(loc.InstallVersion)</Label>
+            <Label X="176" Y="-162" Width="-11" Height="18" FontId="6" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
+            <Editbox Name="InstallRoot" X="176" Y="-135" Width="-91" Height="20" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" EnableCondition="NOT WixBundleInstalled" />
+            <Button Name="BrowseButton" X="-11" Y="-136" Width="75" Height="22" TabStop="yes" FontId="3" EnableCondition="NOT WixBundleInstalled">
+                <Text>#(loc.OptionsBrowseButton)</Text>
+                <BrowseDirectoryAction VariableName="InstallRoot" />
+            </Button>
+            <!--
+              BAF applies checkbox text margins at runtime so it can paint
+              the UAC shield between the check glyph and localized label
+              text. The wxl string should not include alignment spaces.
+            -->
+            <Checkbox Name="InstallPerMachine" X="176" Y="-112" Width="-11" Height="16" TabStop="yes" FontId="3" EnableCondition="NOT WixBundleInstalled">#(loc.OptionsPerMachineCheckbox)</Checkbox>
+            <!--
+              Hint shown only when "Install for all users" is checked, so
+              the user knows the next Install click will raise a UAC
+              prompt. FontId=4 is the small greytext face used for the
+              version stamp.
+            -->
+            <!-- Hint text appears directly beneath the scope checkbox. -->
+            <Label Name="InstallPerMachineHint" X="195" Y="-94" Width="-11" Height="14" FontId="4" DisablePrefix="yes" VisibleCondition="InstallPerMachine AND NOT WixBundleInstalled">#(loc.OptionsPerMachineHint)</Label>
+
+            <Hypertext Name="EulaHyperlink" X="176" Y="-62" Width="-11" Height="17" TabStop="yes" FontId="3" HideWhenDisabled="yes">#(loc.InstallLicenseLinkText)</Hypertext>
+            <Checkbox Name="EulaAcceptCheckbox" X="176" Y="-40" Width="-11" Height="16" TabStop="yes" FontId="3" HideWhenDisabled="yes">#(loc.InstallAcceptCheckbox)</Checkbox>
             <Button Name="InstallUpdateButton" X="11" Y="-11" Width="200" Height="23" TabStop="yes" FontId="0" EnableCondition="WixStdBAUpdateAvailable" HideWhenDisabled="yes">#(loc.UpdateButton)</Button>
-            <Button Name="OptionsButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" VisibleCondition="NOT WixStdBASuppressOptionsUI">
+            <Button Name="OptionsButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" VisibleCondition="NOT WixStdBASuppressOptionsUI" Tooltip="#(loc.InstallOptionsButtonTooltip)">
                 <Text>#(loc.InstallOptionsButton)</Text>
                 <ChangePageAction Page="Options" />
             </Button>
-            <Button Name="InstallButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">#(loc.InstallInstallButton)</Button>
-            <Button Name="InstallCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+            <!--
+              Install button is the default push (HexStyle = BS_DEFPUSHBUTTON)
+              and gated on EULA acceptance so a user can't click it without
+              ticking "I agree".
+            -->
+            <Button Name="InstallButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HexStyle="00000001" EnableCondition="EulaAcceptCheckbox" Tooltip="#(loc.InstallInstallButtonTooltip)">#(loc.InstallInstallButton)</Button>
+            <Button Name="InstallCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" Tooltip="#(loc.InstallCancelButtonTooltip)">
                 <Text>#(loc.InstallCancelButton)</Text>
                 <CloseWindowAction />
             </Button>
         </Page>
 
         <Page Name="Options">
-            <Label X="192" Y="46" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsLocationLabel)</Label>
-            <Editbox Name="InstallRoot" X="192" Y="70" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
-            <Button Name="BrowseButton" X="-11" Y="69" Width="75" Height="23" TabStop="yes" FontId="3">
-                <Text>#(loc.OptionsBrowseButton)</Text>
-                <BrowseDirectoryAction VariableName="InstallRoot" />
-            </Button>
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">#(loc.OptionsHeader)</Label>
+            <!--
+              HexStyle = TCS_FIXEDWIDTH   (0x0400)
+                       | TCS_TOOLTIPS     (0x4000)
+                       | TCS_OWNERDRAWFIXED (0x2000)
+              so BAF can size each tab uniformly, owner-draw the label
+              centred horizontally, and route tooltip notifications
+              through the tab's own tooltip window (attached by BAF via
+              TCM_SETTOOLTIPS). Height spans the full content area so the
+              tab control's themed body frame visually contains the
+              per-tab controls that overlay it.
+            -->
+            <Tabs Name="OptionsTabs" X="176" Y="84" Width="-11" Height="316" TabStop="yes" FontId="0" HexStyle="00006400">
+                <Tab>#(loc.OptionsToolchainTab)</Tab>
+                <Tab>#(loc.OptionsRuntimesTab)</Tab>
+                <Tab>#(loc.OptionsSDKsTab)</Tab>
+            </Tabs>
 
-            <Label X="192" Y="88" Width="-11" Height="20" FontId="2" DisablePrefix="yes">#(loc.OptionsFeaturesLabel)</Label>
-            <Checkbox Name="OptionsInstallBLD" X="192" Y="111" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Bld_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallCLI" X="192" Y="129" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Cli_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallDBG" X="192" Y="147" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Dbg_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallPy" X="210" Y="165" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallDBG">#(loc.EmbeddedPython_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallIDE" X="192" Y="183" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Ide_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallRTL" X="192" Y="201" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Rtl_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsPlatform" X="192" Y="219" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Windows)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsSDKAMD64" X="210" Y="237" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsRedistAMD64" X="228" Y="255" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKAMD64">#(loc.Redist_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsSDKARM64" X="210" Y="273" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsRedistARM64" X="228" Y="291" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKARM64">#(loc.Redist_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsSDKX86" X="210" Y="309" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform">#(loc.Sdk_ProductName_Windows_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallWindowsRedistX86" X="228" Y="327" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallWindowsPlatform AND OptionsInstallWindowsSDKX86">#(loc.Redist_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidPlatform" X="192" Y="345" Width="-11" Height="17" TabStop="yes" FontId="3">#(loc.Plt_ProductName_Android)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKARM64" X="210" Y="363" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_arm64)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKAMD64" X="210" Y="381" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_amd64)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKARM" X="210" Y="399" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_armv7)</Checkbox>
-            <Checkbox Name="OptionsInstallAndroidSDKX86" X="210" Y="417" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAndroidPlatform">#(loc.Sdk_ProductName_Android_x86)</Checkbox>
-            <Checkbox Name="OptionsInstallToolchain" X="192" Y="435" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="0">#(loc.Toolchain_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallAssertsToolchain" X="210" Y="453" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsIncludeNoAsserts and OptionsInstallNoAssertsToolchain">#(loc.Asserts_Toolchain_ProductName)</Checkbox>
-            <Checkbox Name="OptionsInstallNoAssertsToolchain" X="210" Y="471" Width="-11" Height="17" TabStop="yes" FontId="3" EnableCondition="OptionsIncludeNoAsserts and OptionsInstallAssertsToolchain">#(loc.NoAsserts_Toolchain_ProductName)</Checkbox>
-            <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+            <!--
+              Tab panels are flat because thmutil's Panel only accepts a fixed
+              control whitelist (Hyperlink|Hypertext|ImageControl|Label|Progressbar|
+              Static) and silently drops Checkbox/Button/RadioButtons. Each
+              control carries VisibleCondition="OptionsTab = N"; BAF synthesises
+              a click on BAFRefreshTrigger (below) on TCN_SELCHANGE to force
+              thmutil to re-evaluate every VisibleCondition/EnableCondition on
+              the page against the new OptionsTab value, which correctly
+              hides/shows and enables/disables every control in one pass.
+            -->
+
+            <Label Name="ToolchainComponentsLabel" X="198" Y="118" Width="-33" Height="18" FontId="5" DisablePrefix="yes" VisibleCondition="OptionsTab = 0">#(loc.OptionsToolchainComponents)</Label>
+            <Checkbox Name="OptionsInstallBLD" X="198" Y="138" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="0" VisibleCondition="OptionsTab = 0">#(loc.Bld_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallCLI" X="198" Y="156" Width="-33" Height="16" TabStop="yes" FontId="3" VisibleCondition="OptionsTab = 0">#(loc.Cli_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallDBG" X="198" Y="174" Width="-33" Height="16" TabStop="yes" FontId="3" VisibleCondition="OptionsTab = 0">#(loc.Dbg_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallPy" X="216" Y="192" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="OptionsInstallDBG" VisibleCondition="OptionsTab = 0">#(loc.EmbeddedPython_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallIDE" X="198" Y="210" Width="-33" Height="16" TabStop="yes" FontId="3" VisibleCondition="OptionsTab = 0">#(loc.Ide_ProductName)</Checkbox>
+
+            <!--
+              Variants label + Asserts checkbox always show on the Toolchain
+              tab (Asserts is always packaged, and its interlock keeps it
+              visibly-disabled to prevent unchecking the last toolchain).
+              NoAsserts is hidden entirely when OptionsIncludeNoAsserts=0
+              (single-toolchain build, statically driven by the msbuild
+              IncludeNoAsserts flag) so the UI doesn't offer a variant that
+              isn't actually packaged.
+            -->
+            <Label Name="ToolchainVariantsLabel" X="198" Y="254" Width="-33" Height="18" FontId="5" DisablePrefix="yes" VisibleCondition="OptionsTab = 0">#(loc.OptionsToolchainVariants)</Label>
+            <Checkbox Name="OptionsInstallAssertsToolchain" X="198" Y="274" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="OptionsInstallNoAssertsToolchain" VisibleCondition="OptionsTab = 0">#(loc.Asserts_Toolchain_ProductName)</Checkbox>
+            <Checkbox Name="OptionsInstallNoAssertsToolchain" X="198" Y="292" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAssertsToolchain" VisibleCondition="OptionsTab = 0 AND OptionsIncludeNoAsserts">#(loc.NoAsserts_Toolchain_ProductName)</Checkbox>
+
+            <!--
+              Default Toolchain combobox: thmutil creates the native combo
+              (CBS_DROPDOWNLIST) but doesn't parse items or bind a variable,
+              so BAF populates the list from OptionsIncludeNoAsserts at load
+              time and syncs the selection against OptionsDefaultToolchain
+              on CBN_SELCHANGE. Visible on tab 0 regardless of IncludeNoAsserts
+              so the user can always see the current default; EnableCondition
+              disables the combobox when only one variant is selected for
+              install (there's nothing to pick).
+            -->
+            <Label Name="ToolchainDefaultLabel" X="198" Y="334" Width="-33" Height="18" FontId="5" DisablePrefix="yes" VisibleCondition="OptionsTab = 0">#(loc.OptionsDefaultToolchainLabel)</Label>
+            <Combobox Name="OptionsDefaultToolchain" X="198" Y="356" Width="176" Height="26" TabStop="yes" FontId="3" EnableCondition="OptionsInstallAssertsToolchain AND OptionsInstallNoAssertsToolchain" VisibleCondition="OptionsTab = 0" />
+
+            <Label Name="RuntimesHeaderLabel" X="198" Y="118" Width="-33" Height="18" FontId="5" DisablePrefix="yes" VisibleCondition="OptionsTab = 1">#(loc.OptionsRuntimesHeader)</Label>
+            <Checkbox Name="OptionsInstallRuntimeARM64" X="198" Y="138" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="0" VisibleCondition="OptionsTab = 1">#(loc.Rtl_ProductName_arm64)</Checkbox>
+            <Checkbox Name="OptionsInstallRuntimeAMD64" X="198" Y="156" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="0" VisibleCondition="OptionsTab = 1">#(loc.Rtl_ProductName_amd64)</Checkbox>
+            <Checkbox Name="OptionsInstallRuntimeX86" X="198" Y="174" Width="-33" Height="16" TabStop="yes" FontId="3" EnableCondition="0" VisibleCondition="OptionsTab = 1">#(loc.Rtl_ProductName_x86)</Checkbox>
+
+            <!--
+              SDK tab uses a TreeView with TVS_CHECKBOXES so the Platform →
+              SDK → Redistributable hierarchy renders natively with check
+              states. BAF populates the items (thmutil creates the TreeView
+              but doesn't parse item children), syncs each item's check state
+              against its bundle variable on load, and cascades unchecks down
+              through children on user toggle.
+
+                HexStyle = TVS_HASBUTTONS    (0x0001)
+                         | TVS_HASLINES      (0x0002)
+                         | TVS_LINESATROOT   (0x0004)
+                         | TVS_CHECKBOXES    (0x0100)
+
+              TVS_LINESATROOT (requires TVS_HASLINES) is what makes the +/-
+              toggle show up on Windows / Android root rows; without it the
+              root platforms render without a collapse button.
+            -->
+            <Label Name="SDKsHeaderLabel" X="198" Y="118" Width="-33" Height="18" FontId="5" DisablePrefix="yes" VisibleCondition="OptionsTab = 2">#(loc.OptionsSDKsHeader)</Label>
+            <TreeView Name="OptionsSDKsTree" X="198" Y="138" Width="-33" Height="232" TabStop="yes" FontId="3" HexStyle="00000107" VisibleCondition="OptionsTab = 2" />
+
+            <!--
+              Invisible helper: BAF sends WM_COMMAND BN_CLICKED to this
+              checkbox on tab change. thmutil's OnButtonClicked then fires
+              ThemeShowPageEx(REFRESH) which re-evaluates all conditions
+              against the current OptionsTab value. VisibleCondition="0"
+              keeps it hidden through every refresh too.
+            -->
+            <Checkbox Name="BAFRefreshTrigger" X="0" Y="0" Width="1" Height="1" FontId="0" Visible="no" VisibleCondition="0" />
+
+            <Button Name="OptionsOkButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HexStyle="00000001" Tooltip="#(loc.OptionsOkButtonTooltip)">
                 <Text>#(loc.OptionsOkButton)</Text>
                 <ChangePageAction Page="Install" />
             </Button>
-            <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
+            <Button Name="OptionsCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" Tooltip="#(loc.OptionsCancelButtonTooltip)">
                 <Text>#(loc.OptionsCancelButton)</Text>
                 <ChangePageAction Page="Install" Cancel="yes" />
             </Button>
         </Page>
 
         <Page Name="Progress">
-            <Label X="192" Y="50" Width="-11" Height="32" FontId="2" DisablePrefix="yes">#(loc.ProgressHeader)</Label>
-            <Label Name="OverallProgressPackageText" X="192" Y="89" Width="-11" Height="17" FontId="3" DisablePrefix="yes">#(loc.OverallProgressPackageText)</Label>
-            <Progressbar Name="OverallCalculatedProgressbar" X="192" Y="111" Width="-11" Height="20" />
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">#(loc.ProgressHeader)</Label>
+            <Label Name="OverallProgressPackageText" X="176" Y="89" Width="-11" Height="17" FontId="3" DisablePrefix="yes">#(loc.OverallProgressPackageText)</Label>
+            <Progressbar Name="OverallCalculatedProgressbar" X="176" Y="111" Width="-11" Height="20" />
+            <!--
+              Secondary detail line: WixStdBA auto-updates
+              ExecuteProgressPackageText with the currently-executing
+              package name, so the user sees *what* is running, not just
+              that something is. FontId=4 = small greytext.
+            -->
+            <Label Name="ExecuteProgressPackageText" X="176" Y="137" Width="-11" Height="15" FontId="4" DisablePrefix="yes" />
             <Button Name="ProgressCancelButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">#(loc.ProgressCancelButton)</Button>
         </Page>
 
         <Page Name="Modify">
-            <Label X="192" Y="50" Width="-11" Height="30" FontId="2" DisablePrefix="yes">#(loc.ModifyHeader)</Label>
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">#(loc.ModifyHeader)</Label>
             <Button Name="ModifyUpdateButton" X="11" Y="-11" Width="200" Height="23" TabStop="yes" FontId="0" EnableCondition="WixStdBAUpdateAvailable" HideWhenDisabled="yes">#(loc.UpdateButton)</Button>
             <Button Name="RepairButton" X="-171" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.ModifyRepairButton)</Button>
             <Button Name="UninstallButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">#(loc.ModifyUninstallButton)</Button>
@@ -106,7 +216,7 @@
         </Page>
 
         <Page Name="Success">
-            <Label X="192" Y="50" Width="-11" Height="30" FontId="2" DisablePrefix="yes">
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">
                 <Text>#(loc.SuccessHeader)</Text>
                 <Text Condition="WixBundleAction = 2">#(loc.SuccessLayoutHeader)</Text>
                 <Text Condition="WixBundleAction = 3">#(loc.SuccessUnsafeUninstallHeader)</Text>
@@ -117,7 +227,7 @@
                 <Text Condition="WixBundleAction = 8">#(loc.SuccessRepairHeader)</Text>
             </Label>
             <Button Name="LaunchButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.SuccessLaunchButton)</Button>
-            <Label X="192" Y="-51" Width="400" Height="34" FontId="3" DisablePrefix="yes" VisibleCondition="WixStdBARestartRequired">
+            <Label X="176" Y="-51" Width="-11" Height="34" FontId="3" DisablePrefix="yes" VisibleCondition="WixStdBARestartRequired">
                 <Text>#(loc.SuccessRestartText)</Text>
                 <Text Condition="WixBundleAction = 3">#(loc.SuccessUninstallRestartText)</Text>
             </Label>
@@ -129,7 +239,7 @@
         </Page>
 
         <Page Name="Failure">
-            <Label X="192" Y="50" Width="-11" Height="30" FontId="2" DisablePrefix="yes">
+            <Label X="176" Y="50" Width="-11" Height="24" FontId="2" DisablePrefix="yes">
                 <Text>#(loc.FailureHeader)</Text>
                 <Text Condition="WixBundleAction = 2">#(loc.FailureLayoutHeader)</Text>
                 <Text Condition="WixBundleAction = 3">#(loc.FailureUnsafeUninstallHeader)</Text>
@@ -139,9 +249,9 @@
                 <Text Condition="WixBundleAction = 7">#(loc.FailureModifyHeader)</Text>
                 <Text Condition="WixBundleAction = 8">#(loc.FailureRepairHeader)</Text>
             </Label>
-            <Hypertext Name="FailureLogFileLink" X="192" Y="121" Width="-11" Height="68" FontId="3" TabStop="yes" HideWhenDisabled="yes">#(loc.FailureHyperlinkLogText)</Hypertext>
-            <Hypertext Name="FailureMessageText" X="192" Y="-115" Width="-11" Height="80" FontId="3" TabStop="yes" HideWhenDisabled="yes" />
-            <Label X="192" Y="-57" Width="-11" Height="80" FontId="3" DisablePrefix="yes" VisibleCondition="WixStdBARestartRequired">#(loc.FailureRestartText)</Label>
+            <Hypertext Name="FailureLogFileLink" X="176" Y="111" Width="-11" Height="68" FontId="3" TabStop="yes" HideWhenDisabled="yes">#(loc.FailureHyperlinkLogText)</Hypertext>
+            <Hypertext Name="FailureMessageText" X="176" Y="-115" Width="-11" Height="80" FontId="3" TabStop="yes" HideWhenDisabled="yes" />
+            <Label X="176" Y="-57" Width="-11" Height="40" FontId="3" DisablePrefix="yes" VisibleCondition="WixStdBARestartRequired">#(loc.FailureRestartText)</Label>
             <Button Name="FailureRestartButton" X="-91" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0" HideWhenDisabled="yes">#(loc.FailureRestartButton)</Button>
             <Button Name="FailureCloseButton" X="-11" Y="-11" Width="75" Height="23" TabStop="yes" FontId="0">
                 <Text>#(loc.FailureCloseButton)</Text>

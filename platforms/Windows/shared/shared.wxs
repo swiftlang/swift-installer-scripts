@@ -1,9 +1,7 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
   <Fragment>
-    <StandardDirectory Id="LocalAppDataFolder">
-      <Directory Name="Programs">
-        <Directory Id="INSTALLROOT" Name="Swift" />
-      </Directory>
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLROOT" Name="Swift" />
     </StandardDirectory>
   </Fragment>
 
@@ -40,48 +38,30 @@
 
   <Fragment>
     <DirectoryRef Id="INSTALLROOT">
-        <Directory Name="Toolchains">
-          <Directory Id="ToolchainVersionedAsserts" Name="$(ProductVersion)+Asserts">
-            <Directory Id="toolchain_asserts_usr" Name="usr">
-              <Directory Id="toolchain_asserts_usr_bin" Name="bin" />
-              <Directory Id="toolchain_asserts_usr_include" Name="include" />
-              <Directory Id="toolchain_asserts_usr_lib" Name="lib">
-                <Directory Id="toolchain_asserts_usr_lib_clang" Name="clang" />
-                <Directory Id="toolchain_asserts_usr_lib_swift" Name="swift">
-                  <Directory Id="toolchain_asserts_usr_lib_swift_clang" Name="clang" />
+      <Directory Name="Toolchains">
+        <?foreach VariantName in Asserts;NoAsserts?>
+          <Directory Id="ToolchainVersioned$(VariantName)" Name="$(ProductVersion)+$(VariantName)">
+            <Directory Id="toolchain_$(VariantName)_usr" Name="usr">
+              <Directory Id="toolchain_$(VariantName)_usr_bin" Name="bin" />
+              <Directory Id="toolchain_$(VariantName)_usr_include" Name="include" />
+              <Directory Id="toolchain_$(VariantName)_usr_lib" Name="lib">
+                <Directory Id="toolchain_$(VariantName)_usr_lib_clang" Name="clang" />
+                <Directory Id="toolchain_$(VariantName)_usr_lib_swift" Name="swift">
+                  <Directory Id="toolchain_$(VariantName)_usr_lib_swift_clang" Name="clang" />
                 </Directory>
-                <Directory Id="toolchain_asserts_usr_lib_swift_static" Name="swift_static">
-                  <Directory Id="toolchain_asserts_usr_lib_swift_static_clang" Name="clang" />
-                </Directory>
-              </Directory>
-              <Directory Id="toolchain_asserts_usr_share" Name="share">
-                <Directory Id="toolchain_asserts_usr_share_docc" Name="docc">
-                  <Directory Id="toolchain_asserts_usr_share_docc_render" Name="render" />
+                <Directory Id="toolchain_$(VariantName)_usr_lib_swift_static" Name="swift_static">
+                  <Directory Id="toolchain_$(VariantName)_usr_lib_swift_static_clang" Name="clang" />
                 </Directory>
               </Directory>
-            </Directory>
-          </Directory>
-          <Directory Id="ToolchainVersionedNoAsserts" Name="$(ProductVersion)+NoAsserts">
-            <Directory Id="toolchain_noasserts_usr" Name="usr">
-              <Directory Id="toolchain_noasserts_usr_bin" Name="bin" />
-              <Directory Id="toolchain_noasserts_usr_include" Name="include" />
-              <Directory Id="toolchain_noasserts_usr_lib" Name="lib">
-                <Directory Id="toolchain_noasserts_usr_lib_clang" Name="clang" />
-                <Directory Id="toolchain_noasserts_usr_lib_swift" Name="swift">
-                  <Directory Id="toolchain_noasserts_usr_lib_swift_clang" Name="clang" />
-                </Directory>
-                <Directory Id="toolchain_noasserts_usr_lib_swift_static" Name="swift_static">
-                  <Directory Id="toolchain_noasserts_usr_lib_swift_static_clang" Name="clang" />
-                </Directory>
-              </Directory>
-              <Directory Id="toolchain_noasserts_usr_share" Name="share">
-                <Directory Id="toolchain_noasserts_usr_share_docc" Name="docc">
-                  <Directory Id="toolchain_noasserts_usr_share_docc_render" Name="render" />
+              <Directory Id="toolchain_$(VariantName)_usr_share" Name="share">
+                <Directory Id="toolchain_$(VariantName)_usr_share_docc" Name="docc">
+                  <Directory Id="toolchain_$(VariantName)_usr_share_docc_render" Name="render" />
                 </Directory>
               </Directory>
             </Directory>
           </Directory>
-        </Directory>
+        <?endforeach?>
+      </Directory>
     </DirectoryRef>
   </Fragment>
 

@@ -1,5 +1,5 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
-    <OutputType>Library</OutputType>
+    <OutputName>res</OutputName>
   </PropertyGroup>
 </Project>

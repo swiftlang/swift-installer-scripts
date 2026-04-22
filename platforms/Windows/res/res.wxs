@@ -1,0 +1,144 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="!(loc.Res_ProductName)"
+      UpgradeCode="$(ResUpgradeCode)"
+      Version="$(NonSemVerProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="res.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <MajorUpgrade
+        DowngradeErrorMessage="!(loc.DowngradeError)"
+        AllowSameVersionUpgrades="yes" />
+
+    <DirectoryRef Id="INSTALLROOT">
+      <Directory Id="Resources" Name="Resources" />
+    </DirectoryRef>
+
+    <ComponentGroup Id="Icons" Directory="Resources">
+      <File Name="source.ico" Source="orange.ico" />
+      <File Name="documentation.ico" Source="blue.ico" />
+      <File Name="interface.ico" Source="blue.ico" />
+      <File Name="module.ico" Source="blue.ico" />
+      <File Name="overlay.ico" Source="blue.ico" />
+      <File Name="sourceinfo.ico" Source="blue.ico" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="FileTypeRegistrations">
+      <Component Directory="TARGETDIR">
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\.swift"
+            Type="string"
+            Value="Swift.Source" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Source"
+            Type="string"
+            Value="!(loc.SwiftSourceFileDescription)" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Source\DefaultIcon"
+            Type="string"
+            Value="[Resources]source.ico,0" />
+      </Component>
+
+      <Component Directory="TARGETDIR">
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\.swiftmodule"
+            Type="string"
+            Value="Swift.Module" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Module"
+            Type="string"
+            Value="!(loc.SwiftModuleFileDescription)" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Module\DefaultIcon"
+            Type="string"
+            Value="[Resources]module.ico,0" />
+      </Component>
+
+      <Component Directory="TARGETDIR">
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\.swiftinterface"
+            Type="string"
+            Value="Swift.Interface" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Interface"
+            Type="string"
+            Value="!(loc.SwiftInterfaceFileDescription)" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Interface\DefaultIcon"
+            Type="string"
+            Value="[Resources]interface.ico,0" />
+      </Component>
+
+      <Component Directory="TARGETDIR">
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\.swiftdoc"
+            Type="string"
+            Value="Swift.Documentation" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Documentation"
+            Type="string"
+            Value="!(loc.SwiftDocumentationFileDescription)" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Documentation\DefaultIcon"
+            Type="string"
+            Value="[Resources]documentation.ico,0" />
+      </Component>
+
+      <Component Directory="TARGETDIR">
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\.swiftsourceinfo"
+            Type="string"
+            Value="Swift.SourceInfo" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.SourceInfo"
+            Type="string"
+            Value="!(loc.SwiftSourceInfoFileDescription)" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.SourceInfo\DefaultIcon"
+            Type="string"
+            Value="[Resources]sourceinfo.ico,0" />
+      </Component>
+
+      <Component Directory="TARGETDIR">
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\.swiftoverlay"
+            Type="string"
+            Value="Swift.Overlay" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Overlay"
+            Type="string"
+            Value="!(loc.SwiftOverlayFileDescription)" />
+        <RegistryValue
+            Root="HKMU"
+            Key="SOFTWARE\Classes\Swift.Overlay\DefaultIcon"
+            Type="string"
+            Value="[Resources]overlay.ico,0" />
+      </Component>
+    </ComponentGroup>
+
+    <Feature Id="Icons" AllowAbsent="no">
+      <ComponentGroupRef Id="Icons" />
+      <ComponentGroupRef Id="FileTypeRegistrations" />
+    </Feature>
+  </Package>
+</Wix>

@@ -1,4 +1,6 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+  <!-- TODO(#88552): author AboutUrl, HelpUrl, UpdateUrl on the Bundle
+       once the canonical swift.org URLs are settled. -->
   <Bundle
     Name="!(loc.BundleName) $(ProductVersion)"
     Version="$(ProductVersion)"
@@ -18,22 +20,138 @@
         LocalizationFile="..\shared\swift.en-us.wxl"
         ThemeFile="theme.xml" />
       <Payload SourceFile="swift_side.png" />
+      <Payload SourceFile="!(bindpath.baf)\baf.dll" bal:BAFunctions="yes" />
     </BootstrapperApplication>
 
     <!--
     Keep `InstallRoot` in sync with the INSTALLROOT definition in shared.wxs.
-    The bundle variable here will overwrite the default authored in the MSI
-    packages, but avoid the confusion if the default directory should change.
+    `InstallRoot` is the live path bound to the install-location editbox and
+    passed to every MsiPackage. `InstallRootPerUser` / `InstallRootPerMachine`
+    are shadows that remember the path chosen under each scope so toggling
+    "Install for all users" restores the user's previous choice; the swap
+    happens in the BAF (BA Functions) DLL (see bundle/baf).
     -->
+    <Variable Name="InstallPerMachine" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <Variable Name="BundleDisplayName" Value="!(loc.BundleName)" Type="string" Hidden="yes" />
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
       Value="[LocalAppDataFolder]Programs\Swift" />
+    <Variable Name="InstallRootPerUser" bal:Overridable="yes" Type="formatted" Persisted="yes"
+      Value="[LocalAppDataFolder]Programs\Swift" />
+    <Variable Name="InstallRootPerMachine" bal:Overridable="yes" Type="formatted" Persisted="yes"
+      Value="[ProgramFiles64Folder]Swift" />
+
+    <Variable Name="OptionsTab" Value="0" />
+    <!--
+      Gates the Install button (theme EnableCondition). thmutil auto-binds
+      the EulaAcceptCheckbox control to this variable, so ticking "I
+      agree" flips it to 1 and enables Install; unticking disables it.
+    -->
+    <Variable Name="EulaAcceptCheckbox" Value="0" Hidden="yes" />
+    <!--
+      Helper for the Options page: BAF toggles it on tab change to force
+      thmutil's page refresh so every VisibleCondition/EnableCondition is
+      re-evaluated against the new OptionsTab value.
+    -->
+    <Variable Name="BAFRefreshTrigger" Value="0" Hidden="yes" />
+
+    <!--
+      The SDK TreeView is populated at runtime by BAF (thmutil only creates
+      the TreeView shell and doesn't loc tree items). Carry the existing
+      product-name loc strings through bundle Variables so BAF can resolve
+      them via BalFormatString("[Name]"); `!(loc.X)` is replaced at build
+      time so the Variable value is already localised at runtime.
+    -->
+    <Variable Name="Plt_ProductName_Windows" Value="!(loc.Plt_ProductName_Windows)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Windows_amd64" Value="!(loc.Sdk_ProductName_Windows_amd64)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Windows_arm64" Value="!(loc.Sdk_ProductName_Windows_arm64)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Windows_x86" Value="!(loc.Sdk_ProductName_Windows_x86)" Type="string" Hidden="yes" />
+    <Variable Name="Redist_amd64" Value="!(loc.Redist)" Type="string" Hidden="yes" />
+    <Variable Name="Redist_arm64" Value="!(loc.Redist)" Type="string" Hidden="yes" />
+    <Variable Name="Redist_x86" Value="!(loc.Redist)" Type="string" Hidden="yes" />
+    <Variable Name="Plt_ProductName_Android" Value="!(loc.Plt_ProductName_Android)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Android_arm64" Value="!(loc.Sdk_ProductName_Android_arm64)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Android_amd64" Value="!(loc.Sdk_ProductName_Android_amd64)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Android_armv7" Value="!(loc.Sdk_ProductName_Android_armv7)" Type="string" Hidden="yes" />
+    <Variable Name="Sdk_ProductName_Android_x86" Value="!(loc.Sdk_ProductName_Android_x86)" Type="string" Hidden="yes" />
+
+    <!--
+      Per-tab tooltips for the Options tab strip. BAF creates the tooltip
+      control programmatically (thmutil's `Tooltip` attribute would apply
+      to the whole strip, not per tab) and resolves these variables via
+      BalFormatString at tab-setup time.
+    -->
+    <Variable Name="OptionsToolchainTabTooltip" Value="!(loc.OptionsToolchainTabTooltip)" Type="string" Hidden="yes" />
+    <Variable Name="OptionsRuntimesTabTooltip" Value="!(loc.OptionsRuntimesTabTooltip)" Type="string" Hidden="yes" />
+    <Variable Name="OptionsSDKsTabTooltip" Value="!(loc.OptionsSDKsTabTooltip)" Type="string" Hidden="yes" />
+    <Variable Name="AssertsToolchain" Value="!(loc.OptionsDefaultAsserts)" Type="string" Hidden="yes" />
+    <Variable Name="NoAssertsToolchain" Value="!(loc.OptionsDefaultNoAsserts)" Type="string" Hidden="yes" />
+
+    <!--
+      Per-row availability for the SDK TreeView, driven by build-time flags
+      (IncludeWindows/IncludeAndroid and the arch-specific variants defined
+      in installer.wixproj). BAF skips tree rows whose availability variable
+      is 0 so the UI only offers what the bundle actually packaged.
+    -->
+    <?if $(IncludeWindows) == True ?>
+      <Variable Name="BAFAvailWindowsPlatform" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailWindowsPlatform" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeWindowsAMD64) == True ?>
+      <Variable Name="BAFAvailWindowsAMD64" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailWindowsAMD64" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeWindowsARM64) == True ?>
+      <Variable Name="BAFAvailWindowsARM64" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailWindowsARM64" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeWindowsX86) == True ?>
+      <Variable Name="BAFAvailWindowsX86" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailWindowsX86" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeAndroid) == True ?>
+      <Variable Name="BAFAvailAndroidPlatform" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailAndroidPlatform" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeAndroidARM64) == True ?>
+      <Variable Name="BAFAvailAndroidARM64" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailAndroidARM64" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeAndroidAMD64) == True ?>
+      <Variable Name="BAFAvailAndroidAMD64" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailAndroidAMD64" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeAndroidARMv7) == True ?>
+      <Variable Name="BAFAvailAndroidARMv7" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailAndroidARMv7" Value="0" Hidden="yes" />
+    <?endif ?>
+    <?if $(IncludeAndroidX86) == True ?>
+      <Variable Name="BAFAvailAndroidX86" Value="1" Hidden="yes" />
+    <?else ?>
+      <Variable Name="BAFAvailAndroidX86" Value="0" Hidden="yes" />
+    <?endif ?>
 
     <Variable Name="OptionsInstallBLD" Value="1" />
     <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallDBG" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallPy" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallRTL" Value="1" />
+
+    <?if $(ProductArchitecture) == amd64 ?>
+      <Variable Name="OptionsInstallRuntimeAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
+      <Variable Name="OptionsInstallRuntimeARM64" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <?elseif $(ProductArchitecture) == arm64 ?>
+      <Variable Name="OptionsInstallRuntimeAMD64" bal:Overridable="yes" Persisted="yes" Value="0" />
+      <Variable Name="OptionsInstallRuntimeARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <?endif?>
+    <Variable Name="OptionsInstallRuntimeX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
     <Variable Name="OptionsInstallSupport" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallUtilities" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -56,9 +174,9 @@
     <Variable Name="OptionsInstallAndroidSDKARM" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="OptionsInstallAndroidSDKX86" bal:Overridable="yes" Persisted="yes" Value="0" />
 
-    <Variable Name="OptionsInstallToolchain" Value="1" />
     <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <Variable Name="OptionsDefaultToolchain" bal:Overridable="yes" Persisted="yes" Type="string" Value="Asserts" />
 
     <?if $(IncludeNoAsserts) == True?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -91,7 +209,7 @@
         InstallCondition="OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        <MsiProperty Name="ADDTOOLCHAINTOPATH" Value="1"/>
+        <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsDefaultToolchain = &quot;Asserts&quot; OR OptionsInstallNoAssertsToolchain = 0" Value="1" />
       </MsiPackage>
 
       <?if $(IncludeNoAsserts) == True?>
@@ -100,7 +218,7 @@
           InstallCondition="OptionsInstallNoAssertsToolchain = 1"
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-          <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsInstallAssertsToolchain = 0" Value="1" />
+          <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsDefaultToolchain = &quot;NoAsserts&quot; OR OptionsInstallAssertsToolchain = 0" Value="1" />
         </MsiPackage>
       <?endif?>
 
@@ -158,6 +276,12 @@
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         </MsiPackage>
       <?endif?>
+
+      <MsiPackage
+        SourceFile="!(bindpath.res)\res.msi"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
 
 <?if $(IncludeLegacySDK) == True?>
       <MsiPackage
