@@ -717,6 +717,12 @@
         <File Source="$(ToolchainRoot)\usr\bin\swift-package.exe" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\swift-package-collection.exe" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\swift-package-registry.exe" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-run.exe" />
       </Component>
       <Component>
@@ -748,6 +754,9 @@
         <File Source="$(ToolchainRoot)\usr\bin\PackageCollections.dll" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsCommand.dll" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\PackageCollectionsModel.dll" />
       </Component>
       <Component>
@@ -758,6 +767,9 @@
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\PackageModel.dll" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\PackageRegistryCommand.dll" />
       </Component>
       <Component>
         <File Source="$(ToolchainRoot)\usr\bin\SourceControl.dll" />
