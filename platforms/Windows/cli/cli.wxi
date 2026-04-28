@@ -717,6 +717,12 @@
         <File Source="$(ToolchainRoot)\usr\bin\swift-package.exe" />
       </Component>
       <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\swift-package-collection.exe" />
+      </Component>
+      <Component>
+        <File Source="$(ToolchainRoot)\usr\bin\swift-package-registry.exe" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\bin\swift-run.exe" />
       </Component>
       <Component>
