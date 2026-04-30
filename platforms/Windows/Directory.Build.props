@@ -28,6 +28,12 @@
   <PropertyGroup Condition=" '$(IncludeLegacySDK)' == '' ">
     <IncludeLegacySDK>true</IncludeLegacySDK>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(IncludeLLVMDLL)' == '' ">
+    <IncludeLLVMDLL>false</IncludeLLVMDLL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(LLVMVersion)' == '' ">
+    <LLVMVersion>21</LLVMVersion>
+  </PropertyGroup>
 
   <PropertyGroup>
     <RootBuildFolder>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)build\))</RootBuildFolder>
@@ -92,6 +98,8 @@
       WindowsExperimentalRuntimeX64=$(WindowsExperimentalRuntimeX64);
       WindowsExperimentalRuntimeX86=$(WindowsExperimentalRuntimeX86);
       IncludeLegacySDK=$(IncludeLegacySDK);
+      IncludeLLVMDLL=$(IncludeLLVMDLL);
+      LLVMVersion=$(LLVMVersion);
     </DefineConstants>
   </PropertyGroup>
 
