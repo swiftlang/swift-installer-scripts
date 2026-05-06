@@ -1,10 +1,4 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <?if $(PackageScope) = "perUser"?>
-    <?define RegistryRoot = "HKCU"?>
-  <?else?>
-    <?define RegistryRoot = "HKLM"?>
-  <?endif?>
-
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
@@ -24,40 +18,28 @@
     </DirectoryRef>
 
     <ComponentGroup Id="Icons" Directory="Resources">
-      <Component>
-        <File Name="source.ico" Source="orange.ico" />
-      </Component>
-      <Component>
-        <File Name="documentation.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="interface.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="module.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="overlay.ico" Source="blue.ico" />
-      </Component>
-      <Component>
-        <File Name="sourceinfo.ico" Source="blue.ico" />
-      </Component>
+      <File Name="source.ico" Source="orange.ico" />
+      <File Name="documentation.ico" Source="blue.ico" />
+      <File Name="interface.ico" Source="blue.ico" />
+      <File Name="module.ico" Source="blue.ico" />
+      <File Name="overlay.ico" Source="blue.ico" />
+      <File Name="sourceinfo.ico" Source="blue.ico" />
     </ComponentGroup>
 
     <ComponentGroup Id="FileTypeRegistrations">
       <Component Directory="TARGETDIR">
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\.swift"
             Type="string"
             Value="Swift.Source" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Source"
             Type="string"
             Value="!(loc.SwiftSourceFileDescription)" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Source\DefaultIcon"
             Type="string"
             Value="[Resources]source.ico,0" />
@@ -65,17 +47,17 @@
 
       <Component Directory="TARGETDIR">
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\.swiftmodule"
             Type="string"
             Value="Swift.Module" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Module"
             Type="string"
             Value="!(loc.SwiftModuleFileDescription)" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Module\DefaultIcon"
             Type="string"
             Value="[Resources]module.ico,0" />
@@ -83,17 +65,17 @@
 
       <Component Directory="TARGETDIR">
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\.swiftinterface"
             Type="string"
             Value="Swift.Interface" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Interface"
             Type="string"
             Value="!(loc.SwiftInterfaceFileDescription)" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Interface\DefaultIcon"
             Type="string"
             Value="[Resources]interface.ico,0" />
@@ -101,17 +83,17 @@
 
       <Component Directory="TARGETDIR">
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\.swiftdoc"
             Type="string"
             Value="Swift.Documentation" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Documentation"
             Type="string"
             Value="!(loc.SwiftDocumentationFileDescription)" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Documentation\DefaultIcon"
             Type="string"
             Value="[Resources]documentation.ico,0" />
@@ -119,17 +101,17 @@
 
       <Component Directory="TARGETDIR">
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\.swiftsourceinfo"
             Type="string"
             Value="Swift.SourceInfo" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.SourceInfo"
             Type="string"
             Value="!(loc.SwiftSourceInfoFileDescription)" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.SourceInfo\DefaultIcon"
             Type="string"
             Value="[Resources]sourceinfo.ico,0" />
@@ -137,17 +119,17 @@
 
       <Component Directory="TARGETDIR">
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\.swiftoverlay"
             Type="string"
             Value="Swift.Overlay" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Overlay"
             Type="string"
             Value="!(loc.SwiftOverlayFileDescription)" />
         <RegistryValue
-            Root="$(RegistryRoot)"
+            Root="HKMU"
             Key="SOFTWARE\Classes\Swift.Overlay\DefaultIcon"
             Type="string"
             Value="[Resources]overlay.ico,0" />

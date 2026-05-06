@@ -1,4 +1,4 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?if $(sys.BUILDARCH) == x86 ?>
     <?define ModuleId = "7CE7029A-912E-4BC3-BAEC-D17D6F44A879" ?>

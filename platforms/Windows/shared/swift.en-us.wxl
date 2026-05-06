@@ -19,20 +19,20 @@
   <String Id="VCRuntime_ProductName_arm64" Value="Visual C++ Runtime (ARM64)" />
   <String Id="VCRuntime_ProductName_amd64" Value="Visual C++ Runtime (AMD64)" />
   <String Id="VCRuntime_ProductName_x86" Value="Visual C++ Runtime (X86)" />
-  <String Id="Plt_ProductName_Android" Value="Swift Android Platform Support" />
-  <String Id="Plt_ProductName_Windows" Value="Swift Windows Platform Support" />
+  <String Id="Plt_ProductName_Android" Value="Android Platform Support" />
+  <String Id="Plt_ProductName_Windows" Value="Windows Platform Support" />
   <String Id="Plt_ProductName_Windows_Experimental" Value="Swift Windows Platform Support [Experimental]" />
   <String Id="Res_ProductName" Value="Swift Developer Toolkit Resources" />
   <String Id="Rtl_ProductName_arm64" Value="Swift Windows Runtime (ARM64)" />
   <String Id="Rtl_ProductName_amd64" Value="Swift Windows Runtime (AMD64)" />
   <String Id="Rtl_ProductName_x86" Value="Swift Windows Runtime (X86)" />
-  <String Id="Sdk_ProductName_Android_arm64" Value="Swift Android SDK (ARM64)" />
-  <String Id="Sdk_ProductName_Android_armv7" Value="Swift Android SDK (ARMv7)" />
-  <String Id="Sdk_ProductName_Android_amd64" Value="Swift Android SDK (AMD64)" />
-  <String Id="Sdk_ProductName_Android_x86" Value="Swift Android SDK (X86)" />
-  <String Id="Sdk_ProductName_Windows_arm64" Value="Swift Windows SDK (ARM64)" />
-  <String Id="Sdk_ProductName_Windows_amd64" Value="Swift Windows SDK (AMD64)" />
-  <String Id="Sdk_ProductName_Windows_x86" Value="Swift Windows SDK (X86)" />
+  <String Id="Sdk_ProductName_Android_arm64" Value="SDK (ARM64)" />
+  <String Id="Sdk_ProductName_Android_armv7" Value="SDK (ARMv7)" />
+  <String Id="Sdk_ProductName_Android_amd64" Value="SDK (AMD64)" />
+  <String Id="Sdk_ProductName_Android_x86" Value="SDK (X86)" />
+  <String Id="Sdk_ProductName_Windows_arm64" Value="SDK (ARM64)" />
+  <String Id="Sdk_ProductName_Windows_amd64" Value="SDK (AMD64)" />
+  <String Id="Sdk_ProductName_Windows_x86" Value="SDK (X86)" />
   <String Id="Plt_ProductName_Windows_arm64" Value="Swift Windows Platform Support (ARM64)" />
   <String Id="Plt_ProductName_Windows_amd64" Value="Swift Windows Platform Support (AMD64)" />
   <String Id="Plt_ProductName_Windows_x86" Value="Swift Windows Platform Support (X86)" />
@@ -46,15 +46,22 @@
   <String Id="Utl_ProductName_amd64" Value="Swift Windows Utilities (AMD64)" />
   <String Id="Utl_ProductName_x86" Value="Swift Windows Utilities (X86)" />
   <String Id="Toolchain_ProductName" Value="Swift Toolchain" />
-  <String Id="Asserts_Toolchain_ProductName" Value="Swift Toolchain (Asserts)" />
-  <String Id="NoAsserts_Toolchain_ProductName" Value="Swift Toolchain (NoAsserts)" />
+  <String Id="Asserts_Toolchain_ProductName" Value="Asserts Toolchain" />
+  <String Id="NoAsserts_Toolchain_ProductName" Value="NoAsserts Toolchain" />
   <String Id="BundleName" Value="Swift Developer Toolkit" />
   <String Id="ManufacturerName" Value="swift.org" />
 
-  <String Id="OptionsFeaturesLabel" Value="Feature Selection" />
-  <String Id="Redist_arm64" Value="Swift Windows Redistributable (ARM64)" />
-  <String Id="Redist_amd64" Value="Swift Windows Redistributable (AMD64)" />
-  <String Id="Redist_x86" Value="Swift Windows Redistributable (X86)" />
+  <String Id="OptionsToolchainTab" Value="&amp;Toolchain" />
+  <String Id="OptionsRuntimesTab" Value="&amp;Runtimes" />
+  <String Id="OptionsSDKsTab" Value="&amp;SDKs" />
+  <String Id="OptionsToolchainComponents" Value="Components" />
+  <String Id="OptionsToolchainVariants" Value="Variants" />
+  <String Id="OptionsRuntimesHeader" Value="Runtimes" />
+  <String Id="OptionsSDKsHeader" Value="Platforms" />
+  <String Id="OptionsDefaultToolchainLabel" Value="Default Variant" />
+  <String Id="OptionsDefaultAsserts" Value="Asserts" />
+  <String Id="OptionsDefaultNoAsserts" Value="No Asserts" />
+  <String Id="Redist" Value="Redistributable" />
 
   <String Id="SwiftSourceFileDescription" Value="Swift Source File" />
   <String Id="SwiftModuleFileDescription" Value="Swift Interface Definition (binary)" />
@@ -63,29 +70,46 @@
   <String Id="SwiftSourceInfoFileDescription" Value="Swift Source Location Map" />
   <String Id="SwiftOverlayFileDescription" Value="Swift Cross-Import Overlay" />
 
-  <String Id="Caption" Value="[WixBundleName] Setup" />
-  <String Id="Title" Value="[WixBundleName]" />
+  <String Id="Caption" Value="[BundleDisplayName] Setup" />
+  <String Id="Title" Value="[BundleDisplayName]" />
   <String Id="CheckingForUpdatesLabel" Value="Checking for updates" />
   <String Id="UpdateButton" Value="&amp;Update to version [WixStdBAUpdateAvailable]" />
-  <String Id="InstallHeader" Value="Welcome" />
-  <String Id="InstallMessage" Value="Setup will install [WixBundleName] on your computer. Click Install to continue or Cancel to exit." />
-  <String Id="InstallMessageOptions" Value="Setup will install [WixBundleName] on your computer. Click Install to continue, Options to set installation options, or Cancel to exit." />
+  <String Id="InstallHeader" Value="Version [WixBundleVersion]" />
+  <String Id="InstallMessage" Value="Install the Swift toolchain, runtimes, and platform SDKs for Windows." />
+  <String Id="InstallMessageOptions" Value="Install the Swift toolchain, runtimes, and platform SDKs. Use Options to customize components." />
   <String Id="InstallVersion" Value="Version [WixBundleVersion]" />
   <String Id="ConfirmCancelMessage" Value="Are you sure you want to cancel?" />
   <String Id="ExecuteUpgradeRelatedBundleMessage" Value="Previous version" />
   <String Id="HelpHeader" Value="Setup Help" />
   <String Id="HelpText" Value="/install | /repair | /uninstall | /layout [directory]&#xA;Installs, repairs, uninstalls, or creates a complete local copy of the bundle in [directory]. Install is the default.&#xA;&#xA;/passive | /quiet&#xA;Displays minimal UI with no prompts or displays no UI and no prompts. By default UI and all prompts are displayed.&#xA;&#xA;/norestart&#xA;Suppress any attempts to restart. By default UI will prompt before restart.&#xA;&#xA;/log [path\to\logfile.log]&#xA;Logs to a specific file. By default a log file is created in %TEMP%." />
   <String Id="HelpCloseButton" Value="&amp;Close" />
-  <String Id="InstallLicenseLinkText" Value="[WixBundleName] &lt;a href=&quot;#&quot;&gt;license terms&lt;/a&gt;." />
-  <String Id="InstallAcceptCheckbox" Value="I &amp;agree to the license terms and conditions" />
+  <String Id="InstallLicenseLinkText" Value="&lt;a href=&quot;#&quot;&gt;License Terms&lt;/a&gt;" />
+  <String Id="InstallAcceptCheckbox" Value="I &amp;accept the license terms" />
   <String Id="InstallOptionsButton" Value="&amp;Options" />
+  <String Id="InstallOptionsButtonTooltip" Value="Customize components, runtimes, and SDKs." />
   <String Id="InstallInstallButton" Value="&amp;Install" />
+  <String Id="InstallInstallButtonTooltip" Value="Install with the selected options." />
   <String Id="InstallCancelButton" Value="&amp;Cancel" />
+  <String Id="InstallCancelButtonTooltip" Value="Close setup without installing." />
   <String Id="OptionsHeader" Value="Setup Options" />
   <String Id="OptionsLocationLabel" Value="Install Location" />
+  <!--
+    BAF uses runtime checkbox text margins so the UAC shield can render
+    between the check glyph and this label without requiring alignment
+    padding. Keep the string free of leading spaces so translators can
+    localize naturally.
+  -->
+  <String Id="OptionsPerMachineCheckbox" Value="Install for all users on this &amp;machine" />
+  <String Id="OptionsPerMachineHint" Value="Administrator access will be requested when you click Install." />
   <String Id="OptionsBrowseButton" Value="&amp;Browse" />
   <String Id="OptionsOkButton" Value="&amp;OK" />
+  <String Id="OptionsOkButtonTooltip" Value="Apply these options and return." />
   <String Id="OptionsCancelButton" Value="&amp;Cancel" />
+  <String Id="OptionsCancelButtonTooltip" Value="Discard changes and return." />
+
+  <String Id="OptionsToolchainTabTooltip" Value="Choose which toolchain components and variants to install." />
+  <String Id="OptionsRuntimesTabTooltip" Value="Choose which runtimes to install. The host runtime is always required." />
+  <String Id="OptionsSDKsTabTooltip" Value="Choose which platform SDKs to install." />
   <String Id="ProgressHeader" Value="Setup Progress" />
   <String Id="ProgressLabel" Value="Processing:" />
   <String Id="OverallProgressPackageText" Value="Initializing..." />

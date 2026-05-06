@@ -1,4 +1,4 @@
-<Project Sdk="WixToolset.Sdk/4.0.5">
+<Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputName>rtl.$(ProductArchitecture)</OutputName>
     <DefineConstants>
@@ -17,20 +17,5 @@
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
     <ProjectReference Include="..\lib\rtl.shared.lib.wixproj" Properties="ProductArchitecture=x86;Platform=x86" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(VCRedistDir)">
-      <ComponentGroupName>VCRuntime_$(ProductArchitecture)</ComponentGroupName>
-      <DirectoryRefId>RUNTIMEDIR_$(ProductArchitecture)</DirectoryRefId>
-      <PreprocessorVariable>var.VCRedistDir</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
   </ItemGroup>
 </Project>

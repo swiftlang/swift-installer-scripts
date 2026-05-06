@@ -1,5 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+$(VariantName)?>
+  <?if $(VariantName) == Asserts?>
+    <?define VariantUpgradeCode = $(IdeAssertsUpgradeCode)?>
+    <?define VariantProductName = !(loc.IdeAsserts_ProductName)?>
+    <?define VariantCabinetName = ide.asserts.cab?>
+  <?else?>
+    <?define VariantUpgradeCode = $(IdeNoAssertsUpgradeCode)?>
+    <?define VariantProductName = !(loc.IdeNoAsserts_ProductName)?>
+    <?define VariantCabinetName = ide.noasserts.cab?>
+  <?endif?>
 
   <Package
       Language="1033"
@@ -23,46 +34,24 @@
     </DirectoryRef>
 
     <ComponentGroup Id="clangd" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\clangd.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\clangd.exe" />
     </ComponentGroup>
 
     <ComponentGroup Id="lldb" Directory="toolchain_$(VariantName)_usr_bin">
-      <Component>
-        <File Source="$(ToolchainRoot)\usr\bin\lldb-dap.exe" />
-      </Component>
+      <File Source="$(ToolchainRoot)\usr\bin\lldb-dap.exe" />
     </ComponentGroup>
 
     <ComponentGroup Id="sourcekitd">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\sourcekitdInProc.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_lib">
-        <File Source="$(ToolchainRoot)\usr\lib\sourcekitdInProc.lib" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitPlugin.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitClientPlugin.dll" />
-      </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_include_SourceKit">
-        <File Source="$(ToolchainRoot)\usr\include\SourceKit\sourcekitd.h" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\sourcekitdInProc.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\sourcekitdInProc.lib" />
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitPlugin.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\lib\SwiftSourceKitClientPlugin.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_include_SourceKit" Source="$(ToolchainRoot)\usr\include\SourceKit\sourcekitd.h" />
     </ComponentGroup>
 
     <ComponentGroup Id="lsp">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\sourcekit-lsp.exe" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_share_sourcekit_lsp">
-        <File Source="$(ToolchainRoot)\usr\share\sourcekit-lsp\config.schema.json" />
-      </Component>
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\sourcekit-lsp.exe" />
+      <File Directory="toolchain_$(VariantName)_usr_share_sourcekit_lsp" Source="$(ToolchainRoot)\usr\share\sourcekit-lsp\config.schema.json" />
     </ComponentGroup>
 
     <Feature Id="IDETools" AllowAbsent="no" Title="$(VariantProductName)">

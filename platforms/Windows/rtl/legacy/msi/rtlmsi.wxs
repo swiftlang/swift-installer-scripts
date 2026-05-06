@@ -1,4 +1,4 @@
-﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Package
       Language="1033"
       Manufacturer="!(loc.ManufacturerName)"
@@ -19,9 +19,16 @@
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
     <SetDirectory Id="LIBEXECDIR_$(ProductArchitecture)" Value="[runtimes_usr_libexec_swift]" Sequence="first" />
 
+    <ComponentGroup Id="VCRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Files Include="$(VCRedistDir)\**" />
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="b83f6521-8708-4e2d-afef-076d8cdd7528">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
+      </Component>
+      <Component Id="SystemPathVariable" Condition="ALLUSERS=1" Guid="a1d3e7f2-5c94-4b8a-9e06-3f2d1c8b7a45">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[runtimes_usr_bin]" />
       </Component>
     </ComponentGroup>
 
