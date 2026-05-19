@@ -3,15 +3,15 @@
   <?if $(ProductArchitecture) == x86 ?>
     <?define RuntimeDirectoryComponentGuidGenerationSeed = "D3021274-DCA3-4369-82D3-B6CEE436A3FC" ?>
     <?define ModuleID = "53C54287-A59A-4828-A526-4F64E00B340E" ?>
-    <?define RuntimeRoot = $(WindowsExperimentalRuntimeX86)?>
+    <?define RuntimeRoot = $(WindowsRuntimeX86)?>
   <?elseif $(ProductArchitecture) == amd64 ?>
     <?define RuntimeDirectoryComponentGuidGenerationSeed = "639A8564-3505-4424-BA2F-449AAF743A90" ?>
     <?define ModuleID = "F84DDCA4-72B0-42AB-9316-21DBAB241540" ?>
-    <?define RuntimeRoot = $(WindowsExperimentalRuntimeX64)?>
+    <?define RuntimeRoot = $(WindowsRuntimeX64)?>
   <?elseif $(ProductArchitecture) == arm64 ?>
     <?define RuntimeDirectoryComponentGuidGenerationSeed = "F8BF026F-8E3F-42B5-A5E7-E0A4D186EDF3" ?>
     <?define ModuleID = "0439EF46-C6C2-43DF-A5A7-8F4C3F5C64A7" ?>
-    <?define RuntimeRoot = $(WindowsExperimentalRuntimeARM64)?>
+    <?define RuntimeRoot = $(WindowsRuntimeARM64)?>
   <?endif?>
 
   <Module Guid="$(ModuleID)" Id="swift_runtime" Language="0" Version="$(NonSemVerProductVersion)">
