@@ -21,6 +21,12 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
+      <Directory Id="toolchain_$(VariantName)_usr_bin_Foundation" Name="Foundation" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationInternationalization" Name="FoundationInternationalization" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin__FoundationICU" Name="_FoundationICU" />
+    </DirectoryRef>
+
     <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
       <Directory Id="toolchain_$(VariantName)_usr_include__InternalSwiftScan" Name="_InternalSwiftScan" />
       <Directory Id="toolchain_$(VariantName)_usr_include_clang_c" Name="clang-c" />
@@ -810,6 +816,18 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SxSSwiftRuntime">
+      <Component Directory="toolchain_$(VariantName)_usr_bin_Foundation">
+        <File Source="$(ToolchainRoot)\usr\bin\Foundation\Foundation.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_FoundationInternationalization">
+        <File Source="$(ToolchainRoot)\usr\bin\FoundationInternationalization\FoundationInternationalization.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin__FoundationICU">
+        <File Source="$(ToolchainRoot)\usr\bin\_FoundationICU\_FoundationICU.dll" />
+      </Component>
+    </ComponentGroup>
+
     <Feature Id="CLITools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="clang" />
       <ComponentGroupRef Id="libclang" />
@@ -833,6 +851,7 @@
       <ComponentGroupRef Id="DocCRender" />
 
       <ComponentGroupRef Id="swift_format" />
+      <ComponentGroupRef Id="SxSSwiftRuntime" />
 
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>

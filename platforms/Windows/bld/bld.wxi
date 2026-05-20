@@ -14,6 +14,19 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
+      <Directory Id="toolchain_$(VariantName)_usr_bin_dispatch" Name="dispatch" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Name="FoundationEssentials" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Name="swift_Concurrency" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Name="swift_StringProcessing" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCore" Name="swiftCore" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCRT" Name="swiftCRT" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftDispatch" Name="swiftDispatch" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftObservation" Name="swiftObservation" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftSynchronization" Name="swiftSynchronization" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftWinSDK" Name="swiftWinSDK" />
+    </DirectoryRef>
+
     <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
       <Directory Id="toolchain_$(VariantName)_usr_include_llvm_c" Name="llvm-c" />
       <Directory Id="toolchain_$(VariantName)_usr_include_swift" Name="swift" />
@@ -225,10 +238,6 @@
     </ComponentGroup>
 
     <ComponentGroup Id="libdispatch">
-      <Component Directory="toolchain_$(VariantName)_usr_bin">
-        <File Source="$(ToolchainRoot)\usr\bin\dispatch.dll" />
-      </Component>
-
       <Component Directory="toolchain_$(VariantName)_usr_lib">
         <File Source="$(ToolchainRoot)\usr\lib\dispatch.lib" />
       </Component>
@@ -542,6 +551,39 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="SxSSwiftRuntime">
+      <Component Directory="toolchain_$(VariantName)_usr_bin_dispatch">
+        <File Source="$(ToolchainRoot)\usr\bin\dispatch\dispatch.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_FoundationEssentials">
+        <File Source="$(ToolchainRoot)\usr\bin\FoundationEssentials\FoundationEssentials.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency">
+        <File Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swift_StringProcessing">
+        <File Source="$(ToolchainRoot)\usr\bin\swift_StringProcessing\swift_StringProcessing.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swiftCore">
+        <File Source="$(ToolchainRoot)\usr\bin\swiftCore\swiftCore.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swiftCRT">
+        <File Source="$(ToolchainRoot)\usr\bin\swiftCRT\swiftCRT.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swiftDispatch">
+        <File Source="$(ToolchainRoot)\usr\bin\swiftDispatch\swiftDispatch.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swiftObservation">
+        <File Source="$(ToolchainRoot)\usr\bin\swiftObservation\swiftObservation.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swiftSynchronization">
+        <File Source="$(ToolchainRoot)\usr\bin\swiftSynchronization\swiftSynchronization.dll" />
+      </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swiftWinSDK">
+        <File Source="$(ToolchainRoot)\usr\bin\swiftWinSDK\swiftWinSDK.dll" />
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="Configuration">
       <Component Directory="$(ToolchainVersionedVariantDirectory)">
         <File Source="$(ToolchainRoot)\ToolchainInfo.plist" />
@@ -574,6 +616,7 @@
       <ComponentGroupRef Id="FoundationMacros" />
       <ComponentGroupRef Id="TestingMacros" />
       <ComponentGroupRef Id="mimalloc" />
+      <ComponentGroupRef Id="SxSSwiftRuntime" />
 
       <ComponentGroupRef Id="ClangResources_$(VariantName)" />
       <ComponentGroupRef Id="SwiftClangResources_$(VariantName)" />
