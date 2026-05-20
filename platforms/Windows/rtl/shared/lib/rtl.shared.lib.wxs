@@ -121,7 +121,7 @@
     <?if $(ProductArchitecture) != x86?>
     <ComponentGroup Id="swift_backtrace_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component Directory="LIBEXECDIR_$(ProductArchitecture)">
-        <File Source="$(SDKRoot)\usr\libexec\swift\swift-backtrace.exe" />
+        <File Source="$(RuntimeRoot)\usr\libexec\swift\swift-backtrace.exe" />
       </Component>
     </ComponentGroup>
     <?endif?>
