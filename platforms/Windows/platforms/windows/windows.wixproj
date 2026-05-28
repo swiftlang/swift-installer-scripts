@@ -2,10 +2,14 @@
   <PropertyGroup>
     <OutputName>windows</OutputName>
 
-    <SwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\Windows.sdk\usr\lib\swift\shims</SwiftShimsPath>
+    <PlatformRoot>$(ImageRoot)\Platforms\Windows.platform</PlatformRoot>
+    <SDKRoot>$(PlatformRoot)\Developer\SDKs\Windows.sdk</SDKRoot>
+    <SwiftShimsPath>$(SDKRoot)\usr\lib\swift\shims</SwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
+      PlatformRoot=$(PlatformRoot);
+      SDKRoot=$(SDKRoot);
       SwiftShimsPath=$(SwiftShimsPath);
       IncludeARM64=$(WindowsArchitectures.Contains("aarch64"));
       IncludeX64=$(WindowsArchitectures.Contains("x86_64"));

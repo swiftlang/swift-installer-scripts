@@ -13,9 +13,6 @@
     <Property Id="INSTALLAMD64SDK" Value="1" />
     <Property Id="INSTALLX86SDK" Value="1" />
 
-    <?define PlatformRoot = "$(ImageRoot)\Platforms\Android.platform"?>
-    <?define SDKRoot = "$(PlatformRoot)\Developer\SDKs\Android.sdk"?>
-
     <Media Id="1" Cabinet="android.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?if $(IncludeARM64) == True?>
       <Media Id="2" Cabinet="sdk.android.arm64.cab" EmbedCab="$(ArePackageCabsEmbedded)" />

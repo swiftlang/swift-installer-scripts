@@ -2,11 +2,15 @@
   <PropertyGroup>
     <OutputName>android</OutputName>
 
-    <SwiftShimsPath>$(ImageRoot)\Platforms\Android.platform\Developer\SDKs\Android.sdk\usr\lib\swift\shims</SwiftShimsPath>
+    <PlatformRoot>$(ImageRoot)\Platforms\Android.platform</PlatformRoot>
+    <SDKRoot>$(PlatformRoot)\Developer\SDKs\Android.sdk</SDKRoot>
+    <SwiftShimsPath>$(SDKRoot)\usr\lib\swift\shims</SwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
       ANDROID_INCLUDE_DS2=$(ANDROID_INCLUDE_DS2);
+      PlatformRoot=$(PlatformRoot);
+      SDKRoot=$(SDKRoot);
       SwiftShimsPath=$(SwiftShimsPath);
       IncludeARM64=$(AndroidArchitectures.Contains("aarch64"));
       IncludeARM=$(AndroidArchitectures.Contains("armv7"));
