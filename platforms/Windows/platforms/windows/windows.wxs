@@ -319,13 +319,6 @@
       </ComponentGroup>
     <?endif?>
 
-    <!-- _FoundationUnicode -->
-    <ComponentGroup Id="_FoundationUnicode" Directory="SDK_usr_include__foundation_unicode">
-      <?define Disk = 1?>
-      <?include ../_FoundationUnicode.wxi?>
-      <?undef Disk?>
-    </ComponentGroup>
-
     <?if $(IncludeARM64) == True?>
       <ComponentGroup Id="_FoundationUnicode.arm64" Directory="SDK_usr_lib_swift_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\_FoundationICU.lib" />
@@ -356,13 +349,6 @@
       </ComponentGroup>
     <?endif?>
 
-    <!-- _FoundationCShims -->
-    <ComponentGroup Id="_FoundationCShims" Directory="SDK_usr_include__FoundationCShims">
-      <?define Disk = 1?>
-      <?include ../_FoundationCShims.wxi?>
-      <?undef Disk?>
-    </ComponentGroup>
-
     <?if $(IncludeARM64) == True?>
       <ComponentGroup Id="lib_FoundationCShims.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\_FoundationCShims.lib" />
@@ -380,11 +366,6 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_FoundationCShims.lib" />
       </ComponentGroup>
     <?endif?>
-
-    <!-- BlocksRuntime -->
-    <ComponentGroup Id="BlocksRuntime" Directory="SDK_usr_include_Block">
-      <File Source="$(SDKRoot)\usr\include\Block\Block.h" />
-    </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
       <ComponentGroup Id="BlocksRuntime.arm64" Directory="SDK_usr_lib_swift_windows_arm64">
@@ -415,18 +396,6 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\BlocksRuntime.lib" />
       </ComponentGroup>
     <?endif?>
-
-    <!-- libdispatch -->
-    <ComponentGroup Id="Dispatch" Directory="SDK_usr_include_dispatch">
-      <?define Disk = 1?>
-      <?include ../CDispatch.wxi?>
-      <?undef Disk?>
-
-      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_base.h" />
-      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_unix_base.h" />
-      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_win_base.h" />
-      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\object.h" />
-    </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
       <ComponentGroup Id="dispatch.arm64" Directory="SDK_usr_lib_swift_windows_arm64">
@@ -499,15 +468,6 @@
         <File Directory="SDK_usr_lib_swift_static_windows_x86" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\libswiftDispatch.lib" />
       </ComponentGroup>
     <?endif?>
-
-    <!-- SwiftRemoteMirror -->
-    <ComponentGroup Id="SwiftRemoteMirror" Directory="SDK_usr_include_swift_SwiftRemoteMirror">
-      <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
-      <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\Platform.h" />
-      <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" />
-      <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirrorTypes.h" />
-      <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\module.modulemap" />
-    </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
       <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_windows_arm64">

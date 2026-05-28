@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="Dispatch">
+      <ComponentGroupRef Id="_DispatchHeaders" />
+      <ComponentGroupRef Id="_OSHeaders" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="_DispatchHeaders" Directory="SDK_usr_include_dispatch" Source="$(SDKRoot)\usr\include\dispatch">
+      <File Name="base.h" />
+      <File Name="block.h" />
+      <File Name="data.h" />
+      <File Name="dispatch.h" />
+      <File Name="group.h" />
+      <File Name="introspection.h" />
+      <File Name="io.h" />
+      <File Name="module.modulemap" />
+      <File Name="object.h" />
+      <File Name="once.h" />
+      <File Name="queue.h" />
+      <File Name="semaphore.h" />
+      <File Name="source.h" />
+      <File Name="time.h" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="_OSHeaders" Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os">
+      <File Name="generic_base.h" />
+      <File Name="generic_unix_base.h" />
+      <File Name="generic_win_base.h" />
+      <File Name="object.h" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
