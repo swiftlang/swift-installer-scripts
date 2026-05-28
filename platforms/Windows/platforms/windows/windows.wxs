@@ -29,6 +29,21 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsPlatformUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
+    <!-- SDK manifests drive the generated module directories and architecture feature refs below. -->
+    <?define SDKDeveloperToolsModules = XCTest;Testing?>
+
+    <?define SDKPlatformOverlayModules = CRT;WinSDK?>
+    <?define SDKCXXInteropModules = Cxx;CxxStdlib?>
+    <?define SDKDispatchComponentGroups = BlocksRuntime;dispatch;swiftDispatch?>
+    <?define SDKDispatchModuleDirectoryNames = Dispatch?>
+    <?define SDKFoundationComponentGroups = _FoundationCollections;_FoundationUnicode;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
+    <?define SDKFoundationModuleDirectoryNames = _FoundationCollections;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
+    <?define SDKFoundationStaticComponentGroups = CoreFoundation;FoundationDependencies;lib_FoundationCShims?>
+    <?define SDKStandardModules = _Builtin_float;_Concurrency;_Differentiation;_RegexParser;_StringProcessing;_Volatile;Distributed;Observation;RegexBuilder;Runtime;Swift;SwiftOnoneSupport;Synchronization?>
+    <?define SDKModuleDirectoryNames = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchModuleDirectoryNames);$(SDKFoundationModuleDirectoryNames);$(SDKStandardModules)?>
+
+    <?define SDKComponentGroups = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchComponentGroups);$(SDKFoundationComponentGroups);$(SDKStandardModules);SwiftRemoteMirror?>
+
     <!--
       └─ Swift
           └─ Platforms
@@ -132,30 +147,9 @@
                     <Directory Id="SDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="1" />
                     <Directory Id="SDK_usr_lib_swift_shims" Name="shims" DiskId="1" />
                     <Directory Id="SDK_usr_lib_swift_windows" Name="windows">
-                      <Directory Id="_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
-                      <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
-                      <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
-                      <Directory Id="_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
-                      <Directory Id="_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
-                      <Directory Id="_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
-                      <Directory Id="_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
-                      <Directory Id="CRT.swiftmodule" Name="CRT.swiftmodule" />
-                      <Directory Id="Cxx.swiftmodule" Name="Cxx.swiftmodule" />
-                      <Directory Id="CxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
-                      <Directory Id="Dispatch.swiftmodule" Name="Dispatch.swiftmodule" />
-                      <Directory Id="Distributed.swiftmodule" Name="Distributed.swiftmodule" />
-                      <Directory Id="Foundation.swiftmodule" Name="Foundation.swiftmodule" />
-                      <Directory Id="FoundationEssentials.swiftmodule" Name="FoundationEssentials.swiftmodule" />
-                      <Directory Id="FoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
-                      <Directory Id="FoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
-                      <Directory Id="FoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
-                      <Directory Id="Observation.swiftmodule" Name="Observation.swiftmodule" />
-                      <Directory Id="RegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
-                      <Directory Id="Runtime.swiftmodule" Name="Runtime.swiftmodule" />
-                      <Directory Id="Swift.swiftmodule" Name="Swift.swiftmodule" />
-                      <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
-                      <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
-                      <Directory Id="WinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
+                      <?foreach ModuleName in $(SDKModuleDirectoryNames)?>
+                        <Directory Id="$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
+                      <?endforeach?>
                       <?if $(IncludeARM64) == True?>
                         <Directory Id="SDK_usr_lib_swift_windows_arm64" Name="aarch64" DiskId="2" />
                       <?endif?>
@@ -169,30 +163,9 @@
                   </Directory>
                   <Directory Name="swift_static">
                     <Directory Id="SDK_usr_lib_swift_static_winows" Name="windows">
-                      <Directory Id="lib_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
-                      <Directory Id="lib_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
-                      <Directory Id="lib_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
-                      <Directory Id="lib_FoundationCollections.swiftmodule" Name="_FoundationCollections.swiftmodule" />
-                      <Directory Id="lib_RegexParser.swiftmodule" Name="_RegexParser.swiftmodule" />
-                      <Directory Id="lib_StringProcessing.swiftmodule" Name="_StringProcessing.swiftmodule" />
-                      <Directory Id="lib_Volatile.swiftmodule" Name="_Volatile.swiftmodule" />
-                      <Directory Id="libCRT.swiftmodule" Name="CRT.swiftmodule" />
-                      <Directory Id="libCxx.swiftmodule" Name="Cxx.swiftmodule" />
-                      <Directory Id="libCxxStdlib.swiftmodule" Name="CxxStdlib.swiftmodule" />
-                      <Directory Id="libDispatch.swiftmodule" Name="Dispatch.swiftmodule" />
-                      <Directory Id="libDistributed.swiftmodule" Name="Distributed.swiftmodule" />
-                      <Directory Id="libFoundation.swiftmodule" Name="Foundation.swiftmodule" />
-                      <Directory Id="libFoundationEssentials.swiftmodule" Name="FoundationEssentials.swiftmodule" />
-                      <Directory Id="libFoundationInternationalization.swiftmodule" Name="FoundationInternationalization.swiftmodule" />
-                      <Directory Id="libFoundationNetworking.swiftmodule" Name="FoundationNetworking.swiftmodule" />
-                      <Directory Id="libFoundationXML.swiftmodule" Name="FoundationXML.swiftmodule" />
-                      <Directory Id="libObservation.swiftmodule" Name="Observation.swiftmodule" />
-                      <Directory Id="libRegexBuilder.swiftmodule" Name="RegexBuilder.swiftmodule" />
-                      <Directory Id="libRuntime.swiftmodule" Name="Runtime.swiftmodule" />
-                      <Directory Id="libSwift.swiftmodule" Name="Swift.swiftmodule" />
-                      <Directory Id="libSwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
-                      <Directory Id="libSynchronization.swiftmodule" Name="Synchronization.swiftmodule" />
-                      <Directory Id="libWinSDK.swiftmodule" Name="WinSDK.swiftmodule" />
+                      <?foreach ModuleName in $(SDKModuleDirectoryNames)?>
+                        <Directory Id="lib$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
+                      <?endforeach?>
                       <?if $(IncludeARM64) == True?>
                         <Directory Id="SDK_usr_lib_swift_static_windows_arm64" Name="aarch64" DiskId="2" />
                       <?endif?>
@@ -1783,8 +1756,9 @@
       <Feature Id="arm64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
-        <ComponentGroupRef Id="XCTest.arm64" />
-        <ComponentGroupRef Id="Testing.arm64" />
+        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+          <ComponentGroupRef Id="$(ComponentGroup).arm64" />
+        <?endforeach?>
       </Feature>
     <?endif?>
 
@@ -1792,8 +1766,9 @@
       <Feature Id="x64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
-        <ComponentGroupRef Id="XCTest.x64" />
-        <ComponentGroupRef Id="Testing.x64" />
+        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+          <ComponentGroupRef Id="$(ComponentGroup).x64" />
+        <?endforeach?>
       </Feature>
     <?endif?>
 
@@ -1801,8 +1776,9 @@
       <Feature Id="x86.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
-        <ComponentGroupRef Id="XCTest.x86" />
-        <ComponentGroupRef Id="Testing.x86" />
+        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+          <ComponentGroupRef Id="$(ComponentGroup).x86" />
+        <?endforeach?>
       </Feature>
     <?endif?>
 
@@ -1823,66 +1799,17 @@
       <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
-        <ComponentGroupRef Id="_Builtin_float.arm64" />
-        <ComponentGroupRef Id="_Concurrency.arm64" />
-        <ComponentGroupRef Id="_Differentiation.arm64" />
-        <ComponentGroupRef Id="_FoundationCollections.arm64" />
-        <ComponentGroupRef Id="_FoundationUnicode.arm64" />
-        <ComponentGroupRef Id="_RegexParser.arm64" />
-        <ComponentGroupRef Id="_StringProcessing.arm64" />
-        <ComponentGroupRef Id="_Volatile.arm64" />
-        <ComponentGroupRef Id="BlocksRuntime.arm64" />
-        <ComponentGroupRef Id="CRT.arm64" />
-        <ComponentGroupRef Id="Cxx.arm64" />
-        <ComponentGroupRef Id="CxxStdlib.arm64" />
-        <ComponentGroupRef Id="dispatch.arm64" />
-        <ComponentGroupRef Id="Distributed.arm64" />
-        <ComponentGroupRef Id="Foundation.arm64" />
-        <ComponentGroupRef Id="FoundationEssentials.arm64" />
-        <ComponentGroupRef Id="FoundationInternationalization.arm64" />
-        <ComponentGroupRef Id="FoundationNetworking.arm64" />
-        <ComponentGroupRef Id="FoundationXML.arm64" />
-        <ComponentGroupRef Id="Observation.arm64" />
-        <ComponentGroupRef Id="RegexBuilder.arm64" />
-        <ComponentGroupRef Id="Runtime.arm64" />
-        <ComponentGroupRef Id="Swift.arm64" />
-        <ComponentGroupRef Id="swiftDispatch.arm64" />
-        <ComponentGroupRef Id="SwiftOnoneSupport.arm64" />
-        <ComponentGroupRef Id="SwiftRemoteMirror.arm64" />
-        <ComponentGroupRef Id="Synchronization.arm64" />
-        <ComponentGroupRef Id="WinSDK.arm64" />
+        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+          <ComponentGroupRef Id="$(ComponentGroup).arm64" />
+        <?endforeach?>
 
-        <ComponentGroupRef Id="CoreFoundation.arm64" />
-        <ComponentGroupRef Id="FoundationDependencies.arm64" />
-        <ComponentGroupRef Id="lib_Builtin_float.arm64" />
-        <ComponentGroupRef Id="lib_Concurrency.arm64" />
-        <ComponentGroupRef Id="lib_Differentiation.arm64" />
-        <ComponentGroupRef Id="lib_FoundationCollections.arm64" />
-        <ComponentGroupRef Id="lib_FoundationCShims.arm64" />
-        <ComponentGroupRef Id="lib_FoundationUnicode.arm64" />
-        <ComponentGroupRef Id="lib_RegexParser.arm64" />
-        <ComponentGroupRef Id="lib_StringProcessing.arm64" />
-        <ComponentGroupRef Id="lib_Volatile.arm64" />
-        <ComponentGroupRef Id="libBlocksRuntime.arm64" />
-        <ComponentGroupRef Id="libCRT.arm64" />
-        <ComponentGroupRef Id="libCxx.arm64" />
-        <ComponentGroupRef Id="libCxxStdlib.arm64" />
-        <ComponentGroupRef Id="libdispatch.arm64" />
-        <ComponentGroupRef Id="libDistributed.arm64" />
-        <ComponentGroupRef Id="libFoundation.arm64" />
-        <ComponentGroupRef Id="libFoundationEssentials.arm64" />
-        <ComponentGroupRef Id="libFoundationInternationalization.arm64" />
-        <ComponentGroupRef Id="libFoundationNetworking.arm64" />
-        <ComponentGroupRef Id="libFoundationXML.arm64" />
-        <ComponentGroupRef Id="libObservation.arm64" />
-        <ComponentGroupRef Id="libRegexBuilder.arm64" />
-        <ComponentGroupRef Id="libRuntime.arm64" />
-        <ComponentGroupRef Id="libSwift.arm64" />
-        <ComponentGroupRef Id="libswiftDispatch.arm64" />
-        <ComponentGroupRef Id="libSwiftOnoneSupport.arm64" />
-        <ComponentGroupRef Id="libSwiftRemoteMirror.arm64" />
-        <ComponentGroupRef Id="libSynchronization.arm64" />
-        <ComponentGroupRef Id="libWinSDK.arm64" />
+        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
+          <ComponentGroupRef Id="$(ComponentGroup).arm64" />
+        <?endforeach?>
+
+        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+          <ComponentGroupRef Id="lib$(ComponentGroup).arm64" />
+        <?endforeach?>
 
         <ComponentGroupRef Id="Registrar.arm64" />
 
@@ -1896,66 +1823,17 @@
       <Feature Id="x64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
-        <ComponentGroupRef Id="_Builtin_float.x64" />
-        <ComponentGroupRef Id="_Concurrency.x64" />
-        <ComponentGroupRef Id="_Differentiation.x64" />
-        <ComponentGroupRef Id="_FoundationCollections.x64" />
-        <ComponentGroupRef Id="_FoundationUnicode.x64" />
-        <ComponentGroupRef Id="_RegexParser.x64" />
-        <ComponentGroupRef Id="_StringProcessing.x64" />
-        <ComponentGroupRef Id="_Volatile.x64" />
-        <ComponentGroupRef Id="BlocksRuntime.x64" />
-        <ComponentGroupRef Id="CRT.x64" />
-        <ComponentGroupRef Id="Cxx.x64" />
-        <ComponentGroupRef Id="CxxStdlib.x64" />
-        <ComponentGroupRef Id="dispatch.x64" />
-        <ComponentGroupRef Id="Distributed.x64" />
-        <ComponentGroupRef Id="Foundation.x64" />
-        <ComponentGroupRef Id="FoundationEssentials.x64" />
-        <ComponentGroupRef Id="FoundationInternationalization.x64" />
-        <ComponentGroupRef Id="FoundationNetworking.x64" />
-        <ComponentGroupRef Id="FoundationXML.x64" />
-        <ComponentGroupRef Id="Observation.x64" />
-        <ComponentGroupRef Id="RegexBuilder.x64" />
-        <ComponentGroupRef Id="Runtime.x64" />
-        <ComponentGroupRef Id="Swift.x64" />
-        <ComponentGroupRef Id="swiftDispatch.x64" />
-        <ComponentGroupRef Id="SwiftOnoneSupport.x64" />
-        <ComponentGroupRef Id="SwiftRemoteMirror.x64" />
-        <ComponentGroupRef Id="Synchronization.x64" />
-        <ComponentGroupRef Id="WinSDK.x64" />
+        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+          <ComponentGroupRef Id="$(ComponentGroup).x64" />
+        <?endforeach?>
 
-        <ComponentGroupRef Id="CoreFoundation.x64" />
-        <ComponentGroupRef Id="FoundationDependencies.x64" />
-        <ComponentGroupRef Id="lib_Builtin_float.x64" />
-        <ComponentGroupRef Id="lib_Concurrency.x64" />
-        <ComponentGroupRef Id="lib_Differentiation.x64" />
-        <ComponentGroupRef Id="lib_FoundationCollections.x64" />
-        <ComponentGroupRef Id="lib_FoundationCShims.x64" />
-        <ComponentGroupRef Id="lib_FoundationUnicode.x64" />
-        <ComponentGroupRef Id="lib_RegexParser.x64" />
-        <ComponentGroupRef Id="lib_StringProcessing.x64" />
-        <ComponentGroupRef Id="lib_Volatile.x64" />
-        <ComponentGroupRef Id="libBlocksRuntime.x64" />
-        <ComponentGroupRef Id="libCRT.x64" />
-        <ComponentGroupRef Id="libCxx.x64" />
-        <ComponentGroupRef Id="libCxxStdlib.x64" />
-        <ComponentGroupRef Id="libdispatch.x64" />
-        <ComponentGroupRef Id="libDistributed.x64" />
-        <ComponentGroupRef Id="libFoundation.x64" />
-        <ComponentGroupRef Id="libFoundationEssentials.x64" />
-        <ComponentGroupRef Id="libFoundationInternationalization.x64" />
-        <ComponentGroupRef Id="libFoundationNetworking.x64" />
-        <ComponentGroupRef Id="libFoundationXML.x64" />
-        <ComponentGroupRef Id="libObservation.x64" />
-        <ComponentGroupRef Id="libRegexBuilder.x64" />
-        <ComponentGroupRef Id="libRuntime.x64" />
-        <ComponentGroupRef Id="libSwift.x64" />
-        <ComponentGroupRef Id="libswiftDispatch.x64" />
-        <ComponentGroupRef Id="libSwiftOnoneSupport.x64" />
-        <ComponentGroupRef Id="libSwiftRemoteMirror.x64" />
-        <ComponentGroupRef Id="libSynchronization.x64" />
-        <ComponentGroupRef Id="libWinSDK.x64" />
+        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
+          <ComponentGroupRef Id="$(ComponentGroup).x64" />
+        <?endforeach?>
+
+        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+          <ComponentGroupRef Id="lib$(ComponentGroup).x64" />
+        <?endforeach?>
 
         <ComponentGroupRef Id="Registrar.x64" />
 
@@ -1969,66 +1847,17 @@
       <Feature Id="x86" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
-        <ComponentGroupRef Id="_Builtin_float.x86" />
-        <ComponentGroupRef Id="_Concurrency.x86" />
-        <ComponentGroupRef Id="_Differentiation.x86" />
-        <ComponentGroupRef Id="_FoundationCollections.x86" />
-        <ComponentGroupRef Id="_FoundationUnicode.x86" />
-        <ComponentGroupRef Id="_RegexParser.x86" />
-        <ComponentGroupRef Id="_StringProcessing.x86" />
-        <ComponentGroupRef Id="_Volatile.x86" />
-        <ComponentGroupRef Id="BlocksRuntime.x86" />
-        <ComponentGroupRef Id="CRT.x86" />
-        <ComponentGroupRef Id="Cxx.x86" />
-        <ComponentGroupRef Id="CxxStdlib.x86" />
-        <ComponentGroupRef Id="dispatch.x86" />
-        <ComponentGroupRef Id="Distributed.x86" />
-        <ComponentGroupRef Id="Foundation.x86" />
-        <ComponentGroupRef Id="FoundationEssentials.x86" />
-        <ComponentGroupRef Id="FoundationInternationalization.x86" />
-        <ComponentGroupRef Id="FoundationNetworking.x86" />
-        <ComponentGroupRef Id="FoundationXML.x86" />
-        <ComponentGroupRef Id="Observation.x86" />
-        <ComponentGroupRef Id="RegexBuilder.x86" />
-        <ComponentGroupRef Id="Runtime.x86" />
-        <ComponentGroupRef Id="Swift.x86" />
-        <ComponentGroupRef Id="swiftDispatch.x86" />
-        <ComponentGroupRef Id="SwiftOnoneSupport.x86" />
-        <ComponentGroupRef Id="SwiftRemoteMirror.x86" />
-        <ComponentGroupRef Id="Synchronization.x86" />
-        <ComponentGroupRef Id="WinSDK.x86" />
+        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+          <ComponentGroupRef Id="$(ComponentGroup).x86" />
+        <?endforeach?>
 
-        <ComponentGroupRef Id="CoreFoundation.x86" />
-        <ComponentGroupRef Id="FoundationDependencies.x86" />
-        <ComponentGroupRef Id="lib_Builtin_float.x86" />
-        <ComponentGroupRef Id="lib_Concurrency.x86" />
-        <ComponentGroupRef Id="lib_Differentiation.x86" />
-        <ComponentGroupRef Id="lib_FoundationCollections.x86" />
-        <ComponentGroupRef Id="lib_FoundationCShims.x86" />
-        <ComponentGroupRef Id="lib_FoundationUnicode.x86" />
-        <ComponentGroupRef Id="lib_RegexParser.x86" />
-        <ComponentGroupRef Id="lib_StringProcessing.x86" />
-        <ComponentGroupRef Id="lib_Volatile.x86" />
-        <ComponentGroupRef Id="libBlocksRuntime.x86" />
-        <ComponentGroupRef Id="libCRT.x86" />
-        <ComponentGroupRef Id="libCxx.x86" />
-        <ComponentGroupRef Id="libCxxStdlib.x86" />
-        <ComponentGroupRef Id="libdispatch.x86" />
-        <ComponentGroupRef Id="libDistributed.x86" />
-        <ComponentGroupRef Id="libFoundation.x86" />
-        <ComponentGroupRef Id="libFoundationEssentials.x86" />
-        <ComponentGroupRef Id="libFoundationInternationalization.x86" />
-        <ComponentGroupRef Id="libFoundationNetworking.x86" />
-        <ComponentGroupRef Id="libFoundationXML.x86" />
-        <ComponentGroupRef Id="libObservation.x86" />
-        <ComponentGroupRef Id="libRegexBuilder.x86" />
-        <ComponentGroupRef Id="libRuntime.x86" />
-        <ComponentGroupRef Id="libSwift.x86" />
-        <ComponentGroupRef Id="libswiftDispatch.x86" />
-        <ComponentGroupRef Id="libSwiftOnoneSupport.x86" />
-        <ComponentGroupRef Id="libSwiftRemoteMirror.x86" />
-        <ComponentGroupRef Id="libSynchronization.x86" />
-        <ComponentGroupRef Id="libWinSDK.x86" />
+        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
+          <ComponentGroupRef Id="$(ComponentGroup).x86" />
+        <?endforeach?>
+
+        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+          <ComponentGroupRef Id="lib$(ComponentGroup).x86" />
+        <?endforeach?>
 
         <ComponentGroupRef Id="Registrar.x86" />
 
