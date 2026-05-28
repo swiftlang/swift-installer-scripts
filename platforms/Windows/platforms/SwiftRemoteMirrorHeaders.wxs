@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="SwiftRemoteMirror" Directory="SDK_usr_include_swift_SwiftRemoteMirror" Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror">
+      <File Name="MemoryReaderInterface.h" />
+      <File Name="Platform.h" />
+      <File Name="SwiftRemoteMirror.h" />
+      <File Name="SwiftRemoteMirrorTypes.h" />
+      <File Name="module.modulemap" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

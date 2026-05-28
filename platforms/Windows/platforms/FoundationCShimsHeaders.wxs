@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="_FoundationCShims" Directory="SDK_usr_include__FoundationCShims" Source="$(SDKRoot)\usr\include\_FoundationCShims">
+      <File Name="bplist_shims.h" />
+      <File Name="CFUniCharBitmapData.h" />
+      <File Name="CFUniCharBitmapData.inc.h" />
+      <File Name="filemanager_shims.h" />
+      <File Name="io_shims.h" />
+      <File Name="module.modulemap" />
+      <File Name="platform_shims.h" />
+      <File Name="string_shims.h" />
+      <File Name="uuid.h" />
+      <File Name="_CShimsMacros.h" />
+      <File Name="_CShimsTargetConditionals.h" />
+      <File Name="_CStdlib.h" />
+      <File Name="_FoundationCShims.h" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
