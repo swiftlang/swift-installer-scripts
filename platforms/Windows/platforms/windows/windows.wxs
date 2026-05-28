@@ -15,10 +15,6 @@
     <Property Id="INSTALLX86SDK" Value="1" />
     <Property Id="INSTALLX86REDIST" Value="1" />
 
-    <?define PlatformRoot = "$(ImageRoot)\Platforms\Windows.platform"?>
-
-    <?define SDKRoot = "$(PlatformRoot)\Developer\SDKs\Windows.sdk"?>
-
     <Media Id="1" Cabinet="windows.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?if $(IncludeARM64) == True?>
       <Media Id="2" Cabinet="sdk.windows.arm64.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
