@@ -119,20 +119,20 @@
             <Directory Id="AndroidSDK" Name="Android.sdk">
               <Directory Name="usr">
                 <Directory Name="include">
-                  <Directory Id="AndroidSDK_usr_include__foundation_unicode" Name="_foundation_unicode" DiskId="1" />
-                  <Directory Id="AndroidSDK_usr_include__FoundationCShims" Name="_FoundationCShims" DiskId="1" />
-                  <Directory Id="AndroidSDK_usr_include_Block" Name="Block" DiskId="1" />
-                  <Directory Id="AndroidSDK_usr_include_dispatch" Name="dispatch" DiskId="1" />
-                  <Directory Id="AndroidSDK_usr_include_os" Name="os" DiskId="1" />
+                  <Directory Id="SDK_usr_include__foundation_unicode" Name="_foundation_unicode" DiskId="1" />
+                  <Directory Id="SDK_usr_include__FoundationCShims" Name="_FoundationCShims" DiskId="1" />
+                  <Directory Id="SDK_usr_include_Block" Name="Block" DiskId="1" />
+                  <Directory Id="SDK_usr_include_dispatch" Name="dispatch" DiskId="1" />
+                  <Directory Id="SDK_usr_include_os" Name="os" DiskId="1" />
                   <Directory Name="swift">
-                    <Directory Id="AndroidSDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror" DiskId="1" />
+                    <Directory Id="SDK_usr_include_swift_SwiftRemoteMirror" Name="SwiftRemoteMirror" DiskId="1" />
                   </Directory>
                 </Directory>
                 <Directory Name="lib">
                   <Directory Name="swift">
-                    <Directory Id="AndroidSDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="1" />
-                    <Directory Id="AndroidSDK_usr_lib_swift_shims" Name="shims" DiskId="1" />
-                    <Directory Id="AndroidSDK_usr_lib_swift_android" Name="android">
+                    <Directory Id="SDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="1" />
+                    <Directory Id="SDK_usr_lib_swift_shims" Name="shims" DiskId="1" />
+                    <Directory Id="SDK_usr_lib_swift_android" Name="android">
                       <Directory Id="_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
                       <Directory Id="_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
                       <Directory Id="_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
@@ -157,21 +157,21 @@
                       <Directory Id="SwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="Synchronization.swiftmodule" Name="Synchronization.swiftmodule" />
                       <?if $(IncludeARM64) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_android_arm64" Name="aarch64" DiskId="2" />
+                        <Directory Id="SDK_usr_lib_swift_android_arm64" Name="aarch64" DiskId="2" />
                       <?endif?>
                       <?if $(IncludeARM) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_android_arm" Name="armv7" DiskId="3" />
+                        <Directory Id="SDK_usr_lib_swift_android_arm" Name="armv7" DiskId="3" />
                       <?endif?>
                       <?if $(IncludeX64) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_android_x64" Name="x86_64" DiskId="4" />
+                        <Directory Id="SDK_usr_lib_swift_android_x64" Name="x86_64" DiskId="4" />
                       <?endif?>
                       <?if $(IncludeX86) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_android_x86" Name="i686" DiskId="5" />
+                        <Directory Id="SDK_usr_lib_swift_android_x86" Name="i686" DiskId="5" />
                       <?endif?>
                     </Directory>
                   </Directory>
                   <Directory Name="swift_static">
-                    <Directory Id="AndroidSDK_usr_lib_swift_static_android" Name="android">
+                    <Directory Id="SDK_usr_lib_swift_static_android" Name="android">
                       <Directory Id="lib_Builtin_float.swiftmodule" Name="_Builtin_float.swiftmodule" />
                       <Directory Id="lib_Concurrency.swiftmodule" Name="_Concurrency.swiftmodule" />
                       <Directory Id="lib_Differentiation.swiftmodule" Name="_Differentiation.swiftmodule" />
@@ -196,21 +196,21 @@
                       <Directory Id="libSwiftOnoneSupport.swiftmodule" Name="SwiftOnoneSupport.swiftmodule" />
                       <Directory Id="libSynchronization.swiftmodule" Name="Synchronization.swiftmodule" />
                       <?if $(IncludeARM64) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_static_android_arm64" Name="aarch64" DiskId="2" />
+                        <Directory Id="SDK_usr_lib_swift_static_android_arm64" Name="aarch64" DiskId="2" />
                       <?endif?>
                       <?if $(IncludeARM) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_static_android_arm" Name="armv7" DiskId="3" />
+                        <Directory Id="SDK_usr_lib_swift_static_android_arm" Name="armv7" DiskId="3" />
                       <?endif?>
                       <?if $(IncludeX64) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_static_android_x64" Name="x86_64" DiskId="4" />
+                        <Directory Id="SDK_usr_lib_swift_static_android_x64" Name="x86_64" DiskId="4" />
                       <?endif?>
                       <?if $(IncludeX86) == True?>
-                        <Directory Id="AndroidSDK_usr_lib_swift_static_android_x86" Name="i686" DiskId="5" />
+                        <Directory Id="SDK_usr_lib_swift_static_android_x86" Name="i686" DiskId="5" />
                       <?endif?>
                     </Directory>
                   </Directory>
                 </Directory>
-                <Directory Id="AndroidSDK_usr_share" Name="share" DiskId="1" />
+                <Directory Id="SDK_usr_share" Name="share" DiskId="1" />
               </Directory>
             </Directory>
           </Directory>
@@ -332,146 +332,146 @@
     <?endif?>
 
     <!-- _FoundationUnicode -->
-    <ComponentGroup Id="_FoundationUnicode" Directory="AndroidSDK_usr_include__foundation_unicode">
+    <ComponentGroup Id="_FoundationUnicode" Directory="SDK_usr_include__foundation_unicode">
       <?define Disk = 1?>
       <?include ../_FoundationUnicode.wxi?>
       <?undef Disk?>
     </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="_FoundationUnicode.arm64" Directory="AndroidSDK_usr_lib_swift_android_arm64">
+      <ComponentGroup Id="_FoundationUnicode.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\lib_FoundationICU.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="lib_FoundationUnicode.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="lib_FoundationUnicode.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationICU.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="_FoundationUnicode.arm" Directory="AndroidSDK_usr_lib_swift_android_arm">
+      <ComponentGroup Id="_FoundationUnicode.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\lib_FoundationICU.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="lib_FoundationUnicode.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="lib_FoundationUnicode.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationICU.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="_FoundationUnicode.x64" Directory="AndroidSDK_usr_lib_swift_android_x64">
+      <ComponentGroup Id="_FoundationUnicode.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\lib_FoundationICU.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="lib_FoundationUnicode.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="lib_FoundationUnicode.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationICU.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="_FoundationUnicode.x86" Directory="AndroidSDK_usr_lib_swift_android_x86">
+      <ComponentGroup Id="_FoundationUnicode.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\android\i686\lib_FoundationICU.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="lib_FoundationUnicode.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="lib_FoundationUnicode.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationICU.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- _FoundationCShims -->
-    <ComponentGroup Id="_FoundationCShims" Directory="AndroidSDK_usr_include__FoundationCShims">
+    <ComponentGroup Id="_FoundationCShims" Directory="SDK_usr_include__FoundationCShims">
       <?define Disk = 1?>
       <?include ../_FoundationCShims.wxi?>
       <?undef Disk?>
     </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="lib_FoundationCShims.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="lib_FoundationCShims.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="lib_FoundationCShims.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="lib_FoundationCShims.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="lib_FoundationCShims.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="lib_FoundationCShims.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="lib_FoundationCShims.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="lib_FoundationCShims.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- BlocksRuntime -->
-    <ComponentGroup Id="BlocksRuntime" Directory="AndroidSDK_usr_include_Block">
+    <ComponentGroup Id="BlocksRuntime" Directory="SDK_usr_include_Block">
       <File Source="$(SDKRoot)\usr\include\Block\Block.h" />
     </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="BlocksRuntime.arm64" Directory="AndroidSDK_usr_lib_swift_android_arm64">
+      <ComponentGroup Id="BlocksRuntime.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libBlocksRuntime.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libBlocksRuntime.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="libBlocksRuntime.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libBlocksRuntime.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="BlocksRuntime.arm" Directory="AndroidSDK_usr_lib_swift_android_arm">
+      <ComponentGroup Id="BlocksRuntime.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libBlocksRuntime.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libBlocksRuntime.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="libBlocksRuntime.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libBlocksRuntime.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="BlocksRuntime.x64" Directory="AndroidSDK_usr_lib_swift_android_x64">
+      <ComponentGroup Id="BlocksRuntime.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libBlocksRuntime.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libBlocksRuntime.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="libBlocksRuntime.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libBlocksRuntime.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="BlocksRuntime.x86" Directory="AndroidSDK_usr_lib_swift_android_x86">
+      <ComponentGroup Id="BlocksRuntime.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libBlocksRuntime.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libBlocksRuntime.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="libBlocksRuntime.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libBlocksRuntime.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- libdispatch -->
-    <ComponentGroup Id="Dispatch" Directory="AndroidSDK_usr_include_dispatch">
+    <ComponentGroup Id="Dispatch" Directory="SDK_usr_include_dispatch">
       <?define Disk = 1?>
       <?include ../CDispatch.wxi?>
       <?undef Disk?>
 
-      <File Directory="AndroidSDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_base.h" />
-      <File Directory="AndroidSDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_unix_base.h" />
-      <File Directory="AndroidSDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_win_base.h" />
-      <File Directory="AndroidSDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\object.h" />
+      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_base.h" />
+      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_unix_base.h" />
+      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\generic_win_base.h" />
+      <File Directory="SDK_usr_include_os" Source="$(SDKRoot)\usr\include\os\object.h" />
     </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="dispatch.arm64" Directory="AndroidSDK_usr_lib_swift_android_arm64">
+      <ComponentGroup Id="dispatch.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libDispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libdispatch.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="libdispatch.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libdispatch.a" />
       </ComponentGroup>
 
@@ -479,23 +479,23 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftDispatch.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftDispatch.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libswiftDispatch.arm64" Directory="libDispatch.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftDispatch.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftDispatch.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="dispatch.arm" Directory="AndroidSDK_usr_lib_swift_android_arm">
+      <ComponentGroup Id="dispatch.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libdispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libdispatch.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="libdispatch.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libdispatch.a" />
       </ComponentGroup>
 
@@ -503,23 +503,23 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftDispatch.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftDispatch.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libswiftDispatch.arm" Directory="libDispatch.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftDispatch.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftDispatch.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="dispatch.x64" Directory="AndroidSDK_usr_lib_swift_android_x64">
+      <ComponentGroup Id="dispatch.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libdispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libdispatch.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="libdispatch.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libdispatch.a" />
       </ComponentGroup>
 
@@ -527,23 +527,23 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDispatch.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDispatch.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libswiftDispatch.x64" Directory="libDispatch.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftDispatch.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftDispatch.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="dispatch.x86" Directory="AndroidSDK_usr_lib_swift_android_x86">
+      <ComponentGroup Id="dispatch.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libdispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libdispatch.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="libdispatch.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libdispatch.a" />
       </ComponentGroup>
 
@@ -551,19 +551,19 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftDispatch.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftDispatch.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libswiftDispatch.x86" Directory="libDispatch.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftDispatch.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftDispatch.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- SwiftRemoteMirror -->
-    <ComponentGroup Id="SwiftRemoteMirror" Directory="AndroidSDK_usr_include_swift_SwiftRemoteMirror">
+    <ComponentGroup Id="SwiftRemoteMirror" Directory="SDK_usr_include_swift_SwiftRemoteMirror">
       <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\MemoryReaderInterface.h" />
       <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\Platform.h" />
       <File Source="$(SDKRoot)\usr\include\swift\SwiftRemoteMirror\SwiftRemoteMirror.h" />
@@ -572,47 +572,47 @@
     </ComponentGroup>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="AndroidSDK_usr_lib_swift_android_arm64">
+      <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="libSwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.arm" Directory="AndroidSDK_usr_lib_swift_android_arm">
+      <ComponentGroup Id="SwiftRemoteMirror.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="libSwiftRemoteMirror.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x64" Directory="AndroidSDK_usr_lib_swift_android_x64">
+      <ComponentGroup Id="SwiftRemoteMirror.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="libSwiftRemoteMirror.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x86" Directory="AndroidSDK_usr_lib_swift_android_x86">
+      <ComponentGroup Id="SwiftRemoteMirror.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="libSwiftRemoteMirror.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- apinotes -->
-    <ComponentGroup Id="APINotes" Directory="AndroidSDK_usr_lib_swift_apinotes">
+    <ComponentGroup Id="APINotes" Directory="SDK_usr_lib_swift_apinotes">
       <File Source="$(SDKRoot)\usr\lib\swift\apinotes\std.apinotes" />
       <File Source="$(SDKRoot)\usr\lib\swift\apinotes\posix_filesystem.apinotes" />
     </ComponentGroup>
@@ -623,14 +623,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Builtin_float.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Builtin_float.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Builtin_float.arm64" Directory="lib_Builtin_float.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Builtin_float.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Builtin_float.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -639,14 +639,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Builtin_float.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Builtin_float.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Builtin_float.arm" Directory="lib_Builtin_float.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Builtin_float.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Builtin_float.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -655,14 +655,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Builtin_float.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Builtin_float.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Builtin_float.x64" Directory="lib_Builtin_float.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Builtin_float.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Builtin_float.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -671,14 +671,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Builtin_float.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Builtin_float.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Builtin_float.x86" Directory="lib_Builtin_float.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Builtin_float.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Builtin_float.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -688,14 +688,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Concurrency.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Concurrency.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Concurrency.arm64" Directory="lib_Concurrency.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Concurrency.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Concurrency.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -704,14 +704,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Concurrency.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Concurrency.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Concurrency.arm" Directory="lib_Concurrency.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Concurrency.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Concurrency.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -720,14 +720,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Concurrency.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Concurrency.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Concurrency.x64" Directory="lib_Concurrency.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Concurrency.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Concurrency.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -736,14 +736,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Concurrency.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Concurrency.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Concurrency.x86" Directory="lib_Concurrency.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Concurrency.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Concurrency.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Concurrency.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -753,14 +753,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Differentiation.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Differentiation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Differentiation.arm64" Directory="lib_Differentiation.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Differentiation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Differentiation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -769,14 +769,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Differentiation.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Differentiation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Differentiation.arm" Directory="lib_Differentiation.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Differentiation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Differentiation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -785,14 +785,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Differentiation.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Differentiation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Differentiation.x64" Directory="lib_Differentiation.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Differentiation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Differentiation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -801,14 +801,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Differentiation.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Differentiation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Differentiation.x86" Directory="lib_Differentiation.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Differentiation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Differentiation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Differentiation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -823,7 +823,7 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationCollections.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationCollections.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -837,7 +837,7 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationCollections.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationCollections.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -851,7 +851,7 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationCollections.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationCollections.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -865,7 +865,7 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationCollections.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationCollections.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationCollections.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -875,14 +875,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_math.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_math.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_math.arm64" Directory="lib_math.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_math.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_math.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -891,14 +891,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_math.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_math.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_math.arm" Directory="lib_math.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_math.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_math.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -907,14 +907,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_math.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_math.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_math.x64" Directory="lib_math.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_math.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_math.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -923,14 +923,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_math.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_math.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_math.x86" Directory="lib_math.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_math.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_math.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_math.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -940,14 +940,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_RegexParser.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_RegexParser.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_RegexParser.arm64" Directory="lib_RegexParser.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_RegexParser.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_RegexParser.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -956,14 +956,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_RegexParser.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_RegexParser.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_RegexParser.arm" Directory="lib_RegexParser.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_RegexParser.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_RegexParser.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -972,14 +972,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_RegexParser.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_RegexParser.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_RegexParser.x64" Directory="lib_RegexParser.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_RegexParser.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_RegexParser.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -988,14 +988,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_RegexParser.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_RegexParser.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_RegexParser.x86" Directory="lib_RegexParser.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_RegexParser.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_RegexParser.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_RegexParser.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1005,14 +1005,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_StringProcessing.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_StringProcessing.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_StringProcessing.arm64" Directory="lib_StringProcessing.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_StringProcessing.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_StringProcessing.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1021,14 +1021,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_StringProcessing.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_StringProcessing.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_StringProcessing.arm" Directory="lib_StringProcessing.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_StringProcessing.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_StringProcessing.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1037,14 +1037,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_StringProcessing.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_StringProcessing.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_StringProcessing.x64" Directory="lib_StringProcessing.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_StringProcessing.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_StringProcessing.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1053,14 +1053,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_StringProcessing.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_StringProcessing.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_StringProcessing.x86" Directory="lib_StringProcessing.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_StringProcessing.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_StringProcessing.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_StringProcessing.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1070,14 +1070,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Volatile.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswift_Volatile.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Volatile.arm64" Directory="lib_Volatile.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Volatile.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswift_Volatile.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1086,14 +1086,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Volatile.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswift_Volatile.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Volatile.arm" Directory="lib_Volatile.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Volatile.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswift_Volatile.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1102,14 +1102,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Volatile.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswift_Volatile.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Volatile.x64" Directory="lib_Volatile.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Volatile.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswift_Volatile.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1118,14 +1118,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Volatile.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswift_Volatile.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="lib_Volatile.x86" Directory="lib_Volatile.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_Volatile.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Volatile.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswift_Volatile.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1133,84 +1133,84 @@
     <?if $(IncludeARM64) == True?>
       <ComponentGroup Id="Android.arm64" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\android.modulemap" />
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftAndroidNDK.h" />
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftBionic.h" />
 
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftAndroid.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftAndroid.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libAndroid.arm64" Directory="libAndroid.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftAndroid.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftAndroid.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
       <ComponentGroup Id="Android.arm" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\android.modulemap" />
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftAndroidNDK.h" />
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftBionic.h" />
 
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftAndroid.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftAndroid.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libAndroid.arm" Directory="libAndroid.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftAndroid.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftAndroid.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
       <ComponentGroup Id="Android.x64" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\android.modulemap" />
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftAndroidNDK.h" />
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftBionic.h" />
 
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftAndroid.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftAndroid.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libAndroid.x64" Directory="libAndroid.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftAndroid.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftAndroid.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
       <ComponentGroup Id="Android.x86" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\android.modulemap" />
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftAndroidNDK.h" />
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftBionic.h" />
 
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftAndroid.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftAndroid.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libAndroid.x86" Directory="libAndroid.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Android.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftAndroid.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftAndroid.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1220,14 +1220,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftCxx.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxx.arm64" Directory="libCxx.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftCxx.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1236,14 +1236,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCxx.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxx.arm" Directory="libCxx.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftCxx.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1252,14 +1252,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCxx.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxx.x64" Directory="libCxx.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftCxx.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1268,14 +1268,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftCxx.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxx.x86" Directory="libCxx.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Cxx.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftCxx.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftCxx.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1285,14 +1285,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftCxxStdlib.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxxStdlib.arm64" Directory="libCxxStdlib.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftCxxStdlib.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1301,14 +1301,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCxxStdlib.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxxStdlib.arm" Directory="libCxxStdlib.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftCxxStdlib.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1317,14 +1317,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCxxStdlib.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxxStdlib.x64" Directory="libCxxStdlib.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftCxxStdlib.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1333,14 +1333,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftCxxStdlib.a" />
       </ComponentGroup>
 
       <ComponentGroup Id="libCxxStdlib.x86" Directory="libCxxStdlib.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\CxxStdlib.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftCxxStdlib.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftCxxStdlib.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1350,14 +1350,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftDistributed.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftDistributed.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libDistributed.arm64" Directory="libDistributed.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftDistributed.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftDistributed.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1366,14 +1366,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftDistributed.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftDistributed.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libDistributed.arm" Directory="libDistributed.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftDistributed.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftDistributed.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1382,14 +1382,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDistributed.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDistributed.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libDistributed.x64" Directory="libDistributed.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftDistributed.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftDistributed.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1398,14 +1398,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftDistributed.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftDistributed.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libDistributed.x86" Directory="libDistributed.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Distributed.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftDistributed.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftDistributed.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1415,14 +1415,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundation.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundation.arm64" Directory="libFoundation.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1431,14 +1431,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundation.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundation.arm" Directory="libFoundation.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1447,14 +1447,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundation.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundation.x64" Directory="libFoundation.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1463,14 +1463,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundation.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundation.x86" Directory="libFoundation.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Foundation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1480,14 +1480,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationEssentials.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationEssentials.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationEssentials.arm64" Directory="libFoundationEssentials.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationEssentials.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationEssentials.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1496,14 +1496,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationEssentials.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationEssentials.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationEssentials.arm" Directory="libFoundationEssentials.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationEssentials.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationEssentials.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1512,14 +1512,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationEssentials.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationEssentials.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationEssentials.x64" Directory="libFoundationEssentials.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationEssentials.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationEssentials.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1528,14 +1528,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationEssentials.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationEssentials.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationEssentials.x86" Directory="libFoundationEssentials.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationEssentials.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationEssentials.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1545,14 +1545,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationInternationalization.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationInternationalization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationInternationalization.arm64" Directory="libFoundationInternationalization.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationInternationalization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationInternationalization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1561,14 +1561,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationInternationalization.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationInternationalization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationInternationalization.arm" Directory="libFoundationInternationalization.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationInternationalization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationInternationalization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1577,14 +1577,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationInternationalization.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationInternationalization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationInternationalization.x64" Directory="libFoundationInternationalization.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationInternationalization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationInternationalization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1593,14 +1593,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationInternationalization.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationInternationalization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationInternationalization.x86" Directory="libFoundationInternationalization.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationInternationalization.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationInternationalization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationInternationalization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1610,14 +1610,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationNetworking.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationNetworking.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationNetworking.arm64" Directory="libFoundationNetworking.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationNetworking.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationNetworking.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1626,14 +1626,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationNetworking.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationNetworking.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationNetworking.arm" Directory="libFoundationNetworking.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationNetworking.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationNetworking.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1642,14 +1642,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationNetworking.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationNetworking.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationNetworking.x64" Directory="libFoundationNetworking.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationNetworking.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationNetworking.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1658,14 +1658,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationNetworking.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationNetworking.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationNetworking.x86" Directory="libFoundationNetworking.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationNetworking.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationNetworking.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationNetworking.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1675,14 +1675,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationXML.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libFoundationXML.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationXML.arm64" Directory="libFoundationXML.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationXML.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libFoundationXML.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1691,14 +1691,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationXML.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libFoundationXML.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationXML.arm" Directory="libFoundationXML.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationXML.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libFoundationXML.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1707,14 +1707,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationXML.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libFoundationXML.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationXML.x64" Directory="libFoundationXML.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationXML.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libFoundationXML.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1723,20 +1723,20 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationXML.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libFoundationXML.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libFoundationXML.x86" Directory="libFoundationXML.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\FoundationXML.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationXML.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libFoundationXML.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- Foundation Dependencies -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="FoundationDependencies.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="FoundationDependencies.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libbrotlicommon.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libbrotlidec.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libcurl.a" />
@@ -1746,7 +1746,7 @@
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="FoundationDependencies.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="FoundationDependencies.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libbrotlicommon.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libbrotlidec.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libcurl.a" />
@@ -1756,7 +1756,7 @@
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="FoundationDependencies.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="FoundationDependencies.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libbrotlicommon.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libbrotlidec.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libcurl.a" />
@@ -1766,7 +1766,7 @@
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="FoundationDependencies.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="FoundationDependencies.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libbrotlicommon.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libbrotlidec.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libcurl.a" />
@@ -1777,7 +1777,7 @@
 
     <!-- CoreFoundation -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="CoreFoundation.arm64" Directory="AndroidSDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="CoreFoundation.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_CFXMLInterface.a" />
@@ -1785,7 +1785,7 @@
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="CoreFoundation.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="CoreFoundation.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_CFXMLInterface.a" />
@@ -1793,7 +1793,7 @@
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="CoreFoundation.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="CoreFoundation.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_CFXMLInterface.a" />
@@ -1801,7 +1801,7 @@
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="CoreFoundation.x86" Directory="AndroidSDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="CoreFoundation.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_CFXMLInterface.a" />
@@ -1814,14 +1814,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftObservation.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftObservation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libObservation.arm64" Directory="libObservation.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftObservation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftObservation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1830,14 +1830,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftObservation.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftObservation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libObservation.arm" Directory="libObservation.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftObservation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftObservation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1846,14 +1846,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftObservation.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftObservation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libObservation.x64" Directory="libObservation.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftObservation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftObservation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1862,14 +1862,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftObservation.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftObservation.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libObservation.x86" Directory="libObservation.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Observation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftObservation.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftObservation.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1879,14 +1879,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftRegexBuilder.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftRegexBuilder.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libRegexBuilder.arm64" Directory="libRegexBuilder.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftRegexBuilder.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftRegexBuilder.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1895,14 +1895,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftRegexBuilder.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftRegexBuilder.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libRegexBuilder.arm" Directory="libRegexBuilder.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftRegexBuilder.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftRegexBuilder.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1911,14 +1911,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftRegexBuilder.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftRegexBuilder.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libRegexBuilder.x64" Directory="libRegexBuilder.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftRegexBuilder.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftRegexBuilder.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1927,14 +1927,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftRegexBuilder.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftRegexBuilder.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libRegexBuilder.x86" Directory="libRegexBuilder.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\RegexBuilder.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftRegexBuilder.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftRegexBuilder.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1944,14 +1944,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftCore.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftCore.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwift.arm64" Directory="libSwift.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftCore.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftCore.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1960,14 +1960,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCore.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftCore.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwift.arm" Directory="libSwift.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftCore.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftCore.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1976,14 +1976,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCore.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftCore.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwift.x64" Directory="libSwift.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftCore.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftCore.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1992,14 +1992,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftCore.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftCore.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwift.x86" Directory="libSwift.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Swift.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftCore.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftCore.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2009,14 +2009,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftSwiftOnoneSupport.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftSwiftOnoneSupport.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwiftOnoneSupport.arm64" Directory="libSwiftOnoneSupport.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftSwiftOnoneSupport.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftSwiftOnoneSupport.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2025,14 +2025,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftSwiftOnoneSupport.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftSwiftOnoneSupport.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwiftOnoneSupport.arm" Directory="libSwiftOnoneSupport.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftSwiftOnoneSupport.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftSwiftOnoneSupport.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2041,14 +2041,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftSwiftOnoneSupport.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftSwiftOnoneSupport.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwiftOnoneSupport.x64" Directory="libSwiftOnoneSupport.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftSwiftOnoneSupport.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftSwiftOnoneSupport.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2057,14 +2057,14 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftSwiftOnoneSupport.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftSwiftOnoneSupport.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSwiftOnoneSupport.x86" Directory="libSwiftOnoneSupport.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\SwiftOnoneSupport.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftSwiftOnoneSupport.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftSwiftOnoneSupport.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2074,14 +2074,14 @@
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftSynchronization.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftSynchronization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSynchronization.arm64" Directory="libSynchronization.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftSynchronization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftSynchronization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2090,14 +2090,14 @@
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftSynchronization.so" />
+        <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftSynchronization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSynchronization.arm" Directory="libSynchronization.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftSynchronization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftSynchronization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2106,14 +2106,14 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftSynchronization.so" />
+        <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftSynchronization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSynchronization.x64" Directory="libSynchronization.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftSynchronization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftSynchronization.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -2122,19 +2122,19 @@
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftSynchronization.so" />
+        <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftSynchronization.so" />
       </ComponentGroup>
 
       <ComponentGroup Id="libSynchronization.x86" Directory="libSynchronization.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Synchronization.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
-        <File Directory="AndroidSDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftSynchronization.a" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftSynchronization.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- libcxxshim -->
-    <ComponentGroup Id="CXXShim" Directory="AndroidSDK_usr_lib_swift_android">
+    <ComponentGroup Id="CXXShim" Directory="SDK_usr_lib_swift_android">
       <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxshim.h" />
       <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxshim.modulemap" />
       <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxstdlibshim.h" />
@@ -2142,25 +2142,25 @@
 
     <!-- Registrar -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="Registrar.arm64" Directory="AndroidSDK_usr_lib_swift_android_arm64">
+      <ComponentGroup Id="Registrar.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="Registrar.arm" Directory="AndroidSDK_usr_lib_swift_android_arm">
+      <ComponentGroup Id="Registrar.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="Registrar.x64" Directory="AndroidSDK_usr_lib_swift_android_x64">
+      <ComponentGroup Id="Registrar.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="Registrar.x86" Directory="AndroidSDK_usr_lib_swift_android_x86">
+      <ComponentGroup Id="Registrar.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\android\i686\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
@@ -2172,7 +2172,7 @@
       <File DiskId="1" Directory="AndroidPlatform" Source="$(PlatformRoot)\Info.plist" />
     </ComponentGroup>
 
-    <ComponentGroup Id="SwiftShims" Directory="AndroidSDK_usr_lib_swift_shims">
+    <ComponentGroup Id="SwiftShims" Directory="SDK_usr_lib_swift_shims">
       <Files Include="$(SwiftShimsPath)\**" />
     </ComponentGroup>
 
