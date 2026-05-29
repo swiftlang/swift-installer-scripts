@@ -817,6 +817,12 @@
       <Component>
         <File Source="$(SDKRoot)\usr\lib\swift\apinotes\posix_filesystem.apinotes" />
       </Component>
+      <Component>
+        <File Source="$(SDKRoot)\usr\lib\swift\apinotes\_stdio.apinotes" />
+      </Component>
+      <Component>
+        <File Source="$(SDKRoot)\usr\lib\swift\apinotes\spawn.apinotes" />
+      </Component>
     </ComponentGroup>
 
     <!-- _Builtin_float -->
