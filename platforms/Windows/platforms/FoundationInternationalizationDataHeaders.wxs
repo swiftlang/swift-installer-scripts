@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <ComponentGroup Id="_FoundationInternationalizationData" Directory="SDK_usr_include__FoundationInternationalizationData" Source="$(SDKRoot)\usr\include\_FoundationInternationalizationData">
+      <File Name="ListFormatData.h" />
+      <File Name="InternationalizationDataMacros.h" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>
