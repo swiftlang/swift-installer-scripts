@@ -544,7 +544,6 @@
     <?endif?>
 
     <!-- apinotes -->
-
     <ComponentGroup Id="APINotes" Directory="SDK_usr_lib_swift_apinotes">
       <File Source="$(SDKRoot)\usr\lib\swift\apinotes\std.apinotes" />
       <File Source="$(SDKRoot)\usr\lib\swift\apinotes\posix_filesystem.apinotes" />
