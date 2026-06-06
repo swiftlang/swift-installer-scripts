@@ -1,12 +1,16 @@
-<Project Sdk="WixToolset.Sdk/4.0.5">
+<Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputName>android</OutputName>
 
-    <SwiftShimsPath>$(ImageRoot)\Platforms\Android.platform\Developer\SDKs\Android.sdk\usr\lib\swift\shims</SwiftShimsPath>
+    <PlatformRoot>$(ImageRoot)\Platforms\Android.platform</PlatformRoot>
+    <SDKRoot>$(PlatformRoot)\Developer\SDKs\Android.sdk</SDKRoot>
+    <SwiftShimsPath>$(SDKRoot)\usr\lib\swift\shims</SwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
       ANDROID_INCLUDE_DS2=$(ANDROID_INCLUDE_DS2);
+      PlatformRoot=$(PlatformRoot);
+      SDKRoot=$(SDKRoot);
       SwiftShimsPath=$(SwiftShimsPath);
       IncludeARM64=$(AndroidArchitectures.Contains("aarch64"));
       IncludeARM=$(AndroidArchitectures.Contains("armv7"));
@@ -16,17 +20,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
+    <Compile Include="..\BlocksRuntimeHeaders.wxs" Link="BlocksRuntimeHeaders.wxs" />
+    <Compile Include="..\DispatchHeaders.wxs" Link="DispatchHeaders.wxs" />
+    <Compile Include="..\FoundationCShimsHeaders.wxs" Link="FoundationCShimsHeaders.wxs" />
+    <Compile Include="..\FoundationUnicodeHeaders.wxs" Link="FoundationUnicodeHeaders.wxs" />
+    <Compile Include="..\SwiftRemoteMirrorHeaders.wxs" Link="SwiftRemoteMirrorHeaders.wxs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <HarvestDirectory Include="$(SwiftShimsPath)">
-      <ComponentGroupName>SwiftShims</ComponentGroupName>
-      <DirectoryRefId>AndroidSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
-  </ItemGroup>
 </Project>

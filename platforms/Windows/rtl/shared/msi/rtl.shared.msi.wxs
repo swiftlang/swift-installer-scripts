@@ -18,9 +18,16 @@
     <SetDirectory Id="RUNTIMEDIR_$(ProductArchitecture)" Value="[runtimes_usr_bin]" Sequence="first" />
     <SetDirectory Id="LIBEXECDIR_$(ProductArchitecture)" Value="[runtimes_usr_libexec_swift]" Sequence="first" />
 
+    <ComponentGroup Id="VCRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+      <Files Include="$(VCRedistDir)\**" />
+    </ComponentGroup>
+
     <ComponentGroup Id="EnvironmentVariables" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <Component Id="UserPathVariable" Condition="NOT ALLUSERS=1" Guid="bc309c80-221e-48db-b989-07157ac8f286">
         <Environment Action="set" Name="Path" Part="last" Permanent="no" System="no" Value="[runtimes_usr_bin]" />
+      </Component>
+      <Component Id="SystemPathVariable" Condition="ALLUSERS=1" Guid="d4e8b2c9-7f13-4a5e-8d71-6c3a9f2e1b04">
+        <Environment Action="set" Name="Path" Part="last" Permanent="no" System="yes" Value="[runtimes_usr_bin]" />
       </Component>
     </ComponentGroup>
 

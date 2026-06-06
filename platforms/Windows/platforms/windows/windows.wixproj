@@ -1,11 +1,15 @@
-<Project Sdk="WixToolset.Sdk/4.0.5">
+<Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputName>windows</OutputName>
 
-    <SwiftShimsPath>$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\Windows.sdk\usr\lib\swift\shims</SwiftShimsPath>
+    <PlatformRoot>$(ImageRoot)\Platforms\Windows.platform</PlatformRoot>
+    <SDKRoot>$(PlatformRoot)\Developer\SDKs\Windows.sdk</SDKRoot>
+    <SwiftShimsPath>$(SDKRoot)\usr\lib\swift\shims</SwiftShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
+      PlatformRoot=$(PlatformRoot);
+      SDKRoot=$(SDKRoot);
       SwiftShimsPath=$(SwiftShimsPath);
       IncludeARM64=$(WindowsArchitectures.Contains("aarch64"));
       IncludeX64=$(WindowsArchitectures.Contains("x86_64"));
@@ -14,7 +18,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Heat" Version="4.0.5" />
+    <Compile Include="..\BlocksRuntimeHeaders.wxs" Link="BlocksRuntimeHeaders.wxs" />
+    <Compile Include="..\DispatchHeaders.wxs" Link="DispatchHeaders.wxs" />
+    <Compile Include="..\FoundationCShimsHeaders.wxs" Link="FoundationCShimsHeaders.wxs" />
+    <Compile Include="..\FoundationUnicodeHeaders.wxs" Link="FoundationUnicodeHeaders.wxs" />
+    <Compile Include="..\SwiftRemoteMirrorHeaders.wxs" Link="SwiftRemoteMirrorHeaders.wxs" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('i686')) ">
@@ -30,16 +38,5 @@
   <ItemGroup Condition=" $(WindowsArchitectures.Contains('aarch64')) ">
     <ProjectReference Include="..\..\rtl\shared\msm\rtl.shared.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.shared.arm64.msm" />
     <ProjectReference Include="..\..\rtl\static\msm\rtl.static.msm.wixproj" Properties="Platform=x86;ProductArchitecture=arm64" BindName="rtl.static.arm64.msm" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <HarvestDirectory Include="$(SwiftShimsPath)">
-      <ComponentGroupName>SwiftShims</ComponentGroupName>
-      <DirectoryRefId>WindowsSDK_usr_lib_swift_shims</DirectoryRefId>
-      <PreprocessorVariable>var.SwiftShimsPath</PreprocessorVariable>
-      <SuppressCom>true</SuppressCom>
-      <SuppressRegistry>true</SuppressRegistry>
-      <SuppressRootDirectory>true</SuppressRootDirectory>
-    </HarvestDirectory>
   </ItemGroup>
 </Project>
