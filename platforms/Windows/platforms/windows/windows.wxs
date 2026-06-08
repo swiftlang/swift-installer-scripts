@@ -38,7 +38,7 @@
     <?define SDKDispatchModuleDirectoryNames = Dispatch?>
     <?define SDKFoundationComponentGroups = _FoundationCollections;_FoundationUnicode;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
     <?define SDKFoundationModuleDirectoryNames = _FoundationCollections;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
-    <?define SDKFoundationStaticComponentGroups = CoreFoundation;FoundationDependencies;lib_FoundationCShims?>
+    <?define SDKFoundationStaticComponentGroups = CoreFoundation;FoundationDependencies;lib_FoundationCShims;lib_FoundationInternationalizationData?>
     <?define SDKStandardModules = _Builtin_float;_Concurrency;_Differentiation;_RegexParser;_StringProcessing;_Volatile;Distributed;Observation;RegexBuilder;Runtime;Swift;SwiftOnoneSupport;Synchronization?>
     <?define SDKModuleDirectoryNames = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchModuleDirectoryNames);$(SDKFoundationModuleDirectoryNames);$(SDKStandardModules)?>
 
@@ -135,6 +135,7 @@
                 <Directory Name="include">
                   <Directory Id="SDK_usr_include__foundation_unicode" Name="_foundation_unicode" DiskId="1" />
                   <Directory Id="SDK_usr_include__FoundationCShims" Name="_FoundationCShims" DiskId="1" />
+                  <Directory Id="SDK_usr_include__FoundationInternationalizationData" Name="_FoundationInternationalizationData" DiskId="1" />
                   <Directory Id="SDK_usr_include_Block" Name="Block" DiskId="1" />
                   <Directory Id="SDK_usr_include_dispatch" Name="dispatch" DiskId="1" />
                   <Directory Id="SDK_usr_include_os" Name="os" DiskId="1" />
@@ -337,6 +338,24 @@
     <?if $(IncludeX86) == True?>
       <ComponentGroup Id="lib_FoundationCShims.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_FoundationCShims.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeARM64) == True?>
+      <ComponentGroup Id="lib_FoundationInternationalizationData.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
+        <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\_FoundationInternationalizationData.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX64) == True?>
+      <ComponentGroup Id="lib_FoundationInternationalizationData.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
+        <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\_FoundationInternationalizationData.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX86) == True?>
+      <ComponentGroup Id="lib_FoundationInternationalizationData.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
+        <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_FoundationInternationalizationData.lib" />
       </ComponentGroup>
     <?endif?>
 
@@ -1792,6 +1811,7 @@
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="SwiftShims" />
       <ComponentGroupRef Id="_FoundationCShims" />
+      <ComponentGroupRef Id="_FoundationInternationalizationData" />
       <ComponentGroupRef Id="_FoundationUnicode" />
     </Feature>
 
