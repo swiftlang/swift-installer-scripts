@@ -167,10 +167,6 @@
       <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftCxxInteroperability.h" />
       <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\_SwiftStdlibCxxOverlay.h" />
       <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
-
-      <File Directory="toolchain_$(VariantName)_usr_include_swift" Source="$(ToolchainRoot)\usr\include\swift\bridging.modulemap" />
-      <File Directory="toolchain_$(VariantName)_usr_include_swift" Source="$(ToolchainRoot)\usr\include\swift\bridging" />
-      <File Directory="toolchain_$(VariantName)_usr_include_swift" Source="$(ToolchainRoot)\usr\include\module.modulemap" />
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftDemangle">
