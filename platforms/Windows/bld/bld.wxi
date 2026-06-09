@@ -255,16 +255,6 @@
       <Component>
         <File Source="$(ToolchainRoot)\usr\lib\swift\swiftToCxx\experimental-interoperability-version.json" />
       </Component>
-
-      <Component Directory="toolchain_$(VariantName)_usr_include_swift">
-        <File Source="$(ToolchainRoot)\usr\include\swift\bridging.modulemap" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_include_swift">
-        <File Source="$(ToolchainRoot)\usr\include\swift\bridging" />
-      </Component>
-      <Component Directory="toolchain_$(VariantName)_usr_include_swift">
-        <File Source="$(ToolchainRoot)\usr\include\module.modulemap" />
-      </Component>
     </ComponentGroup>
 
     <ComponentGroup Id="SwiftDemangle">
