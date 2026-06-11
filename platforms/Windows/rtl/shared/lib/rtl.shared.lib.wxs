@@ -13,8 +13,6 @@
       <?define LibexecDirectoryComponentGuidGenerationSeed = "FCAC627D-44EC-4745-B81B-E12CE8F80951" ?>
       <?define RuntimeRoot = $(WindowsRuntimeX86)?>
     <?endif?>
-    <?define SDKRoot = "$(ImageRoot)\Platforms\Windows.platform\Developer\SDKs\Windows.sdk"?>
-
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
     <Directory Id="LIBEXECDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(LibexecDirectoryComponentGuidGenerationSeed)" />
 
