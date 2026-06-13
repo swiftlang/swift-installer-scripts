@@ -16,13 +16,11 @@
 
   <Module Guid="$(ModuleID)" Id="swift_runtime" Language="0" Version="$(NonSemVerProductVersion)">
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)">
-      <Component Id="BlocksRuntime_$(ProductArchitecture)">
-        <File Source="$(RuntimeRoot)\usr\bin\BlocksRuntime.dll" />
-      </Component>
-
-      <Component Id="libdispatch_$(ProductArchitecture)">
-        <File Source="$(RuntimeRoot)\usr\bin\dispatch.dll" />
-      </Component>
+      <?foreach RuntimeLibrary in $(StaticRuntimeDependencies)?>
+        <Component Id="$(RuntimeLibrary)_$(ProductArchitecture)">
+          <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
+        </Component>
+      <?endforeach?>
     </Directory>
   </Module>
 </Wix>

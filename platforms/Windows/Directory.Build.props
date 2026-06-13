@@ -4,6 +4,8 @@
     <AcceptEula>wix7</AcceptEula>
   </PropertyGroup>
 
+  <Import Project="RuntimeLibraries.props" Condition="'$(MSBuildProjectExtension)' == '.wixproj'" />
+
   <PropertyGroup>
     <ProductArchitecture Condition=" '$(ProductArchitecture)' == '' ">amd64</ProductArchitecture>
     <ProductVersion Condition=" '$(ProductVersion)' == '' ">0.0.0</ProductVersion>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ItemDefinitionGroup>
+    <Module>
+      <Group>SDK</Group>
+      <Platforms>Android;Windows</Platforms>
+      <Shared>true</Shared>
+      <Static>true</Static>
+    </Module>
+    <Library>
+      <Group>SDK</Group>
+      <Platforms>Android;Windows</Platforms>
+      <Shared>true</Shared>
+      <Static>true</Static>
+    </Library>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <Module Include="Swift" LibraryName="swiftCore" StaticRuntimeDependencies="BlocksRuntime;dispatch" />
+
+    <Module Include="_Concurrency" />
+    <Module Include="SwiftOnoneSupport" />
+    <Library Include="RemoteMirror" LibraryName="swiftRemoteMirror" />
+
+    <Module Include="_Builtin_float" />
+
+    <Module Include="Cxx" Shared="false" SDKSharedLinkage="true" />
+    <Module Include="CxxStdlib" Shared="false" SDKSharedLinkage="true" />
+
+    <Module Include="Android" Platforms="Android" />
+    <Module Include="_math" Platforms="Android" />
+
+    <Module Include="CRT" Platforms="Windows" />
+    <Module Include="WinSDK" Platforms="Windows" />
+
+    <Library Include="dispatch" />
+    <Module Include="Dispatch" />
+
+    <Module Include="_FoundationCollections" Shared="false" SDKSharedLinkage="true" />
+    <Module Include="Foundation" LibraryName="Foundation" StaticDependencies="CoreFoundation;brotlicommon;brotlidec;curl;libxml2;zlib;_FoundationCShims;_FoundationInternationalizationData" />
+    <Module Include="FoundationEssentials" LibraryName="FoundationEssentials" />
+    <Module Include="FoundationInternationalization" LibraryName="FoundationInternationalization" />
+    <Module Include="FoundationNetworking" LibraryName="FoundationNetworking" />
+    <Module Include="FoundationXML" LibraryName="FoundationXML" />
+
+    <Module Include="_Differentiation" />
+    <Module Include="_RegexParser" />
+    <Module Include="_StringProcessing" />
+    <Module Include="_Volatile" />
+    <Module Include="Distributed" />
+    <Module Include="Observation" />
+    <Module Include="RegexBuilder" />
+    <Module Include="Synchronization" />
+
+    <Module Include="Runtime" Platforms="Windows" />
+
+    <Library Include="BlocksRuntime" />
+    <Library Include="_FoundationICU" ComponentGroup="_FoundationUnicode" />
+
+    <Library Include="CoreFoundation" Shared="false" />
+    <Library Include="brotlicommon" Shared="false" />
+    <Library Include="brotlidec" Shared="false" />
+    <Library Include="curl" Shared="false" />
+    <Library Include="libxml2" Shared="false" />
+    <Library Include="zlib" Shared="false" />
+    <Library Include="_FoundationCShims" Shared="false" />
+    <Library Include="_FoundationInternationalizationData" Shared="false" />
+
+    <Module Include="XCTest" Group="DeveloperTools" />
+    <Module Include="Testing" Group="DeveloperTools" />
+  </ItemGroup>
+</Project>

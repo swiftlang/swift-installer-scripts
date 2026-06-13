@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project InitialTargets="_DefineRuntimeLibraryConstants">
+  <Target Name="_DefineRuntimeLibraryConstants" Condition="'$(MSBuildProjectExtension)' == '.wixproj'">
+    <PropertyGroup>
+      <_SDKPlatform Condition="'$(MSBuildProjectName)' == 'android'">Android</_SDKPlatform>
+      <_SDKPlatform Condition="'$(MSBuildProjectName)' == 'windows'">Windows</_SDKPlatform>
+      <_RuntimeLibraryPlatform Condition="'$(MSBuildProjectName)' == 'rtl.shared.lib'">Windows</_RuntimeLibraryPlatform>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(_SDKPlatform)' != ''">
+      <_SDKSwiftModule
+        Include="@(Module)"
+        Condition="'%(Module.Group)' == 'SDK' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.SDKSwiftModule)' == ''" />
+      <_SDKSwiftModule
+        Include="%(Module.SDKSwiftModule)"
+        Condition="'%(Module.Group)' == 'SDK' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.SDKSwiftModule)' != ''" />
+
+      <_SDKSharedLinkageComponentGroup
+        Include="@(Module)"
+        Condition="'%(Module.Group)' == 'SDK' and ('%(Module.Shared)' == 'true' or '%(Module.SDKSharedLinkage)' == 'true') and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.ComponentGroup)' == ''" />
+      <_SDKSharedLinkageComponentGroup
+        Include="%(Module.ComponentGroup)"
+        Condition="'%(Module.Group)' == 'SDK' and ('%(Module.Shared)' == 'true' or '%(Module.SDKSharedLinkage)' == 'true') and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.ComponentGroup)' != ''" />
+      <_SDKSharedLinkageComponentGroup
+        Include="@(Library)"
+        Condition="'%(Library.Group)' == 'SDK' and ('%(Library.Shared)' == 'true' or '%(Library.SDKSharedLinkage)' == 'true') and $([System.String]::Copy('%(Library.Platforms)').Contains('$(_SDKPlatform)')) and '%(Library.ComponentGroup)' == ''" />
+      <_SDKSharedLinkageComponentGroup
+        Include="%(Library.ComponentGroup)"
+        Condition="'%(Library.Group)' == 'SDK' and ('%(Library.Shared)' == 'true' or '%(Library.SDKSharedLinkage)' == 'true') and $([System.String]::Copy('%(Library.Platforms)').Contains('$(_SDKPlatform)')) and '%(Library.ComponentGroup)' != ''" />
+
+      <_SDKStaticLinkageComponentGroup
+        Include="@(Module)"
+        Condition="'%(Module.Group)' == 'SDK' and '%(Module.Static)' == 'true' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.ComponentGroup)' == ''" />
+      <_SDKStaticLinkageComponentGroup
+        Include="%(Module.ComponentGroup)"
+        Condition="'%(Module.Group)' == 'SDK' and '%(Module.Static)' == 'true' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.ComponentGroup)' != ''" />
+      <_SDKStaticLinkageComponentGroup
+        Include="@(Library)"
+        Condition="'%(Library.Group)' == 'SDK' and '%(Library.Static)' == 'true' and $([System.String]::Copy('%(Library.Platforms)').Contains('$(_SDKPlatform)')) and '%(Library.ComponentGroup)' == ''" />
+      <_SDKStaticLinkageComponentGroup
+        Include="%(Library.ComponentGroup)"
+        Condition="'%(Library.Group)' == 'SDK' and '%(Library.Static)' == 'true' and $([System.String]::Copy('%(Library.Platforms)').Contains('$(_SDKPlatform)')) and '%(Library.ComponentGroup)' != ''" />
+
+      <_DeveloperToolsSharedLinkageComponentGroup
+        Include="@(Module)"
+        Condition="'%(Module.Group)' == 'DeveloperTools' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.ComponentGroup)' == ''" />
+      <_DeveloperToolsSharedLinkageComponentGroup
+        Include="%(Module.ComponentGroup)"
+        Condition="'%(Module.Group)' == 'DeveloperTools' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_SDKPlatform)')) and '%(Module.ComponentGroup)' != ''" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(_RuntimeLibraryPlatform)' != ''">
+      <_RuntimeLibrary
+        Include="swift%(Module.Identity)"
+        Condition="'%(Module.Group)' == 'SDK' and '%(Module.Shared)' == 'true' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_RuntimeLibraryPlatform)')) and '%(Module.LibraryName)' == ''" />
+      <_RuntimeLibrary
+        Include="%(Module.LibraryName)"
+        Condition="'%(Module.Group)' == 'SDK' and '%(Module.Shared)' == 'true' and $([System.String]::Copy('%(Module.Platforms)').Contains('$(_RuntimeLibraryPlatform)')) and '%(Module.LibraryName)' != ''" />
+      <_RuntimeLibrary
+        Include="%(Library.Identity)"
+        Condition="'%(Library.Group)' == 'SDK' and '%(Library.Shared)' == 'true' and $([System.String]::Copy('%(Library.Platforms)').Contains('$(_RuntimeLibraryPlatform)')) and '%(Library.LibraryName)' == ''" />
+      <_RuntimeLibrary
+        Include="%(Library.LibraryName)"
+        Condition="'%(Library.Group)' == 'SDK' and '%(Library.Shared)' == 'true' and $([System.String]::Copy('%(Library.Platforms)').Contains('$(_RuntimeLibraryPlatform)')) and '%(Library.LibraryName)' != ''" />
+      <_RuntimeLibrary Remove="@(_RuntimeLibrary)"
+                       Condition="'%(_RuntimeLibrary.Identity)' == ''" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'rtl.static.msm'">
+      <_StaticRuntimeDependency
+        Include="%(Module.StaticRuntimeDependencies)"
+        Condition="'%(Module.StaticRuntimeDependencies)' != ''" />
+      <_StaticRuntimeDependency Remove="@(_StaticRuntimeDependency)"
+                                Condition="'%(_StaticRuntimeDependency.Identity)' == ''" />
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(_SDKPlatform)' != ''">
+      <SDKSwiftModules>@(_SDKSwiftModule, ';')</SDKSwiftModules>
+      <SDKSharedLinkageComponentGroups>@(_SDKSharedLinkageComponentGroup, ';')</SDKSharedLinkageComponentGroups>
+      <SDKStaticLinkageComponentGroups>@(_SDKStaticLinkageComponentGroup, ';')</SDKStaticLinkageComponentGroups>
+      <DeveloperToolsSharedLinkageComponentGroups>@(_DeveloperToolsSharedLinkageComponentGroup, ';')</DeveloperToolsSharedLinkageComponentGroups>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(_RuntimeLibraryPlatform)' != ''">
+      <RuntimeLibraries>@(_RuntimeLibrary, ';')</RuntimeLibraries>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'rtl.static.msm'">
+      <StaticRuntimeDependencies>@(_StaticRuntimeDependency, ';')</StaticRuntimeDependencies>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(_SDKPlatform)' != ''">
+      <DefineConstants>
+        $(DefineConstants);
+        DeveloperToolsSharedLinkageComponentGroups=$([MSBuild]::Escape($(DeveloperToolsSharedLinkageComponentGroups)));
+        SDKSwiftModules=$([MSBuild]::Escape($(SDKSwiftModules)));
+        SDKSharedLinkageComponentGroups=$([MSBuild]::Escape($(SDKSharedLinkageComponentGroups)));
+        SDKStaticLinkageComponentGroups=$([MSBuild]::Escape($(SDKStaticLinkageComponentGroups)));
+      </DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(_RuntimeLibraryPlatform)' != ''">
+      <DefineConstants>
+        $(DefineConstants);
+        RuntimeLibraries=$([MSBuild]::Escape($(RuntimeLibraries)));
+      </DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(MSBuildProjectName)' == 'rtl.static.msm'">
+      <DefineConstants>
+        $(DefineConstants);
+        StaticRuntimeDependencies=$([MSBuild]::Escape($(StaticRuntimeDependencies)));
+      </DefineConstants>
+    </PropertyGroup>
+  </Target>
+</Project>

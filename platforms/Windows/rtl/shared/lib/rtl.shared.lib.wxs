@@ -16,48 +16,11 @@
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
     <Directory Id="LIBEXECDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(LibexecDirectoryComponentGuidGenerationSeed)" />
 
-    <ComponentGroup Id="stdlib_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <File Source="$(RuntimeRoot)\usr\bin\swiftCore.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftRuntime.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftCRT.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftDistributed.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftObservation.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftRegexBuilder.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftRemoteMirror.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftSwiftOnoneSupport.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftSynchronization.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftWinSDK.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swift_Builtin_float.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swift_Concurrency.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swift_Differentiation.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swift_RegexParser.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swift_StringProcessing.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swift_Volatile.dll" />
-
-      <!-- TODO(compnerd) should we distribute the undecoration library in the runtime?
-      <Component Directory="_usr_bin" Id="swiftDemangle.dll">
-        <File Id="swiftDemangle.dll" Source="$(RuntimeRoot)\bin\swiftDemangle.dll" />
-      </Component>
-      -->
-    </ComponentGroup>
-
-    <ComponentGroup Id="BlocksRuntime_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <File Source="$(RuntimeRoot)\usr\bin\BlocksRuntime.dll" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="libdispatch_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <File Source="$(RuntimeRoot)\usr\bin\dispatch.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\swiftDispatch.dll" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="Foundation_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-      <File Source="$(RuntimeRoot)\usr\bin\Foundation.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\FoundationEssentials.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\FoundationInternationalization.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\FoundationNetworking.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\FoundationXML.dll" />
-      <File Source="$(RuntimeRoot)\usr\bin\_FoundationICU.dll" />
-    </ComponentGroup>
+    <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
+      <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+        <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
+      </ComponentGroup>
+    <?endforeach?>
 
     <ComponentGroup Id="plutil_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <File Source="$(RuntimeRoot)\usr\bin\plutil.exe" />
@@ -71,10 +34,9 @@
     <?endif?>
 
     <ComponentGroup Id="swift_runtime_$(ProductArchitecture)">
-      <ComponentGroupRef Id="stdlib_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="BlocksRuntime_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="libdispatch_$(ProductArchitecture)" />
-      <ComponentGroupRef Id="Foundation_$(ProductArchitecture)" />
+      <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
+        <ComponentGroupRef Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" />
+      <?endforeach?>
     </ComponentGroup>
 
     <!-- TODO(https://github.com/swiftlang/swift/issues/87499) enable this when we build this for x86 -->

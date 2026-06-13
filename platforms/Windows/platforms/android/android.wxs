@@ -29,21 +29,6 @@
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(AndroidPlatformUpgradeCode)" />
 
-    <!-- SDK manifests drive the generated module directories and architecture feature refs below. -->
-    <?define SDKDeveloperToolsModules = XCTest;Testing?>
-
-    <?define SDKPlatformOverlayModules = Android;_math?>
-    <?define SDKCXXInteropModules = Cxx;CxxStdlib?>
-    <?define SDKDispatchComponentGroups = BlocksRuntime;dispatch;swiftDispatch?>
-    <?define SDKDispatchModuleDirectoryNames = Dispatch?>
-    <?define SDKFoundationComponentGroups = _FoundationCollections;_FoundationUnicode;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
-    <?define SDKFoundationModuleDirectoryNames = _FoundationCollections;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
-    <?define SDKFoundationStaticComponentGroups = CoreFoundation;FoundationDependencies;lib_FoundationCShims;lib_FoundationInternationalizationData?>
-    <?define SDKStandardModules = _Builtin_float;_Concurrency;_Differentiation;_RegexParser;_StringProcessing;_Volatile;Distributed;Observation;RegexBuilder;Swift;SwiftOnoneSupport;Synchronization?>
-    <?define SDKModuleDirectoryNames = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchModuleDirectoryNames);$(SDKFoundationModuleDirectoryNames);$(SDKStandardModules)?>
-
-    <?define SDKComponentGroups = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchComponentGroups);$(SDKFoundationComponentGroups);$(SDKStandardModules);SwiftRemoteMirror?>
-
     <!--
       └─ Swift
           └─ Platforms
@@ -146,7 +131,7 @@
                     <Directory Id="SDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="1" />
                     <Directory Id="SDK_usr_lib_swift_shims" Name="shims" DiskId="1" />
                     <Directory Id="SDK_usr_lib_swift_android" Name="android">
-                      <?foreach ModuleName in $(SDKModuleDirectoryNames)?>
+                      <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
                       <?if $(IncludeARM64) == True?>
@@ -165,7 +150,7 @@
                   </Directory>
                   <Directory Name="swift_static">
                     <Directory Id="SDK_usr_lib_swift_static_android" Name="android">
-                      <?foreach ModuleName in $(SDKModuleDirectoryNames)?>
+                      <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="lib$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
                       <?if $(IncludeARM64) == True?>
@@ -441,14 +426,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libdispatch.a" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.arm64" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.arm64" Directory="Dispatch.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_android_arm64" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftDispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.arm64" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.arm64" Directory="libDispatch.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
@@ -465,14 +450,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libdispatch.a" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.arm" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.arm" Directory="Dispatch.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_android_arm" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftDispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.arm" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.arm" Directory="libDispatch.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
@@ -489,14 +474,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libdispatch.a" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.x64" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.x64" Directory="Dispatch.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_android_x64" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.x64" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.x64" Directory="libDispatch.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
@@ -513,14 +498,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libdispatch.a" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.x86" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.x86" Directory="Dispatch.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_android_x86" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftDispatch.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.x86" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.x86" Directory="libDispatch.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Dispatch.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
@@ -529,41 +514,41 @@
     <?endif?>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_android_arm64">
+      <ComponentGroup Id="RemoteMirror.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="libRemoteMirror.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.arm" Directory="SDK_usr_lib_swift_android_arm">
+      <ComponentGroup Id="RemoteMirror.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.arm" Directory="SDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="libRemoteMirror.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x64" Directory="SDK_usr_lib_swift_android_x64">
+      <ComponentGroup Id="RemoteMirror.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.x64" Directory="SDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="libRemoteMirror.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x86" Directory="SDK_usr_lib_swift_android_x86">
+      <ComponentGroup Id="RemoteMirror.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftRemoteMirror.so" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.x86" Directory="SDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="libRemoteMirror.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftRemoteMirror.a" />
       </ComponentGroup>
     <?endif?>
@@ -1695,48 +1680,96 @@
 
     <!-- Foundation Dependencies -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="FoundationDependencies.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="libbrotlicommon.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libbrotlicommon.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libbrotlidec.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libcurl.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libxml2.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libz.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="FoundationDependencies.arm" Directory="SDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="libbrotlicommon.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libbrotlicommon.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libbrotlidec.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libcurl.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libxml2.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libz.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="FoundationDependencies.x64" Directory="SDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="libbrotlicommon.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libbrotlicommon.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libbrotlidec.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libcurl.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libxml2.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libz.a" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="FoundationDependencies.x86" Directory="SDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="libbrotlicommon.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libbrotlicommon.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libbrotlidec.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libcurl.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libxml2.a" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libz.a" />
       </ComponentGroup>
     <?endif?>
 
     <!-- CoreFoundation -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="CoreFoundation.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
+      <ComponentGroup Id="libCoreFoundation.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_CFXMLInterface.a" />
@@ -1744,7 +1777,7 @@
     <?endif?>
 
     <?if $(IncludeARM) == True?>
-      <ComponentGroup Id="CoreFoundation.arm" Directory="SDK_usr_lib_swift_static_android_arm">
+      <ComponentGroup Id="libCoreFoundation.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_CFXMLInterface.a" />
@@ -1752,7 +1785,7 @@
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="CoreFoundation.x64" Directory="SDK_usr_lib_swift_static_android_x64">
+      <ComponentGroup Id="libCoreFoundation.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_CFXMLInterface.a" />
@@ -1760,7 +1793,7 @@
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="CoreFoundation.x86" Directory="SDK_usr_lib_swift_static_android_x86">
+      <ComponentGroup Id="libCoreFoundation.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libCoreFoundation.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_CFURLSessionInterface.a" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_CFXMLInterface.a" />
@@ -2147,7 +2180,7 @@
       <Feature Id="arm64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm64" />
         <?endforeach?>
         <?if $(ANDROID_INCLUDE_DS2) == True?>
@@ -2160,7 +2193,7 @@
       <Feature Id="arm.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_armv7)">
         <Level Condition="INSTALLARMSDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm" />
         <?endforeach?>
         <?if $(ANDROID_INCLUDE_DS2) == True?>
@@ -2173,7 +2206,7 @@
       <Feature Id="x64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x64" />
         <?endforeach?>
         <?if $(ANDROID_INCLUDE_DS2) == True?>
@@ -2186,7 +2219,7 @@
       <Feature Id="x86.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x86" />
         <?endforeach?>
         <?if $(ANDROID_INCLUDE_DS2) == True?>
@@ -2204,7 +2237,7 @@
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="CXXShim" />
       <ComponentGroupRef Id="Dispatch" />
-      <ComponentGroupRef Id="SwiftRemoteMirror" />
+      <ComponentGroupRef Id="RemoteMirror" />
       <ComponentGroupRef Id="SwiftShims" />
     </Feature>
 
@@ -2212,15 +2245,11 @@
       <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm64" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).arm64" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).arm64" />
         <?endforeach?>
 
@@ -2232,15 +2261,11 @@
       <Feature Id="armv7" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_armv7)">
         <Level Condition="INSTALLARMSDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).arm" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).arm" />
         <?endforeach?>
 
@@ -2252,15 +2277,11 @@
       <Feature Id="amd64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x64" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).x64" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).x64" />
         <?endforeach?>
 
@@ -2272,15 +2293,11 @@
       <Feature Id="x86" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x86" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).x86" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).x86" />
         <?endforeach?>
 

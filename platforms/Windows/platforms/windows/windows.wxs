@@ -29,21 +29,6 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsPlatformUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <!-- SDK manifests drive the generated module directories and architecture feature refs below. -->
-    <?define SDKDeveloperToolsModules = XCTest;Testing?>
-
-    <?define SDKPlatformOverlayModules = CRT;WinSDK?>
-    <?define SDKCXXInteropModules = Cxx;CxxStdlib?>
-    <?define SDKDispatchComponentGroups = BlocksRuntime;dispatch;swiftDispatch?>
-    <?define SDKDispatchModuleDirectoryNames = Dispatch?>
-    <?define SDKFoundationComponentGroups = _FoundationCollections;_FoundationUnicode;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
-    <?define SDKFoundationModuleDirectoryNames = _FoundationCollections;Foundation;FoundationEssentials;FoundationInternationalization;FoundationNetworking;FoundationXML?>
-    <?define SDKFoundationStaticComponentGroups = CoreFoundation;FoundationDependencies;lib_FoundationCShims;lib_FoundationInternationalizationData?>
-    <?define SDKStandardModules = _Builtin_float;_Concurrency;_Differentiation;_RegexParser;_StringProcessing;_Volatile;Distributed;Observation;RegexBuilder;Runtime;Swift;SwiftOnoneSupport;Synchronization?>
-    <?define SDKModuleDirectoryNames = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchModuleDirectoryNames);$(SDKFoundationModuleDirectoryNames);$(SDKStandardModules)?>
-
-    <?define SDKComponentGroups = $(SDKPlatformOverlayModules);$(SDKCXXInteropModules);$(SDKDispatchComponentGroups);$(SDKFoundationComponentGroups);$(SDKStandardModules);SwiftRemoteMirror?>
-
     <!--
       └─ Swift
           └─ Platforms
@@ -148,7 +133,7 @@
                     <Directory Id="SDK_usr_lib_swift_apinotes" Name="apinotes" DiskId="1" />
                     <Directory Id="SDK_usr_lib_swift_shims" Name="shims" DiskId="1" />
                     <Directory Id="SDK_usr_lib_swift_windows" Name="windows">
-                      <?foreach ModuleName in $(SDKModuleDirectoryNames)?>
+                      <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
                       <?if $(IncludeARM64) == True?>
@@ -164,7 +149,7 @@
                   </Directory>
                   <Directory Name="swift_static">
                     <Directory Id="SDK_usr_lib_swift_static_winows" Name="windows">
-                      <?foreach ModuleName in $(SDKModuleDirectoryNames)?>
+                      <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="lib$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
                       <?if $(IncludeARM64) == True?>
@@ -398,14 +383,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\dispatch.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.arm64" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.arm64" Directory="Dispatch.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_windows_arm64" Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\swiftDispatch.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.arm64" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.arm64" Directory="libDispatch.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
 
@@ -422,14 +407,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\dispatch.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.x64" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.x64" Directory="Dispatch.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_windows_x64" Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\swiftDispatch.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.x64" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.x64" Directory="libDispatch.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
 
@@ -446,14 +431,14 @@
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\dispatch.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="swiftDispatch.x86" Directory="Dispatch.swiftmodule">
+      <ComponentGroup Id="Dispatch.x86" Directory="Dispatch.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_windows_x86" Source="$(SDKRoot)\usr\lib\swift\windows\i686\swiftDispatch.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libswiftDispatch.x86" Directory="libDispatch.swiftmodule">
+      <ComponentGroup Id="libDispatch.x86" Directory="libDispatch.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\Dispatch.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
 
@@ -462,31 +447,31 @@
     <?endif?>
 
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_windows_arm64">
+      <ComponentGroup Id="RemoteMirror.arm64" Directory="SDK_usr_lib_swift_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\swiftRemoteMirror.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
+      <ComponentGroup Id="libRemoteMirror.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\swiftRemoteMirror.lib" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x64" Directory="SDK_usr_lib_swift_windows_x64">
+      <ComponentGroup Id="RemoteMirror.x64" Directory="SDK_usr_lib_swift_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\swiftRemoteMirror.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
+      <ComponentGroup Id="libRemoteMirror.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\swiftRemoteMirror.lib" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="SwiftRemoteMirror.x86" Directory="SDK_usr_lib_swift_windows_x86">
+      <ComponentGroup Id="RemoteMirror.x86" Directory="SDK_usr_lib_swift_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift\windows\i686\swiftRemoteMirror.lib" />
       </ComponentGroup>
 
-      <ComponentGroup Id="libSwiftRemoteMirror.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
+      <ComponentGroup Id="libRemoteMirror.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\swiftRemoteMirror.lib" />
       </ComponentGroup>
     <?endif?>
@@ -1276,38 +1261,74 @@
 
     <!-- Foundation Dependencies -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="FoundationDependencies.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
+      <ComponentGroup Id="libbrotlicommon.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\brotlicommon.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\brotlidec.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\libcurl.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\libxml2s.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\zlibstatic.lib" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="FoundationDependencies.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
+      <ComponentGroup Id="libbrotlicommon.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\brotlicommon.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\brotlidec.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\libcurl.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\libxml2s.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\zlibstatic.lib" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="FoundationDependencies.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
+      <ComponentGroup Id="libbrotlicommon.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\brotlicommon.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libbrotlidec.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\brotlidec.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libcurl.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\libcurl.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="liblibxml2.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\libxml2s.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libzlib.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\zlibstatic.lib" />
       </ComponentGroup>
     <?endif?>
 
     <!-- CoreFoundation -->
     <?if $(IncludeARM64) == True?>
-      <ComponentGroup Id="CoreFoundation.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
+      <ComponentGroup Id="libCoreFoundation.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\CoreFoundation.lib" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\_CFURLSessionInterface.lib" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\_CFXMLInterface.lib" />
@@ -1315,7 +1336,7 @@
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <ComponentGroup Id="CoreFoundation.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
+      <ComponentGroup Id="libCoreFoundation.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\CoreFoundation.lib" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\_CFURLSessionInterface.lib" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\_CFXMLInterface.lib" />
@@ -1323,7 +1344,7 @@
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <ComponentGroup Id="CoreFoundation.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
+      <ComponentGroup Id="libCoreFoundation.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\CoreFoundation.lib" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_CFURLSessionInterface.lib" />
         <File Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_CFXMLInterface.lib" />
@@ -1775,7 +1796,7 @@
       <Feature Id="arm64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm64" />
         <?endforeach?>
       </Feature>
@@ -1785,7 +1806,7 @@
       <Feature Id="x64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x64" />
         <?endforeach?>
       </Feature>
@@ -1795,7 +1816,7 @@
       <Feature Id="x86.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Windows_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKDeveloperToolsModules)?>
+        <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x86" />
         <?endforeach?>
       </Feature>
@@ -1808,7 +1829,7 @@
       <ComponentGroupRef Id="CXXShim" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="Dispatch" />
-      <ComponentGroupRef Id="SwiftRemoteMirror" />
+      <ComponentGroupRef Id="RemoteMirror" />
       <ComponentGroupRef Id="SwiftShims" />
       <ComponentGroupRef Id="_FoundationCShims" />
       <ComponentGroupRef Id="_FoundationInternationalizationData" />
@@ -1819,15 +1840,11 @@
       <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm64" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).arm64" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).arm64" />
         <?endforeach?>
 
@@ -1843,15 +1860,11 @@
       <Feature Id="x64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x64" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).x64" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).x64" />
         <?endforeach?>
 
@@ -1867,15 +1880,11 @@
       <Feature Id="x86" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Windows_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x86" />
         <?endforeach?>
 
-        <?foreach ComponentGroup in $(SDKFoundationStaticComponentGroups)?>
-          <ComponentGroupRef Id="$(ComponentGroup).x86" />
-        <?endforeach?>
-
-        <?foreach ComponentGroup in $(SDKComponentGroups)?>
+        <?foreach ComponentGroup in $(SDKStaticLinkageComponentGroups)?>
           <ComponentGroupRef Id="lib$(ComponentGroup).x86" />
         <?endforeach?>
 
