@@ -14,6 +14,8 @@
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 
+  <Import Project="RuntimeLibraries.targets" Condition="'$(MSBuildProjectExtension)' == '.wixproj'" />
+
   <ItemGroup>
     <PackageReference Include="WixToolset.Util.wixext" Version="7.0.0" />
   </ItemGroup>
