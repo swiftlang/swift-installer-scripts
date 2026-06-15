@@ -1,6 +1,6 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputType>Module</OutputType>
-    <OutputName>rtl.static.$(ProductArchitecture)</OutputName>
+    <OutputName>rtl.static.shared.$(ProductArchitecture)</OutputName>
   </PropertyGroup>
 </Project>

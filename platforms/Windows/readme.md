@@ -350,3 +350,12 @@ A cut-down version with a smaller number of bundles being tested is available in
 ```sh
 msbuild -Restore -p:RedistributablesDirectory=X:\Swift\Redistributables\0.0.0 -p:Platform=Arm64 hellomm.wixproj
 ```
+
+Redistributable merge-module names are a matrix of link model, Win32 SxS assembly kind, and architecture: `rtl.<link-model>.<assembly-kind>.<arch>.msm`.
+
+| Link model | Assembly kind | x86 | amd64 | arm64 |
+| ---------- | ------------- | --- | ----- | ----- |
+| dynamic | shared | `rtl.dynamic.shared.x86.msm` | `rtl.dynamic.shared.amd64.msm` | `rtl.dynamic.shared.arm64.msm` |
+| static | shared | `rtl.static.shared.x86.msm` | `rtl.static.shared.amd64.msm` | `rtl.static.shared.arm64.msm` |
+
+The `dynamic` modules install the full dynamic runtime. The `static` modules install the stable static-link support DLLs, `BlocksRuntime.dll` and `dispatch.dll`. The `shared` assembly kind installs DLLs directly in the runtime directory.
