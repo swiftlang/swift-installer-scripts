@@ -1,9 +1,9 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?if $(sys.BUILDARCH) == x64 ?>
-    <?define MergeModuleFileName = "rtl.dynamic.amd64.msm" ?>
+    <?define MergeModuleFileName = "rtl.dynamic.shared.amd64.msm" ?>
   <?else?>
-    <?define MergeModuleFileName = "rtl.dynamic.$(sys.BUILDARCH).msm" ?>
+    <?define MergeModuleFileName = "rtl.dynamic.shared.$(sys.BUILDARCH).msm" ?>
   <?endif?>
 
   <Package
