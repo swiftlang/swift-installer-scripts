@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\rtl\shared\msi\rtl.shared.msi.wixproj" Properties="ProductArchitecture=$(ProductArchitecture)" BindName="rtl.shared" />
+    <ProjectReference Include="..\rtl\dynamic\msi\rtl.dynamic.msi.wixproj" Properties="ProductArchitecture=$(ProductArchitecture)" BindName="rtl.dynamic" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(Platforms.Contains('android')) ">

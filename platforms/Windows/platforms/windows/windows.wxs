@@ -1744,8 +1744,8 @@
 
     <!-- Redistributables -->
     <?if $(IncludeARM64) == True?>
-      <Component Id="rtl.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
-        <File Source="!(bindpath.rtl.shared.arm64.msm)\rtl.shared.arm64.msm" />
+      <Component Id="rtl.dynamic.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
+        <File Source="!(bindpath.rtl.dynamic.arm64.msm)\rtl.dynamic.arm64.msm" />
       </Component>
 
       <Component Id="rtl.static.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
@@ -1754,8 +1754,8 @@
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <Component Id="rtl.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
-        <File Source="!(bindpath.rtl.shared.amd64.msm)\rtl.shared.amd64.msm" />
+      <Component Id="rtl.dynamic.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
+        <File Source="!(bindpath.rtl.dynamic.amd64.msm)\rtl.dynamic.amd64.msm" />
       </Component>
 
       <Component Id="rtl.static.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
@@ -1764,8 +1764,8 @@
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <Component Id="rtl.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
-        <File Source="!(bindpath.rtl.shared.x86.msm)\rtl.shared.x86.msm" />
+      <Component Id="rtl.dynamic.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
+        <File Source="!(bindpath.rtl.dynamic.x86.msm)\rtl.dynamic.x86.msm" />
       </Component>
 
       <Component Id="rtl.static.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
@@ -1851,7 +1851,7 @@
         <ComponentGroupRef Id="Registrar.arm64" />
 
         <!-- Redistributable -->
-        <ComponentRef Id="rtl.shared.arm64.msm" />
+        <ComponentRef Id="rtl.dynamic.arm64.msm" />
         <ComponentRef Id="rtl.static.arm64.msm" />
       </Feature>
     <?endif?>
@@ -1871,7 +1871,7 @@
         <ComponentGroupRef Id="Registrar.x64" />
 
         <!-- Redistributable -->
-        <ComponentRef Id="rtl.shared.amd64.msm" />
+        <ComponentRef Id="rtl.dynamic.amd64.msm" />
         <ComponentRef Id="rtl.static.amd64.msm" />
       </Feature>
     <?endif?>
@@ -1891,7 +1891,7 @@
         <ComponentGroupRef Id="Registrar.x86" />
 
         <!-- Redistributable -->
-        <ComponentRef Id="rtl.shared.x86.msm" />
+        <ComponentRef Id="rtl.dynamic.x86.msm" />
         <ComponentRef Id="rtl.static.x86.msm" />
       </Feature>
     <?endif?>

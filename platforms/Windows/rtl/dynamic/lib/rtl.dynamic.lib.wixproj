@@ -1,6 +1,6 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
-    <OutputName>rtl.shared.$(ProductArchitecture)</OutputName>
+    <OutputName>rtl.dynamic.$(ProductArchitecture)</OutputName>
     <OutputType>Library</OutputType>
     <BindFiles>true</BindFiles>
   </PropertyGroup>

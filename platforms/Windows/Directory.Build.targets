@@ -5,8 +5,8 @@
     <RuntimePackages Include="rtllib" />
     <RuntimePackages Include="rtlmsm" />
     <RuntimePackages Include="rtl.static.msm" />
-    <RuntimePackages Include="rtl.shared.lib" />
-    <RuntimePackages Include="rtl.shared.msm" />
+    <RuntimePackages Include="rtl.dynamic.lib" />
+    <RuntimePackages Include="rtl.dynamic.msm" />
     <_SharedFragmentConsumer Include="$(MSBuildProjectName)" Exclude="@(RuntimePackages)" />
   </ItemGroup>
 
