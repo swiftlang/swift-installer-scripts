@@ -9,11 +9,14 @@
       Scope="$(PackageScope)">
 
     <Property Id="INSTALLARM64SDK" Value="1" />
-    <Property Id="INSTALLARM64REDIST" Value="1" />
+    <Property Id="INSTALLARM64REDISTSHARED" Value="0" />
+    <Property Id="INSTALLARM64REDISTPRIVATE" Value="1" />
     <Property Id="INSTALLAMD64SDK" Value="1" />
-    <Property Id="INSTALLAMD64REDIST" Value="1" />
+    <Property Id="INSTALLAMD64REDISTSHARED" Value="0" />
+    <Property Id="INSTALLAMD64REDISTPRIVATE" Value="1" />
     <Property Id="INSTALLX86SDK" Value="1" />
-    <Property Id="INSTALLX86REDIST" Value="1" />
+    <Property Id="INSTALLX86REDISTSHARED" Value="0" />
+    <Property Id="INSTALLX86REDISTPRIVATE" Value="1" />
 
     <Media Id="1" Cabinet="windows.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?if $(IncludeARM64) == True?>
@@ -1744,55 +1747,55 @@
 
     <!-- Redistributables -->
     <?if $(IncludeARM64) == True?>
-      <Component Id="rtl.dynamic.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
+      <Component Id="rtl.dynamic.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDISTSHARED" DiskId="2">
         <File Source="!(bindpath.rtl.dynamic.shared.arm64.msm)\rtl.dynamic.shared.arm64.msm" />
       </Component>
 
-      <Component Id="rtl.dynamic.private.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
+      <Component Id="rtl.dynamic.private.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDISTPRIVATE" DiskId="2">
         <File Source="!(bindpath.rtl.dynamic.private.arm64.msm)\rtl.dynamic.private.arm64.msm" />
       </Component>
 
-      <Component Id="rtl.static.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
+      <Component Id="rtl.static.shared.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDISTSHARED" DiskId="2">
         <File Source="!(bindpath.rtl.static.shared.arm64.msm)\rtl.static.shared.arm64.msm" />
       </Component>
 
-      <Component Id="rtl.static.private.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDIST" DiskId="2">
+      <Component Id="rtl.static.private.arm64.msm" Directory="RedistVersion" Condition="INSTALLARM64REDISTPRIVATE" DiskId="2">
         <File Source="!(bindpath.rtl.static.private.arm64.msm)\rtl.static.private.arm64.msm" />
       </Component>
     <?endif?>
 
     <?if $(IncludeX64) == True?>
-      <Component Id="rtl.dynamic.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
+      <Component Id="rtl.dynamic.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDISTSHARED" DiskId="3">
         <File Source="!(bindpath.rtl.dynamic.shared.amd64.msm)\rtl.dynamic.shared.amd64.msm" />
       </Component>
 
-      <Component Id="rtl.dynamic.private.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
+      <Component Id="rtl.dynamic.private.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDISTPRIVATE" DiskId="3">
         <File Source="!(bindpath.rtl.dynamic.private.amd64.msm)\rtl.dynamic.private.amd64.msm" />
       </Component>
 
-      <Component Id="rtl.static.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
+      <Component Id="rtl.static.shared.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDISTSHARED" DiskId="3">
         <File Source="!(bindpath.rtl.static.shared.amd64.msm)\rtl.static.shared.amd64.msm" />
       </Component>
 
-      <Component Id="rtl.static.private.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDIST" DiskId="3">
+      <Component Id="rtl.static.private.amd64.msm" Directory="RedistVersion" Condition="INSTALLAMD64REDISTPRIVATE" DiskId="3">
         <File Source="!(bindpath.rtl.static.private.amd64.msm)\rtl.static.private.amd64.msm" />
       </Component>
     <?endif?>
 
     <?if $(IncludeX86) == True?>
-      <Component Id="rtl.dynamic.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
+      <Component Id="rtl.dynamic.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDISTSHARED" DiskId="4">
         <File Source="!(bindpath.rtl.dynamic.shared.x86.msm)\rtl.dynamic.shared.x86.msm" />
       </Component>
 
-      <Component Id="rtl.dynamic.private.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
+      <Component Id="rtl.dynamic.private.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDISTPRIVATE" DiskId="4">
         <File Source="!(bindpath.rtl.dynamic.private.x86.msm)\rtl.dynamic.private.x86.msm" />
       </Component>
 
-      <Component Id="rtl.static.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
+      <Component Id="rtl.static.shared.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDISTSHARED" DiskId="4">
         <File Source="!(bindpath.rtl.static.shared.x86.msm)\rtl.static.shared.x86.msm" />
       </Component>
 
-      <Component Id="rtl.static.private.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDIST" DiskId="4">
+      <Component Id="rtl.static.private.x86.msm" Directory="RedistVersion" Condition="INSTALLX86REDISTPRIVATE" DiskId="4">
         <File Source="!(bindpath.rtl.static.private.x86.msm)\rtl.static.private.x86.msm" />
       </Component>
     <?endif?>

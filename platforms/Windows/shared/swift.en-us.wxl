@@ -61,7 +61,8 @@
   <String Id="OptionsDefaultToolchainLabel" Value="Default Variant" />
   <String Id="OptionsDefaultAsserts" Value="Asserts" />
   <String Id="OptionsDefaultNoAsserts" Value="No Asserts" />
-  <String Id="Redist" Value="Redistributable" />
+  <String Id="Redist_shared" Value="Redistributable (Shared Win32 SxS Assemblies)" />
+  <String Id="Redist_private" Value="Redistributable (Private Win32 SxS Assemblies)" />
 
   <String Id="SwiftSourceFileDescription" Value="Swift Source File" />
   <String Id="SwiftModuleFileDescription" Value="Swift Interface Definition (binary)" />

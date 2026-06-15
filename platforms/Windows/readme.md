@@ -45,12 +45,11 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | OptionsInstallAssertsToolchain | Controls whether the Assert variant of the toolchain is installed. |
 | OptionsInstallNoAssertsToolchain | Controls whether the NoAssert variant of the toolchain is installed. |
 | OptionsInstallWindowsPlatform | Controls whether the Windows platform will be installed. |
-| OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
-| OptionsInstallWindowsRedistAMD64 | Controls whether the Windows AMD64 Redistributable MSM will be installed. |
 | OptionsInstallWindowsSDKAMD64 | Controls whether the Windows AMD64 SDK will be installed. |
-| OptionsInstallWindowsRedistARM64 | Controls whether the Windows ARM64 Redistributable MSM will be installed. |
+| OptionsInstallWindowsSDKARM64 | Controls whether the Windows ARM64 SDK will be installed. |
 | OptionsInstallWindowsSDKX86 | Controls whether the Windows X86 SDK will be installed. |
-| OptionsInstallWindowsRedistX86 | Controls whether the Windows X86 Redistributable MSM will be installed. |
+| OptionsInstallWindowsRedistShared{AMD64,ARM64,X86} | Controls whether the matching Shared Win32 SxS Assembly redistributable MSMs will be installed. |
+| OptionsInstallWindowsRedistPrivate{AMD64,ARM64,X86} | Controls whether the matching Private Win32 SxS Assembly redistributable MSMs will be installed. |
 
 Those variables are tied to controls in the bundle theme (`installer\theme.xml`) on the Options page. For example, the install directory is an `Editbox` control that takes the `InstallRoot` name to tie itself to the `InstallRoot` variable in `installer.wxs`:
 
