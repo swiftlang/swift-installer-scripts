@@ -4,7 +4,7 @@
     <PropertyGroup>
       <_SDKPlatform Condition="'$(MSBuildProjectName)' == 'android'">Android</_SDKPlatform>
       <_SDKPlatform Condition="'$(MSBuildProjectName)' == 'windows'">Windows</_SDKPlatform>
-      <_RuntimeLibraryPlatform Condition="'$(MSBuildProjectName)' == 'rtl.shared.lib'">Windows</_RuntimeLibraryPlatform>
+      <_RuntimeLibraryPlatform Condition="'$(MSBuildProjectName)' == 'rtl.dynamic.lib'">Windows</_RuntimeLibraryPlatform>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(_SDKPlatform)' != ''">
