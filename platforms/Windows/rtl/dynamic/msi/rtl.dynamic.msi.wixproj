@@ -1,5 +1,6 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
+    <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">shared</RuntimeLibraryInstallationMode>
     <OutputName>rtl.$(ProductArchitecture)</OutputName>
     <DefineConstants>
       $(DefineConstants);
