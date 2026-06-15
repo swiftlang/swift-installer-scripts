@@ -1,6 +1,8 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
+    <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">private</RuntimeLibraryInstallationMode>
     <OutputType>Module</OutputType>
-    <OutputName>rtl.static.shared.$(ProductArchitecture)</OutputName>
+    <OutputName>rtl.static.$(RuntimeLibraryInstallationMode).$(ProductArchitecture)</OutputName>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(RuntimeLibraryInstallationMode)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
 </Project>

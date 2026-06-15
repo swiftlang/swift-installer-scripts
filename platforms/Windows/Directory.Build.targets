@@ -14,6 +14,13 @@
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition=" '$(RuntimeLibraryInstallationMode)' != '' ">
+    <DefineConstants>
+      $(DefineConstants);
+      RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode);
+    </DefineConstants>
+  </PropertyGroup>
+
   <Import Project="RuntimeLibraries.targets" Condition="'$(MSBuildProjectExtension)' == '.wixproj'" />
 
   <ItemGroup>

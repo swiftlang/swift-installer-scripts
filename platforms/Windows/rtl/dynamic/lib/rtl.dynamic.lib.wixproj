@@ -1,7 +1,9 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
-    <OutputName>rtl.dynamic.$(ProductArchitecture)</OutputName>
+    <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">shared</RuntimeLibraryInstallationMode>
+    <OutputName>rtl.dynamic.$(RuntimeLibraryInstallationMode).$(ProductArchitecture)</OutputName>
     <OutputType>Library</OutputType>
     <BindFiles>true</BindFiles>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(RuntimeLibraryInstallationMode)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
 </Project>

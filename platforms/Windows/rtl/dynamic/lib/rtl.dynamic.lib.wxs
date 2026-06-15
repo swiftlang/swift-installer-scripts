@@ -13,14 +13,28 @@
       <?define LibexecDirectoryComponentGuidGenerationSeed = "FCAC627D-44EC-4745-B81B-E12CE8F80951" ?>
       <?define RuntimeRoot = $(WindowsRuntimeX86)?>
     <?endif?>
-    <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)" />
+    <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)">
+      <?if $(RuntimeLibraryInstallationMode) == private ?>
+        <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
+          <Directory Id="RL_$(RuntimeLibrary)" Name="$(RuntimeLibrary)" />
+        <?endforeach?>
+      <?endif?>
+    </Directory>
     <Directory Id="LIBEXECDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(LibexecDirectoryComponentGuidGenerationSeed)" />
 
-    <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
-      <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-        <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
-      </ComponentGroup>
-    <?endforeach?>
+    <?if $(RuntimeLibraryInstallationMode) == private ?>
+      <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
+        <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RL_$(RuntimeLibrary)">
+          <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
+        </ComponentGroup>
+      <?endforeach?>
+    <?else?>
+      <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
+        <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+          <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
+        </ComponentGroup>
+      <?endforeach?>
+    <?endif?>
 
     <ComponentGroup Id="plutil_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
       <File Source="$(RuntimeRoot)\usr\bin\plutil.exe" />
