@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <PropertyGroup>
-    <RuntimePackages>;rtllib;rtlmsm;rtl.static.msm;rtl.shared.lib;rtl.shared.msm;</RuntimePackages>
-  </PropertyGroup>
+  <ItemGroup>
+    <RuntimePackages Include="shared" />
+    <RuntimePackages Include="rtllib" />
+    <RuntimePackages Include="rtlmsm" />
+    <RuntimePackages Include="rtl.static.msm" />
+    <RuntimePackages Include="rtl.shared.lib" />
+    <RuntimePackages Include="rtl.shared.msm" />
+    <_SharedFragmentConsumer Include="$(MSBuildProjectName)" Exclude="@(RuntimePackages)" />
+  </ItemGroup>
 
-  <ItemGroup Condition=" ! $([System.String]::Copy('$(RuntimePackages)').Contains($(MSBuildProjectName))) ">
+  <ItemGroup Condition=" '@(_SharedFragmentConsumer)' != '' ">
     <ProjectReference Include="$(MSBuildThisFileDirectory)shared\shared.wixproj" />
   </ItemGroup>
 
