@@ -1,7 +1,11 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
+    <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">private</RuntimeLibraryInstallationMode>
+    <HelloMergeModulePackageScope Condition=" '$(HelloMergeModulePackageScope)' == '' and '$(RuntimeLibraryInstallationMode)' == 'shared' ">perMachine</HelloMergeModulePackageScope>
+    <HelloMergeModulePackageScope Condition=" '$(HelloMergeModulePackageScope)' == '' ">perUserOrMachine</HelloMergeModulePackageScope>
     <DefineConstants>
       $(DefineConstants);
+      HelloMergeModulePackageScope=$(HelloMergeModulePackageScope);
       RedistributablesDirectory=$(RedistributablesDirectory);
     </DefineConstants>
   </PropertyGroup>

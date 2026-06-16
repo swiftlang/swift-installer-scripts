@@ -350,6 +350,10 @@ A cut-down version with a smaller number of bundles being tested is available in
 msbuild -Restore -p:RedistributablesDirectory=X:\Swift\Redistributables\0.0.0 -p:Platform=Arm64 hellomm.wixproj
 ```
 
+The sample defaults to the `private` runtime MSM so it can build a dual-scope MSI. Build with
+`-p:RuntimeLibraryInstallationMode=shared` to consume the shared native assembly cache MSM
+instead; that switches the sample package scope to `perMachine` by default.
+
 Redistributable merge-module names are a matrix of link model, installation mode, and architecture: `rtl.<link-model>.<installation-mode>.<arch>.msm`.
 
 | Link model | Installation mode | x86 | amd64 | arm64 |
