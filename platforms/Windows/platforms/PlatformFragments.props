@@ -1,0 +1,10 @@
+<Project>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BlocksRuntimeHeaders.wxs" Link="BlocksRuntimeHeaders.wxs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DispatchHeaders.wxs" Link="DispatchHeaders.wxs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FoundationCShimsHeaders.wxs" Link="FoundationCShimsHeaders.wxs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FoundationInternationalizationDataHeaders.wxs" Link="FoundationInternationalizationDataHeaders.wxs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FoundationUnicodeHeaders.wxs" Link="FoundationUnicodeHeaders.wxs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SwiftRemoteMirrorHeaders.wxs" Link="SwiftRemoteMirrorHeaders.wxs" />
+  </ItemGroup>
+</Project>
