@@ -1,9 +1,9 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
   <?if $(sys.BUILDARCH) == x64 ?>
-    <?define MergeModuleFileName = "rtl.dynamic.shared.amd64.msm" ?>
+    <?define MergeModuleFileName = "rtl.dynamic.$(RuntimeLibraryInstallationMode).amd64.msm" ?>
   <?else?>
-    <?define MergeModuleFileName = "rtl.dynamic.shared.$(sys.BUILDARCH).msm" ?>
+    <?define MergeModuleFileName = "rtl.dynamic.$(RuntimeLibraryInstallationMode).$(sys.BUILDARCH).msm" ?>
   <?endif?>
 
   <Package
@@ -12,7 +12,7 @@
       Name="Hello Merge Module World"
       UpgradeCode="C0050D86-A62E-41CD-844D-DF3501C4B5F1"
       Version="1.0"
-      Scope="perUserOrMachine">
+      Scope="$(HelloMergeModulePackageScope)">
 
     <MediaTemplate EmbedCab="yes" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
