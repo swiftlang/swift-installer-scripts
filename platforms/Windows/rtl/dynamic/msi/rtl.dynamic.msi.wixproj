@@ -2,21 +2,24 @@
   <PropertyGroup>
     <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">shared</RuntimeLibraryInstallationMode>
     <OutputName>rtl.$(ProductArchitecture)</OutputName>
+    <RtlPackageScope Condition=" '$(RuntimeLibraryInstallationMode)' == 'shared' ">perMachine</RtlPackageScope>
+    <RtlPackageScope Condition=" '$(RtlPackageScope)' == '' ">$(PackageScope)</RtlPackageScope>
     <DefineConstants>
       $(DefineConstants);
+      RtlPackageScope=$(RtlPackageScope);
       VCRedistDir=$(VCRedistDir);
     </DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
-    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=amd64;Platform=x64" />
+    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=amd64;Platform=x64;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode)" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
-    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64" />
+    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode)" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
-    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=x86;Platform=x86" />
+    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=x86;Platform=x86;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode)" />
   </ItemGroup>
 </Project>

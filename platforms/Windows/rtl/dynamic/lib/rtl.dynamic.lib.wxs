@@ -3,14 +3,44 @@
     <?if $(sys.BUILDARCH) == x64 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "E33B165B-8460-467D-ABCD-27EA8197A3CF" ?>
       <?define LibexecDirectoryComponentGuidGenerationSeed = "FFC6429D-AF95-413E-B338-75642F8F7F34" ?>
+      <!-- Unversioned Win32 assembly DLL key paths need explicit component GUIDs. -->
+      <?define BlocksRuntimeComponentGuid = "D00EC465-CBF9-4297-A2AE-E51A24E01C22" ?>
+      <?define DispatchComponentGuid = "24093657-5194-4886-9E69-729621137013" ?>
+      <?define SwiftDispatchComponentGuid = "D1E5B26C-63DE-5C99-B4BD-A9FB96EB8804" ?>
+      <?define FoundationComponentGuid = "D220169D-AF4A-5688-A641-4BB450D708D2" ?>
+      <?define FoundationEssentialsComponentGuid = "7502F586-543E-5897-83DC-92043D064DAC" ?>
+      <?define FoundationInternationalizationComponentGuid = "4CB56004-A56C-5499-99C8-B9AA244B6EDF" ?>
+      <?define FoundationNetworkingComponentGuid = "3C2056CD-C326-5176-B283-D4EEEB92FFC4" ?>
+      <?define FoundationXMLComponentGuid = "2E6786BA-686F-5702-A2B9-E8E991942C8D" ?>
+      <?define FoundationICUComponentGuid = "F7790634-F18D-5C63-BF60-6A5759033861" ?>
       <?define RuntimeRoot = $(WindowsRuntimeX64)?>
     <?elseif $(sys.BUILDARCH) == arm64 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "BFFDD8F7-CC47-40CB-AF0E-095273FF10FC" ?>
       <?define LibexecDirectoryComponentGuidGenerationSeed = "AD26608D-63D8-45AC-AA57-D4CEEF2DF021" ?>
+      <!-- Unversioned Win32 assembly DLL key paths need explicit component GUIDs. -->
+      <?define BlocksRuntimeComponentGuid = "B8A5D4E6-087E-4BF2-963A-48395F360DAE" ?>
+      <?define DispatchComponentGuid = "DC24B385-7582-4A6B-85B3-A50A0B0C706E" ?>
+      <?define SwiftDispatchComponentGuid = "401358B0-CAE7-50A2-8E0C-9E2160F21628" ?>
+      <?define FoundationComponentGuid = "A9B0A996-BF16-5C9B-A5EF-9A92E6DDC31E" ?>
+      <?define FoundationEssentialsComponentGuid = "C9E7486E-878B-5ED0-BB30-856DC00AD0A0" ?>
+      <?define FoundationInternationalizationComponentGuid = "78524AA5-8B0E-53C5-80C5-58F9CBFD38D1" ?>
+      <?define FoundationNetworkingComponentGuid = "F73A539F-8334-5A3D-A985-0F3310F5A213" ?>
+      <?define FoundationXMLComponentGuid = "DFAD20AC-F889-5F35-BBF2-9A254A9820E4" ?>
+      <?define FoundationICUComponentGuid = "D83B44D7-F368-51D2-BF13-7EB92CFF8FA2" ?>
       <?define RuntimeRoot = $(WindowsRuntimeARM64)?>
     <?elseif $(sys.BUILDARCH) == x86 ?>
       <?define RuntimeDirectoryComponentGuidGenerationSeed = "72064820-3795-4331-8CBD-FF1ABA7DAE7B" ?>
       <?define LibexecDirectoryComponentGuidGenerationSeed = "FCAC627D-44EC-4745-B81B-E12CE8F80951" ?>
+      <!-- Unversioned Win32 assembly DLL key paths need explicit component GUIDs. -->
+      <?define BlocksRuntimeComponentGuid = "362C16EB-906F-43F4-AA77-7F1667DB14CA" ?>
+      <?define DispatchComponentGuid = "A253787E-1B91-4FFA-8CF4-7E3CEFE5A2FE" ?>
+      <?define SwiftDispatchComponentGuid = "65A809AD-9554-5EC9-8B44-4CC2BCAB673C" ?>
+      <?define FoundationComponentGuid = "9F202B31-3716-5338-B9C2-D6307648757A" ?>
+      <?define FoundationEssentialsComponentGuid = "794FB68D-A930-56DC-8F7F-29ADD8C4CFD7" ?>
+      <?define FoundationInternationalizationComponentGuid = "6BC6EA4E-3BFD-548C-8B89-8D2C244677CA" ?>
+      <?define FoundationNetworkingComponentGuid = "DDA7D25B-D64E-5E6C-8AB0-1F178961EE59" ?>
+      <?define FoundationXMLComponentGuid = "9A105090-04B6-5B9E-B218-26C75D1C3714" ?>
+      <?define FoundationICUComponentGuid = "F394519D-D58B-5067-8A1F-CE77405E1FF4" ?>
       <?define RuntimeRoot = $(WindowsRuntimeX86)?>
     <?endif?>
     <Directory Id="RUNTIMEDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(RuntimeDirectoryComponentGuidGenerationSeed)">
@@ -31,7 +61,107 @@
     <?else?>
       <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
         <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
-          <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
+          <?if $(RuntimeLibrary) == BlocksRuntime ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(BlocksRuntimeComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == dispatch ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(DispatchComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == swiftDispatch ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(SwiftDispatchComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == Foundation ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == FoundationEssentials ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationEssentialsComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == FoundationInternationalization ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationInternationalizationComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == FoundationNetworking ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationNetworkingComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == FoundationXML ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationXMLComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == _FoundationICU ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationICUComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?else?>
+            <Component Id="C_$(RuntimeLibrary)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?endif?>
         </ComponentGroup>
       <?endforeach?>
     <?endif?>

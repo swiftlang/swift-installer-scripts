@@ -20,12 +20,18 @@
 
   <?if $(ProductArchitecture) == x86 ?>
     <?define RuntimeDirectoryComponentGuidGenerationSeed = "D3021274-DCA3-4369-82D3-B6CEE436A3FC" ?>
+    <?define BlocksRuntimeComponentGuid = "362C16EB-906F-43F4-AA77-7F1667DB14CA" ?>
+    <?define DispatchComponentGuid = "A253787E-1B91-4FFA-8CF4-7E3CEFE5A2FE" ?>
     <?define RuntimeRoot = $(WindowsRuntimeX86)?>
   <?elseif $(ProductArchitecture) == amd64 ?>
     <?define RuntimeDirectoryComponentGuidGenerationSeed = "639A8564-3505-4424-BA2F-449AAF743A90" ?>
+    <?define BlocksRuntimeComponentGuid = "D00EC465-CBF9-4297-A2AE-E51A24E01C22" ?>
+    <?define DispatchComponentGuid = "24093657-5194-4886-9E69-729621137013" ?>
     <?define RuntimeRoot = $(WindowsRuntimeX64)?>
   <?elseif $(ProductArchitecture) == arm64 ?>
     <?define RuntimeDirectoryComponentGuidGenerationSeed = "F8BF026F-8E3F-42B5-A5E7-E0A4D186EDF3" ?>
+    <?define BlocksRuntimeComponentGuid = "B8A5D4E6-087E-4BF2-963A-48395F360DAE" ?>
+    <?define DispatchComponentGuid = "DC24B385-7582-4A6B-85B3-A50A0B0C706E" ?>
     <?define RuntimeRoot = $(WindowsRuntimeARM64)?>
   <?endif?>
 
@@ -41,9 +47,37 @@
         <?endforeach?>
       <?else?>
         <?foreach RuntimeLibrary in $(StaticRuntimeDependencies)?>
-          <Component Id="$(RuntimeLibrary)_$(ProductArchitecture)">
-            <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
-          </Component>
+          <?if $(RuntimeLibrary) == BlocksRuntime ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(BlocksRuntimeComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?elseif $(RuntimeLibrary) == dispatch ?>
+            <Component Id="C_$(RuntimeLibrary)" Guid="$(DispatchComponentGuid)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?else?>
+            <Component Id="C_$(RuntimeLibrary)">
+              <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
+              <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
+              <File Id="F_$(RuntimeLibrary)"
+                    Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).dll"
+                    KeyPath="yes"
+                    Assembly="win32"
+                    AssemblyManifest="M_$(RuntimeLibrary)" />
+            </Component>
+          <?endif?>
         <?endforeach?>
       <?endif?>
     </Directory>

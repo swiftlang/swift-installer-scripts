@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project InitialTargets="_DefineRuntimeWin32AssemblyConstants">
+  <Target Name="_DefineRuntimeWin32AssemblyConstants"
+          DependsOnTargets="_DefineRuntimeLibraryConstants">
+    <PropertyGroup>
+      <RuntimeWin32AssemblyRoot Condition="'$(RuntimeWin32AssemblyRoot)' == ''">$(IntermediateOutputPath)RuntimeWin32Assemblies</RuntimeWin32AssemblyRoot>
+
+      <DefineConstants>
+        $(DefineConstants);
+        RuntimeWin32AssemblyRoot=$([MSBuild]::Escape($(RuntimeWin32AssemblyRoot)));
+      </DefineConstants>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="GenerateRuntimeWin32Assemblies"
+          DependsOnTargets="_DefineRuntimeWin32AssemblyConstants;FindWindowsSDKTools"
+          BeforeTargets="CoreCompile;Compile">
+    <PropertyGroup>
+      <_RuntimeRoot Condition="'$(ProductArchitecture)' == 'x86'">$(WindowsRuntimeX86)</_RuntimeRoot>
+      <_RuntimeRoot Condition="'$(ProductArchitecture)' == 'amd64' or '$(ProductArchitecture)' == 'x64'">$(WindowsRuntimeX64)</_RuntimeRoot>
+      <_RuntimeRoot Condition="'$(ProductArchitecture)' == 'arm64'">$(WindowsRuntimeARM64)</_RuntimeRoot>
+
+      <_RuntimeWin32AssemblyLibraries Condition="'$(RuntimeWin32AssemblyLibrarySource)' == 'RuntimeLibraries'">$(RuntimeLibraries)</_RuntimeWin32AssemblyLibraries>
+      <_RuntimeWin32AssemblyLibraries Condition="'$(RuntimeWin32AssemblyLibrarySource)' == 'StaticRuntimeDependencies'">$(StaticRuntimeDependencies)</_RuntimeWin32AssemblyLibraries>
+    </PropertyGroup>
+
+    <Error Condition="'$(RuntimeWin32AssemblyLibrarySource)' != 'RuntimeLibraries' and '$(RuntimeWin32AssemblyLibrarySource)' != 'StaticRuntimeDependencies'"
+           Text="RuntimeWin32AssemblyLibrarySource must be RuntimeLibraries or StaticRuntimeDependencies." />
+    <Error Condition="'$(_RuntimeRoot)' == ''"
+           Text="Unable to determine the Windows runtime root for ProductArchitecture=$(ProductArchitecture)." />
+    <Error Condition="'$(_RuntimeWin32AssemblyLibraries)' == ''"
+           Text="No runtime libraries were selected for shared Win32 assembly generation." />
+
+    <ItemGroup>
+      <_RuntimeWin32Assembly Include="$(_RuntimeWin32AssemblyLibraries)" />
+      <_RuntimeWin32Assembly Remove="@(_RuntimeWin32Assembly)"
+                             Condition="'%(_RuntimeWin32Assembly.Identity)' == ''" />
+      <_RuntimeWin32Assembly Update="@(_RuntimeWin32Assembly)">
+        <AssemblyDirectory>$(RuntimeWin32AssemblyRoot)\%(Identity)</AssemblyDirectory>
+        <SourceDll>$(_RuntimeRoot)\usr\bin\%(Identity).dll</SourceDll>
+        <Dll>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).dll</Dll>
+        <Manifest>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).manifest</Manifest>
+        <Catalog>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).cat</Catalog>
+        <CatalogDefinition>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).cdf</CatalogDefinition>
+      </_RuntimeWin32Assembly>
+    </ItemGroup>
+
+    <Error Condition="!Exists('%(_RuntimeWin32Assembly.SourceDll)')"
+           Text="Runtime library '%(_RuntimeWin32Assembly.SourceDll)' does not exist." />
+
+    <MakeDir Directories="@(_RuntimeWin32Assembly->'%(AssemblyDirectory)')" />
+    <Copy SourceFiles="@(_RuntimeWin32Assembly->'%(SourceDll)')"
+          DestinationFiles="@(_RuntimeWin32Assembly->'%(Dll)')" />
+
+    <Exec
+        Command="&quot;$(ManifestToolPath)mt.exe&quot; -nologo -inputresource:&quot;%(_RuntimeWin32Assembly.Dll);#1&quot; -out:&quot;%(_RuntimeWin32Assembly.Manifest)&quot;" />
+
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="[CatalogHeader]"
+        Overwrite="true"
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="Name=%(_RuntimeWin32Assembly.Identity).cat"
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="ResultDir=."
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="PublicVersion=0x00000001"
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="EncodingType=0x00010001"
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="[CatalogFiles]"
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="%(_RuntimeWin32Assembly.Identity).dll=%(_RuntimeWin32Assembly.Identity).dll"
+        Encoding="ASCII" />
+    <WriteLinesToFile
+        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
+        Lines="%(_RuntimeWin32Assembly.Identity).manifest=%(_RuntimeWin32Assembly.Identity).manifest"
+        Encoding="ASCII" />
+
+    <Exec
+        WorkingDirectory="%(_RuntimeWin32Assembly.AssemblyDirectory)"
+        Command="&quot;$(MakeCatToolPath)makecat.exe&quot; -v &quot;%(_RuntimeWin32Assembly.CatalogDefinition)&quot;" />
+
+    <Exec Condition="'$(SignOutput)' == 'true'"
+          Command="$(SignTool) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
+  </Target>
+</Project>
