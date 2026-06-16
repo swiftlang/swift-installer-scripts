@@ -1,5 +1,11 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
     <OutputName>python</OutputName>
+    <PythonABIVersion>$([System.Version]::Parse('$(PythonVersion)').Major)$([System.Version]::Parse('$(PythonVersion)').Minor)</PythonABIVersion>
+
+    <DefineConstants>
+      $(DefineConstants);
+      PythonABIVersion=$(PythonABIVersion);
+    </DefineConstants>
   </PropertyGroup>
 </Project>

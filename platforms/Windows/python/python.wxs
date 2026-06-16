@@ -5,7 +5,6 @@
   <?else?>
   <?define ArchSuffix = ""?>
   <?endif?>
-  <?define VariantProductName = !(loc.IdeAsserts_ProductName)?>
 
   <Package
     Language="1033"
@@ -39,9 +38,9 @@
       <File Source="$(PythonRoot)\python.cat" />
       <File Source="$(PythonRoot)\python.exe" />
       <File Source="$(PythonRoot)\python3.dll" />
-      <File Source="$(PythonRoot)\python310.dll" />
-      <File Source="$(PythonRoot)\python310.zip" />
-      <File Source="$(PythonRoot)\python310._pth" />
+      <File Source="$(PythonRoot)\python$(PythonABIVersion).dll" />
+      <File Source="$(PythonRoot)\python$(PythonABIVersion).zip" />
+      <File Source="$(PythonRoot)\python$(PythonABIVersion)._pth" />
       <File Source="$(PythonRoot)\pythonw.exe" />
       <File Source="$(PythonRoot)\select.pyd" />
       <File Source="$(PythonRoot)\sqlite3.dll" />
@@ -69,7 +68,7 @@
       <File Directory="_usr_share_licenses" Name="python.txt" Source="$(PythonRoot)\LICENSE.txt" />
     </ComponentGroup>
 
-    <Feature Id="EmbeddedPython" AllowAbsent="no" Title="$(VariantProductName)">
+    <Feature Id="EmbeddedPython" AllowAbsent="no" Title="!(loc.EmbeddedPython_ProductName)">
       <ComponentGroupRef Id="EmbeddedPython" />
     </Feature>
   </Package>
