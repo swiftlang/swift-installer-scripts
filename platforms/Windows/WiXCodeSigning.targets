@@ -69,6 +69,20 @@
            Text="Unable to locate signtool.exe. Set SignToolPath to the Windows SDK bin directory." />
   </Target>
 
+  <Target Name="FindWindowsSDKTools" DependsOnTargets="FindWindowsSDK">
+    <PropertyGroup>
+      <ManifestToolPath Condition=" '$(ManifestToolPath)' == '' ">$(WindowsSDKToolsPath)</ManifestToolPath>
+      <MakeCatToolPath Condition=" '$(MakeCatToolPath)' == '' ">$(WindowsSDKToolsPath)</MakeCatToolPath>
+      <ManifestToolPath Condition=" '$(ManifestToolPath)' != '' AND !HasTrailingSlash('$(ManifestToolPath)') ">$(ManifestToolPath)\</ManifestToolPath>
+      <MakeCatToolPath Condition=" '$(MakeCatToolPath)' != '' AND !HasTrailingSlash('$(MakeCatToolPath)') ">$(MakeCatToolPath)\</MakeCatToolPath>
+    </PropertyGroup>
+
+    <Error Condition=" '$(ManifestToolPath)' == '' OR !Exists('$(ManifestToolPath)mt.exe') "
+           Text="Unable to locate mt.exe. Set ManifestToolPath to the Windows SDK bin directory." />
+    <Error Condition=" '$(MakeCatToolPath)' == '' OR !Exists('$(MakeCatToolPath)makecat.exe') "
+           Text="Unable to locate makecat.exe. Set MakeCatToolPath to the Windows SDK bin directory." />
+  </Target>
+
   <Target Name="SignCabs" DependsOnTargets="FindSignTool">
     <Exec Command="$(SignTool) &quot;%(SignCabs.FullPath)&quot;" />
   </Target>
