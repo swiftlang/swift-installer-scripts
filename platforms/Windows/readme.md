@@ -5,7 +5,7 @@
 The Swift SDK bundle is now available in two flavors:
 
 - **Online**: A small .exe that downloads the packages the user selected at install time. Can download fewer total bytes but must be connected to the Internet. The work to stage the payloads required for the online bundle is left as an exercise for the reader.
-- **Offline**: A big .exe that contains all the packages and are extracted on-demand at install time. Downloads the most bytes but doesn't require live Internet connection.
+- **Offline**: A big .exe that contains all the packages and extracts them on-demand at install time. Downloads the most bytes but doesn't require a live Internet connection.
 
 A third pseudo-flavor is using the online bundle with the `/layout` switch to create a layout that can be placed on a network or USB drive to install offline.
 
@@ -36,7 +36,7 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | OptionsInstallDBG | Controls whether debugging tools will be installed. |
 | OptionsInstallPy | Controls whether embeddable Python will be installed. |
 | OptionsInstallIDE | Controls whether IDE integration tools will be installed. |
-| OptionsInstallUtilties | Controls whether additional utilities will be installed. |
+| OptionsInstallUtilities | Controls whether additional utilities will be installed. |
 | OptionsInstallAndroidPlatform | Controls whether the Android platform will be installed. |
 | OptionsInstallAndroidSDKAMD64 | Controls whether the Android AMD64 SDK will be installed. |
 | OptionsInstallAndroidSDKARM | Controls whether the Android ARM SDK will be installed. |
@@ -51,7 +51,7 @@ The bundle authoring (in `installer.wxs`) drives optional install directory and 
 | OptionsInstallWindowsRedistShared{AMD64,ARM64,X86} | Controls whether the matching Shared Win32 SxS Assembly redistributable MSMs will be installed. |
 | OptionsInstallWindowsRedistPrivate{AMD64,ARM64,X86} | Controls whether the matching Private Win32 SxS Assembly redistributable MSMs will be installed. |
 
-Those variables are tied to controls in the bundle theme (`installer\theme.xml`) on the Options page. For example, the install directory is an `Editbox` control that takes the `InstallRoot` name to tie itself to the `InstallRoot` variable in `installer.wxs`:
+Those variables are tied to controls in the bundle theme (`bundle\theme.xml`) on the Options page. For example, the install directory is an `Editbox` control that takes the `InstallRoot` name to tie itself to the `InstallRoot` variable in `bundle\installer.wxs`:
 
 ```xml
 <Editbox Name="InstallRoot" X="185" Y="46" Width="-91" Height="21" TabStop="yes" FontId="3" FileSystemAutoComplete="yes" />
@@ -94,7 +94,7 @@ The same variables that drive install directory and feature selection are availa
 installer.exe /passive InstallRoot=X:\Swift OptionsInstallIDE=0 OptionsInstallWindowsSDKX86=0 OptionsInstallWindowsSDKARM64=0
 ```
 
-To create a layout from a online bundle to allow for offline install:
+To create a layout from an online bundle to allow for offline install:
 
 ```sh
 installer.exe /layout path\to\layout\directory
@@ -113,7 +113,7 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | BaseIntermediateOutputPath, OutputPath | Sets the intermediate and build output directories to handle MSBuild/NuGet restore functionality and support multiplatform output. |
 | SuppressIces | Suppress the ICE validation messages that are erroneously emitted for per-user packages. **ICE38** is about mixing per-user and per-machine resources (not a thing for us). **ICE61** is warning about allowing "same-version" major upgrades, something we want. **ICE64** is documented as not being an issue when packages are always per-user. **ICE91** is about "roaming scenarios," which doesn't apply to our use of `LocalAppDataFolder`. |
 | PackageCompressionLevel, BundleCompressionLevel | Always set to `high` for the smallest downloads (and painfully-long build times). It's a property so it can be overridden for dev builds. See _<user>.props_. |
-| ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This save user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
+| ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This saves user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
 | BundleFlavor, IsBundleCompressed | BundleFlavor defaults to `online` to build an online bundle. Set by the invocation of MSBuild to build an online or offline bundle. Controls IsBundleCompressed. |
 | DefineConstants | Passes a subset of MSBuild properties into the WiX build as preprocessor variables. |
 | Platforms | A semi-colon delimited list of platforms which are bundled. Set it to `android;windows` to package both platforms. |
@@ -143,9 +143,9 @@ That lets you override settings in Directory.Build.props for local dev builds. F
 
 ## Toolchain variants
 
-The Swift toolchain for Windows is built in multiple variants, e.g. with LLVM assertions enabled (asserts) and disapled (noasserts). These variants contribute components to several MSI packages, including the build tools (bld), command-line tools (cli), debugging tools (dbg), and IDE integration (ide). The layout is the same in the InstallDir, but the files are diffrent and come from diffrent RootDir. 
+The Swift toolchain for Windows is built in multiple variants, e.g. with LLVM assertions enabled (asserts) and disabled (noasserts). These variants contribute components to several MSI packages, including the build tools (bld), command-line tools (cli), debugging tools (dbg), and IDE integration (ide). The layout is the same in the InstallDir, but the files are different and come from different roots.
 
-To handle this without duplicating our authoring, we parametrize the WiX authoring so that the installer logic and build diffrent msi's for each variant that includes the correct files. 
+To handle this without duplicating our authoring, we parametrize the WiX authoring so that the installer logic can build different MSIs for each variant that includes the correct files.
 
 For example, the folder structure for the bld package might look like:
 ```
@@ -165,7 +165,7 @@ Each subfolder (`asserts` and `noasserts`) contains the project file that produc
 
 The main bundle (`installer.wxs`) includes these variants conditionally, allowing users to choose which toolchain flavor to install. This parametrized structure ensures that all supported toolchain configurations are available in a single bundle, while keeping the installer authoring organized and scalable.
 
-Identifying which variants are included in the bundle is controled by the `ToolchainVariants` MSBuild property.
+The `ToolchainVariants` MSBuild property controls which variants are included in the bundle.
 
 
 ## Building the installers
@@ -179,8 +179,8 @@ To support the three architecture flavors of the SDK and RTL MSI packages, you n
 | ImageRoot | Path to the root of the installed Swift image to package |
 | PythonVersion | Version of the Embeddable Python to package |
 | Platforms | Semicolon delimited list of platforms to package (android;windows) |
-| AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch54;armv7;i686;x86_64) |
-| ToolchainVariants | Semicolon delimited list of toolchain variants to package (assert;noassert) |
+| AndroidArchitectures | Semicolon delimited list of architectures the Android platform supports (aarch64;armv7;i686;x86_64) |
+| ToolchainVariants | Semicolon delimited list of toolchain variants to package (asserts;noasserts) |
 | WindowsArchitectures | Semicolon delimited list of architectures the Windows platform supports (aarch64;i686;x86_64) |
 | WindowsRuntimeARM64 | Path to the staged Windows ARM64 runtime |
 | WindowsRuntimeX64 | Path to the staged Windows AMD64 runtime |
@@ -247,7 +247,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 
 | Property | Description |
 | -------- | ----------- |
-| BldAssertsUpgradeCode, BldNoAssertsUpgradeCode, CliAssertsUpgradeCode, CliNoAssertsUpgradeCode, DbgAssertsUpgradeCode, DbgNoAssertsUpgradeCode, IdeUpgradeCode, IdeNoUpgradeCode, RtlUpgradeCode, WindowsSDKUpgradeCode, AndroidSDKUpgradeCode, PythonUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
+| BldAssertsUpgradeCode, BldNoAssertsUpgradeCode, CliAssertsUpgradeCode, CliNoAssertsUpgradeCode, DbgAssertsUpgradeCode, DbgNoAssertsUpgradeCode, IdeAssertsUpgradeCode, IdeNoAssertsUpgradeCode, RTLUpgradeCode, WindowsPlatformUpgradeCode, AndroidPlatformUpgradeCode, PythonUpgradeCode, ResUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
 | BundleUpgradeCode | Upgrade codes for the bundle. Bundles don't support upgrade version ranges, so the bundle upgrade code must change for every minor version _and_ stay the same for the entire lifetime of that minor version (e.g., v5.10.0 through v5.10.9999). You can keep the history of upgrade codes using a condition like `Condition="'$(MajorMinorProductVersion)' == '5.10'` or just replace BundleUpgradeCode when forking to a new minor version. |
 
 
@@ -256,7 +256,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 To support side-by-side installation for each minor release (the latest point release of each minor release), we need to use "old-school" `Upgrade`/`UpgradeVersion` authoring to get the upgrade version ranges, which also requires manually scheduling `RemoveExistingProducts`. (We can no longer use WiX's `MajorUpgrade` element because it's intended to support the way-more-common case of upgrading every version.) To avoid duplication, the upgrade logic is authored in `shared\shared.wxs` and referenced from the `Package` element of each package:
 
 ```xml
-<WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsSDKUpgradeCode)" />
+<WixVariable Id="SideBySidePackageUpgradeCode" Value="$(WindowsPlatformUpgradeCode)" />
 <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 ```
 
@@ -265,7 +265,7 @@ To support side-by-side installation for each minor release (the latest point re
 
 ### Cleaning up
 
-Windows Installer can, under conditions that are both mysterious and undocumented, leave behind empty folders. (The files are removed.) The ICE validator ICE64 says this is a problem for roaming profiles so our use of local AppData shouldn't apply, but, sadly, sometimes it does. ICE64 suggests the user-hostile workaround of manually authoring to remove every directory. Instead, Directory.Build.props suppresses ICE64 and in `shared\shared.wxs`, the `VersionedDirectoryCleanup` component group handles cleaning up any orphaned, empty directories. Every package has a `<ComponentGroupRef Id="VersionedDirectoryCleanup" />` to pull in that component group.
+Windows Installer can, under conditions that are both mysterious and undocumented, leave behind empty folders. (The files are removed.) The ICE validator ICE64 says this is a problem for roaming profiles so our use of local AppData shouldn't apply, but, sadly, sometimes it does. ICE64 suggests the user-hostile workaround of manually authoring to remove every directory. Instead, Directory.Build.props suppresses ICE64 and in `shared\shared.wxs`, the `VersionedDirectoryCleanup` component group handles cleaning up any orphaned, empty directories. Packages that install into the shared versioned directories use `<ComponentGroupRef Id="VersionedDirectoryCleanup" />` to pull in that component group.
 
 
 ## Compression levels, build time, and download size
