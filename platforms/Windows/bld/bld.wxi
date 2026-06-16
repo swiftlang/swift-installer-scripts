@@ -30,6 +30,7 @@
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
+      <Directory Id="toolchain_$(VariantName)_usr_bin_BlocksRuntime" Name="BlocksRuntime" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_dispatch" Name="dispatch" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Name="FoundationEssentials" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Name="swift_Concurrency" />
@@ -153,7 +154,6 @@
     </ComponentGroup>
 
     <ComponentGroup Id="BlocksRuntime">
-      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\BlocksRuntime.dll" />
       <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\BlocksRuntime.lib" />
       <!-- TODO(compnerd) should we install the block headers? -->
     </ComponentGroup>
@@ -304,6 +304,7 @@
     </ComponentGroup>
 
     <ComponentGroup Id="SxSSwiftRuntime">
+      <File Directory="toolchain_$(VariantName)_usr_bin_BlocksRuntime" Source="$(ToolchainRoot)\usr\bin\BlocksRuntime\BlocksRuntime.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_dispatch" Source="$(ToolchainRoot)\usr\bin\dispatch\dispatch.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Source="$(ToolchainRoot)\usr\bin\FoundationEssentials\FoundationEssentials.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
