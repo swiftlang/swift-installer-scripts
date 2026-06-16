@@ -28,6 +28,7 @@
     <?endif?>
 
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(AndroidPlatformUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
     <!--
       └─ Swift
