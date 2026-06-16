@@ -4,5 +4,8 @@
     <OutputType>Module</OutputType>
     <OutputName>rtl.static.$(RuntimeLibraryInstallationMode).$(ProductArchitecture)</OutputName>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(RuntimeLibraryInstallationMode)\$(Configuration)\</IntermediateOutputPath>
+    <RuntimeWin32AssemblyLibrarySource>StaticRuntimeDependencies</RuntimeWin32AssemblyLibrarySource>
   </PropertyGroup>
+
+  <Import Project="..\..\..\RuntimeWin32Assemblies.targets" Condition=" '$(RuntimeLibraryInstallationMode)' == 'shared' " />
 </Project>

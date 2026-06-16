@@ -365,4 +365,17 @@ Redistributable merge-module names are a matrix of link model, installation mode
 
 Microsoft describes Win32 side-by-side assemblies as either shared or private in [Concepts of Isolated Applications and Side-by-side Assemblies](https://learn.microsoft.com/en-us/cpp/build/concepts-of-isolated-applications-and-side-by-side-assemblies?view=msvc-170).
 
-The `dynamic` modules install the full dynamic runtime. The `static` modules install the stable static-link support DLLs, `BlocksRuntime.dll` and `dispatch.dll`. The `shared` installation mode keeps the existing runtime `usr\bin` layout. The `private` installation mode installs each DLL under a basename directory, for example `swiftCore\swiftCore.dll`, so applications can bind by assembly name and version.
+The `dynamic` modules install the full dynamic runtime. The `static` modules install
+the stable static-link support DLLs, `BlocksRuntime.dll` and `dispatch.dll`. The
+`shared` installation mode authors runtime DLLs as Win32 assemblies so Windows
+Installer can publish them to the shared native assembly cache from a
+per-machine install. MSBuild extracts the embedded assembly manifests for MSI
+authoring and generates catalog files for the shared assembly payloads. The `private`
+installation mode installs each DLL under a basename directory, for example
+`swiftCore\swiftCore.dll`, so applications can bind by assembly name and version
+without using the global native assembly cache.
+
+The full RTL MSI is dual-scope. Per-user installs lay the runtime DLLs out in
+`Runtimes\$(ProductVersion)\usr\bin` and add that directory to the user `Path`.
+Per-machine installs publish the runtime DLLs to the shared native assembly
+cache and do not add the runtime directory to `Path`.

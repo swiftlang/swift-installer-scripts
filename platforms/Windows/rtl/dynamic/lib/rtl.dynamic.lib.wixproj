@@ -5,5 +5,8 @@
     <OutputType>Library</OutputType>
     <BindFiles>true</BindFiles>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(ProductArchitecture)\$(RuntimeLibraryInstallationMode)\$(Configuration)\</IntermediateOutputPath>
+    <RuntimeWin32AssemblyLibrarySource>RuntimeLibraries</RuntimeWin32AssemblyLibrarySource>
   </PropertyGroup>
+
+  <Import Project="..\..\..\RuntimeWin32Assemblies.targets" Condition=" '$(RuntimeLibraryInstallationMode)' == 'shared' " />
 </Project>
