@@ -62,16 +62,15 @@
       time so the Variable value is already localised at runtime.
     -->
     <Variable Name="Plt_ProductName_Windows" Value="!(loc.Plt_ProductName_Windows)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Windows_amd64" Value="!(loc.Sdk_ProductName_Windows_amd64)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Windows_arm64" Value="!(loc.Sdk_ProductName_Windows_arm64)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Windows_x86" Value="!(loc.Sdk_ProductName_Windows_x86)" Type="string" Hidden="yes" />
+    <?foreach Architecture in amd64;arm64;x86?>
+      <Variable Name="Sdk_ProductName_Windows_$(Architecture)" Value="!(loc.Sdk_ProductName_Windows_$(Architecture))" Type="string" Hidden="yes" />
+    <?endforeach?>
     <Variable Name="Redist_shared" Value="!(loc.Redist_shared)" Type="string" Hidden="yes" />
     <Variable Name="Redist_private" Value="!(loc.Redist_private)" Type="string" Hidden="yes" />
     <Variable Name="Plt_ProductName_Android" Value="!(loc.Plt_ProductName_Android)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Android_arm64" Value="!(loc.Sdk_ProductName_Android_arm64)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Android_amd64" Value="!(loc.Sdk_ProductName_Android_amd64)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Android_armv7" Value="!(loc.Sdk_ProductName_Android_armv7)" Type="string" Hidden="yes" />
-    <Variable Name="Sdk_ProductName_Android_x86" Value="!(loc.Sdk_ProductName_Android_x86)" Type="string" Hidden="yes" />
+    <?foreach Architecture in arm64;amd64;armv7;x86?>
+      <Variable Name="Sdk_ProductName_Android_$(Architecture)" Value="!(loc.Sdk_ProductName_Android_$(Architecture))" Type="string" Hidden="yes" />
+    <?endforeach?>
 
     <!--
       Per-tab tooltips for the Options tab strip. BAF creates the tooltip
@@ -91,51 +90,15 @@
       in installer.wixproj). BAF skips tree rows whose availability variable
       is 0 so the UI only offers what the bundle actually packaged.
     -->
-    <?if $(IncludeWindows) == True ?>
-      <Variable Name="BAFAvailWindowsPlatform" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailWindowsPlatform" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeWindowsAMD64) == True ?>
-      <Variable Name="BAFAvailWindowsAMD64" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailWindowsAMD64" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeWindowsARM64) == True ?>
-      <Variable Name="BAFAvailWindowsARM64" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailWindowsARM64" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeWindowsX86) == True ?>
-      <Variable Name="BAFAvailWindowsX86" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailWindowsX86" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeAndroid) == True ?>
-      <Variable Name="BAFAvailAndroidPlatform" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailAndroidPlatform" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeAndroidARM64) == True ?>
-      <Variable Name="BAFAvailAndroidARM64" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailAndroidARM64" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeAndroidAMD64) == True ?>
-      <Variable Name="BAFAvailAndroidAMD64" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailAndroidAMD64" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeAndroidARMv7) == True ?>
-      <Variable Name="BAFAvailAndroidARMv7" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailAndroidARMv7" Value="0" Hidden="yes" />
-    <?endif ?>
-    <?if $(IncludeAndroidX86) == True ?>
-      <Variable Name="BAFAvailAndroidX86" Value="1" Hidden="yes" />
-    <?else ?>
-      <Variable Name="BAFAvailAndroidX86" Value="0" Hidden="yes" />
-    <?endif ?>
+    <Variable Name="BAFAvailWindowsPlatform" Value="$(BAFAvailWindowsPlatform)" Hidden="yes" />
+    <Variable Name="BAFAvailWindowsAMD64" Value="$(BAFAvailWindowsAMD64)" Hidden="yes" />
+    <Variable Name="BAFAvailWindowsARM64" Value="$(BAFAvailWindowsARM64)" Hidden="yes" />
+    <Variable Name="BAFAvailWindowsX86" Value="$(BAFAvailWindowsX86)" Hidden="yes" />
+    <Variable Name="BAFAvailAndroidPlatform" Value="$(BAFAvailAndroidPlatform)" Hidden="yes" />
+    <Variable Name="BAFAvailAndroidARM64" Value="$(BAFAvailAndroidARM64)" Hidden="yes" />
+    <Variable Name="BAFAvailAndroidAMD64" Value="$(BAFAvailAndroidAMD64)" Hidden="yes" />
+    <Variable Name="BAFAvailAndroidARMv7" Value="$(BAFAvailAndroidARMv7)" Hidden="yes" />
+    <Variable Name="BAFAvailAndroidX86" Value="$(BAFAvailAndroidX86)" Hidden="yes" />
 
     <Variable Name="OptionsInstallBLD" Value="1" />
     <Variable Name="OptionsInstallCLI" bal:Overridable="yes" Persisted="yes" Value="1" />
@@ -157,24 +120,20 @@
 
     <Variable Name="OptionsInstallWindowsPlatform" bal:Overridable="yes" Persisted="yes" Value="1" />
 
-    <Variable Name="OptionsInstallWindowsSDKX86" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallWindowsRedistSharedX86" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <Variable Name="OptionsInstallWindowsRedistPrivateX86" bal:Overridable="yes" Persisted="yes" Value="1" />
-
-    <Variable Name="OptionsInstallWindowsSDKAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallWindowsRedistSharedAMD64" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <Variable Name="OptionsInstallWindowsRedistPrivateAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-
-    <Variable Name="OptionsInstallWindowsSDKARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallWindowsRedistSharedARM64" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <Variable Name="OptionsInstallWindowsRedistPrivateARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <?foreach Architecture in X86;AMD64;ARM64?>
+      <Variable Name="OptionsInstallWindowsSDK$(Architecture)" bal:Overridable="yes" Persisted="yes" Value="1" />
+      <Variable Name="OptionsInstallWindowsRedistShared$(Architecture)" bal:Overridable="yes" Persisted="yes" Value="0" />
+      <Variable Name="OptionsInstallWindowsRedistPrivate$(Architecture)" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <?endforeach?>
 
     <Variable Name="OptionsInstallAndroidPlatform" bal:Overridable="yes" Persisted="yes" Value="1" />
 
-    <Variable Name="OptionsInstallAndroidSDKARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSDKAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
-    <Variable Name="OptionsInstallAndroidSDKARM" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <Variable Name="OptionsInstallAndroidSDKX86" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <?foreach Architecture in ARM64;AMD64?>
+      <Variable Name="OptionsInstallAndroidSDK$(Architecture)" bal:Overridable="yes" Persisted="yes" Value="1" />
+    <?endforeach?>
+    <?foreach Architecture in ARM;X86?>
+      <Variable Name="OptionsInstallAndroidSDK$(Architecture)" bal:Overridable="yes" Persisted="yes" Value="0" />
+    <?endforeach?>
 
     <Variable Name="OptionsInstallAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />

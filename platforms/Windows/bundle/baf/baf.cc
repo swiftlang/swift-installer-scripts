@@ -65,7 +65,7 @@ constexpr LPCWSTR kOptionsTabVariable = L"OptionsTab";
 constexpr LPCWSTR kRefreshTrigger = L"BAFRefreshTrigger";
 constexpr LPCWSTR kDefaultToolchainCombo = L"OptionsDefaultToolchain";
 constexpr LPCWSTR kIncludeNoAssertsVariable = L"OptionsIncludeNoAsserts";
-constexpr LPCWSTR kSdkTree = L"OptionsSDKsTree";
+constexpr LPCWSTR kSDKTree = L"OptionsSDKsTree";
 constexpr LPCWSTR kOptionsButton = L"OptionsButton";
 constexpr LPCWSTR kOptionsOkButton = L"OptionsOkButton";
 constexpr LPCWSTR kOptionsCancelButton = L"OptionsCancelButton";
@@ -111,52 +111,88 @@ constexpr LPCWSTR kToolchainVariantLabels[] = {
 
 // SDK TreeView rows are declared in document order with a `depth` value
 // that matches the parent-child layout (0 = platform, 1 = SDK, 2 =
-// redistributable). Labels are formatted-string references to bundle
-// Variables declared in installer.wxs. BalFormatString substitutes the
-// build-time `!(loc.X)` value when rows are inserted.
-struct SdkTreeItem {
-  LPCWSTR labelFormat;
-  LPCWSTR variable;
-  // `availability` names the BAFAvail* Variable that reports whether this
-  // row is packaged in the bundle. The value is set to 0 or 1 at build
-  // time by the preprocessor in installer.wxs. BAF skips rows when
-  // availability is 0.
-  LPCWSTR availability;
+// redistributable). The bundle variable names are derived from the row
+// kind plus platform/architecture metadata so the table describes the
+// installer model without repeating the complete OptionsInstall* and
+// BAFAvail* names for every row.
+enum class SDKTreeItemKind {
+  Platform,
+  SDK,
+  SharedRedist,
+  PrivateRedist,
+};
+
+struct SDKTreeItem {
+  LPCWSTR platform;
+  struct {
+    LPCWSTR label;
+    LPCWSTR option;
+    LPCWSTR availability;
+  } architecture;
+  SDKTreeItemKind kind;
   int depth;
 };
 
-constexpr SdkTreeItem kSDKTreeItems[] = {
-    {L"[Plt_ProductName_Windows]", L"OptionsInstallWindowsPlatform",
-     L"BAFAvailWindowsPlatform", 0},
-    {L"[Sdk_ProductName_Windows_amd64]", L"OptionsInstallWindowsSDKAMD64",
-     L"BAFAvailWindowsAMD64", 1},
-    {L"[Redist_shared]", L"OptionsInstallWindowsRedistSharedAMD64",
-     L"BAFAvailWindowsAMD64", 2},
-    {L"[Redist_private]", L"OptionsInstallWindowsRedistPrivateAMD64",
-     L"BAFAvailWindowsAMD64", 2},
-    {L"[Sdk_ProductName_Windows_arm64]", L"OptionsInstallWindowsSDKARM64",
-     L"BAFAvailWindowsARM64", 1},
-    {L"[Redist_shared]", L"OptionsInstallWindowsRedistSharedARM64",
-     L"BAFAvailWindowsARM64", 2},
-    {L"[Redist_private]", L"OptionsInstallWindowsRedistPrivateARM64",
-     L"BAFAvailWindowsARM64", 2},
-    {L"[Sdk_ProductName_Windows_x86]", L"OptionsInstallWindowsSDKX86",
-     L"BAFAvailWindowsX86", 1},
-    {L"[Redist_shared]", L"OptionsInstallWindowsRedistSharedX86",
-     L"BAFAvailWindowsX86", 2},
-    {L"[Redist_private]", L"OptionsInstallWindowsRedistPrivateX86",
-     L"BAFAvailWindowsX86", 2},
-    {L"[Plt_ProductName_Android]", L"OptionsInstallAndroidPlatform",
-     L"BAFAvailAndroidPlatform", 0},
-    {L"[Sdk_ProductName_Android_arm64]", L"OptionsInstallAndroidSDKARM64",
-     L"BAFAvailAndroidARM64", 1},
-    {L"[Sdk_ProductName_Android_amd64]", L"OptionsInstallAndroidSDKAMD64",
-     L"BAFAvailAndroidAMD64", 1},
-    {L"[Sdk_ProductName_Android_armv7]", L"OptionsInstallAndroidSDKARM",
-     L"BAFAvailAndroidARMv7", 1},
-    {L"[Sdk_ProductName_Android_x86]", L"OptionsInstallAndroidSDKX86",
-     L"BAFAvailAndroidX86", 1},
+constexpr SDKTreeItem kSDKTreeItems[] = {
+    {L"Windows", {}, SDKTreeItemKind::Platform, 0},
+    {L"Windows", {L"amd64", L"AMD64", L"AMD64"}, SDKTreeItemKind::SDK, 1},
+    {L"Windows", {nullptr, L"AMD64", L"AMD64"},
+     SDKTreeItemKind::SharedRedist, 2},
+    {L"Windows", {nullptr, L"AMD64", L"AMD64"},
+     SDKTreeItemKind::PrivateRedist, 2},
+    {L"Windows", {L"arm64", L"ARM64", L"ARM64"}, SDKTreeItemKind::SDK, 1},
+    {L"Windows", {nullptr, L"ARM64", L"ARM64"},
+     SDKTreeItemKind::SharedRedist, 2},
+    {L"Windows", {nullptr, L"ARM64", L"ARM64"},
+     SDKTreeItemKind::PrivateRedist, 2},
+    {L"Windows", {L"x86", L"X86", L"X86"}, SDKTreeItemKind::SDK, 1},
+    {L"Windows", {nullptr, L"X86", L"X86"}, SDKTreeItemKind::SharedRedist,
+     2},
+    {L"Windows", {nullptr, L"X86", L"X86"}, SDKTreeItemKind::PrivateRedist,
+     2},
+    {L"Android", {}, SDKTreeItemKind::Platform, 0},
+    {L"Android", {L"arm64", L"ARM64", L"ARM64"}, SDKTreeItemKind::SDK, 1},
+    {L"Android", {L"amd64", L"AMD64", L"AMD64"}, SDKTreeItemKind::SDK, 1},
+    {L"Android", {L"armv7", L"ARM", L"ARMv7"}, SDKTreeItemKind::SDK, 1},
+    {L"Android", {L"x86", L"X86", L"X86"}, SDKTreeItemKind::SDK, 1},
 };
+
+std::wstring SDKTreeLabelFormat(SDKTreeItem const &item) {
+  switch (item.kind) {
+  case SDKTreeItemKind::Platform:
+    return std::wstring(L"[Plt_ProductName_") + item.platform + L"]";
+  case SDKTreeItemKind::SDK:
+    return std::wstring(L"[Sdk_ProductName_") + item.platform + L"_" +
+           item.architecture.label + L"]";
+  case SDKTreeItemKind::SharedRedist:
+    return L"[Redist_shared]";
+  case SDKTreeItemKind::PrivateRedist:
+    return L"[Redist_private]";
+  }
+  return {};
+}
+
+std::wstring SDKTreeVariable(SDKTreeItem const &item) {
+  std::wstring variable = std::wstring(L"OptionsInstall") + item.platform;
+  switch (item.kind) {
+  case SDKTreeItemKind::Platform:
+    return variable + L"Platform";
+  case SDKTreeItemKind::SDK:
+    return variable + L"SDK" + item.architecture.option;
+  case SDKTreeItemKind::SharedRedist:
+    return variable + L"RedistShared" + item.architecture.option;
+  case SDKTreeItemKind::PrivateRedist:
+    return variable + L"RedistPrivate" + item.architecture.option;
+  }
+  return {};
+}
+
+std::wstring SDKTreeAvailability(SDKTreeItem const &item) {
+  std::wstring availability = std::wstring(L"BAFAvail") + item.platform;
+  if (item.kind == SDKTreeItemKind::Platform)
+    return availability + L"Platform";
+  return availability + item.architecture.availability;
+}
 
 constexpr UINT_PTR kScopeCheckboxSubclassId = 4;
 constexpr UINT_PTR kOptionsTabsSubclassId = 5;
@@ -459,7 +495,7 @@ bool ShouldInstallOptionsCtrlTabRelay(LPCWSTR wszName) noexcept {
   if (!wszName)
     return false;
   if (IsControl(wszName, kDefaultToolchainCombo) ||
-      IsControl(wszName, kSdkTree) || IsControl(wszName, kOptionsOkButton) ||
+      IsControl(wszName, kSDKTree) || IsControl(wszName, kOptionsOkButton) ||
       IsControl(wszName, kOptionsCancelButton))
     return true;
   return StartsWithInsensitive(wszName, L"OptionsInstall");
@@ -1009,7 +1045,7 @@ ScopedFontHandle CloneFontAtWeight(HWND hWnd, LONG lWeight) noexcept {
 
 // MARK: - SDK Tree Helpers
 
-int SdkTreeRowHeight(HWND hTree) noexcept {
+int SDKTreeRowHeight(HWND hTree) noexcept {
   SIZE szGlyph = CheckboxGlyphSize(hTree);
   int iHeight = szGlyph.cy + 2;
 
@@ -1336,9 +1372,9 @@ public:
       PopulateDefaultToolchainCombo(m_pEngine, hWnd);
       return S_OK;
     }
-    if (IsControl(wszName, kSdkTree)) {
+    if (IsControl(wszName, kSDKTree)) {
       hSDKTree_ = hWnd;
-      SetupSdkTree(hWnd);
+      SetupSDKTree(hWnd);
     }
     if (ShouldInstallOptionsCtrlTabRelay(wszName))
       ::SetWindowSubclass(hWnd, OptionsCtrlTabRelayProc,
@@ -1360,10 +1396,10 @@ public:
         ApplyTabSelection();
       return S_OK;
     }
-    if (IsControl(wszName, kSdkTree)) {
+    if (IsControl(wszName, kSDKTree)) {
       LPNMHDR pnmhdr = reinterpret_cast<LPNMHDR>(wParam);
       if (pnmhdr && pnmhdr->code == TVN_ITEMCHANGEDW)
-        HandleSdkTreeItemChanged(reinterpret_cast<NMTVITEMCHANGE *>(pnmhdr));
+        HandleSDKTreeItemChanged(reinterpret_cast<NMTVITEMCHANGE *>(pnmhdr));
       return S_OK;
     }
     if (IsControl(wszName, kDefaultToolchainCombo)) {
@@ -1540,7 +1576,7 @@ private:
   // hierarchy and synchronizes each row's check state from its bundle
   // variable. The tree starts collapsed, and users can expand platforms
   // as needed.
-  void SetupSdkTree(HWND hTree) {
+  void SetupSDKTree(HWND hTree) {
     bSuppressSDKTreeNotify_ = true;
     aSDKTreeItems_.fill(nullptr);
 
@@ -1562,27 +1598,28 @@ private:
     // depth anchor so descendants are skipped too.
     std::array<HTREEITEM, 3> hDepthAnchor = {TVI_ROOT, nullptr, nullptr};
     for (size_t iSDKItem = 0; iSDKItem < std::size(kSDKTreeItems); ++iSDKItem) {
-      SdkTreeItem const &item = kSDKTreeItems[iSDKItem];
+      SDKTreeItem const &item = kSDKTreeItems[iSDKItem];
       if (item.depth > 0 && !hDepthAnchor[item.depth - 1])
         continue;
 
-      if (item.availability) {
-        LONGLONG llAvail = 0;
-        m_pEngine->GetVariableNumeric(item.availability, &llAvail);
-        if (!llAvail) {
-          hDepthAnchor[item.depth] = nullptr;
-          continue;
-        }
+      std::wstring availability = SDKTreeAvailability(item);
+      LONGLONG llAvail = 0;
+      m_pEngine->GetVariableNumeric(availability.c_str(), &llAvail);
+      if (!llAvail) {
+        hDepthAnchor[item.depth] = nullptr;
+        continue;
       }
 
       HTREEITEM hParent = item.depth == 0
                               ? TVI_ROOT
                               : hDepthAnchor[item.depth - 1];
 
-      ScopedWixString wszLabel = FormatBalStringScoped(item.labelFormat);
+      std::wstring labelFormat = SDKTreeLabelFormat(item);
+      ScopedWixString wszLabel = FormatBalStringScoped(labelFormat.c_str());
 
       LONGLONG llVal = 0;
-      m_pEngine->GetVariableNumeric(item.variable, &llVal);
+      std::wstring variable = SDKTreeVariable(item);
+      m_pEngine->GetVariableNumeric(variable.c_str(), &llVal);
 
       // TVS_CHECKBOXES only assigns a state image to items inserted with
       // TVIF_STATE set. Otherwise, the item state remains 0 (no
@@ -1593,7 +1630,7 @@ private:
       tvis.item.mask = TVIF_TEXT | TVIF_PARAM | TVIF_STATE;
       tvis.item.pszText = wszLabel
                               ? wszLabel.get()
-                              : const_cast<LPWSTR>(item.labelFormat);
+                              : const_cast<LPWSTR>(labelFormat.c_str());
       tvis.item.lParam = static_cast<LPARAM>(iSDKItem);
       tvis.item.state =
           INDEXTOSTATEIMAGEMASK(llVal ? kTreeStateImageChecked
@@ -1605,7 +1642,7 @@ private:
       hDepthAnchor[item.depth] = hItem;
     }
 
-    TreeView_SetItemHeight(hTree, SdkTreeRowHeight(hTree));
+    TreeView_SetItemHeight(hTree, SDKTreeRowHeight(hTree));
 
     bSuppressSDKTreeNotify_ = false;
   }
@@ -1614,7 +1651,7 @@ private:
   // checkbox state changes, it writes the backing variable. When a row is
   // unchecked, it cascades the unchecked state to descendants so children
   // cannot be installed without their parent platform or SDK.
-  void HandleSdkTreeItemChanged(NMTVITEMCHANGE const *pInfo) {
+  void HandleSDKTreeItemChanged(NMTVITEMCHANGE const *pInfo) {
     if (pInfo == nullptr || bSuppressSDKTreeNotify_ ||
         !(pInfo->uChanged & TVIF_STATE))
       return;
@@ -1633,8 +1670,8 @@ private:
       return;
 
     bool bChecked = uNew == kTreeStateImageChecked;
-    m_pEngine->SetVariableNumeric(kSDKTreeItems[idx].variable,
-                                  bChecked ? 1 : 0);
+    std::wstring variable = SDKTreeVariable(kSDKTreeItems[idx]);
+    m_pEngine->SetVariableNumeric(variable.c_str(), bChecked ? 1 : 0);
 
     if (bChecked) {
       // Checking a child implicitly enables its parent, so the tree never
@@ -1669,9 +1706,10 @@ private:
   // snapshot.
   void SnapshotOptionsState() {
     for (size_t iSDKItem = 0; iSDKItem < std::size(kSDKTreeItems); ++iSDKItem) {
-      SdkTreeItem const &item = kSDKTreeItems[iSDKItem];
+      SDKTreeItem const &item = kSDKTreeItems[iSDKItem];
       SDKSnapshot_[iSDKItem] = 0;
-      m_pEngine->GetVariableNumeric(item.variable, &SDKSnapshot_[iSDKItem]);
+      std::wstring variable = SDKTreeVariable(item);
+      m_pEngine->GetVariableNumeric(variable.c_str(), &SDKSnapshot_[iSDKItem]);
     }
     wszDefaultToolchainSnapshot_ =
         GetBalStringVariableScoped(kDefaultToolchainCombo);
@@ -1683,8 +1721,9 @@ private:
   void RestoreOptionsState() {
     bSuppressSDKTreeNotify_ = true;
     for (size_t iSDKItem = 0; iSDKItem < std::size(kSDKTreeItems); ++iSDKItem) {
-      SdkTreeItem const &item = kSDKTreeItems[iSDKItem];
-      m_pEngine->SetVariableNumeric(item.variable, SDKSnapshot_[iSDKItem]);
+      SDKTreeItem const &item = kSDKTreeItems[iSDKItem];
+      std::wstring variable = SDKTreeVariable(item);
+      m_pEngine->SetVariableNumeric(variable.c_str(), SDKSnapshot_[iSDKItem]);
       if (aSDKTreeItems_[iSDKItem])
         TreeView_SetCheckState(hSDKTree_, aSDKTreeItems_[iSDKItem],
                                SDKSnapshot_[iSDKItem] != 0);

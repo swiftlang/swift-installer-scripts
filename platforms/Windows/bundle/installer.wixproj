@@ -4,24 +4,56 @@
     <DefaultCompressionLevel>$(BundleCompressionLevel)</DefaultCompressionLevel>
     <VSMajorVersion Condition=" '$(VSVersion)' != '' ">$(VSVersion.Split('.')[0])</VSMajorVersion>
     <VCRedistDownloadUrl Condition=" '$(VCRedistDownloadUrl)' == '' AND '$(VSMajorVersion)' != '' ">https://aka.ms/vs/$(VSMajorVersion)/release/vc_redist.$(ProductArchitecture).exe</VCRedistDownloadUrl>
+    <IncludeAndroid>$(Platforms.Contains("android"))</IncludeAndroid>
+    <IncludeWindows>$(Platforms.Contains("windows"))</IncludeWindows>
+    <IncludeNoAsserts>$(ToolchainVariants.Contains("noasserts"))</IncludeNoAsserts>
+    <!--
+      WindowsArchitectures / AndroidArchitectures use LLVM triples
+      (aarch64, x86_64, i686, armv7). Map those to the installer's
+      internal arch names (ARM64, AMD64, X86, ARMv7) for the BAFAvail*
+      variables consumed by the SDK TreeView.
+    -->
+    <IncludeWindowsAMD64>$(WindowsArchitectures.Contains("x86_64"))</IncludeWindowsAMD64>
+    <IncludeWindowsARM64>$(WindowsArchitectures.Contains("aarch64"))</IncludeWindowsARM64>
+    <IncludeWindowsX86>$(WindowsArchitectures.Contains("i686"))</IncludeWindowsX86>
+    <IncludeAndroidARM64>$(AndroidArchitectures.Contains("aarch64"))</IncludeAndroidARM64>
+    <IncludeAndroidAMD64>$(AndroidArchitectures.Contains("x86_64"))</IncludeAndroidAMD64>
+    <IncludeAndroidARMv7>$(AndroidArchitectures.Contains("armv7"))</IncludeAndroidARMv7>
+    <IncludeAndroidX86>$(AndroidArchitectures.Contains("i686"))</IncludeAndroidX86>
+
+    <BAFAvailWindowsPlatform Condition=" '$(IncludeWindows)' == 'True' ">1</BAFAvailWindowsPlatform>
+    <BAFAvailWindowsPlatform Condition=" '$(IncludeWindows)' != 'True' ">0</BAFAvailWindowsPlatform>
+    <BAFAvailWindowsAMD64 Condition=" '$(IncludeWindowsAMD64)' == 'True' ">1</BAFAvailWindowsAMD64>
+    <BAFAvailWindowsAMD64 Condition=" '$(IncludeWindowsAMD64)' != 'True' ">0</BAFAvailWindowsAMD64>
+    <BAFAvailWindowsARM64 Condition=" '$(IncludeWindowsARM64)' == 'True' ">1</BAFAvailWindowsARM64>
+    <BAFAvailWindowsARM64 Condition=" '$(IncludeWindowsARM64)' != 'True' ">0</BAFAvailWindowsARM64>
+    <BAFAvailWindowsX86 Condition=" '$(IncludeWindowsX86)' == 'True' ">1</BAFAvailWindowsX86>
+    <BAFAvailWindowsX86 Condition=" '$(IncludeWindowsX86)' != 'True' ">0</BAFAvailWindowsX86>
+    <BAFAvailAndroidPlatform Condition=" '$(IncludeAndroid)' == 'True' ">1</BAFAvailAndroidPlatform>
+    <BAFAvailAndroidPlatform Condition=" '$(IncludeAndroid)' != 'True' ">0</BAFAvailAndroidPlatform>
+    <BAFAvailAndroidARM64 Condition=" '$(IncludeAndroidARM64)' == 'True' ">1</BAFAvailAndroidARM64>
+    <BAFAvailAndroidARM64 Condition=" '$(IncludeAndroidARM64)' != 'True' ">0</BAFAvailAndroidARM64>
+    <BAFAvailAndroidAMD64 Condition=" '$(IncludeAndroidAMD64)' == 'True' ">1</BAFAvailAndroidAMD64>
+    <BAFAvailAndroidAMD64 Condition=" '$(IncludeAndroidAMD64)' != 'True' ">0</BAFAvailAndroidAMD64>
+    <BAFAvailAndroidARMv7 Condition=" '$(IncludeAndroidARMv7)' == 'True' ">1</BAFAvailAndroidARMv7>
+    <BAFAvailAndroidARMv7 Condition=" '$(IncludeAndroidARMv7)' != 'True' ">0</BAFAvailAndroidARMv7>
+    <BAFAvailAndroidX86 Condition=" '$(IncludeAndroidX86)' == 'True' ">1</BAFAvailAndroidX86>
+    <BAFAvailAndroidX86 Condition=" '$(IncludeAndroidX86)' != 'True' ">0</BAFAvailAndroidX86>
+
     <DefineConstants>
       $(DefineConstants);
-      IncludeAndroid=$(Platforms.Contains("android"));
-      IncludeWindows=$(Platforms.Contains("windows"));
-      IncludeNoAsserts=$(ToolchainVariants.Contains("noasserts"));
-      <!--
-        WindowsArchitectures / AndroidArchitectures use LLVM triples
-        (aarch64, x86_64, i686, armv7). Map those to the installer's
-        internal arch names (ARM64, AMD64, X86, ARMv7) so downstream
-        BAFAvail* flags align with the OptionsInstall* variable naming.
-      -->
-      IncludeWindowsAMD64=$(WindowsArchitectures.Contains("x86_64"));
-      IncludeWindowsARM64=$(WindowsArchitectures.Contains("aarch64"));
-      IncludeWindowsX86=$(WindowsArchitectures.Contains("i686"));
-      IncludeAndroidARM64=$(AndroidArchitectures.Contains("aarch64"));
-      IncludeAndroidAMD64=$(AndroidArchitectures.Contains("x86_64"));
-      IncludeAndroidARMv7=$(AndroidArchitectures.Contains("armv7"));
-      IncludeAndroidX86=$(AndroidArchitectures.Contains("i686"));
+      IncludeAndroid=$(IncludeAndroid);
+      IncludeWindows=$(IncludeWindows);
+      IncludeNoAsserts=$(IncludeNoAsserts);
+      BAFAvailWindowsPlatform=$(BAFAvailWindowsPlatform);
+      BAFAvailWindowsAMD64=$(BAFAvailWindowsAMD64);
+      BAFAvailWindowsARM64=$(BAFAvailWindowsARM64);
+      BAFAvailWindowsX86=$(BAFAvailWindowsX86);
+      BAFAvailAndroidPlatform=$(BAFAvailAndroidPlatform);
+      BAFAvailAndroidARM64=$(BAFAvailAndroidARM64);
+      BAFAvailAndroidAMD64=$(BAFAvailAndroidAMD64);
+      BAFAvailAndroidARMv7=$(BAFAvailAndroidARMv7);
+      BAFAvailAndroidX86=$(BAFAvailAndroidX86);
     </DefineConstants>
   </PropertyGroup>
 
