@@ -259,10 +259,9 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
-          <MsiProperty Name="INSTALLARM64SDK" Value="[OptionsInstallAndroidSDKARM64]" />
-          <MsiProperty Name="INSTALLAMD64SDK" Value="[OptionsInstallAndroidSDKAMD64]" />
-          <MsiProperty Name="INSTALLARMSDK" Value="[OptionsInstallAndroidSDKARM]" />
-          <MsiProperty Name="INSTALLX86SDK" Value="[OptionsInstallAndroidSDKX86]" />
+          <?foreach Architecture in ARM64;AMD64;ARM;X86?>
+            <MsiProperty Name="INSTALL$(Architecture)SDK" Value="[OptionsInstallAndroidSDK$(Architecture)]" />
+          <?endforeach?>
         </MsiPackage>
       <?endif?>
 
@@ -273,17 +272,11 @@
           DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
           <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
-          <MsiProperty Name="INSTALLARM64SDK" Value="[OptionsInstallWindowsSDKARM64]" />
-          <MsiProperty Name="INSTALLARM64REDISTSHARED" Value="[OptionsInstallWindowsRedistSharedARM64]" />
-          <MsiProperty Name="INSTALLARM64REDISTPRIVATE" Value="[OptionsInstallWindowsRedistPrivateARM64]" />
-
-          <MsiProperty Name="INSTALLAMD64SDK" Value="[OptionsInstallWindowsSDKAMD64]" />
-          <MsiProperty Name="INSTALLAMD64REDISTSHARED" Value="[OptionsInstallWindowsRedistSharedAMD64]" />
-          <MsiProperty Name="INSTALLAMD64REDISTPRIVATE" Value="[OptionsInstallWindowsRedistPrivateAMD64]" />
-
-          <MsiProperty Name="INSTALLX86SDK" Value="[OptionsInstallWindowsSDKX86]" />
-          <MsiProperty Name="INSTALLX86REDISTSHARED" Value="[OptionsInstallWindowsRedistSharedX86]" />
-          <MsiProperty Name="INSTALLX86REDISTPRIVATE" Value="[OptionsInstallWindowsRedistPrivateX86]" />
+          <?foreach Architecture in ARM64;AMD64;X86?>
+            <MsiProperty Name="INSTALL$(Architecture)SDK" Value="[OptionsInstallWindowsSDK$(Architecture)]" />
+            <MsiProperty Name="INSTALL$(Architecture)REDISTSHARED" Value="[OptionsInstallWindowsRedistShared$(Architecture)]" />
+            <MsiProperty Name="INSTALL$(Architecture)REDISTPRIVATE" Value="[OptionsInstallWindowsRedistPrivate$(Architecture)]" />
+          <?endforeach?>
         </MsiPackage>
       <?endif?>
      </Chain>
