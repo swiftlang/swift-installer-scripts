@@ -308,6 +308,7 @@
       <File Directory="toolchain_$(VariantName)_usr_bin_dispatch" Source="$(ToolchainRoot)\usr\bin\dispatch\dispatch.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Source="$(ToolchainRoot)\usr\bin\FoundationEssentials\FoundationEssentials.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Source="$(ToolchainRoot)\usr\bin\swift_RegexParser\swift_RegexParser.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Source="$(ToolchainRoot)\usr\bin\swift_StringProcessing\swift_StringProcessing.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swiftCore" Source="$(ToolchainRoot)\usr\bin\swiftCore\swiftCore.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swiftCRT" Source="$(ToolchainRoot)\usr\bin\swiftCRT\swiftCRT.dll" />
