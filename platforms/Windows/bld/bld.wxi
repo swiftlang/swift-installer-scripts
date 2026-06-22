@@ -561,6 +561,9 @@
       <Component Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency">
         <File Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
       </Component>
+      <Component Directory="toolchain_$(VariantName)_usr_bin_swift_RegexParser">
+        <File Source="$(ToolchainRoot)\usr\bin\swift_RegexParser\swift_RegexParser.dll" />
+      </Component>
       <Component Directory="toolchain_$(VariantName)_usr_bin_swift_StringProcessing">
         <File Source="$(ToolchainRoot)\usr\bin\swift_StringProcessing\swift_StringProcessing.dll" />
       </Component>
