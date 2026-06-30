@@ -184,6 +184,7 @@
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Shared.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\Embedded-Simulator.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EmbeddedBinaryValidationUtility.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\EntityLinker.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\GenerateAppPlaygroundAssetCatalog.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\GenerateTextureAtlas.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\IBCompiler.xcspec" />
