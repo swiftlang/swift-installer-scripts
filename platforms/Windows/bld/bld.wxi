@@ -18,6 +18,7 @@
       <Directory Id="toolchain_$(VariantName)_usr_bin_dispatch" Name="dispatch" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Name="FoundationEssentials" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Name="swift_Concurrency" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Name="swift_RegexParser" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Name="swift_StringProcessing" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCore" Name="swiftCore" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCRT" Name="swiftCRT" />
