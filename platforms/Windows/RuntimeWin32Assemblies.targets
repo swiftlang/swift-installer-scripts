@@ -13,7 +13,7 @@
   </Target>
 
   <Target Name="GenerateRuntimeWin32Assemblies"
-          DependsOnTargets="_DefineRuntimeWin32AssemblyConstants;FindWindowsSDKTools"
+          DependsOnTargets="_DefineRuntimeWin32AssemblyConstants;FindWindowsSDKTools;FindSignTool"
           BeforeTargets="CoreCompile;Compile">
     <PropertyGroup>
       <_RuntimeRoot Condition="'$(ProductArchitecture)' == 'x86'">$(WindowsRuntimeX86)</_RuntimeRoot>
@@ -41,7 +41,7 @@
         <Dll>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).dll</Dll>
         <Manifest>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).manifest</Manifest>
         <Catalog>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).cat</Catalog>
-        <CatalogDefinition>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).cdf</CatalogDefinition>
+        <CatalogDefinition>$(RuntimeWin32AssemblyRoot)\%(Identity)\%(Identity).manifest.cdf</CatalogDefinition>
       </_RuntimeWin32Assembly>
     </ItemGroup>
 
@@ -55,39 +55,9 @@
     <Exec
         Command="&quot;$(ManifestToolPath)mt.exe&quot; -nologo -inputresource:&quot;%(_RuntimeWin32Assembly.Dll);#1&quot; -out:&quot;%(_RuntimeWin32Assembly.Manifest)&quot;" />
 
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="[CatalogHeader]"
-        Overwrite="true"
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="Name=%(_RuntimeWin32Assembly.Identity).cat"
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="ResultDir=."
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="PublicVersion=0x00000001"
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="EncodingType=0x00010001"
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="[CatalogFiles]"
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="%(_RuntimeWin32Assembly.Identity).dll=%(_RuntimeWin32Assembly.Identity).dll"
-        Encoding="ASCII" />
-    <WriteLinesToFile
-        File="%(_RuntimeWin32Assembly.CatalogDefinition)"
-        Lines="%(_RuntimeWin32Assembly.Identity).manifest=%(_RuntimeWin32Assembly.Identity).manifest"
-        Encoding="ASCII" />
+    <Exec
+        WorkingDirectory="%(_RuntimeWin32Assembly.AssemblyDirectory)"
+        Command="&quot;$(ManifestToolPath)mt.exe&quot; -nologo -manifest &quot;%(_RuntimeWin32Assembly.Identity).manifest&quot; -hashupdate -makecdfs" />
 
     <Exec
         WorkingDirectory="%(_RuntimeWin32Assembly.AssemblyDirectory)"

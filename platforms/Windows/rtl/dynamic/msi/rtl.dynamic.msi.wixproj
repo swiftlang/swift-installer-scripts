@@ -12,14 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'amd64' ">
-    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=amd64;Platform=x64;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode)" />
+    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=amd64;Platform=x64;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode);SignOutput=$(SignOutput);CERTIFICATE=$(CERTIFICATE);PASSPHRASE=$(PASSPHRASE);SignToolPath=$(SignToolPath);AzureSignMetadata=$(AzureSignMetadata);AzureSignDlib=$(AzureSignDlib)" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'arm64' ">
-    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode)" />
+    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=arm64;Platform=arm64;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode);SignOutput=$(SignOutput);CERTIFICATE=$(CERTIFICATE);PASSPHRASE=$(PASSPHRASE);SignToolPath=$(SignToolPath);AzureSignMetadata=$(AzureSignMetadata);AzureSignDlib=$(AzureSignDlib)" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(ProductArchitecture)' == 'x86' ">
-    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=x86;Platform=x86;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode)" />
+    <ProjectReference Include="..\lib\rtl.dynamic.lib.wixproj" Properties="ProductArchitecture=x86;Platform=x86;RuntimeLibraryInstallationMode=$(RuntimeLibraryInstallationMode);SignOutput=$(SignOutput);CERTIFICATE=$(CERTIFICATE);PASSPHRASE=$(PASSPHRASE);SignToolPath=$(SignToolPath);AzureSignMetadata=$(AzureSignMetadata);AzureSignDlib=$(AzureSignDlib)" />
   </ItemGroup>
 </Project>
