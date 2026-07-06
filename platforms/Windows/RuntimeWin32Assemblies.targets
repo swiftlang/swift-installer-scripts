@@ -13,7 +13,7 @@
   </Target>
 
   <Target Name="GenerateRuntimeWin32Assemblies"
-          DependsOnTargets="_DefineRuntimeWin32AssemblyConstants;FindWindowsSDKTools;FindSignTool"
+          DependsOnTargets="_DefineRuntimeWin32AssemblyConstants;FindWindowsSDKTools;FindCatalogSignTool"
           BeforeTargets="CoreCompile;Compile">
     <PropertyGroup>
       <_RuntimeRoot Condition="'$(ProductArchitecture)' == 'x86'">$(WindowsRuntimeX86)</_RuntimeRoot>
@@ -63,7 +63,6 @@
         WorkingDirectory="%(_RuntimeWin32Assembly.AssemblyDirectory)"
         Command="&quot;$(MakeCatToolPath)makecat.exe&quot; -v &quot;%(_RuntimeWin32Assembly.CatalogDefinition)&quot;" />
 
-    <Exec Condition="'$(SignOutput)' == 'true'"
-          Command="$(SignTool) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
+    <Exec Command="$(CatalogSignTool) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
   </Target>
 </Project>

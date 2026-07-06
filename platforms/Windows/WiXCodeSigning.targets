@@ -69,6 +69,23 @@
            Text="Unable to locate signtool.exe. Set SignToolPath to the Windows SDK bin directory." />
   </Target>
 
+  <!-- Signing flow for the Win32 side-by-side (SxS) assembly verification catalogs.
+       This is intentionally kept separate from the Authenticode $(SignTool) above:
+       the publicKeyToken baked into each assembly manifest is derived from the signing
+       certificate's public key, so the catalog must be signed by a stable, long-lived
+       certificate whose key does not rotate. Azure Trusted Signing issues short-lived,
+       daily-rotating certificates and therefore cannot be used to sign catalogs. -->
+  <Target Name="FindCatalogSignTool" DependsOnTargets="FindSignTool">
+    <!-- Catalog signing is mandatory for a functional shared assembly, so a missing
+         certificate is a hard error rather than a silently unsigned (unusable) build. -->
+    <Error Condition=" '$(CERTIFICATE)' == '' "
+           Text="Catalog signing requires a certificate. Set CERTIFICATE (and PASSPHRASE) to a stable, long-lived signing certificate." />
+
+    <PropertyGroup>
+      <CatalogSignTool>"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </CatalogSignTool>
+    </PropertyGroup>
+  </Target>
+
   <Target Name="FindWindowsSDKTools" DependsOnTargets="FindWindowsSDK">
     <PropertyGroup>
       <ManifestToolPath Condition=" '$(ManifestToolPath)' == '' ">$(WindowsSDKToolsPath)</ManifestToolPath>
