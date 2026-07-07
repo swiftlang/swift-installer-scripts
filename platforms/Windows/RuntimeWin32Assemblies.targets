@@ -63,6 +63,7 @@
         WorkingDirectory="%(_RuntimeWin32Assembly.AssemblyDirectory)"
         Command="&quot;$(MakeCatToolPath)makecat.exe&quot; -v &quot;%(_RuntimeWin32Assembly.CatalogDefinition)&quot;" />
 
-    <Exec Command="$(CatalogSignTool) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
+    <Exec Condition=" '$(CERTIFICATE)' != '' "
+          Command="$(CatalogSignTool) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
   </Target>
 </Project>

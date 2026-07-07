@@ -76,10 +76,8 @@
        certificate whose key does not rotate. Azure Trusted Signing issues short-lived,
        daily-rotating certificates and therefore cannot be used to sign catalogs. -->
   <Target Name="FindCatalogSignTool" DependsOnTargets="FindSignTool">
-    <!-- Catalog signing is mandatory for a functional shared assembly, so a missing
-         certificate is a hard error rather than a silently unsigned (unusable) build. -->
-    <Error Condition=" '$(CERTIFICATE)' == '' "
-           Text="Catalog signing requires a certificate. Set CERTIFICATE (and PASSPHRASE) to a stable, long-lived signing certificate." />
+    <Warning Condition=" '$(CERTIFICATE)' == '' "
+             Text="Catalog signing skipped: no CERTIFICATE provided. The shared runtime will NOT install. Set CERTIFICATE (and PASSPHRASE) to produce an installable build." />
 
     <PropertyGroup>
       <CatalogSignTool>"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </CatalogSignTool>
