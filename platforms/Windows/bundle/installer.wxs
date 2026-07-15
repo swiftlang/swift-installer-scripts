@@ -164,7 +164,70 @@
     Schema doc is at https://wixtoolset.org/docs/schema/wxs/msipackage/.
     -->
 
+    <!--
+    Split offline installer into multiple containers to avoid the 2GB cab limit.
+    -->
+    <?if $(IsBundleCompressed) = "true" ?>
+      <Container Id="AssertsToolchainContainer" Type="attached">
+        <PackageGroupRef Id="BldAssertsPackage" />
+        <PackageGroupRef Id="CliAssertsPackage" />
+        <PackageGroupRef Id="DbgAssertsPackage" />
+        <PackageGroupRef Id="IdeAssertsPackage" />
+      </Container>
+
+      <?if $(IncludeNoAsserts) == True?>
+        <Container Id="NoAssertsToolchainContainer" Type="attached">
+          <PackageGroupRef Id="BldNoAssertsPackage" />
+          <PackageGroupRef Id="CliNoAssertsPackage" />
+          <PackageGroupRef Id="DbgNoAssertsPackage" />
+          <PackageGroupRef Id="IdeNoAssertsPackage" />
+        </Container>
+      <?endif?>
+
+      <Container Id="SDKsAndCommonContainer" Type="attached">
+        <PackageGroupRef Id="PythonPackage" />
+        <PackageGroupRef Id="ResPackage" />
+        <PackageGroupRef Id="RtlPackage" />
+        <?if $(IncludeAndroid) == True?>
+          <PackageGroupRef Id="AndroidPackage" />
+        <?endif?>
+        <?if $(IncludeWindows) == True?>
+          <PackageGroupRef Id="WindowsPackage" />
+        <?endif?>
+      </Container>
+    <?endif?>
+
     <Chain>
+      <PackageGroupRef Id="BldAssertsPackage" />
+      <?if $(IncludeNoAsserts) == True?>
+        <PackageGroupRef Id="BldNoAssertsPackage" />
+      <?endif?>
+      <PackageGroupRef Id="CliAssertsPackage" />
+      <?if $(IncludeNoAsserts) == True?>
+        <PackageGroupRef Id="CliNoAssertsPackage" />
+      <?endif?>
+      <PackageGroupRef Id="DbgAssertsPackage" />
+      <?if $(IncludeNoAsserts) == True?>
+        <PackageGroupRef Id="DbgNoAssertsPackage" />
+      <?endif?>
+      <PackageGroupRef Id="PythonPackage" />
+      <PackageGroupRef Id="IdeAssertsPackage" />
+      <?if $(IncludeNoAsserts) == True?>
+        <PackageGroupRef Id="IdeNoAssertsPackage" />
+      <?endif?>
+      <PackageGroupRef Id="ResPackage" />
+      <PackageGroupRef Id="RtlPackage" />
+      <?if $(IncludeAndroid) == True?>
+        <PackageGroupRef Id="AndroidPackage" />
+      <?endif?>
+      <?if $(IncludeWindows) == True?>
+        <PackageGroupRef Id="WindowsPackage" />
+      <?endif?>
+     </Chain>
+  </Bundle>
+
+  <Fragment>
+    <PackageGroup Id="BldAssertsPackage">
       <MsiPackage
         SourceFile="!(bindpath.bld.asserts)\bld.asserts.msi"
         InstallCondition="OptionsInstallAssertsToolchain = 1"
@@ -172,78 +235,118 @@
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
         <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsDefaultToolchain = &quot;Asserts&quot; OR OptionsInstallNoAssertsToolchain = 0" Value="1" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
-      <?if $(IncludeNoAsserts) == True?>
-        <MsiPackage
-          SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
-          InstallCondition="OptionsInstallNoAssertsToolchain = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-          <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsDefaultToolchain = &quot;NoAsserts&quot; OR OptionsInstallAssertsToolchain = 0" Value="1" />
-        </MsiPackage>
-      <?endif?>
+  <?if $(IncludeNoAsserts) == True?>
+  <Fragment>
+    <PackageGroup Id="BldNoAssertsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.bld.noasserts)\bld.noasserts.msi"
+        InstallCondition="OptionsInstallNoAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="ADDTOOLCHAINTOPATH" Condition="OptionsDefaultToolchain = &quot;NoAsserts&quot; OR OptionsInstallAssertsToolchain = 0" Value="1" />
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
 
+  <Fragment>
+    <PackageGroup Id="CliAssertsPackage">
       <MsiPackage
         SourceFile="!(bindpath.cli.asserts)\cli.asserts.msi"
         InstallCondition="OptionsInstallCLI = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
-      <?if $(IncludeNoAsserts) == True?>
-        <MsiPackage
-          SourceFile="!(bindpath.cli.noasserts)\cli.noasserts.msi"
-          InstallCondition="OptionsInstallCLI = 1 and OptionsInstallNoAssertsToolchain = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        </MsiPackage>
-      <?endif?>
+  <?if $(IncludeNoAsserts) == True?>
+  <Fragment>
+    <PackageGroup Id="CliNoAssertsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.cli.noasserts)\cli.noasserts.msi"
+        InstallCondition="OptionsInstallCLI = 1 and OptionsInstallNoAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
 
+  <Fragment>
+    <PackageGroup Id="DbgAssertsPackage">
       <MsiPackage
         SourceFile="!(bindpath.dbg.asserts)\dbg.asserts.msi"
         InstallCondition="OptionsInstallDBG = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
-      <?if $(IncludeNoAsserts) == True?>
-        <MsiPackage
-          SourceFile="!(bindpath.dbg.noasserts)\dbg.noasserts.msi"
-          InstallCondition="OptionsInstallDBG = 1 and OptionsInstallNoAssertsToolchain = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        </MsiPackage>
-      <?endif?>
+  <?if $(IncludeNoAsserts) == True?>
+  <Fragment>
+    <PackageGroup Id="DbgNoAssertsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.dbg.noasserts)\dbg.noasserts.msi"
+        InstallCondition="OptionsInstallDBG = 1 and OptionsInstallNoAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
 
+  <Fragment>
+    <PackageGroup Id="PythonPackage">
       <MsiPackage
         SourceFile="!(bindpath.python)\python.msi"
         InstallCondition="OptionsInstallDBG = 1 and OptionsInstallPy = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
+  <Fragment>
+    <PackageGroup Id="IdeAssertsPackage">
       <MsiPackage
         SourceFile="!(bindpath.ide.asserts)\ide.asserts.msi"
         InstallCondition="OptionsInstallIDE = 1 and OptionsInstallAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
-      <?if $(IncludeNoAsserts) == True?>
-        <MsiPackage
-          SourceFile="!(bindpath.ide.noasserts)\ide.noasserts.msi"
-          InstallCondition="OptionsInstallIDE = 1 and OptionsInstallNoAssertsToolchain = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
-        </MsiPackage>
-      <?endif?>
+  <?if $(IncludeNoAsserts) == True?>
+  <Fragment>
+    <PackageGroup Id="IdeNoAssertsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.ide.noasserts)\ide.noasserts.msi"
+        InstallCondition="OptionsInstallIDE = 1 and OptionsInstallNoAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
 
+  <Fragment>
+    <PackageGroup Id="ResPackage">
       <MsiPackage
         SourceFile="!(bindpath.res)\res.msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
+  <Fragment>
+    <PackageGroup Id="RtlPackage">
       <MsiPackage
         SourceFile="!(bindpath.rtl.dynamic)\rtl.$(ProductArchitecture).msi"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
@@ -251,34 +354,42 @@
         <MsiProperty Name="INSTALLSUPPORT" Value="[OptionsInstallSupport]" />
         <MsiProperty Name="INSTALLUTILITIES" Value="[OptionsInstallUtilities]" />
       </MsiPackage>
+    </PackageGroup>
+  </Fragment>
 
-      <?if $(IncludeAndroid) == True?>
-        <MsiPackage
-          SourceFile="!(bindpath.platform.android)\android.msi"
-          InstallCondition="OptionsInstallAndroidPlatform = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+  <?if $(IncludeAndroid) == True?>
+  <Fragment>
+    <PackageGroup Id="AndroidPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.platform.android)\android.msi"
+        InstallCondition="OptionsInstallAndroidPlatform = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
-          <?foreach Architecture in ARM64;AMD64;ARM;X86?>
-            <MsiProperty Name="INSTALL$(Architecture)SDK" Value="[OptionsInstallAndroidSDK$(Architecture)]" />
-          <?endforeach?>
-        </MsiPackage>
-      <?endif?>
+        <?foreach Architecture in ARM64;AMD64;ARM;X86?>
+          <MsiProperty Name="INSTALL$(Architecture)SDK" Value="[OptionsInstallAndroidSDK$(Architecture)]" />
+        <?endforeach?>
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
 
-      <?if $(IncludeWindows) == True?>
-        <MsiPackage
-          SourceFile="!(bindpath.platform.windows)\windows.msi"
-          InstallCondition="OptionsInstallWindowsPlatform = 1"
-          DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
-          <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+  <?if $(IncludeWindows) == True?>
+  <Fragment>
+    <PackageGroup Id="WindowsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.platform.windows)\windows.msi"
+        InstallCondition="OptionsInstallWindowsPlatform = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
 
-          <?foreach Architecture in ARM64;AMD64;X86?>
-            <MsiProperty Name="INSTALL$(Architecture)SDK" Value="[OptionsInstallWindowsSDK$(Architecture)]" />
-            <MsiProperty Name="INSTALL$(Architecture)REDISTSHARED" Value="[OptionsInstallWindowsRedistShared$(Architecture)]" />
-            <MsiProperty Name="INSTALL$(Architecture)REDISTPRIVATE" Value="[OptionsInstallWindowsRedistPrivate$(Architecture)]" />
-          <?endforeach?>
-        </MsiPackage>
-      <?endif?>
-     </Chain>
-  </Bundle>
+        <?foreach Architecture in ARM64;AMD64;X86?>
+          <MsiProperty Name="INSTALL$(Architecture)SDK" Value="[OptionsInstallWindowsSDK$(Architecture)]" />
+          <MsiProperty Name="INSTALL$(Architecture)REDISTSHARED" Value="[OptionsInstallWindowsRedistShared$(Architecture)]" />
+          <MsiProperty Name="INSTALL$(Architecture)REDISTPRIVATE" Value="[OptionsInstallWindowsRedistPrivate$(Architecture)]" />
+        <?endforeach?>
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
 </Wix>
