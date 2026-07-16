@@ -184,7 +184,7 @@
         </Container>
       <?endif?>
 
-      <Container Id="SDKsAndCommonContainer" Type="attached">
+      <Container Id="SharedContainer" Type="attached">
         <PackageGroupRef Id="PythonPackage" />
         <PackageGroupRef Id="ResPackage" />
         <PackageGroupRef Id="RtlPackage" />
@@ -198,32 +198,30 @@
     <?endif?>
 
     <Chain>
-      <PackageGroupRef Id="BldAssertsPackage" />
-      <?if $(IncludeNoAsserts) == True?>
-        <PackageGroupRef Id="BldNoAssertsPackage" />
-      <?endif?>
-      <PackageGroupRef Id="CliAssertsPackage" />
-      <?if $(IncludeNoAsserts) == True?>
-        <PackageGroupRef Id="CliNoAssertsPackage" />
-      <?endif?>
-      <PackageGroupRef Id="DbgAssertsPackage" />
-      <?if $(IncludeNoAsserts) == True?>
-        <PackageGroupRef Id="DbgNoAssertsPackage" />
-      <?endif?>
+      <?foreach Group in Bld;Cli;Dbg?>
+        <PackageGroupRef Id="$(Group)AssertsPackage" />
+        <?if $(IncludeNoAsserts) == True?>
+          <PackageGroupRef Id="$(Group)NoAssertsPackage" />
+        <?endif?>
+      <?endforeach?>
+
       <PackageGroupRef Id="PythonPackage" />
+
       <PackageGroupRef Id="IdeAssertsPackage" />
       <?if $(IncludeNoAsserts) == True?>
         <PackageGroupRef Id="IdeNoAssertsPackage" />
       <?endif?>
+
       <PackageGroupRef Id="ResPackage" />
       <PackageGroupRef Id="RtlPackage" />
+
       <?if $(IncludeAndroid) == True?>
         <PackageGroupRef Id="AndroidPackage" />
       <?endif?>
       <?if $(IncludeWindows) == True?>
         <PackageGroupRef Id="WindowsPackage" />
       <?endif?>
-     </Chain>
+    </Chain>
   </Bundle>
 
   <Fragment>
