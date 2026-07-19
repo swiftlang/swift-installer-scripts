@@ -211,6 +211,7 @@
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SceneKitFileTypes.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SceneKitTools.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SpriteKitFileTypes.xcspec" />
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\SsafAnalyzer.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\TiffUtil.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\WatchKit1ProductTypes.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\XCAppExtensionPoints.xcspec" />
