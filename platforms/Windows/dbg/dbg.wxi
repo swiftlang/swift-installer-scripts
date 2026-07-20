@@ -103,7 +103,6 @@
       <ComponentGroupRef Id="SwiftSynthesizeInterface" />
 
       <ComponentGroupRef Id="_InternalSwiftStaticMirror" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Include>

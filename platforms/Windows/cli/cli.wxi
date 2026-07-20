@@ -402,7 +402,6 @@
       <ComponentGroupRef Id="DocCRender" />
 
       <ComponentGroupRef Id="swift_format" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Include>

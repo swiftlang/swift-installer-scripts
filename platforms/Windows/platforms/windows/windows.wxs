@@ -1783,7 +1783,6 @@
 
       <!-- MSI management Components -->
       <ComponentGroupRef Id="EnvironmentVariables" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
 
     <?if $(IncludeARM64) = "True"?>

@@ -337,7 +337,6 @@
 
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="EnvironmentVariables" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Include>
