@@ -25,10 +25,7 @@
 
     <Feature Id="Hello" AllowAbsent="no" Title="!(bind.property.ProductName)">
       <MergeRef Id="swift_runtime" />
-
-      <Component Directory="INSTALLFOLDER">
-        <File Source="hello.exe" />
-      </Component>
+      <File Directory="INSTALLFOLDER" Source="hello.exe" />
     </Feature>
   </Package>
 </Wix>
