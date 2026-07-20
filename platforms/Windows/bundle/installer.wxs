@@ -55,36 +55,6 @@
     <Variable Name="BAFRefreshTrigger" Value="0" Hidden="yes" />
 
     <!--
-      The SDK TreeView is populated at runtime by BAF (thmutil only creates
-      the TreeView shell and doesn't loc tree items). Carry the existing
-      product-name loc strings through bundle Variables so BAF can resolve
-      them via BalFormatString("[Name]"); `!(loc.X)` is replaced at build
-      time so the Variable value is already localised at runtime.
-    -->
-    <Variable Name="Plt_ProductName_Windows" Value="!(loc.Plt_ProductName_Windows)" Type="string" Hidden="yes" />
-    <?foreach Architecture in amd64;arm64;x86?>
-      <Variable Name="Sdk_ProductName_Windows_$(Architecture)" Value="!(loc.Sdk_ProductName_Windows_$(Architecture))" Type="string" Hidden="yes" />
-    <?endforeach?>
-    <Variable Name="Redist_shared" Value="!(loc.Redist_shared)" Type="string" Hidden="yes" />
-    <Variable Name="Redist_private" Value="!(loc.Redist_private)" Type="string" Hidden="yes" />
-    <Variable Name="Plt_ProductName_Android" Value="!(loc.Plt_ProductName_Android)" Type="string" Hidden="yes" />
-    <?foreach Architecture in arm64;amd64;armv7;x86?>
-      <Variable Name="Sdk_ProductName_Android_$(Architecture)" Value="!(loc.Sdk_ProductName_Android_$(Architecture))" Type="string" Hidden="yes" />
-    <?endforeach?>
-
-    <!--
-      Per-tab tooltips for the Options tab strip. BAF creates the tooltip
-      control programmatically (thmutil's `Tooltip` attribute would apply
-      to the whole strip, not per tab) and resolves these variables via
-      BalFormatString at tab-setup time.
-    -->
-    <Variable Name="OptionsToolchainTabTooltip" Value="!(loc.OptionsToolchainTabTooltip)" Type="string" Hidden="yes" />
-    <Variable Name="OptionsRuntimesTabTooltip" Value="!(loc.OptionsRuntimesTabTooltip)" Type="string" Hidden="yes" />
-    <Variable Name="OptionsSDKsTabTooltip" Value="!(loc.OptionsSDKsTabTooltip)" Type="string" Hidden="yes" />
-    <Variable Name="AssertsToolchain" Value="!(loc.OptionsDefaultAsserts)" Type="string" Hidden="yes" />
-    <Variable Name="NoAssertsToolchain" Value="!(loc.OptionsDefaultNoAsserts)" Type="string" Hidden="yes" />
-
-    <!--
       Per-row availability for the SDK TreeView, driven by build-time flags
       (IncludeWindows/IncludeAndroid and the arch-specific variants defined
       in installer.wixproj). BAF skips tree rows whose availability variable
