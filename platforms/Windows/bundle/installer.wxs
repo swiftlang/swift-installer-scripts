@@ -106,10 +106,10 @@
     <Variable Name="OptionsInstallPy" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
 
-    <?if $(ProductArchitecture) == "amd64" ?>
+    <?if $(ProductArchitecture) = "amd64" ?>
       <Variable Name="OptionsInstallRuntimeAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
       <Variable Name="OptionsInstallRuntimeARM64" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <?elseif $(ProductArchitecture) == "arm64" ?>
+    <?elseif $(ProductArchitecture) = "arm64" ?>
       <Variable Name="OptionsInstallRuntimeAMD64" bal:Overridable="yes" Persisted="yes" Value="0" />
       <Variable Name="OptionsInstallRuntimeARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <?endif?>
@@ -139,7 +139,7 @@
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="OptionsDefaultToolchain" bal:Overridable="yes" Persisted="yes" Type="string" Value="Asserts" />
 
-    <?if $(IncludeNoAsserts) == "True"?>
+    <?if $(IncludeNoAsserts) = "True"?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
     <?else ?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
@@ -176,7 +176,7 @@
         <PackageGroupRef Id="PrtAssertsPackage" />
       </Container>
 
-      <?if $(IncludeNoAsserts) == "True"?>
+      <?if $(IncludeNoAsserts) = "True"?>
         <Container Id="NoAssertsToolchainContainer" Type="attached">
           <PackageGroupRef Id="BldNoAssertsPackage" />
           <PackageGroupRef Id="CliNoAssertsPackage" />
@@ -190,10 +190,10 @@
         <PackageGroupRef Id="PythonPackage" />
         <PackageGroupRef Id="ResPackage" />
         <PackageGroupRef Id="RtlPackage" />
-        <?if $(IncludeAndroid) == "True"?>
+        <?if $(IncludeAndroid) = "True"?>
           <PackageGroupRef Id="AndroidPackage" />
         <?endif?>
-        <?if $(IncludeWindows) == "True"?>
+        <?if $(IncludeWindows) = "True"?>
           <PackageGroupRef Id="WindowsPackage" />
         <?endif?>
       </Container>
@@ -202,7 +202,7 @@
     <Chain>
       <?foreach Group in Bld;Cli;Dbg?>
         <PackageGroupRef Id="$(Group)AssertsPackage" />
-        <?if $(IncludeNoAsserts) == "True"?>
+        <?if $(IncludeNoAsserts) = "True"?>
           <PackageGroupRef Id="$(Group)NoAssertsPackage" />
         <?endif?>
       <?endforeach?>
@@ -210,7 +210,7 @@
       <PackageGroupRef Id="PythonPackage" />
 
       <PackageGroupRef Id="IdeAssertsPackage" />
-      <?if $(IncludeNoAsserts) == "True"?>
+      <?if $(IncludeNoAsserts) = "True"?>
         <PackageGroupRef Id="IdeNoAssertsPackage" />
       <?endif?>
 
@@ -222,10 +222,10 @@
       <PackageGroupRef Id="ResPackage" />
       <PackageGroupRef Id="RtlPackage" />
 
-      <?if $(IncludeAndroid) == "True"?>
+      <?if $(IncludeAndroid) = "True"?>
         <PackageGroupRef Id="AndroidPackage" />
       <?endif?>
-      <?if $(IncludeWindows) == "True"?>
+      <?if $(IncludeWindows) = "True"?>
         <PackageGroupRef Id="WindowsPackage" />
       <?endif?>
     </Chain>
@@ -243,7 +243,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == "True"?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="BldNoAssertsPackage">
       <MsiPackage
@@ -268,7 +268,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == "True"?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="CliNoAssertsPackage">
       <MsiPackage
@@ -292,7 +292,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == "True"?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="DbgNoAssertsPackage">
       <MsiPackage
@@ -327,7 +327,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == "True"?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="IdeNoAssertsPackage">
       <MsiPackage
@@ -394,7 +394,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeAndroid) == "True"?>
+  <?if $(IncludeAndroid) = "True"?>
   <Fragment>
     <PackageGroup Id="AndroidPackage">
       <MsiPackage
@@ -411,7 +411,7 @@
   </Fragment>
   <?endif?>
 
-  <?if $(IncludeWindows) == "True"?>
+  <?if $(IncludeWindows) = "True"?>
   <Fragment>
     <PackageGroup Id="WindowsPackage">
       <MsiPackage
