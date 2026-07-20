@@ -14,16 +14,16 @@
     <Property Id="INSTALLX86SDK" Value="1" />
 
     <Media Id="1" Cabinet="android.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <Media Id="2" Cabinet="sdk.android.arm64.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?endif?>
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <Media Id="3" Cabinet="sdk.android.arm.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?endif?>
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <Media Id="4" Cabinet="sdk.android.x64.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?endif?>
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <Media Id="5" Cabinet="sdk.android.x86.cab" EmbedCab="$(ArePackageCabsEmbedded)" />
     <?endif?>
 
@@ -56,16 +56,16 @@
                 <Directory Name="lib">
                   <Directory Name="swift">
                     <Directory Name="android">
-                      <?if $(IncludeARM64) == "True"?>
+                      <?if $(IncludeARM64) = "True"?>
                         <Directory Id="XCTest_usr_lib_swift_android_arm64" Name="aarch64" />
                       <?endif?>
-                      <?if $(IncludeARM) == "True"?>
+                      <?if $(IncludeARM) = "True"?>
                         <Directory Id="XCTest_usr_lib_swift_android_arm" Name="armv7" />
                       <?endif?>
-                      <?if $(IncludeX64) == "True"?>
+                      <?if $(IncludeX64) = "True"?>
                         <Directory Id="XCTest_usr_lib_swift_android_x64" Name="x86_64" />
                       <?endif?>
-                      <?if $(IncludeX86) == "True"?>
+                      <?if $(IncludeX86) = "True"?>
                         <Directory Id="XCTest_usr_lib_swift_android_x86" Name="i686" />
                       <?endif?>
                       <Directory Id="XCTest.swiftmodule" Name="XCTest.swiftmodule" />
@@ -82,16 +82,16 @@
                   <Directory Name="swift">
                     <Directory Name="android">
                       <Directory Id="_Testing_Foundation.swiftmodule" Name="_Testing_Foundation.swiftmodule" />
-                      <?if $(IncludeARM64) == "True"?>
+                      <?if $(IncludeARM64) = "True"?>
                         <Directory Id="Testing_usr_lib_swift_android_arm64" Name="aarch64" />
                       <?endif?>
-                      <?if $(IncludeARM) == "True"?>
+                      <?if $(IncludeARM) = "True"?>
                         <Directory Id="Testing_usr_lib_swift_android_arm" Name="armv7" />
                       <?endif?>
-                      <?if $(IncludeX64) == "True"?>
+                      <?if $(IncludeX64) = "True"?>
                         <Directory Id="Testing_usr_lib_swift_android_x64" Name="x86_64" />
                       <?endif?>
-                      <?if $(IncludeX86) == "True"?>
+                      <?if $(IncludeX86) = "True"?>
                         <Directory Id="Testing_usr_lib_swift_android_x86" Name="i686" />
                       <?endif?>
                       <Directory Id="Testing.swiftcrossimport" Name="Testing.swiftcrossimport" />
@@ -103,7 +103,7 @@
             </Directory>
 
             <!-- ds2 -->
-            <?if $(ANDROID_INCLUDE_DS2) == "True"?>
+            <?if $(ANDROID_INCLUDE_DS2) = "True"?>
               <Directory Name="ds2">
                 <Directory Name="usr">
                   <Directory Id="_ds2_usr_bin" Name="bin" />
@@ -135,16 +135,16 @@
                       <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
-                      <?if $(IncludeARM64) == "True"?>
+                      <?if $(IncludeARM64) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_android_arm64" Name="aarch64" />
                       <?endif?>
-                      <?if $(IncludeARM) == "True"?>
+                      <?if $(IncludeARM) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_android_arm" Name="armv7" />
                       <?endif?>
-                      <?if $(IncludeX64) == "True"?>
+                      <?if $(IncludeX64) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_android_x64" Name="x86_64" />
                       <?endif?>
-                      <?if $(IncludeX86) == "True"?>
+                      <?if $(IncludeX86) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_android_x86" Name="i686" />
                       <?endif?>
                     </Directory>
@@ -154,16 +154,16 @@
                       <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="lib$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
-                      <?if $(IncludeARM64) == "True"?>
+                      <?if $(IncludeARM64) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_static_android_arm64" Name="aarch64" />
                       <?endif?>
-                      <?if $(IncludeARM) == "True"?>
+                      <?if $(IncludeARM) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_static_android_arm" Name="armv7" />
                       <?endif?>
-                      <?if $(IncludeX64) == "True"?>
+                      <?if $(IncludeX64) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_static_android_x64" Name="x86_64" />
                       <?endif?>
-                      <?if $(IncludeX86) == "True"?>
+                      <?if $(IncludeX86) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_static_android_x86" Name="i686" />
                       <?endif?>
                     </Directory>
@@ -178,7 +178,7 @@
     </DirectoryRef>
 
     <!-- XCTest -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="XCTest.arm64">
         <File Directory="XCTest.swiftmodule" DiskId="2" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File Directory="XCTest.swiftmodule" DiskId="2" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -186,7 +186,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="XCTest.arm">
         <File Directory="XCTest.swiftmodule" DiskId="3" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File Directory="XCTest.swiftmodule" DiskId="3" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -194,7 +194,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="XCTest.x64">
         <File Directory="XCTest.swiftmodule" DiskId="4" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File Directory="XCTest.swiftmodule" DiskId="4" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -202,7 +202,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="XCTest.x86">
         <File Directory="XCTest.swiftmodule" DiskId="5" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File Directory="XCTest.swiftmodule" DiskId="5" Source="$(PlatformRoot)\Developer\Library\XCTest-$(ProductVersion)\usr\lib\swift\android\XCTest.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -215,7 +215,7 @@
       <File Directory="Testing.swiftcrossimport" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftcrossimport\Foundation.swiftoverlay" />
     </ComponentGroup>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Testing.arm64">
         <File Directory="Testing.swiftmodule" DiskId="2" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File Directory="Testing.swiftmodule" DiskId="2" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\aarch64-unknown-linux-android.swiftinterface" />
@@ -227,7 +227,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Testing.arm">
         <File Directory="Testing.swiftmodule" DiskId="3" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File Directory="Testing.swiftmodule" DiskId="3" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\armv7-unknown-linux-android.swiftinterface" />
@@ -239,7 +239,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Testing.x64">
         <File Directory="Testing.swiftmodule" DiskId="4" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File Directory="Testing.swiftmodule" DiskId="4" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\x86_64-unknown-linux-android.swiftinterface" />
@@ -251,7 +251,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Testing.x86">
         <File Directory="Testing.swiftmodule" DiskId="5" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File Directory="Testing.swiftmodule" DiskId="5" Source="$(PlatformRoot)\Developer\Library\Testing-$(ProductVersion)\usr\lib\swift\android\Testing.swiftmodule\i686-unknown-linux-android.swiftinterface" />
@@ -264,33 +264,33 @@
     <?endif?>
 
     <!-- ds2 -->
-    <?if $(ANDROID_INCLUDE_DS2) == "True"?>
-      <?if $(IncludeARM64) == "True"?>
+    <?if $(ANDROID_INCLUDE_DS2) = "True"?>
+      <?if $(IncludeARM64) = "True"?>
         <ComponentGroup Id="ds2.arm64" Directory="_ds2_usr_bin">
           <File DiskId="2" Source="$(PlatformRoot)\Developer\Library\ds2\usr\bin\aarch64-unknown-linux-android-ds2" />
         </ComponentGroup>
       <?endif?>
 
-      <?if $(IncludeARM) == "True"?>
+      <?if $(IncludeARM) = "True"?>
         <ComponentGroup Id="ds2.arm" Directory="_ds2_usr_bin">
           <File DiskId="3" Source="$(PlatformRoot)\Developer\Library\ds2\usr\bin\armv7-unknown-linux-android-ds2" />
         </ComponentGroup>
       <?endif?>
 
-      <?if $(IncludeX64) == "True"?>
+      <?if $(IncludeX64) = "True"?>
         <ComponentGroup Id="ds2.x64" Directory="_ds2_usr_bin">
           <File DiskId="4" Source="$(PlatformRoot)\Developer\Library\ds2\usr\bin\x86_64-unknown-linux-android-ds2" />
         </ComponentGroup>
       <?endif?>
 
-      <?if $(IncludeX86) == "True"?>
+      <?if $(IncludeX86) = "True"?>
         <ComponentGroup Id="ds2.x86" Directory="_ds2_usr_bin">
           <File DiskId="5" Source="$(PlatformRoot)\Developer\Library\ds2\usr\bin\i686-unknown-linux-android-ds2" />
         </ComponentGroup>
       <?endif?>
     <?endif?>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_FoundationUnicode.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\lib_FoundationICU.so" />
       </ComponentGroup>
@@ -300,7 +300,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_FoundationUnicode.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\lib_FoundationICU.so" />
       </ComponentGroup>
@@ -310,7 +310,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_FoundationUnicode.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\lib_FoundationICU.so" />
       </ComponentGroup>
@@ -320,7 +320,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_FoundationUnicode.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\lib_FoundationICU.so" />
       </ComponentGroup>
@@ -330,55 +330,55 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="lib_FoundationCShims.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="lib_FoundationCShims.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="lib_FoundationCShims.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="lib_FoundationCShims.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationCShims.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="lib_FoundationInternationalizationData.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationInternationalizationData.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="lib_FoundationInternationalizationData.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationInternationalizationData.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="lib_FoundationInternationalizationData.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationInternationalizationData.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="lib_FoundationInternationalizationData.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationInternationalizationData.a" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="BlocksRuntime.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libBlocksRuntime.so" />
       </ComponentGroup>
@@ -388,7 +388,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="BlocksRuntime.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libBlocksRuntime.so" />
       </ComponentGroup>
@@ -398,7 +398,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="BlocksRuntime.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libBlocksRuntime.so" />
       </ComponentGroup>
@@ -408,7 +408,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="BlocksRuntime.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\libBlocksRuntime.so" />
       </ComponentGroup>
@@ -418,7 +418,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="dispatch.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libDispatch.so" />
       </ComponentGroup>
@@ -442,7 +442,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="dispatch.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libdispatch.so" />
       </ComponentGroup>
@@ -466,7 +466,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="dispatch.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libdispatch.so" />
       </ComponentGroup>
@@ -490,7 +490,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="dispatch.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\libdispatch.so" />
       </ComponentGroup>
@@ -514,7 +514,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="RemoteMirror.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftRemoteMirror.so" />
       </ComponentGroup>
@@ -524,7 +524,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="RemoteMirror.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftRemoteMirror.so" />
       </ComponentGroup>
@@ -534,7 +534,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="RemoteMirror.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftRemoteMirror.so" />
       </ComponentGroup>
@@ -544,7 +544,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="RemoteMirror.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftRemoteMirror.so" />
       </ComponentGroup>
@@ -563,7 +563,7 @@
     </ComponentGroup>
 
     <!-- _Builtin_float -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_Builtin_float.arm64" Directory="_Builtin_float.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -579,7 +579,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_Builtin_float.arm" Directory="_Builtin_float.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -595,7 +595,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_Builtin_float.x64" Directory="_Builtin_float.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -611,7 +611,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_Builtin_float.x86" Directory="_Builtin_float.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Builtin_float.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -628,7 +628,7 @@
     <?endif?>
 
     <!-- _Concurrency -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_Concurrency.arm64" Directory="_Concurrency.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -644,7 +644,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_Concurrency.arm" Directory="_Concurrency.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -660,7 +660,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_Concurrency.x64" Directory="_Concurrency.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -676,7 +676,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_Concurrency.x86" Directory="_Concurrency.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Concurrency.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -693,7 +693,7 @@
     <?endif?>
 
     <!-- _Differentiation -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_Differentiation.arm64" Directory="_Differentiation.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -709,7 +709,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_Differentiation.arm" Directory="_Differentiation.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -725,7 +725,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_Differentiation.x64" Directory="_Differentiation.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -741,7 +741,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_Differentiation.x86" Directory="_Differentiation.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Differentiation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -758,7 +758,7 @@
     <?endif?>
 
     <!-- _FoundationCollections -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_FoundationCollections.arm64" Directory="_FoundationCollections.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -772,7 +772,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_FoundationCollections.arm" Directory="_FoundationCollections.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -786,7 +786,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_FoundationCollections.x64" Directory="_FoundationCollections.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -800,7 +800,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_FoundationCollections.x86" Directory="_FoundationCollections.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationCollections.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -815,7 +815,7 @@
     <?endif?>
 
     <!-- _math -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_math.arm64" Directory="_math.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -831,7 +831,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_math.arm" Directory="_math.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -847,7 +847,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_math.x64" Directory="_math.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -863,7 +863,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_math.x86" Directory="_math.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_math.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -880,7 +880,7 @@
     <?endif?>
 
     <!-- _RegexParser -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_RegexParser.arm64" Directory="_RegexParser.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -896,7 +896,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_RegexParser.arm" Directory="_RegexParser.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -912,7 +912,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_RegexParser.x64" Directory="_RegexParser.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -928,7 +928,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_RegexParser.x86" Directory="_RegexParser.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_RegexParser.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -945,7 +945,7 @@
     <?endif?>
 
     <!-- _StringProcessing -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_StringProcessing.arm64" Directory="_StringProcessing.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -961,7 +961,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_StringProcessing.arm" Directory="_StringProcessing.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -977,7 +977,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_StringProcessing.x64" Directory="_StringProcessing.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -993,7 +993,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_StringProcessing.x86" Directory="_StringProcessing.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_StringProcessing.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1010,7 +1010,7 @@
     <?endif?>
 
     <!-- _Volatile -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_Volatile.arm64" Directory="_Volatile.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1026,7 +1026,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="_Volatile.arm" Directory="_Volatile.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1042,7 +1042,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="_Volatile.x64" Directory="_Volatile.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1058,7 +1058,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="_Volatile.x86" Directory="_Volatile.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_Volatile.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1075,7 +1075,7 @@
     <?endif?>
 
     <!-- Android -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Android.arm64" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
         <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\android.modulemap" />
@@ -1096,7 +1096,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Android.arm" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
         <File Directory="SDK_usr_lib_swift_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\android.modulemap" />
@@ -1117,7 +1117,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Android.x64" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
         <File Directory="SDK_usr_lib_swift_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\android.modulemap" />
@@ -1138,7 +1138,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Android.x86" Directory="Android.swiftmodule">
         <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
         <File Directory="SDK_usr_lib_swift_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\android.modulemap" />
@@ -1160,7 +1160,7 @@
     <?endif?>
 
     <!-- Cxx -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Cxx.arm64" Directory="Cxx.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1176,7 +1176,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Cxx.arm" Directory="Cxx.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1192,7 +1192,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Cxx.x64" Directory="Cxx.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1208,7 +1208,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Cxx.x86" Directory="Cxx.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Cxx.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1225,7 +1225,7 @@
     <?endif?>
 
     <!-- CxxStdlib -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="CxxStdlib.arm64" Directory="CxxStdlib.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1241,7 +1241,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="CxxStdlib.arm" Directory="CxxStdlib.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1257,7 +1257,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="CxxStdlib.x64" Directory="CxxStdlib.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1273,7 +1273,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="CxxStdlib.x86" Directory="CxxStdlib.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\CxxStdlib.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1290,7 +1290,7 @@
     <?endif?>
 
     <!-- Distributed -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Distributed.arm64" Directory="Distributed.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1306,7 +1306,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Distributed.arm" Directory="Distributed.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1322,7 +1322,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Distributed.x64" Directory="Distributed.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1338,7 +1338,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Distributed.x86" Directory="Distributed.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Distributed.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1355,7 +1355,7 @@
     <?endif?>
 
     <!-- Foundation -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Foundation.arm64" Directory="Foundation.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1371,7 +1371,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Foundation.arm" Directory="Foundation.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1387,7 +1387,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Foundation.x64" Directory="Foundation.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1403,7 +1403,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Foundation.x86" Directory="Foundation.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Foundation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1420,7 +1420,7 @@
     <?endif?>
 
     <!-- FoundationEssentials -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="FoundationEssentials.arm64" Directory="FoundationEssentials.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1436,7 +1436,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="FoundationEssentials.arm" Directory="FoundationEssentials.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1452,7 +1452,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="FoundationEssentials.x64" Directory="FoundationEssentials.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1468,7 +1468,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="FoundationEssentials.x86" Directory="FoundationEssentials.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationEssentials.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1485,7 +1485,7 @@
     <?endif?>
 
     <!-- FoundationInternationalization -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="FoundationInternationalization.arm64" Directory="FoundationInternationalization.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1501,7 +1501,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="FoundationInternationalization.arm" Directory="FoundationInternationalization.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1517,7 +1517,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="FoundationInternationalization.x64" Directory="FoundationInternationalization.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1533,7 +1533,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="FoundationInternationalization.x86" Directory="FoundationInternationalization.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationInternationalization.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1550,7 +1550,7 @@
     <?endif?>
 
     <!-- FoundationNetworking -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="FoundationNetworking.arm64" Directory="FoundationNetworking.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1566,7 +1566,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="FoundationNetworking.arm" Directory="FoundationNetworking.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1582,7 +1582,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="FoundationNetworking.x64" Directory="FoundationNetworking.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1598,7 +1598,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="FoundationNetworking.x86" Directory="FoundationNetworking.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationNetworking.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1615,7 +1615,7 @@
     <?endif?>
 
     <!-- FoundationXML -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="FoundationXML.arm64" Directory="FoundationXML.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1631,7 +1631,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="FoundationXML.arm" Directory="FoundationXML.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1647,7 +1647,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="FoundationXML.x64" Directory="FoundationXML.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1663,7 +1663,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="FoundationXML.x86" Directory="FoundationXML.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\FoundationXML.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1680,7 +1680,7 @@
     <?endif?>
 
     <!-- Foundation Dependencies -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="libbrotlicommon.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libbrotlicommon.a" />
       </ComponentGroup>
@@ -1702,7 +1702,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="libbrotlicommon.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libbrotlicommon.a" />
       </ComponentGroup>
@@ -1724,7 +1724,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="libbrotlicommon.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libbrotlicommon.a" />
       </ComponentGroup>
@@ -1746,7 +1746,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="libbrotlicommon.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libbrotlicommon.a" />
       </ComponentGroup>
@@ -1769,7 +1769,7 @@
     <?endif?>
 
     <!-- CoreFoundation -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="libCoreFoundation.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libCoreFoundation.a" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_CFURLSessionInterface.a" />
@@ -1777,7 +1777,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="libCoreFoundation.arm" Directory="SDK_usr_lib_swift_static_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libCoreFoundation.a" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_CFURLSessionInterface.a" />
@@ -1785,7 +1785,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="libCoreFoundation.x64" Directory="SDK_usr_lib_swift_static_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libCoreFoundation.a" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_CFURLSessionInterface.a" />
@@ -1793,7 +1793,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="libCoreFoundation.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libCoreFoundation.a" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_CFURLSessionInterface.a" />
@@ -1802,7 +1802,7 @@
     <?endif?>
 
     <!-- Observation -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Observation.arm64" Directory="Observation.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1818,7 +1818,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Observation.arm" Directory="Observation.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1834,7 +1834,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Observation.x64" Directory="Observation.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1850,7 +1850,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Observation.x86" Directory="Observation.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Observation.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1867,7 +1867,7 @@
     <?endif?>
 
     <!-- RegexBuilder -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="RegexBuilder.arm64" Directory="RegexBuilder.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1883,7 +1883,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="RegexBuilder.arm" Directory="RegexBuilder.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1899,7 +1899,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="RegexBuilder.x64" Directory="RegexBuilder.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1915,7 +1915,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="RegexBuilder.x86" Directory="RegexBuilder.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\RegexBuilder.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1932,7 +1932,7 @@
     <?endif?>
 
     <!-- Swift -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Swift.arm64" Directory="Swift.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -1948,7 +1948,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Swift.arm" Directory="Swift.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -1964,7 +1964,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Swift.x64" Directory="Swift.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -1980,7 +1980,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Swift.x86" Directory="Swift.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Swift.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -1997,7 +1997,7 @@
     <?endif?>
 
     <!-- SwiftOnoneSupport -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="SwiftOnoneSupport.arm64" Directory="SwiftOnoneSupport.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -2013,7 +2013,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="SwiftOnoneSupport.arm" Directory="SwiftOnoneSupport.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -2029,7 +2029,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="SwiftOnoneSupport.x64" Directory="SwiftOnoneSupport.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -2045,7 +2045,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="SwiftOnoneSupport.x86" Directory="SwiftOnoneSupport.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\SwiftOnoneSupport.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -2062,7 +2062,7 @@
     <?endif?>
 
     <!-- Synchronization -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Synchronization.arm64" Directory="Synchronization.swiftmodule">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
@@ -2078,7 +2078,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Synchronization.arm" Directory="Synchronization.swiftmodule">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
@@ -2094,7 +2094,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Synchronization.x64" Directory="Synchronization.swiftmodule">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
@@ -2110,7 +2110,7 @@
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Synchronization.x86" Directory="Synchronization.swiftmodule">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Synchronization.swiftmodule\i686-unknown-linux-android.swiftmodule" />
@@ -2134,25 +2134,25 @@
     </ComponentGroup>
 
     <!-- Registrar -->
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Registrar.arm64" Directory="SDK_usr_lib_swift_android_arm64">
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Registrar.arm" Directory="SDK_usr_lib_swift_android_arm">
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Registrar.x64" Directory="SDK_usr_lib_swift_android_x64">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Registrar.x86" Directory="SDK_usr_lib_swift_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\swiftrt.o" />
       </ComponentGroup>
@@ -2177,53 +2177,53 @@
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <Feature Id="arm64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
         <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm64" />
         <?endforeach?>
-        <?if $(ANDROID_INCLUDE_DS2) == "True"?>
+        <?if $(ANDROID_INCLUDE_DS2) = "True"?>
           <ComponentGroupRef Id="ds2.arm64" />
         <?endif?>
       </Feature>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <Feature Id="arm.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_armv7)">
         <Level Condition="INSTALLARMSDK = 0" Value="0" />
 
         <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).arm" />
         <?endforeach?>
-        <?if $(ANDROID_INCLUDE_DS2) == "True"?>
+        <?if $(ANDROID_INCLUDE_DS2) = "True"?>
           <ComponentGroupRef Id="ds2.arm" />
         <?endif?>
       </Feature>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <Feature Id="x64.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
         <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x64" />
         <?endforeach?>
-        <?if $(ANDROID_INCLUDE_DS2) == "True"?>
+        <?if $(ANDROID_INCLUDE_DS2) = "True"?>
           <ComponentGroupRef Id="ds2.x64" />
         <?endif?>
       </Feature>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <Feature Id="x86.platform" AllowAbsent="yes" Title="!(loc.Plt_ProductName_Android_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
         <?foreach ComponentGroup in $(DeveloperToolsSharedLinkageComponentGroups)?>
           <ComponentGroupRef Id="$(ComponentGroup).x86" />
         <?endforeach?>
-        <?if $(ANDROID_INCLUDE_DS2) == "True"?>
+        <?if $(ANDROID_INCLUDE_DS2) = "True"?>
           <ComponentGroupRef Id="ds2.x86" />
         <?endif?>
       </Feature>
@@ -2242,7 +2242,7 @@
       <ComponentGroupRef Id="SwiftShims" />
     </Feature>
 
-    <?if $(IncludeARM64) == "True"?>
+    <?if $(IncludeARM64) = "True"?>
       <Feature Id="arm64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_arm64)">
         <Level Condition="INSTALLARM64SDK = 0" Value="0" />
 
@@ -2258,7 +2258,7 @@
       </Feature>
     <?endif?>
 
-    <?if $(IncludeARM) == "True"?>
+    <?if $(IncludeARM) = "True"?>
       <Feature Id="armv7" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_armv7)">
         <Level Condition="INSTALLARMSDK = 0" Value="0" />
 
@@ -2274,7 +2274,7 @@
       </Feature>
     <?endif?>
 
-    <?if $(IncludeX64) == "True"?>
+    <?if $(IncludeX64) = "True"?>
       <Feature Id="amd64" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_amd64)">
         <Level Condition="INSTALLAMD64SDK = 0" Value="0" />
 
@@ -2290,7 +2290,7 @@
       </Feature>
     <?endif?>
 
-    <?if $(IncludeX86) == "True"?>
+    <?if $(IncludeX86) = "True"?>
       <Feature Id="x86" AllowAbsent="yes" Title="!(loc.Sdk_ProductName_Android_x86)">
         <Level Condition="INSTALLX86SDK = 0" Value="0" />
 
