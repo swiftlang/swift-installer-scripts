@@ -29,6 +29,7 @@
 
 #include <algorithm>
 #include <array>
+#include <format>
 #include <memory>
 #include <string>
 #include <type_traits>
@@ -38,7 +39,10 @@
 // STRINGDICT_HANDLE, which balinfo.h pulls in via BalBaseBAFunctions.
 #include "dutil.h"
 #include "dictutil.h"
+#include "locutil.h"
+#include "pathutil.h"
 #include "strutil.h"
+#include "xmlutil.h"
 
 // BootstrapperApplicationBase.h drags in the BOOTSTRAPPER_APPLICATION_MESSAGE
 // enum that BAFunctions.h references.
@@ -69,6 +73,7 @@ constexpr LPCWSTR kSDKTree = L"OptionsSDKsTree";
 constexpr LPCWSTR kOptionsButton = L"OptionsButton";
 constexpr LPCWSTR kOptionsOkButton = L"OptionsOkButton";
 constexpr LPCWSTR kOptionsCancelButton = L"OptionsCancelButton";
+constexpr LPCWSTR kLocalizationFile = L"thm.wxl";
 
 // MARK: - Layout Constants
 
@@ -96,15 +101,14 @@ constexpr UINT kTreeStateImageChecked = 2;
 
 // These names represent toolchain variants for persistence and display in
 // the Default Toolchain combobox. Persisted values stay stable
-// ("Asserts" and "NoAsserts"), while display labels are resolved through
-// WiX variables.
+// ("Asserts" and "NoAsserts"), while display labels are localized.
 constexpr LPCWSTR kToolchainVariantValues[] = {
     L"Asserts",
     L"NoAsserts",
 };
-constexpr LPCWSTR kToolchainVariantLabels[] = {
-    L"AssertsToolchain",
-    L"NoAssertsToolchain",
+constexpr LPCWSTR kToolchainVariantLabelLocStrings[] = {
+    L"#(loc.OptionsDefaultAsserts)",
+    L"#(loc.OptionsDefaultNoAsserts)",
 };
 
 // MARK: - SDK Tree Model
@@ -157,17 +161,17 @@ constexpr SDKTreeItem kSDKTreeItems[] = {
     {L"Android", {L"x86", L"X86", L"X86"}, SDKTreeItemKind::SDK, 1},
 };
 
-std::wstring SDKTreeLabelFormat(SDKTreeItem const &item) {
+std::wstring SDKTreeLabelLocString(SDKTreeItem const &item) {
   switch (item.kind) {
   case SDKTreeItemKind::Platform:
-    return std::wstring(L"[Plt_ProductName_") + item.platform + L"]";
+    return std::format(L"#(loc.Plt_ProductName_{})", item.platform);
   case SDKTreeItemKind::SDK:
-    return std::wstring(L"[Sdk_ProductName_") + item.platform + L"_" +
-           item.architecture.label + L"]";
+    return std::format(L"#(loc.Sdk_ProductName_{}_{})", item.platform,
+                       item.architecture.label);
   case SDKTreeItemKind::SharedRedist:
-    return L"[Redist_shared]";
+    return L"#(loc.Redist_shared)";
   case SDKTreeItemKind::PrivateRedist:
-    return L"[Redist_private]";
+    return L"#(loc.Redist_private)";
   }
   return {};
 }
@@ -334,6 +338,20 @@ ScopedWixString FormatBalStringScoped(LPCWSTR wszFormat) noexcept {
   LPWSTR wszValue = nullptr;
   if (wszFormat == nullptr || FAILED(BalFormatString(wszFormat, &wszValue)))
     return {};
+  return ScopedWixString(wszValue);
+}
+
+ScopedWixString
+LocalizeStringScoped(WIX_LOCALIZATION const *pWixLoc,
+                     LPCWSTR wszLocString) noexcept {
+  LPWSTR wszValue = nullptr;
+  if (pWixLoc == nullptr || wszLocString == nullptr ||
+      FAILED(StrAllocString(&wszValue, wszLocString, 0)))
+    return {};
+  if (FAILED(LocLocalizeString(pWixLoc, &wszValue))) {
+    ReleaseStr(wszValue);
+    return {};
+  }
   return ScopedWixString(wszValue);
 }
 
@@ -1167,12 +1185,12 @@ HIMAGELIST CreateTreeStateImages(HWND hTree) noexcept {
 
 // MARK: - Options Page Helpers
 
-void InstallTabTooltips(HWND hTabs,
+void InstallTabTooltips(WIX_LOCALIZATION const *pWixLoc, HWND hTabs,
                         std::array<ScopedWixString, 3> *pTabTooltips) noexcept {
-  static constexpr LPCWSTR kTabTooltipFormats[] = {
-      L"[OptionsToolchainTabTooltip]",
-      L"[OptionsRuntimesTabTooltip]",
-      L"[OptionsSDKsTabTooltip]",
+  static constexpr LPCWSTR kTabTooltipLocStrings[] = {
+      L"#(loc.OptionsToolchainTabTooltip)",
+      L"#(loc.OptionsRuntimesTabTooltip)",
+      L"#(loc.OptionsSDKsTabTooltip)",
   };
 
   if (hTabs == nullptr || pTabTooltips == nullptr)
@@ -1188,12 +1206,13 @@ void InstallTabTooltips(HWND hTabs,
 
   int iCount = TabCtrl_GetItemCount(hTabs);
   int iLimit =
-      (std::min)(iCount, static_cast<int>(std::size(kTabTooltipFormats)));
+      (std::min)(iCount, static_cast<int>(std::size(kTabTooltipLocStrings)));
   for (int i = 0; i < iLimit; ++i) {
     RECT rc = {};
     if (!TabCtrl_GetItemRect(hTabs, i, &rc))
       continue;
-    (*pTabTooltips)[i] = FormatBalStringScoped(kTabTooltipFormats[i]);
+    (*pTabTooltips)[i] =
+        LocalizeStringScoped(pWixLoc, kTabTooltipLocStrings[i]);
     TOOLINFOW ti = {};
     ti.cbSize = sizeof(ti);
     ti.uFlags = TTF_SUBCLASS;
@@ -1247,7 +1266,9 @@ void DrawTabItem(DRAWITEMSTRUCT *pdis, HFONT hTabLabelFont) noexcept {
 }
 
 template <typename Engine>
-void PopulateDefaultToolchainCombo(Engine *pEngine, HWND hCombo) noexcept {
+void PopulateDefaultToolchainCombo(Engine *pEngine,
+                                   WIX_LOCALIZATION const *pWixLoc,
+                                   HWND hCombo) noexcept {
   if (pEngine == nullptr || hCombo == nullptr)
     return;
 
@@ -1256,8 +1277,8 @@ void PopulateDefaultToolchainCombo(Engine *pEngine, HWND hCombo) noexcept {
   ::SendMessageW(hCombo, CB_RESETCONTENT, 0, 0);
 
   auto addVariantRow = [&](int iVariant) {
-    ScopedWixString wszLabel =
-        FormatWixVariable(kToolchainVariantLabels[iVariant]);
+    ScopedWixString wszLabel = LocalizeStringScoped(
+        pWixLoc, kToolchainVariantLabelLocStrings[iVariant]);
     LPCWSTR wszDisplayLabel =
         wszLabel ? wszLabel.get() : kToolchainVariantValues[iVariant];
     LRESULT iRow = ::SendMessageW(hCombo, CB_ADDSTRING, 0,
@@ -1301,6 +1322,8 @@ void HandleDefaultToolchainChange(Engine *pEngine, HWND hCombo) noexcept {
 }
 
 class SwiftBAFunctions : public CBalBaseBAFunctions {
+  WIX_LOCALIZATION *pWixLoc_ = nullptr;
+  bool bXmlInitialized_ = false;
   HWND hInstallRoot_ = nullptr;
   HWND hScopeHint_ = nullptr;
   HWND hTabs_ = nullptr;
@@ -1326,8 +1349,35 @@ class SwiftBAFunctions : public CBalBaseBAFunctions {
 
 public:
   SwiftBAFunctions(HMODULE hModule) : CBalBaseBAFunctions(hModule) {}
+  ~SwiftBAFunctions() override { UninitializeLocalization(); }
 
   // MARK: - BA Entry Points
+
+  STDMETHODIMP OnCreate(IBootstrapperEngine *pEngine,
+                        BOOTSTRAPPER_COMMAND *pCommand) override {
+    HRESULT hr = CBalBaseBAFunctions::OnCreate(pEngine, pCommand);
+    LPWSTR wszLocPath = nullptr;
+    ExitOnFailure(hr, "Failed to initialize BAFunctions.");
+
+    hr = XmlInitialize();
+    ExitOnFailure(hr, "Failed to initialize XML for BA localization.");
+    bXmlInitialized_ = true;
+
+    hr = PathRelativeToModule(&wszLocPath, kLocalizationFile, m_hModule);
+    ExitOnFailure(hr, "Failed to locate the BA localization file.");
+
+    hr = LocLoadFromFile(wszLocPath, &pWixLoc_);
+    ExitOnFailure(hr, "Failed to load the BA localization file.");
+
+  LExit:
+    ReleaseStr(wszLocPath);
+    return hr;
+  }
+
+  STDMETHODIMP OnDestroy(BOOL fReload) override {
+    UninitializeLocalization();
+    return CBalBaseBAFunctions::OnDestroy(fReload);
+  }
 
   STDMETHODIMP OnThemeControlLoaded(LPCWSTR wszName, WORD, HWND hWnd,
                                     BOOL *) override {
@@ -1355,7 +1405,7 @@ public:
       ::SetWindowSubclass(hWnd, OptionsTabsMnemonicProc,
                           kOptionsTabsSubclassId,
                           reinterpret_cast<DWORD_PTR>(&optionsTabMnemonics_));
-      InstallTabTooltips(hWnd, &apwszTabTooltips_);
+      InstallTabTooltips(pWixLoc_, hWnd, &apwszTabTooltips_);
       return S_OK;
     }
     if (IsControl(wszName, kRefreshTrigger)) {
@@ -1369,7 +1419,7 @@ public:
     }
     if (IsControl(wszName, kDefaultToolchainCombo)) {
       hDefaultToolchainCombo_ = hWnd;
-      PopulateDefaultToolchainCombo(m_pEngine, hWnd);
+      PopulateDefaultToolchainCombo(m_pEngine, pWixLoc_, hWnd);
       return S_OK;
     }
     if (IsControl(wszName, kSDKTree)) {
@@ -1507,6 +1557,15 @@ public:
   }
 
 private:
+  void UninitializeLocalization() noexcept {
+    LocFree(pWixLoc_);
+    pWixLoc_ = nullptr;
+    if (bXmlInitialized_) {
+      XmlUninitialize();
+      bXmlInitialized_ = false;
+    }
+  }
+
   // MARK: - Install Page (UAC Shield + Scope Toggle)
 
   // This saves the edit box text under the departing scope's shadow
@@ -1614,8 +1673,9 @@ private:
                               ? TVI_ROOT
                               : hDepthAnchor[item.depth - 1];
 
-      std::wstring labelFormat = SDKTreeLabelFormat(item);
-      ScopedWixString wszLabel = FormatBalStringScoped(labelFormat.c_str());
+      std::wstring labelLocString = SDKTreeLabelLocString(item);
+      ScopedWixString wszLabel =
+          LocalizeStringScoped(pWixLoc_, labelLocString.c_str());
 
       LONGLONG llVal = 0;
       std::wstring variable = SDKTreeVariable(item);
@@ -1630,7 +1690,7 @@ private:
       tvis.item.mask = TVIF_TEXT | TVIF_PARAM | TVIF_STATE;
       tvis.item.pszText = wszLabel
                               ? wszLabel.get()
-                              : const_cast<LPWSTR>(labelFormat.c_str());
+                              : const_cast<LPWSTR>(labelLocString.c_str());
       tvis.item.lParam = static_cast<LPARAM>(iSDKItem);
       tvis.item.state =
           INDEXTOSTATEIMAGEMASK(llVal ? kTreeStateImageChecked
