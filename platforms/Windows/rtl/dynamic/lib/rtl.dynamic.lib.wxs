@@ -48,6 +48,8 @@
         <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
           <Directory Id="RL_$(RuntimeLibrary)" Name="$(RuntimeLibrary)" />
         <?endforeach?>
+      <?else?>
+        <Directory Id="RUNTIMEASSEMBLYDIR_$(ProductArchitecture)" Name="SxS" />
       <?endif?>
     </Directory>
     <Directory Id="LIBEXECDIR_$(ProductArchitecture)" ComponentGuidGenerationSeed="$(LibexecDirectoryComponentGuidGenerationSeed)" />
@@ -60,9 +62,14 @@
       <?endforeach?>
     <?else?>
       <?foreach RuntimeLibrary in $(RuntimeLibraries)?>
-        <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RUNTIMEDIR_$(ProductArchitecture)">
+        <ComponentGroup Id="RuntimeLibrary_$(RuntimeLibrary)_$(ProductArchitecture)" Directory="RUNTIMEASSEMBLYDIR_$(ProductArchitecture)">
+          <?if $(RuntimeLibraryInstallationMode) = "package" ?>
+            <File Directory="RUNTIMEDIR_$(ProductArchitecture)"
+                  Condition="NOT ALLUSERS=1"
+                  Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
+          <?endif?>
           <?if $(RuntimeLibrary) = "BlocksRuntime" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(BlocksRuntimeComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(BlocksRuntimeComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -72,7 +79,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "dispatch" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(DispatchComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(DispatchComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -82,7 +89,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "swiftDispatch" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(SwiftDispatchComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(SwiftDispatchComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -92,7 +99,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "Foundation" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(FoundationComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -102,7 +109,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "FoundationEssentials" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationEssentialsComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(FoundationEssentialsComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -112,7 +119,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "FoundationInternationalization" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationInternationalizationComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(FoundationInternationalizationComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -122,7 +129,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "FoundationNetworking" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationNetworkingComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(FoundationNetworkingComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -132,7 +139,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "FoundationXML" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationXMLComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(FoundationXMLComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -142,7 +149,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?elseif $(RuntimeLibrary) = "_FoundationICU" ?>
-            <Component Id="C_$(RuntimeLibrary)" Guid="$(FoundationICUComponentGuid)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1" Guid="$(FoundationICUComponentGuid)">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"
@@ -152,7 +159,7 @@
                     AssemblyManifest="M_$(RuntimeLibrary)" />
             </Component>
           <?else?>
-            <Component Id="C_$(RuntimeLibrary)">
+            <Component Id="C_$(RuntimeLibrary)" Condition="ALLUSERS=1">
               <File Id="M_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).manifest" />
               <File Id="G_$(RuntimeLibrary)" Source="$(RuntimeWin32AssemblyRoot)\$(RuntimeLibrary)\$(RuntimeLibrary).cat" />
               <File Id="F_$(RuntimeLibrary)"

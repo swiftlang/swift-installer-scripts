@@ -5,7 +5,7 @@
       Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
       UpgradeCode="$(RTLUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
-      Scope="$(RtlPackageScope)">
+      Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="rtl.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 

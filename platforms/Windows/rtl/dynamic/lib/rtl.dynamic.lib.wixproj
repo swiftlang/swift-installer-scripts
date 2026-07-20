@@ -8,5 +8,5 @@
     <RuntimeWin32AssemblyLibrarySource>RuntimeLibraries</RuntimeWin32AssemblyLibrarySource>
   </PropertyGroup>
 
-  <Import Project="..\..\..\RuntimeWin32Assemblies.targets" Condition=" '$(RuntimeLibraryInstallationMode)' == 'shared' " />
+  <Import Project="..\..\..\RuntimeWin32Assemblies.targets" Condition=" '$(RuntimeLibraryInstallationMode)' == 'shared' Or '$(RuntimeLibraryInstallationMode)' == 'package' " />
 </Project>
