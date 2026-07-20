@@ -40,9 +40,7 @@
       <?if $(RuntimeLibraryInstallationMode) = "private" ?>
         <?foreach RuntimeLibrary in $(StaticRuntimeDependencies)?>
           <Directory Id="RUNTIMEDIR_$(ProductArchitecture)_$(RuntimeLibrary)" Name="$(RuntimeLibrary)">
-            <Component Id="$(RuntimeLibrary)_$(ProductArchitecture)">
-              <File Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
-            </Component>
+            <File Id="$(RuntimeLibrary)_$(ProductArchitecture)" Source="$(RuntimeRoot)\usr\bin\$(RuntimeLibrary).dll" />
           </Directory>
         <?endforeach?>
       <?else?>
