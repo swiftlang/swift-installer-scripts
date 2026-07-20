@@ -2,21 +2,21 @@
 
 <Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+$(VariantName)?>
-  <?if $(VariantName) == Asserts?>
-    <?define VariantUpgradeCode = $(CliAssertsUpgradeCode)?>
-    <?define VariantProductName = !(loc.CliAsserts_ProductName)?>
-    <?define VariantCabinetName = cli.asserts.cab?>
+  <?define ToolchainRoot = "$(ImageRoot)\Toolchains\$(ProductVersion)+$(VariantName)" ?>
+  <?if $(VariantName) == "Asserts"?>
+    <?define VariantUpgradeCode = "$(CliAssertsUpgradeCode)" ?>
+    <?define VariantProductName = "!(loc.CliAsserts_ProductName)" ?>
+    <?define VariantCabinetName = "cli.asserts.cab" ?>
   <?else?>
-    <?define VariantUpgradeCode = $(CliNoAssertsUpgradeCode)?>
-    <?define VariantProductName = !(loc.CliNoAsserts_ProductName)?>
-    <?define VariantCabinetName = cli.noasserts.cab?>
+    <?define VariantUpgradeCode = "$(CliNoAssertsUpgradeCode)" ?>
+    <?define VariantProductName = "!(loc.CliNoAsserts_ProductName)" ?>
+    <?define VariantCabinetName = "cli.noasserts.cab" ?>
   <?endif?>
 
-  <?if $(ProductArchitecture) == arm64?>
-    <?define ModuleTriple = 'aarch64-unknown-windows-msvc' ?>
-  <?elseif $(ProductArchitecture) == amd64?>
-    <?define ModuleTriple = 'x86_64-unknown-windows-msvc' ?>
+  <?if $(ProductArchitecture) == "arm64"?>
+    <?define ModuleTriple = "aarch64-unknown-windows-msvc" ?>
+  <?elseif $(ProductArchitecture) == "amd64"?>
+    <?define ModuleTriple = "x86_64-unknown-windows-msvc" ?>
   <?endif?>
 
   <Package
@@ -363,7 +363,7 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <?if True == False?>
+    <?if "True" == "False"?>
     <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
       <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftDocC.dll" />
@@ -396,7 +396,7 @@
       <ComponentGroupRef Id="PackageDescription" />
       <ComponentGroupRef Id="PackagePlugin" />
 
-      <?if True == False?>
+      <?if "True" == "False"?>
       <ComponentGroupRef Id="DocC" />
       <?endif?>
       <ComponentGroupRef Id="DocCRender" />

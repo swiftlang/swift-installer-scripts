@@ -39,7 +39,7 @@
     </Feature>
 
     <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->
-    <?if $(ProductArchitecture) != x86?>
+    <?if $(ProductArchitecture) != "x86"?>
     <Feature Id="SwiftRuntimeSupport" AllowAbsent="yes" Title="!(loc.Sup_ProductName_$(ProductArchitecture))">
       <Level Condition="INSTALLSUPPORT = 0" Value="0" />
       <ComponentGroupRef Id="swift_runtime_support_$(ProductArchitecture)" />
