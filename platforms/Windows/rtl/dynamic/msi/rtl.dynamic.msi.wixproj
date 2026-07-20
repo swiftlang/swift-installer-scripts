@@ -1,12 +1,11 @@
 <Project Sdk="WixToolset.Sdk/7.0.0">
   <PropertyGroup>
-    <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">shared</RuntimeLibraryInstallationMode>
+    <RuntimeLibraryInstallationMode Condition=" '$(RuntimeLibraryInstallationMode)' == '' ">package</RuntimeLibraryInstallationMode>
     <OutputName>rtl.$(ProductArchitecture)</OutputName>
-    <RtlPackageScope Condition=" '$(RuntimeLibraryInstallationMode)' == 'shared' ">perMachine</RtlPackageScope>
-    <RtlPackageScope Condition=" '$(RtlPackageScope)' == '' ">$(PackageScope)</RtlPackageScope>
+    <!-- ICE105 does not account for per-machine component conditions. -->
+    <SuppressIces>$(SuppressIces);ICE105</SuppressIces>
     <DefineConstants>
       $(DefineConstants);
-      RtlPackageScope=$(RtlPackageScope);
       VCRedistDir=$(VCRedistDir);
     </DefineConstants>
   </PropertyGroup>

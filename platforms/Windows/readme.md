@@ -372,7 +372,11 @@ installation mode installs each DLL under a basename directory, for example
 `swiftCore\swiftCore.dll`, so applications can bind by assembly name and version
 without using the global native assembly cache.
 
-The full RTL MSI is dual-scope. Per-user installs lay the runtime DLLs out in
-`Runtimes\$(ProductVersion)\usr\bin` and add that directory to the user `Path`.
-Per-machine installs publish the runtime DLLs to the shared native assembly
-cache and do not add the runtime directory to `Path`.
+The full RTL MSI is dual-scope and carries both runtime layouts. Component
+conditions select flat DLLs for per-user installs, placing them in
+`Runtimes\$(ProductVersion)\usr\bin` and adding that directory to the user
+`Path`. Per-machine installs instead publish the runtime DLLs to the shared
+native assembly cache and do not add the runtime directory to `Path`. Shared
+runtime merge modules carry the same per-machine component condition so a
+downstream dual-scope package skips unsupported SxS publication during a
+per-user install.
