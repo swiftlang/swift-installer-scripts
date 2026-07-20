@@ -1,6 +1,6 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?if $(sys.BUILDARCH) == x64 ?>
+  <?if $(sys.BUILDARCH) == "x64" ?>
     <?define MergeModuleFileName = "rtl.dynamic.$(RuntimeLibraryInstallationMode).amd64.msm" ?>
   <?else?>
     <?define MergeModuleFileName = "rtl.dynamic.$(RuntimeLibraryInstallationMode).$(sys.BUILDARCH).msm" ?>
