@@ -3,10 +3,10 @@
 
 // This file implements BA function extensions for the Swift installer.
 //
-// On the Install page, it reserves native checkbox text margin and paints
-// a UAC shield inside the per-machine checkbox. On scope changes, it
-// swaps InstallRoot between per-user and per-machine shadow variables,
-// because thmutil only flushes the edit box during page navigation.
+// On the Install page, it keeps the Install button's UAC shield in sync
+// with the selected scope. On scope changes, it swaps InstallRoot between
+// per-user and per-machine shadow variables, because thmutil only flushes
+// the edit box during page navigation.
 //
 // On the Options page, it owner-draws the tab strip and attaches per-tab
 // tooltips. When TCN_SELCHANGE fires, it updates OptionsTab and
@@ -24,6 +24,12 @@
 
 #include <CommCtrl.h>
 #include <objbase.h>
+
+#pragma warning(push)
+#pragma warning(disable : 4458) // GDI+ declarations hide class members.
+#include <gdiplus.h>
+#pragma warning(pop)
+
 #include <uxtheme.h>
 #include <vsstyle.h>
 
@@ -42,6 +48,7 @@
 #include "locutil.h"
 #include "pathutil.h"
 #include "strutil.h"
+#include "thmutil.h"
 #include "xmlutil.h"
 
 // BootstrapperApplicationBase.h drags in the BOOTSTRAPPER_APPLICATION_MESSAGE
@@ -73,13 +80,8 @@ constexpr LPCWSTR kSDKTree = L"OptionsSDKsTree";
 constexpr LPCWSTR kOptionsButton = L"OptionsButton";
 constexpr LPCWSTR kOptionsOkButton = L"OptionsOkButton";
 constexpr LPCWSTR kOptionsCancelButton = L"OptionsCancelButton";
+constexpr LPCWSTR kInstallButton = L"InstallButton";
 constexpr LPCWSTR kLocalizationFile = L"thm.wxl";
-
-// MARK: - Layout Constants
-
-constexpr int kScopeGlyphGap = 6;
-constexpr int kScopeShieldTextGap = 4;
-constexpr int kScopeFocusPadding = 2;
 
 // MARK: - Message IDs
 
@@ -198,7 +200,6 @@ std::wstring SDKTreeAvailability(SDKTreeItem const &item) {
   return availability + item.architecture.availability;
 }
 
-constexpr UINT_PTR kScopeCheckboxSubclassId = 4;
 constexpr UINT_PTR kOptionsTabsSubclassId = 5;
 constexpr UINT_PTR kOptionsCtrlTabSubclassId = 6;
 
@@ -211,24 +212,10 @@ struct GdiObjectDeleter {
   }
 };
 
-struct DcDeleter {
-  void operator()(HDC hDC) const noexcept {
-    if (hDC)
-      ::DeleteDC(hDC);
-  }
-};
-
 struct ImageListDeleter {
   void operator()(HIMAGELIST hImageList) const noexcept {
     if (hImageList)
       ::ImageList_Destroy(hImageList);
-  }
-};
-
-struct IconDeleter {
-  void operator()(HICON hIcon) const noexcept {
-    if (hIcon)
-      ::DestroyIcon(hIcon);
   }
 };
 
@@ -246,10 +233,7 @@ using ScopedHandle =
 
 using ScopedFontHandle = ScopedHandle<HFONT, GdiObjectDeleter>;
 using ScopedBrushHandle = ScopedHandle<HBRUSH, GdiObjectDeleter>;
-using ScopedBitmapHandle = ScopedHandle<HBITMAP, GdiObjectDeleter>;
-using ScopedMemoryDCHandle = ScopedHandle<HDC, DcDeleter>;
 using ScopedImageListHandle = ScopedHandle<HIMAGELIST, ImageListDeleter>;
-using ScopedIconHandle = ScopedHandle<HICON, IconDeleter>;
 using ScopedWixString = ScopedHandle<LPWSTR, WixStringDeleter>;
 
 // MARK: - RAII Helpers
@@ -269,33 +253,6 @@ public:
 
   ScopedWindowDC(ScopedWindowDC const &) = delete;
   ScopedWindowDC &operator=(ScopedWindowDC const &) = delete;
-
-  HDC get() const noexcept {
-    return hDC_;
-  }
-
-  explicit operator bool() const noexcept {
-    return hDC_ != nullptr;
-  }
-};
-
-class ScopedPaintSession {
-  HWND hWnd_ = nullptr;
-  PAINTSTRUCT ps_ = {};
-  HDC hDC_ = nullptr;
-
-public:
-  explicit ScopedPaintSession(HWND hWnd) noexcept : hWnd_(hWnd) {
-    hDC_ = ::BeginPaint(hWnd_, &ps_);
-  }
-
-  ~ScopedPaintSession() noexcept {
-    if (hDC_)
-      ::EndPaint(hWnd_, &ps_);
-  }
-
-  ScopedPaintSession(ScopedPaintSession const &) = delete;
-  ScopedPaintSession &operator=(ScopedPaintSession const &) = delete;
 
   HDC get() const noexcept {
     return hDC_;
@@ -627,306 +584,6 @@ UINT GetTreeStateImageIndex(UINT uState) noexcept {
   return (uState & TVIS_STATEIMAGEMASK) >> 12;
 }
 
-// MARK: - Install Scope Shield Helpers
-
-// The checkbox glyph, shield, and label are painted by the checkbox
-// subclass itself instead of child windows, so there is no separate HWND to
-// intercept clicks. The native control still owns input and checked state;
-// BAF draws that state through the themed Button class, then draws the
-// shield, localized label, and focus rectangle in a single buffered pass.
-struct ScopeCheckboxData {
-  HICON hIcon = nullptr;
-  std::wstring text;
-  int x = 0;
-  int y = 0;
-  int size = 0;
-  int inset = 0;
-  bool trackingMouse = false;
-};
-
-void FillControlBackground(HWND hWnd, HDC hDC, RECT const &rc) noexcept {
-  if (hDC == nullptr)
-    return;
-
-  HBRUSH hBrush = nullptr;
-  if (HWND hParent = ::GetParent(hWnd))
-    hBrush = reinterpret_cast<HBRUSH>(
-        ::SendMessageW(hParent, WM_CTLCOLORBTN, reinterpret_cast<WPARAM>(hDC),
-                       reinterpret_cast<LPARAM>(hWnd)));
-  if (!hBrush)
-    hBrush = reinterpret_cast<HBRUSH>(COLOR_WINDOW + 1);
-  ::FillRect(hDC, &rc, hBrush);
-}
-
-int CheckboxThemeState(HWND hWnd, ScopeCheckboxData const *pData) noexcept {
-  bool bEnabled = ::IsWindowEnabled(hWnd) != FALSE;
-  bool bChecked = ::SendMessageW(hWnd, BM_GETCHECK, 0, 0) == BST_CHECKED;
-  bool bPressed = (::SendMessageW(hWnd, BM_GETSTATE, 0, 0) & BST_PUSHED) != 0;
-  bool bHot = pData && pData->trackingMouse;
-
-  if (bChecked) {
-    if (!bEnabled)
-      return CBS_CHECKEDDISABLED;
-    if (bPressed)
-      return CBS_CHECKEDPRESSED;
-    if (bHot)
-      return CBS_CHECKEDHOT;
-    return CBS_CHECKEDNORMAL;
-  }
-
-  if (!bEnabled)
-    return CBS_UNCHECKEDDISABLED;
-  if (bPressed)
-    return CBS_UNCHECKEDPRESSED;
-  if (bHot)
-    return CBS_UNCHECKEDHOT;
-  return CBS_UNCHECKEDNORMAL;
-}
-
-SIZE CheckboxGlyphSize(HWND hWnd) noexcept {
-  SIZE szGlyph = {::GetSystemMetrics(SM_CXMENUCHECK),
-                  ::GetSystemMetrics(SM_CYMENUCHECK)};
-
-  HTHEME hTheme = ::OpenThemeData(hWnd, L"Button");
-  if (hTheme) {
-    SIZE sz = {};
-    if (SUCCEEDED(::GetThemePartSize(hTheme, nullptr, BP_CHECKBOX,
-                                     CBS_UNCHECKEDNORMAL, nullptr, TS_DRAW,
-                                     &sz))) {
-      szGlyph = sz;
-    }
-    ::CloseThemeData(hTheme);
-  }
-
-  return szGlyph;
-}
-
-RECT CheckboxGlyphRect(HWND hWnd) noexcept {
-  RECT rc = {};
-  ::GetClientRect(hWnd, &rc);
-  SIZE szGlyph = CheckboxGlyphSize(hWnd);
-
-  int iY = (rc.bottom - rc.top - szGlyph.cy) / 2;
-  return {0, iY, szGlyph.cx, iY + szGlyph.cy};
-}
-
-void DrawScopeCheckboxGlyph(HWND hWnd, HDC hDC,
-                            ScopeCheckboxData const *pData) noexcept {
-  if (hDC == nullptr)
-    return;
-
-  RECT rcGlyph = CheckboxGlyphRect(hWnd);
-  int iState = CheckboxThemeState(hWnd, pData);
-
-  HTHEME hTheme = ::OpenThemeData(hWnd, L"Button");
-  if (hTheme) {
-    ::DrawThemeBackground(hTheme, hDC, BP_CHECKBOX, iState, &rcGlyph,
-                          nullptr);
-    ::CloseThemeData(hTheme);
-    return;
-  }
-
-  UINT uFlags = DFCS_BUTTONCHECK;
-  if (::SendMessageW(hWnd, BM_GETCHECK, 0, 0) == BST_CHECKED)
-    uFlags |= DFCS_CHECKED;
-  if ((::SendMessageW(hWnd, BM_GETSTATE, 0, 0) & BST_PUSHED) != 0)
-    uFlags |= DFCS_PUSHED;
-  if (!::IsWindowEnabled(hWnd))
-    uFlags |= DFCS_INACTIVE;
-  ::DrawFrameControl(hDC, &rcGlyph, DFC_BUTTON, uFlags);
-}
-
-void DrawScopeCheckboxExtras(HWND hWnd, HDC hDC,
-                             const ScopeCheckboxData &data) noexcept {
-  if (hDC == nullptr)
-    return;
-
-  RECT rc = {};
-  ::GetClientRect(hWnd, &rc);
-  rc.left = data.x;
-  FillControlBackground(hWnd, hDC, rc);
-
-  if (data.hIcon && data.size > 0)
-    ::DrawIconEx(hDC, data.x, data.y, data.hIcon, data.size, data.size, 0,
-                 nullptr, DI_NORMAL);
-
-  if (data.text.empty())
-    return;
-
-  RECT rcText = rc;
-  rcText.left = data.inset;
-
-  HFONT hFont = reinterpret_cast<HFONT>(::SendMessageW(hWnd, WM_GETFONT, 0, 0));
-  ScopedSelectObject<HFONT> selectedFont(hDC, hFont);
-
-  int iSavedBkMode = ::SetBkMode(hDC, TRANSPARENT);
-  int nIndex = ::IsWindowEnabled(hWnd) ? COLOR_WINDOWTEXT : COLOR_GRAYTEXT;
-  COLORREF crOldText = ::SetTextColor(hDC, ::GetSysColor(nIndex));
-
-  UINT uiState = static_cast<UINT>(::SendMessageW(hWnd, WM_QUERYUISTATE, 0, 0));
-  UINT uTextFlags = DT_SINGLELINE | DT_VCENTER | DT_END_ELLIPSIS;
-  if (uiState & UISF_HIDEACCEL)
-    uTextFlags |= DT_HIDEPREFIX;
-
-  ::DrawTextW(hDC, data.text.c_str(), -1, &rcText, uTextFlags);
-
-  ::SetTextColor(hDC, crOldText);
-  ::SetBkMode(hDC, iSavedBkMode);
-
-  if (::GetFocus() == hWnd) {
-    RECT rcFocus = rcText;
-    UINT uMeasureFlags = DT_SINGLELINE | DT_CALCRECT;
-    if (uiState & UISF_HIDEACCEL)
-      uMeasureFlags |= DT_HIDEPREFIX;
-    ::DrawTextW(hDC, data.text.c_str(), -1, &rcFocus, uMeasureFlags);
-    int iFocusHeight = rcFocus.bottom - rcFocus.top;
-    int iFocusTop = (rc.bottom - rc.top - iFocusHeight) / 2;
-    rcFocus.left = data.x;
-    rcFocus.top = (std::min)(iFocusTop, data.y);
-    rcFocus.bottom =
-        (std::max)(iFocusTop + iFocusHeight, data.y + data.size);
-    ::InflateRect(&rcFocus, kScopeFocusPadding, kScopeFocusPadding);
-    if (rcFocus.left < rc.left)
-      rcFocus.left = rc.left;
-    if (rcFocus.top < rc.top)
-      rcFocus.top = rc.top;
-    if (rcFocus.right > rc.right)
-      rcFocus.right = rc.right;
-    if (rcFocus.bottom > rc.bottom)
-      rcFocus.bottom = rc.bottom;
-    ::DrawFocusRect(hDC, &rcFocus);
-  }
-}
-
-bool DrawBufferedScopeCheckbox(HWND hWnd,
-                               ScopeCheckboxData *pData) noexcept {
-  ScopedPaintSession paint(hWnd);
-  if (!paint)
-    return false;
-
-  RECT rc = {};
-  ::GetClientRect(hWnd, &rc);
-  int iWidth = rc.right - rc.left;
-  int iHeight = rc.bottom - rc.top;
-  if (iWidth <= 0 || iHeight <= 0)
-    return true;
-
-  ScopedMemoryDCHandle hMemDC(::CreateCompatibleDC(paint.get()));
-  if (!hMemDC)
-    return false;
-  ScopedBitmapHandle hBitmap(::CreateCompatibleBitmap(paint.get(), iWidth,
-                                                      iHeight));
-  if (!hBitmap)
-    return false;
-  ScopedSelectObject<HBITMAP> selectedBitmap(hMemDC.get(), hBitmap.get());
-  if (!selectedBitmap)
-    return false;
-
-  FillControlBackground(hWnd, hMemDC.get(), rc);
-  DrawScopeCheckboxGlyph(hWnd, hMemDC.get(), pData);
-  if (pData)
-    DrawScopeCheckboxExtras(hWnd, hMemDC.get(), *pData);
-
-  ::BitBlt(paint.get(), 0, 0, iWidth, iHeight, hMemDC.get(), 0, 0, SRCCOPY);
-  return true;
-}
-
-LRESULT CALLBACK
-ScopeCheckboxProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam,
-                  UINT_PTR, DWORD_PTR dwRefData) noexcept {
-  auto *pData = reinterpret_cast<ScopeCheckboxData *>(dwRefData);
-  switch (uMsg) {
-  case WM_GETTEXTLENGTH:
-    if (pData)
-      return static_cast<LRESULT>(pData->text.size());
-    return 0;
-  case WM_GETTEXT: {
-    auto *wszDest = reinterpret_cast<LPWSTR>(lParam);
-    int cchDest = static_cast<int>(wParam);
-    if (!wszDest || cchDest <= 0)
-      return 0;
-    if (!pData) {
-      *wszDest = L'\0';
-      return 0;
-    }
-    ::lstrcpynW(wszDest, pData->text.c_str(), cchDest);
-    return static_cast<LRESULT>(::lstrlenW(wszDest));
-  }
-  case WM_SETTEXT:
-    if (pData) {
-      pData->text = lParam ? reinterpret_cast<LPCWSTR>(lParam) : L"";
-      ::InvalidateRect(hWnd, nullptr, TRUE);
-    }
-    return ::DefSubclassProc(hWnd, uMsg, wParam,
-                             reinterpret_cast<LPARAM>(L""));
-  case WM_ERASEBKGND:
-    return TRUE;
-  case WM_PRINTCLIENT: {
-    HDC hDC = reinterpret_cast<HDC>(wParam);
-    RECT rc = {};
-    ::GetClientRect(hWnd, &rc);
-    FillControlBackground(hWnd, hDC, rc);
-    DrawScopeCheckboxGlyph(hWnd, hDC, pData);
-    if (pData)
-      DrawScopeCheckboxExtras(hWnd, hDC, *pData);
-    return TRUE;
-  }
-  case WM_PAINT: {
-    if (DrawBufferedScopeCheckbox(hWnd, pData))
-      return 0;
-    return ::DefSubclassProc(hWnd, uMsg, wParam, lParam);
-  }
-  case WM_ENABLE:
-  case WM_SETFONT:
-  case WM_THEMECHANGED:
-  case WM_UPDATEUISTATE:
-  case WM_SETFOCUS:
-  case WM_KILLFOCUS:
-    ::InvalidateRect(hWnd, nullptr, TRUE);
-    break;
-  case WM_MOUSEMOVE: {
-    bool bStartedTracking = false;
-    if (pData && !pData->trackingMouse) {
-      TRACKMOUSEEVENT tme = {sizeof(tme), TME_LEAVE, hWnd, 0};
-      if (::TrackMouseEvent(&tme))
-        pData->trackingMouse = true;
-      bStartedTracking = pData->trackingMouse;
-    }
-    LRESULT lr = ::DefSubclassProc(hWnd, uMsg, wParam, lParam);
-    if (bStartedTracking)
-      ::InvalidateRect(hWnd, nullptr, FALSE);
-    return lr;
-  }
-  case WM_MOUSELEAVE: {
-    LRESULT lr = ::DefSubclassProc(hWnd, uMsg, wParam, lParam);
-    if (pData) {
-      pData->trackingMouse = false;
-      ::InvalidateRect(hWnd, nullptr, FALSE);
-    }
-    return lr;
-  }
-  case WM_LBUTTONDOWN:
-  case WM_LBUTTONUP:
-  case WM_CAPTURECHANGED:
-  case BM_SETCHECK:
-  case BM_SETSTATE: {
-    LRESULT lr = ::DefSubclassProc(hWnd, uMsg, wParam, lParam);
-    ::InvalidateRect(hWnd, nullptr, FALSE);
-    return lr;
-  }
-  case WM_NCDESTROY:
-    if (pData) {
-      if (pData->hIcon)
-        ::DestroyIcon(pData->hIcon);
-      delete pData;
-    }
-    ::RemoveWindowSubclass(hWnd, ScopeCheckboxProc,
-                           kScopeCheckboxSubclassId);
-    break;
-  }
-  return ::DefSubclassProc(hWnd, uMsg, wParam, lParam);
-}
-
 // This queues work after the current dispatch unwinds. `hAnchor` can be
 // any BA-owned HWND. We post to its top-level window so
 // CBalBaseBAFunctions::WndProc sees the message after thmutil finishes
@@ -940,79 +597,6 @@ void PostRootMessage(HWND hAnchor, UINT uMsg) noexcept {
 
 void PostFocusRequest(HWND hAnchor, UINT uMsg) noexcept {
   PostRootMessage(hAnchor, uMsg);
-}
-
-// This computes the UAC shield edge length. We use the full font cell
-// height so the shield has the same visual weight as the native check
-// glyph, and we floor the value at SM_CYMENUCHECK so HiDPI and
-// small-font configurations never render a shield thinner than the
-// checkbox next to it.
-int ShieldIconSize(HWND hWnd) noexcept {
-  HFONT hFont = reinterpret_cast<HFONT>(::SendMessageW(hWnd, WM_GETFONT, 0, 0));
-  ScopedWindowDC hDC(hWnd);
-  if (!hDC)
-    return ::GetSystemMetrics(SM_CYMENUCHECK);
-  ScopedSelectObject<HFONT> selectedFont(hDC.get(), hFont);
-  TEXTMETRICW tm = {};
-  ::GetTextMetricsW(hDC.get(), &tm);
-  int iCheck = ::GetSystemMetrics(SM_CYMENUCHECK);
-  return tm.tmHeight > iCheck ? tm.tmHeight : iCheck;
-}
-
-// This paints the native UAC shield inside the InstallPerMachine checkbox.
-// The shield is sized to match the visual weight of the native check glyph
-// (font cell height, floored at SM_CYMENUCHECK) and painted between the
-// check glyph and label text. The native label is cleared after BAF saves
-// it, so localized strings stay natural in wxl while BAF controls the
-// label/shield layout explicitly.
-void PlaceShieldNear(HWND hCheckbox) {
-  int iCell = ShieldIconSize(hCheckbox);
-
-  RECT rc = {};
-  ::GetClientRect(hCheckbox, &rc);
-  int iY = (rc.bottom - rc.top - iCell) / 2;
-
-  RECT rcGlyph = CheckboxGlyphRect(hCheckbox);
-  int iTextStart = rcGlyph.right + kScopeGlyphGap;
-  int iX = iTextStart;
-
-  // LoadIconWithScaleDown scales to the requested size. LoadImage with
-  // LR_SHARED would return the cached 32x32 copy, which would overflow.
-  ScopedIconHandle hIcon;
-  HICON hLoadedIcon = nullptr;
-  ::LoadIconWithScaleDown(nullptr, IDI_SHIELD, iCell, iCell, &hLoadedIcon);
-  hIcon.reset(hLoadedIcon);
-  if (!hIcon)
-    return;
-
-  auto pData = std::unique_ptr<ScopeCheckboxData>(
-      new (std::nothrow) ScopeCheckboxData());
-  if (!pData)
-    return;
-
-  std::wstring wszText = CopyWindowText(hCheckbox);
-  if (wszText.empty())
-    return;
-
-  pData->hIcon = hIcon.get();
-  pData->text = wszText;
-  pData->x = iX;
-  pData->y = iY;
-  pData->size = iCell;
-  pData->inset = iX + iCell + kScopeShieldTextGap;
-
-  ::SetWindowTextW(hCheckbox, L"");
-  if (!::SetWindowSubclass(hCheckbox, ScopeCheckboxProc,
-                           kScopeCheckboxSubclassId,
-                           reinterpret_cast<DWORD_PTR>(pData.get()))) {
-    ::SetWindowTextW(hCheckbox, wszText.c_str());
-    return;
-  }
-
-  // The subclass now owns the icon and shield data through dwRefData.
-  hIcon.release();
-  pData.release();
-  ::InvalidateRect(hCheckbox, nullptr, TRUE);
 }
 
 // This sizes each tab to the widest label in the current HiDPI-scaled
@@ -1062,6 +646,24 @@ ScopedFontHandle CloneFontAtWeight(HWND hWnd, LONG lWeight) noexcept {
 }
 
 // MARK: - SDK Tree Helpers
+
+SIZE CheckboxGlyphSize(HWND hWnd) noexcept {
+  SIZE szGlyph = {::GetSystemMetrics(SM_CXMENUCHECK),
+                  ::GetSystemMetrics(SM_CYMENUCHECK)};
+
+  HTHEME hTheme = ::OpenThemeData(hWnd, L"Button");
+  if (hTheme) {
+    SIZE sz = {};
+    if (SUCCEEDED(::GetThemePartSize(hTheme, nullptr, BP_CHECKBOX,
+                                     CBS_UNCHECKEDNORMAL, nullptr, TS_DRAW,
+                                     &sz))) {
+      szGlyph = sz;
+    }
+    ::CloseThemeData(hTheme);
+  }
+
+  return szGlyph;
+}
 
 int SDKTreeRowHeight(HWND hTree) noexcept {
   SIZE szGlyph = CheckboxGlyphSize(hTree);
@@ -1325,7 +927,9 @@ class SwiftBAFunctions : public CBalBaseBAFunctions {
   WIX_LOCALIZATION *pWixLoc_ = nullptr;
   bool bXmlInitialized_ = false;
   HWND hInstallRoot_ = nullptr;
+  HWND hScopeControl_ = nullptr;
   HWND hScopeHint_ = nullptr;
+  HWND hInstallButton_ = nullptr;
   HWND hTabs_ = nullptr;
   HWND hRefreshTrigger_ = nullptr;
   HWND hOptionsButton_ = nullptr;
@@ -1382,7 +986,8 @@ public:
   STDMETHODIMP OnThemeControlLoaded(LPCWSTR wszName, WORD, HWND hWnd,
                                     BOOL *) override {
     if (IsControl(wszName, kScopeControl)) {
-      PlaceShieldNear(hWnd);
+      hScopeControl_ = hWnd;
+      UpdateInstallButtonElevation();
       return S_OK;
     }
     if (IsControl(wszName, kInstallRoot)) {
@@ -1395,6 +1000,11 @@ public:
     }
     if (IsControl(wszName, kScopeHintControl)) {
       hScopeHint_ = hWnd;
+      return S_OK;
+    }
+    if (IsControl(wszName, kInstallButton)) {
+      hInstallButton_ = hWnd;
+      UpdateInstallButtonElevation();
       return S_OK;
     }
     if (IsControl(wszName, kOptionsTabs)) {
@@ -1501,6 +1111,9 @@ public:
 
     switch (uMsg) {
     case kMsgFocusInstallRoot: {
+      // WixStdBA applies its fixed-scope elevation state while showing the
+      // page. Reapply the selected configurable scope after that finishes.
+      UpdateInstallButtonElevation();
       HWND hTarget = hInstallRoot_;
       if (hTarget)
         ::SetFocus(hTarget);
@@ -1568,6 +1181,19 @@ private:
 
   // MARK: - Install Page (UAC Shield + Scope Toggle)
 
+  // WixStdBA derives the shield from fixed bundle scope, which is false for
+  // a configurable-scope bundle (wixtoolset/issues#9308). Use the live scope.
+  void UpdateInstallButtonElevation() noexcept {
+    if (!hInstallButton_ || !hScopeControl_)
+      return;
+
+    THEME_CONTROL installButton = {};
+    installButton.hWnd = hInstallButton_;
+    BOOL fPerMachine =
+        ::SendMessageW(hScopeControl_, BM_GETCHECK, 0, 0) == BST_CHECKED;
+    ThemeControlElevates(&installButton, fPerMachine);
+  }
+
   // This saves the edit box text under the departing scope's shadow
   // variable and restores the arriving scope's remembered path into
   // InstallRoot and the edit box HWND. thmutil only flushes edit box text
@@ -1578,6 +1204,7 @@ private:
   void HandleScopeToggle(HWND hCheckbox) {
     bool bPerMachine =
         ::SendMessageW(hCheckbox, BM_GETCHECK, 0, 0) == BST_CHECKED;
+    UpdateInstallButtonElevation();
     BalLog(BOOTSTRAPPER_LOG_LEVEL_STANDARD, "baf: scope %ls",
            bPerMachine ? L"per-machine" : L"per-user");
     LPCWSTR wszOldShadow = bPerMachine ? kPerUserShadow : kPerMachineShadow;
