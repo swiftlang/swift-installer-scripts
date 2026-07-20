@@ -59,7 +59,6 @@
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="sourcekitd" />
       <ComponentGroupRef Id="lsp" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>
 </Include>

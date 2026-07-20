@@ -35,7 +35,6 @@
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="EnvironmentVariables" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
 
     <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->

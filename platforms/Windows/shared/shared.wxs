@@ -1,4 +1,4 @@
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLROOT" Name="Swift" />
@@ -63,61 +63,6 @@
         <?endforeach?>
       </Directory>
     </DirectoryRef>
-  </Fragment>
-
-  <!--
-  Use RemoveFolderEx to clean up the empty subdirectories Windows Installer
-  leaves when there are other directory siblings left behind, as happens when
-  you have multiple versions of Swift installed with the versioned
-  directories as children.
-  -->
-  <Fragment>
-    <ComponentGroup Id="VersionedDirectoryCleanup" Directory="INSTALLROOT">
-      <Component Id="VersionedDirectoryCleanupPlatforms">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="PlatformsVersioned" Value="[PlatformsVersioned]" />
-        <util:RemoveFolderEx Property="PLATFORMSVERSIONED" Condition="PLATFORMSVERSIONED" />
-      </Component>
-
-      <Component Id="VersionedDirectoryCleanupRedistVersion">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RedistVersion" Value="[RedistVersion]" />
-        <util:RemoveFolderEx Property="REDISTVERSION" Condition="REDISTVERSION" />
-      </Component>
-
-      <Component Id="VersionedDirectoryCleanupRuntimes">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RuntimesVersioned" Value="[RuntimesVersioned]" />
-        <util:RemoveFolderEx Property="RUNTIMESVERSIONED" Condition="RUNTIMESVERSIONED" />
-      </Component>
-
-      <Component Id="VersionedDirectoryCleanupToolchains_asserts">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainVersionedAsserts" Value="[ToolchainVersionedAsserts]" />
-        <util:RemoveFolderEx Property="TOOLCHAINVERSIONEDASSERTS" Condition="TOOLCHAINVERSIONEDASSERTS" />
-      </Component>
-
-      <Component Id="VersionedDirectoryCleanupToolchains_noasserts">
-        <RegistryValue Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainVersionedNoAsserts" Value="[ToolchainVersionedNoAsserts]" />
-        <util:RemoveFolderEx Property="TOOLCHAINVERSIONEDNOASSERTS" Condition="TOOLCHAINVERSIONEDNOASSERTS" />
-      </Component>
-    </ComponentGroup>
-
-    <Property Id="PLATFORMSVERSIONED">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="PlatformsVersioned" Type="directory" />
-    </Property>
-
-    <Property Id="REDISTVERSION">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RedistVersion" Type="directory" />
-    </Property>
-
-    <Property Id="RUNTIMESVERSIONED">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="RuntimesVersioned" Type="directory" />
-    </Property>
-
-    <Property Id="TOOLCHAINVERSIONEDASSERTS">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainVersionedAsserts" Type="directory" />
-    </Property>
-
-    <Property Id="TOOLCHAINVERSIONEDNOASSERTS">
-      <RegistrySearch Root="HKCU" Key="SOFTWARE\!(loc.ManufacturerName)\Installer\$(ProductVersion)\!(bind.Property.UpgradeCode)" Name="ToolchainVersionedNoAsserts" Type="directory" />
-    </Property>
   </Fragment>
 
   <!--

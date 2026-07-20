@@ -2172,9 +2172,6 @@
     <!-- Features -->
     <Feature Display="hidden" Id="PlatformSupport" Title="!(loc.Plt_ProductName_Android)">
       <ComponentGroupRef Id="Testing" />
-
-      <!-- MSI management Components -->
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
 
     <?if $(IncludeARM64) = "True"?>
