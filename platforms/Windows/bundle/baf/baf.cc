@@ -68,6 +68,9 @@ namespace {
 
 constexpr LPCWSTR kScopeControl = L"InstallPerMachine";
 constexpr LPCWSTR kScopeHintControl = L"InstallPerMachineHint";
+constexpr LPCWSTR kWixStdBAScope = L"WixStdBAScope";
+constexpr LPCWSTR kPerUserScope = L"PerUser";
+constexpr LPCWSTR kPerMachineScope = L"PerMachine";
 constexpr LPCWSTR kInstallRoot = L"InstallRoot";
 constexpr LPCWSTR kPerUserShadow = L"InstallRootPerUser";
 constexpr LPCWSTR kPerMachineShadow = L"InstallRootPerMachine";
@@ -978,6 +981,23 @@ public:
     return hr;
   }
 
+  STDMETHODIMP OnStartup() override {
+    HRESULT hr = CBalBaseBAFunctions::OnStartup();
+    LONGLONG llPerMachine = 0;
+    ExitOnFailure(hr, "Failed to start BAFunctions.");
+
+    // WixStdBA initializes WixStdBAScope after loading BAFunctions. Set the
+    // requested scope during startup, after that default has been applied and
+    // before the user can initiate planning.
+    hr = m_pEngine->GetVariableNumeric(kScopeControl, &llPerMachine);
+    ExitOnFailure(hr, "Failed to read the requested installation scope.");
+    hr = SetInstallScope(static_cast<bool>(llPerMachine));
+    ExitOnFailure(hr, "Failed to initialize WixStdBA installation scope.");
+
+  LExit:
+    return hr;
+  }
+
   STDMETHODIMP OnDestroy(BOOL fReload) override {
     UninitializeLocalization();
     return CBalBaseBAFunctions::OnDestroy(fReload);
@@ -1181,6 +1201,21 @@ private:
 
   // MARK: - Install Page (UAC Shield + Scope Toggle)
 
+  bool IsPerMachineScope(HWND hCheckbox) const noexcept {
+    return ::SendMessageW(hCheckbox, BM_GETCHECK, 0, 0) == BST_CHECKED;
+  }
+
+  // WixStdBA uses WixStdBAScope, not the checkbox's numeric backing variable,
+  // when it asks Burn to plan perUserOrMachine packages. Keep the two in sync
+  // both when the persisted checkbox is loaded and whenever the user toggles
+  // it.
+  HRESULT SetInstallScope(bool bPerMachine) noexcept {
+    return m_pEngine->SetVariableString(kWixStdBAScope,
+                                        bPerMachine ? kPerMachineScope
+                                                    : kPerUserScope,
+                                        FALSE);
+  }
+
   // WixStdBA derives the shield from fixed bundle scope, which is false for
   // a configurable-scope bundle (wixtoolset/issues#9308). Use the live scope.
   void UpdateInstallButtonElevation() noexcept {
@@ -1189,8 +1224,7 @@ private:
 
     THEME_CONTROL installButton = {};
     installButton.hWnd = hInstallButton_;
-    BOOL fPerMachine =
-        ::SendMessageW(hScopeControl_, BM_GETCHECK, 0, 0) == BST_CHECKED;
+    BOOL fPerMachine = IsPerMachineScope(hScopeControl_);
     ThemeControlElevates(&installButton, fPerMachine);
   }
 
@@ -1202,8 +1236,12 @@ private:
   // checkbox state directly with BM_GETCHECK instead of using the stale
   // bundle variable.
   void HandleScopeToggle(HWND hCheckbox) {
-    bool bPerMachine =
-        ::SendMessageW(hCheckbox, BM_GETCHECK, 0, 0) == BST_CHECKED;
+    bool bPerMachine = IsPerMachineScope(hCheckbox);
+    HRESULT hr = SetInstallScope(bPerMachine);
+    if (FAILED(hr))
+      BalLog(BOOTSTRAPPER_LOG_LEVEL_ERROR,
+             "baf: failed to set WixStdBA installation scope: 0x%08X",
+             static_cast<unsigned int>(hr));
     UpdateInstallButtonElevation();
     BalLog(BOOTSTRAPPER_LOG_LEVEL_STANDARD, "baf: scope %ls",
            bPerMachine ? L"per-machine" : L"per-user");

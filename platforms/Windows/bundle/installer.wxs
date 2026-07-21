@@ -31,6 +31,11 @@
     "Install for all users" restores the user's previous choice; the swap
     happens in the BAF (BA Functions) DLL (see bundle/baf).
     -->
+    <!--
+      WixStdBA passes WixStdBAScope to Burn when planning dual-scope packages.
+      The BAF keeps it synchronized with the checkbox below because a checkbox
+      cannot directly bind the required PerUser/PerMachine string values.
+    -->
     <Variable Name="InstallPerMachine" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="BundleDisplayName" Value="!(loc.BundleName)" Type="string" Hidden="yes" />
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
