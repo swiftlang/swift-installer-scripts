@@ -25,10 +25,6 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftRemoteMirror" Name="swiftRemoteMirror" />
-    </DirectoryRef>
-
     <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
       <Directory Id="toolchain_$(VariantName)_usr_include__InternalSwiftStaticMirror" Name="_InternalSwiftStaticMirror" />
     </DirectoryRef>
@@ -98,10 +94,6 @@
       <File Source="$(ToolchainRoot)\usr\lib\swift\_InternalSwiftStaticMirror\StaticMirrorMacros.h" />
     </ComponentGroup>
 
-    <ComponentGroup Id="SxSSwiftRuntime">
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftRemoteMirror" Source="$(ToolchainRoot)\usr\bin\swiftRemoteMirror\swiftRemoteMirror.dll" />
-    </ComponentGroup>
-
     <Feature Id="DebuggingTools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="LLDB" />
       <ComponentGroupRef Id="LLDBServer" />
@@ -111,8 +103,6 @@
       <ComponentGroupRef Id="SwiftSynthesizeInterface" />
 
       <ComponentGroupRef Id="_InternalSwiftStaticMirror" />
-      <ComponentGroupRef Id="SxSSwiftRuntime" />
-
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>

@@ -143,7 +143,7 @@ That lets you override settings in Directory.Build.props for local dev builds. F
 
 ## Toolchain variants
 
-The Swift toolchain for Windows is built in multiple variants, e.g. with LLVM assertions enabled (asserts) and disabled (noasserts). These variants contribute components to several MSI packages, including the build tools (bld), command-line tools (cli), debugging tools (dbg), and IDE integration (ide). The layout is the same in the InstallDir, but the files are different and come from different roots.
+The Swift toolchain for Windows is built in multiple variants, e.g. with LLVM assertions enabled (asserts) and disabled (noasserts). These variants contribute components to several MSI packages, including the build tools (bld), command-line tools (cli), debugging tools (dbg), IDE integration (ide), and private runtime (prt). The layout is the same in the InstallDir, but the files are different and come from different roots.
 
 To handle this without duplicating our authoring, we parametrize the WiX authoring so that the installer logic can build different MSIs for each variant that includes the correct files.
 
@@ -164,6 +164,8 @@ bld/
 Each subfolder (`asserts` and `noasserts`) contains the project file that produces an msi (`bld.asserts.msi` and `bld.noasserts.msi`). Each project includes `bld.wxi` file that has the authoring for this module. New files/components would be added in `bld.wxi` ensuring they appear in all variants.
 
 The main bundle (`installer.wxs`) includes these variants conditionally, allowing users to choose which toolchain flavor to install. This parametrized structure ensures that all supported toolchain configurations are available in a single bundle, while keeping the installer authoring organized and scalable.
+
+The PRT MSI is required whenever its corresponding toolchain variant is installed. Burn passes `INSTALLBLD`, `INSTALLCLI`, `INSTALLDBG`, and `INSTALLIDE` to select the private runtime features needed by the tool packages chosen in the bundle UI. The tool MSIs do not author private runtime assemblies themselves.
 
 The `ToolchainVariants` MSBuild property controls which variants are included in the bundle.
 
@@ -247,7 +249,7 @@ Note that these GUIDs are substituted at bind time so they skip the normal valid
 
 | Property | Description |
 | -------- | ----------- |
-| BldAssertsUpgradeCode, BldNoAssertsUpgradeCode, CliAssertsUpgradeCode, CliNoAssertsUpgradeCode, DbgAssertsUpgradeCode, DbgNoAssertsUpgradeCode, IdeAssertsUpgradeCode, IdeNoAssertsUpgradeCode, RTLUpgradeCode, WindowsPlatformUpgradeCode, AndroidPlatformUpgradeCode, PythonUpgradeCode, ResUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
+| BldAssertsUpgradeCode, BldNoAssertsUpgradeCode, CliAssertsUpgradeCode, CliNoAssertsUpgradeCode, DbgAssertsUpgradeCode, DbgNoAssertsUpgradeCode, IdeAssertsUpgradeCode, IdeNoAssertsUpgradeCode, PrtAssertsUpgradeCode, PrtNoAssertsUpgradeCode, RTLUpgradeCode, WindowsPlatformUpgradeCode, AndroidPlatformUpgradeCode, PythonUpgradeCode, ResUpgradeCode | Upgrade codes for individual packages. Packages keep the same upgrade codes "forever" because MSI lets you specify version ranges for upgrades, which you can find in `shared/shared.wxs`. |
 | BundleUpgradeCode | Upgrade codes for the bundle. Bundles don't support upgrade version ranges, so the bundle upgrade code must change for every minor version _and_ stay the same for the entire lifetime of that minor version (e.g., v5.10.0 through v5.10.9999). You can keep the history of upgrade codes using a condition like `Condition="'$(MajorMinorProductVersion)' == '5.10'` or just replace BundleUpgradeCode when forking to a new minor version. |
 
 

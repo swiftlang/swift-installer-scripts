@@ -70,6 +70,7 @@
     <ProjectReference Include="..\cli\asserts\cli.asserts.wixproj" BindName="cli.asserts" />
     <ProjectReference Include="..\dbg\asserts\dbg.asserts.wixproj" BindName="dbg.asserts" />
     <ProjectReference Include="..\ide\asserts\ide.asserts.wixproj" BindName="ide.asserts" />
+    <ProjectReference Include="..\prt\asserts\prt.asserts.wixproj" BindName="prt.asserts" />
     <ProjectReference Include="..\res\res.wixproj" BindName="res" />
     <ProjectReference Include="..\python\python.wixproj" BindName="python" />
   </ItemGroup>
@@ -79,6 +80,7 @@
     <ProjectReference Include="..\cli\noasserts\cli.noasserts.wixproj" BindName="cli.noasserts" />
     <ProjectReference Include="..\dbg\noasserts\dbg.noasserts.wixproj" BindName="dbg.noasserts" />
     <ProjectReference Include="..\ide\noasserts\ide.noasserts.wixproj" BindName="ide.noasserts" />
+    <ProjectReference Include="..\prt\noasserts\prt.noasserts.wixproj" BindName="prt.noasserts" />
   </ItemGroup>
 
   <ItemGroup>

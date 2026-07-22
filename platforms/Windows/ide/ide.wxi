@@ -25,11 +25,6 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
-      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationXML" Name="FoundationXML" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftRegexBuilder" Name="swiftRegexBuilder" />
-    </DirectoryRef>
-
     <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
       <Directory Id="toolchain_$(VariantName)_usr_include_SourceKit" Name="SourceKit" />
     </DirectoryRef>
@@ -59,18 +54,11 @@
       <File Directory="toolchain_$(VariantName)_usr_share_sourcekit_lsp" Source="$(ToolchainRoot)\usr\share\sourcekit-lsp\config.schema.json" />
     </ComponentGroup>
 
-    <ComponentGroup Id="SxSSwiftRuntime">
-      <File Directory="toolchain_$(VariantName)_usr_bin_FoundationXML" Source="$(ToolchainRoot)\usr\bin\FoundationXML\FoundationXML.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftRegexBuilder" Source="$(ToolchainRoot)\usr\bin\swiftRegexBuilder\swiftRegexBuilder.dll" />
-    </ComponentGroup>
-
     <Feature Id="IDETools" AllowAbsent="no" Title="$(VariantProductName)">
       <ComponentGroupRef Id="clangd" />
       <ComponentGroupRef Id="lldb" />
       <ComponentGroupRef Id="sourcekitd" />
       <ComponentGroupRef Id="lsp" />
-      <ComponentGroupRef Id="SxSSwiftRuntime" />
-
       <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
   </Package>

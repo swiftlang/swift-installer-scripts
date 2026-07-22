@@ -29,21 +29,6 @@
     <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
     <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
 
-    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
-      <Directory Id="toolchain_$(VariantName)_usr_bin_BlocksRuntime" Name="BlocksRuntime" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_dispatch" Name="dispatch" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Name="FoundationEssentials" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Name="swift_Concurrency" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Name="swift_RegexParser" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Name="swift_StringProcessing" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCore" Name="swiftCore" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCRT" Name="swiftCRT" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftDispatch" Name="swiftDispatch" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftObservation" Name="swiftObservation" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftSynchronization" Name="swiftSynchronization" />
-      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftWinSDK" Name="swiftWinSDK" />
-    </DirectoryRef>
-
     <DirectoryRef Id="toolchain_$(VariantName)_usr_include">
       <Directory Id="toolchain_$(VariantName)_usr_include_llvm_c" Name="llvm-c" />
       <Directory Id="toolchain_$(VariantName)_usr_include_swift" Name="swift" />
@@ -304,21 +289,6 @@
       <?endif?>
     </ComponentGroup>
 
-    <ComponentGroup Id="SxSSwiftRuntime">
-      <File Directory="toolchain_$(VariantName)_usr_bin_BlocksRuntime" Source="$(ToolchainRoot)\usr\bin\BlocksRuntime\BlocksRuntime.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_dispatch" Source="$(ToolchainRoot)\usr\bin\dispatch\dispatch.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Source="$(ToolchainRoot)\usr\bin\FoundationEssentials\FoundationEssentials.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Source="$(ToolchainRoot)\usr\bin\swift_RegexParser\swift_RegexParser.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Source="$(ToolchainRoot)\usr\bin\swift_StringProcessing\swift_StringProcessing.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftCore" Source="$(ToolchainRoot)\usr\bin\swiftCore\swiftCore.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftCRT" Source="$(ToolchainRoot)\usr\bin\swiftCRT\swiftCRT.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftDispatch" Source="$(ToolchainRoot)\usr\bin\swiftDispatch\swiftDispatch.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftObservation" Source="$(ToolchainRoot)\usr\bin\swiftObservation\swiftObservation.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftSynchronization" Source="$(ToolchainRoot)\usr\bin\swiftSynchronization\swiftSynchronization.dll" />
-      <File Directory="toolchain_$(VariantName)_usr_bin_swiftWinSDK" Source="$(ToolchainRoot)\usr\bin\swiftWinSDK\swiftWinSDK.dll" />
-    </ComponentGroup>
-
     <ComponentGroup Id="Configuration">
       <File Directory="$(ToolchainVersionedVariantDirectory)" Source="$(ToolchainRoot)\ToolchainInfo.plist" />
     </ComponentGroup>
@@ -361,8 +331,6 @@
       <ComponentGroupRef Id="FoundationMacros" />
       <ComponentGroupRef Id="TestingMacros" />
       <ComponentGroupRef Id="mimalloc" />
-      <ComponentGroupRef Id="SxSSwiftRuntime" />
-
       <ComponentGroupRef Id="ClangResources_$(VariantName)" />
       <ComponentGroupRef Id="SwiftClangResources_$(VariantName)" />
       <ComponentGroupRef Id="SwiftStaticClangResources_$(VariantName)" />
