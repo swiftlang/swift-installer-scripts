@@ -5,6 +5,7 @@
       <File Name="bplist_shims.h" />
       <File Name="CFUniCharBitmapData.h" />
       <File Name="CFUniCharBitmapData.inc.h" />
+      <File Name="CFUniCharBitmapDataAccess.h" />
       <File Name="filemanager_shims.h" />
       <File Name="io_shims.h" />
       <File Name="module.modulemap" />
