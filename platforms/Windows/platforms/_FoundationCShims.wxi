@@ -10,6 +10,9 @@
     <File Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapData.inc.h" />
   </Component>
   <Component DiskId="$(var.Disk)">
+    <File Source="$(SDKRoot)\usr\include\_FoundationCShims\CFUniCharBitmapDataAccess.h" />
+  </Component>
+  <Component DiskId="$(var.Disk)">
     <File Source="$(SDKRoot)\usr\include\_FoundationCShims\filemanager_shims.h" />
   </Component>
   <Component DiskId="$(var.Disk)">
