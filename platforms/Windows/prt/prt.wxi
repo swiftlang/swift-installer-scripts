@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Include xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <?define ToolchainRoot = $(ImageRoot)\Toolchains\$(ProductVersion)+$(VariantName)?>
+  <?if $(VariantName) == Asserts?>
+    <?define VariantUpgradeCode = $(PrtAssertsUpgradeCode)?>
+    <?define VariantCabinetName = prt.asserts.cab?>
+  <?else?>
+    <?define VariantUpgradeCode = $(PrtNoAssertsUpgradeCode)?>
+    <?define VariantCabinetName = prt.noasserts.cab?>
+  <?endif?>
+  <?define VariantProductName = "!(loc.Prt_ProductName) ($(VariantName))"?>
+
+  <Package
+      Language="1033"
+      Manufacturer="!(loc.ManufacturerName)"
+      Name="$(VariantProductName)"
+      UpgradeCode="$(VariantUpgradeCode)"
+      Version="$(NonSemVerProductVersion)"
+      Scope="$(PackageScope)">
+
+    <Media Id="1" Cabinet="$(VariantCabinetName)" EmbedCab="$(ArePackageCabsEmbedded)" />
+
+    <WixVariable Id="SideBySidePackageUpgradeCode" Value="$(VariantUpgradeCode)" />
+    <FeatureGroupRef Id="SideBySideUpgradeStrategy" />
+
+    <Property Id="INSTALLBLD" Value="1" />
+    <Property Id="INSTALLCLI" Value="1" />
+    <Property Id="INSTALLDBG" Value="1" />
+    <Property Id="INSTALLIDE" Value="1" />
+
+    <DirectoryRef Id="toolchain_$(VariantName)_usr_bin">
+      <Directory Id="toolchain_$(VariantName)_usr_bin__FoundationICU" Name="_FoundationICU" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_BlocksRuntime" Name="BlocksRuntime" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_dispatch" Name="dispatch" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_Foundation" Name="Foundation" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Name="FoundationEssentials" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationInternationalization" Name="FoundationInternationalization" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationNetworking" Name="FoundationNetworking" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationXML" Name="FoundationXML" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Name="swift_Concurrency" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Name="swift_RegexParser" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Name="swift_StringProcessing" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCore" Name="swiftCore" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftCRT" Name="swiftCRT" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftDispatch" Name="swiftDispatch" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftObservation" Name="swiftObservation" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftRegexBuilder" Name="swiftRegexBuilder" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftRemoteMirror" Name="swiftRemoteMirror" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftSynchronization" Name="swiftSynchronization" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swiftWinSDK" Name="swiftWinSDK" />
+    </DirectoryRef>
+
+    <ComponentGroup Id="SxSSwiftRuntimeBase">
+      <File Directory="toolchain_$(VariantName)_usr_bin__FoundationICU" Source="$(ToolchainRoot)\usr\bin\_FoundationICU\_FoundationICU.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_BlocksRuntime" Source="$(ToolchainRoot)\usr\bin\BlocksRuntime\BlocksRuntime.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_dispatch" Source="$(ToolchainRoot)\usr\bin\dispatch\dispatch.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_Foundation" Source="$(ToolchainRoot)\usr\bin\Foundation\Foundation.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Source="$(ToolchainRoot)\usr\bin\FoundationEssentials\FoundationEssentials.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_FoundationInternationalization" Source="$(ToolchainRoot)\usr\bin\FoundationInternationalization\FoundationInternationalization.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Source="$(ToolchainRoot)\usr\bin\swift_RegexParser\swift_RegexParser.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Source="$(ToolchainRoot)\usr\bin\swift_StringProcessing\swift_StringProcessing.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftCore" Source="$(ToolchainRoot)\usr\bin\swiftCore\swiftCore.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftCRT" Source="$(ToolchainRoot)\usr\bin\swiftCRT\swiftCRT.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftDispatch" Source="$(ToolchainRoot)\usr\bin\swiftDispatch\swiftDispatch.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftObservation" Source="$(ToolchainRoot)\usr\bin\swiftObservation\swiftObservation.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftSynchronization" Source="$(ToolchainRoot)\usr\bin\swiftSynchronization\swiftSynchronization.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftWinSDK" Source="$(ToolchainRoot)\usr\bin\swiftWinSDK\swiftWinSDK.dll" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="SxSSwiftRuntimeTools">
+      <File Directory="toolchain_$(VariantName)_usr_bin_FoundationNetworking" Source="$(ToolchainRoot)\usr\bin\FoundationNetworking\FoundationNetworking.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_FoundationXML" Source="$(ToolchainRoot)\usr\bin\FoundationXML\FoundationXML.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftRegexBuilder" Source="$(ToolchainRoot)\usr\bin\swiftRegexBuilder\swiftRegexBuilder.dll" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="SxSSwiftRuntimeDebugging">
+      <File Directory="toolchain_$(VariantName)_usr_bin_swiftRemoteMirror" Source="$(ToolchainRoot)\usr\bin\swiftRemoteMirror\swiftRemoteMirror.dll" />
+    </ComponentGroup>
+
+    <Feature Id="SxSSwiftRuntimeBLD" AllowAbsent="yes" Display="hidden" Title="$(VariantProductName): BLD">
+      <Level Condition="INSTALLBLD = 0" Value="0" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeBase" />
+    </Feature>
+
+    <Feature Id="SxSSwiftRuntimeCLI" AllowAbsent="yes" Display="hidden" Title="$(VariantProductName): CLI">
+      <Level Condition="INSTALLCLI = 0" Value="0" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeBase" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeTools" />
+    </Feature>
+
+    <Feature Id="SxSSwiftRuntimeDBG" AllowAbsent="yes" Display="hidden" Title="$(VariantProductName): DBG">
+      <Level Condition="INSTALLDBG = 0" Value="0" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeBase" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeDebugging" />
+    </Feature>
+
+    <Feature Id="SxSSwiftRuntimeIDE" AllowAbsent="yes" Display="hidden" Title="$(VariantProductName): IDE">
+      <Level Condition="INSTALLIDE = 0" Value="0" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeBase" />
+      <ComponentGroupRef Id="SxSSwiftRuntimeTools" />
+    </Feature>
+  </Package>
+</Include>

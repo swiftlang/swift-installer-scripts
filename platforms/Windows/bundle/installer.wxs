@@ -173,6 +173,7 @@
         <PackageGroupRef Id="CliAssertsPackage" />
         <PackageGroupRef Id="DbgAssertsPackage" />
         <PackageGroupRef Id="IdeAssertsPackage" />
+        <PackageGroupRef Id="PrtAssertsPackage" />
       </Container>
 
       <?if $(IncludeNoAsserts) == True?>
@@ -181,6 +182,7 @@
           <PackageGroupRef Id="CliNoAssertsPackage" />
           <PackageGroupRef Id="DbgNoAssertsPackage" />
           <PackageGroupRef Id="IdeNoAssertsPackage" />
+          <PackageGroupRef Id="PrtNoAssertsPackage" />
         </Container>
       <?endif?>
 
@@ -210,6 +212,11 @@
       <PackageGroupRef Id="IdeAssertsPackage" />
       <?if $(IncludeNoAsserts) == True?>
         <PackageGroupRef Id="IdeNoAssertsPackage" />
+      <?endif?>
+
+      <PackageGroupRef Id="PrtAssertsPackage" />
+      <?if $(IncludeNoAsserts) == True?>
+        <PackageGroupRef Id="PrtNoAssertsPackage" />
       <?endif?>
 
       <PackageGroupRef Id="ResPackage" />
@@ -328,6 +335,38 @@
         InstallCondition="OptionsInstallIDE = 1 and OptionsInstallNoAssertsToolchain = 1"
         DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
         <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+  <?endif?>
+
+  <Fragment>
+    <PackageGroup Id="PrtAssertsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.prt.asserts)\prt.asserts.msi"
+        InstallCondition="OptionsInstallAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="INSTALLBLD" Value="[OptionsInstallBLD]" />
+        <MsiProperty Name="INSTALLCLI" Value="[OptionsInstallCLI]" />
+        <MsiProperty Name="INSTALLDBG" Value="[OptionsInstallDBG]" />
+        <MsiProperty Name="INSTALLIDE" Value="[OptionsInstallIDE]" />
+      </MsiPackage>
+    </PackageGroup>
+  </Fragment>
+
+  <?if $(IncludeNoAsserts) == True?>
+  <Fragment>
+    <PackageGroup Id="PrtNoAssertsPackage">
+      <MsiPackage
+        SourceFile="!(bindpath.prt.noasserts)\prt.noasserts.msi"
+        InstallCondition="OptionsInstallNoAssertsToolchain = 1"
+        DownloadUrl="$(BaseReleaseDownloadUrl)/{2}">
+        <MsiProperty Name="INSTALLROOT" Value="[InstallRoot]" />
+        <MsiProperty Name="INSTALLBLD" Value="[OptionsInstallBLD]" />
+        <MsiProperty Name="INSTALLCLI" Value="[OptionsInstallCLI]" />
+        <MsiProperty Name="INSTALLDBG" Value="[OptionsInstallDBG]" />
+        <MsiProperty Name="INSTALLIDE" Value="[OptionsInstallIDE]" />
       </MsiPackage>
     </PackageGroup>
   </Fragment>

@@ -25,6 +25,8 @@
     <DbgNoAssertsUpgradeCode>{6F26625B-7662-4631-8E0E-F2244339ED37}</DbgNoAssertsUpgradeCode>
     <IdeAssertsUpgradeCode>{8DD91C86-D13D-490B-B06B-9522A9CF504C}</IdeAssertsUpgradeCode>
     <IdeNoAssertsUpgradeCode>{C5519168-CF7B-4127-98B7-D886D9789B42}</IdeNoAssertsUpgradeCode>
+    <PrtAssertsUpgradeCode>{1902DEBA-CF54-48E4-89FE-122E53BF4A33}</PrtAssertsUpgradeCode>
+    <PrtNoAssertsUpgradeCode>{954AA86D-A593-4DDF-AB04-8B463EA8A5AE}</PrtNoAssertsUpgradeCode>
     <RTLUpgradeCode>{F9BA01C7-0C7C-4898-90BD-9D6BB308F0B3}</RTLUpgradeCode>
     <AndroidPlatformUpgradeCode>{313B9C1F-D5B5-4FED-B7E0-138F1EE6B26A}</AndroidPlatformUpgradeCode>
     <WindowsPlatformUpgradeCode>{01AFF1CF-A025-41B6-BCBC-728D794353FD}</WindowsPlatformUpgradeCode>
@@ -76,6 +78,8 @@
       DbgNoAssertsUpgradeCode=$(DbgNoAssertsUpgradeCode);
       IdeAssertsUpgradeCode=$(IdeAssertsUpgradeCode);
       IdeNoAssertsUpgradeCode=$(IdeNoAssertsUpgradeCode);
+      PrtAssertsUpgradeCode=$(PrtAssertsUpgradeCode);
+      PrtNoAssertsUpgradeCode=$(PrtNoAssertsUpgradeCode);
       RTLUpgradeCode=$(RTLUpgradeCode);
       AndroidPlatformUpgradeCode=$(AndroidPlatformUpgradeCode);
       WindowsPlatformUpgradeCode=$(WindowsPlatformUpgradeCode);
