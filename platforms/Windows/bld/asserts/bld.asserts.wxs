@@ -1,4 +1,4 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <?define VariantName = Asserts ?>
+  <?define VariantName = "Asserts" ?>
   <?include ../bld.wxi ?>
 </Wix>

@@ -1,6 +1,6 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-  <?if $(sys.BUILDARCH) == x64 ?>
+  <?if $(sys.BUILDARCH) = "x64" ?>
     <?define MergeModuleFileName = "rtl.dynamic.$(RuntimeLibraryInstallationMode).amd64.msm" ?>
   <?else?>
     <?define MergeModuleFileName = "rtl.dynamic.$(RuntimeLibraryInstallationMode).$(sys.BUILDARCH).msm" ?>
@@ -25,10 +25,7 @@
 
     <Feature Id="Hello" AllowAbsent="no" Title="!(bind.property.ProductName)">
       <MergeRef Id="swift_runtime" />
-
-      <Component Directory="INSTALLFOLDER">
-        <File Source="hello.exe" />
-      </Component>
+      <File Directory="INSTALLFOLDER" Source="hello.exe" />
     </Feature>
   </Package>
 </Wix>

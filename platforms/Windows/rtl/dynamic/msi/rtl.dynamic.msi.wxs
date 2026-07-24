@@ -5,7 +5,7 @@
       Name="!(loc.Rtl_ProductName_$(ProductArchitecture))"
       UpgradeCode="$(RTLUpgradeCode)"
       Version="$(NonSemVerProductVersion)"
-      Scope="$(RtlPackageScope)">
+      Scope="$(PackageScope)">
 
     <Media Id="1" Cabinet="rtl.$(ProductArchitecture).cab" EmbedCab="$(ArePackageCabsEmbedded)" />
 
@@ -35,11 +35,10 @@
     <Feature Id="SwiftRuntime" AllowAbsent="no" Title="!(loc.Rtl_ProductName_$(ProductArchitecture))">
       <ComponentGroupRef Id="swift_runtime_$(ProductArchitecture)" />
       <ComponentGroupRef Id="EnvironmentVariables" />
-      <ComponentGroupRef Id="VersionedDirectoryCleanup" />
     </Feature>
 
     <!-- TODO(https://github.com/swiftlang/swift/issues/87499 ) enable this when we build this for x86 -->
-    <?if $(ProductArchitecture) != x86?>
+    <?if $(ProductArchitecture) != "x86"?>
     <Feature Id="SwiftRuntimeSupport" AllowAbsent="yes" Title="!(loc.Sup_ProductName_$(ProductArchitecture))">
       <Level Condition="INSTALLSUPPORT = 0" Value="0" />
       <ComponentGroupRef Id="swift_runtime_support_$(ProductArchitecture)" />

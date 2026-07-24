@@ -31,6 +31,11 @@
     "Install for all users" restores the user's previous choice; the swap
     happens in the BAF (BA Functions) DLL (see bundle/baf).
     -->
+    <!--
+      WixStdBA passes WixStdBAScope to Burn when planning dual-scope packages.
+      The BAF keeps it synchronized with the checkbox below because a checkbox
+      cannot directly bind the required PerUser/PerMachine string values.
+    -->
     <Variable Name="InstallPerMachine" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="BundleDisplayName" Value="!(loc.BundleName)" Type="string" Hidden="yes" />
     <Variable Name="InstallRoot" bal:Overridable="yes" Type="formatted" Persisted="yes"
@@ -55,36 +60,6 @@
     <Variable Name="BAFRefreshTrigger" Value="0" Hidden="yes" />
 
     <!--
-      The SDK TreeView is populated at runtime by BAF (thmutil only creates
-      the TreeView shell and doesn't loc tree items). Carry the existing
-      product-name loc strings through bundle Variables so BAF can resolve
-      them via BalFormatString("[Name]"); `!(loc.X)` is replaced at build
-      time so the Variable value is already localised at runtime.
-    -->
-    <Variable Name="Plt_ProductName_Windows" Value="!(loc.Plt_ProductName_Windows)" Type="string" Hidden="yes" />
-    <?foreach Architecture in amd64;arm64;x86?>
-      <Variable Name="Sdk_ProductName_Windows_$(Architecture)" Value="!(loc.Sdk_ProductName_Windows_$(Architecture))" Type="string" Hidden="yes" />
-    <?endforeach?>
-    <Variable Name="Redist_shared" Value="!(loc.Redist_shared)" Type="string" Hidden="yes" />
-    <Variable Name="Redist_private" Value="!(loc.Redist_private)" Type="string" Hidden="yes" />
-    <Variable Name="Plt_ProductName_Android" Value="!(loc.Plt_ProductName_Android)" Type="string" Hidden="yes" />
-    <?foreach Architecture in arm64;amd64;armv7;x86?>
-      <Variable Name="Sdk_ProductName_Android_$(Architecture)" Value="!(loc.Sdk_ProductName_Android_$(Architecture))" Type="string" Hidden="yes" />
-    <?endforeach?>
-
-    <!--
-      Per-tab tooltips for the Options tab strip. BAF creates the tooltip
-      control programmatically (thmutil's `Tooltip` attribute would apply
-      to the whole strip, not per tab) and resolves these variables via
-      BalFormatString at tab-setup time.
-    -->
-    <Variable Name="OptionsToolchainTabTooltip" Value="!(loc.OptionsToolchainTabTooltip)" Type="string" Hidden="yes" />
-    <Variable Name="OptionsRuntimesTabTooltip" Value="!(loc.OptionsRuntimesTabTooltip)" Type="string" Hidden="yes" />
-    <Variable Name="OptionsSDKsTabTooltip" Value="!(loc.OptionsSDKsTabTooltip)" Type="string" Hidden="yes" />
-    <Variable Name="AssertsToolchain" Value="!(loc.OptionsDefaultAsserts)" Type="string" Hidden="yes" />
-    <Variable Name="NoAssertsToolchain" Value="!(loc.OptionsDefaultNoAsserts)" Type="string" Hidden="yes" />
-
-    <!--
       Per-row availability for the SDK TreeView, driven by build-time flags
       (IncludeWindows/IncludeAndroid and the arch-specific variants defined
       in installer.wixproj). BAF skips tree rows whose availability variable
@@ -106,10 +81,10 @@
     <Variable Name="OptionsInstallPy" bal:Overridable="yes" Persisted="yes" Value="1" />
     <Variable Name="OptionsInstallIDE" bal:Overridable="yes" Persisted="yes" Value="1" />
 
-    <?if $(ProductArchitecture) == amd64 ?>
+    <?if $(ProductArchitecture) = "amd64" ?>
       <Variable Name="OptionsInstallRuntimeAMD64" bal:Overridable="yes" Persisted="yes" Value="1" />
       <Variable Name="OptionsInstallRuntimeARM64" bal:Overridable="yes" Persisted="yes" Value="0" />
-    <?elseif $(ProductArchitecture) == arm64 ?>
+    <?elseif $(ProductArchitecture) = "arm64" ?>
       <Variable Name="OptionsInstallRuntimeAMD64" bal:Overridable="yes" Persisted="yes" Value="0" />
       <Variable Name="OptionsInstallRuntimeARM64" bal:Overridable="yes" Persisted="yes" Value="1" />
     <?endif?>
@@ -139,7 +114,7 @@
     <Variable Name="OptionsInstallNoAssertsToolchain" bal:Overridable="yes" Persisted="yes" Value="0" />
     <Variable Name="OptionsDefaultToolchain" bal:Overridable="yes" Persisted="yes" Type="string" Value="Asserts" />
 
-    <?if $(IncludeNoAsserts) == True?>
+    <?if $(IncludeNoAsserts) = "True"?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="1" />
     <?else ?>
       <Variable Name="OptionsIncludeNoAsserts" bal:Overridable="yes" Persisted="yes" Value="0" />
@@ -176,7 +151,7 @@
         <PackageGroupRef Id="PrtAssertsPackage" />
       </Container>
 
-      <?if $(IncludeNoAsserts) == True?>
+      <?if $(IncludeNoAsserts) = "True"?>
         <Container Id="NoAssertsToolchainContainer" Type="attached">
           <PackageGroupRef Id="BldNoAssertsPackage" />
           <PackageGroupRef Id="CliNoAssertsPackage" />
@@ -190,10 +165,10 @@
         <PackageGroupRef Id="PythonPackage" />
         <PackageGroupRef Id="ResPackage" />
         <PackageGroupRef Id="RtlPackage" />
-        <?if $(IncludeAndroid) == True?>
+        <?if $(IncludeAndroid) = "True"?>
           <PackageGroupRef Id="AndroidPackage" />
         <?endif?>
-        <?if $(IncludeWindows) == True?>
+        <?if $(IncludeWindows) = "True"?>
           <PackageGroupRef Id="WindowsPackage" />
         <?endif?>
       </Container>
@@ -202,7 +177,7 @@
     <Chain>
       <?foreach Group in Bld;Cli;Dbg?>
         <PackageGroupRef Id="$(Group)AssertsPackage" />
-        <?if $(IncludeNoAsserts) == True?>
+        <?if $(IncludeNoAsserts) = "True"?>
           <PackageGroupRef Id="$(Group)NoAssertsPackage" />
         <?endif?>
       <?endforeach?>
@@ -210,7 +185,7 @@
       <PackageGroupRef Id="PythonPackage" />
 
       <PackageGroupRef Id="IdeAssertsPackage" />
-      <?if $(IncludeNoAsserts) == True?>
+      <?if $(IncludeNoAsserts) = "True"?>
         <PackageGroupRef Id="IdeNoAssertsPackage" />
       <?endif?>
 
@@ -222,10 +197,10 @@
       <PackageGroupRef Id="ResPackage" />
       <PackageGroupRef Id="RtlPackage" />
 
-      <?if $(IncludeAndroid) == True?>
+      <?if $(IncludeAndroid) = "True"?>
         <PackageGroupRef Id="AndroidPackage" />
       <?endif?>
-      <?if $(IncludeWindows) == True?>
+      <?if $(IncludeWindows) = "True"?>
         <PackageGroupRef Id="WindowsPackage" />
       <?endif?>
     </Chain>
@@ -243,7 +218,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == True?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="BldNoAssertsPackage">
       <MsiPackage
@@ -268,7 +243,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == True?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="CliNoAssertsPackage">
       <MsiPackage
@@ -292,7 +267,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == True?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="DbgNoAssertsPackage">
       <MsiPackage
@@ -327,7 +302,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeNoAsserts) == True?>
+  <?if $(IncludeNoAsserts) = "True"?>
   <Fragment>
     <PackageGroup Id="IdeNoAssertsPackage">
       <MsiPackage
@@ -394,7 +369,7 @@
     </PackageGroup>
   </Fragment>
 
-  <?if $(IncludeAndroid) == True?>
+  <?if $(IncludeAndroid) = "True"?>
   <Fragment>
     <PackageGroup Id="AndroidPackage">
       <MsiPackage
@@ -411,7 +386,7 @@
   </Fragment>
   <?endif?>
 
-  <?if $(IncludeWindows) == True?>
+  <?if $(IncludeWindows) = "True"?>
   <Fragment>
     <PackageGroup Id="WindowsPackage">
       <MsiPackage

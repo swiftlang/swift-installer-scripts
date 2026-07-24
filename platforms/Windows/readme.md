@@ -111,7 +111,7 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | -------- | ----------- |
 | MajorMinorProductVersion | Gets the `major.minor` fields of `ProductVersion`. Used for the side-by-side upgrade strategy. |
 | BaseIntermediateOutputPath, OutputPath | Sets the intermediate and build output directories to handle MSBuild/NuGet restore functionality and support multiplatform output. |
-| SuppressIces | Suppress the ICE validation messages that are erroneously emitted for per-user packages. **ICE38** is about mixing per-user and per-machine resources (not a thing for us). **ICE61** is warning about allowing "same-version" major upgrades, something we want. **ICE64** is documented as not being an issue when packages are always per-user. **ICE91** is about "roaming scenarios," which doesn't apply to our use of `LocalAppDataFolder`. |
+| SuppressIces | Suppress ICE61, which warns about allowing "same-version" major upgrades, something the side-by-side upgrade strategy requires. |
 | PackageCompressionLevel, BundleCompressionLevel | Always set to `high` for the smallest downloads (and painfully-long build times). It's a property so it can be overridden for dev builds. See _<user>.props_. |
 | ArePackageCabsEmbedded | Always set to false to keep the .cab files external to the .msi files. This saves user disk space: Burn caches packages so it can always uninstall and repair. MSI also caches packages for uninstall. If the cab is embedded, you have two copies and MSI doesn't always use its cached copy as a source for repair. With an external .cab, MSI caches only the tiny .msi file and not the (relatively huge) .cab. |
 | BundleFlavor, IsBundleCompressed | BundleFlavor defaults to `online` to build an online bundle. Set by the invocation of MSBuild to build an online or offline bundle. Controls IsBundleCompressed. |
@@ -265,11 +265,6 @@ To support side-by-side installation for each minor release (the latest point re
 `SideBySidePackageUpgradeCode` is a bind-time variable, used here essentially to pass the upgrade code as an argument to the fragment in `shared\shared.wxs`.
 
 
-### Cleaning up
-
-Windows Installer can, under conditions that are both mysterious and undocumented, leave behind empty folders. (The files are removed.) The ICE validator ICE64 says this is a problem for roaming profiles so our use of local AppData shouldn't apply, but, sadly, sometimes it does. ICE64 suggests the user-hostile workaround of manually authoring to remove every directory. Instead, Directory.Build.props suppresses ICE64 and in `shared\shared.wxs`, the `VersionedDirectoryCleanup` component group handles cleaning up any orphaned, empty directories. Packages that install into the shared versioned directories use `<ComponentGroupRef Id="VersionedDirectoryCleanup" />` to pull in that component group.
-
-
 ## Compression levels, build time, and download size
 
 As expected, the `high` compression level builds the smallest payloads with the benefit that you have enough time to not only go get a coffee after kicking off the build, you can drink it _and_ get a refill with time to spare.
@@ -377,7 +372,11 @@ installation mode installs each DLL under a basename directory, for example
 `swiftCore\swiftCore.dll`, so applications can bind by assembly name and version
 without using the global native assembly cache.
 
-The full RTL MSI is dual-scope. Per-user installs lay the runtime DLLs out in
-`Runtimes\$(ProductVersion)\usr\bin` and add that directory to the user `Path`.
-Per-machine installs publish the runtime DLLs to the shared native assembly
-cache and do not add the runtime directory to `Path`.
+The full RTL MSI is dual-scope and carries both runtime layouts. Component
+conditions select flat DLLs for per-user installs, placing them in
+`Runtimes\$(ProductVersion)\usr\bin` and adding that directory to the user
+`Path`. Per-machine installs instead publish the runtime DLLs to the shared
+native assembly cache and do not add the runtime directory to `Path`. Shared
+runtime merge modules carry the same per-machine component condition so a
+downstream dual-scope package skips unsupported SxS publication during a
+per-user install.
