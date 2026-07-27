@@ -1732,10 +1732,11 @@
     <!-- clang modules -->
     <ComponentGroup Id="AuxiliaryFiles" Directory="SDK_usr_share">
       <File Source="$(SDKRoot)\usr\share\ucrt.modulemap" />
-      <File Source="$(SDKRoot)\usr\share\winsdk_um.modulemap" />
-      <File Source="$(SDKRoot)\usr\share\winsdk_shared.modulemap" />
       <File Source="$(SDKRoot)\usr\share\vcruntime.apinotes" />
       <File Source="$(SDKRoot)\usr\share\vcruntime.modulemap" />
+      <File Source="$(SDKRoot)\usr\share\winsdk_shared.modulemap" />
+      <File Source="$(SDKRoot)\usr\share\winsdk_um.modulemap" />
+      <File Source="$(SDKRoot)\usr\share\WinSDK.apinotes" />
     </ComponentGroup>
 
     <!-- Configuration -->
