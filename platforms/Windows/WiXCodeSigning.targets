@@ -57,15 +57,37 @@
     <PropertyGroup>
       <SignToolPath Condition=" '$(SignToolPath)' == '' ">$(WindowsSDKToolsPath)</SignToolPath>
       <SignToolPath Condition=" '$(SignToolPath)' != '' AND !HasTrailingSlash('$(SignToolPath)') ">$(SignToolPath)\</SignToolPath>
-      <VerboseFlag Condition=" '$(SignToolVerbose)' == 'true' ">/v </VerboseFlag>
-      <VerboseFlag Condition=" '$(SignToolVerbose)' != 'true' "></VerboseFlag>
+
+      <_SigningMode Condition=" '$(AzureSignToolPath)' != '' ">AzureKeyVault</_SigningMode>
+      <_SigningMode Condition=" '$(_SigningMode)' == '' AND '$(AzureSignMetadata)' != '' ">TrustedSigning</_SigningMode>
+      <_SigningMode Condition=" '$(_SigningMode)' == '' ">Pfx</_SigningMode>
+
+      <_SigningExecutable Condition=" '$(_SigningMode)' == 'AzureKeyVault' ">$(AzureSignToolPath)</_SigningExecutable>
+      <_SigningExecutable Condition=" '$(_SigningMode)' != 'AzureKeyVault' ">$(SignToolPath)signtool.exe</_SigningExecutable>
+
+      <_SigningVerboseArgument Condition=" '$(SignToolVerbose)' == 'true' AND '$(_SigningMode)' == 'AzureKeyVault' "> --verbose</_SigningVerboseArgument>
+      <_SigningVerboseArgument Condition=" '$(SignToolVerbose)' == 'true' AND '$(_SigningMode)' != 'AzureKeyVault' "> /v</_SigningVerboseArgument>
 
       <!-- Microsoft recommends using their timestamp server for trusted signing: https://learn.microsoft.com/en-us/azure/trusted-signing/how-to-signing-integrations#:~:text=Trusted%20Signing%20certificates,microsoft.com/-->
-      <SignTool Condition=" '$(AzureSignMetadata)' != '' ">"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.acs.microsoft.com /fd sha256 /td sha256 /dlib "$(AzureSignDlib)" /dmdf "$(AzureSignMetadata)"</SignTool>
-      <SignTool Condition=" '$(AzureSignMetadata)' == '' ">"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </SignTool>
+      <_SigningTimestampUrl Condition=" '$(_SigningMode)' == 'TrustedSigning' ">http://timestamp.acs.microsoft.com</_SigningTimestampUrl>
+      <_SigningTimestampUrl Condition=" '$(_SigningMode)' != 'TrustedSigning' ">http://timestamp.digicert.com</_SigningTimestampUrl>
+
+      <!-- AzureSignTool implements its managed identity option with DefaultAzureCredential, which includes an existing Azure CLI session. -->
+      <SignTool Condition=" '$(_SigningMode)' == 'AzureKeyVault' ">"$(_SigningExecutable)" sign$(_SigningVerboseArgument) --azure-key-vault-url "%AZURE_KEY_VAULT_URI%" --azure-key-vault-managed-identity --azure-key-vault-certificate "%AZURE_KEY_VAULT_CERTIFICATE_NAME%" --file-digest sha256 --timestamp-rfc3161 "$(_SigningTimestampUrl)" --timestamp-digest sha256</SignTool>
+      <SignTool Condition=" '$(_SigningMode)' == 'TrustedSigning' ">"$(_SigningExecutable)" sign$(_SigningVerboseArgument) /tr $(_SigningTimestampUrl) /fd sha256 /td sha256 /dlib "$(AzureSignDlib)" /dmdf "$(AzureSignMetadata)"</SignTool>
+      <SignTool Condition=" '$(_SigningMode)' == 'Pfx' ">"$(_SigningExecutable)" sign$(_SigningVerboseArgument) /tr $(_SigningTimestampUrl) /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)"</SignTool>
     </PropertyGroup>
 
-    <Error Condition=" '$(SignToolPath)' == '' OR !Exists('$(SignToolPath)signtool.exe') "
+    <ItemGroup Condition=" '$(_SigningMode)' == 'AzureKeyVault' ">
+      <_MissingAzureSigningEnvironmentVariable Include="AZURE_KEY_VAULT_URI" Condition=" '$(AZURE_KEY_VAULT_URI)' == '' " />
+      <_MissingAzureSigningEnvironmentVariable Include="AZURE_KEY_VAULT_CERTIFICATE_NAME" Condition=" '$(AZURE_KEY_VAULT_CERTIFICATE_NAME)' == '' " />
+    </ItemGroup>
+
+    <Error Condition=" '$(_SigningMode)' == 'AzureKeyVault' AND !Exists('$(_SigningExecutable)') "
+           Text="Unable to locate AzureSignTool. Set AzureSignToolPath to the AzureSignTool executable." />
+    <Error Condition=" '@(_MissingAzureSigningEnvironmentVariable)' != '' "
+           Text="Azure Key Vault signing requires the following environment variables: @(_MissingAzureSigningEnvironmentVariable, ', ')." />
+    <Error Condition=" '$(_SigningMode)' != 'AzureKeyVault' AND ('$(SignToolPath)' == '' OR !Exists('$(_SigningExecutable)')) "
            Text="Unable to locate signtool.exe. Set SignToolPath to the Windows SDK bin directory." />
   </Target>
 
