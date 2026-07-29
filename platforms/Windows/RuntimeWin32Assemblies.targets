@@ -64,6 +64,6 @@
         Command="&quot;$(MakeCatToolPath)makecat.exe&quot; -v &quot;%(_RuntimeWin32Assembly.CatalogDefinition)&quot;" />
 
     <Exec Condition="'$(SignOutput)' == 'true'"
-          Command="$(SignTool) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
+          Command="$(SignCommand) &quot;%(_RuntimeWin32Assembly.Catalog)&quot;" />
   </Target>
 </Project>
