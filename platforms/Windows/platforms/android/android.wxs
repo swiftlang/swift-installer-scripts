@@ -119,7 +119,6 @@
                 <Directory Name="include">
                   <Directory Id="SDK_usr_include__foundation_unicode" Name="_foundation_unicode" />
                   <Directory Id="SDK_usr_include__FoundationCShims" Name="_FoundationCShims" />
-                  <Directory Id="SDK_usr_include__FoundationInternationalizationData" Name="_FoundationInternationalizationData" />
                   <Directory Id="SDK_usr_include_Block" Name="Block" />
                   <Directory Id="SDK_usr_include_dispatch" Name="dispatch" />
                   <Directory Id="SDK_usr_include_os" Name="os" />
@@ -351,30 +350,6 @@
     <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="lib_FoundationCShims.x86" Directory="SDK_usr_lib_swift_static_android_x86">
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationCShims.a" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeARM64) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.arm64" Directory="SDK_usr_lib_swift_static_android_arm64">
-        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationInternationalizationData.a" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeARM) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.arm" Directory="SDK_usr_lib_swift_static_android_arm">
-        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationInternationalizationData.a" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeX64) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.x64" Directory="SDK_usr_lib_swift_static_android_x64">
-        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationInternationalizationData.a" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeX86) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.x86" Directory="SDK_usr_lib_swift_static_android_x86">
-        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationInternationalizationData.a" />
       </ComponentGroup>
     <?endif?>
 
@@ -1484,6 +1459,63 @@
       </ComponentGroup>
     <?endif?>
 
+    <!-- _FoundationInternationalizationData -->
+    <?if $(IncludeARM64) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.arm64" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.arm64" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\lib_FoundationInternationalizationData.a" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeARM) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.arm" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.arm" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\lib_FoundationInternationalizationData.a" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX64) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.x64" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.x64" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\lib_FoundationInternationalizationData.a" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX86) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.x86" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\i686-unknown-linux-android.swiftdoc" />
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\_FoundationInternationalizationData.swiftmodule\i686-unknown-linux-android.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.x86" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\i686-unknown-linux-android.swiftdoc" />
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\_FoundationInternationalizationData.swiftmodule\i686-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\lib_FoundationInternationalizationData.a" />
+      </ComponentGroup>
+    <?endif?>
+
     <!-- FoundationInternationalization -->
     <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="FoundationInternationalization.arm64" Directory="FoundationInternationalization.swiftmodule">
@@ -2228,7 +2260,6 @@
 
     <Feature Id="SDK" AllowAbsent="no" Title="!(loc.Plt_ProductName_Android)">
       <ComponentGroupRef Id="_FoundationCShims" />
-      <ComponentGroupRef Id="_FoundationInternationalizationData" />
       <ComponentGroupRef Id="_FoundationUnicode" />
       <ComponentGroupRef Id="APINotes" />
       <ComponentGroupRef Id="BlocksRuntime" />
