@@ -60,7 +60,7 @@
       <VerboseFlag Condition=" '$(SignToolVerbose)' == 'true' ">/v </VerboseFlag>
       <VerboseFlag Condition=" '$(SignToolVerbose)' != 'true' "></VerboseFlag>
 
-      <SignTool>"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </SignTool>
+      <SignCommand>"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </SignCommand>
     </PropertyGroup>
 
     <Error Condition=" '$(SignToolPath)' == '' OR !Exists('$(SignToolPath)signtool.exe') "
@@ -82,22 +82,22 @@
   </Target>
 
   <Target Name="SignCabs" DependsOnTargets="FindSignTool">
-    <Exec Command="$(SignTool) &quot;%(SignCabs.FullPath)&quot;" />
+    <Exec Command="$(SignCommand) &quot;%(SignCabs.FullPath)&quot;" />
   </Target>
 
   <Target Name="SignMsi" DependsOnTargets="FindSignTool">
-    <Exec Command="$(SignTool) &quot;%(SignMsi.FullPath)&quot;" />
+    <Exec Command="$(SignCommand) &quot;%(SignMsi.FullPath)&quot;" />
   </Target>
 
   <Target Name="SignMsm" DependsOnTargets="FindSignTool">
-    <Exec Command="$(SignTool) &quot;%(SignMsm.FullPath)&quot;" />
+    <Exec Command="$(SignCommand) &quot;%(SignMsm.FullPath)&quot;" />
   </Target>
 
   <Target Name="SignBundleEngine" DependsOnTargets="FindSignTool">
-    <Exec Command="$(SignTool) &quot;@(SignBundleEngine)&quot;" />
+    <Exec Command="$(SignCommand) &quot;@(SignBundleEngine)&quot;" />
   </Target>
 
   <Target Name="SignBundle" DependsOnTargets="FindSignTool">
-    <Exec Command="$(SignTool) &quot;@(SignBundle)&quot;" />
+    <Exec Command="$(SignCommand) &quot;@(SignBundle)&quot;" />
   </Target>
 </Project>
