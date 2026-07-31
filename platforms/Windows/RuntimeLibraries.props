@@ -37,7 +37,8 @@
     <Module Include="Dispatch" />
 
     <Module Include="_FoundationCollections" Shared="false" SDKSharedLinkage="true" />
-    <Module Include="Foundation" LibraryName="Foundation" StaticDependencies="CoreFoundation;brotlicommon;brotlidec;curl;libxml2;zlib;_FoundationCShims;_FoundationInternationalizationData" />
+    <Module Include="_FoundationInternationalizationData" Shared="false" SDKSharedLinkage="true" />
+    <Module Include="Foundation" LibraryName="Foundation" StaticDependencies="CoreFoundation;brotlicommon;brotlidec;curl;libxml2;zlib;_FoundationCShims" />
     <Module Include="FoundationEssentials" LibraryName="FoundationEssentials" />
     <Module Include="FoundationInternationalization" LibraryName="FoundationInternationalization" />
     <Module Include="FoundationNetworking" LibraryName="FoundationNetworking" />
