@@ -54,17 +54,20 @@
   </Target>
 
   <Target Name="FindSignTool" DependsOnTargets="FindWindowsSDK">
-    <PropertyGroup>
+    <PropertyGroup Condition=" '$(SignCommand)' == '' ">
       <SignToolPath Condition=" '$(SignToolPath)' == '' ">$(WindowsSDKToolsPath)</SignToolPath>
       <SignToolPath Condition=" '$(SignToolPath)' != '' AND !HasTrailingSlash('$(SignToolPath)') ">$(SignToolPath)\</SignToolPath>
       <VerboseFlag Condition=" '$(SignToolVerbose)' == 'true' ">/v </VerboseFlag>
       <VerboseFlag Condition=" '$(SignToolVerbose)' != 'true' "></VerboseFlag>
-
-      <SignCommand>"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </SignCommand>
     </PropertyGroup>
 
-    <Error Condition=" '$(SignToolPath)' == '' OR !Exists('$(SignToolPath)signtool.exe') "
+    <Error Condition=" '$(SignCommand)' == '' AND ('$(SignToolPath)' == '' OR !Exists('$(SignToolPath)signtool.exe')) "
            Text="Unable to locate signtool.exe. Set SignToolPath to the Windows SDK bin directory." />
+
+    <!-- Fallback if `SignCommand` isn't overridden -->
+    <PropertyGroup Condition=" '$(SignCommand)' == '' ">
+      <SignCommand>"$(SignToolPath)signtool.exe" sign $(VerboseFlag)/tr http://timestamp.digicert.com /fd sha256 /td sha256 /f "$(CERTIFICATE)" /p "$(PASSPHRASE)" </SignCommand>
+    </PropertyGroup>
   </Target>
 
   <Target Name="FindWindowsSDKTools" DependsOnTargets="FindWindowsSDK">
