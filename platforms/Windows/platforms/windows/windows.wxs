@@ -123,7 +123,6 @@
                 <Directory Name="include">
                   <Directory Id="SDK_usr_include__foundation_unicode" Name="_foundation_unicode" />
                   <Directory Id="SDK_usr_include__FoundationCShims" Name="_FoundationCShims" />
-                  <Directory Id="SDK_usr_include__FoundationInternationalizationData" Name="_FoundationInternationalizationData" />
                   <Directory Id="SDK_usr_include_Block" Name="Block" />
                   <Directory Id="SDK_usr_include_dispatch" Name="dispatch" />
                   <Directory Id="SDK_usr_include_os" Name="os" />
@@ -326,24 +325,6 @@
     <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="lib_FoundationCShims.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_FoundationCShims.lib" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeARM64) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
-        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\_FoundationInternationalizationData.lib" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeX64) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
-        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\_FoundationInternationalizationData.lib" />
-      </ComponentGroup>
-    <?endif?>
-
-    <?if $(IncludeX86) = "True"?>
-      <ComponentGroup Id="lib_FoundationInternationalizationData.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
-        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\_FoundationInternationalizationData.lib" />
       </ComponentGroup>
     <?endif?>
 
@@ -1115,6 +1096,49 @@
       </ComponentGroup>
     <?endif?>
 
+    <!-- _FoundationInternationalizationData -->
+    <?if $(IncludeARM64) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.arm64" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.arm64" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\_FoundationInternationalizationData.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\lib_FoundationInternationalizationData.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX64) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.x64" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.x64" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\_FoundationInternationalizationData.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_x64" DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\lib_FoundationInternationalizationData.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX86) = "True"?>
+      <ComponentGroup Id="_FoundationInternationalizationData.x86" Directory="_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationInternationalizationData.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\_FoundationInternationalizationData.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_FoundationInternationalizationData.x86" Directory="lib_FoundationInternationalizationData.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\_FoundationInternationalizationData.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\_FoundationInternationalizationData.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_x86" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\lib_FoundationInternationalizationData.lib" />
+      </ComponentGroup>
+    <?endif?>
+
     <!-- FoundationInternationalization -->
     <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="FoundationInternationalization.arm64" Directory="FoundationInternationalization.swiftmodule">
@@ -1826,7 +1850,6 @@
       <ComponentGroupRef Id="RemoteMirror" />
       <ComponentGroupRef Id="SwiftShims" />
       <ComponentGroupRef Id="_FoundationCShims" />
-      <ComponentGroupRef Id="_FoundationInternationalizationData" />
       <ComponentGroupRef Id="_FoundationUnicode" />
     </Feature>
 
