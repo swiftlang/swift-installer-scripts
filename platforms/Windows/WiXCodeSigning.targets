@@ -54,14 +54,14 @@
   </Target>
 
   <Target Name="FindSignTool" DependsOnTargets="FindWindowsSDK">
-    <PropertyGroup Condition=" '$(SignCommand)' == '' ">
+    <PropertyGroup>
       <SignToolPath Condition=" '$(SignToolPath)' == '' ">$(WindowsSDKToolsPath)</SignToolPath>
       <SignToolPath Condition=" '$(SignToolPath)' != '' AND !HasTrailingSlash('$(SignToolPath)') ">$(SignToolPath)\</SignToolPath>
       <VerboseFlag Condition=" '$(SignToolVerbose)' == 'true' ">/v </VerboseFlag>
       <VerboseFlag Condition=" '$(SignToolVerbose)' != 'true' "></VerboseFlag>
     </PropertyGroup>
 
-    <Error Condition=" '$(SignCommand)' == '' AND ('$(SignToolPath)' == '' OR !Exists('$(SignToolPath)signtool.exe')) "
+    <Error Condition=" '$(SignCommand)' == '' AND !Exists('$(SignToolPath)signtool.exe') "
            Text="Unable to locate signtool.exe. Set SignToolPath to the Windows SDK bin directory." />
 
     <!-- Fallback if `SignCommand` isn't overridden -->
