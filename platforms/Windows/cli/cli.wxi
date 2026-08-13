@@ -159,6 +159,7 @@
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBAndroidPlatform.resources\Android.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBApplePlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBApplePlatform">
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AIModel.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsMetadata.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsNLTraining.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppShortcutStringsMetadata.xcspec" />
