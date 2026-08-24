@@ -44,10 +44,12 @@
     <Module Include="FoundationNetworking" LibraryName="FoundationNetworking" />
     <Module Include="FoundationXML" LibraryName="FoundationXML" />
 
+    <Module Include="_COM_Concurrency" Platforms="Windows" />
     <Module Include="_Differentiation" />
     <Module Include="_RegexParser" />
     <Module Include="_StringProcessing" />
     <Module Include="_Volatile" />
+    <Module Include="COM" Platforms="Windows" />
     <Module Include="Distributed" />
     <Module Include="Observation" />
     <Module Include="RegexBuilder" />
