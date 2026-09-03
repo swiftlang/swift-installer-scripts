@@ -3,11 +3,13 @@
     <OutputName>android</OutputName>
 
     <SwiftShimsPath>$(ImageRoot)\Platforms\Android.platform\Developer\SDKs\Android.sdk\usr\lib\swift\shims</SwiftShimsPath>
+    <SwiftStaticShimsPath>$(ImageRoot)\Platforms\Android.platform\Developer\SDKs\Android.sdk\usr\lib\swift_static\shims</SwiftStaticShimsPath>
 
     <DefineConstants>
       $(DefineConstants);
       ANDROID_INCLUDE_DS2=$(ANDROID_INCLUDE_DS2);
       SwiftShimsPath=$(SwiftShimsPath);
+      SwiftStaticShimsPath=$(SwiftStaticShimsPath);
       IncludeARM64=$(AndroidArchitectures.Contains("aarch64"));
       IncludeARM=$(AndroidArchitectures.Contains("armv7"));
       IncludeX64=$(AndroidArchitectures.Contains("x86_64"));
