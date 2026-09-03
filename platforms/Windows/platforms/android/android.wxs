@@ -149,6 +149,7 @@
                     </Directory>
                   </Directory>
                   <Directory Name="swift_static">
+                    <Directory Id="SDK_usr_lib_swift_static_shims" Name="shims" />
                     <Directory Id="SDK_usr_lib_swift_static_android" Name="android">
                       <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="lib$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
@@ -1049,14 +1050,48 @@
       </ComponentGroup>
     <?endif?>
 
+    <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
+    <ComponentGroup Id="AndroidOverlay">
+      <?if $(IncludeARM64) = "True"?>
+        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\SwiftBionic.h" />
+      <?endif?>
+
+      <?if $(IncludeARM) = "True"?>
+        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\armv7\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\SwiftBionic.h" />
+      <?endif?>
+
+      <?if $(IncludeX64) = "True"?>
+        <File Directory="SDK_usr_lib_swift_android_x64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_x64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_x64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\SwiftBionic.h" />
+      <?endif?>
+
+      <?if $(IncludeX86) = "True"?>
+        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\i686\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftBionic.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\android.modulemap" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\SwiftAndroidNDK.h" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\SwiftBionic.h" />
+      <?endif?>
+    </ComponentGroup>
+
     <!-- Android -->
     <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Android.arm64" Directory="Android.swiftmodule">
-        <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\android.modulemap" />
-        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftAndroidNDK.h" />
-        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\SwiftBionic.h" />
-
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
         <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
 
@@ -1073,11 +1108,6 @@
 
     <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Android.arm" Directory="Android.swiftmodule">
-        <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\android.modulemap" />
-        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftAndroidNDK.h" />
-        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\SwiftBionic.h" />
-
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
         <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
 
@@ -1094,11 +1124,6 @@
 
     <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Android.x64" Directory="Android.swiftmodule">
-        <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="SDK_usr_lib_swift_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\android.modulemap" />
-        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftAndroidNDK.h" />
-        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\SwiftBionic.h" />
-
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
 
@@ -1115,11 +1140,6 @@
 
     <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Android.x86" Directory="Android.swiftmodule">
-        <!-- FIXME(swiftlang/swift#80293) - these should be architecture agnostic -->
-        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\android.modulemap" />
-        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftAndroidNDK.h" />
-        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\SwiftBionic.h" />
-
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\i686-unknown-linux-android.swiftdoc" />
         <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Android.swiftmodule\i686-unknown-linux-android.swiftmodule" />
 
@@ -2160,33 +2180,44 @@
 
     <!-- libcxxshim -->
     <ComponentGroup Id="CXXShim" Directory="SDK_usr_lib_swift_android">
-      <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxshim.h" />
-      <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxshim.modulemap" />
-      <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxstdlibshim.h" />
+      <File Directory="SDK_usr_lib_swift_android" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxshim.h" />
+      <File Directory="SDK_usr_lib_swift_android" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxshim.modulemap" />
+      <File Directory="SDK_usr_lib_swift_android" DiskId="1" Source="$(SDKRoot)\usr\lib\swift\android\libcxxstdlibshim.h" />
+      <File Directory="SDK_usr_lib_swift_static_android" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\libcxxshim.h" />
+      <File Directory="SDK_usr_lib_swift_static_android" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\libcxxshim.modulemap" />
+      <File Directory="SDK_usr_lib_swift_static_android" DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\libcxxstdlibshim.h" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="DriverResources" Directory="SDK_usr_lib_swift_static_android">
+      <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\static-stdlib-args.lnk" />
     </ComponentGroup>
 
     <!-- Registrar -->
     <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Registrar.arm64" Directory="SDK_usr_lib_swift_android_arm64">
-        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeARM) = "True"?>
       <ComponentGroup Id="Registrar.arm" Directory="SDK_usr_lib_swift_android_arm">
-        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_static_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX64) = "True"?>
       <ComponentGroup Id="Registrar.x64" Directory="SDK_usr_lib_swift_android_x64">
-        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
     <?if $(IncludeX86) = "True"?>
       <ComponentGroup Id="Registrar.x86" Directory="SDK_usr_lib_swift_android_x86">
-        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\swiftrt.o" />
+        <File Directory="SDK_usr_lib_swift_static_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\swiftrt.o" />
       </ComponentGroup>
     <?endif?>
 
@@ -2199,6 +2230,7 @@
 
     <ComponentGroup Id="SwiftShims" Directory="SDK_usr_lib_swift_shims">
       <Files Include="$(SwiftShimsPath)\**" />
+      <Files Directory="SDK_usr_lib_swift_static_shims" Include="$(SwiftStaticShimsPath)\**" />
     </ComponentGroup>
 
     <!-- Features -->
@@ -2262,10 +2294,12 @@
       <ComponentGroupRef Id="_FoundationCShims" />
       <ComponentGroupRef Id="_FoundationUnicode" />
       <ComponentGroupRef Id="APINotes" />
+      <ComponentGroupRef Id="AndroidOverlay" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="CXXShim" />
       <ComponentGroupRef Id="Dispatch" />
+      <ComponentGroupRef Id="DriverResources" />
       <ComponentGroupRef Id="RemoteMirror" />
       <ComponentGroupRef Id="SwiftShims" />
     </Feature>
