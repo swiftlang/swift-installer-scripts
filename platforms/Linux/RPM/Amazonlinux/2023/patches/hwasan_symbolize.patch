@@ -1,0 +1,10 @@
+diff --git a/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize b/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
+index dd5f859561e1..21d18998cf31 100755
+--- a/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
++++ b/llvm-project/compiler-rt/lib/hwasan/scripts/hwasan_symbolize
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #===- lib/hwasan/scripts/hwasan_symbolize ----------------------------------===#
+ #
+ # Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions.
