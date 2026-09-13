@@ -3531,8 +3531,10 @@
     </ComponentGroup>
 
     <!-- Driver Resources -->
-    <ComponentGroup Id="DriverResources" Directory="AndroidSDK_usr_lib_swift_static_android">
-      <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\static-stdlib-args.lnk" />
+    <ComponentGroup Id="DriverResources">
+      <Component DiskId="1" Directory="AndroidSDK_usr_lib_swift_static_android">
+        <File DiskId="1" Source="$(SDKRoot)\usr\lib\swift_static\android\static-stdlib-args.lnk" />
+      </Component>
     </ComponentGroup>
 
     <!-- Registrar -->
