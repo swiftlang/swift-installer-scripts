@@ -253,6 +253,7 @@
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBQNXPlatform.resources\QNXLibtool.xcspec" />
     </ComponentGroup>
     <ComponentGroup Id="SWBUniversalPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBUniversalPlatform">
+      <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BareMetalLd.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInBuildRules.xcbuildrules" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInCompilers.xcspec" />
       <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInFileTypes.xcspec" />
