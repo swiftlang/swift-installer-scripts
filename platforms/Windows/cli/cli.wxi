@@ -367,12 +367,10 @@
       <!-- FIXME(compnerd) we should include the SPM import libraries -->
     </ComponentGroup>
 
-    <?if "True" = "False"?>
     <ComponentGroup Id="DocC" Directory="toolchain_$(VariantName)_usr_bin">
       <File Source="$(ToolchainRoot)\usr\bin\docc.exe" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftDocC.dll" />
     </ComponentGroup>
-    <?endif?>
 
     <ComponentGroup Id="DocCRender" Directory="toolchain_$(VariantName)_usr_share_docc_render">
       <Files Include="$(SWIFT_DOCC_RENDER_ARTIFACT_ROOT_DIST)\**" />
@@ -400,9 +398,7 @@
       <ComponentGroupRef Id="PackageDescription" />
       <ComponentGroupRef Id="PackagePlugin" />
 
-      <?if "True" = "False"?>
       <ComponentGroupRef Id="DocC" />
-      <?endif?>
       <ComponentGroupRef Id="DocCRender" />
 
       <ComponentGroupRef Id="swift_format" />

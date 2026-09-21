@@ -119,7 +119,6 @@ MSBuild automatically imports Directory.Build.props files in your tree. We use D
 | Platforms | A semi-colon delimited list of platforms which are bundled. Set it to `android;windows` to package both platforms. |
 | AndroidArchitectures | A semi-colon delimited list of architectures which the Android platform supports. Set it to `aarch64;armv7;i686;x86_64` to package all architectures. |
 | WindowsArchitectures | A semi-colon delimited list of architectures which the Windows platform supports. Set it to `aarch64;i686;x86_64` to package all architectures. |
-| INCLUDE_SWIFT_DOCC | swift-docc is currently conditionalized out. Set it to `True` to include it. The property `SWIFT_DOCC_BUILD` defines the directory to find the artifacts. |
 
 
 ## User.props
