@@ -510,6 +510,9 @@
     </ComponentGroup>
     <ComponentGroup Id="SWBUniversalPlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBUniversalPlatform">
       <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BareMetalLd.xcspec" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBUniversalPlatform.resources\BuiltInBuildRules.xcbuildrules" />
       </Component>
       <Component>
