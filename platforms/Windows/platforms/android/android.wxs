@@ -610,6 +610,9 @@
     <?if $(IncludeARM64) = True?>
       <ComponentGroup Id="dispatch.arm64" Directory="AndroidSDK_usr_lib_swift_android_arm64">
         <Component>
+          <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libdispatch.so" />
+        </Component>
+        <Component>
           <File Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftDispatch.so" />
         </Component>
       </ComponentGroup>
@@ -644,6 +647,9 @@
         <Component>
           <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libdispatch.so" />
         </Component>
+        <Component>
+          <File Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftDispatch.so" />
+        </Component>
       </ComponentGroup>
 
       <ComponentGroup Id="libdispatch.arm" Directory="AndroidSDK_usr_lib_swift_static_android_arm">
@@ -676,6 +682,9 @@
         <Component>
           <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libdispatch.so" />
         </Component>
+        <Component>
+          <File Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftDispatch.so" />
+        </Component>
       </ComponentGroup>
 
       <ComponentGroup Id="libdispatch.x64" Directory="AndroidSDK_usr_lib_swift_static_android_x64">
@@ -707,6 +716,9 @@
       <ComponentGroup Id="dispatch.x86" Directory="AndroidSDK_usr_lib_swift_android_x86">
         <Component>
           <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libdispatch.so" />
+        </Component>
+        <Component>
+          <File Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftDispatch.so" />
         </Component>
       </ComponentGroup>
 
