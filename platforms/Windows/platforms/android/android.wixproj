@@ -30,5 +30,13 @@
       <SuppressRegistry>true</SuppressRegistry>
       <SuppressRootDirectory>true</SuppressRootDirectory>
     </HarvestDirectory>
+    <HarvestDirectory Include="$(SwiftStaticShimsPath)">
+      <ComponentGroupName>SwiftStaticShims</ComponentGroupName>
+      <DirectoryRefId>AndroidSDK_usr_lib_swift_static_shims</DirectoryRefId>
+      <PreprocessorVariable>var.SwiftStaticShimsPath</PreprocessorVariable>
+      <SuppressCom>true</SuppressCom>
+      <SuppressRegistry>true</SuppressRegistry>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+    </HarvestDirectory>
   </ItemGroup>
 </Project>

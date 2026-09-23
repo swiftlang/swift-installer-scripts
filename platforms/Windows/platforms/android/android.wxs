@@ -3660,6 +3660,7 @@
       <ComponentGroupRef Id="SwiftRemoteMirror" />
       <ComponentGroupRef Id="DriverResources" />
       <ComponentGroupRef Id="SwiftShims" />
+      <ComponentGroupRef Id="SwiftStaticShims" />
       <ComponentGroupRef Id="_FoundationCShims" />
       <ComponentGroupRef Id="_FoundationUnicode" />
     </Feature>
