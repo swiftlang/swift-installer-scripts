@@ -35,6 +35,7 @@
           <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters" Name="formatters">
             <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
           </Directory>
+          <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_native" Name="native" />
           <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Name="utils" />
         </Directory>
       </Directory>
@@ -48,9 +49,11 @@
       <File Directory="toolchain_$(VariantName)_usr_lib" Source="$(ToolchainRoot)\usr\lib\liblldb.lib" />
 
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\__init__.py" />
-      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\_lldb.pyd" />
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\embedded_interpreter.py" />
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\lldb-argdumper.exe" />
+
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_native" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\native\__init__.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_native" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\native\_lldb.pyd" />
 
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\__init__.py" />
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\attrib_fromdict.py" />
