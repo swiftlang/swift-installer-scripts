@@ -138,6 +138,7 @@
                       <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
+                      <Directory Id="COM.swiftcrossimport" Name="COM.swiftcrossimport" />
                       <?if $(IncludeARM64) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_windows_arm64" Name="aarch64" />
                       <?endif?>
@@ -154,6 +155,7 @@
                       <?foreach ModuleName in $(SDKSwiftModules)?>
                         <Directory Id="lib$(ModuleName).swiftmodule" Name="$(ModuleName).swiftmodule" />
                       <?endforeach?>
+                      <Directory Id="libCOM.swiftcrossimport" Name="COM.swiftcrossimport" />
                       <?if $(IncludeARM64) = "True"?>
                         <Directory Id="SDK_usr_lib_swift_static_windows_arm64" Name="aarch64" />
                       <?endif?>
@@ -514,6 +516,55 @@
       </ComponentGroup>
     <?endif?>
 
+    <!-- _COM_Concurrency -->
+    <?if $(IncludeARM64) = "True"?>
+      <ComponentGroup Id="_COM_Concurrency.arm64" Directory="_COM_Concurrency.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\_COM_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\_COM_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_windows_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\swift_COM_Concurrency.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_COM_Concurrency.arm64" Directory="lib_COM_Concurrency.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\_COM_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\_COM_Concurrency.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\libswift_COM_Concurrency.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX64) = "True"?>
+      <ComponentGroup Id="_COM_Concurrency.x64" Directory="_COM_Concurrency.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\_COM_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\_COM_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_windows_x64" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\swift_COM_Concurrency.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_COM_Concurrency.x64" Directory="lib_COM_Concurrency.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\_COM_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\_COM_Concurrency.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_x64" DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\libswift_COM_Concurrency.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX86) = "True"?>
+      <ComponentGroup Id="_COM_Concurrency.x86" Directory="_COM_Concurrency.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\_COM_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\_COM_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_windows_x86" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\i686\swift_COM_Concurrency.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="lib_COM_Concurrency.x86" Directory="lib_COM_Concurrency.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\_COM_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\_COM_Concurrency.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_x86" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\libswift_COM_Concurrency.lib" />
+      </ComponentGroup>
+    <?endif?>
+
     <!-- _Concurrency -->
     <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="_Concurrency.arm64" Directory="_Concurrency.swiftmodule">
@@ -799,6 +850,60 @@
         <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\_Volatile.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
 
         <File Directory="SDK_usr_lib_swift_static_windows_x86" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\libswift_Volatile.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <!-- COM -->
+    <ComponentGroup Id="COM">
+      <File Directory="COM.swiftcrossimport" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftcrossimport\Concurrency.swiftoverlay" />
+      <File Directory="libCOM.swiftcrossimport" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftcrossimport\Concurrency.swiftoverlay" />
+    </ComponentGroup>
+
+    <?if $(IncludeARM64) = "True"?>
+      <ComponentGroup Id="COM.arm64" Directory="COM.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_windows_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\windows\aarch64\swiftCOM.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libCOM.arm64" Directory="libCOM.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftmodule\aarch64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftmodule\aarch64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\libswiftCOM.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX64) = "True"?>
+      <ComponentGroup Id="COM.x64" Directory="COM.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_windows_x64" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\windows\x86_64\swiftCOM.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libCOM.x64" Directory="libCOM.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftmodule\x86_64-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftmodule\x86_64-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_x64" DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\libswiftCOM.lib" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX86) = "True"?>
+      <ComponentGroup Id="COM.x86" Directory="COM.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\COM.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_windows_x86" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\windows\i686\swiftCOM.lib" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libCOM.x86" Directory="libCOM.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftmodule\i686-unknown-windows-msvc.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\COM.swiftmodule\i686-unknown-windows-msvc.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_windows_x86" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\libswiftCOM.lib" />
       </ComponentGroup>
     <?endif?>
 
@@ -1845,6 +1950,7 @@
       <ComponentGroupRef Id="AuxiliaryFiles" />
       <ComponentGroupRef Id="BlocksRuntime" />
       <ComponentGroupRef Id="CXXShim" />
+      <ComponentGroupRef Id="COM" />
       <ComponentGroupRef Id="Configuration" />
       <ComponentGroupRef Id="Dispatch" />
       <ComponentGroupRef Id="RemoteMirror" />
