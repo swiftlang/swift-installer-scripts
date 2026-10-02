@@ -2,7 +2,6 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
     <ComponentGroup Id="_FoundationCShims" Directory="SDK_usr_include__FoundationCShims" Source="$(SDKRoot)\usr\include\_FoundationCShims">
-      <File Name="bplist_shims.h" />
       <File Name="CFUniCharBitmapData.h" />
       <File Name="CFUniCharBitmapData.inc.h" />
       <File Name="CFUniCharBitmapDataAccess.h" />
