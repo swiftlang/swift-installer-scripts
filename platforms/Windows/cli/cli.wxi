@@ -253,6 +253,9 @@
     </ComponentGroup>
     <ComponentGroup Id="SWBApplePlatformResources" Directory="toolchain_$(VariantName)_usr_share_pm_SWBApplePlatform">
       <Component>
+        <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AIModel.xcspec" />
+      </Component>
+      <Component>
         <File Source="$(ToolchainRoot)\usr\share\pm\SwiftBuild_SWBApplePlatform.resources\AppIntentsMetadata.xcspec" />
       </Component>
       <Component>
