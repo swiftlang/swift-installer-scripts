@@ -39,6 +39,7 @@
       <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationInternationalization" Name="FoundationInternationalization" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationNetworking" Name="FoundationNetworking" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_FoundationXML" Name="FoundationXML" />
+      <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Builtin_float" Name="swift_Builtin_float" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Name="swift_Concurrency" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Name="swift_RegexParser" />
       <Directory Id="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Name="swift_StringProcessing" />
@@ -59,6 +60,7 @@
       <File Directory="toolchain_$(VariantName)_usr_bin_Foundation" Source="$(ToolchainRoot)\usr\bin\Foundation\Foundation.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_FoundationEssentials" Source="$(ToolchainRoot)\usr\bin\FoundationEssentials\FoundationEssentials.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_FoundationInternationalization" Source="$(ToolchainRoot)\usr\bin\FoundationInternationalization\FoundationInternationalization.dll" />
+      <File Directory="toolchain_$(VariantName)_usr_bin_swift_Builtin_float" Source="$(ToolchainRoot)\usr\bin\swift_Builtin_float\swift_Builtin_float.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swift_Concurrency" Source="$(ToolchainRoot)\usr\bin\swift_Concurrency\swift_Concurrency.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swift_RegexParser" Source="$(ToolchainRoot)\usr\bin\swift_RegexParser\swift_RegexParser.dll" />
       <File Directory="toolchain_$(VariantName)_usr_bin_swift_StringProcessing" Source="$(ToolchainRoot)\usr\bin\swift_StringProcessing\swift_StringProcessing.dll" />
