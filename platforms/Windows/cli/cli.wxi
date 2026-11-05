@@ -115,6 +115,7 @@
       <File Source="$(ToolchainRoot)\usr\bin\DequeModule.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\InternalCollectionsUtilities.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\OrderedCollections.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SpanPreview.dll" />
     </ComponentGroup>
 
     <ComponentGroup Id="llbuild" Directory="toolchain_$(VariantName)_usr_bin">
