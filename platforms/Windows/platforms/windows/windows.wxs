@@ -1305,7 +1305,7 @@
       </ComponentGroup>
 
       <ComponentGroup Id="libzlib.arm64" Directory="SDK_usr_lib_swift_static_windows_arm64">
-        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\zlibstatic.lib" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\windows\aarch64\zs.lib" />
       </ComponentGroup>
     <?endif?>
 
@@ -1327,7 +1327,7 @@
       </ComponentGroup>
 
       <ComponentGroup Id="libzlib.x64" Directory="SDK_usr_lib_swift_static_windows_x64">
-        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\zlibstatic.lib" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\windows\x86_64\zs.lib" />
       </ComponentGroup>
     <?endif?>
 
@@ -1349,7 +1349,7 @@
       </ComponentGroup>
 
       <ComponentGroup Id="libzlib.x86" Directory="SDK_usr_lib_swift_static_windows_x86">
-        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\zlibstatic.lib" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\windows\i686\zs.lib" />
       </ComponentGroup>
     <?endif?>
 
