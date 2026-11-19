@@ -36,6 +36,7 @@
             <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp" Name="cpp" />
           </Directory>
           <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_native" Name="native" />
+          <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Name="plugins" />
           <Directory Id="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Name="utils" />
         </Directory>
       </Directory>
@@ -66,7 +67,22 @@
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\gnu_libstdcpp.py" />
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_formatters_cpp" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\formatters\cpp\libcxx.py" />
 
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\__init__.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\operating_system.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\parsed_cmd.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_breakpoint.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_command.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_frame_provider.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_hook.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_platform.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_process.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_stackframe_recognizer.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_string_summary.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_synthetic_children.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_plugins" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\plugins\scripted_thread_plan.py" />
+
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\__init__.py" />
+      <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\delayed_enable.py" />
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\in_call_stack.py" />
       <File Directory="toolchain_$(VariantName)_usr_lib_site_packages_lldb_utils" Source="$(ToolchainRoot)\usr\lib\site-packages\lldb\utils\symbolication.py" />
     </ComponentGroup>
