@@ -44,6 +44,7 @@
 
     <ComponentGroup Id="LLDB">
       <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\lldb.exe" />
+      <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\lldb-server.exe" />
 
       <File Directory="toolchain_$(VariantName)_usr_bin" Source="$(ToolchainRoot)\usr\bin\liblldb.dll" />
 
