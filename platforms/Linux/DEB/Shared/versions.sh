@@ -4,7 +4,7 @@ debversion=5.7.3
 
 swift_version=5.7.3-RELEASE
 icu_version=65-1
-yams_version=4.0.2
+yams_version=5.0.1
 swift_argument_parser_version=1.0.3
 swift_crypto_version=1.1.5
 ninja_version=1.10.2
