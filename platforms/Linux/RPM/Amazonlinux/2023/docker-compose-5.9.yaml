@@ -1,0 +1,47 @@
+# This source file is part of the Swift.org open source project
+#
+# Copyright (c) 2021 Apple Inc. and the Swift project authors
+# Licensed under Apache License v2.0 with Runtime Library Exception
+#
+# See http://swift.org/LICENSE.txt for license information
+# See http://swift.org/CONTRIBUTORS.txt for Swift project authors
+
+# this setup is designed to build the RPM with docker
+# usage:
+# docker-compose -f platforms/Linux/amazonlinux/2/docker-compose.yaml build
+# to shell into the container for debugging purposes:
+# docker-compose -f platforms/Linux/amazonlinux/2/docker-compose.yaml run build
+
+version: "3"
+
+services:
+
+  docker-setup:
+    image: amazonlinux-2023-rpm-builder-5.9
+    build:
+      context: .
+      dockerfile: Dockerfile-5.9
+
+  common: &common
+    image: amazonlinux-2023-rpm-builder-5.9
+    depends_on: [docker-setup]
+    volumes:
+      - ../../Amazonlinux/2023:/code/Amazonlinux/2023:z
+      - ../../Shared:/code/Shared:z
+      - ./.output:/output:z
+    working_dir: /code/Amazonlinux/2023
+    cap_drop:
+      - CAP_NET_RAW
+      - CAP_NET_BIND_SERVICE
+
+  build:
+    <<: *common
+    command: /bin/bash -cl "./build_rpm.sh"
+
+  createrepo:
+    <<: *common
+    command: /bin/bash -cl "./createrepo_rpm.sh"
+
+  shell:
+    <<: *common
+    entrypoint: /bin/bash -l
