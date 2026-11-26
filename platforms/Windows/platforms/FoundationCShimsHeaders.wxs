@@ -10,6 +10,7 @@
       <File Name="module.modulemap" />
       <File Name="platform_shims.h" />
       <File Name="string_shims.h" />
+      <File Name="stringformat_shims.h" />
       <File Name="_CShimsMacros.h" />
       <File Name="_CShimsTargetConditionals.h" />
       <File Name="_CStdlib.h" />
