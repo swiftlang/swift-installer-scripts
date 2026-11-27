@@ -272,6 +272,7 @@
       <File Source="$(ToolchainRoot)\usr\bin\SwiftDiagnostics.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftIDEUtils.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftIfConfig.dll" />
+      <File Source="$(ToolchainRoot)\usr\bin\SwiftLexicalLookup.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftLibraryPluginProvider.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftOperators.dll" />
       <File Source="$(ToolchainRoot)\usr\bin\SwiftParser.dll" />
