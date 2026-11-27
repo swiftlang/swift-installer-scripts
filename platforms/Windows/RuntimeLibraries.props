@@ -53,7 +53,7 @@
     <Module Include="RegexBuilder" />
     <Module Include="Synchronization" />
 
-    <Module Include="Runtime" Platforms="Windows" />
+    <Module Include="Runtime" />
 
     <Library Include="BlocksRuntime" />
     <Library Include="_FoundationICU" ComponentGroup="_FoundationUnicode" />

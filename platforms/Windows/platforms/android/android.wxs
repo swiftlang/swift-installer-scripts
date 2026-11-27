@@ -1983,6 +1983,71 @@
       </ComponentGroup>
     <?endif?>
 
+    <!-- Runtime -->
+    <?if $(IncludeARM64) = "True"?>
+      <ComponentGroup Id="Runtime.arm64" Directory="Runtime.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift\android\aarch64\libswiftRuntime.so" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libRuntime.arm64" Directory="libRuntime.swiftmodule">
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\aarch64-unknown-linux-android.swiftdoc" />
+        <File DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\aarch64-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_arm64" DiskId="2" Source="$(SDKRoot)\usr\lib\swift_static\android\aarch64\libswiftRuntime.a" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeARM) = "True"?>
+      <ComponentGroup Id="Runtime.arm" Directory="Runtime.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift\android\armv7\libswiftRuntime.so" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libRuntime.arm" Directory="libRuntime.swiftmodule">
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\armv7-unknown-linux-android.swiftdoc" />
+        <File DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\armv7-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_arm" DiskId="3" Source="$(SDKRoot)\usr\lib\swift_static\android\armv7\libswiftRuntime.a" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX64) = "True"?>
+      <ComponentGroup Id="Runtime.x64" Directory="Runtime.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift\android\x86_64\libswiftRuntime.so" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libRuntime.x64" Directory="libRuntime.swiftmodule">
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\x86_64-unknown-linux-android.swiftdoc" />
+        <File DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\x86_64-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_x64" DiskId="4" Source="$(SDKRoot)\usr\lib\swift_static\android\x86_64\libswiftRuntime.a" />
+      </ComponentGroup>
+    <?endif?>
+
+    <?if $(IncludeX86) = "True"?>
+      <ComponentGroup Id="Runtime.x86" Directory="Runtime.swiftmodule">
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\i686-unknown-linux-android.swiftdoc" />
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\Runtime.swiftmodule\i686-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift\android\i686\libswiftRuntime.so" />
+      </ComponentGroup>
+
+      <ComponentGroup Id="libRuntime.x86" Directory="libRuntime.swiftmodule">
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\i686-unknown-linux-android.swiftdoc" />
+        <File DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\Runtime.swiftmodule\i686-unknown-linux-android.swiftmodule" />
+
+        <File Directory="SDK_usr_lib_swift_static_android_x86" DiskId="5" Source="$(SDKRoot)\usr\lib\swift_static\android\i686\libswiftRuntime.a" />
+      </ComponentGroup>
+    <?endif?>
+
     <!-- Swift -->
     <?if $(IncludeARM64) = "True"?>
       <ComponentGroup Id="Swift.arm64" Directory="Swift.swiftmodule">
